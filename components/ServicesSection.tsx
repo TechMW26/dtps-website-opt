@@ -1,0 +1,277 @@
+"use client";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+
+export default function ServicesSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const services = [
+    {
+      title: 'Personalized Solutions for Every Health Goal',
+      description:
+        'At DTPS, we first understand how you eat, how your day looks, and what health issues you\'re dealing with. Then we plan food using regular ghar ka khana in a way that can actually be followed.',
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M6 12H26M6 16H26M10 20H22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      ),
+      featured: true,
+      link: '/plans/therapeutic',
+    },
+    {
+      title: 'Weight Loss & Wellness',
+      description:
+        'Weight loss needs proper portions, sensible timing and food you already eat at home. When that is fixed, weight starts moving without any dramatic changes in your lifestyle.',
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="10" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="10" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="22" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="16" cy="16" r="2" stroke="currentColor" strokeWidth="2" />
+        </svg>
+      ),
+      featured: false,
+      link: '/weight-loss',
+    },
+    {
+      title: 'PCOD & PCOS Nutrition',
+      description:
+        'With PCOD, the problem isn\'t food quantity. It\'s irregular meals, sugar spikes, and confused eating patterns. We correct that slowly so the body starts responding instead of resisting.',
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="2" />
+          <path d="M16 8V16L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="16" cy="16" r="2" fill="currentColor" />
+        </svg>
+      ),
+      featured: false,
+      link: '/pcod',
+    },
+    {
+      title: 'Therapeutic Nutrition',
+      description:
+        'When you have thyroid, diabetes, or cholesterol, food can\'t be random. We plan meals that support your treatment and daily energy, not just weight loss.',
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="8" y="4" width="16" height="24" rx="3" stroke="currentColor" strokeWidth="2" />
+          <path d="M16 10V18M12 14H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      ),
+      featured: false,
+      link: '/plans/therapeutic',
+    },
+  ];
+
+  return (
+    <section
+      ref={sectionRef}
+      className="bg-gray-100 py-12 md:py-20 px-4 md:px-8 rounded-[20px] md:rounded-[30px]"
+    >
+      <div className="max-w-[1200px] mx-auto">
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Header Card */}
+          <div
+            className={`p-6 flex flex-col justify-center transition-all duration-500 ease-out ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+            }`}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Services
+              </span>
+            </div>
+            <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4">
+              What We<br />Help With
+            </h2>
+            <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-6">
+              Most people don&apos;t fail at dieting.<br />
+              They just get plans that don&apos;t match their daily life.
+            </p>
+            <Link href="/plans/therapeutic">
+              <button
+                className="bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-[0.95rem] font-semibold py-3.5 px-7 rounded-full border-none cursor-pointer shadow-[0_6px_20px_rgba(245,124,0,0.3)] transition-all duration-300 w-fit hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,124,0,0.4)]"
+              >
+                All Services
+              </button>
+            </Link>
+          </div>
+
+          {/* Personalized Solutions Card - Featured Orange */}
+          <div
+            onMouseEnter={() => setHoveredCard(0)}
+            onMouseLeave={() => setHoveredCard(null)}
+            className={`bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
+              isVisible
+                ? (hoveredCard === 0 ? '-translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.4)]' : 'translate-y-0')
+                : 'translate-y-[30px] opacity-0'
+            }`}
+          >
+            <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white">
+              {services[0].icon}
+            </div>
+            <h3 className="text-[1.35rem] font-bold text-white mb-4">
+              {services[0].title}
+            </h3>
+            <p className="text-sm text-white/90 leading-relaxed flex-1">
+              {services[0].description}
+            </p>
+          </div>
+
+          {/* Weight Loss Card */}
+          <div
+            onMouseEnter={() => setHoveredCard(1)}
+            onMouseLeave={() => setHoveredCard(null)}
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
+              hoveredCard === 1
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
+                : 'bg-white'
+            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
+          >
+            <div
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
+                hoveredCard === 1
+                  ? 'bg-white/20 text-white border-0'
+                  : 'bg-white border-2 border-teal-600 text-teal-600'
+              }`}
+            >
+              {services[1].icon}
+            </div>
+            <h3
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
+                hoveredCard === 1 ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              {services[1].title}
+            </h3>
+            <p
+              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${
+                hoveredCard === 1 ? 'text-white/90' : 'text-gray-500'
+              }`}
+            >
+              {services[1].description}
+            </p>
+          </div>
+
+          {/* PCOD Card */}
+          <div
+            onMouseEnter={() => setHoveredCard(2)}
+            onMouseLeave={() => setHoveredCard(null)}
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
+              hoveredCard === 2
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
+                : 'bg-white'
+            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
+          >
+            <div
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
+                hoveredCard === 2
+                  ? 'bg-white/20 text-white'
+                  : 'bg-white border-2 border-teal-600 text-teal-600'
+              }`}
+            >
+              {services[2].icon}
+            </div>
+            <h3
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
+                hoveredCard === 2 ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              {services[2].title}
+            </h3>
+            <p
+              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${
+                hoveredCard === 2 ? 'text-white/90' : 'text-gray-500'
+              }`}
+            >
+              {services[2].description}
+            </p>
+          </div>
+
+          {/* Therapeutic Nutrition Card */}
+          <div
+            onMouseEnter={() => setHoveredCard(3)}
+            onMouseLeave={() => setHoveredCard(null)}
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
+              hoveredCard === 3
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
+                : 'bg-white'
+            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
+          >
+            <div
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
+                hoveredCard === 3
+                  ? 'bg-white/20 text-white'
+                  : 'bg-white border-2 border-teal-600 text-teal-600'
+              }`}
+            >
+              {services[3].icon}
+            </div>
+            <h3
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
+                hoveredCard === 3 ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              {services[3].title}
+            </h3>
+            <p
+              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${
+                hoveredCard === 3 ? 'text-white/90' : 'text-gray-500'
+              }`}
+            >
+              {services[3].description}
+            </p>
+          </div>
+
+          {/* CTA Card - "What happens after I start?" */}
+          <div
+            className={`rounded-[20px] overflow-hidden relative min-h-[280px] transition-all duration-500 ease-out delay-500 ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+            }`}
+          >
+            <Image
+              src="/api/images/69b7c744a14dfc9fbf5ad78c"
+              alt="What happens after I start"
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 767px) 100vw, 50vw"
+              quality={75}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 flex flex-col justify-end p-8">
+              <p className="text-sm text-white/80 mb-1">If you&apos;re thinking,</p>
+              <h3 className="text-[1.8rem] font-bold text-white leading-tight mb-4">
+                What happens<br />after I start?
+              </h3>
+              <p className="text-sm text-white/90 leading-relaxed">
+                You&apos;re guided, tracked, and supported<br />until results show.<br />
+                Click Here to know the full process!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
