@@ -1057,7 +1057,7 @@ Fad expensive salad or juice-only diet.
               <DynamicPlansDisplay
                 category="new-wedding-plan"
                 showHeader={false}
-                columns="4"
+                columns="3-2"
                 onSelectPlan={(plan) => {
                   const product = {
                     id: `wedding-${plan.planName
@@ -1093,10 +1093,6 @@ Fad expensive salad or juice-only diet.
             Your photos last forever — make sure you love what you see! Get the
             personalized plan brides swear by.
           </p>
-
-          <button className="bg-[#FF850B] text-white border-none rounded-[48px] py-3 px-8 md:px-16 text-base md:text-xl font-semibold cursor-pointer hover:bg-[#e07a1a] transition-colors">
-            Get Your Wedding Plan Now!
-          </button>
         </div>
       </section>
 

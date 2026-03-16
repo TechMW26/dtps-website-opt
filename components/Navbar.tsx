@@ -27,7 +27,11 @@ const navItems: NavItem[] = [
   { label: 'Good Read', href: '/blog' },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  bgColor?: string;
+}
+
+export default function Navbar({ bgColor }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
@@ -58,7 +62,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="relative z-50 w-full">
+      <header className={`relative z-50 w-full ${bgColor ? bgColor : ''}`}>
         <div className="mx-auto w-full max-w-[1200px] px-4">
           <div className="flex items-center justify-between gap-4 py-2 md:py-4">
             <Link href="/" className="flex items-center">

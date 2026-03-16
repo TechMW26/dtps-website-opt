@@ -1038,13 +1038,17 @@ export default function TherapeuticPlanPage() {
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="flex flex-wrap justify-center gap-5 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-[1000px] mx-auto">
             {pricingPlans.map((plan: any, index: number) => (
-              <div key={index} className="w-full sm:w-[280px]">
+              <div key={index} className="w-full">
+                {/* Plan Banner */}
                 {plan.planId && (
-                  <div className="mb-2"><PlanBannerDisplay planId={plan.planId} /></div>
+                  <div className="mb-2">
+                    <PlanBannerDisplay planId={plan.planId} />
+                  </div>
                 )}
-                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col h-[466px] relative">
+                {/* Card */}
+                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col h-full relative">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-1">
                     <div>
@@ -1057,23 +1061,25 @@ export default function TherapeuticPlanPage() {
                   </div>
                   {/* Price */}
                   <div className="flex items-end gap-2 mb-3">
-                    <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.price}</span>
+                    <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.price}</span>
                     <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>
                   </div>
+                  {/* Divider */}
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
                   {/* Features */}
-                  <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>What you&apos;ll get:</p>
-                  <div className="flex flex-col gap-1 flex-1">
+                  <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>What you&apos;ll get:</p>
+                  <div className="flex flex-col gap-1 flex-1 overflow-y-auto">
                     {plan.features.map((feature: string, idx: number) => (
-                      <div key={idx} className="flex items-center gap-1.5">
+                      <div key={idx} className="flex items-start gap-1.5">
                         <CheckIcon24 />
-                        <span className="text-[#6B7280] text-[13px] md:text-[14px]" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{feature}</span>
+                        <span className="text-[#6B7280] text-[13px] md:text-[14px] leading-snug" style={{ fontFamily: 'DM Sans, sans-serif' }}>{feature}</span>
                       </div>
                     ))}
                   </div>
-                  <p className="text-[#6B7280] text-[11px] md:text-[12px] mt-2 mb-4" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
+                  <p className="text-[#6B7280] text-[11px] md:text-[12px] mt-4 mb-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                     Stay on track: weekly check-ins to ensure your progress.
                   </p>
+                  {/* Buy button */}
                   <button
                     onClick={() => {
                       const price = plan.price.replace('₹', '').replace(',', '');
@@ -1086,7 +1092,7 @@ export default function TherapeuticPlanPage() {
                       sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
                       window.location.href = '/checkout';
                     }}
-                    className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer"
+                    className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
                     style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                   >
                     BUY NOW

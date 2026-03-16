@@ -90,7 +90,52 @@ export default function DynamicPlansDisplay({
     '2': 'grid-cols-1 md:grid-cols-2',
     '3': 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
     '4': 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+    '3-2': 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
   }[columns] || 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+
+  // Custom render for 3-2 layout
+  if (columns === '3-2') {
+    return (
+      <div className="w-full flex justify-center">
+        <div className="w-full">
+          {showHeader && (
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">{description}</p>
+            </div>
+          )}
+          <div className="w-full">
+            {/* First row - 3 cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 w-full justify-center mb-6 md:mb-8 lg:mb-10">
+              {plans.slice(0, 3).map((plan) => (
+                <PlanCard 
+                  key={plan._id} 
+                  plan={plan} 
+                  onSelect={onSelectPlan}
+                  compact={compact}
+                />
+              ))}
+            </div>
+            {/* Second row - 2 cards centered */}
+            {plans.length > 3 && (
+              <div className="flex justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 w-full lg:w-2/3 gap-6 md:gap-8 lg:gap-10">
+                  {plans.slice(3, 5).map((plan) => (
+                    <PlanCard 
+                      key={plan._id} 
+                      plan={plan} 
+                      onSelect={onSelectPlan}
+                      compact={compact}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex justify-center">
