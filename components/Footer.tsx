@@ -78,7 +78,7 @@ export default function Footer() {
                 </div>
               </div>
               <div className="mt-8 flex items-center gap-5">
-                <span className="text-base font-semibold">Download app :</span>
+                <span className="text-base font-semibold">Download on :</span>
                 <div className="flex items-center gap-3">
                   <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" aria-label="Download on iOS">
                     <FaApple className="text-white text-xl" />
