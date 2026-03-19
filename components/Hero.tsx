@@ -35,9 +35,9 @@ export default function Hero() {
                 placeholder="empty"
               />
 
-              {/* 25 Years Badge */}
+              {/* 25+ Years Badge */}
               <div className="absolute right-[5px] top-[45%] bg-[#ff9100] py-1.5 px-2.5 rounded-[8px] flex items-center gap-1 z-[4] shadow-[0_10px_30px_rgba(245,124,0,0.3)]">
-                <span className="text-[1rem] font-extrabold text-white leading-none">25</span>
+                <span className="text-[1rem] font-extrabold text-white leading-none">25+</span>
                 <span className="text-[0.45rem] text-white leading-[1.2] font-medium">
                   Years of<br />experience
                 </span>
@@ -70,8 +70,14 @@ export default function Hero() {
 
               <div className="flex items-center gap-2">
 
-                <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center text-base">
-                  📞
+                <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+                  <Image
+                    src="/phoneicon.svg"
+                    alt="Phone Icon"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5"
+                  />
                 </div>
 
                 <div className="flex flex-col">
@@ -129,10 +135,15 @@ export default function Hero() {
               </Link>
 
               <div className="hero-phone flex items-center gap-3">
-
-                <div className="phone-icon w-10 h-10 lg:w-12 lg:h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center text-lg lg:text-xl">
-                  📞
-                </div>
+<div className="phone-icon w-10 h-10 lg:w-12 lg:h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+  <Image
+    src="/phoneicon.svg"
+    alt="Phone Icon"
+    width={24}
+    height={24}
+    className="w-5 h-5 lg:w-6 lg:h-6"
+  />
+</div>
 
                 <div className="phone-info flex flex-col">
                   <span className="phone-label text-white/60 text-[0.7rem] lg:text-[0.8rem]">Call Us 24/7</span>
@@ -193,7 +204,7 @@ flex items-center gap-2 z-[4] w-fit h-fit">
 
                 <span className="badge-number text-[1.4rem] lg:text-[1.6rem] xl:text-[1.7rem]
   font-extrabold text-white leading-none">
-                  25
+                  25+
                 </span>
 
                 <span className="badge-text text-[0.65rem] lg:text-[0.75rem]

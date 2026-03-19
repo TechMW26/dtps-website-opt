@@ -30,11 +30,7 @@ export default function ServicesSection() {
       title: 'Personalized Solutions for Every Health Goal',
       description:
         'At DTPS, we first understand how you eat, how your day looks, and what health issues you\'re dealing with. Then we plan food using regular ghar ka khana in a way that can actually be followed.',
-      icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <path d="M6 12H26M6 16H26M10 20H22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      ),
+      icon: '/Personalizedicon.svg',
       featured: true,
       link: '/plans/therapeutic',
     },
@@ -42,14 +38,7 @@ export default function ServicesSection() {
       title: 'Weight Loss & Wellness',
       description:
         'Weight loss needs proper portions, sensible timing and food you already eat at home. When that is fixed, weight starts moving without any dramatic changes in your lifestyle.',
-      icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="10" r="4" stroke="currentColor" strokeWidth="2" />
-          <circle cx="10" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
-          <circle cx="22" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
-          <circle cx="16" cy="16" r="2" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      ),
+      icon: '/Weighticon.svg',
       featured: false,
       link: '/weight-loss',
     },
@@ -57,13 +46,7 @@ export default function ServicesSection() {
       title: 'PCOD & PCOS Nutrition',
       description:
         'With PCOD, the problem isn\'t food quantity. It\'s irregular meals, sugar spikes, and confused eating patterns. We correct that slowly so the body starts responding instead of resisting.',
-      icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="2" />
-          <path d="M16 8V16L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="16" cy="16" r="2" fill="currentColor" />
-        </svg>
-      ),
+      icon: '/pcodicon.svg',
       featured: false,
       link: '/pcod',
     },
@@ -71,12 +54,7 @@ export default function ServicesSection() {
       title: 'Therapeutic Nutrition',
       description:
         'When you have thyroid, diabetes, or cholesterol, food can\'t be random. We plan meals that support your treatment and daily energy, not just weight loss.',
-      icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <rect x="8" y="4" width="16" height="24" rx="3" stroke="currentColor" strokeWidth="2" />
-          <path d="M16 10V18M12 14H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      ),
+      icon: '/Therapeuticicon.svg',
       featured: false,
       link: '/plans/therapeutic',
     },
@@ -129,7 +107,13 @@ export default function ServicesSection() {
             }`}
           >
             <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white">
-              {services[0].icon}
+              <Image
+                src={services[0].icon}
+                alt={services[0].title}
+                width={32}
+                height={32}
+                className="object-contain"
+              />
             </div>
             <h3 className="text-[1.35rem] font-bold text-white mb-4">
               {services[0].title}
@@ -156,7 +140,13 @@ export default function ServicesSection() {
                   : 'bg-white border-2 border-teal-600 text-teal-600'
               }`}
             >
-              {services[1].icon}
+              <Image
+                src={services[1].icon}
+                alt={services[1].title}
+                width={32}
+                height={32}
+                className="object-contain"
+              />
             </div>
             <h3
               className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
@@ -191,7 +181,13 @@ export default function ServicesSection() {
                   : 'bg-white border-2 border-teal-600 text-teal-600'
               }`}
             >
-              {services[2].icon}
+              <Image
+                src={services[2].icon}
+                alt={services[2].title}
+                width={32}
+                height={32}
+                className="object-contain"
+              />
             </div>
             <h3
               className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
@@ -226,7 +222,13 @@ export default function ServicesSection() {
                   : 'bg-white border-2 border-teal-600 text-teal-600'
               }`}
             >
-              {services[3].icon}
+              <Image
+                src={services[3].icon}
+                alt={services[3].title}
+                width={32}
+                height={32}
+                className="object-contain"
+              />
             </div>
             <h3
               className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${

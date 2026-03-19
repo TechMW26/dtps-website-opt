@@ -37,96 +37,21 @@ export default function AboutUsSection() {
     >
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
 
-        {/* ─── Left Side – Images ─── */}
+        {/* ─── Left Side – Image ─── */}
         <div
           className={`relative w-full lg:w-[440px] flex-shrink-0 transition-all duration-700 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[50px] opacity-0'
             }`}
         >
-          {/* Desktop Layout */}
-          <div className="hidden md:block relative" style={{ height: 400 }}>
-            {/* Image 1 – rotated left */}
-            <div
-              className="absolute top-[30px] w-[225px] h-[330px] rounded-[19px] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.12)] z-[2]"
-              style={{ left: -20, transform: 'rotate(-6deg)' }}
-            >
-              <Image
-                src="/api/images/69b7c66ea14dfc9fbf5ad4f2"
-                alt="Award Ceremony"
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="225px"
-                quality={75}
-              />
-            </div>
-
-            {/* Image 2 – rotated right, white border */}
-            <div
-              className="absolute top-[0px] w-[180px] h-[230px] rounded-[19px] overflow-hidden z-[3]"
-              style={{ left: 200, transform: 'rotate(11deg)', border: '3px solid white', boxShadow: '0 15px 40px rgba(0,0,0,0.12)' }}
-            >
-              <Image
-                src="/api/images/69b7c6faa14dfc9fbf5ad61e"
-                alt="Business Achievers Award"
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="180px"
-                quality={75}
-              />
-            </div>
-
-            {/* Curly dashed arrow */}
-            <div className="absolute z-[4]" style={{ left: 250, top: 220 }}>
-              <svg width="53" height="70" viewBox="0 0 53 70" fill="none">
-                {/* curly S-shaped dashed path pointing downward */}
-                <path
-                  d="M30 0 C 28 8, 22 14, 18 20 C 12 28, 8 34, 14 42 C 20 50, 30 48, 32 40 C 34 32, 24 28, 18 34 C 12 40, 16 50, 22 55"
-                  stroke="#1E1E1E"
-                  strokeWidth="1.8"
-                  strokeDasharray="5 4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-                {/* Arrow head */}
-                <path d="M16 50 L22 60 L28 50" stroke="#1E1E1E" strokeWidth="1.8" fill="#1E1E1E" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-
-            {/* 25+ Years Badge */}
-            <div
-              className="absolute z-[5] flex items-center gap-[3px] px-[14px] py-[12px]"
-              style={{
-                left: 200,
-                bottom: 10,
-                width: 130,
-                height: 52,
-                background: '#FF850B',
-                borderRadius: 10,
-                boxShadow: '0 0 7.6px rgba(0,0,0,0.12)',
-              }}
-            >
-              <span className="text-white text-[26px] font-bold leading-none" style={{ fontFamily: "'Epilogue', sans-serif" }}>25</span>
-              <span className="text-white text-[24px] font-bold leading-none">+</span>
-              <span className="text-white text-[10px] font-normal leading-tight ml-[2px]">Years of<br />experience</span>
-            </div>
-          </div>
-
-          {/* Mobile Layout */}
-          <div className="md:hidden">
-            <div className="flex justify-center gap-3 mb-4 relative h-[220px]">
-              <div className="relative w-[48%] h-[200px] rounded-[16px] overflow-hidden shadow-lg" style={{ transform: 'rotate(-6deg)' }}>
-                <Image src="/api/images/69b7c66ea14dfc9fbf5ad4f2" alt="Award Ceremony" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 48vw, 0px" quality={75} />
-              </div>
-              <div className="relative w-[40%] h-[160px] rounded-[16px] overflow-hidden shadow-lg border-[3px] border-white" style={{ transform: 'rotate(11deg)' }}>
-                <Image src="/api/images/69b7c6faa14dfc9fbf5ad61e" alt="Business Achievers Award" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 40vw, 0px" quality={75} />
-              </div>
-            </div>
-            <div className="mx-auto w-fit flex items-center gap-[3px] px-[14px] py-[12px] rounded-[10px]" style={{ background: '#FF850B', boxShadow: '0 0 7.6px rgba(0,0,0,0.12)' }}>
-              <span className="text-white text-[22px] font-bold leading-none">25</span>
-              <span className="text-white text-[20px] font-bold leading-none">+</span>
-              <span className="text-white text-[10px] font-normal leading-tight ml-[2px]">Years of<br />experience</span>
-            </div>
+          <div className="relative w-full h-[260px] md:h-[360px] lg:h-[400px] rounded-[20px] overflow-hidden bg-white">
+            <Image
+              src="/WhyMostDiets.png"
+              alt="Why Most Diets Fail"
+              fill
+              className="object-contain object-center"
+              loading="lazy"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 80vw, 440px"
+              quality={75}
+            />
           </div>
         </div>
 

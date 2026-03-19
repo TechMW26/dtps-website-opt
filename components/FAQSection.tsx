@@ -4,20 +4,20 @@ import Image from 'next/image';
 
 const faqData = [
   {
-    question: "What is health coaching?",
-    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
+    question: "Will I have to stop eating normal food?",
+    answer: "No. DTPS plans are based on ghar ka khana.Roti, sabzi, dal, rice, fruits, and even occasional treats are included. The focus is on portions, timing, and combinations, not restriction."
   },
   {
-    question: "How does health coaching work?",
-    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
+    question: "Do I need to take supplements or fat burners?",
+    answer: "No. We do not sell or force any supplements.Your plan works on food, calorie balance, and consistency. Supplements are suggested only if medically required."
   },
   {
-    question: "Who can benefit from health coaching?",
-    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
+    question: "Will I have to do heavy exercise or go to the gym?",
+    answer: "Not at all.Exercise is optional, not compulsory. Weight loss here is driven by diet. If you enjoy walking, yoga, or light workouts, we guide you. If not, the plan still works."
   },
   {
-    question: "Can I do health coaching online?",
-    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
+    question: "How soon will I see results?",
+    answer: "Most people notice changes like reduced bloating, better energy, and lighter feeling within the first few weeks.  Weight and inch loss depend on consistency, body type, and starting point."
   }
 ];
 
@@ -121,7 +121,7 @@ export default function FAQSection() {
           </div>
 
           <h2 className="text-[28px] md:text-[38px] lg:text-[46px] font-extrabold text-[#1E1E1E] leading-[1.1] mb-6 md:mb-8 tracking-[-0.01em]">
-            Common questions<br />about health coaching
+            Common questions<br />about Programs
           </h2>
 
           <div className="flex flex-col gap-4 md:gap-5">

@@ -335,7 +335,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             <div className="text-white text-[14px] leading-[1.6] md:text-[16px] md:leading-[26px] font-normal">
               <p>
                 DTPS is led by Dietitian Poonam Sagar, a name trusted by thousands of families
-                across India and beyond. With 15+ years of hands-on experience, she has worked
+                across India and beyond. With 25+ years of hands-on experience, she has worked
                 with Indian as well as international clients. Her work has been recognised with
                 multiple awards in the field of nutrition and wellness, but what truly sets her
                 apart is not the titles. It&apos;s her belief that diet should support your life, not
@@ -465,7 +465,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
           <div className="mx-auto grid max-w-[845px] grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             <CounterBox value={counters.rating.toFixed(1)} label="Google Rating" />
             <CounterBox value={`${counters.success}%`} label="Success Rate" />
-            <CounterBox value={`${counters.clients}K+`} label="Clients" />
+            <CounterBox value={`${counters.clients}K+`} label="Satisfied Clients" />
             <CounterBox value="" label="" stacked />
           </div>
         </div>
