@@ -253,7 +253,7 @@ export default function ServicesSection() {
             }`}
           >
             <Image
-              src="/api/images/69b7c744a14dfc9fbf5ad78c"
+              src="/girlthali.png"
               alt="What happens after I start"
               fill
               className="object-cover"

@@ -272,7 +272,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
           </p>
         </div>
 
-        <div className="mt-8 md:mt-[68px] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-8">
+        <div className="mt-8 md:mt-[68px] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-8 lg:px-12 xl:px-16">
           <div
             className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] transition-all duration-700 delay-150 ${
               isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"

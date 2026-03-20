@@ -27,7 +27,7 @@ export default function WhyChooseUsSection() {
         {/* Desktop Version */}
         <div className="hidden lg:block">
           <Image
-            src="/api/images/69b7c744a14dfc9fbf5ad790"
+            src="/threewhydesktop.png"
             alt="Why Choose Us - Desktop"
             width={1200}
             height={600}
@@ -40,7 +40,7 @@ export default function WhyChooseUsSection() {
         {/* Mobile Version */}
         <div className="lg:hidden">
           <Image
-            src="/api/images/69b7c753a14dfc9fbf5ad7b7"
+            src="/threewhymobile.png"
             alt="Why Choose Us - Mobile"
             width={600}
             height={800}

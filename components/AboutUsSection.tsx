@@ -38,21 +38,21 @@ export default function AboutUsSection() {
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
 
         {/* ─── Left Side – Image ─── */}
-        <div
-          className={`relative w-full lg:w-[440px] flex-shrink-0 transition-all duration-700 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[50px] opacity-0'
-            }`}
-        >
-          <div className="relative w-full h-[260px] md:h-[360px] lg:h-[400px] rounded-[20px] overflow-hidden bg-white">
-            <Image
-              src="/WhyMostDiets.png"
-              alt="Why Most Diets Fail"
-              fill
-              className="object-contain object-center"
-              loading="lazy"
-              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 80vw, 440px"
-              quality={75}
-            />
-          </div>
+      <div
+  className={`relative w-full lg:w-[440px] flex-shrink-0 transition-all duration-700 ease-out ${
+    isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[50px] opacity-0'
+  }`}
+>
+  <div className="flex justify-center items-center rounded-[20px] bg-white p-2 md:p-4">
+    <Image
+      src="/WhyMostDiets.png"
+      alt="Why Most Diets Fail"
+      width={700}
+      height={700}
+      className="w-full h-auto object-contain"
+      priority
+    />
+  </div>
         </div>
 
         {/* ─── Right Side – Content ─── */}
