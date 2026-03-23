@@ -26,7 +26,8 @@ export default function OurTeamSection() {
           <Image
             src="/api/images/69b7c6e9a14dfc9fbf5ad5a5"
             alt="Our Team"
-            fill
+            width={1920}
+            height={1080}
             priority
             className="team-banner-image"
             sizes="100vw"
@@ -39,24 +40,28 @@ export default function OurTeamSection() {
 
             <div className="team-heading-group">
               <div className="team-label-row">
-                <div className="team-label-icon" />
-                <div className="team-label-text">Our Team</div>
+               
+                
               </div>
+              <div className="flex items-center gap-2 mb-4">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Team
+              </span>
+            </div>
 
               <h2 className="team-title">
                 The People Behind Your Weight Loss Journey
               </h2>
             </div>
-
+<br></br>
             <div className="team-description">
-              Weight loss doesn’t work because of a chart. It works because of
-              people. DTPS is run by a team of{" "}
+              Weight loss doesn’t work because of a chart. It works because of people. DTPS is run by a team of {" "}
               <span className="bold">
                 200+ dietitians and health counsellors.
               </span>
               <br />
-              They talk to you, understand your routine and adjust your plan
-              when things don’t go as planned.
+              They talk to you, understand your routine and adjust your plan when things don’t go as planned. They track your progress, adjust your plan when needed, and stay involved until results show. This isn’t automated support. This isn’t passion written in a job description. It comes from people who genuinely care about outcomes, who think beyond charts and calls, and who take personal responsibility for your progress until results actually show.
             </div>
 
           </div>
@@ -96,6 +101,7 @@ export default function OurTeamSection() {
 
 .our-team-section {
   width: 100%;
+  max-width: 1200px;
   background: white;
   overflow: hidden;
   border-radius: 25.9px;
@@ -109,21 +115,22 @@ export default function OurTeamSection() {
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
-  max-width: calc(100% - 80px);
 }
 
 /* BANNER */
 
 .team-banner {
   width: 100%;
-  height: 660px;
   position: relative;
   overflow: hidden;
 }
 
 .team-banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
 }
 
 /* CONTENT */
@@ -134,8 +141,13 @@ export default function OurTeamSection() {
   align-items: center;
   gap: 33px;
   width: 100%;
+  max-width: 1200px;
+  padding: 0 8px;
+}
+
+.team-content-inner {
+  width: 100%;
   max-width: 920px;
-  padding: 0 20px;
 }
 
 .team-heading-group {
@@ -233,15 +245,15 @@ export default function OurTeamSection() {
 
 .team-gallery {
   width: 100%;
-  max-width: 1152px;
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  padding: 0 20px;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0 8px;
 }
 
 .gallery-card {
-  width: calc(25% - 18px);
+  width: 100%;
   height: 179px;
   position: relative;
   border-radius: 16px;
@@ -252,41 +264,31 @@ export default function OurTeamSection() {
   object-fit: cover;
 }
 
-/* LARGE DESKTOP */
-@media (min-width:1440px) {
-.team-banner {
-  height: 720px;
+@media (min-width:768px) {
+.team-content-wrap,
+.team-gallery {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 }
 
-@media (min-width:1600px) {
-.team-banner {
-  height: 800px;
-}
-}
-
-@media (min-width:1920px) {
-.team-banner {
-  height: 900px;
-}
-}
-
-@media (min-width:2560px) {
-.team-banner {
-  height: 1100px;
+@media (min-width:1024px) {
+.team-content-wrap,
+.team-gallery {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 }
 
 /* TABLET */
 
 @media (max-width:1024px) {
-
-.team-banner {
-  height: 420px;
+.gallery-card {
+  height: 170px;
 }
 
-.gallery-card {
-  width: calc(50% - 12px);
+.team-gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 }
@@ -301,12 +303,14 @@ export default function OurTeamSection() {
   margin-left:auto;
   margin-right:auto;
   width:100%;
-  max-width: calc(100% - 32px);
+  max-width: 1200px;
+  padding-bottom: 32px;
 }
 
-/* SHRINK BANNER */
-.team-banner{
-  height:200px;
+.team-content-wrap,
+.team-gallery{
+  padding-left:8px;
+  padding-right:8px;
 }
 
 /* TEXT */
@@ -352,10 +356,11 @@ export default function OurTeamSection() {
 
 .team-gallery{
   flex-wrap:nowrap;
+  display:flex;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
   gap:14px;
-  padding:0 16px;
+  padding:0 8px;
 }
 
 .gallery-card{

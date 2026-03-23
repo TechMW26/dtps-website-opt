@@ -61,12 +61,12 @@ export default function AboutUsSection() {
             }`}
         >
           {/* "About Us" label with orange square */}
-          <div className="flex items-center gap-1 mb-2">
-            <div className="w-3 h-3 bg-[#FF850B]" />
-            <span className="text-[#014E4E] text-[14px] font-semibold" style={{ fontFamily: "'Epilogue', sans-serif" }}>
-              About Us
-            </span>
-          </div>
+         <div className="flex items-center gap-2 mb-4">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                About us
+              </span>
+            </div>
 
           {/* Heading */}
           <h2

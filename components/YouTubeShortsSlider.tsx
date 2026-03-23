@@ -113,28 +113,6 @@ export default function YouTubeShortsSlider() {
 
   return (
     <>
-      {/* Navigation Arrows */}
-      <div className="yt-slider-nav">
-        <button 
-          className="yt-nav-btn yt-nav-prev"
-          onClick={() => { slidePrev(); setPaused(true); setTimeout(() => setPaused(false), 3000); }}
-          aria-label="Previous"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-        <button 
-          className="yt-nav-btn yt-nav-next"
-          onClick={() => { slideNext(); setPaused(true); setTimeout(() => setPaused(false), 3000); }}
-          aria-label="Next"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-      </div>
-
       <div
         ref={gridRef}
         className="yt-video-grid"
@@ -182,41 +160,14 @@ export default function YouTubeShortsSlider() {
       )}
 
       <style jsx>{`
-        .yt-slider-nav {
-          display: flex;
-          gap: 12px;
-          justify-content: flex-end;
-          margin-bottom: 16px;
-          padding-right: 16px;
-        }
-
-        .yt-nav-btn {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          border: 2px solid #d1d5db;
-          background: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          color: #374151;
-        }
-
-        .yt-nav-btn:hover {
-          border-color: #ff9100;
-          color: #ff9100;
-        }
-
         .yt-video-grid {
           display: flex;
           gap: 16px;
           overflow-x: auto;
-          padding: 16px;
+          padding: 0 0 12px;
           width: 100%;
           max-width: 1300px;
-          margin: 0 auto;
+          margin: 0;
           scrollbar-width: none;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
@@ -228,12 +179,12 @@ export default function YouTubeShortsSlider() {
         .yt-video-container {
           position: relative;
           flex: 0 0 auto;
-          width: 200px;
+          width: 190px;
           aspect-ratio: 9 / 16;
           border-radius: 30px;
           overflow: hidden;
           cursor: pointer;
-          background: #000;
+          background: transparent;
           scroll-snap-align: start;
         }
 
@@ -241,6 +192,8 @@ export default function YouTubeShortsSlider() {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: center;
+          transform: scale(1.02);
           display: block;
         }
 
@@ -308,12 +261,12 @@ export default function YouTubeShortsSlider() {
         @media (min-width: 769px) {
           .yt-video-grid {
             overflow-x: hidden;
-            padding: 24px 0;
-            gap: 24px;
+            padding: 0;
+            gap: 16px;
           }
 
           .yt-video-container {
-            width: 260px;
+            width: 230px;
           }
         }
       `}</style>

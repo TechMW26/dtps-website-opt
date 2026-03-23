@@ -113,12 +113,12 @@ export default function FAQSection() {
         {/* FAQ */}
         <div className="flex-1 w-full">
 
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-[14px] h-[14px] rounded-[2px] bg-[#FF850B] inline-block" />
-            <span className="text-[#014E4E] font-semibold text-sm italic">
-              Frequently Asked Questions
-            </span>
-          </div>
+          <div className="flex items-center gap-2 mb-4">
+                       <span className="text-[#f5a623] text-lg">✦</span>
+                       <span className="text-teal-600 text-base font-semibold">
+                         Frequently asked question
+                       </span>
+                     </div>
 
           <h2 className="text-[28px] md:text-[38px] lg:text-[46px] font-extrabold text-[#1E1E1E] leading-[1.1] mb-6 md:mb-8 tracking-[-0.01em]">
             Common questions<br />about Programs

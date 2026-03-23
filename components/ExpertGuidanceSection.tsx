@@ -61,102 +61,32 @@ const newsLogos = [
 ];
 
 function BadgeIcon({ type }: { type: (typeof badges)[number]["icon"] }) {
-  const teal = "#014E4E";
+  const iconSrcMap: Record<(typeof badges)[number]["icon"], string> = {
+    dietitians: "/images/license.png",
+    brain: "/images/neurology.png",
+    home: "/images/japanese_curry%20(1).png",
+    chart: "/images/bar_chart_4_bars.png",
+    award: "/images/award_star.png",
+    nutrition: "/images/nutrition.png",
+  };
 
-  switch (type) {
-    case "dietitians":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M12 3L14.3 7.7L19 10L14.3 12.3L12 17L9.7 12.3L5 10L9.7 7.7L12 3Z"
-            stroke={teal}
-            strokeWidth="1.8"
-            strokeLinejoin="round"
-          />
-          <path d="M12 8.4V11.7" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M10.35 10.05H13.65" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
-      );
+  const iconSrc = iconSrcMap[type];
 
-    case "brain":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M9.2 5.8C7.43 5.8 6 7.23 6 9V9.31C4.82 9.87 4 11.07 4 12.45C4 13.83 4.82 15.03 6 15.59V15.9C6 17.67 7.43 19.1 9.2 19.1"
-            stroke={teal}
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-          <path
-            d="M14.8 5.8C16.57 5.8 18 7.23 18 9V9.31C19.18 9.87 20 11.07 20 12.45C20 13.83 19.18 15.03 18 15.59V15.9C18 17.67 16.57 19.1 14.8 19.1"
-            stroke={teal}
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-          <path d="M12 5V19" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M9.5 10C10.5 10.2 11.3 10.9 11.6 12" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-          <path d="M14.5 10C13.5 10.2 12.7 10.9 12.4 12" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
-      );
-
-    case "home":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M4.5 10.2L12 4L19.5 10.2"
-            stroke={teal}
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M7 9.6V19H17V9.6"
-            stroke={teal}
-            strokeWidth="1.8"
-            strokeLinejoin="round"
-          />
-          <path d="M10.3 19V14.4H13.7V19" stroke={teal} strokeWidth="1.8" strokeLinejoin="round" />
-        </svg>
-      );
-
-    case "chart":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M4 19.5H20" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-          <rect x="6" y="11" width="2.8" height="6.5" rx="0.8" fill={teal} />
-          <rect x="10.6" y="8" width="2.8" height="9.5" rx="0.8" fill={teal} />
-          <rect x="15.2" y="5" width="2.8" height="12.5" rx="0.8" fill={teal} />
-        </svg>
-      );
-
-    case "award":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M12 14.2C14.54 14.2 16.6 12.14 16.6 9.6C16.6 7.06 14.54 5 12 5C9.46 5 7.4 7.06 7.4 9.6C7.4 12.14 9.46 14.2 12 14.2Z"
-            stroke={teal}
-            strokeWidth="1.8"
-          />
-          <path d="M9.2 15.7V20L12 18.3L14.8 20V15.7" stroke={teal} strokeWidth="1.8" strokeLinejoin="round" />
-        </svg>
-      );
-
-    case "nutrition":
-      return (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M12 20C15.31 20 18 17.36 18 14.1C18 11.41 16.4 9.49 13.95 7.18C13.27 6.53 12.59 5.82 12 5C11.41 5.82 10.73 6.53 10.05 7.18C7.6 9.49 6 11.41 6 14.1C6 17.36 8.69 20 12 20Z"
-            stroke={teal}
-            strokeWidth="1.8"
-            strokeLinejoin="round"
-          />
-          <path d="M12 8.2V14.6" stroke={teal} strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
-      );
-
-    default:
-      return null;
+  if (!iconSrc) {
+    return null;
   }
+
+  return (
+    <Image
+      src={iconSrc}
+      alt=""
+      width={24}
+      height={24}
+      className="object-contain"
+      loading="lazy"
+      sizes="24px"
+    />
+  );
 }
 
 function ArrowIcon() {
@@ -262,7 +192,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
         <div className="absolute right-[10px] top-[70px] h-[120px] w-[50px] rounded-full border border-white/20 rotate-[22deg]" />
       </div>
 
-      <div className="mx-auto max-w-[1200px] px-4 md:px-8 lg:px-10">
+      <div className="mx-auto max-w-[1200px] px-2 md:px-4 lg:px-6">
         <div className="pt-6 md:pt-[60px] flex flex-col items-center gap-[6px]">
           <h2 className="text-center text-[#FBFBFB] text-[28px] leading-[1.05] md:text-[32px] md:leading-[36px] font-bold max-w-[330px] md:max-w-none">
             You are under Expert&apos;s Guidance
@@ -272,9 +202,9 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
           </p>
         </div>
 
-        <div className="mt-8 md:mt-[68px] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-8 lg:px-12 xl:px-16">
+        <div className="mt-8 md:mt-[68px] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-8 lg:px-10 xl:px-14">
           <div
-            className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] transition-all duration-700 delay-150 ${
+            className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] lg:mr-8 xl:mr-16 transition-all duration-700 delay-150 ${
               isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
             }`}
           >

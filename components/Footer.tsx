@@ -92,7 +92,7 @@ export default function Footer() {
 
             {/* Right Column - Services */}
             <div className="min-w-0 w-full md:w-auto md:min-w-[180px]">
-              <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Services</h3>
+              <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Quick Links </h3>
               <ul className="list-none p-0 m-0 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0">
                 {serviceLinks.map((link) => (
                   <li key={link.href + link.label} className="mb-4">

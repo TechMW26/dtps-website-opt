@@ -36,7 +36,7 @@ export default function Hero() {
               />
 
               {/* 25+ Years Badge */}
-              <div className="absolute right-[5px] top-[45%] bg-[#ff9100] py-1.5 px-2.5 rounded-[8px] flex items-center gap-1 z-[4] shadow-[0_10px_30px_rgba(245,124,0,0.3)]">
+              <div className="absolute right-[5px] top-[50%] bg-[#ff9100] py-1.5 px-2.5 rounded-[8px] flex items-center gap-1 z-[4] shadow-[0_10px_30px_rgba(245,124,0,0.3)]">
                 <span className="text-[1rem] font-extrabold text-white leading-none">25+</span>
                 <span className="text-[0.45rem] text-white leading-[1.2] font-medium">
                   Years of<br />experience
