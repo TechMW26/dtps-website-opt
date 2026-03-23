@@ -150,6 +150,7 @@ function CheckIcon24() {
 export default function TherapeuticPlanPage() {
   const [pricingPlans, setPricingPlans] = useState<any[]>([]);
   const [loadingPricing, setLoadingPricing] = useState(true);
+  const [expandedPricingCards, setExpandedPricingCards] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const fetchPricing = async () => {
@@ -1040,7 +1041,7 @@ export default function TherapeuticPlanPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-[1000px] mx-auto">
             {pricingPlans.map((plan: any, index: number) => (
-              <div key={index} className="w-full">
+              <div key={index} className="w-full h-full">
                 {/* Plan Banner */}
                 {plan.planId && (
                   <div className="mb-2">
@@ -1049,6 +1050,14 @@ export default function TherapeuticPlanPage() {
                 )}
                 {/* Card */}
                 <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col h-full relative">
+                  {(() => {
+                    const cardKey = String(plan.planId || plan.label || index);
+                    const isExpanded = !!expandedPricingCards[cardKey];
+                    const visibleFeatures = isExpanded ? plan.features : plan.features.slice(0, 4);
+                    const hasMoreFeatures = plan.features.length > 4;
+
+                    return (
+                      <>
                   {/* Header */}
                   <div className="flex items-start justify-between mb-1">
                     <div>
@@ -1068,17 +1077,31 @@ export default function TherapeuticPlanPage() {
                   <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
                   {/* Features */}
                   <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>What you&apos;ll get:</p>
-                  <div className="flex flex-col gap-1 flex-1 overflow-y-auto">
-                    {plan.features.map((feature: string, idx: number) => (
+                  <div className={`flex flex-col gap-1 ${isExpanded ? '' : 'min-h-[176px]'}`}>
+                    {visibleFeatures.map((feature: string, idx: number) => (
                       <div key={idx} className="flex items-start gap-1.5">
                         <CheckIcon24 />
                         <span className="text-[#6B7280] text-[13px] md:text-[14px] leading-snug" style={{ fontFamily: 'DM Sans, sans-serif' }}>{feature}</span>
                       </div>
                     ))}
                   </div>
-                  <p className="text-[#6B7280] text-[11px] md:text-[12px] mt-4 mb-4" style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                    Stay on track: weekly check-ins to ensure your progress.
-                  </p>
+
+                  {hasMoreFeatures && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setExpandedPricingCards((prev) => ({
+                          ...prev,
+                          [cardKey]: !prev[cardKey],
+                        }));
+                      }}
+                      className="mt-3 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
+                      style={{ fontFamily: 'DM Sans, sans-serif' }}
+                    >
+                      {isExpanded ? 'Show Less' : 'Show More'}
+                    </button>
+                  )}
+
                   {/* Buy button */}
                   <button
                     onClick={() => {
@@ -1097,6 +1120,9 @@ export default function TherapeuticPlanPage() {
                   >
                     BUY NOW
                   </button>
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             ))}
