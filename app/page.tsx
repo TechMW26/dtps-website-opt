@@ -125,7 +125,7 @@ export default function HomePage() {
                   <span className="text-[#ff9100] text-xl">✦</span>
                   <span className="text-teal-600 font-semibold text-base">Hear from our Happy Clients</span>
                 </div>
-                <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
+                <h2 className="text-[1.5rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
                   Tailored programs for<br />your wellness
                 </h2>
               </div>
@@ -166,10 +166,10 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    <h2 className="text-[56px] font-bold leading-[1.08] tracking-[-0.02em] text-white">
-                      Step-by-step guide to
+                    <h2 className="text-[40px] font-bold leading-[1.15] tracking-[-0.02em] text-white">
+                      Step-by-step guide   
                       <br />
-                      your healthy journey
+                    to your  healthy journey
                     </h2>
                   </div>
 
@@ -511,7 +511,7 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <h2 className="text-[30px] font-bold leading-[1.18] tracking-[-0.02em] text-white">
+                <h2 className="text-[24px] font-bold leading-[1.18] tracking-[-0.02em] text-white">
                   Step-by-step guide to
                   <br />
                   your healthy journey
@@ -821,53 +821,20 @@ export default function HomePage() {
 
             {/* Mobile Layout */}
             <div className="block lg:hidden">
-              {/* Images at top for mobile - horizontal row */}
+              {/* Single image at top for mobile */}
               <div className="relative mb-6">
-                <div className="flex justify-center items-center gap-2 px-2">
-                  <div className="w-[90px] h-[120px] rounded-[12px] overflow-hidden shadow-lg border-3 border-white flex-shrink-0 bg-gray-200">
-                    <Image
-                      src="/api/images/69b7c6eea14dfc9fbf5ad5d6"
-                      alt="Rekha Rajput"
-                      width={90}
-                      height={120}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      sizes="90px"
-                      quality={50}
-                      placeholder="empty"
-                    />
-                  </div>
-                  <div className="w-[100px] h-[130px] rounded-[12px] overflow-hidden shadow-lg border-3 border-white flex-shrink-0 z-10 bg-gray-200">
-                    <Image
-                      src="/api/images/69b7c6f1a14dfc9fbf5ad5e8"
-                      alt="Chanchal Agrawal"
-                      width={100}
-                      height={130}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      sizes="100px"
-                      quality={50}
-                      placeholder="empty"
-                    />
-                  </div>
-                  <div className="relative w-[90px] h-[120px] rounded-[12px] overflow-hidden shadow-lg border-3 border-white flex-shrink-0 bg-gray-200">
-                    <Image
-                      src="/api/images/69b7c716a14dfc9fbf5ad6cb"
-                      alt="Swati Sharma"
-                      width={90}
-                      height={120}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      sizes="90px"
-                      quality={50}
-                      placeholder="empty"
-                    />
-                    {/* 75K Badge on last image */}
-                    <div className="absolute bottom-1 right-1 bg-[#ff9100] rounded-[6px] py-1 px-2 shadow-lg">
-                      <div className="text-white font-extrabold text-[0.65rem] leading-none">75,000+</div>
-                      <div className="text-white/90 text-[0.4rem] font-medium uppercase">Transformation</div>
-                    </div>
-                  </div>
+                <div className="w-full rounded-[16px] overflow-hidden bg-gray-200">
+                  <Image
+                    src="/images/threetesti.png"
+                    alt="Testimonials"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-contain"
+                    loading="lazy"
+                    sizes="100vw"
+                    quality={80}
+                    placeholder="empty"
+                  />
                 </div>
               </div>
 
@@ -882,9 +849,9 @@ export default function HomePage() {
                 </h2>
               </div>
 
-              {/* Testimonial Cards for mobile */}
-              <div className="space-y-4">
-                <div className="rounded-[16px] p-4 bg-[#ff9100] text-white">
+              {/* Testimonial Cards for mobile - carousel */}
+              <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-1">
+                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-[#ff9100] text-white">
                   <p className="text-[0.8rem] leading-relaxed mb-3 italic">
                     &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
                   </p>
@@ -896,7 +863,8 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
-                <div className="rounded-[16px] p-4 bg-white shadow-md">
+
+                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
                   <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
                     &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
                   </p>
@@ -904,6 +872,32 @@ export default function HomePage() {
                     <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">C</div>
                     <div>
                       <div className="font-bold text-sm text-gray-900">Chanchal Agrawal</div>
+                      <div className="text-[0.7rem] text-gray-500">Client</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
+                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
+                    &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
+                  </p>
+                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">S</div>
+                    <div>
+                      <div className="font-bold text-sm text-gray-900">Swati Sharma</div>
+                      <div className="text-[0.7rem] text-gray-500">Client</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
+                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
+                    &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
+                  </p>
+                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">P</div>
+                    <div>
+                      <div className="font-bold text-sm text-gray-900">Priya Verma</div>
                       <div className="text-[0.7rem] text-gray-500">Client</div>
                     </div>
                   </div>
@@ -986,66 +980,20 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right - Images Stack */}
-              <div className="flex-1 relative flex justify-center items-center min-h-[500px]">
-                {/* Image 1 - Top left - Anshu */}
-                <div className="absolute top-[10px] left-[5%] w-[200px] h-[260px] rounded-[20px] overflow-hidden shadow-xl rotate-[-6deg] border-4 border-white z-10 bg-gray-200">
+              {/* Right - Single testimonial image */}
+              <div className="flex-1 flex justify-center items-center">
+                <div className="w-full max-w-[520px] rounded-[20px] overflow-hidden bg-gray-200">
                   <Image
-                    src="/api/images/69b7c6eea14dfc9fbf5ad5d6"
-                    alt="Transformation"
-                    fill
-                    className="object-cover"
+                    src="/images/threetesti.png"
+                    alt="Testimonials"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto object-contain"
                     loading="lazy"
-                    sizes="200px"
-                    quality={60}
+                    sizes="(min-width: 1024px) 520px, 100vw"
+                    quality={80}
                     placeholder="empty"
                   />
-                </div>
-
-                {/* Image 2 - Top right - Sunny */}
-                <div className="absolute top-[30px] right-[5%] w-[180px] h-[230px] rounded-[20px] overflow-hidden shadow-xl rotate-[4deg] border-4 border-white z-20 bg-gray-200">
-                  <Image
-                    src="/api/images/69b7c716a14dfc9fbf5ad6cb"
-                    alt="Transformation"
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="180px"
-                    quality={60}
-                    placeholder="empty"
-                  />
-                </div>
-
-                {/* Image 3 - Bottom center - Aunty */}
-                <div className="absolute bottom-[20px] left-[20%] w-[200px] h-[270px] rounded-[20px] overflow-hidden shadow-xl rotate-[-2deg] border-4 border-white z-30 bg-gray-200">
-                  <Image
-                    src="/api/images/69b7c6f1a14dfc9fbf5ad5e8"
-                    alt="Transformation"
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="200px"
-                    quality={60}
-                    placeholder="empty"
-                  />
-                </div>
-
-                {/* Arrow */}
-                <div className="absolute bottom-[120px] right-[12%] z-40">
-                  <Image
-                    src="/api/images/69b7c6f1a14dfc9fbf5ad5e6"
-                    alt="Arrow"
-                    width={50}
-                    height={50}
-                    className="rotate-[-25deg] opacity-80"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* 75,000+ Badge */}
-                <div className="absolute bottom-[30px] right-[8%] bg-[#ff9100] rounded-[14px] py-3 px-5 shadow-lg z-50">
-                  <div className="text-white font-extrabold text-xl">75,000+</div>
-                  <div className="text-white/90 text-[0.65rem] font-medium uppercase tracking-wider">Transformation</div>
                 </div>
               </div>
             </div>
