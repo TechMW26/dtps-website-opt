@@ -11,8 +11,9 @@ import type { Pricing } from "@/lib/api";
 import TransformationGallery from "@/components/TransformationGallery";
 import ExpertGuidanceSection from "@/components/ExpertGuidanceSection";
 const epilogue = Epilogue({
-  
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  style: ["normal"],
 });
 
 // Tab data for "What Happens" section
@@ -50,7 +51,7 @@ const tabsData: Record<string, { image: string; benefits: string[] }> = {
       "You look and feel great together.",
     ],
   },
-  guests: {
+  family: {
     image:
       "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Guest-1.png",
     benefits: [
@@ -375,22 +376,22 @@ export default function WeddingPlanPage() {
               </div>
             </div>
 
-            {/* Guests Tab */}
+            {/* Family Tab */}
             <div
-              onClick={() => setActiveTab("guests")}
+              onClick={() => setActiveTab("family")}
               className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
-                activeTab === "guests" ? "-translate-y-1.5 scale-[1.06]" : ""
+                activeTab === "family" ? "-translate-y-1.5 scale-[1.06]" : ""
               }`}
             >
               <div
                 className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${
-                  activeTab === "guests" ? "bg-[#ff850b]" : "bg-[#4e0101]"
+                  activeTab === "family" ? "bg-[#ff850b]" : "bg-[#4e0101]"
                 }`}
               ></div>
               <div className="absolute bottom-0 left-[calc(50%-100.5px)] w-[202px] h-60">
                 <Image
                   src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-5.png"
-                  alt="Guests"
+                  alt="Family"
                   fill
                   loading="lazy"
                   sizes="202px"
@@ -399,39 +400,24 @@ export default function WeddingPlanPage() {
               </div>
               <div
                 className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${
-                  activeTab === "guests"
+                  activeTab === "family"
                     ? "bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]"
                     : "bg-gradient-to-b from-transparent via-transparent to-[#4e0101]"
                 }`}
               ></div>
               <div
                 className={`absolute top-[203px] left-[calc(50%-43px)] font-semibold text-white text-2xl ${
-                  activeTab === "guests"
+                  activeTab === "family"
                     ? "drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]"
                     : ""
                 }`}
               >
-                Guests
+                Family
               </div>
             </div>
           </div>
 
-          {/* Mobile Tabs */}
-          <div className="flex md:hidden flex-wrap justify-center gap-3 mb-6">
-            {["brides", "grooms", "couples", "guests"].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`py-2 px-5 rounded-full text-sm font-semibold capitalize transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-[#ff850b] text-white"
-                    : "bg-[#4e0101] text-white"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+
 
           {/* Tab Content Card - Desktop */}
           <div className="hidden md:block bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] max-w-[1200px] mx-auto">
@@ -466,39 +452,58 @@ export default function WeddingPlanPage() {
             </div>
           </div>
 
-          {/* Tab Content Card - Mobile */}
-          <div className="md:hidden bg-[#4e0101] rounded-2xl overflow-hidden p-5">
-            <div className="flex flex-col items-center">
-              <div className="relative w-full flex justify-center mb-5">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#ff850b] w-[120px] h-full rounded-lg"></div>
-                <Image
-                  src={tabsData[activeTab].image}
-                  alt={activeTab}
-                  width={200}
-                  height={250}
-                  className="relative z-10 object-cover"
-                  loading="lazy"
-                  sizes="200px"
-                  quality={75}
-                />
-              </div>
-              <div className="flex flex-col gap-3 w-full">
-                {tabsData[activeTab].benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-2">
+          {/* Tab Content - Mobile */}
+          <div className="md:hidden">
+            {/* Image with orange strip */}
+            <div className="relative flex justify-center mb-6">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#ff850b] w-[130px] h-full rounded-lg"></div>
+              <Image
+                src={tabsData[activeTab].image}
+                alt={activeTab}
+                width={220}
+                height={280}
+                className="relative z-10 object-cover"
+                loading="lazy"
+                sizes="220px"
+                quality={75}
+              />
+            </div>
+
+            {/* Tab buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              {(["brides", "grooms", "couples", "family"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`py-2 px-5 rounded-full text-sm font-semibold capitalize transition-all duration-300 ${
+                    activeTab === tab
+                      ? "bg-[#1a1a1a] text-white"
+                      : "bg-white text-[#1a1a1a] border border-[#e0e0e0]"
+                  }`}
+                >
+                  {tab === "family" ? "Family" : tab}
+                </button>
+              ))}
+            </div>
+
+            {/* Benefit cards */}
+            <div className="flex flex-col gap-3">
+              {tabsData[activeTab].benefits.map((benefit, index) => (
+                <div key={index} className="bg-white rounded-xl border border-[#f0f0f0] shadow-sm px-4 py-3.5 flex items-start gap-3">
+                  <div className="w-8 h-8 min-w-[32px] bg-[#FFF3E0] rounded-lg flex items-center justify-center">
                     <Image
                       src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/ion_diamond.svg"
-                      alt="Diamond"
-                      width={18}
-                      height={18}
-                      className="flex-shrink-0 mt-0.5"
+                      alt=""
+                      width={16}
+                      height={16}
                       loading="lazy"
                     />
-                    <div className="font-medium text-white text-sm">
-                      {benefit}
-                    </div>
                   </div>
-                ))}
-              </div>
+                  <p className="text-[#333] text-sm font-medium leading-snug pt-1">
+                    {benefit}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -1053,7 +1058,7 @@ Fad expensive salad or juice-only diet.
           </p>
 
           <div className="w-full flex justify-center px-5">
-            <div className="max-w-[1400px] w-full">
+            <div className="max-w-[1100px] w-full">
               <DynamicPlansDisplay
                 category="new-wedding-plan"
                 showHeader={false}
@@ -1079,22 +1084,7 @@ Fad expensive salad or juice-only diet.
         </div>
       </section>
 
-      {/* Time Is Ticking CTA Section */}
-      <section className="bg-white py-12">
-        <div className="max-w-[1200px] mx-auto px-5 text-center">
-          <h2 className="text-2xl md:text-5xl font-bold text-black leading-tight mx-auto mb-4 md:mb-5 max-w-full md:max-w-[56%]">
-            Time Is <span className="text-[#ff850b]">Ticking</span>
-            <br />
-            Say &apos;Yes&apos; to Your{" "}
-            <span className="text-[#ff850b]">Best Body</span>!
-          </h2>
 
-          <p className="text-base md:text-[23px] font-normal leading-normal text-[#828283] max-w-full md:max-w-[65%] mx-auto py-2.5 pb-6 md:pb-10">
-            Your photos last forever — make sure you love what you see! Get the
-            personalized plan brides swear by.
-          </p>
-        </div>
-      </section>
 
       <style jsx>{`
         .wedding-hero-wrapper {
@@ -1165,6 +1155,7 @@ Fad expensive salad or juice-only diet.
           font-size: 56px;
           line-height: 1.08;
           font-weight: 800;
+          font-style: normal;
           letter-spacing: -0.03em;
           text-align: center;
         }

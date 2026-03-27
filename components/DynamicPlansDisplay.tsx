@@ -36,24 +36,19 @@ export default function DynamicPlansDisplay({
       try {
         setLoading(true);
         setError(null);
-
         let fetchedPlans: Pricing[] = [];
-
         if (category) {
           fetchedPlans = await getPricingByCategory(category);
         } else if (page) {
           fetchedPlans = await getPricingByPage(page);
         }
-
         if (fetchedPlans.length === 0) {
           setError('No plans available');
         }
-
         const sortedPlans = fetchedPlans.sort((a, b) => {
           if (a.popular === b.popular) return 0;
           return a.popular ? -1 : 1;
         });
-
         setPlans(sortedPlans);
       } catch (err) {
         console.error('Error fetching plans:', err);
@@ -62,7 +57,6 @@ export default function DynamicPlansDisplay({
         setLoading(false);
       }
     };
-
     fetchPlans();
   }, [category, page]);
 
@@ -99,14 +93,12 @@ export default function DynamicPlansDisplay({
               <p className="text-gray-600 text-lg max-w-2xl mx-auto">{description}</p>
             </div>
           )}
-
           <div className="w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 w-full justify-center mb-6 md:mb-8 lg:mb-10">
               {plans.slice(0, 3).map((plan) => (
                 <PlanCard key={plan._id} plan={plan} onSelect={onSelectPlan} />
               ))}
             </div>
-
             {plans.length > 3 && (
               <div className="flex justify-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 w-full lg:w-2/3 gap-6 md:gap-8 lg:gap-10">
@@ -131,7 +123,6 @@ export default function DynamicPlansDisplay({
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">{description}</p>
           </div>
         )}
-
         <div className={`grid ${gridCols} gap-6 md:gap-8 lg:gap-10 w-full justify-center`}>
           {plans.map((plan) => (
             <PlanCard key={plan._id} plan={plan} onSelect={onSelectPlan} />
@@ -169,7 +160,6 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
           </span>
         )}
       </div>
-
       <div className="flex items-end gap-2 mb-3">
         <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
           ₹{plan.price.toLocaleString()}
@@ -180,13 +170,10 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
           </span>
         )}
       </div>
-
       <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
-
       <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
         What you&apos;ll get:
       </p>
-
       <div className={`flex flex-col gap-1 ${expanded ? '' : 'min-h-[176px]'}`}>
         {visibleFeatures.map((feature, idx) => (
           <div key={idx} className="flex items-start gap-1.5">
@@ -200,7 +187,6 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
           </div>
         ))}
       </div>
-
       {hasMoreFeatures && (
         <button
           type="button"
@@ -211,7 +197,6 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
           {expanded ? 'Show Less' : 'Show More'}
         </button>
       )}
-
       <button
         onClick={() => onSelect?.(plan)}
         className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
