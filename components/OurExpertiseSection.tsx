@@ -73,7 +73,7 @@ export default function OurExpertiseSection() {
           {/* Main Image */}
           <div className={`relative w-full lg:w-[55%] h-[350px] md:h-[450px] lg:h-[480px] rounded-[20px] overflow-hidden transition-all duration-700 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
             <Image
-              src="/api/images/69b7c789a14dfc9fbf5ad89e"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c789a14dfc9fbf5ad89e.jpg"
               alt="Woman with healthy food"
               fill
               className="object-cover"

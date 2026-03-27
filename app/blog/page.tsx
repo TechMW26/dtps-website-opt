@@ -89,7 +89,7 @@ export default function BlogPage() {
                   <Link href={`/blog/${blog.slug}`}>
                     <div className="overflow-hidden rounded-[12px]">
                       <Image
-                        src={blog.featuredImage || "/api/images/69b7c908bfd19f93f09dc3df"}
+                        src={blog.featuredImage || "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
                         alt={blog.title}
                         width={400}
                         height={250}

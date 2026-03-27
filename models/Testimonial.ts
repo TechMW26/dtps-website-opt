@@ -32,7 +32,7 @@ const TestimonialSchema = new Schema<ITestimonial>(
     },
     image: {
       type: String,
-      default: '/api/images/69b7c909bfd19f93f09dc3e1',
+      default: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e1.jpg',
     },
     rating: {
       type: Number,

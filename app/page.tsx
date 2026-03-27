@@ -26,22 +26,22 @@ const fallbackTestimonials: Testimonial[] = [
   {
     name: 'Kalyani Satpathy',
     content: 'The diet plan is very simple and it included home cooked meal. Nothing fancy they will tell you and this is the best part of my journey.',
-    image: '/api/images/69b7c909bfd19f93f09dc3e7',
+    image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg',
   },
   {
     name: 'Farah',
     content: 'I saw ad of Dt Poonam Sagar on Instagram and thought to give it a try and I dont regret my decision.',
-    image: '/api/images/69b7c909bfd19f93f09dc3e9',
+    image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e9.jpg',
   },
   {
     name: 'Rimpy Thakur',
     content: "Great experience with Dietician Poonam Sagar's team. Special thanks to Ritika Bhatnagar ma'am who created a special diet plan for me",
-    image: '/api/images/69b7c909bfd19f93f09dc3eb',
+    image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3eb.jpg',
   },
   {
     name: 'Payal Padamwar',
     content: 'I lost 6 kg in just 3 months with a simple yet highly effective diet plan. The best part was the team\'s support.',
-    image: '/api/images/69b7c909bfd19f93f09dc3e7',
+    image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg',
   },
 ];
 
@@ -64,7 +64,7 @@ export default function HomePage() {
           name: item.name || 'Client',
           role: item.role || '',
           content: item.content || '',
-          image: getOptimizedUrl(item.image || '/api/images/69b7c909bfd19f93f09dc3e7', {
+          image: getOptimizedUrl(item.image || 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg', {
             width: 300,
             height: 350,
             quality: 80,
@@ -419,7 +419,7 @@ export default function HomePage() {
 
                     <div className="mt-7 overflow-hidden rounded-[20px]">
                       <Image
-                        src="/api/images/69b7c6f2a14dfc9fbf5ad5ec"
+                        src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ec.jpg"
                         alt="Dietitian consultation"
                         width={334}
                         height={185}
@@ -724,7 +724,7 @@ export default function HomePage() {
 
                     <div className="mt-4 overflow-hidden rounded-[18px]">
                       <Image
-                        src="/api/images/69b7c6f2a14dfc9fbf5ad5ec"
+                        src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ec.jpg"
                         alt="Dietitian consultation"
                         width={350}
                         height={210}

@@ -41,7 +41,7 @@ const BlogSchema = new Schema<IBlog>(
     },
     featuredImage: {
       type: String,
-      default: '/api/images/69b7c908bfd19f93f09dc3df',
+      default: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg',
     },
     category: {
       type: String,

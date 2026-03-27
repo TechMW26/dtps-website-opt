@@ -57,27 +57,27 @@ const whatYouGetCards = [
   {
     title: 'Ongoing Therapeutic Support',
     description: 'Regular follow-ups to monitor progress, adjust nutrition, and prevent condition worsening over time.',
-    icon: '/api/images/69b7c711a14dfc9fbf5ad6ad',
+    icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ad.jpg',
   },
   {
     title: 'Condition-Specific Care',
     description: 'Your plan is handled by dietitians experienced in diabetes, thyroid, fatty liver, and cholesterol management.',
-    icon: '/api/images/69b7c6faa14dfc9fbf5ad61a',
+    icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6faa14dfc9fbf5ad61a.jpg',
   },
   {
     title: 'Tailored to Your Reports',
     description: 'Diet plans are customised based on your medical reports, medications, routine, and food preferences.',
-    icon: '/api/images/69b7c725a14dfc9fbf5ad6fa',
+    icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c725a14dfc9fbf5ad6fa.jpg',
   },
   {
     title: 'Sustainable Metabolic Control',
     description: 'Focus on long-term stability, improved markers, and reduced disease progression not temporary fixes.',
-    icon: '/api/images/69b7c719a14dfc9fbf5ad6d5',
+    icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c719a14dfc9fbf5ad6d5.jpg',
   },
   {
     title: 'Medication Compatible Planning',
     description: 'Nutrition aligned with ongoing treatment to support better response and avoid unnecessary escalation.',
-    icon: '/api/images/69b7c70fa14dfc9fbf5ad69d',
+    icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69d.jpg',
   },
 ];
 
@@ -244,7 +244,7 @@ export default function TherapeuticPlanPage() {
     {/* Row 1: Insulin */}
     <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
       <div className="w-full h-[180px] relative">
-        <Image src="/api/images/69b7c674a14dfc9fbf5ad51f" alt="Insulin Regulation" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
+        <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c674a14dfc9fbf5ad51f.jpg" alt="Insulin Regulation" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
       </div>
       <div className="p-5">
         <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full"/>
@@ -256,7 +256,7 @@ export default function TherapeuticPlanPage() {
     {/* Row 1: Liver */}
     <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
       <div className="w-full h-[180px] relative">
-        <Image src="/api/images/69b7c674a14dfc9fbf5ad521" alt="Liver Fat Accumulation" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
+        <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c674a14dfc9fbf5ad521.jpg" alt="Liver Fat Accumulation" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
       </div>
       <div className="p-5">
         <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full"/>
@@ -271,7 +271,7 @@ export default function TherapeuticPlanPage() {
       <div className="flex-1 relative flex items-end justify-center pb-4">
         <div className="relative w-full h-full">
           <Image
-            src="/api/images/69b7c6b3a14dfc9fbf5ad562"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg"
             alt="Metabolic Diagram"
             fill
             className="object-contain object-bottom"
@@ -293,7 +293,7 @@ export default function TherapeuticPlanPage() {
     {/* Row 2: Hormonal */}
     <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
       <div className="w-full h-[180px] relative">
-        <Image src="/api/images/69b7c66fa14dfc9fbf5ad4fe" alt="Hormonal Function" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
+        <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fe.jpg" alt="Hormonal Function" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
       </div>
       <div className="p-5">
         <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full"/>
@@ -305,7 +305,7 @@ export default function TherapeuticPlanPage() {
     {/* Row 2: Cholesterol */}
     <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
       <div className="w-full h-[180px] relative">
-        <Image src="/api/images/69b7c66da14dfc9fbf5ad4ed" alt="Cholesterol Metabolism" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
+        <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66da14dfc9fbf5ad4ed.jpg" alt="Cholesterol Metabolism" fill className="object-cover" loading="lazy" sizes="(max-width: 767px) 100vw, 33vw" />
       </div>
       <div className="p-5">
         <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full"/>
@@ -321,7 +321,7 @@ export default function TherapeuticPlanPage() {
             {/* Insulin Regulation */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
               <div className="w-full h-[160px] relative overflow-hidden">
-                <Image src="/api/images/69b7c674a14dfc9fbf5ad51f" alt="Insulin Regulation" fill className="object-cover" loading="lazy" sizes="100vw" />
+                <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c674a14dfc9fbf5ad51f.jpg" alt="Insulin Regulation" fill className="object-cover" loading="lazy" sizes="100vw" />
               </div>
               <div className="p-5">
                 <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
@@ -333,7 +333,7 @@ export default function TherapeuticPlanPage() {
             {/* Liver Fat Accumulation */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
               <div className="w-full h-[160px] relative overflow-hidden">
-                <Image src="/api/images/69b7c674a14dfc9fbf5ad521" alt="Liver Fat Accumulation" fill className="object-cover" loading="lazy" sizes="100vw" />
+                <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c674a14dfc9fbf5ad521.jpg" alt="Liver Fat Accumulation" fill className="object-cover" loading="lazy" sizes="100vw" />
               </div>
               <div className="p-5">
                 <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
@@ -345,7 +345,7 @@ export default function TherapeuticPlanPage() {
             {/* Hormonal & Thyroid Function */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
               <div className="w-full h-[160px] relative overflow-hidden">
-                <Image src="/api/images/69b7c66fa14dfc9fbf5ad4fe" alt="Hormonal & Thyroid Function" fill className="object-cover" loading="lazy" sizes="100vw" />
+                <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fe.jpg" alt="Hormonal & Thyroid Function" fill className="object-cover" loading="lazy" sizes="100vw" />
               </div>
               <div className="p-5">
                 <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
@@ -357,7 +357,7 @@ export default function TherapeuticPlanPage() {
             {/* Cholesterol Metabolism */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
               <div className="w-full h-[160px] relative overflow-hidden">
-                <Image src="/api/images/69b7c66da14dfc9fbf5ad4ed" alt="Cholesterol Metabolism" fill className="object-cover" loading="lazy" sizes="100vw" />
+                <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66da14dfc9fbf5ad4ed.jpg" alt="Cholesterol Metabolism" fill className="object-cover" loading="lazy" sizes="100vw" />
               </div>
               <div className="p-5">
                 <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
@@ -369,7 +369,7 @@ export default function TherapeuticPlanPage() {
             {/* Metabolic Interconnection Card */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
               <div className="w-full h-[200px] relative overflow-hidden">
-                <Image src="/api/images/69b7c6b3a14dfc9fbf5ad562" alt="Metabolic Interconnection Diagram" fill className="object-cover" loading="lazy" sizes="100vw" />
+                <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg" alt="Metabolic Interconnection Diagram" fill className="object-cover" loading="lazy" sizes="100vw" />
               </div>
               <div className="p-5">
                 <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
@@ -403,7 +403,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-4">
               <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad693"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
                   alt="Insulin response"
                   width={50}
                   height={50}
@@ -419,7 +419,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-4">
               <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad697"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
                   alt="Liver load"
                   width={50}
                   height={50}
@@ -435,7 +435,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-4">
               <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad68f"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
                   alt="Hormonal signalling"
                   width={50}
                   height={50}
@@ -451,7 +451,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-4">
               <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad695"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
                   alt="Lipid metabolism"
                   width={50}
                   height={50}
@@ -471,7 +471,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-3">
               <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad693"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
                   alt="Insulin response"
                   width={40}
                   height={40}
@@ -487,7 +487,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-3">
               <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad697"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
                   alt="Liver load"
                   width={40}
                   height={40}
@@ -503,7 +503,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-3">
               <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad68f"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
                   alt="Hormonal signalling"
                   width={40}
                   height={40}
@@ -519,7 +519,7 @@ export default function TherapeuticPlanPage() {
             <div className="flex flex-col items-center gap-3">
               <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                 <Image
-                  src="/api/images/69b7c70ea14dfc9fbf5ad695"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
                   alt="Lipid metabolism"
                   width={40}
                   height={40}
@@ -552,7 +552,7 @@ export default function TherapeuticPlanPage() {
       {/* Left — Team Image */}
       <div className="w-[400px] shrink-0 relative self-stretch">
         <Image
-          src="/api/images/69b7c6e6a14dfc9fbf5ad59a"
+          src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad59a.jpg"
           alt="Our Therapeutic Team"
           fill
           className="object-contain object-bottom"
@@ -591,7 +591,7 @@ export default function TherapeuticPlanPage() {
           <div className="flex items-center gap-4">
             <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
               <Image
-                src="/api/images/69b7c70ea14dfc9fbf5ad693"
+                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
                 alt="Insulin"
                 width={26}
                 height={26}
@@ -613,7 +613,7 @@ export default function TherapeuticPlanPage() {
           <div className="flex items-center gap-4">
             <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
               <Image
-                src="/api/images/69b7c70ea14dfc9fbf5ad697"
+                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
                 alt="Liver"
                 width={26}
                 height={26}
@@ -635,7 +635,7 @@ export default function TherapeuticPlanPage() {
           <div className="flex items-center gap-4">
             <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
               <Image
-                src="/api/images/69b7c70ea14dfc9fbf5ad68f"
+                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
                 alt="Hormone"
                 width={26}
                 height={26}
@@ -657,7 +657,7 @@ export default function TherapeuticPlanPage() {
           <div className="flex items-center gap-4">
             <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
               <Image
-                src="/api/images/69b7c70ea14dfc9fbf5ad695"
+                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
                 alt="Lipid"
                 width={26}
                 height={26}
@@ -745,7 +745,7 @@ export default function TherapeuticPlanPage() {
     {/* Mobile Layout */}
     <div className="lg:hidden">
       <Image
-        src="/api/images/69b7c726a14dfc9fbf5ad702"
+        src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c726a14dfc9fbf5ad702.jpg"
         alt="Our Therapeutic Approach"
         width={600}
         height={800}
@@ -967,7 +967,7 @@ export default function TherapeuticPlanPage() {
           {/* Desktop version */}
           <div className="hidden md:block">
             <Image
-              src="/api/images/69b7c70ca14dfc9fbf5ad684"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ca14dfc9fbf5ad684.jpg"
               alt="How Ghar Ka Khana Diet Plan Helps Diabetes, Thyroid, Cholesterol & Fatty Liver"
               width={1100}
               height={700}
@@ -979,7 +979,7 @@ export default function TherapeuticPlanPage() {
           {/* Mobile version */}
           <div className="md:hidden">
             <Image
-              src="/api/images/69b7c70aa14dfc9fbf5ad679"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70aa14dfc9fbf5ad679.jpg"
               alt="How Ghar Ka Khana Diet Plan Helps Diabetes, Thyroid, Cholesterol & Fatty Liver"
               width={400}
               height={1200}

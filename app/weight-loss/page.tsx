@@ -87,10 +87,10 @@ const stats = [
 ];
 
 const fallbackTestimonials = [
-  { name: 'Bessie Cooper', role: 'Co-Founder', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: '/api/images/69b7c744a14dfc9fbf5ad78c' },
-  { name: 'Floyd Miles', role: 'Chairman', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: '/api/images/69b7c744a14dfc9fbf5ad78e' },
-  { name: 'Kathryn Murphy', role: 'CEO', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: '/api/images/69b7c75ca14dfc9fbf5ad7de' },
-  { name: 'Jerome Bell', role: 'Finance Director', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: '/api/images/69b7c66ea14dfc9fbf5ad4f4' },
+  { name: 'Bessie Cooper', role: 'Co-Founder', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78c.jpg' },
+  { name: 'Floyd Miles', role: 'Chairman', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78e.jpg' },
+  { name: 'Kathryn Murphy', role: 'CEO', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c75ca14dfc9fbf5ad7de.jpg' },
+  { name: 'Jerome Bell', role: 'Finance Director', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4f4.jpg' },
 ];
 
 type Testimonial = { _id?: string; name: string; role?: string; content: string; image: string };
@@ -146,9 +146,9 @@ export default function WeightLossPage() {
   const [expandedPricingCards, setExpandedPricingCards] = useState<Record<string, boolean>>({});
 
   const testimonialImages = testimonials.length > 0 ? testimonials : fallbackTestimonials;
-  const heroImage1 = testimonialImages[0]?.image || '/api/images/69b7c744a14dfc9fbf5ad78c';
-  const heroImage2 = testimonialImages[1]?.image || '/api/images/69b7c744a14dfc9fbf5ad78e';
-  const heroImage3 = testimonialImages[2]?.image || '/api/images/69b7c75ca14dfc9fbf5ad7de';
+  const heroImage1 = testimonialImages[0]?.image || 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78c.jpg';
+  const heroImage2 = testimonialImages[1]?.image || 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78e.jpg';
+  const heroImage3 = testimonialImages[2]?.image || 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c75ca14dfc9fbf5ad7de.jpg';
 
   /* Fetch pricing */
   useEffect(() => {
@@ -189,7 +189,7 @@ export default function WeightLossPage() {
           name: item.name || 'Client',
           role: item.role || '',
           content: item.content || '',
-          image: getOptimizedUrl(item.image || '/api/images/69b7c909bfd19f93f09dc3e1', { width: 180, height: 180, quality: 80, format: 'auto' }),
+          image: getOptimizedUrl(item.image || 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e1.jpg', { width: 180, height: 180, quality: 80, format: 'auto' }),
         }));
         if (normalized.length > 0) setTestimonials(normalized);
       } catch (error) {
@@ -257,7 +257,7 @@ export default function WeightLossPage() {
         {/* Desktop Version */}
         <div className="hidden lg:block">
           <Image
-            src="/api/images/69b7c6b6a14dfc9fbf5ad567"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
             alt="Our Five-Cycle Program - Desktop"
             width={1200}
             height={600}
@@ -270,7 +270,7 @@ export default function WeightLossPage() {
         {/* Mobile Version */}
         <div className="lg:hidden">
           <Image
-            src="/api/images/69b7c6caa14dfc9fbf5ad56f"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
             alt="Our Five-Cycle Program - Mobile"
             width={600}
             height={800}
@@ -287,7 +287,7 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block">
             <Image
-              src="/api/images/69b7c729a14dfc9fbf5ad70f"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
               alt="What to Expect - Desktop"
               width={1200}
               height={600}
@@ -300,7 +300,7 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden">
             <Image
-              src="/api/images/69b7c729a14dfc9fbf5ad70f"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
               alt="What to Expect - Mobile"
               width={600}
               height={800}
@@ -318,7 +318,7 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block">
             <Image
-              src="/api/images/69b7c710a14dfc9fbf5ad6a4"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
               alt="100% Money Back Guarantee - Desktop"
               width={1200}
               height={600}
@@ -331,7 +331,7 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden">
             <Image
-              src="/api/images/69b7c711a14dfc9fbf5ad6ab"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
               alt="100% Money Back Guarantee - Mobile"
               width={600}
               height={800}
@@ -349,7 +349,7 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block">
             <Image
-              src="/api/images/69b7c732a14dfc9fbf5ad73f"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
               alt="What You Get - Desktop"
               width={1200}
               height={600}
@@ -362,7 +362,7 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden">
             <Image
-              src="/api/images/69b7c73ca14dfc9fbf5ad766"
+              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
               alt="What You Get - Mobile"
               width={600}
               height={800}

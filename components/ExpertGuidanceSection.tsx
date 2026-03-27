@@ -36,28 +36,28 @@ const badges = [
 
 const mediaCards = [
   {
-    image: "/api/images/69b7c64aa14dfc9fbf5ad48f",
+    image: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c64aa14dfc9fbf5ad48f.jpg",
     title: "Iconic Business Women (Health & Nutrition) Award 2024",
     desc: "Poonam Ma'am was recognized for her impactful work in wellness and evidence-based nutrition. The award was graciously presented by Actress Bhagyashree.",
   },
   {
-    image: "/api/images/69b7c6f2a14dfc9fbf5ad5ea",
+    image: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ea.jpg",
     title: "Dainik Bhaskar Women Entrepreneur Award",
     desc: "Poonam Ma'am was honored for her exceptional leadership in the health and nutrition field. The award was presented by India's first female IPS officer, Dr. Kiran Bedi.",
   },
   {
-    image: "/api/images/69b7c6eaa14dfc9fbf5ad5ba",
+    image: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6eaa14dfc9fbf5ad5ba.jpg",
     title: "News 18 Narayani Namah Award",
     desc: "This award acknowledges Poonam Ma'am's dedication to transforming lives through personalized nutrition. Her commitment to community well-being continues to inspire many.",
   },
 ];
 
 const newsLogos = [
-  "/api/images/69b7c662a14dfc9fbf5ad4d0",
-  "/api/images/69b7c64aa14dfc9fbf5ad48d",
-  "/api/images/69b7c659a14dfc9fbf5ad4bc",
-  "/api/images/69b7c649a14dfc9fbf5ad48b",
-  "/api/images/69b7c668a14dfc9fbf5ad4dd",
+  "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c662a14dfc9fbf5ad4d0.jpg",
+  "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c64aa14dfc9fbf5ad48d.jpg",
+  "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c659a14dfc9fbf5ad4bc.jpg",
+  "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c649a14dfc9fbf5ad48b.jpg",
+  "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c668a14dfc9fbf5ad4dd.jpg",
 ];
 
 function BadgeIcon({ type }: { type: (typeof badges)[number]["icon"] }) {
@@ -244,7 +244,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             <div className="absolute inset-0">
               <div className="absolute left-1/2 -translate-x-[58%] lg:-translate-x-1/2 top-[62px] lg:top-[5px] w-[250px] h-[420px] sm:w-[280px] sm:h-[470px] lg:w-[253px] lg:h-[542px]">
                 <Image
-                  src="/api/images/69b7c6f6a14dfc9fbf5ad602"
+                  src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6f6a14dfc9fbf5ad602.jpg"
                   alt="Dietitian Poonam Sagar"
                   fill
                   className="object-contain object-bottom"

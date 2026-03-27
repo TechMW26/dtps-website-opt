@@ -24,7 +24,7 @@ export default function Hero() {
             <div className="relative">
               {/* Main Hero Image with Text */}
               <Image
-                src="/api/images/69b7c66ea14dfc9fbf5ad4ef"
+                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4ef.jpg"
                 alt="Dietitian Poonam Sagar"
                 width={340}
                 height={380}
@@ -186,7 +186,7 @@ export default function Hero() {
             <div className="relative">
               {/* Main Hero Image with Text */}
               <Image
-                src="/api/images/69b7c66ea14dfc9fbf5ad4ef"
+                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4ef.jpg"
                 alt="Dietitian Poonam Sagar"
                 width={500}
                 height={600}

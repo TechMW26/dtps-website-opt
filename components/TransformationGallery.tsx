@@ -115,7 +115,7 @@ export default function TransformationGallery({
             <SwiperSlide key={transformation._id || transformation.clientName}>
               <div className="rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
                 <img
-                  src={transformation.afterImage || transformation.beforeImage || '/api/images/69b7c909bfd19f93f09dc3e5'}
+                  src={transformation.afterImage || transformation.beforeImage || 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e5.jpg'}
                   alt={`${transformation.clientName} Transformation`}
                   className="w-full h-auto object-contain rounded-[16px]"
                   loading="lazy"

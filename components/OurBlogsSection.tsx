@@ -99,7 +99,7 @@ export default function OurBlogsSection() {
               >
                 <div className="overflow-hidden rounded-[12px]">
                   <Image
-                    src={blog.featuredImage || "/api/images/69b7c908bfd19f93f09dc3df"}
+                    src={blog.featuredImage || "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
                     alt={blog.title}
                     width={360}
                     height={195}
@@ -158,7 +158,7 @@ export default function OurBlogsSection() {
                 >
                   <div className="overflow-hidden rounded-[12px]">
                     <Image
-                      src={blog.featuredImage || "/api/images/69b7c908bfd19f93f09dc3df"}
+                      src={blog.featuredImage || "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
                       alt={blog.title}
                       width={260}
                       height={170}
