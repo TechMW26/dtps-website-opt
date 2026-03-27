@@ -72,7 +72,7 @@ export async function GET(
             });
         }
 
-        return new NextResponse(cached.buffer, {
+        return new NextResponse(new Uint8Array(cached.buffer), {
             status: 200,
             headers: {
                 'Content-Type': cached.contentType,
