@@ -72,7 +72,7 @@ export default function FAQSection() {
 
           <div className="relative w-[200px] h-[260px] md:w-[250px] md:h-[320px] rounded-[20px] overflow-hidden z-[1]">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c765a14dfc9fbf5ad807.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c765a14dfc9fbf5ad807.jpg"
               alt="Health coaching"
               fill
               className="object-cover"
@@ -94,7 +94,7 @@ export default function FAQSection() {
 
           <div className="absolute left-[100px] top-[160px] md:left-[140px] md:top-[190px] w-[220px] h-[200px] md:w-[280px] md:h-[250px] rounded-[20px] overflow-hidden border-[4px] border-white z-[4] shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c75da14dfc9fbf5ad7e2.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c75da14dfc9fbf5ad7e2.jpg"
               alt="Healthy food"
               fill
               className="object-cover"

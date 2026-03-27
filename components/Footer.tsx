@@ -36,7 +36,7 @@ export default function Footer() {
             {/* Left Column - Logo & Info */}
             <div className="flex-1 min-w-full md:min-w-0 md:max-w-[550px]">
               <Image
-                src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
+                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
                 alt="Dietitian Poonam Sagar"
                 width={220}
                 height={80}

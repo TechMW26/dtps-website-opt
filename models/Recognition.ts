@@ -24,7 +24,7 @@ const RecognitionSchema = new Schema<IRecognition>(
     },
     image: {
       type: String,
-      default: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e3.jpg',
+      default: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e3.jpg',
     },
     year: {
       type: String,

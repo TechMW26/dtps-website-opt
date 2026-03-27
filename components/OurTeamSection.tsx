@@ -11,10 +11,10 @@ export default function OurTeamSection() {
   ];
 
   const galleryImages = [
-    "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad639.jpg",
-    "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c65ca14dfc9fbf5ad4c4.jpg",
-    "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c701a14dfc9fbf5ad644.jpg",
-    "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad665.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad639.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c65ca14dfc9fbf5ad4c4.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c701a14dfc9fbf5ad644.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad665.jpg",
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function OurTeamSection() {
         {/* Banner */}
         <div className="team-banner">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a5.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a5.jpg"
             alt="Our Team"
             width={1920}
             height={1080}

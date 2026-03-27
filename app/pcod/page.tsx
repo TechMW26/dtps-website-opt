@@ -15,11 +15,11 @@ const whatYouGet = [
 ];
 
 const gkkBenefits = [
-  { title: 'Inflammation down', desc: 'Less bloating, less pain, better skin', icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg' },
-  { title: 'Hormones Balanced', desc: 'Regular cycles, better mood', icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg' },
-  { title: 'Energy Boost', desc: 'Feel more active and vibrant', icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg' },
-  { title: 'Weight Loss', desc: 'Sustainable and healthy reduction', icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg' },
-  { title: 'Better Skin', desc: 'Clear, glowing, and healthy', icon: 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg' },
+  { title: 'Inflammation down', desc: 'Less bloating, less pain, better skin', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg' },
+  { title: 'Hormones Balanced', desc: 'Regular cycles, better mood', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg' },
+  { title: 'Energy Boost', desc: 'Feel more active and vibrant', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg' },
+  { title: 'Weight Loss', desc: 'Sustainable and healthy reduction', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg' },
+  { title: 'Better Skin', desc: 'Clear, glowing, and healthy', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg' },
 ];
 
 export default function PCODPage() {
@@ -47,7 +47,7 @@ export default function PCODPage() {
         <div className="md:hidden w-full">
           <div className="relative w-full h-auto overflow-hidden rounded-b-3xl">
             <Image 
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c712a14dfc9fbf5ad6b5.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c712a14dfc9fbf5ad6b5.jpg"
               alt="PCOD Banner - Mobile"
               width={800}
               height={600}
@@ -63,7 +63,7 @@ export default function PCODPage() {
         <div className="hidden md:block w-full">
           <div className="relative w-full h-auto overflow-hidden rounded-b-3xl">
             <Image 
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6af.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6af.jpg"
               alt="PCOD Banner - Desktop"
               width={1920}
               height={800}
@@ -110,7 +110,7 @@ Diet plays a crucial role in managing PCOS, as it can help mitigate some of the 
 
 <div className="h-[200px]">
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
 width={500}
 height={300}
 alt="Balancing Blood Sugar"
@@ -145,7 +145,7 @@ Women with PCOS often experience insulin resistance, where the body's cells do n
 
 <div className="h-[200px]">
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
 width={500}
 height={300}
 alt="Managing Weight"
@@ -180,7 +180,7 @@ Losing even a small amount of weight if you are overweight can help manage PCOS 
 
 <div className="h-[200px]">
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
 width={500}
 height={300}
 alt="Reducing Inflammation"
@@ -215,7 +215,7 @@ PCOS is often linked with low-grade inflammation. Consuming a diet high in anti-
 
 <div className="h-[200px]">
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
 width={500}
 height={300}
 alt="Increasing Fertility"
@@ -311,7 +311,7 @@ Questions? Contact us
 <div className="flex items-center gap-3 text-sm text-gray-300 mb-2">
 
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6faa14dfc9fbf5ad61c.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6faa14dfc9fbf5ad61c.jpg"
 width={18}
 height={18}
 alt="Contact Icon"
@@ -327,7 +327,7 @@ loading="lazy"
 <div className="flex items-center gap-3 text-sm text-gray-300">
 
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad663.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad663.jpg"
 width={18}
 height={18}
 alt="Email Icon"
@@ -358,7 +358,7 @@ loading="lazy"
 
   {/* Desktop Banner */}
   <Image
-    src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c719a14dfc9fbf5ad6d7.jpg"
+    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c719a14dfc9fbf5ad6d7.jpg"
     alt="Symptoms & Nutritional Concerns"
     width={1200}
     height={600}
@@ -370,7 +370,7 @@ loading="lazy"
 
   {/* Mobile Banner */}
   <Image
-    src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c71fa14dfc9fbf5ad6ec.jpg"
+    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c71fa14dfc9fbf5ad6ec.jpg"
     alt="Symptoms & Nutritional Concerns"
     width={800}
     height={800}
@@ -401,7 +401,7 @@ loading="lazy"
           <div className="bg-[#EAEEF1] rounded-[18px] overflow-hidden w-full max-w-[330px] md:max-w-[520px]">
 
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"
               alt="Dietician Team"
               width={600}
               height={800}
@@ -439,22 +439,22 @@ loading="lazy"
               {
                 title: "Ongoing Support",
                 desc: "Regular follow-ups to adapt your diet plan as needed and ensure progress results.",
-                icon: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad565.jpg",
+                icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad565.jpg",
               },
               {
                 title: "Specialised Care",
                 desc: "Your diet is managed by dietitians who are specialised in hormonal disorders.",
-                icon: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad596.jpg",
+                icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad596.jpg",
               },
               {
                 title: "Tailored to You",
                 desc: "Every diet plan is crafted to meet your unique health needs and lifestyle preferences.",
-                icon: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c725a14dfc9fbf5ad6fc.jpg",
+                icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c725a14dfc9fbf5ad6fc.jpg",
               },
               {
                 title: "Sustainable Weight Management",
                 desc: "We focus on long-term lifestyle changes for lasting success.",
-                icon: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad598.jpg",
+                icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad598.jpg",
               },
             ].map((item, index) => (
 
@@ -518,7 +518,7 @@ loading="lazy"
           {/* Desktop Image - Hidden on Mobile */}
           <div className="hidden md:block">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c713a14dfc9fbf5ad6b7.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c713a14dfc9fbf5ad6b7.jpg"
               alt="How Ghar Ka Khana Diet Plan Fixes PCOD & Weight"
               width={1280}
               height={800}
@@ -531,7 +531,7 @@ loading="lazy"
           {/* Mobile Image - Hidden on Desktop */}
           <div className="block md:hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c714a14dfc9fbf5ad6c0.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c714a14dfc9fbf5ad6c0.jpg"
               alt="How Ghar Ka Khana Diet Plan Fixes PCOD & Weight"
               width={400}
               height={600}

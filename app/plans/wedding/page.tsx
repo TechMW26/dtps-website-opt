@@ -200,7 +200,7 @@ export default function WeddingPlanPage() {
       <section className="wedding-hero-wrapper">
         <div className="wedding-hero-section">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
             alt="Wedding couple"
             fill
             priority
@@ -514,7 +514,7 @@ export default function WeddingPlanPage() {
 <section className="block md:hidden w-full">
 
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad6a1.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad6a1.jpg"
 alt="Five Cycle Program"
 width={420}
 height={700}
@@ -576,7 +576,7 @@ This initial phase gently cleanses your body
 </div>
 
 <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-<img src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg" className="w-7" loading="lazy" decoding="async" alt="Detox"/>
+<img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg" className="w-7" loading="lazy" decoding="async" alt="Detox"/>
 </div>
 
 </div>
@@ -587,7 +587,7 @@ This initial phase gently cleanses your body
 <div className="absolute right-[120px] top-[150px] flex items-center gap-4">
 
 <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-<img src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg" className="w-7" loading="lazy" decoding="async" alt="Anti-Inflammatory"/>
+<img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg" className="w-7" loading="lazy" decoding="async" alt="Anti-Inflammatory"/>
 </div>
 
 <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px]">
@@ -605,7 +605,7 @@ Anti-inflammatory foods to reduce inflammation
 <div className="absolute right-[120px] bottom-[140px] flex items-center gap-4">
 
 <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-<img src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg" className="w-7" loading="lazy" decoding="async" alt="Fat Burning"/>
+<img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg" className="w-7" loading="lazy" decoding="async" alt="Fat Burning"/>
 </div>
 
 <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px]">
@@ -623,7 +623,7 @@ Dynamic cycle focused on maximizing fat burning
 <div className="absolute left-[120px] bottom-[140px] flex items-center gap-4 flex-row-reverse">
 
 <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-<img src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg" className="w-7" loading="lazy" decoding="async" alt="Metabolic"/>
+<img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg" className="w-7" loading="lazy" decoding="async" alt="Metabolic"/>
 </div>
 
 <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px] text-right">
@@ -641,7 +641,7 @@ Rev up your metabolism with booster cycle
 <div className="absolute left-[120px] top-[150px] flex items-center gap-4 flex-row-reverse">
 
 <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-<img src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg" className="w-7" loading="lazy" decoding="async" alt="Maintenance"/>
+<img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg" className="w-7" loading="lazy" decoding="async" alt="Maintenance"/>
 </div>
 
 <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px] text-right">
@@ -771,7 +771,7 @@ Heavy gym plans if you do not want them.
 <div className="bg-[#E7E7E7] rounded-xl p-3 flex items-center justify-center">
 
 <Image
-src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad671.jpg"
+src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad671.jpg"
 alt="Fad Diet"
 width={40}
 height={40}
@@ -812,7 +812,7 @@ Fad expensive salad or juice-only diet.
       <div className="hidden md:flex items-start justify-center gap-16 mb-14">
         <div className="flex flex-col items-center gap-4">
           <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={50} height={50} loading="lazy" />
+            <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={50} height={50} loading="lazy" />
           </div>
           <p className="text-white text-base font-medium text-center leading-snug">
             Fully Customised<br />Diet Plan
@@ -821,7 +821,7 @@ Fad expensive salad or juice-only diet.
 
         <div className="flex flex-col items-center gap-4">
           <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={50} height={50} loading="lazy" />
+            <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={50} height={50} loading="lazy" />
           </div>
           <p className="text-white text-base font-medium text-center leading-snug">
             Shaadi-Ready<br />Custom Diet Plan
@@ -830,7 +830,7 @@ Fad expensive salad or juice-only diet.
 
         <div className="flex flex-col items-center gap-4">
           <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={50} height={50} loading="lazy" />
+            <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={50} height={50} loading="lazy" />
           </div>
           <p className="text-white text-base font-medium text-center leading-snug">
             Medical-Aware<br />Personalised Plan
@@ -842,7 +842,7 @@ Fad expensive salad or juice-only diet.
       <div className="flex md:hidden flex-col gap-5 mb-8 max-w-[260px] mx-auto">
         <div className="flex items-center gap-4">
           <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={32} height={32} loading="lazy" />
+            <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={32} height={32} loading="lazy" />
           </div>
           <p className="text-white text-sm font-medium leading-snug">
             Fully Customised<br />Diet Plan
@@ -851,7 +851,7 @@ Fad expensive salad or juice-only diet.
 
         <div className="flex items-center gap-4">
           <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={32} height={32} loading="lazy" />
+            <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={32} height={32} loading="lazy" />
           </div>
           <p className="text-white text-sm font-medium leading-snug">
             Shaadi-Ready<br />Custom Diet Plan
@@ -860,7 +860,7 @@ Fad expensive salad or juice-only diet.
 
         <div className="flex items-center gap-4">
           <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
-            <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={32} height={32} loading="lazy" />
+            <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={32} height={32} loading="lazy" />
           </div>
           <p className="text-white text-sm font-medium leading-snug">
             Medical-Aware<br />Personalised Plan
@@ -934,7 +934,7 @@ Fad expensive salad or juice-only diet.
     <div className="hidden md:flex flex-col gap-5 max-w-[850px] mx-auto">
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
         <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={48} height={48} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={48} height={48} loading="lazy" />
         </div>
         <p className="text-white text-base md:text-lg font-medium leading-snug">
           Personalised plan built around<br />your taste, work hours, travel, and culture
@@ -943,7 +943,7 @@ Fad expensive salad or juice-only diet.
 
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
         <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={48} height={48} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={48} height={48} loading="lazy" />
         </div>
         <p className="text-white text-base md:text-lg font-medium leading-snug">
           Medical aware for PCOS, thyroid,<br />and diabetes with reports considered
@@ -952,7 +952,7 @@ Fad expensive salad or juice-only diet.
 
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
         <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={48} height={48} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={48} height={48} loading="lazy" />
         </div>
         <p className="text-white text-base md:text-lg font-medium leading-snug">
           We don&apos;t recommend eating expensive<br />fat-burning supplements
@@ -961,7 +961,7 @@ Fad expensive salad or juice-only diet.
 
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
         <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={48} height={48} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={48} height={48} loading="lazy" />
         </div>
         <p className="text-white text-base md:text-lg font-medium leading-snug">
           We don&apos;t promote any<br />heavy workouts or starvation
@@ -973,7 +973,7 @@ Fad expensive salad or juice-only diet.
     <div className="md:hidden flex flex-col gap-4">
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
         <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={36} height={36} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={36} height={36} loading="lazy" />
         </div>
         <p className="text-white text-sm font-medium leading-snug">
           Personalised plan built around your taste, work hours, travel, and culture
@@ -982,7 +982,7 @@ Fad expensive salad or juice-only diet.
 
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
         <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={36} height={36} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={36} height={36} loading="lazy" />
         </div>
         <p className="text-white text-sm font-medium leading-snug">
           Medical aware for PCOS, thyroid, and diabetes with reports considered
@@ -991,7 +991,7 @@ Fad expensive salad or juice-only diet.
 
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
         <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={36} height={36} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={36} height={36} loading="lazy" />
         </div>
         <p className="text-white text-sm font-medium leading-snug">
           We don&apos;t recommend eating expensive fat-burning supplements
@@ -1000,7 +1000,7 @@ Fad expensive salad or juice-only diet.
 
       <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
         <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-          <Image src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={36} height={36} loading="lazy" />
+          <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={36} height={36} loading="lazy" />
         </div>
         <p className="text-white text-sm font-medium leading-snug">
           We don&apos;t promote any heavy workouts or starvation
