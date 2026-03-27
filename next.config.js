@@ -4,6 +4,8 @@ const nextConfig = {
     root: __dirname,
   },
   images: {
+    loader: 'custom',
+    loaderFile: './lib/image-loader.js',
     formats: ['image/avif', 'image/webp'],
     qualities: [75, 80],
     minimumCacheTTL: 31536000, // 1 year cache
