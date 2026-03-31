@@ -77,6 +77,7 @@ export default function Hero() {
                     width={20}
                     height={20}
                     className="w-5 h-5"
+                    unoptimized
                   />
                 </div>
 
@@ -135,15 +136,16 @@ export default function Hero() {
               </Link>
 
               <div className="hero-phone flex items-center gap-3">
-<div className="phone-icon w-10 h-10 lg:w-12 lg:h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
-  <Image
-    src="/phoneicon.svg"
-    alt="Phone Icon"
-    width={24}
-    height={24}
-    className="w-5 h-5 lg:w-6 lg:h-6"
-  />
-</div>
+                <div className="phone-icon w-10 h-10 lg:w-12 lg:h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+                  <Image
+                    src="/phoneicon.svg"
+                    alt="Phone Icon"
+                    width={24}
+                    height={24}
+                    className="w-5 h-5 lg:w-6 lg:h-6"
+                    unoptimized
+                  />
+                </div>
 
                 <div className="phone-info flex flex-col">
                   <span className="phone-label text-white/60 text-[0.7rem] lg:text-[0.8rem]">Call Us 24/7</span>

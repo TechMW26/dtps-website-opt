@@ -85,6 +85,7 @@ function BadgeIcon({ type }: { type: (typeof badges)[number]["icon"] }) {
       className="object-contain"
       loading="lazy"
       sizes="24px"
+      unoptimized
     />
   );
 }
@@ -204,9 +205,8 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
 
         <div className="mt-8 md:mt-[68px] flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-8 lg:px-10 xl:px-14">
           <div
-            className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] lg:mr-8 xl:mr-16 transition-all duration-700 delay-150 ${
-              isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
-            }`}
+            className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] lg:mr-8 xl:mr-16 transition-all duration-700 delay-150 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
+              }`}
           >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 lg:hidden">
               <div className={`${inter.className} text-white text-[28px] tracking-[0.22em] font-normal`}>
@@ -258,9 +258,8 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
           </div>
 
           <div
-            className={`order-2 lg:order-1 w-full max-w-[589px] transition-all duration-700 ${
-              isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-            }`}
+            className={`order-2 lg:order-1 w-full max-w-[589px] transition-all duration-700 ${isVisible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
+              }`}
           >
             <div className="text-white text-[14px] leading-[1.6] md:text-[16px] md:leading-[26px] font-normal">
               <p>
@@ -309,9 +308,8 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             {mediaCards.map((card, index) => (
               <div
                 key={card.title}
-                className={`w-[260px] rounded-[12px] bg-white p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all duration-700 ${
-                  isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-                }`}
+                className={`w-[260px] rounded-[12px] bg-white p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                  }`}
                 style={{ transitionDelay: `${index * 120}ms` }}
               >
                 <div className="relative h-[170px] w-full overflow-hidden rounded-[6px]">

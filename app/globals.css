@@ -37,6 +37,43 @@
   --section-padding-x-mobile: 12px;
 }
 
+/* ===== Page Content Wrapper - Consistent padding for all pages ===== */
+.page-content {
+  padding-top: 50px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+@media (max-width: 1280px) {
+  .page-content {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-content {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding-top: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content {
+    padding-top: 30px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 /* ===== Section Wrapper - Consistent padding for all homepage sections ===== */
 .section-wrapper {
   background: #fff;
@@ -337,12 +374,18 @@
   /* ===== Hero Section ===== */
   .hero-wrapper {
     background: #fff;
-    padding: 12px 32px 0 32px;
+    padding: 60px 120px 0 120px;
+  }
+
+  @media (max-width: 1280px) {
+    .hero-wrapper {
+      padding: 60px 60px 0 60px;
+    }
   }
 
   @media (max-width: 767px) {
     .hero-wrapper {
-      padding: 0;
+      padding: 60px 16px 0 16px;
     }
   }
 

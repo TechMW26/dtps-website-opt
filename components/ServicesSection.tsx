@@ -70,9 +70,8 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Header Card */}
           <div
-            className={`p-6 flex flex-col justify-center transition-all duration-500 ease-out ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
-            }`}
+            className={`p-6 flex flex-col justify-center transition-all duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+              }`}
           >
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[#f5a623] text-lg">✦</span>
@@ -100,11 +99,10 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(0)}
             onMouseLeave={() => setHoveredCard(null)}
-            className={`bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
-              isVisible
+            className={`bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${isVisible
                 ? (hoveredCard === 0 ? '-translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.4)]' : 'translate-y-0')
                 : 'translate-y-[30px] opacity-0'
-            }`}
+              }`}
           >
             <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white">
               <Image
@@ -113,6 +111,7 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                unoptimized
               />
             </div>
             <h3 className="text-[1.35rem] font-bold text-white mb-4">
@@ -127,18 +126,16 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(1)}
             onMouseLeave={() => setHoveredCard(null)}
-            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
-              hoveredCard === 1
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${hoveredCard === 1
                 ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
                 : 'bg-white'
-            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
+              } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
-                hoveredCard === 1
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 1
                   ? 'bg-white/20 text-white border-0'
                   : 'bg-white border-2 border-teal-600 text-teal-600'
-              }`}
+                }`}
             >
               <Image
                 src={services[1].icon}
@@ -146,19 +143,18 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                unoptimized
               />
             </div>
             <h3
-              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
-                hoveredCard === 1 ? 'text-white' : 'text-gray-900'
-              }`}
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${hoveredCard === 1 ? 'text-white' : 'text-gray-900'
+                }`}
             >
               {services[1].title}
             </h3>
             <p
-              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${
-                hoveredCard === 1 ? 'text-white/90' : 'text-gray-500'
-              }`}
+              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${hoveredCard === 1 ? 'text-white/90' : 'text-gray-500'
+                }`}
             >
               {services[1].description}
             </p>
@@ -168,18 +164,16 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
-            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
-              hoveredCard === 2
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${hoveredCard === 2
                 ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
                 : 'bg-white'
-            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
+              } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
-                hoveredCard === 2
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 2
                   ? 'bg-white/20 text-white'
                   : 'bg-white border-2 border-teal-600 text-teal-600'
-              }`}
+                }`}
             >
               <Image
                 src={services[2].icon}
@@ -187,19 +181,18 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                unoptimized
               />
             </div>
             <h3
-              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
-                hoveredCard === 2 ? 'text-white' : 'text-gray-900'
-              }`}
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${hoveredCard === 2 ? 'text-white' : 'text-gray-900'
+                }`}
             >
               {services[2].title}
             </h3>
             <p
-              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${
-                hoveredCard === 2 ? 'text-white/90' : 'text-gray-500'
-              }`}
+              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${hoveredCard === 2 ? 'text-white/90' : 'text-gray-500'
+                }`}
             >
               {services[2].description}
             </p>
@@ -209,18 +202,16 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(3)}
             onMouseLeave={() => setHoveredCard(null)}
-            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${
-              hoveredCard === 3
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${hoveredCard === 3
                 ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
                 : 'bg-white'
-            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
+              } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${
-                hoveredCard === 3
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 3
                   ? 'bg-white/20 text-white'
                   : 'bg-white border-2 border-teal-600 text-teal-600'
-              }`}
+                }`}
             >
               <Image
                 src={services[3].icon}
@@ -228,19 +219,18 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                unoptimized
               />
             </div>
             <h3
-              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${
-                hoveredCard === 3 ? 'text-white' : 'text-gray-900'
-              }`}
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-500 ${hoveredCard === 3 ? 'text-white' : 'text-gray-900'
+                }`}
             >
               {services[3].title}
             </h3>
             <p
-              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${
-                hoveredCard === 3 ? 'text-white/90' : 'text-gray-500'
-              }`}
+              className={`text-sm leading-relaxed flex-1 transition-all duration-500 ${hoveredCard === 3 ? 'text-white/90' : 'text-gray-500'
+                }`}
             >
               {services[3].description}
             </p>
@@ -248,9 +238,8 @@ export default function ServicesSection() {
 
           {/* CTA Card - "What happens after I start?" */}
           <div
-            className={`rounded-[20px] overflow-hidden relative min-h-[280px] transition-all duration-500 ease-out delay-500 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
-            }`}
+            className={`rounded-[20px] overflow-hidden relative min-h-[280px] transition-all duration-500 ease-out delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+              }`}
           >
             <Image
               src="/girlthali.png"
@@ -260,6 +249,7 @@ export default function ServicesSection() {
               loading="lazy"
               sizes="(max-width: 767px) 100vw, 50vw"
               quality={75}
+              unoptimized
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 flex flex-col justify-end p-8">
               <p className="text-sm text-white/80 mb-1">If you&apos;re thinking,</p>

@@ -167,9 +167,9 @@ export default function HomePage() {
                     </div>
 
                     <h2 className="text-[40px] font-bold leading-[1.15] tracking-[-0.02em] text-white">
-                      Step-by-step guide   
+                      Step-by-step guide
                       <br />
-                    to your  healthy journey
+                      to your  healthy journey
                     </h2>
                   </div>
 
@@ -834,6 +834,7 @@ export default function HomePage() {
                     sizes="100vw"
                     quality={80}
                     placeholder="empty"
+                    unoptimized
                   />
                 </div>
               </div>
@@ -993,6 +994,7 @@ export default function HomePage() {
                     sizes="(min-width: 1024px) 520px, 100vw"
                     quality={80}
                     placeholder="empty"
+                    unoptimized
                   />
                 </div>
               </div>

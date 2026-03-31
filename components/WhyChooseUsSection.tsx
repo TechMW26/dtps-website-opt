@@ -34,6 +34,7 @@ export default function WhyChooseUsSection() {
             loading="lazy"
             sizes="(max-width: 1200px) 100vw, 1200px"
             className="w-full h-auto"
+            unoptimized
           />
         </div>
 
@@ -47,8 +48,10 @@ export default function WhyChooseUsSection() {
             loading="lazy"
             sizes="100vw"
             className="w-full h-auto"
+            unoptimized
           />
         </div>
       </div>
     </section>
-  );}
+  );
+}

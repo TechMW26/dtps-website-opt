@@ -25,7 +25,7 @@ const socialLinks = [
 
 export default function ContactPage() {
   return (
-    <>
+    <div className="page-content">
       <PageWrapper>
         {/* Hero Section */}
         <section className="page-header">
@@ -48,7 +48,7 @@ export default function ContactPage() {
               </div>
               <h2 className="section-title">Get in touch</h2>
               <p className="about-desc">
-                We are standing by to answer any question you might have, no matter how 
+                We are standing by to answer any question you might have, no matter how
                 small. Contact us and we&apos;ll respond as soon as possible.
               </p>
             </div>
@@ -125,6 +125,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

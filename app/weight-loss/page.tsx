@@ -201,7 +201,7 @@ export default function WeightLossPage() {
   }, []);
 
   return (
-    <main className="bg-white">
+    <main className="bg-white page-content">
       <DynamicPopup page="weight-loss" />
 
       {/* ═════ HERO ═════ */}
@@ -218,39 +218,39 @@ export default function WeightLossPage() {
         />
       </PageWrapper>
 
- {/* ═════ TESTIMONIALS GALLERY ═════ */}
-<section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
-  <div className="max-w-[1000px] mx-auto">
+      {/* ═════ TESTIMONIALS GALLERY ═════ */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-[1000px] mx-auto">
 
-    <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
 
-      <div className="max-w-[630px]">
-        <SectionLabel>Our Testimonials</SectionLabel>
+            <div className="max-w-[630px]">
+              <SectionLabel>Our Testimonials</SectionLabel>
 
-        <SectionTitle className="text-[#1E1E1E] mt-2">
-          Success stories from our clients
-        </SectionTitle>
+              <SectionTitle className="text-[#1E1E1E] mt-2">
+                Success stories from our clients
+              </SectionTitle>
 
-        <p
-          className="text-[#828283] text-[12px] md:text-[14px] mt-2"
-          style={{ fontFamily: "Inter, sans-serif" }}
-        >
-          Join our Plan today and embark on a journey to better health with our weight loss plan!
-        </p>
-      </div>
+              <p
+                className="text-[#828283] text-[12px] md:text-[14px] mt-2"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                Join our Plan today and embark on a journey to better health with our weight loss plan!
+              </p>
+            </div>
 
-    </div>
+          </div>
 
-    {/* Transformation Cards Slider */}
-    <TransformationGallery
-      page="weight-loss"
-      title=""
-      subtitle=""
-      maxItems={6}
-    />
+          {/* Transformation Cards Slider */}
+          <TransformationGallery
+            page="weight-loss"
+            title=""
+            subtitle=""
+            maxItems={6}
+          />
 
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* ═════ FIVE CYCLE PROGRAM ═════ */}
       <section className="px-4 md:px-12 lg:px-[120px]">
@@ -381,22 +381,22 @@ export default function WeightLossPage() {
 
       {/* ═════ OUR PROGRAMS ═════ */}
       <div className="section-wrapper">
-      <section className="bg-white py-16 md:py-20 px-4 md:px-8 rounded-[30px] overflow-hidden">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="flex items-start justify-between mb-6 md:mb-10 flex-wrap gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[#ff9100] text-xl">✦</span>
-                <span className="text-teal-600 font-semibold text-base">Hear from our Happy Clients</span>
+        <section className="bg-white py-16 md:py-20 px-4 md:px-8 rounded-[30px] overflow-hidden">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="flex items-start justify-between mb-6 md:mb-10 flex-wrap gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[#ff9100] text-xl">✦</span>
+                  <span className="text-teal-600 font-semibold text-base">Hear from our Happy Clients</span>
+                </div>
+                <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
+                  Tailored programs for<br />your wellness
+                </h2>
               </div>
-              <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
-                Tailored programs for<br />your wellness
-              </h2>
             </div>
+            <YouTubeShortsSlider />
           </div>
-          <YouTubeShortsSlider />
-        </div>
-      </section>
+        </section>
       </div>
 
       {/* ═════ PRICING ═════ */}
@@ -433,68 +433,68 @@ export default function WeightLossPage() {
 
                     return (
                       <>
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-1">
-                    <div>
-                      <p className="text-[#6B7280] text-[14px] font-semibold" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.label}</p>
-                      <p className="text-[#1E1E1E] text-[18px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>PLAN</p>
-                    </div>
-                    <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
-                      {plan.badge}
-                    </span>
-                  </div>
-                  {/* Price */}
-                  <div className="flex items-end gap-2 mb-3">
-                    <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.price}</span>
-                    <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>
-                  </div>
-                  {/* Divider */}
-                  <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
-                  {/* Features */}
-                  <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>What you&apos;ll get:</p>
-                  <div className={`flex flex-col gap-1 ${isExpanded ? '' : 'min-h-[176px]'}`}>
-                    {visibleFeatures.map((feature: string, idx: number) => (
-                      <div key={idx} className="flex items-start gap-1.5">
-                        <CheckIcon24 />
-                        <span className="text-[#6B7280] text-[13px] md:text-[14px] leading-snug" style={{ fontFamily: 'DM Sans, sans-serif' }}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
+                        {/* Header */}
+                        <div className="flex items-start justify-between mb-1">
+                          <div>
+                            <p className="text-[#6B7280] text-[14px] font-semibold" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.label}</p>
+                            <p className="text-[#1E1E1E] text-[18px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>PLAN</p>
+                          </div>
+                          <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
+                            {plan.badge}
+                          </span>
+                        </div>
+                        {/* Price */}
+                        <div className="flex items-end gap-2 mb-3">
+                          <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.price}</span>
+                          <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>
+                        </div>
+                        {/* Divider */}
+                        <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
+                        {/* Features */}
+                        <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>What you&apos;ll get:</p>
+                        <div className={`flex flex-col gap-1 ${isExpanded ? '' : 'min-h-[176px]'}`}>
+                          {visibleFeatures.map((feature: string, idx: number) => (
+                            <div key={idx} className="flex items-start gap-1.5">
+                              <CheckIcon24 />
+                              <span className="text-[#6B7280] text-[13px] md:text-[14px] leading-snug" style={{ fontFamily: 'DM Sans, sans-serif' }}>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
 
-                  {hasMoreFeatures && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setExpandedPricingCards((prev) => ({
-                          ...prev,
-                          [cardKey]: !prev[cardKey],
-                        }));
-                      }}
-                      className="mt-3 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
-                      style={{ fontFamily: 'DM Sans, sans-serif' }}
-                    >
-                      {isExpanded ? 'Show Less' : 'Show More'}
-                    </button>
-                  )}
+                        {hasMoreFeatures && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setExpandedPricingCards((prev) => ({
+                                ...prev,
+                                [cardKey]: !prev[cardKey],
+                              }));
+                            }}
+                            className="mt-3 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
+                            style={{ fontFamily: 'DM Sans, sans-serif' }}
+                          >
+                            {isExpanded ? 'Show Less' : 'Show More'}
+                          </button>
+                        )}
 
-                  {/* Buy button */}
-                  <button
-                    onClick={() => {
-                      const price = plan.price.replace('₹', '').replace(',', '');
-                      const product = {
-                        id: `weight-loss-${plan.label.toLowerCase().replace(/\s+/g, '-')}`,
-                        name: `Weight Loss Plan - ${plan.label}`,
-                        price: parseInt(price),
-                        quantity: 1,
-                      };
-                      sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                      window.location.href = '/checkout';
-                    }}
-                    className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
-                    style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
-                  >
-                    BUY NOW
-                  </button>
+                        {/* Buy button */}
+                        <button
+                          onClick={() => {
+                            const price = plan.price.replace('₹', '').replace(',', '');
+                            const product = {
+                              id: `weight-loss-${plan.label.toLowerCase().replace(/\s+/g, '-')}`,
+                              name: `Weight Loss Plan - ${plan.label}`,
+                              price: parseInt(price),
+                              quantity: 1,
+                            };
+                            sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                            window.location.href = '/checkout';
+                          }}
+                          className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
+                          style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                        >
+                          BUY NOW
+                        </button>
                       </>
                     );
                   })()}
@@ -525,6 +525,7 @@ export default function WeightLossPage() {
                     sizes="100vw"
                     quality={80}
                     placeholder="empty"
+                    unoptimized
                   />
                 </div>
               </div>
@@ -683,6 +684,7 @@ export default function WeightLossPage() {
                     sizes="(min-width: 1024px) 520px, 100vw"
                     quality={80}
                     placeholder="empty"
+                    unoptimized
                   />
                 </div>
               </div>

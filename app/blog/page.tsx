@@ -46,7 +46,7 @@ export default function BlogPage() {
   };
 
   return (
-    <>
+    <div className="page-content">
       <PageWrapper>
         {/* Hero Section */}
         <section className="page-header">
@@ -135,6 +135,6 @@ export default function BlogPage() {
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 }

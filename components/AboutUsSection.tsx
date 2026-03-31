@@ -38,21 +38,21 @@ export default function AboutUsSection() {
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
 
         {/* ─── Left Side – Image ─── */}
-      <div
-  className={`relative w-full lg:w-[440px] flex-shrink-0 transition-all duration-700 ease-out ${
-    isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[50px] opacity-0'
-  }`}
->
-  <div className="flex justify-center items-center rounded-[20px] bg-white p-2 md:p-4">
-    <Image
-      src="/WhyMostDiets.png"
-      alt="Why Most Diets Fail"
-      width={700}
-      height={700}
-      className="w-full h-auto object-contain"
-      priority
-    />
-  </div>
+        <div
+          className={`relative w-full lg:w-[440px] flex-shrink-0 transition-all duration-700 ease-out ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[50px] opacity-0'
+            }`}
+        >
+          <div className="flex justify-center items-center rounded-[20px] bg-white p-2 md:p-4">
+            <Image
+              src="/WhyMostDiets.png"
+              alt="Why Most Diets Fail"
+              width={700}
+              height={700}
+              className="w-full h-auto object-contain"
+              priority
+              unoptimized
+            />
+          </div>
         </div>
 
         {/* ─── Right Side – Content ─── */}
@@ -61,12 +61,12 @@ export default function AboutUsSection() {
             }`}
         >
           {/* "About Us" label with orange square */}
-         <div className="flex items-center gap-2 mb-4">
-              <span className="text-[#f5a623] text-lg">✦</span>
-              <span className="text-teal-600 text-base font-semibold">
-                About us
-              </span>
-            </div>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-[#f5a623] text-lg">✦</span>
+            <span className="text-teal-600 text-base font-semibold">
+              About us
+            </span>
+          </div>
 
           {/* Heading */}
           <h2
