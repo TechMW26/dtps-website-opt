@@ -16,4 +16,5 @@ export default function ContactHero() {
                 </section>
             </PageWrapper>
         </section>
+    );
 }
