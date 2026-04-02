@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -27,10 +27,28 @@ interface TransformationGalleryProps {
   maxItems?: number;
 }
 
+// Optimize ImageKit URLs
+function optimizeImageUrl(url: string, width: number = 400): string {
+  if (!url || !url.includes('ik.imagekit.io')) return url;
+  const cleaned = url.replace(/\/tr:[^/]+\//, '/');
+  try {
+    const urlObj = new URL(cleaned);
+    const parts = urlObj.pathname.split('/').filter(Boolean);
+    if (parts.length >= 2) {
+      const endpoint = parts[0];
+      const rest = parts.slice(1).join('/');
+      return `${urlObj.origin}/${endpoint}/tr:w-${width},q-75,f-auto,pr-true/${rest}`;
+    }
+  } catch {
+    return url;
+  }
+  return url;
+}
+
 const fallbackData: Transformation[] = [];
 
-export default function TransformationGallery({ 
-  page, 
+export default function TransformationGallery({
+  page,
   title = 'Success Stories',
   subtitle = 'Real Results from Real People',
   maxItems = 6
@@ -50,7 +68,7 @@ export default function TransformationGallery({
             return;
           }
         }
-        
+
         // If no page-specific data, fetch all active transformations
         const allResponse = await fetch('/api/transformations?active=true');
         if (allResponse.ok) {
@@ -69,6 +87,37 @@ export default function TransformationGallery({
 
     fetchTransformations();
   }, [page, maxItems]);
+
+  // Memoize optimized image URLs
+  const optimizedTransformations = useMemo(() => {
+    return transformations.map(t => ({
+      ...t,
+      optimizedImage: optimizeImageUrl(
+        t.afterImage || t.beforeImage || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e5.jpg',
+        400
+      )
+    }));
+  }, [transformations]);
+
+  // Show skeleton while loading
+  if (loading && transformations.length === 0) {
+    return (
+      <section className="px-0 max-w-full mx-auto">
+        {title && (
+          <div className="text-center mb-8 md:mb-[50px]">
+            <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
+              {title}
+            </h2>
+          </div>
+        )}
+        <div className="flex gap-4 overflow-hidden">
+          {[1, 2, 3].map(i => (
+            <div key={i} className="flex-shrink-0 w-[300px] h-[400px] bg-gray-200 rounded-[16px] animate-pulse" />
+          ))}
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="px-0 max-w-full mx-auto">
@@ -111,15 +160,19 @@ export default function TransformationGallery({
             },
           }}
         >
-          {transformations.map((transformation) => (
+          {optimizedTransformations.map((transformation, index) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
               <div className="rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
-                <img
-                  src={transformation.afterImage || transformation.beforeImage || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e5.jpg'}
+                <Image
+                  src={transformation.optimizedImage}
                   alt={`${transformation.clientName} Transformation`}
+                  width={400}
+                  height={500}
                   className="w-full h-auto object-contain rounded-[16px]"
-                  loading="lazy"
+                  loading={index < 3 ? "eager" : "lazy"}
                   decoding="async"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={75}
                 />
               </div>
             </SwiperSlide>

@@ -282,12 +282,14 @@ export default function WeightLossPage() {
         {/* Desktop Version */}
         <div className="hidden lg:block">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
             alt="Our Five-Cycle Program - Desktop"
             width={1200}
             height={600}
             loading="lazy"
+            decoding="async"
             sizes="(max-width: 1200px) 100vw, 1200px"
+            quality={75}
             className="w-full h-auto"
           />
         </div>
@@ -295,12 +297,14 @@ export default function WeightLossPage() {
         {/* Mobile Version */}
         <div className="lg:hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
             alt="Our Five-Cycle Program - Mobile"
             width={600}
             height={800}
             loading="lazy"
+            decoding="async"
             sizes="100vw"
+            quality={70}
             className="w-full h-auto"
           />
         </div>
@@ -312,12 +316,14 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
               alt="What to Expect - Desktop"
               width={1200}
               height={600}
               loading="lazy"
+              decoding="async"
               sizes="(max-width: 1200px) 100vw, 1200px"
+              quality={75}
               className="w-full h-auto"
             />
           </div>
@@ -325,12 +331,14 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
               alt="What to Expect - Mobile"
               width={600}
               height={800}
               loading="lazy"
+              decoding="async"
               sizes="100vw"
+              quality={70}
               className="w-full h-auto"
             />
           </div>
@@ -343,12 +351,14 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
               alt="100% Money Back Guarantee - Desktop"
               width={1200}
               height={600}
               loading="lazy"
+              decoding="async"
               sizes="(max-width: 1200px) 100vw, 1200px"
+              quality={75}
               className="w-full h-auto"
             />
           </div>
@@ -356,12 +366,14 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
               alt="100% Money Back Guarantee - Mobile"
               width={600}
               height={800}
               loading="lazy"
+              decoding="async"
               sizes="100vw"
+              quality={70}
               className="w-full h-auto"
             />
           </div>
@@ -374,12 +386,14 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
               alt="What You Get - Desktop"
               width={1200}
               height={600}
               loading="lazy"
+              decoding="async"
               sizes="(max-width: 1200px) 100vw, 1200px"
+              quality={75}
               className="w-full h-auto"
             />
           </div>
@@ -387,12 +401,14 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
               alt="What You Get - Mobile"
               width={600}
               height={800}
               loading="lazy"
+              decoding="async"
               sizes="100vw"
+              quality={70}
               className="w-full h-auto"
             />
           </div>
