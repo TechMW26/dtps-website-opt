@@ -18,17 +18,17 @@ export default function OurTeamSection() {
   ];
 
   return (
-    <section className="w-full max-w-[1200px] bg-white overflow-hidden rounded-[16px] md:rounded-[26px] outline outline-[0.5px] outline-[#6c6c6c] -outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 mt-10 mx-auto">
+    <section className="w-full max-w-[1200px] bg-[#f7f7f7] md:bg-white rounded-[16px] md:rounded-[26px] overflow-hidden border border-[#d9d9d9] md:outline md:outline-[0.5px] md:outline-[#6c6c6c] md:-outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 mt-10 mx-auto">
 
       {/* Banner */}
-      <div className="w-full relative overflow-hidden">
+      <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden">
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a5.jpg"
+          src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
           alt="Our Team"
           width={1920}
           height={1080}
           priority
-          className="w-full h-auto block object-cover object-center"
+          className="block object-cover object-center w-full h-[190px] sm:h-[240px] md:h-auto"
           sizes="100vw"
         />
       </div>
@@ -40,7 +40,7 @@ export default function OurTeamSection() {
           <div className="flex flex-col items-center gap-3">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[#f5a623] text-lg">✦</span>
-              <span className="text-teal-600 text-base font-semibold">
+              <span className="text-base font-semibold text-teal-600">
                 Our Team
               </span>
             </div>

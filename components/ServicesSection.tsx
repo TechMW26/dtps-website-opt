@@ -67,7 +67,7 @@ export default function ServicesSection() {
     >
       <div className="max-w-[1200px] mx-auto">
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {/* Header Card */}
           <div
             className={`p-6 flex flex-col justify-center transition-all duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
@@ -75,12 +75,12 @@ export default function ServicesSection() {
           >
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[#f5a623] text-lg">✦</span>
-              <span className="text-teal-600 text-base font-semibold">
+              <span className="text-base font-semibold text-teal-600">
                 Services
               </span>
             </div>
-            <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4">
-              What We<br />Help With
+            <h2 className="text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4 whitespace-nowrap">
+              What We Help With
             </h2>
             <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-6">
               Most people don&apos;t fail at dieting.<br />
@@ -104,7 +104,7 @@ export default function ServicesSection() {
               : 'translate-y-[30px] opacity-0'
               }`}
           >
-            <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white">
+            <div className="flex items-center justify-center mb-6 text-white w-14 h-14 bg-white/20 rounded-xl">
               <Image
                 src={services[0].icon}
                 alt={services[0].title}
@@ -117,7 +117,7 @@ export default function ServicesSection() {
             <h3 className="text-[1.35rem] font-bold text-white mb-4">
               {services[0].title}
             </h3>
-            <p className="text-sm text-white/90 leading-relaxed flex-1">
+            <p className="flex-1 text-sm leading-relaxed text-white/90">
               {services[0].description}
             </p>
           </div>
@@ -251,12 +251,12 @@ export default function ServicesSection() {
               quality={75}
               unoptimized
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 flex flex-col justify-end p-8">
-              <p className="text-sm text-white/80 mb-1">If you&apos;re thinking,</p>
+            <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/80 via-black/50 to-black/30">
+              <p className="mb-1 text-sm text-white/80">If you&apos;re thinking,</p>
               <h3 className="text-[1.8rem] font-bold text-white leading-tight mb-4">
                 What happens<br />after I start?
               </h3>
-              <p className="text-sm text-white/90 leading-relaxed">
+              <p className="text-sm leading-relaxed text-white/90">
                 You&apos;re guided, tracked, and supported<br />until results show.<br />
                 Click Here to know the full process!
               </p>

@@ -205,15 +205,15 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full  ">
                           <Image
-                           src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
-     
-                                                     alt="Choose your plan icon"
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+
+                            alt="Choose your plan icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
                             loading="lazy"
                           />
-                          
+
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
@@ -247,9 +247,9 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[68px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
                           <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
-   
-                                                     alt="Health counsellor connect icon"
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
+
+                            alt="Health counsellor connect icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -288,10 +288,10 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
                           <Image
-                          
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
-   
-                                 alt="Dietitian assessment call icon"
+
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
+
+                            alt="Dietitian assessment call icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -330,9 +330,9 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
                           <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
-                       
-                                  alt="Personalised plan delivery icon"
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
+
+                            alt="Personalised plan delivery icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -358,7 +358,7 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
                           <Image
-                             src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
                             alt="Follow-ups and tracking icon"
                             width={31}
                             height={31}
@@ -409,7 +409,7 @@ export default function HomePage() {
 
                     <div className="mt-7 overflow-hidden rounded-[20px]">
                       <Image
-                        src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ec.jpg"
+                        src="/images/Appointment%20Image.png"
                         alt="Dietitian consultation"
                         width={334}
                         height={185}
@@ -515,165 +515,167 @@ export default function HomePage() {
               </div>
 
               <div className="relative pl-[6px] pr-[2px]">
-                <div className="absolute left-[19px] top-[28px] bottom-[240px] border-l border-dotted border-white/45" />
+                <div className="relative">
+                  <div className="pointer-events-none absolute left-[19px] top-[28px] bottom-[170px] border-l border-dotted border-white/45" />
 
-                <div className="space-y-4">
-                  {/* Mobile Step 1 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                      1
-                    </div>
+                  <div className="space-y-4">
+                    {/* Mobile Step 1 */}
+                    <div className="relative pl-10">
+                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
+                        1
+                      </div>
 
-                    <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
-                            alt="Choose your plan icon"
-                            width={31}
-                            height={31}
-                            className="h-[31px] w-[31px] object-contain"
-                            loading="lazy"
-                          />
-                        </div>
+                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
+                            <Image
+                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
+                              alt="Choose your plan icon"
+                              width={31}
+                              height={31}
+                              className="h-[31px] w-[31px] object-contain"
+                              loading="lazy"
+                            />
+                          </div>
 
-                        <div className="pt-1">
-                          <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                            Choose Your Plan
-                          </h3>
-                          <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                            Select a diet plan based on your goal, health
-                            condition, and duration.
-                          </p>
+                          <div className="pt-1">
+                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
+                              Choose Your Plan
+                            </h3>
+                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
+                              Select a diet plan based on your goal, health
+                              condition, and duration.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Mobile Step 2 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                      2
-                    </div>
+                    {/* Mobile Step 2 */}
+                    <div className="relative pl-10">
+                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
+                        2
+                      </div>
 
-                    <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
-                            alt="Health counsellor connect icon"
-                            width={31}
-                            height={31}
-                            className="h-[31px] w-[31px] object-contain"
-                            loading="lazy"
-                          />
-                        </div>
+                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
+                            <Image
+                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
+                              alt="Health counsellor connect icon"
+                              width={31}
+                              height={31}
+                              className="h-[31px] w-[31px] object-contain"
+                              loading="lazy"
+                            />
+                          </div>
 
-                        <div className="pt-1">
-                          <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                            Health Counsellor Connect
-                          </h3>
-                          <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                            Our health counsellor connects with you to
-                            understand your lifestyle and concerns.
-                          </p>
+                          <div className="pt-1">
+                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
+                              Health Counsellor Connect
+                            </h3>
+                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
+                              Our health counsellor connects with you to
+                              understand your lifestyle and concerns.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Mobile Step 3 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                      3
-                    </div>
+                    {/* Mobile Step 3 */}
+                    <div className="relative pl-10">
+                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
+                        3
+                      </div>
 
-                    <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
-                            alt="Dietitian assessment call icon"
-                            width={31}
-                            height={31}
-                            className="h-[31px] w-[31px] object-contain"
-                            loading="lazy"
-                          />
-                        </div>
+                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
+                            <Image
+                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
+                              alt="Dietitian assessment call icon"
+                              width={31}
+                              height={31}
+                              className="h-[31px] w-[31px] object-contain"
+                              loading="lazy"
+                            />
+                          </div>
 
-                        <div className="pt-1">
-                          <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                            Dietitian Assessment Call
-                          </h3>
-                          <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                            Your assigned dietitian speaks with you to
-                            understand your lifestyle, food choices and health
-                            goals before planning your diet.
-                          </p>
+                          <div className="pt-1">
+                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
+                              Dietitian Assessment Call
+                            </h3>
+                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
+                              Your assigned dietitian speaks with you to
+                              understand your lifestyle, food choices and health
+                              goals before planning your diet.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Mobile Step 4 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                      4
-                    </div>
+                    {/* Mobile Step 4 */}
+                    <div className="relative pl-10">
+                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
+                        4
+                      </div>
 
-                    <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
-                            alt="Personalised plan delivery icon"
-                            width={31}
-                            height={31}
-                            className="h-[31px] w-[31px] object-contain"
-                            loading="lazy"
-                          />
-                        </div>
+                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
+                            <Image
+                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
+                              alt="Personalised plan delivery icon"
+                              width={31}
+                              height={31}
+                              className="h-[31px] w-[31px] object-contain"
+                              loading="lazy"
+                            />
+                          </div>
 
-                        <div className="pt-1">
-                          <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                            Personalised Plan Delivery
-                          </h3>
-                          <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                            Your customised diet plan is shared on OUR APP
-                            within 24 hours of the assessment.
-                          </p>
+                          <div className="pt-1">
+                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
+                              Personalised Plan Delivery
+                            </h3>
+                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
+                              Your customised diet plan is shared on OUR APP
+                              within 24 hours of the assessment.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Mobile Step 5 */}
-                  <div className="relative pl-10">
-                    <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                      5
-                    </div>
+                    {/* Mobile Step 5 */}
+                    <div className="relative pl-10">
+                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
+                        5
+                      </div>
 
-                    <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                      <div className="flex items-start gap-3">
-                        <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
-                            alt="Follow-ups and tracking icon"
-                            width={31}
-                            height={31}
-                            className="h-[31px] w-[31px] object-contain"
-                            loading="lazy"
-                          />
-                        </div>
+                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
+                            <Image
+                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+                              alt="Follow-ups and tracking icon"
+                              width={31}
+                              height={31}
+                              className="h-[31px] w-[31px] object-contain"
+                              loading="lazy"
+                            />
+                          </div>
 
-                        <div className="pt-1">
-                          <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                            Follow-Ups &amp; Tracking
-                          </h3>
-                          <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                            Weekly or requirement-based follow-ups to track
-                            progress and make timely adjustments.
-                          </p>
+                          <div className="pt-1">
+                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
+                              Follow-Ups &amp; Tracking
+                            </h3>
+                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
+                              Weekly or requirement-based follow-ups to track
+                              progress and make timely adjustments.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -701,7 +703,7 @@ export default function HomePage() {
 
                     <div className="mt-4 overflow-hidden rounded-[18px]">
                       <Image
-                        src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ec.jpg"
+                        src="/images/Appointment%20Image.png"
                         alt="Dietitian consultation"
                         width={350}
                         height={210}
