@@ -719,6 +719,7 @@ export default function WeddingPlanPage() {
                         loading="lazy"
                       />
 
+
                     </div>
 
                     <p className="text-white font-semibold text-base md:text-lg">
