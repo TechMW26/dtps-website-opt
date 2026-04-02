@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Button from '@/components/ui/Button';
 import Image from 'next/image';
 
 interface PageHero {
@@ -41,12 +40,14 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
       try {
         setLoading(true);
         const res = await fetch(`/api/site-banners?type=hero-banner&page=${page}&active=true`);
-        if (!res.ok) throw new Error('Failed to fetch hero');
+        if (!res.ok) {
+          setHero(null);
+          return;
+        }
         const data = await res.json();
         const banners = data.banners || [];
         setHero(banners.length > 0 ? banners[0] : null);
-      } catch (error) {
-        console.error('Error fetching page hero:', error);
+      } catch {
         setHero(null);
       } finally {
         setLoading(false);

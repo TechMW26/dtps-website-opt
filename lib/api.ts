@@ -33,15 +33,14 @@ export async function getPricingByPage(page: 'weight-loss' | 'pcod' | 'therapeut
     const res = await fetch(`/api/pricing?page=${page}`, {
       next: { revalidate: 60 } // Cache for 60 seconds
     });
-    
+
     if (!res.ok) {
-      throw new Error('Failed to fetch pricing');
+      return [];
     }
-    
+
     const data = await res.json();
     return data.pricing?.filter((p: Pricing) => p.isActive) || [];
-  } catch (error) {
-    console.error('Error fetching pricing:', error);
+  } catch {
     return [];
   }
 }
@@ -51,15 +50,14 @@ export async function getPricingByCategory(category: 'weight-loss' | 'pcod' | 'n
     const res = await fetch(`/api/pricing?category=${category}`, {
       next: { revalidate: 60 } // Cache for 60 seconds
     });
-    
+
     if (!res.ok) {
-      throw new Error('Failed to fetch pricing');
+      return [];
     }
-    
+
     const data = await res.json();
     return data.pricing?.filter((p: Pricing) => p.isActive) || [];
-  } catch (error) {
-    console.error('Error fetching pricing:', error);
+  } catch {
     return [];
   }
 }
@@ -70,15 +68,14 @@ export async function getRecognitions(page?: string): Promise<Recognition[]> {
     const res = await fetch(url, {
       next: { revalidate: 60 } // Cache for 60 seconds
     });
-    
+
     if (!res.ok) {
-      throw new Error('Failed to fetch recognitions');
+      return [];
     }
-    
+
     const data = await res.json();
     return data.recognitions?.filter((r: Recognition) => r.isActive) || [];
-  } catch (error) {
-    console.error('Error fetching recognitions:', error);
+  } catch {
     return [];
   }
 }
@@ -88,15 +85,14 @@ export async function getAllPricing(): Promise<Pricing[]> {
     const res = await fetch('/api/pricing', {
       next: { revalidate: 60 }
     });
-    
+
     if (!res.ok) {
-      throw new Error('Failed to fetch pricing');
+      return [];
     }
-    
+
     const data = await res.json();
     return data.pricing?.filter((p: Pricing) => p.isActive) || [];
-  } catch (error) {
-    console.error('Error fetching pricing:', error);
+  } catch {
     return [];
   }
 }

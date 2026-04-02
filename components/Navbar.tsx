@@ -76,7 +76,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
               />
             </Link>
 
-            <nav className="hidden flex-1 items-center justify-center gap-2 lg:flex">
+            <nav className="items-center justify-center flex-1 hidden gap-2 lg:flex">
               {navItems.map((item) => (
                 <div key={item.label} className="relative" ref={item.children ? dropdownRef : undefined}>
                   {item.children ? (

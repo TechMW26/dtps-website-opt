@@ -18,364 +18,87 @@ export default function OurTeamSection() {
   ];
 
   return (
-    <>
-      <section className="our-team-section">
+    <section className="w-full max-w-[1200px] bg-white overflow-hidden rounded-[16px] md:rounded-[26px] outline outline-[0.5px] outline-[#6c6c6c] -outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 mt-10 mx-auto">
 
-        {/* Banner */}
-        <div className="team-banner">
-          <Image
-            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a5.jpg"
-            alt="Our Team"
-            width={1920}
-            height={1080}
-            priority
-            className="team-banner-image"
-            sizes="100vw"
-          />
-        </div>
+      {/* Banner */}
+      <div className="w-full relative overflow-hidden">
+        <Image
+          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a5.jpg"
+          alt="Our Team"
+          width={1920}
+          height={1080}
+          priority
+          className="w-full h-auto block object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
 
-        {/* Content */}
-        <div className="team-content-wrap">
-          <div className="team-content-inner">
+      {/* Content */}
+      <div className="flex flex-col items-center gap-8 w-full max-w-[1200px] px-2 md:px-4 lg:px-6">
+        <div className="w-full max-w-[920px]">
 
-            <div className="team-heading-group">
-              <div className="team-label-row">
-               
-                
-              </div>
-              <div className="flex items-center gap-2 mb-4">
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex items-center gap-2 mb-4">
               <span className="text-[#f5a623] text-lg">✦</span>
               <span className="text-teal-600 text-base font-semibold">
                 Our Team
               </span>
             </div>
 
-              <h2 className="team-title">
-                The People Behind Your Weight Loss Journey
-              </h2>
-            </div>
-<br></br>
-            <div className="team-description">
-              Weight loss doesn’t work because of a chart. It works because of people. DTPS is run by a team of {" "}
-              <span className="bold">
-                200+ dietitians and health counsellors.
-              </span>
-              <br />
-              They talk to you, understand your routine and adjust your plan when things don’t go as planned. They track your progress, adjust your plan when needed, and stay involved until results show. This isn’t automated support. This isn’t passion written in a job description. It comes from people who genuinely care about outcomes, who think beyond charts and calls, and who take personal responsibility for your progress until results actually show.
-            </div>
-
+            <h2 className="m-0 text-[#1e1e1e] text-[28px] md:text-[40px] font-bold leading-[1.12] text-center">
+              The People Behind Your Weight Loss Journey
+            </h2>
           </div>
 
-          <div className="team-divider" />
+          <br />
 
-          <div className="highlights-grid">
-            {highlights.map((item) => (
-              <div key={item.number} className="highlight-card">
-                <div className="highlight-number-box">
-                  <div className="highlight-number">{item.number}</div>
-                </div>
-                <div className="highlight-label">{item.label}</div>
-              </div>
-            ))}
+          <div className="w-full text-base leading-[26px]">
+            Weight loss doesn&apos;t work because of a chart. It works because of people. DTPS is run by a team of{" "}
+            <span className="font-bold">
+              200+ dietitians and health counsellors.
+            </span>
+            <br />
+            They talk to you, understand your routine and adjust your plan when things don&apos;t go as planned. They track your progress, adjust your plan when needed, and stay involved until results show. This isn&apos;t automated support. This isn&apos;t passion written in a job description. It comes from people who genuinely care about outcomes, who think beyond charts and calls, and who take personal responsibility for your progress until results actually show.
           </div>
+
         </div>
 
-        {/* Gallery */}
-        <div className="team-gallery">
-          {galleryImages.map((img, index) => (
-            <div key={index} className="gallery-card">
-              <Image
-                src={img}
-                alt={`Gallery ${index + 1}`}
-                fill
-                className="gallery-image"
-                sizes="(max-width: 767px) 80vw, 25vw"
-              />
+        <div className="w-full max-w-[456px] border-t-2 border-[#e9e9e9]" />
+
+        {/* Highlights Grid */}
+        <div className="w-full max-w-[920px] grid grid-cols-2 gap-5 md:gap-[22px]">
+          {highlights.map((item) => (
+            <div
+              key={item.number}
+              className="w-full min-h-[130px] md:min-h-[76px] p-4 md:px-5 md:py-2 bg-white shadow-[0_0_4px_rgba(0,0,0,0.25)] rounded-[22px] md:rounded-[40px] flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-[14px] text-center md:text-left"
+            >
+              <div className="w-14 h-14 md:w-[60px] md:h-[60px] bg-[#014e4e] rounded-[14px] md:rounded-[32px] flex items-center justify-center flex-shrink-0">
+                <div className="text-white text-[22px] md:text-[24px] font-extrabold">{item.number}</div>
+              </div>
+              <div className="text-[15px] md:text-[18px] font-semibold mt-2 md:mt-0">{item.label}</div>
             </div>
           ))}
         </div>
+      </div>
 
-      </section>
+      {/* Gallery */}
+      <div className="w-full max-w-[1200px] flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-[14px] md:gap-5 px-2 md:px-4 lg:px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide">
+        {galleryImages.map((img, index) => (
+          <div
+            key={index}
+            className="flex-[0_0_80%] md:flex-auto w-full h-[160px] md:h-[170px] lg:h-[179px] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
+          >
+            <Image
+              src={img}
+              alt={`Gallery ${index + 1}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 767px) 80vw, 25vw"
+            />
+          </div>
+        ))}
+      </div>
 
-<style jsx>{`
-
-.our-team-section {
-  width: 100%;
-  max-width: 1200px;
-  background: white;
-  overflow: hidden;
-  border-radius: 25.9px;
-  outline: 0.5px solid #6c6c6c;
-  outline-offset: -0.5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* BANNER */
-
-.team-banner {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.team-banner-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* CONTENT */
-
-.team-content-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 33px;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 8px;
-}
-
-.team-content-inner {
-  width: 100%;
-  max-width: 920px;
-}
-
-.team-heading-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.team-label-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.team-label-icon {
-  width: 14px;
-  height: 14px;
-  background: #ff850b;
-}
-
-.team-label-text {
-  color: #014e4e;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.team-title {
-  margin: 0;
-  color: #1e1e1e;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1.12;
-  text-align: center;
-}
-
-.team-description {
-  width: 100%;
-  font-size: 16px;
-  line-height: 26px;
-}
-
-.team-description .bold {
-  font-weight: 700;
-}
-
-.team-divider {
-  width: 458px;
-  border-top: 2px solid #e9e9e9;
-}
-
-/* HIGHLIGHTS DESKTOP */
-
-.highlights-grid {
-  width: 100%;
-  display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-
-.highlight-card {
-  width: calc(50% - 11px);
-  min-height: 76px;
-  padding: 8px;
-  background: white;
-  box-shadow: 0 0 4px rgba(0,0,0,0.25);
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.highlight-number-box {
-  width: 60px;
-  height: 60px;
-  background: #014e4e;
-  border-radius: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.highlight-number {
-  color: white;
-  font-size: 24px;
-  font-weight: 800;
-}
-
-.highlight-label {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-/* GALLERY DESKTOP */
-
-.team-gallery {
-  width: 100%;
-  max-width: 1200px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  padding: 0 8px;
-}
-
-.gallery-card {
-  width: 100%;
-  height: 179px;
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.gallery-image {
-  object-fit: cover;
-}
-
-@media (min-width:768px) {
-.team-content-wrap,
-.team-gallery {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-}
-
-@media (min-width:1024px) {
-.team-content-wrap,
-.team-gallery {
-  padding-left: 24px;
-  padding-right: 24px;
-}
-}
-
-/* TABLET */
-
-@media (max-width:1024px) {
-.gallery-card {
-  height: 170px;
-}
-
-.team-gallery {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-}
-
-/* MOBILE */
-
-@media (max-width:767px) {
-
-/* FIX SIDE GAP */
-.our-team-section{
-  border-radius:16px;
-  margin-left:auto;
-  margin-right:auto;
-  width:100%;
-  max-width: 1200px;
-  padding-bottom: 32px;
-}
-
-.team-content-wrap,
-.team-gallery{
-  padding-left:8px;
-  padding-right:8px;
-}
-
-/* TEXT */
-.team-title{
-  font-size:28px;
-}
-
-/* HIGHLIGHTS GRID */
-
-.highlights-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-
-.highlight-card{
-  width:100%;
-  min-height:130px;
-  border-radius:22px;
-  padding:16px;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.highlight-number-box{
-  width:56px;
-  height:56px;
-  border-radius:14px;
-}
-
-.highlight-number{
-  font-size:22px;
-}
-
-.highlight-label{
-  font-size:15px;
-  margin-top:8px;
-}
-
-/* MOBILE GALLERY */
-
-.team-gallery{
-  flex-wrap:nowrap;
-  display:flex;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  gap:14px;
-  padding:0 8px;
-}
-
-.gallery-card{
-  flex:0 0 80%;
-  height:160px;
-  scroll-snap-align:center;
-}
-
-.team-gallery::-webkit-scrollbar{
-  display:none;
-}
-
-}
-
-`}</style>
-    </>
+    </section>
   );
 }

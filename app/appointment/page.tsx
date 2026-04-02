@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import PageWrapper from '@/components/PageWrapper';
+import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Book Appointment | Dietitian Poonam Sagar',
@@ -12,9 +13,12 @@ export const metadata: Metadata = {
  
 export default function AppointmentPage() {
   return (
-    <>
-      <PageWrapper>
-        {/* Hero Section */}
+      <div className="page-content">
+         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
+                        
+                        
+                          <Navbar/>
+                {/* Hero Section */}
         <section className="page-header">
           <div className="container">
             <h1 className="section-title light">Appointment</h1>
@@ -23,7 +27,9 @@ export default function AppointmentPage() {
             </div>
           </div>
         </section>
-      </PageWrapper>
+                       
+                        </div>
+
 
       {/* Appointment Form Section */}
       <section className="about-section">
@@ -46,7 +52,7 @@ export default function AppointmentPage() {
                     alt="Health Coaching" 
                     width={400} 
                     height={300} 
-                    className="rounded-2xl object-cover"
+                    className="object-cover rounded-2xl"
                     loading="lazy"
                   />
                 </div>
@@ -100,6 +106,6 @@ export default function AppointmentPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

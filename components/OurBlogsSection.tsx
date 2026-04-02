@@ -48,7 +48,7 @@ export default function OurBlogsSection() {
     return null;
   }
   return (
-    <section className="section-wrapper">
+    <section className="section-wrapper our-blogs-wrapper">
       <div className="w-full rounded-[30px] bg-[#015b5b] px-4 py-7 md:px-[64px] md:py-[58px] overflow-hidden">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 md:gap-8">
@@ -119,19 +119,19 @@ export default function OurBlogsSection() {
                     {blog.title}
                   </h3>
 
-                <p className="mt-3 text-[#888888] text-[13px] leading-[1.35] max-w-[315px]">
-                  {blog.excerpt}
-                </p>
+                  <p className="mt-3 text-[#888888] text-[13px] leading-[1.35] max-w-[315px]">
+                    {blog.excerpt}
+                  </p>
 
-                <a
-                  href={`/blog/${blog.slug}`}
-                  className="mt-4 inline-flex h-[22px] items-center justify-center rounded-[6px] bg-[#FF8A0A] px-[9px] text-white text-[11px] font-semibold leading-none"
-                >
-                  Read more <span className="ml-1">→</span>
-                </a>
-              </div>
-            </article>
-          ))
+                  <a
+                    href={`/blog/${blog.slug}`}
+                    className="mt-4 inline-flex h-[22px] items-center justify-center rounded-[6px] bg-[#FF8A0A] px-[9px] text-white text-[11px] font-semibold leading-none"
+                  >
+                    Read more <span className="ml-1">→</span>
+                  </a>
+                </div>
+              </article>
+            ))
           )}
         </div>
 
@@ -197,6 +197,20 @@ export default function OurBlogsSection() {
       </div>
 
       <style jsx>{`
+        .our-blogs-wrapper {
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-left: 70px;
+          padding-right: 70px;
+        }
+
+        @media (max-width: 768px) {
+          .our-blogs-wrapper {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+        }
+
         .no-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;

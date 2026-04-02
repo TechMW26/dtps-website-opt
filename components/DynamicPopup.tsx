@@ -26,12 +26,15 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
     const fetchPopup = async () => {
       try {
         const res = await fetch(`/api/popups?action=getPopup&page=${page}`);
-        if (!res.ok) throw new Error('Failed to fetch popup');
+        if (!res.ok) {
+          setPopup(null);
+          return;
+        }
         const data = await res.json();
-        
+
         if (data.popup) {
           setPopup(data.popup);
-          
+
           // Show popup after 3 seconds on every page load/refresh
           const timer = setTimeout(() => {
             setShowPopup(true);
@@ -39,8 +42,8 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
 
           return () => clearTimeout(timer);
         }
-      } catch (error) {
-        console.error('Error fetching popup:', error);
+      } catch {
+        setPopup(null);
       }
     };
 
@@ -74,10 +77,10 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
       });
 
       if (!res.ok) throw new Error('Failed to save lead');
-      
+
       setSubmitted(true);
       setPhoneNumber('');
-      
+
       // Close popup after 2 seconds
       setTimeout(() => {
         handleClose();

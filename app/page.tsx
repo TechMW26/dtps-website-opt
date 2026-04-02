@@ -57,7 +57,9 @@ export default function HomePage() {
     const fetchTestimonials = async () => {
       try {
         const res = await fetch('/api/testimonials?page=home&active=true');
-        if (!res.ok) throw new Error('Failed to fetch testimonials');
+        if (!res.ok) {
+          return;
+        }
         const data = await res.json();
         const normalized = (data.testimonials || []).map((item: Testimonial & { _id?: string }) => ({
           _id: item._id,
@@ -74,8 +76,8 @@ export default function HomePage() {
         if (normalized.length > 0) {
           setTestimonials(normalized);
         }
-      } catch (error) {
-        console.error('Error fetching testimonials:', error);
+      } catch {
+        // Keep fallback testimonials silently when API is unavailable
       }
     };
 
@@ -85,7 +87,7 @@ export default function HomePage() {
   // Prevent flash of content before hydration
   if (!isClient) {
     return (
-      <div className="bg-white min-h-screen">
+      <div className="min-h-screen bg-white">
         <Hero />
       </div>
     );
@@ -119,11 +121,11 @@ export default function HomePage() {
       <div className="section-wrapper">
         <section className="bg-white py-16 md:py-20 px-4 md:px-8 rounded-[30px] overflow-hidden">
           <div className="max-w-[1200px] mx-auto">
-            <div className="flex items-start justify-between mb-6 md:mb-10 flex-wrap gap-4">
+            <div className="flex flex-wrap items-start justify-between gap-4 mb-6 md:mb-10">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#ff9100] text-xl">✦</span>
-                  <span className="text-teal-600 font-semibold text-base">Hear from our Happy Clients</span>
+                  <span className="text-base font-semibold text-teal-600">Hear from our Happy Clients</span>
                 </div>
                 <h2 className="text-[1.5rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
                   Tailored programs for<br />your wellness
@@ -139,7 +141,7 @@ export default function HomePage() {
       <div className="section-wrapper">
         <section className="relative w-full">
           {/* DESKTOP */}
-          <div className="hidden md:block relative">
+          <div className="relative hidden md:block">
             <div
               className="relative overflow-hidden rounded-[30px] bg-[#014E4E] px-[52px] pt-[74px] pb-[210px]"
               style={{
@@ -159,7 +161,7 @@ export default function HomePage() {
                 {/* Header */}
                 <div className="flex items-start justify-between gap-10 px-[128px]">
                   <div className="max-w-[430px]">
-                    <div className="mb-3 flex items-center gap-2">
+                    <div className="flex items-center gap-2 mb-3">
                       <span className="text-[#FF850B] text-[14px] leading-none">✦</span>
                       <span className="text-[14px] font-semibold leading-[1] text-white">
                         How It Work
@@ -182,42 +184,39 @@ export default function HomePage() {
 
                 {/* Steps */}
                 <div className="relative mt-[78px] px-[88px]">
-                  <div className="pointer-events-none absolute left-[120px] right-[120px] top-[31px] border-t border-dashed border-white/45" />
 
                   <div className="grid grid-cols-5 gap-6">
+
                     {/* Step 1 */}
                     <div className="relative">
+                      {/* Dashed line with arrow to next step */}
+                      <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
+                        style={{ width: 'calc(100% - 50px)' }}>
+                        <Image
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          alt=""
+                          width={170}
+                          height={10}
+                          className="w-full h-auto opacity-90"
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                      </div>
                       <div className="relative mb-5 h-[72px]">
-                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <circle cx="15.5" cy="5.7" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <circle cx="4.9" cy="24.3" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <circle cx="15.5" cy="24.3" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <circle cx="26.1" cy="24.3" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <path
-                              d="M15.5 8.8V16.2M8 20.9H23M4.9 21.2V17.2H26.1V21.2"
-                              stroke="white"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                            />
-                          </svg>
+                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full  ">
+                          <Image
+                          
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
+                            alt="Choose your plan icon"
+                            width={31}
+                            height={31}
+                            className="h-[56px] w-[56px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
                           1
-                        </div>
-
-                        <div className="absolute right-[-8px] top-[28px] z-[2] text-white/80">
-                          <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
-                            <path
-                              d="M1 4H14M14 4L11 1M14 4L11 7"
-                              stroke="white"
-                              strokeOpacity="0.85"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                         </div>
                       </div>
 
@@ -225,48 +224,39 @@ export default function HomePage() {
                         Choose Your Plan
                       </h3>
                       <p className="mt-2 max-w-[170px] text-[12.5px] leading-[1.6] text-white/85">
-                        Select a diet plan based on your goal, health condition,
-                        and duration.
+                        Select a diet plan based on your goal, health condition, and duration.
                       </p>
                     </div>
 
                     {/* Step 2 */}
                     <div className="relative">
-                      <div className="relative mb-5 h-[72px]">
-                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <path
-                              d="M10 15.2V11.2C10 8 12.5 5.5 15.5 5.5C18.5 5.5 21 8 21 11.2V15.2"
-                              stroke="white"
-                              strokeWidth="1.2"
-                            />
-                            <rect x="7.4" y="13.5" width="4.2" height="7.2" rx="2.1" stroke="white" strokeWidth="1.2" />
-                            <rect x="19.4" y="13.5" width="4.2" height="7.2" rx="2.1" stroke="white" strokeWidth="1.2" />
-                            <path
-                              d="M14 22.6H17.2C18.7 22.6 19.9 21.4 19.9 19.9"
-                              stroke="white"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                            />
-                            <rect x="13.1" y="21.2" width="3.8" height="2.6" rx="1.3" stroke="white" strokeWidth="1.2" />
-                          </svg>
+                      {/* Dashed line with arrow to next step */}
+                      <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
+                        style={{ width: 'calc(100% - 50px)' }}>
+                        <Image
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          alt=""
+                          width={170}
+                          height={10}
+                          className="w-full h-auto opacity-90"
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="relative mb-5 h-[68px]">
+                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
+                            alt="Health counsellor connect icon"
+                            width={31}
+                            height={31}
+                            className="h-[56px] w-[56px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
                           2
-                        </div>
-
-                        <div className="absolute right-[-8px] top-[28px] z-[2] text-white/80">
-                          <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
-                            <path
-                              d="M1 4H14M14 4L11 1M14 4L11 7"
-                              stroke="white"
-                              strokeOpacity="0.85"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                         </div>
                       </div>
 
@@ -274,44 +264,39 @@ export default function HomePage() {
                         Health Counsellor Connect
                       </h3>
                       <p className="mt-2 max-w-[170px] text-[12.5px] leading-[1.6] text-white/85">
-                        Our health counsellor connects with you to understand
-                        your lifestyle and concerns.
+                        Our health counsellor connects with you to understand your lifestyle and concerns.
                       </p>
                     </div>
 
                     {/* Step 3 */}
                     <div className="relative">
+                      {/* Dashed line with arrow to next step */}
+                      <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
+                        style={{ width: 'calc(100% - 50px)' }}>
+                        <Image
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          alt=""
+                          width={170}
+                          height={10}
+                          className="w-full h-auto opacity-90"
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                      </div>
                       <div className="relative mb-5 h-[72px]">
-                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <circle cx="12" cy="11.5" r="4.2" stroke="white" strokeWidth="1.1" />
-                            <path
-                              d="M5.5 23.5C6.5 19.7 8.9 18 12 18C15.1 18 17.5 19.7 18.5 23.5"
-                              stroke="white"
-                              strokeWidth="1.1"
-                              strokeLinecap="round"
-                            />
-                            <rect x="18.7" y="8.2" width="7.4" height="10.2" rx="1.4" stroke="white" strokeWidth="1.1" />
-                            <path d="M20.6 11.2H24.4M20.6 14.2H24.4" stroke="white" strokeWidth="1.1" strokeLinecap="round" />
-                            <path d="M18.7 23.5H26.2" stroke="white" strokeWidth="1.1" strokeLinecap="round" />
-                          </svg>
+                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
+                            alt="Dietitian assessment call icon"
+                            width={31}
+                            height={31}
+                            className="h-[56px] w-[56px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
                           3
-                        </div>
-
-                        <div className="absolute right-[-8px] top-[28px] z-[2] text-white/80">
-                          <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
-                            <path
-                              d="M1 4H14M14 4L11 1M14 4L11 7"
-                              stroke="white"
-                              strokeOpacity="0.85"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                         </div>
                       </div>
 
@@ -319,40 +304,39 @@ export default function HomePage() {
                         Dietitian Assessment Call
                       </h3>
                       <p className="mt-2 max-w-[170px] text-[12.5px] leading-[1.6] text-white/85">
-                        Your assigned dietitian speaks with you to understand
-                        your lifestyle, food choices and health goals before
-                        planning your diet.
+                        Your assigned dietitian speaks with you to understand your lifestyle, food choices and health goals before planning your diet.
                       </p>
                     </div>
 
                     {/* Step 4 */}
                     <div className="relative">
+                      {/* Dashed line with arrow to next step */}
+                      <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
+                        style={{ width: 'calc(100% - 50px)' }}>
+                        <Image
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          alt=""
+                          width={170}
+                          height={10}
+                          className="w-full h-auto opacity-90"
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                      </div>
                       <div className="relative mb-5 h-[72px]">
-                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <rect x="8.2" y="4.8" width="14.6" height="21.4" rx="1.8" stroke="white" strokeWidth="1.2" />
-                            <path d="M12 9.7H19" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-                            <rect x="11.2" y="12.6" width="2.5" height="2.5" stroke="white" strokeWidth="1.1" />
-                            <rect x="11.2" y="17.2" width="2.5" height="2.5" stroke="white" strokeWidth="1.1" />
-                            <path d="M15.4 13.8H19.6M15.4 18.4H19.6" stroke="white" strokeWidth="1.1" strokeLinecap="round" />
-                          </svg>
+                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
+                            alt="Personalised plan delivery icon"
+                            width={31}
+                            height={31}
+                            className="h-[56px] w-[56px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
                           4
-                        </div>
-
-                        <div className="absolute right-[-8px] top-[28px] z-[2] text-white/80">
-                          <svg width="16" height="8" viewBox="0 0 16 8" fill="none" aria-hidden="true">
-                            <path
-                              d="M1 4H14M14 4L11 1M14 4L11 7"
-                              stroke="white"
-                              strokeOpacity="0.85"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
                         </div>
                       </div>
 
@@ -360,21 +344,22 @@ export default function HomePage() {
                         Personalised Plan Delivery
                       </h3>
                       <p className="mt-2 max-w-[170px] text-[12.5px] leading-[1.6] text-white/85">
-                        Your customised diet plan is shared on OUR APP within 24
-                        hours of the assessment.
+                        Your customised diet plan is shared on OUR APP within 24 hours of the assessment.
                       </p>
                     </div>
 
                     {/* Step 5 */}
                     <div className="relative">
                       <div className="relative mb-5 h-[72px]">
-                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <rect x="5.2" y="19.2" width="20.6" height="5.4" stroke="white" strokeWidth="1.1" />
-                            <path d="M8.5 19.1V12.7M15.5 19.1V9.3M22.5 19.1V14.8" stroke="white" strokeWidth="1.1" />
-                            <path d="M7.2 10.1L10.4 7.8L14.1 10.1L18.1 6.8L23.6 9.5" stroke="white" strokeWidth="1.1" />
-                            <path d="M13.8 5.1H17.2V8.5" stroke="white" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
+                        <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+                            alt="Follow-ups and tracking icon"
+                            width={31}
+                            height={31}
+                            className="h-[56px] w-[56px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
@@ -383,25 +368,25 @@ export default function HomePage() {
                       </div>
 
                       <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                        Follow-Ups &amp; Tracking
+                        Follow-Ups & Tracking
                       </h3>
                       <p className="mt-2 max-w-[170px] text-[12.5px] leading-[1.6] text-white/85">
-                        Weekly or requirement-based follow-ups to track progress
-                        and make timely adjustments.
+                        Weekly or requirement-based follow-ups to track progress and make timely adjustments.
                       </p>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Overlap appointment card */}
-            <div className="relative z-10 mx-auto -mt-[178px] max-w-[840px]">
+            <div className="relative z-10 mx-auto -mt-[178px] max-w-[1010px]">
               <div className="rounded-[22px] border border-[#F1F1F1] bg-white px-[66px] py-[66px] shadow-[0_0_20px_rgba(0,0,0,0.05)]">
                 <div className="flex items-start gap-[40px]">
                   {/* left */}
                   <div className="w-[334px] flex-shrink-0">
-                    <div className="mb-4 flex items-center gap-2">
+                    <div className="flex items-center gap-2 mb-4">
                       <span className="text-[#FF850B] text-[14px] leading-none">✦</span>
                       <span className="text-[14px] font-semibold text-[#014E4E]">
                         Appointment
@@ -504,7 +489,7 @@ export default function HomePage() {
           <div className="md:hidden">
             <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-4 pb-6 pt-7">
               <div className="mb-5">
-                <div className="mb-2 flex items-center gap-2">
+                <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
                   <span className="text-[13px] font-semibold text-white">
                     How It Work
@@ -537,18 +522,14 @@ export default function HomePage() {
                     <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
                       <div className="flex items-start gap-3">
                         <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <circle cx="15.5" cy="5.7" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <circle cx="4.9" cy="24.3" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <circle cx="15.5" cy="24.3" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <circle cx="26.1" cy="24.3" r="3.1" stroke="white" strokeWidth="1.2" />
-                            <path
-                              d="M15.5 8.8V16.2M8 20.9H23M4.9 21.2V17.2H26.1V21.2"
-                              stroke="white"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                            />
-                          </svg>
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
+                            alt="Choose your plan icon"
+                            width={31}
+                            height={31}
+                            className="h-[31px] w-[31px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="pt-1">
@@ -573,22 +554,14 @@ export default function HomePage() {
                     <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
                       <div className="flex items-start gap-3">
                         <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <path
-                              d="M10 15.2V11.2C10 8 12.5 5.5 15.5 5.5C18.5 5.5 21 8 21 11.2V15.2"
-                              stroke="white"
-                              strokeWidth="1.2"
-                            />
-                            <rect x="7.4" y="13.5" width="4.2" height="7.2" rx="2.1" stroke="white" strokeWidth="1.2" />
-                            <rect x="19.4" y="13.5" width="4.2" height="7.2" rx="2.1" stroke="white" strokeWidth="1.2" />
-                            <path
-                              d="M14 22.6H17.2C18.7 22.6 19.9 21.4 19.9 19.9"
-                              stroke="white"
-                              strokeWidth="1.2"
-                              strokeLinecap="round"
-                            />
-                            <rect x="13.1" y="21.2" width="3.8" height="2.6" rx="1.3" stroke="white" strokeWidth="1.2" />
-                          </svg>
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
+                            alt="Health counsellor connect icon"
+                            width={31}
+                            height={31}
+                            className="h-[31px] w-[31px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="pt-1">
@@ -613,18 +586,14 @@ export default function HomePage() {
                     <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
                       <div className="flex items-start gap-3">
                         <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <circle cx="12" cy="11.5" r="4.2" stroke="white" strokeWidth="1.1" />
-                            <path
-                              d="M5.5 23.5C6.5 19.7 8.9 18 12 18C15.1 18 17.5 19.7 18.5 23.5"
-                              stroke="white"
-                              strokeWidth="1.1"
-                              strokeLinecap="round"
-                            />
-                            <rect x="18.7" y="8.2" width="7.4" height="10.2" rx="1.4" stroke="white" strokeWidth="1.1" />
-                            <path d="M20.6 11.2H24.4M20.6 14.2H24.4" stroke="white" strokeWidth="1.1" strokeLinecap="round" />
-                            <path d="M18.7 23.5H26.2" stroke="white" strokeWidth="1.1" strokeLinecap="round" />
-                          </svg>
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
+                            alt="Dietitian assessment call icon"
+                            width={31}
+                            height={31}
+                            className="h-[31px] w-[31px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="pt-1">
@@ -650,13 +619,14 @@ export default function HomePage() {
                     <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
                       <div className="flex items-start gap-3">
                         <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <rect x="8.2" y="4.8" width="14.6" height="21.4" rx="1.8" stroke="white" strokeWidth="1.2" />
-                            <path d="M12 9.7H19" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-                            <rect x="11.2" y="12.6" width="2.5" height="2.5" stroke="white" strokeWidth="1.1" />
-                            <rect x="11.2" y="17.2" width="2.5" height="2.5" stroke="white" strokeWidth="1.1" />
-                            <path d="M15.4 13.8H19.6M15.4 18.4H19.6" stroke="white" strokeWidth="1.1" strokeLinecap="round" />
-                          </svg>
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
+                            alt="Personalised plan delivery icon"
+                            width={31}
+                            height={31}
+                            className="h-[31px] w-[31px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="pt-1">
@@ -681,12 +651,14 @@ export default function HomePage() {
                     <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
                       <div className="flex items-start gap-3">
                         <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                          <svg width="31" height="31" viewBox="0 0 31 31" fill="none" aria-hidden="true">
-                            <rect x="5.2" y="19.2" width="20.6" height="5.4" stroke="white" strokeWidth="1.1" />
-                            <path d="M8.5 19.1V12.7M15.5 19.1V9.3M22.5 19.1V14.8" stroke="white" strokeWidth="1.1" />
-                            <path d="M7.2 10.1L10.4 7.8L14.1 10.1L18.1 6.8L23.6 9.5" stroke="white" strokeWidth="1.1" />
-                            <path d="M13.8 5.1H17.2V8.5" stroke="white" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
+                          <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+                            alt="Follow-ups and tracking icon"
+                            width={31}
+                            height={31}
+                            className="h-[31px] w-[31px] object-contain"
+                            loading="lazy"
+                          />
                         </div>
 
                         <div className="pt-1">
@@ -706,7 +678,7 @@ export default function HomePage() {
                 {/* mobile appointment */}
                 <div className="mt-6 rounded-[18px] border border-white/60 bg-[linear-gradient(180deg,#0f6767_0%,#0d5555_100%)] p-[1px]">
                   <div className="rounded-[17px] bg-white p-4">
-                    <div className="mb-2 flex items-center gap-2">
+                    <div className="flex items-center gap-2 mb-2">
                       <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
                       <span className="text-[13px] font-semibold text-[#014E4E]">
                         Our Testimonials
@@ -728,7 +700,7 @@ export default function HomePage() {
                         alt="Dietitian consultation"
                         width={350}
                         height={210}
-                        className="h-auto w-full object-cover"
+                        className="object-cover w-full h-auto"
                         loading="lazy"
                         sizes="(max-width: 767px) 100vw, 350px"
                         quality={75}
@@ -810,7 +782,7 @@ export default function HomePage() {
       </div>
 
       {/* Our Blogs Section */}
-      <div className="section-wrapper">
+      <div className="section-wrapper-blog">
         <OurBlogsSection />
       </div>
 
@@ -829,7 +801,7 @@ export default function HomePage() {
                     alt="Testimonials"
                     width={1200}
                     height={800}
-                    className="w-full h-auto object-contain"
+                    className="object-contain w-full h-auto"
                     loading="lazy"
                     sizes="100vw"
                     quality={80}
@@ -840,10 +812,10 @@ export default function HomePage() {
               </div>
 
               {/* Header for mobile */}
-              <div className="text-left mb-5">
+              <div className="mb-5 text-left">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#ff9100] text-lg">✦</span>
-                  <span className="text-teal-600 font-semibold text-sm">Our Testimonials</span>
+                  <span className="text-sm font-semibold text-teal-600">Our Testimonials</span>
                 </div>
                 <h2 className="text-[1.4rem] font-bold text-gray-900 leading-tight">
                   Success stories from our clients
@@ -851,15 +823,15 @@ export default function HomePage() {
               </div>
 
               {/* Testimonial Cards for mobile - carousel */}
-              <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-1">
+              <div className="flex gap-3 pb-1 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
                 <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-[#ff9100] text-white">
                   <p className="text-[0.8rem] leading-relaxed mb-3 italic">
                     &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
                   </p>
                   <div className="flex items-center gap-2 pt-2 border-t border-white/20">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-white/20 text-white">R</div>
+                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white rounded-full bg-white/20">R</div>
                     <div>
-                      <div className="font-bold text-sm text-white">Rekha Rajput</div>
+                      <div className="text-sm font-bold text-white">Rekha Rajput</div>
                       <div className="text-[0.7rem] text-white/70">Client</div>
                     </div>
                   </div>
@@ -870,9 +842,9 @@ export default function HomePage() {
                     &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
                   </p>
                   <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">C</div>
+                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-teal-600 rounded-full">C</div>
                     <div>
-                      <div className="font-bold text-sm text-gray-900">Chanchal Agrawal</div>
+                      <div className="text-sm font-bold text-gray-900">Chanchal Agrawal</div>
                       <div className="text-[0.7rem] text-gray-500">Client</div>
                     </div>
                   </div>
@@ -883,9 +855,9 @@ export default function HomePage() {
                     &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
                   </p>
                   <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">S</div>
+                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-teal-600 rounded-full">S</div>
                     <div>
-                      <div className="font-bold text-sm text-gray-900">Swati Sharma</div>
+                      <div className="text-sm font-bold text-gray-900">Swati Sharma</div>
                       <div className="text-[0.7rem] text-gray-500">Client</div>
                     </div>
                   </div>
@@ -896,9 +868,9 @@ export default function HomePage() {
                     &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
                   </p>
                   <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">P</div>
+                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-teal-600 rounded-full">P</div>
                     <div>
-                      <div className="font-bold text-sm text-gray-900">Priya Verma</div>
+                      <div className="text-sm font-bold text-gray-900">Priya Verma</div>
                       <div className="text-[0.7rem] text-gray-500">Client</div>
                     </div>
                   </div>
@@ -907,14 +879,14 @@ export default function HomePage() {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden lg:flex gap-10 items-start">
+            <div className="items-start hidden gap-10 lg:flex">
               {/* Left - Header and Testimonial Cards */}
               <div className="flex-1 max-w-[520px]">
                 {/* Header */}
-                <div className="text-left mb-8">
+                <div className="mb-8 text-left">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-[#ff9100] text-xl">✦</span>
-                    <span className="text-teal-600 font-semibold text-base">Our Testimonials</span>
+                    <span className="text-base font-semibold text-teal-600">Our Testimonials</span>
                   </div>
                   <h2 className="text-[2.2rem] font-bold text-gray-900 leading-tight">
                     Success stories from our clients
@@ -929,9 +901,9 @@ export default function HomePage() {
                       &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
                     </p>
                     <div className="flex items-center gap-3 pt-3 border-t border-white/20">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-white/20 text-white">R</div>
+                      <div className="flex items-center justify-center text-base font-bold text-white rounded-full w-9 h-9 bg-white/20">R</div>
                       <div>
-                        <div className="font-bold text-sm text-white">Rekha Rajput</div>
+                        <div className="text-sm font-bold text-white">Rekha Rajput</div>
                         <div className="text-[0.72rem] text-white/70">Client</div>
                       </div>
                     </div>
@@ -943,9 +915,9 @@ export default function HomePage() {
                       &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
                     </p>
                     <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-teal-600 text-white">C</div>
+                      <div className="flex items-center justify-center text-base font-bold text-white bg-teal-600 rounded-full w-9 h-9">C</div>
                       <div>
-                        <div className="font-bold text-sm text-gray-900">Chanchal Agrawal</div>
+                        <div className="text-sm font-bold text-gray-900">Chanchal Agrawal</div>
                         <div className="text-[0.72rem] text-gray-500">Client</div>
                       </div>
                     </div>
@@ -957,9 +929,9 @@ export default function HomePage() {
                       &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
                     </p>
                     <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-teal-600 text-white">S</div>
+                      <div className="flex items-center justify-center text-base font-bold text-white bg-teal-600 rounded-full w-9 h-9">S</div>
                       <div>
-                        <div className="font-bold text-sm text-gray-900">Swati Sharma</div>
+                        <div className="text-sm font-bold text-gray-900">Swati Sharma</div>
                         <div className="text-[0.72rem] text-gray-500">Client</div>
                       </div>
                     </div>
@@ -971,9 +943,9 @@ export default function HomePage() {
                       &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
                     </p>
                     <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-teal-600 text-white">P</div>
+                      <div className="flex items-center justify-center text-base font-bold text-white bg-teal-600 rounded-full w-9 h-9">P</div>
                       <div>
-                        <div className="font-bold text-sm text-gray-900">Priya Verma</div>
+                        <div className="text-sm font-bold text-gray-900">Priya Verma</div>
                         <div className="text-[0.72rem] text-gray-500">Client</div>
                       </div>
                     </div>
@@ -982,14 +954,14 @@ export default function HomePage() {
               </div>
 
               {/* Right - Single testimonial image */}
-              <div className="flex-1 flex justify-center items-center">
+              <div className="flex items-center justify-center flex-1">
                 <div className="w-full max-w-[520px] rounded-[20px] overflow-hidden bg-gray-200">
                   <Image
                     src="/images/threetesti.png"
                     alt="Testimonials"
                     width={1200}
                     height={800}
-                    className="w-full h-auto object-contain"
+                    className="object-contain w-full h-auto"
                     loading="lazy"
                     sizes="(min-width: 1024px) 520px, 100vw"
                     quality={80}

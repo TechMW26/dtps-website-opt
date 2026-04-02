@@ -5,8 +5,8 @@ import Navbar from './Navbar';
 
 export default function Hero() {
   return (
-    <section className="hero-wrapper" suppressHydrationWarning>
-      <div className="hero">
+    <section className="pt-[60px] px-4 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
+      <div className="bg-[#014E4E] rounded-3xl overflow-hidden relative">
         <Navbar />
 
         <div className="hero-bg-shapes">

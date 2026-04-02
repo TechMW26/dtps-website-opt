@@ -12,6 +12,7 @@ import { getPricingByCategory } from '@/lib/api';
 import DynamicPageHero from '@/components/DynamicPageHero';
 import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
+import Navbar from '@/components/Navbar';
 
 /* ─── SVG ICON COMPONENTS FOR WHAT TO EXPECT ─── */
 function SupplementIcon() {
@@ -182,7 +183,10 @@ export default function WeightLossPage() {
     const fetchTestimonials = async () => {
       try {
         const res = await fetch('/api/testimonials?page=weight-loss&active=true');
-        if (!res.ok) throw new Error('Failed to fetch testimonials');
+        if (!res.ok) {
+          setTestimonials(fallbackTestimonials);
+          return;
+        }
         const data = await res.json();
         const normalized = (data.testimonials || []).map((item: any) => ({
           _id: item._id,
@@ -192,8 +196,7 @@ export default function WeightLossPage() {
           image: getOptimizedUrl(item.image || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e1.jpg', { width: 180, height: 180, quality: 80, format: 'auto' }),
         }));
         if (normalized.length > 0) setTestimonials(normalized);
-      } catch (error) {
-        console.error('Error fetching testimonials:', error);
+      } catch {
         setTestimonials(fallbackTestimonials);
       }
     };
@@ -201,7 +204,8 @@ export default function WeightLossPage() {
   }, []);
 
   return (
-    <main className="bg-white page-content">
+    <section className="pt-[60px] px-4 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
+
       <DynamicPopup page="weight-loss" />
 
       {/* ═════ HERO ═════ */}
@@ -693,6 +697,6 @@ export default function WeightLossPage() {
           </div>
         </section>
       </div>
-    </main>
+    </section>
   );
 }

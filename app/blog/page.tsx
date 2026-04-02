@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import PageWrapper from '@/components/PageWrapper';
+import Navbar from '@/components/Navbar';
 
 interface Blog {
   _id: string;
@@ -46,24 +46,48 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="page-content">
-      <PageWrapper>
-        {/* Hero Section */}
-        <section className="page-header">
-          <div className="container">
-            <h1 className="section-title light">Blog</h1>
-            <div className="breadcrumb light">
-              <span>Home</span> / <span>Blog</span>
+    <div className="">
+      {/* Hero Section with Navbar */}
+      <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]">
+        <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
+          <div className="relative w-full">
+            {/* Navbar */}
+            <Navbar />
+
+            {/* Mobile Layout */}
+            <div className="flex flex-col items-center w-full px-6 py-12 text-center md:hidden">
+              <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
+                Your Guide to <span className="text-[#FF850B]">Better Nutrition</span>
+              </h1>
+              <h2 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
+                Real tips, real food,
+              </h2>
+              <h3 className="text-[1.8rem] font-bold text-white leading-[1.3]">
+                sustainable wellness.
+              </h3>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="flex-col items-center hidden w-full py-16 text-center md:flex lg:py-20" suppressHydrationWarning>
+              <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
+                Your Guide to <span className="text-[#FF850B]">Better Nutrition</span>
+              </h1>
+              <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-4">
+                Real tips, real food,
+              </h2>
+              <h3 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
+                sustainable wellness.
+              </h3>
             </div>
           </div>
-        </section>
-      </PageWrapper>
+        </div>
+      </section>
 
       {/* Blog Grid Section */}
       <section className="py-16">
         <div className="mx-auto max-w-[1200px] px-4">
           {loading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="rounded-[18px] bg-[#F3F3F3] p-[15px] animate-pulse">
                   <div className="h-[200px] w-full rounded-[12px] bg-[#D9D9D9]" />
@@ -76,11 +100,11 @@ export default function BlogPage() {
               ))}
             </div>
           ) : blogs.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-gray-500 text-lg">No blog posts available yet.</p>
+            <div className="py-16 text-center">
+              <p className="text-lg text-gray-500">No blog posts available yet.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {blogs.map((blog) => (
                 <article
                   key={blog._id}

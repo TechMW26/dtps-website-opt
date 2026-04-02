@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import Button from '@/components/ui/Button';
-import PageWrapper from '@/components/PageWrapper';
-import DynamicPageHero from '@/components/DynamicPageHero';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
+import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Dietitian Poonam Sagar',
@@ -25,18 +24,42 @@ const socialLinks = [
 
 export default function ContactPage() {
   return (
-    <div className="page-content">
-      <PageWrapper>
-        {/* Hero Section */}
-        <section className="page-header">
-          <div className="container">
-            <h1 className="section-title light">Contact us</h1>
-            <div className="breadcrumb light">
-              <span>Home</span> / <span>Contact Us</span>
+    <div className="">
+      {/* Hero Section with Navbar */}
+      <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]">
+        <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
+          <div className="relative w-full">
+            {/* Navbar */}
+            <Navbar />
+
+            {/* Mobile Layout */}
+            <div className="flex flex-col items-center w-full px-6 py-12 text-center md:hidden">
+              <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
+                Let&apos;s <span className="text-[#FF850B]">Connect</span>
+              </h1>
+              <h2 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
+                Share your goals,
+              </h2>
+              <h3 className="text-[1.8rem] font-bold text-white leading-[1.3]">
+                start your transformation.
+              </h3>
+            </div>
+
+            {/* Desktop Layout */}
+            <div className="flex-col items-center hidden w-full py-16 text-center md:flex lg:py-20" suppressHydrationWarning>
+              <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
+                Let&apos;s <span className="text-[#FF850B]">Connect</span>
+              </h1>
+              <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
+                Share your goals,
+              </h2>
+              <h3 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
+                start your transformation.
+              </h3>
             </div>
           </div>
-        </section>
-      </PageWrapper>
+        </div>
+      </section>
 
       {/* Get in Touch Section */}
       <section className="about-section">

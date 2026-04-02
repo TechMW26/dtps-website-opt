@@ -63,7 +63,7 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-gray-100 py-12 md:py-20 px-4 md:px-8 rounded-[20px] md:rounded-[30px]"
+      className="bg-gray-100 py-12 md:py-20 px-4 md:px-[70px]  rounded-[20px] md:rounded-[30px]"
     >
       <div className="max-w-[1200px] mx-auto">
         {/* Grid Layout */}
@@ -100,8 +100,8 @@ export default function ServicesSection() {
             onMouseEnter={() => setHoveredCard(0)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${isVisible
-                ? (hoveredCard === 0 ? '-translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.4)]' : 'translate-y-0')
-                : 'translate-y-[30px] opacity-0'
+              ? (hoveredCard === 0 ? '-translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.4)]' : 'translate-y-0')
+              : 'translate-y-[30px] opacity-0'
               }`}
           >
             <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white">
@@ -127,14 +127,14 @@ export default function ServicesSection() {
             onMouseEnter={() => setHoveredCard(1)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${hoveredCard === 1
-                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
-                : 'bg-white'
+              ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
+              : 'bg-white'
               } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 1
-                  ? 'bg-white/20 text-white border-0'
-                  : 'bg-white border-2 border-teal-600 text-teal-600'
+                ? 'bg-white/20 text-white border-0'
+                : 'bg-white border-2 border-teal-600 text-teal-600'
                 }`}
             >
               <Image
@@ -165,14 +165,14 @@ export default function ServicesSection() {
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${hoveredCard === 2
-                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
-                : 'bg-white'
+              ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
+              : 'bg-white'
               } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 2
-                  ? 'bg-white/20 text-white'
-                  : 'bg-white border-2 border-teal-600 text-teal-600'
+                ? 'bg-white/20 text-white'
+                : 'bg-white border-2 border-teal-600 text-teal-600'
                 }`}
             >
               <Image
@@ -203,14 +203,14 @@ export default function ServicesSection() {
             onMouseEnter={() => setHoveredCard(3)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-500 ease-out ${hoveredCard === 3
-                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
-                : 'bg-white'
+              ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
+              : 'bg-white'
               } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 3
-                  ? 'bg-white/20 text-white'
-                  : 'bg-white border-2 border-teal-600 text-teal-600'
+                ? 'bg-white/20 text-white'
+                : 'bg-white border-2 border-teal-600 text-teal-600'
                 }`}
             >
               <Image

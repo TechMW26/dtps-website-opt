@@ -45,7 +45,7 @@ export default function PCODPage() {
             <Navbar />
 
             {/* Mobile Layout */}
-            <div className="md:hidden w-full py-12 px-6 flex flex-col items-center text-center">
+            <div className="flex flex-col items-center w-full px-6 py-12 text-center md:hidden">
               <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
                 98% Of Our <span className="text-[#FF850B]">PCOD Clients</span> See
               </h1>
@@ -58,7 +58,7 @@ export default function PCODPage() {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden md:flex w-full py-16 lg:py-20 flex-col items-center text-center">
+            <div className="flex-col items-center hidden w-full py-16 text-center md:flex lg:py-20">
               <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
                 98% Of Our <span className="text-[#FF850B]">PCOD Clients</span> See
               </h1>
@@ -93,12 +93,12 @@ export default function PCODPage() {
           </p>
 
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 mt-14 md:grid-cols-3">
 
 
             {/* LEFT CARDS */}
 
-            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:col-span-2 sm:grid-cols-2">
 
 
               {/* CARD 1 */}
@@ -111,7 +111,7 @@ export default function PCODPage() {
                     width={500}
                     height={300}
                     alt="Balancing Blood Sugar"
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                     loading="lazy"
                     sizes="(max-width: 639px) 100vw, 50vw"
                     quality={75}
@@ -122,7 +122,7 @@ export default function PCODPage() {
 
                   <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <h3 className="text-lg font-semibold mb-2">
+                  <h3 className="mb-2 text-lg font-semibold">
                     Balancing Blood Sugar Levels
                   </h3>
 
@@ -146,7 +146,7 @@ export default function PCODPage() {
                     width={500}
                     height={300}
                     alt="Managing Weight"
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                     loading="lazy"
                     sizes="(max-width: 639px) 100vw, 50vw"
                     quality={75}
@@ -157,7 +157,7 @@ export default function PCODPage() {
 
                   <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <h3 className="text-lg font-semibold mb-2">
+                  <h3 className="mb-2 text-lg font-semibold">
                     Managing Weight
                   </h3>
 
@@ -181,7 +181,7 @@ export default function PCODPage() {
                     width={500}
                     height={300}
                     alt="Reducing Inflammation"
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                     loading="lazy"
                     sizes="(max-width: 639px) 100vw, 50vw"
                     quality={75}
@@ -192,7 +192,7 @@ export default function PCODPage() {
 
                   <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <h3 className="text-lg font-semibold mb-2">
+                  <h3 className="mb-2 text-lg font-semibold">
                     Reducing Inflammation
                   </h3>
 
@@ -216,7 +216,7 @@ export default function PCODPage() {
                     width={500}
                     height={300}
                     alt="Increasing Fertility"
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                     loading="lazy"
                     sizes="(max-width: 639px) 100vw, 50vw"
                     quality={75}
@@ -227,7 +227,7 @@ export default function PCODPage() {
 
                   <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <h3 className="text-lg font-semibold mb-2">
+                  <h3 className="mb-2 text-lg font-semibold">
                     Increasing Fertility
                   </h3>
 
@@ -259,11 +259,11 @@ export default function PCODPage() {
                   Ready to Transform Your Health?
                 </h3>
 
-                <p className="text-gray-300 text-sm mb-6">
+                <p className="mb-6 text-sm text-gray-300">
                   Join thousands of women who have successfully managed their PCOD/PCOS through our personalized nutrition plans.
                 </p>
 
-                <ul className="space-y-3 text-sm mb-8">
+                <ul className="mb-8 space-y-3 text-sm">
 
                   <li className="flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[#FF8A00] flex items-center justify-center text-black text-xs">✓</span>
@@ -297,15 +297,15 @@ export default function PCODPage() {
               </div>
 
 
-              <div className="mt-8 border-t border-gray-700 pt-6">
+              <div className="pt-6 mt-8 border-t border-gray-700">
 
-                <p className="text-gray-400 text-sm mb-3">
+                <p className="mb-3 text-sm text-gray-400">
                   Questions? Contact us
                 </p>
 
                 {/* PHONE */}
 
-                <div className="flex items-center gap-3 text-sm text-gray-300 mb-2">
+                <div className="flex items-center gap-3 mb-2 text-sm text-gray-300">
 
                   <Image
                     src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6faa14dfc9fbf5ad61c.jpg"
@@ -351,7 +351,7 @@ export default function PCODPage() {
 
       {/* Symptoms Image Section */}
 
-      <div className="pcod-symptoms-image px-4 md:px-0">
+      <div className="px-4 pcod-symptoms-image md:px-0">
 
         {/* Desktop Banner */}
         <Image
@@ -359,7 +359,7 @@ export default function PCODPage() {
           alt="Symptoms & Nutritional Concerns"
           width={1200}
           height={600}
-          className="hidden md:block w-full h-auto object-contain"
+          className="hidden object-contain w-full h-auto md:block"
           loading="lazy"
           sizes="100vw"
           quality={75}
@@ -371,7 +371,7 @@ export default function PCODPage() {
           alt="Symptoms & Nutritional Concerns"
           width={800}
           height={800}
-          className="block md:hidden w-full h-auto object-contain"
+          className="block object-contain w-full h-auto md:hidden"
           loading="lazy"
           sizes="100vw"
           quality={75}
@@ -389,7 +389,7 @@ export default function PCODPage() {
           {/* grey container */}
           <div className="bg-[#EAEEF1] rounded-[24px] p-4 md:p-10">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
 
               {/* LEFT IMAGE */}
 
@@ -402,7 +402,7 @@ export default function PCODPage() {
                     alt="Dietician Team"
                     width={600}
                     height={800}
-                    className="w-full h-auto object-contain"
+                    className="object-contain w-full h-auto"
                     loading="lazy"
                     sizes="(max-width: 767px) 330px, 520px"
                     quality={75}
@@ -430,7 +430,7 @@ export default function PCODPage() {
 
                 {/* CARDS */}
 
-                <div className="w-full flex flex-col gap-4">
+                <div className="flex flex-col w-full gap-4">
 
                   {[
                     {
@@ -510,7 +510,7 @@ export default function PCODPage() {
       </section>
 
       {/* Ghar Ka Khana Section */}
-      <section className="py-16 px-4">
+      <section className="px-4 py-16">
         <div className="max-w-[1280px] mx-auto">
           {/* Desktop Image - Hidden on Mobile */}
           <div className="hidden md:block">
@@ -546,7 +546,7 @@ export default function PCODPage() {
       {/* TESTIMONIALS GALLERY */}
       <section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
         <div className="max-w-[1000px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
+          <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
             <div className="max-w-[630px]">
               <div className="text-[#FF850B] text-xs md:text-sm font-semibold tracking-wide uppercase">Success Stories</div>
               <h2 className="text-[#1E1E1E] text-[28px] md:text-[44px] font-bold leading-[1.2] mt-2">
@@ -557,7 +557,7 @@ export default function PCODPage() {
               </p>
             </div>
             {/* Dots indicator */}
-            <div className="flex gap-1 items-center">
+            <div className="flex items-center gap-1">
               {[6, 6, 6, 18, 6, 6].map((w, i) => (
                 <div key={i} className={`h-[6px] rounded-full ${w === 18 ? 'bg-[#FF850B] w-[18px]' : 'bg-[#014E4E] w-[6px]'}`} />
               ))}
@@ -574,13 +574,13 @@ export default function PCODPage() {
       </section>
 
       {/* Pricing Section - Mobile */}
-      <section className="wl-section md:hidden py-8 px-4">
+      <section className="px-4 py-8 wl-section md:hidden">
         <div className="container">
           <div className="wl-section-label wl-center">
-            <span className="wl-star wl-teal-text">✦</span> <span className="wl-teal-text text-xs">PRICING</span>
+            <span className="wl-star wl-teal-text">✦</span> <span className="text-xs wl-teal-text">PRICING</span>
           </div>
-          <h2 className="wl-section-title wl-center text-xl mb-2">Take the first step towards a healthier Future</h2>
-          <p className="wl-section-desc wl-center text-xs mb-4">
+          <h2 className="mb-2 text-xl wl-section-title wl-center">Take the first step towards a healthier Future</h2>
+          <p className="mb-4 text-xs wl-section-desc wl-center">
             Join our Plan today and embark on a journey to better health with our PCOD diet plan!
           </p>
           <div className="flex justify-center w-full">
@@ -606,7 +606,7 @@ export default function PCODPage() {
       </section>
 
       {/* Pricing Section - Desktop */}
-      <section className="wl-section hidden md:block">
+      <section className="hidden wl-section md:block">
         <div className="container">
           <div className="wl-section-label wl-center">
             <span className="wl-star wl-teal-text">✦</span> <span className="wl-teal-text">PRICING</span>

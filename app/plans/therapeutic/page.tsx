@@ -179,19 +179,19 @@ export default function TherapeuticPlanPage() {
   }, []);
 
   return (
-    <main className="bg-white">
+    <main className="bg-white" suppressHydrationWarning>
 
       {/* ═══════════════════════════════════════════════════════════
           1. HERO BANNER — "Yes! Diabetes, Thyroid…"
       ═══════════════════════════════════════════════════════════ */}
-      <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]" suppressHydrationWarning>
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
             <Navbar />
 
             {/* Mobile Layout */}
-            <div className="md:hidden w-full py-12 px-6 flex flex-col items-center text-center">
+            <div className="flex flex-col items-center w-full px-6 py-12 text-center md:hidden" suppressHydrationWarning>
               <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
                 Yes! <span className="text-[#FF850B]">Diabetes, Thyroid, Fatty Liver,</span>
               </h1>
@@ -204,7 +204,7 @@ export default function TherapeuticPlanPage() {
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden md:flex w-full py-16 lg:py-20 flex-col items-center text-center">
+            <div className="flex-col items-center hidden w-full py-16 text-center md:flex lg:py-20" suppressHydrationWarning>
               <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
                 Yes! <span className="text-[#FF850B]">Diabetes, Thyroid, Fatty Liver,</span>
               </h1>
@@ -226,7 +226,7 @@ export default function TherapeuticPlanPage() {
       <section className="bg-white py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
         <div className="max-w-[1100px] mx-auto">
           {/* Header */}
-          <div className="text-center mb-10 md:mb-14">
+          <div className="mb-10 text-center md:mb-14">
             <h2 className="text-[28px] md:text-[40px] lg:text-[46px] font-extrabold leading-[1.15] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
               Role of Diet in <span className="text-[#FF850B]">Diabetes, Thyroid,<br className="hidden md:block" /> Fatty Liver &amp; Cholesterol</span>
             </h2>
@@ -264,9 +264,9 @@ export default function TherapeuticPlanPage() {
               </div>
 
               {/* Row 1-2: Diagram + Metabolic Interconnection stacked in one cell spanning 2 rows */}
-              <div className="row-span-2 flex flex-col justify-between relative">
+              <div className="relative flex flex-col justify-between row-span-2">
                 {/* Diagram - fills top area */}
-                <div className="flex-1 relative flex items-end justify-center pb-4">
+                <div className="relative flex items-end justify-center flex-1 pb-4">
                   <div className="relative w-full h-full">
                     <Image
                       src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg"
@@ -315,7 +315,7 @@ export default function TherapeuticPlanPage() {
             </div>
           </div>
           {/* Mobile Layout - Vertical Stack */}
-          <div className="md:hidden flex flex-col gap-5">
+          <div className="flex flex-col gap-5 md:hidden">
             {/* Insulin Regulation */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
               <div className="w-full h-[160px] relative overflow-hidden">
@@ -396,7 +396,7 @@ export default function TherapeuticPlanPage() {
           </div>
 
           {/* 4 Icon Points - Desktop */}
-          <div className="hidden md:flex justify-center gap-12 lg:gap-16 mt-10">
+          <div className="justify-center hidden gap-12 mt-10 md:flex lg:gap-16">
             {/* Insulin Response */}
             <div className="flex flex-col items-center gap-4">
               <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
@@ -464,7 +464,7 @@ export default function TherapeuticPlanPage() {
           </div>
 
           {/* 4 Icon Points - Mobile (2x2 grid) */}
-          <div className="md:hidden grid grid-cols-2 gap-6 mt-8">
+          <div className="grid grid-cols-2 gap-6 mt-8 md:hidden">
             {/* Insulin Response */}
             <div className="flex flex-col items-center gap-3">
               <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
@@ -573,7 +573,7 @@ export default function TherapeuticPlanPage() {
               </h2>
 
               {/* Divider line and description */}
-              <div className="mt-5 border-t border-gray-300 pt-4">
+              <div className="pt-4 mt-5 border-t border-gray-300">
                 <p
                   className="text-[#6B7280] text-[15px] leading-relaxed"
                   style={{ fontFamily: "Inter, sans-serif" }}
@@ -583,7 +583,7 @@ export default function TherapeuticPlanPage() {
               </div>
 
               {/* Benefits 2x2 grid with icons */}
-              <div className="grid grid-cols-2 gap-x-8 gap-y-4 mt-5">
+              <div className="grid grid-cols-2 mt-5 gap-x-8 gap-y-4">
 
                 {/* Reduce insulin resistance */}
                 <div className="flex items-center gap-4">
@@ -687,7 +687,7 @@ export default function TherapeuticPlanPage() {
               </div>
 
               {/* Plan features 2x2 */}
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3 mt-5">
+              <div className="grid grid-cols-2 mt-5 gap-x-6 gap-y-3">
 
                 <div className="flex items-center gap-3">
                   <CheckIcon24 />
@@ -763,7 +763,7 @@ export default function TherapeuticPlanPage() {
         <div className="max-w-[1100px] mx-auto">
 
           {/* Heading */}
-          <div className="text-center mb-10">
+          <div className="mb-10 text-center">
             <h2
               className="text-[28px] md:text-[42px] lg:text-[46px] font-extrabold text-[#1E1E1E] leading-[1.1]"
               style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
@@ -906,7 +906,7 @@ export default function TherapeuticPlanPage() {
           </div>
 
           {/* MOBILE LAYOUT */}
-          <div className="md:hidden flex flex-col gap-4">
+          <div className="flex flex-col gap-4 md:hidden">
 
             {whatYouGetCards.map((card, index) => (
 
@@ -1003,7 +1003,7 @@ export default function TherapeuticPlanPage() {
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
         <div className="max-w-[1000px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
+          <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
             <div className="max-w-[630px]">
               <SectionLabel>Our Testimonials</SectionLabel>
               <SectionTitle className="text-[#1E1E1E] mt-2">
@@ -1024,7 +1024,7 @@ export default function TherapeuticPlanPage() {
           9. PRICING
       ═══════════════════════════════════════════════════════════ */}
       <section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
-        <div className="text-center mb-10">
+        <div className="mb-10 text-center">
           <SectionLabel className="justify-center">Our Plans</SectionLabel>
           <SectionTitle className="text-[#1E1E1E] mt-2">Our Pricing</SectionTitle>
           <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
@@ -1072,7 +1072,7 @@ export default function TherapeuticPlanPage() {
                           <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>
                         </div>
                         {/* Divider */}
-                        <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
+                        <div className="w-full h-px mb-4 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
                         {/* Features */}
                         <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>What you&apos;ll get:</p>
                         <div className={`flex flex-col gap-1 ${isExpanded ? '' : 'min-h-[176px]'}`}>

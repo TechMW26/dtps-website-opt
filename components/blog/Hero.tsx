@@ -15,5 +15,5 @@ export default function BlogHero() {
                     </div>
                 </section>
             </PageWrapper>
-        </section>
+        </section>)
 }

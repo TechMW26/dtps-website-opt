@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function WhatWeDoSection() {
   return (
-    <section className="py-6 px-4 sm:py-8 md:py-12">
+    <section className="py-6  sm:py-8 md:py-12 ">
       <div className="max-w-7xl mx-auto">
         {/* Desktop Version */}
         <div className="hidden lg:block">
@@ -13,7 +13,7 @@ export default function WhatWeDoSection() {
             width={1200}
             height={800}
             loading="lazy"
-            sizes="(max-width: 1200px) 100vw, 1200px"
+            sizes="(max-width: 1400px) 100vw, 1400px"
             className="w-full h-auto"
           />
         </div>
