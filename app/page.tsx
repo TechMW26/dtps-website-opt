@@ -213,6 +213,7 @@ export default function HomePage() {
                             className="h-[56px] w-[56px] object-contain"
                             loading="lazy"
                           />
+                          
                         </div>
 
                         <div className="absolute left-[52px] top-[22px] z-[3] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#FF850B] text-[10px] font-semibold text-white">
