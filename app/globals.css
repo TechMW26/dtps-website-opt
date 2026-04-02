@@ -8,9 +8,53 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Optimize images */
+/* ===== Anti-Flicker Image Optimizations ===== */
+/* Prevent layout shift and flickering */
 img {
   content-visibility: auto;
+  background-color: #f3f4f6;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Images with aspect-ratio to prevent layout shift */
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Container with aspect-ratio for images */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.image-container img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Next.js Image component optimization */
+[data-nimg] {
+  background-color: #f3f4f6;
+}
+
+/* Loaded image state - smooth fade in */
+img.loaded,
+[data-nimg].loaded {
+  opacity: 1;
+  background-color: transparent;
+}
+
+/* Prevent image flicker on mobile */
+@media (max-width: 768px) {
+  img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
 }
 
 /* Reduce layout shifts */
@@ -59,6 +103,31 @@ img, video {
   --transition: all 0.3s ease;
   --section-padding-x: 120px;
   --section-padding-x-mobile: 12px;
+}
+
+/* ===== Anti-Flicker for Swiper and Carousels ===== */
+.swiper-wrapper {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.swiper-slide {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.swiper-slide img {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+[data-loading="true"] {
+  visibility: hidden;
 }
 
 /* ===== Page Content Wrapper - Consistent padding for all pages ===== */

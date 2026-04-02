@@ -162,18 +162,21 @@ export default function TransformationGallery({
         >
           {optimizedTransformations.map((transformation, index) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
-              <div className="rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
-                <Image
-                  src={transformation.optimizedImage}
-                  alt={`${transformation.clientName} Transformation`}
-                  width={400}
-                  height={500}
-                  className="w-full h-auto object-contain rounded-[16px]"
-                  loading={index < 3 ? "eager" : "lazy"}
-                  decoding="async"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  quality={75}
-                />
+              <div className="rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)] bg-gray-100">
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={transformation.optimizedImage}
+                    alt={`${transformation.clientName} Transformation`}
+                    fill
+                    className="object-cover rounded-[16px]"
+                    loading={index < 3 ? "eager" : "lazy"}
+                    decoding="async"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={75}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                  />
+                </div>
               </div>
             </SwiperSlide>
           ))}
