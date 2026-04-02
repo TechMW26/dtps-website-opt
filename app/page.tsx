@@ -205,9 +205,9 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full  ">
                           <Image
-                          
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
-                            alt="Choose your plan icon"
+                           src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+     
+                                                     alt="Choose your plan icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -247,8 +247,9 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[68px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
-                            alt="Health counsellor connect icon"
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
+   
+                                                     alt="Health counsellor connect icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -287,8 +288,10 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
-                            alt="Dietitian assessment call icon"
+                          
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
+   
+                                 alt="Dietitian assessment call icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -327,8 +330,9 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
-                            alt="Personalised plan delivery icon"
+                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
+                       
+                                  alt="Personalised plan delivery icon"
                             width={31}
                             height={31}
                             className="h-[56px] w-[56px] object-contain"
@@ -354,7 +358,7 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+                             src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
                             alt="Follow-ups and tracking icon"
                             width={31}
                             height={31}

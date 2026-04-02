@@ -208,7 +208,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] lg:mr-8 xl:mr-16 transition-all duration-700 delay-150 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
               }`}
           >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 lg:hidden">
+            <div className="absolute top-0 z-20 -translate-x-1/2 left-1/2 lg:hidden">
               <div className={`${inter.className} text-white text-[28px] tracking-[0.22em] font-normal`}>
                 Dietitian
               </div>
@@ -285,7 +285,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
               </p>
             </div>
 
-            <div className="mt-8 md:mt-[48px] grid grid-cols-2 gap-4 md:gap-x-[13px] md:gap-y-[13px] max-w-[533px]">
+            <div className="mt-8 md:mt-[38px] grid grid-cols-2 gap-4 md:gap-x-[13px] md:gap-y-[13px] max-w-[533px]">
               {badges.map((badge) => (
                 <div
                   key={badge.label}
@@ -304,11 +304,11 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
         </div>
 
         <div className="mt-[40px] md:mt-[76px]">
-          <div className="hidden md:flex items-center justify-center gap-8">
+          <div className="items-center justify-center hidden gap-20 md:flex">
             {mediaCards.map((card, index) => (
               <div
                 key={card.title}
-                className={`w-[260px] rounded-[12px] bg-white p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                className={`w-[290px] rounded-[12px] bg-white p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
                 style={{ transitionDelay: `${index * 120}ms` }}
               >
@@ -336,8 +336,8 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             ))}
           </div>
 
-          <div className="md:hidden relative overflow-hidden">
-            <div className="media-track-mobile flex w-max gap-4">
+          <div className="relative overflow-hidden md:hidden">
+            <div className="flex gap-4 media-track-mobile w-max">
               {[...mediaCards, ...mediaCards].map((card, index) => (
                 <div
                   key={`${card.title}-${index}`}
