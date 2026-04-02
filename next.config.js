@@ -3,6 +3,22 @@ const nextConfig = {
   turbopack: {
     root: __dirname,
   },
+
+  // Enable compression
+  compress: true,
+
+  // Optimize production builds
+  poweredByHeader: false,
+
+  // Generate ETags for caching
+  generateEtags: true,
+
+  // Experimental optimizations
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+
   images: {
     loader: 'custom',
     loaderFile: './lib/image-loader.js',
@@ -47,6 +63,43 @@ const nextConfig = {
         hostname: 'ik.imagekit.io',
       },
     ],
+  },
+
+  // Add security and caching headers
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:all*(js|css)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+    ];
   },
 };
 

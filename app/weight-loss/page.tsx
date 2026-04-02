@@ -2,17 +2,38 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
+import dynamic from 'next/dynamic';
 import PageWrapper from '@/components/PageWrapper';
-import TransformationGallery from '@/components/TransformationGallery';
-import DynamicPopup from '@/components/DynamicPopup';
-import PlanBannerDisplay from '@/components/PlanBannerDisplay';
-import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
-import { getPricingByCategory } from '@/lib/api';
 import DynamicPageHero from '@/components/DynamicPageHero';
+import { getPricingByCategory } from '@/lib/api';
 import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
 import Navbar from '@/components/Navbar';
+
+// Dynamic imports for below-fold components
+const YouTubeShortsSlider = dynamic(() => import('@/components/YouTubeShortsSlider'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: false,
+});
+
+const TransformationGallery = dynamic(() => import('@/components/TransformationGallery'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: true,
+});
+
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
+
+const PlanBannerDisplay = dynamic(() => import('@/components/PlanBannerDisplay'), {
+  loading: () => <div className="min-h-[200px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: true,
+});
+
+const ExpertGuidanceSection = dynamic(() => import('@/components/ExpertGuidanceSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: true,
+});
 
 /* ─── SVG ICON COMPONENTS FOR WHAT TO EXPECT ─── */
 function SupplementIcon() {

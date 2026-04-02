@@ -67,7 +67,7 @@ export default function ServicesSection() {
     >
       <div className="max-w-[1200px] mx-auto">
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
           {/* Header Card */}
           <div
             className={`p-6 flex flex-col justify-center transition-all duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
@@ -79,8 +79,11 @@ export default function ServicesSection() {
                 Services
               </span>
             </div>
-            <h2 className="text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4 whitespace-nowrap">
-              What We Help With
+            <h2 className="text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4 whitespace-nowrap md:whitespace-normal">
+              <span className="md:hidden">What We Help With</span>
+              <span className="hidden md:inline">
+                What We Help<br />With
+              </span>
             </h2>
             <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-6">
               Most people don&apos;t fail at dieting.<br />

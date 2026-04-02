@@ -1,17 +1,53 @@
 ﻿"use client"
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
-import AboutUsSection from '@/components/AboutUsSection';
-import ServicesSection from '@/components/ServicesSection';
-import WhatWeDoSection from '@/components/WhatWeDoSection';
-import WhyChooseUsSection from '@/components/WhyChooseUsSection';
-import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
-import OurTeamSection from '@/components/OurTeamSection';
-import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
-import FAQSection from '@/components/FAQSection';
-import OurBlogsSection from '@/components/OurBlogsSection';
 import Image from 'next/image';
 import { getOptimizedUrl } from '@/lib/imagekit';
+
+// Critical above-fold component loaded immediately
+import AboutUsSection from '@/components/AboutUsSection';
+
+// Dynamic imports for below-fold components with loading states
+const ServicesSection = dynamic(() => import('@/components/ServicesSection'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[30px]" />,
+  ssr: true,
+});
+
+const WhatWeDoSection = dynamic(() => import('@/components/WhatWeDoSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-50 rounded-[30px]" />,
+  ssr: true,
+});
+
+const WhyChooseUsSection = dynamic(() => import('@/components/WhyChooseUsSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-50 rounded-[30px]" />,
+  ssr: true,
+});
+
+const ExpertGuidanceSection = dynamic(() => import('@/components/ExpertGuidanceSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-50 rounded-[30px]" />,
+  ssr: true,
+});
+
+const OurTeamSection = dynamic(() => import('@/components/OurTeamSection'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[30px]" />,
+  ssr: true,
+});
+
+const YouTubeShortsSlider = dynamic(() => import('@/components/YouTubeShortsSlider'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[30px]" />,
+  ssr: false,
+});
+
+const FAQSection = dynamic(() => import('@/components/FAQSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-50 rounded-[30px]" />,
+  ssr: true,
+});
+
+const OurBlogsSection = dynamic(() => import('@/components/OurBlogsSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-50 rounded-[30px]" />,
+  ssr: true,
+});
 
 
 type Testimonial = {
@@ -113,7 +149,7 @@ export default function HomePage() {
         <ExpertGuidanceSection />
       </div>
       {/* Our Team Section */}
-      <div className="section-wrapper">
+      <div className="section-wrapper section-wrapper-full-mobile">
         <OurTeamSection />
       </div>
 

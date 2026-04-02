@@ -3,6 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from './Navbar';
 
+// Optimized hero image URL with proper transformations
+const HERO_IMAGE_MOBILE = "https://ik.imagekit.io/br0mssyqj/tr:w-400,q-75,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png";
+const HERO_IMAGE_DESKTOP = "https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png";
+
 export default function Hero() {
   return (
     <section className="pt-[60px] px-4 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
@@ -17,21 +21,22 @@ export default function Hero() {
 
         {/* ================= MOBILE ================= */}
 
-        <div className="hero-container-mobile flex flex-col md:hidden px-4 pb-0">
+        <div className="flex flex-col px-4 pb-0 hero-container-mobile md:hidden">
 
           {/* Image Section - Dietitian Poonam Sagar */}
-          <div className="hero-image-mobile relative flex justify-center pt-4">
+          <div className="relative flex justify-center pt-4 hero-image-mobile">
             <div className="relative">
               {/* Main Hero Image with Text */}
               <Image
-                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4ef.jpg"
+                src={HERO_IMAGE_MOBILE}
                 alt="Dietitian Poonam Sagar"
                 width={340}
                 height={380}
                 className="h-[320px] w-auto"
                 priority
+                fetchPriority="high"
                 sizes="340px"
-                quality={60}
+                quality={75}
                 placeholder="empty"
               />
 
@@ -64,13 +69,13 @@ export default function Hero() {
 
             <div className="flex flex-row items-center gap-4">
 
-              <Link href="/weight-loss" className="btn btn-primary text-sm py-3 px-6">
+              <Link href="/weight-loss" className="px-6 py-3 text-sm btn btn-primary">
                 Know More
               </Link>
 
               <div className="flex items-center gap-2">
 
-                <div className="w-10 h-10 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+                <div className="flex items-center justify-center w-10 h-10 border rounded-full bg-white/10 border-white/20">
                   <Image
                     src="/phoneicon.svg"
                     alt="Phone Icon"
@@ -98,7 +103,7 @@ export default function Hero() {
                 <div className="w-8 h-8 rounded-full border-2 border-[#0d4043] -ml-2 bg-[#0d9488] flex items-center justify-center text-white text-[10px] font-bold">R</div>
               </div>
               <div className="flex items-center gap-1 text-white">
-                <span className="font-bold text-sm">5.0</span>
+                <span className="text-sm font-bold">5.0</span>
                 <span>⭐</span>
                 <span className="text-white/60 text-[0.75rem]">(15.5k review)</span>
               </div>
@@ -129,14 +134,14 @@ export default function Hero() {
               and sustainable habits for a healthier, happier you.
             </p>
 
-            <div className="hero-actions flex flex-row items-center justify-start gap-4 mb-8">
+            <div className="flex flex-row items-center justify-start gap-4 mb-8 hero-actions">
 
-              <Link href="/weight-loss" className="btn btn-primary text-sm lg:text-base py-3 px-6 lg:px-8">
+              <Link href="/weight-loss" className="px-6 py-3 text-sm btn btn-primary lg:text-base lg:px-8">
                 Know More
               </Link>
 
-              <div className="hero-phone flex items-center gap-3">
-                <div className="phone-icon w-10 h-10 lg:w-12 lg:h-12 bg-white/10 border border-white/20 rounded-full flex items-center justify-center">
+              <div className="flex items-center gap-3 hero-phone">
+                <div className="flex items-center justify-center w-10 h-10 border rounded-full phone-icon lg:w-12 lg:h-12 bg-white/10 border-white/20">
                   <Image
                     src="/phoneicon.svg"
                     alt="Phone Icon"
@@ -147,7 +152,7 @@ export default function Hero() {
                   />
                 </div>
 
-                <div className="phone-info flex flex-col">
+                <div className="flex flex-col phone-info">
                   <span className="phone-label text-white/60 text-[0.7rem] lg:text-[0.8rem]">Call Us 24/7</span>
                   <span className="phone-number text-white font-bold text-[0.9rem] lg:text-[1.05rem]">
                     9893027688
@@ -157,9 +162,9 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero-reviews flex items-center gap-3 justify-start">
+            <div className="flex items-center justify-start gap-3 hero-reviews">
 
-              <div className="review-avatars flex items-center">
+              <div className="flex items-center review-avatars">
 
                 <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full border-2 border-[#0d4043] bg-[#0d9488] flex items-center justify-center text-white text-[10px] lg:text-[11px] font-bold">K</div>
 
@@ -173,8 +178,8 @@ export default function Hero() {
 
               </div>
 
-              <div className="review-rating flex items-center gap-1 text-white">
-                <span className="rating-score font-bold text-sm lg:text-base">5.0</span>
+              <div className="flex items-center gap-1 text-white review-rating">
+                <span className="text-sm font-bold rating-score lg:text-base">5.0</span>
                 <span className="rating-star">⭐</span>
                 <span className="rating-text text-white/60 text-[0.75rem] lg:text-[0.85rem]">(15.5k review)</span>
               </div>
@@ -183,19 +188,20 @@ export default function Hero() {
 
           {/* RIGHT IMAGE - Dietitian Poonam Sagar */}
 
-          <div className="hero-image relative flex justify-center items-end self-end">
+          <div className="relative flex items-end self-end justify-center hero-image">
 
             <div className="relative">
               {/* Main Hero Image with Text */}
               <Image
-                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4ef.jpg"
+                src={HERO_IMAGE_DESKTOP}
                 alt="Dietitian Poonam Sagar"
                 width={500}
                 height={600}
                 className="h-[420px] lg:h-[480px] xl:h-[540px] 2xl:h-[600px] w-auto"
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 1023px) 0px, (max-width: 1279px) 420px, (max-width: 1535px) 540px, 600px"
-                quality={60}
+                quality={80}
                 placeholder="empty"
               />
 

@@ -2,10 +2,24 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
-import TransformationGallery from '@/components/TransformationGallery';
-import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
-import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
+
+// Dynamic imports for below-fold components
+const TransformationGallery = dynamic(() => import('@/components/TransformationGallery'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: true,
+});
+
+const DynamicPlansDisplay = dynamic(() => import('@/components/DynamicPlansDisplay'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: true,
+});
+
+const ExpertGuidanceSection = dynamic(() => import('@/components/ExpertGuidanceSection'), {
+  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: true,
+});
 
 const whatYouGet = [
   { icon: '📊', title: 'Ongoing Support', desc: 'Regular follow-ups to adapt your diet plan as needed and ensure progress results.' },

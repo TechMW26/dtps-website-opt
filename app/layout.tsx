@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Poppins, Epilogue } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from './providers';
@@ -9,13 +9,23 @@ const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-poppins',
+  display: 'swap',
+  preload: true,
 });
 
 const epilogue = Epilogue({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-epilogue',
+  display: 'swap',
+  preload: true,
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#014E4E',
+};
 
 export const metadata: Metadata = {
   title: 'Dietitian Poonam Sagar - Transform Your Health',
@@ -47,6 +57,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} ${epilogue.variable}`}>
+      <head>
+        {/* Preconnect to critical external domains */}
+        <link rel="preconnect" href="https://ik.imagekit.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Preload critical hero image */}
+        <link
+          rel="preload"
+          href="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png"
+          as="image"
+          type="image/webp"
+        />
+      </head>
       <body>
         <AuthProvider>
           <ThemeProvider>
