@@ -11,10 +11,10 @@ export default function OurTeamSection() {
   ];
 
   const galleryImages = [
-    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad639.jpg",
-    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c65ca14dfc9fbf5ad4c4.jpg",
-    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c701a14dfc9fbf5ad644.jpg",
-    "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad665.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad639.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c65ca14dfc9fbf5ad4c4.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c701a14dfc9fbf5ad644.jpg",
+    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad665.jpg",
   ];
 
   return (
@@ -23,14 +23,14 @@ export default function OurTeamSection() {
       {/* Banner */}
       <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden">
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/team/DTPS-Full-Team-Image.png"
+          src="https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
           alt="Our Team"
           width={1920}
           height={400}
           priority
           className="block object-cover object-top w-full"
           sizes="100vw"
-          quality={80}
+          quality={90}
           unoptimized
         />
       </div>
@@ -84,19 +84,20 @@ export default function OurTeamSection() {
       </div>
 
       {/* Gallery */}
-      <div className="w-full max-w-[1200px] flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-[14px] md:gap-5 px-2 md:px-4 lg:px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide">
+      <div className="w-full max-w-[1200px] flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-[14px] md:gap-5 px-2 md:px-4 lg:px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-2">
         {galleryImages.map((img, index) => (
           <div
             key={index}
-            className="flex-[0_0_80%] md:flex-auto w-full aspect-[4/3] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
+            className="flex-[0_0_75%] sm:flex-[0_0_60%] md:flex-auto w-full aspect-[4/3] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
           >
             <Image
               src={img}
               alt={`Gallery ${index + 1}`}
               fill
               className="object-cover"
-              sizes="(max-width: 767px) 80vw, 25vw"
-              loading="lazy"
+              sizes="(max-width: 639px) 75vw, (max-width: 767px) 60vw, 25vw"
+              quality={90}
+              unoptimized
             />
           </div>
         ))}
