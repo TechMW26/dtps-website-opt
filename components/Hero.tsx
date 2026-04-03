@@ -125,8 +125,9 @@ export default function Hero() {
             </div>
 
             <h1 className="hero-title text-[2.5rem] lg:text-[3rem] xl:text-[3.3rem] 2xl:text-[3.6rem] font-bold text-white leading-[1.2] mb-5">
-              Transform your health<br />
-              embrace life today!
+              Transform your<br />
+              health embrace<br />
+              life today!
             </h1>
 
             <p className="hero-desc text-white/75 text-sm lg:text-base leading-[1.7] mb-6 max-w-[450px]">

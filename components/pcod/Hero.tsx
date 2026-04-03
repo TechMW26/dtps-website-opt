@@ -37,5 +37,5 @@ export default function PCODHero() {
                 </div>
             </div>
         </section>
-    );
+   
 }
