@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export default function OurTeamSection() {
+  const [teamBannerSrc, setTeamBannerSrc] = useState(
+    "https://ik.imagekit.io/br0mssyqj/tr:w-1920,q-90,f-auto/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
+  );
   const highlights = [
     { number: "01", label: "Years of Hands-On Experience" },
     { number: "02", label: "Real-World Case Experts" },
@@ -21,15 +25,19 @@ export default function OurTeamSection() {
     <section className="w-full md:max-w-[1200px] bg-[#f7f7f7] md:bg-white rounded-none md:rounded-[26px] overflow-hidden border border-[#d9d9d9] md:outline md:outline-[0.5px] md:outline-[#6c6c6c] md:-outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 mt-10 md:mx-auto">
 
       {/* Banner */}
-      <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden">
-        <img
-          src="https://ik.imagekit.io/br0mssyqj/tr:w-1920,q-90,f-auto/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
+      <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden aspect-[16/7] sm:aspect-[16/6] md:aspect-[16/5] min-h-[180px] sm:min-h-[220px] md:min-h-[260px]">
+        <Image
+          src={teamBannerSrc}
           alt="Our Team"
-          className="block object-cover object-top w-full"
-          loading="eager"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = '/images/dtps-full-team-image.png';
+          fill
+          priority
+          unoptimized
+          className="object-cover object-top"
+          sizes="100vw"
+          onError={() => {
+            if (teamBannerSrc !== "/images/dtps-full-team-image.png") {
+              setTeamBannerSrc("/images/dtps-full-team-image.png");
+            }
           }}
         />
       </div>
