@@ -200,10 +200,12 @@ export default function WeddingPlanPage() {
             alt="Wedding couple"
             fill
             priority
-            className="object-cover opacity-40"
+            className="object-cover"
             sizes="100vw"
             quality={80}
           />
+
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(78,1,1,0.12)] to-[rgba(78,1,1,0.9)]" />
 
           <div className="relative w-full z-10">
             {/* Navbar */}
