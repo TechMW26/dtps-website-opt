@@ -15,6 +15,7 @@ export default function WhatWeDoSection() {
             loading="lazy"
             sizes="(max-width: 1400px) 100vw, 1400px"
             className="w-full h-auto"
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
 
@@ -28,6 +29,7 @@ export default function WhatWeDoSection() {
             loading="lazy"
             sizes="100vw"
             className="w-full h-auto"
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
       </div>

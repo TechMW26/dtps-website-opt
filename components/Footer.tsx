@@ -41,6 +41,7 @@ export default function Footer() {
                 width={220}
                 height={80}
                 className="h-[50px] md:h-[70px] w-auto"
+                style={{ width: 'auto', height: 'auto' }}
                 loading="lazy"
               />
               <p className="mt-6 text-[15px] leading-relaxed text-white/85">
@@ -96,14 +97,14 @@ export default function Footer() {
               <ul className="list-none p-0 m-0 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0">
                 {serviceLinks.map((link) => (
                   <li key={link.href + link.label} className="mb-4">
-                    <Link 
-                      href={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-white/90 no-underline text-[15px] font-medium inline-flex items-center gap-1.5"
                     >
                       {link.label}
                       {link.hasDropdown && (
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M6 9l6 6 6-6"/>
+                          <path d="M6 9l6 6 6-6" />
                         </svg>
                       )}
                     </Link>
@@ -132,4 +133,3 @@ export default function Footer() {
     </footer>
   );
 }
-                                

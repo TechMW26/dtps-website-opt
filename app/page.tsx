@@ -451,9 +451,11 @@ export default function HomePage() {
                         width={334}
                         height={185}
                         className="h-[185px] w-full object-cover"
+                        style={{ width: '100%', height: 'auto' }}
                         loading="lazy"
                         sizes="334px"
                         quality={75}
+                        unoptimized
                       />
                     </div>
                   </div>
@@ -745,9 +747,11 @@ export default function HomePage() {
                         width={350}
                         height={210}
                         className="object-cover w-full h-auto"
+                        style={{ width: '100%', height: 'auto' }}
                         loading="lazy"
                         sizes="(max-width: 767px) 100vw, 350px"
                         quality={75}
+                        unoptimized
                       />
                     </div>
 

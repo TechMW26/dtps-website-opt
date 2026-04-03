@@ -2,6 +2,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+});
 
 export default function OurExpertiseSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -70,17 +76,44 @@ export default function OurExpertiseSection() {
 
         {/* Content Section - Image and Cards */}
         <div className="relative">
-          {/* Main Image */}
-          <div className={`relative w-full lg:w-[55%] h-[350px] md:h-[450px] lg:h-[480px] rounded-[20px] overflow-hidden transition-all duration-700 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-            <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c789a14dfc9fbf5ad89e.jpg"
-              alt="Woman with healthy food"
-              fill
-              className="object-cover"
-              loading="lazy"
-              sizes="(max-width: 1023px) 100vw, 55vw"
-              quality={75}
+          {/* Poonam Sagar Image with Vertical Text */}
+          <div className={`relative w-full lg:w-[55%] h-[450px] sm:h-[520px] md:h-[560px] lg:h-[520px] rounded-[20px] overflow-hidden transition-all duration-700 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
+            {/* Gradient Background - white to teal */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background: 'linear-gradient(to bottom, #ffffff 0%, #f0fafa 30%, #c5e8e4 55%, #1a6b6b 78%, #014E4E 100%)',
+              }}
             />
+
+            {/* Poonam Sagar Cutout Image */}
+            <div className="absolute inset-0 z-10 flex items-end justify-center">
+              <div className="relative w-[280px] h-[400px] sm:w-[320px] sm:h-[460px] md:w-[360px] md:h-[500px] lg:w-[320px] lg:h-[470px]">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-85,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6f6a14dfc9fbf5ad602.jpg"
+                  alt="Dietitian Poonam Sagar"
+                  fill
+                  className="object-contain object-bottom"
+                  loading="lazy"
+                  sizes="(max-width: 639px) 280px, (max-width: 767px) 320px, (max-width: 1023px) 360px, 320px"
+                  quality={85}
+                />
+              </div>
+            </div>
+
+            {/* Vertical POONAM SAGAR Text - Right Side */}
+            <div className="absolute right-[12px] sm:right-[18px] md:right-[24px] top-[40px] sm:top-[50px] z-20">
+              <div
+                className={`${poppins.className} text-center leading-none tracking-[0.1em] font-bold`}
+                style={{ writingMode: 'vertical-rl' }}
+              >
+                <span className="text-[#3AB1A0] text-[32px] sm:text-[38px] md:text-[42px]">POONAM </span>
+                <span className="text-[#FF850B] text-[32px] sm:text-[38px] md:text-[42px]">SAGAR</span>
+              </div>
+            </div>
+
+            {/* Bottom fade to blend with card background */}
+            <div className="absolute inset-x-0 bottom-0 h-[60px] z-10" style={{ background: 'linear-gradient(to top, #014E4E, transparent)' }} />
           </div>
 
           {/* Cards overlapping the image - Desktop */}
@@ -97,13 +130,13 @@ export default function OurExpertiseSection() {
                 <p className="text-[#666] text-[0.875rem] leading-[1.7] mb-4">
                   {card.description}
                 </p>
-                <Link 
+                <Link
                   href={card.link}
                   className="inline-flex items-center gap-2 text-[#0d9488] font-semibold text-[0.9rem] hover:gap-3 transition-all duration-300"
                 >
                   Read More
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </Link>
               </div>
@@ -124,13 +157,13 @@ export default function OurExpertiseSection() {
                 <p className="text-[#666] text-[0.85rem] leading-[1.7] mb-3">
                   {card.description}
                 </p>
-                <Link 
+                <Link
                   href={card.link}
                   className="inline-flex items-center gap-2 text-[#0d9488] font-semibold text-[0.875rem] hover:gap-3 transition-all duration-300"
                 >
                   Read More
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                    <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </Link>
               </div>

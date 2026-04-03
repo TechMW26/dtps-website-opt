@@ -114,6 +114,7 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                style={{ width: 'auto', height: 'auto' }}
                 unoptimized
               />
             </div>
@@ -146,6 +147,7 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                style={{ width: 'auto', height: 'auto' }}
                 unoptimized
               />
             </div>
@@ -184,6 +186,7 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                style={{ width: 'auto', height: 'auto' }}
                 unoptimized
               />
             </div>
@@ -222,6 +225,7 @@ export default function ServicesSection() {
                 width={32}
                 height={32}
                 className="object-contain"
+                style={{ width: 'auto', height: 'auto' }}
                 unoptimized
               />
             </div>

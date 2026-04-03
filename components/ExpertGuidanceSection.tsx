@@ -83,6 +83,7 @@ function BadgeIcon({ type }: { type: (typeof badges)[number]["icon"] }) {
       width={24}
       height={24}
       className="object-contain"
+      style={{ width: 'auto', height: 'auto' }}
       loading="lazy"
       sizes="24px"
       unoptimized
