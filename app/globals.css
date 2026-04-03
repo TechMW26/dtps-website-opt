@@ -178,6 +178,18 @@ img, video {
   padding: 4px 50px;
 }
 
+@media (max-width: 768px) {
+  .section-wrapper-blog {
+    padding: 3px var(--section-padding-x-mobile);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-wrapper-blog {
+    padding: 3px 8px;
+  }
+}
+
 .section-wrapper:first-child {
   padding-top: 0;
 }

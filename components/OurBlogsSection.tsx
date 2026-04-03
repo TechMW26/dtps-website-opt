@@ -51,7 +51,7 @@ export default function OurBlogsSection() {
     <section className="section-wrapper our-blogs-wrapper">
       <div className="w-full rounded-[30px] bg-[#015b5b] px-4 py-7 md:px-[64px] md:py-[58px] overflow-hidden">
         {/* Header */}
-        <div className="flex items-start justify-between gap-4 md:gap-8">
+        <div className="flex items-start justify-between gap-2 md:gap-8">
           <div>
             <div className="mb-3 flex items-center gap-2">
               <span className="text-[#FF8A0A] text-[14px] leading-none">✦</span>
@@ -70,7 +70,7 @@ export default function OurBlogsSection() {
 
           <a
             href="/blog"
-            className="mt-[38px] md:mt-[28px] inline-flex h-[42px] md:h-[34px] shrink-0 items-center justify-center rounded-full bg-[#FF8A0A] px-6 md:px-7 text-white text-[14px] md:text-[13px] font-semibold leading-none"
+            className="mt-[18px] md:mt-[28px] inline-flex h-[38px] md:h-[34px] shrink-0 items-center justify-center rounded-full bg-[#FF8A0A] px-4 md:px-7 text-white text-[13px] md:text-[13px] font-semibold leading-none"
           >
             <span className="md:hidden">View All</span>
             <span className="hidden md:inline">View more blogs</span>
@@ -141,7 +141,7 @@ export default function OurBlogsSection() {
             {loading ? (
               // Loading skeleton for mobile
               [...Array(3)].map((_, i) => (
-                <article key={i} className="w-[85vw] max-w-[300px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3 animate-pulse">
+                <article key={i} className="w-[68vw] max-w-[220px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3 animate-pulse">
                   <div className="h-[132px] w-full rounded-[12px] bg-[#D9D9D9]" />
                   <div className="pt-3">
                     <div className="h-3 w-20 bg-[#D9D9D9] rounded" />
@@ -154,7 +154,7 @@ export default function OurBlogsSection() {
               blogs.map((blog) => (
                 <article
                   key={blog._id}
-                  className="w-[85vw] max-w-[300px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3"
+                  className="w-[68vw] max-w-[220px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3"
                 >
                   <div className="overflow-hidden rounded-[12px]">
                     <Image
