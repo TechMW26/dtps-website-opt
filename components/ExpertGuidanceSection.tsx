@@ -209,43 +209,10 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             className={`relative order-1 lg:order-2 w-full lg:w-[283px] h-[500px] sm:h-[560px] lg:h-[547px] lg:mr-8 xl:mr-16 transition-all duration-700 delay-150 ${isVisible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
               }`}
           >
-            <div className="absolute top-0 z-20 -translate-x-1/2 left-1/2 lg:hidden">
-              <div className={`${inter.className} text-white text-[28px] tracking-[0.22em] font-normal`}>
-                Dietitian
-              </div>
-            </div>
-
-            <div className="absolute right-[28px] top-[42px] z-20 lg:hidden">
-              <div
-                className={`${poppins.className} font-bold leading-none tracking-[0.1em]`}
-                style={{ writingMode: "vertical-rl" }}
-              >
-                <span className="text-[#3AB1A0] text-[34px]">POONAM </span>
-                <span className="text-[#FF850B] text-[34px]">SAGAR</span>
-              </div>
-            </div>
-
-            <div className="hidden lg:block absolute left-[116px] top-0 z-20">
-              <div className={`${inter.className} text-white text-[29.68px] leading-none tracking-[0.214em] font-normal`}>
-                Dietitian
-              </div>
-            </div>
-
-            {/* DESKTOP POONAM SAGAR ON RIGHT SIDE OF IMAGE */}
-            <div className="hidden lg:block absolute right-[-8px] top-[38px] z-20">
-              <div
-                className={`${poppins.className} text-center leading-none tracking-[0.1em] font-bold`}
-                style={{ writingMode: "vertical-rl" }}
-              >
-                <span className="text-[#3AB1A0] text-[42.4px]">POONAM </span>
-                <span className="text-[#FF850B] text-[42.4px]">SAGAR</span>
-              </div>
-            </div>
-
             <div className="absolute inset-0">
               <div className="absolute left-1/2 -translate-x-[58%] lg:-translate-x-1/2 top-[62px] lg:top-[5px] w-[250px] h-[420px] sm:w-[280px] sm:h-[470px] lg:w-[253px] lg:h-[542px]">
                 <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6f6a14dfc9fbf5ad602.jpg"
+                  src="/images/realpoonam.png"
                   alt="Dietitian Poonam Sagar"
                   fill
                   className="object-contain object-bottom"
