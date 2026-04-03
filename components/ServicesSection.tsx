@@ -107,7 +107,7 @@ export default function ServicesSection() {
               : 'translate-y-[30px] opacity-0'
               }`}
           >
-            <div className="flex items-center justify-center mb-6 text-white w-14 h-14 bg-white/20 rounded-xl">
+            <div className="flex items-center justify-center mb-6 w-14 h-14">
               <Image
                 src={services[0].icon}
                 alt={services[0].title}
@@ -136,10 +136,7 @@ export default function ServicesSection() {
               } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 1
-                ? 'bg-white/20 text-white border-0'
-                : 'bg-white border-2 border-teal-600 text-teal-600'
-                }`}
+              className="w-14 h-14 flex items-center justify-center mb-6"
             >
               <Image
                 src={services[1].icon}
@@ -175,10 +172,7 @@ export default function ServicesSection() {
               } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 2
-                ? 'bg-white/20 text-white'
-                : 'bg-white border-2 border-teal-600 text-teal-600'
-                }`}
+              className="w-14 h-14 flex items-center justify-center mb-6"
             >
               <Image
                 src={services[2].icon}
@@ -214,10 +208,7 @@ export default function ServicesSection() {
               } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-500 ${hoveredCard === 3
-                ? 'bg-white/20 text-white'
-                : 'bg-white border-2 border-teal-600 text-teal-600'
-                }`}
+              className="w-14 h-14 flex items-center justify-center mb-6"
             >
               <Image
                 src={services[3].icon}
