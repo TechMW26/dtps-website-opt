@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import PageWrapper from '@/components/PageWrapper';
 import DynamicPageHero from '@/components/DynamicPageHero';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import { getPricingByCategory } from '@/lib/api';
 import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
@@ -278,7 +279,7 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ FIVE CYCLE PROGRAM ═════ */}
-      <section className="px-4 md:px-12 lg:px-[120px]">
+      <section>
         {/* Desktop Version */}
         <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
           <Image
@@ -315,7 +316,7 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ WHAT TO EXPECT ═════ */}
-      <section className="py-14 md:py-24 px-4 md:px-12 lg:px-[120px]">
+      <section className="py-14 md:py-24">
         <div className="max-w-[1200px] mx-auto">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
@@ -354,7 +355,7 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ MONEY BACK GUARANTEE ═════ */}
-      <section className="px-4 md:px-12 lg:px-[120px]">
+      <section>
         <div className="max-w-[1200px] mx-auto">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
@@ -393,7 +394,7 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ WHAT DO YOU GET ═════ */}
-      <section className="px-4 md:px-12 lg:px-[120px] py-12 md:py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-[1200px] mx-auto">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
@@ -432,14 +433,14 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ EXPERT'S GUIDANCE ═════ */}
-      <div className="section-wrapper">
+      <div className="">
         <ExpertGuidanceSection />
       </div>
 
       {/* ═════ OUR PROGRAMS ═════ */}
-      <div className="section-wrapper">
-        <section className="bg-white py-16 md:py-20 px-4 md:px-8 rounded-[30px] overflow-hidden">
-          <div className="max-w-[1200px] mx-auto">
+      <div className="">
+        <section className="bg-white py-16 md:py-20 rounded-[30px] overflow-hidden">
+          <div className="max-w-[1200px] mx-auto px-4 md:px-8">
             <div className="flex items-start justify-between mb-6 md:mb-10 flex-wrap gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -457,21 +458,21 @@ export default function WeightLossPage() {
       </div>
 
       {/* ═════ PRICING ═════ */}
-      <section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
-        <div className="text-center mb-10">
+      <section className="py-12 md:py-2">
+        <div className="text-center mb-10 mt-2">
           <SectionLabel className="justify-center">Our Plans</SectionLabel>
-          <SectionTitle className="text-[#1E1E1E] mt-2">Our Pricing</SectionTitle>
+          <SectionTitle className="text-[#1E1E1E] mt-4">Our Pricing</SectionTitle>
           <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
             Join our Plan today and embark on a journey to better health with our weight loss plan!
           </p>
         </div>
 
         {loadingPricing ? (
-          <div className="flex justify-center py-16">
+          <div className="flex justify-center py-14">
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-[1000px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 max-w-[1200px] mx-auto">
             {pricingPlans.map((plan: any, index: number) => (
               <div key={index} className="w-full h-full">
                 {/* Plan Banner */}
@@ -563,192 +564,8 @@ export default function WeightLossPage() {
       </section>
 
       {/* Testimonials Section */}
-      <div className="section-wrapper">
-        <section className="bg-[#f0f4f8] py-12 md:py-20 px-4 md:px-8 rounded-[30px]">
-          <div className="max-w-[1200px] mx-auto">
-
-            {/* Mobile Layout */}
-            <div className="block lg:hidden">
-              {/* Single image at top for mobile */}
-              <div className="relative mb-6">
-                <div className="w-full rounded-[16px] overflow-hidden bg-gray-200">
-                  <Image
-                    src="/images/threetesti.png"
-                    alt="Testimonials"
-                    width={1200}
-                    height={800}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    sizes="100vw"
-                    quality={80}
-                    placeholder="empty"
-                    unoptimized
-                  />
-                </div>
-              </div>
-
-              {/* Header for mobile */}
-              <div className="text-left mb-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#ff9100] text-lg">✦</span>
-                  <span className="text-teal-600 font-semibold text-sm">Our Testimonials</span>
-                </div>
-                <h2 className="text-[1.4rem] font-bold text-gray-900 leading-tight">
-                  Success stories from our clients
-                </h2>
-              </div>
-
-              {/* Testimonial Cards for mobile - carousel */}
-              <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-1">
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-[#ff9100] text-white">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic">
-                    &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-white/20">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-white/20 text-white">R</div>
-                    <div>
-                      <div className="font-bold text-sm text-white">Rekha Rajput</div>
-                      <div className="text-[0.7rem] text-white/70">Client</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
-                    &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">C</div>
-                    <div>
-                      <div className="font-bold text-sm text-gray-900">Chanchal Agrawal</div>
-                      <div className="text-[0.7rem] text-gray-500">Client</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
-                    &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">S</div>
-                    <div>
-                      <div className="font-bold text-sm text-gray-900">Swati Sharma</div>
-                      <div className="text-[0.7rem] text-gray-500">Client</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
-                    &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm bg-teal-600 text-white">P</div>
-                    <div>
-                      <div className="font-bold text-sm text-gray-900">Priya Verma</div>
-                      <div className="text-[0.7rem] text-gray-500">Client</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Desktop Layout */}
-            <div className="hidden lg:flex gap-10 items-start">
-              {/* Left - Header and Testimonial Cards */}
-              <div className="flex-1 max-w-[520px]">
-                {/* Header */}
-                <div className="text-left mb-8">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[#ff9100] text-xl">✦</span>
-                    <span className="text-teal-600 font-semibold text-base">Our Testimonials</span>
-                  </div>
-                  <h2 className="text-[2.2rem] font-bold text-gray-900 leading-tight">
-                    Success stories from our clients
-                  </h2>
-                </div>
-
-                {/* Testimonial Cards Grid - 2 columns, 2 rows */}
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Card 1 - Highlighted */}
-                  <div className="rounded-[16px] p-5 bg-[#ff9100] text-white shadow-[0_10px_30px_rgba(255,145,0,0.25)]">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-white">
-                      &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-white/20">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-white/20 text-white">R</div>
-                      <div>
-                        <div className="font-bold text-sm text-white">Rekha Rajput</div>
-                        <div className="text-[0.72rem] text-white/70">Client</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 2 */}
-                  <div className="rounded-[16px] p-5 bg-white shadow-md">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-gray-600">
-                      &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-teal-600 text-white">C</div>
-                      <div>
-                        <div className="font-bold text-sm text-gray-900">Chanchal Agrawal</div>
-                        <div className="text-[0.72rem] text-gray-500">Client</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 3 */}
-                  <div className="rounded-[16px] p-5 bg-white shadow-md">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-gray-600">
-                      &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-teal-600 text-white">S</div>
-                      <div>
-                        <div className="font-bold text-sm text-gray-900">Swati Sharma</div>
-                        <div className="text-[0.72rem] text-gray-500">Client</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 4 - Additional */}
-                  <div className="rounded-[16px] p-5 bg-white shadow-md">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-gray-600">
-                      &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-base bg-teal-600 text-white">P</div>
-                      <div>
-                        <div className="font-bold text-sm text-gray-900">Priya Verma</div>
-                        <div className="text-[0.72rem] text-gray-500">Client</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right - Single testimonial image */}
-              <div className="flex-1 flex justify-center items-center">
-                <div className="w-full max-w-[520px] rounded-[20px] overflow-hidden bg-gray-200">
-                  <Image
-                    src="/images/threetesti.png"
-                    alt="Testimonials"
-                    width={1200}
-                    height={800}
-                    className="w-full h-auto object-contain"
-                    loading="lazy"
-                    sizes="(min-width: 1024px) 520px, 100vw"
-                    quality={80}
-                    placeholder="empty"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
+      <div className="">
+        <TestimonialsSection />
       </div>
     </section>
   );

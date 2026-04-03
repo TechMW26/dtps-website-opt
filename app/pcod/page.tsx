@@ -94,16 +94,16 @@ export default function PCODPage() {
 
 
 
-      <section className="py-16 md:py-24 bg-[#F5F5F5]" id="benefits">
+      <section className="py-16 md:py-24  bg-[#F5F5F5]" id="benefits">
 
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1230px] mx-auto px-4">
 
           <h2 className="text-center text-[28px] md:text-[44px] font-bold text-black">
             Role of Diet in <span className="text-[#FF8A00]">PCOD/PCOS</span>
           </h2>
 
           <p className="text-center text-gray-500 text-sm md:text-base mt-3 max-w-[700px] mx-auto">
-            Diet plays a crucial role in managing PCOS, as it can help mitigate some of the symptoms and associated health risks
+            Diet plays a crucial role in managing PCOS, as it can help mitigate some of the symptoms and associated health risks.
           </p>
 
 

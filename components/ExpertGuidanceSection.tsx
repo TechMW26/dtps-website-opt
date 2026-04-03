@@ -308,7 +308,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
             {mediaCards.map((card, index) => (
               <div
                 key={card.title}
-                className={`w-[290px] rounded-[12px] bg-transparent p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                className={`w-[290px] rounded-[12px] bg-white p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)] transition-all duration-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                   }`}
                 style={{ transitionDelay: `${index * 120}ms` }}
               >
@@ -341,7 +341,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
               {[...mediaCards, ...mediaCards].map((card, index) => (
                 <div
                   key={`${card.title}-${index}`}
-                  className="w-[256px] shrink-0 rounded-[12px] bg-transparent p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
+                  className="w-[256px] shrink-0 rounded-[12px] bg-white p-[16px] shadow-[0px_4px_4px_rgba(0,0,0,0.25)]"
                 >
                   <div className="relative h-[170px] w-full overflow-hidden rounded-[6px]">
                     <Image src={card.image} alt={card.title} fill className="object-cover" loading="lazy" sizes="224px" quality={75} />

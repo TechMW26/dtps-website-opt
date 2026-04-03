@@ -23,13 +23,15 @@ export default function OurTeamSection() {
       {/* Banner */}
       <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden">
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
+          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/team/DTPS-Full-Team-Image.png"
           alt="Our Team"
           width={1920}
-          height={1080}
+          height={400}
           priority
-          className="block object-cover object-center w-full h-[190px] sm:h-[240px] md:h-auto"
+          className="block object-cover object-top w-full"
           sizes="100vw"
+          quality={80}
+          unoptimized
         />
       </div>
 
@@ -86,7 +88,7 @@ export default function OurTeamSection() {
         {galleryImages.map((img, index) => (
           <div
             key={index}
-            className="flex-[0_0_80%] md:flex-auto w-full h-[160px] md:h-[170px] lg:h-[179px] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
+            className="flex-[0_0_80%] md:flex-auto w-full aspect-[4/3] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
           >
             <Image
               src={img}
@@ -94,6 +96,7 @@ export default function OurTeamSection() {
               fill
               className="object-cover"
               sizes="(max-width: 767px) 80vw, 25vw"
+              loading="lazy"
             />
           </div>
         ))}

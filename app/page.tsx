@@ -7,6 +7,7 @@ import { getOptimizedUrl } from '@/lib/imagekit';
 
 // Critical above-fold component loaded immediately
 import AboutUsSection from '@/components/AboutUsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 // Dynamic imports for below-fold components with loading states
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'), {
@@ -25,7 +26,7 @@ const WhyChooseUsSection = dynamic(() => import('@/components/WhyChooseUsSection
 });
 
 const ExpertGuidanceSection = dynamic(() => import('@/components/ExpertGuidanceSection'), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-gray-50 rounded-[30px]" />,
+  loading: () => <div className="min-h-[300px] animate-pulse  rounded-[30px]" />,
   ssr: true,
 });
 
@@ -831,192 +832,7 @@ export default function HomePage() {
 
       {/* Testimonials Section */}
       <div className="section-wrapper">
-        <section className="bg-[#f0f4f8] py-12 md:py-20 px-4 md:px-8 rounded-[30px]">
-          <div className="max-w-[1200px] mx-auto">
-
-            {/* Mobile Layout */}
-            <div className="block lg:hidden">
-              {/* Single image at top for mobile */}
-              <div className="relative mb-6">
-                <div className="w-full rounded-[16px] overflow-hidden bg-gray-200">
-                  <Image
-                    src="/images/threetesti.png"
-                    alt="Testimonials"
-                    width={1200}
-                    height={800}
-                    className="object-contain w-full h-auto"
-                    loading="lazy"
-                    sizes="100vw"
-                    quality={80}
-                    placeholder="empty"
-                    unoptimized
-                  />
-                </div>
-              </div>
-
-              {/* Header for mobile */}
-              <div className="mb-5 text-left">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#ff9100] text-lg">✦</span>
-                  <span className="text-sm font-semibold text-teal-600">Our Testimonials</span>
-                </div>
-                <h2 className="text-[1.4rem] font-bold text-gray-900 leading-tight">
-                  Success stories from our clients
-                </h2>
-              </div>
-
-              {/* Testimonial Cards for mobile - carousel */}
-              <div className="flex gap-3 pb-1 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-[#ff9100] text-white">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic">
-                    &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-white/20">
-                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white rounded-full bg-white/20">R</div>
-                    <div>
-                      <div className="text-sm font-bold text-white">Rekha Rajput</div>
-                      <div className="text-[0.7rem] text-white/70">Client</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
-                    &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-teal-600 rounded-full">C</div>
-                    <div>
-                      <div className="text-sm font-bold text-gray-900">Chanchal Agrawal</div>
-                      <div className="text-[0.7rem] text-gray-500">Client</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
-                    &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-teal-600 rounded-full">S</div>
-                    <div>
-                      <div className="text-sm font-bold text-gray-900">Swati Sharma</div>
-                      <div className="text-[0.7rem] text-gray-500">Client</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="snap-start shrink-0 w-[86%] rounded-[16px] p-4 bg-white shadow-md">
-                  <p className="text-[0.8rem] leading-relaxed mb-3 italic text-gray-600">
-                    &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
-                  </p>
-                  <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
-                    <div className="flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-teal-600 rounded-full">P</div>
-                    <div>
-                      <div className="text-sm font-bold text-gray-900">Priya Verma</div>
-                      <div className="text-[0.7rem] text-gray-500">Client</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Desktop Layout */}
-            <div className="items-start hidden gap-10 lg:flex">
-              {/* Left - Header and Testimonial Cards */}
-              <div className="flex-1 max-w-[520px]">
-                {/* Header */}
-                <div className="mb-8 text-left">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[#ff9100] text-xl">✦</span>
-                    <span className="text-base font-semibold text-teal-600">Our Testimonials</span>
-                  </div>
-                  <h2 className="text-[2.2rem] font-bold text-gray-900 leading-tight">
-                    Success stories from our clients
-                  </h2>
-                </div>
-
-                {/* Testimonial Cards Grid - 2 columns, 2 rows */}
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Card 1 - Highlighted */}
-                  <div className="rounded-[16px] p-5 bg-[#ff9100] text-white shadow-[0_10px_30px_rgba(255,145,0,0.25)]">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-white">
-                      &ldquo;I am extremely happy and satisfied with my experience with Dietitian. Just 1 month, I lost 3 kg! I am genuinely thrilled with the results.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-white/20">
-                      <div className="flex items-center justify-center text-base font-bold text-white rounded-full w-9 h-9 bg-white/20">R</div>
-                      <div>
-                        <div className="text-sm font-bold text-white">Rekha Rajput</div>
-                        <div className="text-[0.72rem] text-white/70">Client</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 2 */}
-                  <div className="rounded-[16px] p-5 bg-white shadow-md">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-gray-600">
-                      &ldquo;Great experience with DTPS team. In 3 months, I achieved noticeable weight loss approx 7kgs and 2 inches reduced in upper body.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="flex items-center justify-center text-base font-bold text-white bg-teal-600 rounded-full w-9 h-9">C</div>
-                      <div>
-                        <div className="text-sm font-bold text-gray-900">Chanchal Agrawal</div>
-                        <div className="text-[0.72rem] text-gray-500">Client</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 3 */}
-                  <div className="rounded-[16px] p-5 bg-white shadow-md">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-gray-600">
-                      &ldquo;My weight and inch loss journey has been very encouraging. I have noticed a clear difference in my body measurements, especially around my waist and hips.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="flex items-center justify-center text-base font-bold text-white bg-teal-600 rounded-full w-9 h-9">S</div>
-                      <div>
-                        <div className="text-sm font-bold text-gray-900">Swati Sharma</div>
-                        <div className="text-[0.72rem] text-gray-500">Client</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 4 - Additional */}
-                  <div className="rounded-[16px] p-5 bg-white shadow-md">
-                    <p className="text-[0.82rem] leading-relaxed mb-4 italic text-gray-600">
-                      &ldquo;The personalized diet plan worked wonders for me. Lost 5kg in 2 months with proper guidance and support from the team.&rdquo;
-                    </p>
-                    <div className="flex items-center gap-3 pt-3 border-t border-gray-200">
-                      <div className="flex items-center justify-center text-base font-bold text-white bg-teal-600 rounded-full w-9 h-9">P</div>
-                      <div>
-                        <div className="text-sm font-bold text-gray-900">Priya Verma</div>
-                        <div className="text-[0.72rem] text-gray-500">Client</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right - Single testimonial image */}
-              <div className="flex items-center justify-center flex-1">
-                <div className="w-full max-w-[520px] rounded-[20px] overflow-hidden bg-gray-200">
-                  <Image
-                    src="/images/threetesti.png"
-                    alt="Testimonials"
-                    width={1200}
-                    height={800}
-                    className="object-contain w-full h-auto"
-                    loading="lazy"
-                    sizes="(min-width: 1024px) 520px, 100vw"
-                    quality={80}
-                    placeholder="empty"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
+        <TestimonialsSection />
       </div>
     </div>
   );
