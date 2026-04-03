@@ -22,16 +22,15 @@ export default function OurTeamSection() {
 
       {/* Banner */}
       <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden">
-        <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
+        <img
+          src="https://ik.imagekit.io/br0mssyqj/tr:w-1920,q-90,f-auto/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
           alt="Our Team"
-          width={1920}
-          height={400}
-          priority
           className="block object-cover object-top w-full"
-          sizes="100vw"
-          quality={90}
-          unoptimized
+          loading="eager"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = '/images/dtps-full-team-image.png';
+          }}
         />
       </div>
 

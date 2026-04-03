@@ -136,12 +136,12 @@ export default function OurBlogsSection() {
         </div>
 
         {/* Mobile Slider */}
-        <div className="mt-8 md:hidden -mr-4">
-          <div className="flex gap-4 overflow-x-auto pb-2 pr-4 snap-x snap-mandatory no-scrollbar">
+        <div className="mt-8 md:hidden">
+          <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar -mx-4 px-4">
             {loading ? (
               // Loading skeleton for mobile
               [...Array(3)].map((_, i) => (
-                <article key={i} className="w-[270px] shrink-0 snap-start rounded-[16px] bg-[#F3F3F3] p-3 animate-pulse">
+                <article key={i} className="w-[85vw] max-w-[300px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3 animate-pulse">
                   <div className="h-[132px] w-full rounded-[12px] bg-[#D9D9D9]" />
                   <div className="pt-3">
                     <div className="h-3 w-20 bg-[#D9D9D9] rounded" />
@@ -154,7 +154,7 @@ export default function OurBlogsSection() {
               blogs.map((blog) => (
                 <article
                   key={blog._id}
-                  className="w-[270px] shrink-0 snap-start rounded-[16px] bg-[#F3F3F3] p-3"
+                  className="w-[85vw] max-w-[300px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3"
                 >
                   <div className="overflow-hidden rounded-[12px]">
                     <Image
