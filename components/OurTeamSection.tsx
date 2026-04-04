@@ -91,11 +91,11 @@ export default function OurTeamSection() {
       </div>
 
       {/* Gallery */}
-      <div className="w-full max-w-[1200px] flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-[14px] md:gap-5 px-2 md:px-4 lg:px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-2">
+      <div className="w-full max-w-[1200px] flex gap-[14px] md:gap-5 px-2 md:px-4 lg:px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-2 md:justify-center">
         {galleryImages.map((img, index) => (
           <div
             key={index}
-            className="flex-[0_0_75%] sm:flex-[0_0_60%] md:flex-auto w-full aspect-[4/3] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
+            className="flex-[0_0_270px] w-[270px] h-[179px] relative rounded-2xl overflow-hidden snap-center md:snap-align-none"
           >
             <Image
               src={img}
