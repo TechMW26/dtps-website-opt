@@ -338,7 +338,7 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+              src="/images/what-to-expect-mobile.png"
               alt="What to Expect - Mobile"
               width={600}
               height={800}
