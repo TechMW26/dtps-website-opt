@@ -184,7 +184,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
   return (
     <section
       ref={sectionRef}
-      className={`relative w-full max-w-[1200px] mx-auto my-8 md:my-12 lg:my-16 overflow-hidden rounded-[24px] ${epilogue.className}`}
+      className={`relative w-full max-w-7xl mx-auto my-8 md:my-12 lg:my-16 overflow-hidden rounded-[24px] ${epilogue.className}`}
       style={{ backgroundColor: colors.bg }}
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.08]">

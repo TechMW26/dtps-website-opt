@@ -21,9 +21,9 @@ export default function WhyChooseUsSection() {
   return (
     <section
       ref={sectionRef}
-      className="rounded-[28px] px-6 md:px-1 py-2 md:py-4"
+      className="rounded-[28px] py-2 md:py-4"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Desktop Version */}
         <div className="hidden lg:block">
           <Image
