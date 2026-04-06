@@ -782,8 +782,8 @@ export default function HomePage() {
                       />
 
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="relative">
-                          <select className="h-[48px] w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none">
+                        <div className="relative min-w-0">
+                          <select className="h-[48px] w-full min-w-0 appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none">
                             <option>Service</option>
                             <option>Weight Management</option>
                             <option>PCOD/PCOS</option>
@@ -805,7 +805,7 @@ export default function HomePage() {
 
                         <input
                           type="date"
-                          className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none"
+                          className="h-[48px] w-full min-w-0 rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none"
                         />
                       </div>
 
