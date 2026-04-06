@@ -38,10 +38,9 @@ export default function Footer() {
               <Image
                 src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
                 alt="Dietitian Poonam Sagar"
-                width={220}
-                height={80}
-                className="h-[50px] md:h-[70px] w-auto"
-                style={{ width: 'auto', height: 'auto' }}
+                width={180}
+                height={60}
+                className="h-[48px] w-auto"
                 loading="lazy"
               />
               <p className="mt-6 text-[15px] leading-relaxed text-white/85">

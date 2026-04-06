@@ -537,137 +537,17 @@ export default function WeddingPlanPage() {
 
 
       {/* ================= DESKTOP VERSION ================= */}
-
       <section className="hidden md:block bg-white py-20 px-4">
-
-        <div className="max-w-[1200px] mx-auto bg-[#4E0101] rounded-[28px] py-16 px-8 relative">
-
-          {/* Heading */}
-          <div className="text-center mb-16">
-
-            <h2 className="text-5xl font-bold text-white mb-4">
-              Our <span className="text-[#ff850b]">Five-Cycle</span> Program
-            </h2>
-
-            <p className="text-[#ff850b] text-2xl">
-              A science-based process that prepares your body
-            </p>
-
-            <p className="text-[#ff850b] text-2xl">
-              for sustainable weight loss.
-            </p>
-
-          </div>
-
-
-          {/* Orbit Container */}
-          <div className="relative h-[520px] flex items-center justify-center">
-
-            {/* Dotted Ring */}
-            <div className="absolute w-[420px] h-[420px] border-2 border-dashed border-white rounded-full"></div>
-
-
-            {/* Center Circle */}
-            <div className="absolute w-[150px] h-[150px] bg-white rounded-full flex items-center justify-center text-[#FF850B] font-bold text-2xl text-center shadow-xl">
-              WEIGHT<br />LOSS
-            </div>
-
-
-
-            {/* Detox */}
-            <div className="absolute top-[20px] left-1/2 -translate-x-1/2 flex flex-col items-center">
-
-              <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 mb-3 text-center">
-                <h3 className="text-white font-semibold text-sm">Detoxification</h3>
-                <p className="text-[#ff850b] text-xs">
-                  This initial phase gently cleanses your body
-                </p>
-              </div>
-
-              <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg" className="w-7" loading="lazy" decoding="async" alt="Detox" />
-              </div>
-
-            </div>
-
-
-
-            {/* Anti Inflammatory */}
-            <div className="absolute right-[120px] top-[150px] flex items-center gap-4">
-
-              <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg" className="w-7" loading="lazy" decoding="async" alt="Anti-Inflammatory" />
-              </div>
-
-              <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px]">
-                <h3 className="text-white font-semibold text-sm">Anti-Inflammatory Reset</h3>
-                <p className="text-[#ff850b] text-xs">
-                  Anti-inflammatory foods to reduce inflammation
-                </p>
-              </div>
-
-            </div>
-
-
-
-            {/* Fat Burning */}
-            <div className="absolute right-[120px] bottom-[140px] flex items-center gap-4">
-
-              <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg" className="w-7" loading="lazy" decoding="async" alt="Fat Burning" />
-              </div>
-
-              <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px]">
-                <h3 className="text-white font-semibold text-sm">Fat-Burning Activation</h3>
-                <p className="text-[#ff850b] text-xs">
-                  Dynamic cycle focused on maximizing fat burning
-                </p>
-              </div>
-
-            </div>
-
-
-
-            {/* Metabolic */}
-            <div className="absolute left-[120px] bottom-[140px] flex items-center gap-4 flex-row-reverse">
-
-              <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg" className="w-7" loading="lazy" decoding="async" alt="Metabolic" />
-              </div>
-
-              <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px] text-right">
-                <h3 className="text-white font-semibold text-sm">Metabolic Optimisation</h3>
-                <p className="text-[#ff850b] text-xs">
-                  Rev up your metabolism with booster cycle
-                </p>
-              </div>
-
-            </div>
-
-
-
-            {/* Maintenance */}
-            <div className="absolute left-[120px] top-[150px] flex items-center gap-4 flex-row-reverse">
-
-              <div className="w-[70px] h-[70px] bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <img src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg" className="w-7" loading="lazy" decoding="async" alt="Maintenance" />
-              </div>
-
-              <div className="bg-[#5c0a0a] border border-[#8a3b3b] rounded-xl px-6 py-3 w-[220px] text-right">
-
-                <h3 className="text-white font-semibold text-sm">
-                  Maintenance & Progression
-                </h3>
-
-                <p className="text-[#ff850b] text-xs">
-                  Celebrate success and maintain weight loss
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
+        <div className="max-w-[1200px] mx-auto rounded-[28px] overflow-hidden">
+          <Image
+            src="/images/5dayscycle.svg"
+            alt="Our Five-Cycle Program"
+            width={1200}
+            height={700}
+            className="w-full h-auto"
+            loading="lazy"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+          />
         </div>
       </section>
 
