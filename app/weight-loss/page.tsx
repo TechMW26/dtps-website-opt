@@ -356,7 +356,7 @@ export default function WeightLossPage() {
 
       {/* ═════ MONEY BACK GUARANTEE ═════ */}
       <section>
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1200px] lg:max-w-none mx-auto">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
@@ -395,7 +395,7 @@ export default function WeightLossPage() {
 
       {/* ═════ WHAT DO YOU GET ═════ */}
       <section className="py-12 md:py-20">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1200px] lg:max-w-none mx-auto">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
