@@ -22,10 +22,10 @@ export default function OurTeamSection() {
   ];
 
   return (
-    <section className="w-full md:max-w-7xl bg-[#f7f7f7] md:bg-white rounded-none md:rounded-[26px] overflow-hidden border border-[#d9d9d9] md:outline md:outline-[0.5px] md:outline-[#6c6c6c] md:-outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 mt-10 md:mx-auto">
+    <section className="w-full md:max-w-7xl bg-[#f7f7f7] md:bg-white rounded-none md:rounded-[26px] overflow-hidden border-0 md:border md:border-[#d9d9d9] md:outline md:outline-[0.5px] md:outline-[#6c6c6c] md:-outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 md:mx-auto">
 
       {/* Banner */}
-      <div className="relative w-[calc(100%+2px)] -mx-px -mt-px overflow-hidden aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] min-h-[220px] sm:min-h-[280px] md:min-h-[340px]">
+      <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] min-h-[220px] sm:min-h-[280px] md:min-h-[340px]">
         <Image
           src={teamBannerSrc}
           alt="Our Team"
