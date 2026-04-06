@@ -553,9 +553,9 @@ export default function WeddingPlanPage() {
 
 
       {/* We Do Not Push Section */}
-      <section className="bg-white py-14 md:py-20">
+      <section className="bg-white py-14 md:py-20 md:px-4">
 
-        <div className="max-w-[1200px] mx-auto px-5">
+        <div className="max-w-[1200px] mx-auto px-5 md:px-0">
           <div className="bg-[#E7E7E7] rounded-[30px] pt-6 pb-0 md:pt-12 md:pb- px-6 md:px-12">
 
             <div className="grid md:grid-cols-2 gap-10 items-center">
