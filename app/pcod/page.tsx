@@ -259,16 +259,11 @@ export default function PCODPage() {
 
               </div>
 
-            </div>
-
-
           </div>
 
         </div>
 
       </section>
-
-      );
 
 
       {/* Symptoms Image Section */}
