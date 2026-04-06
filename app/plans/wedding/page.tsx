@@ -540,7 +540,7 @@ export default function WeddingPlanPage() {
       <section className="hidden md:block bg-white py-20 px-4">
         <div className="max-w-[1200px] mx-auto rounded-[28px] overflow-hidden">
           <Image
-            src="/images/5dayscycle.svg"
+            src="/5dayscycle.svg"
             alt="Our Five-Cycle Program"
             width={1200}
             height={700}
