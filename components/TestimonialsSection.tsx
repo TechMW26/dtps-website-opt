@@ -64,7 +64,7 @@ export default function TestimonialsSection({
                                 alt="Testimonials"
                                 width={1200}
                                 height={800}
-                                className="object-contain w-full h-auto"
+                                className="object-cover w-full h-auto"
                                 loading="lazy"
                                 sizes="100vw"
                                 quality={80}
@@ -198,7 +198,7 @@ export default function TestimonialsSection({
                                 alt="Testimonials"
                                 width={1200}
                                 height={800}
-                                className="object-contain w-full h-auto"
+                                className="object-cover w-full h-auto"
                                 loading="lazy"
                                 sizes="(min-width: 1024px) 520px, 100vw"
                                 quality={80}

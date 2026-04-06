@@ -4,7 +4,7 @@ import Navbar from '../Navbar';
 
 export default function WeightLossHero() {
     return (
-        <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]">
+        <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
             <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
                 <div className="relative w-full">
                     {/* Navbar */}

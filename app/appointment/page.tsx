@@ -13,7 +13,8 @@ export const metadata: Metadata = {
  
 export default function AppointmentPage() {
   return (
-      <div className="page-content">
+      <div className="">
+        <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
          <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
                         
                         
@@ -29,6 +30,7 @@ export default function AppointmentPage() {
         </section>
                        
                         </div>
+        </section>
 
 
       {/* Appointment Form Section */}

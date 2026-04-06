@@ -52,7 +52,7 @@ export default function PCODPage() {
   return (
     <main className="bg-white">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -94,9 +94,9 @@ export default function PCODPage() {
 
 
 
-      <section className="py-16 md:py-24  bg-[#F5F5F5]" id="benefits">
+      <section className="py-16 md:py-24 px-3 md:px-[60px] lg:px-[120px] bg-[#F5F5F5]" id="benefits">
 
-        <div className="max-w-[1230px] mx-auto px-4">
+        <div className="max-w-[1230px] mx-auto">
 
           <h2 className="text-center text-[28px] md:text-[44px] font-bold text-black">
             Role of Diet in <span className="text-[#FF8A00]">PCOD/PCOS</span>
@@ -107,12 +107,10 @@ export default function PCODPage() {
           </p>
 
 
-          <div className="grid grid-cols-1 gap-8 mt-14 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 mt-14 sm:grid-cols-2">
 
 
-            {/* LEFT CARDS */}
-
-            <div className="grid grid-cols-1 gap-8 md:col-span-2 sm:grid-cols-2">
+            {/* CARDS */}
 
 
               {/* CARD 1 */}
@@ -264,104 +262,6 @@ export default function PCODPage() {
             </div>
 
 
-
-            {/* RIGHT CONTACT CARD */}
-
-            <div className="bg-[#141414] text-white rounded-[24px] p-8 shadow-xl relative flex flex-col justify-between">
-
-              <div>
-
-                <div className="absolute top-6 right-6 border-t-2 border-r-2 border-[#FF8A00] w-10 h-10"></div>
-
-                <div className="bg-[#FF8A00] inline-block text-xs font-semibold px-4 py-2 rounded-full mb-6">
-                  ✨ Get Started
-                </div>
-
-                <h3 className="text-[30px] font-bold leading-tight mb-4">
-                  Ready to Transform Your Health?
-                </h3>
-
-                <p className="mb-6 text-sm text-gray-300">
-                  Join thousands of women who have successfully managed their PCOD/PCOS through our personalized nutrition plans.
-                </p>
-
-                <ul className="mb-8 space-y-3 text-sm">
-
-                  <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[#FF8A00] flex items-center justify-center text-black text-xs">✓</span>
-                    Personalized diet plans
-                  </li>
-
-                  <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[#FF8A00] flex items-center justify-center text-black text-xs">✓</span>
-                    Expert nutritionist support
-                  </li>
-
-                  <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[#FF8A00] flex items-center justify-center text-black text-xs">✓</span>
-                    Traditional "Ghar ka Khana"
-                  </li>
-
-                  <li className="flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-[#FF8A00] flex items-center justify-center text-black text-xs">✓</span>
-                    Proven results
-                  </li>
-
-                </ul>
-
-                <a
-                  href="/appointment"
-                  className="block text-center bg-[#FF8A00] hover:bg-[#ff7a00] transition text-white font-semibold py-4 rounded-full"
-                >
-                  Book Your Consultation →
-                </a>
-
-              </div>
-
-
-              <div className="pt-6 mt-8 border-t border-gray-700">
-
-                <p className="mb-3 text-sm text-gray-400">
-                  Questions? Contact us
-                </p>
-
-                {/* PHONE */}
-
-                <div className="flex items-center gap-3 mb-2 text-sm text-gray-300">
-
-                  <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6faa14dfc9fbf5ad61c.jpg"
-                    width={18}
-                    height={18}
-                    alt="Contact Icon"
-                    loading="lazy"
-                  />
-
-                  <span>+91 98930 27688</span>
-
-                </div>
-
-                {/* EMAIL */}
-
-                <div className="flex items-center gap-3 text-sm text-gray-300">
-
-                  <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad663.jpg"
-                    width={18}
-                    height={18}
-                    alt="Email Icon"
-                    loading="lazy"
-                  />
-
-                  <span>support@dtpoonamsagar.com</span>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
           </div>
 
         </div>
@@ -373,7 +273,7 @@ export default function PCODPage() {
 
       {/* Symptoms Image Section */}
 
-      <div className="px-4 pcod-symptoms-image md:px-0">
+      <div className="px-3 md:px-[60px] lg:px-[120px] pcod-symptoms-image">
 
         {/* Desktop Banner */}
         <Image
@@ -404,9 +304,9 @@ export default function PCODPage() {
 
       {/* WHAT YOU WILL GET SECTION */}
 
-      <section className="w-full py-8 md:py-14">
+      <section className="w-full py-8 md:py-14 px-3 md:px-[60px] lg:px-[120px]">
 
-        <div className="max-w-[1200px] mx-auto px-4">
+        <div className="max-w-[1200px] mx-auto">
 
           {/* grey container */}
           <div className="bg-[#EAEEF1] rounded-[24px] p-4 md:p-10">
@@ -417,7 +317,7 @@ export default function PCODPage() {
 
               <div className="flex justify-center">
 
-                <div className="bg-[#EAEEF1] rounded-[18px] overflow-hidden w-full max-w-[330px] md:max-w-[520px]">
+                <div className="bg-[#EAEEF1] rounded-[18px] overflow-hidden w-full max-w-[330px] md:max-w-[520px] border border-gray-300">
 
                   <Image
                     src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"
@@ -532,7 +432,7 @@ export default function PCODPage() {
       </section>
 
       {/* Ghar Ka Khana Section */}
-      <section className="px-4 py-16">
+      <section className="px-3 md:px-[60px] lg:px-[120px] py-16">
         <div className="max-w-[1280px] mx-auto">
           {/* Desktop Image - Hidden on Mobile */}
           <div className="hidden md:block">
@@ -566,7 +466,7 @@ export default function PCODPage() {
       <ExpertGuidanceSection />
 
       {/* TESTIMONIALS GALLERY */}
-      <section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
+      <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
         <div className="max-w-[1000px] mx-auto">
           <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
             <div className="max-w-[630px]">
@@ -596,7 +496,7 @@ export default function PCODPage() {
       </section>
 
       {/* Pricing Section - Mobile */}
-      <section className="px-4 py-8 wl-section md:hidden">
+      <section className="px-3 md:px-[60px] lg:px-[120px] py-8 wl-section md:hidden">
         <div className="container">
           <div className="wl-section-label wl-center">
             <span className="wl-star wl-teal-text">✦</span> <span className="text-xs wl-teal-text">PRICING</span>

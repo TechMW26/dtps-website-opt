@@ -531,7 +531,7 @@ export default function HomePage() {
 
           {/* MOBILE */}
           <div className="md:hidden">
-            <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-4 pb-6 pt-7">
+            <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-5 pb-6 pt-7">
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
@@ -553,9 +553,9 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="relative pl-[6px] pr-[2px]">
+              <div className="relative px-1">
                 <div className="relative">
-                  <div className="pointer-events-none absolute left-[19px] top-[28px] bottom-[170px] border-l border-dotted border-white/45" />
+                  <div className="pointer-events-none absolute left-[12px] top-[28px] bottom-[28px] border-l border-dotted border-white/45" />
 
                   <div className="space-y-4">
                     {/* Mobile Step 1 */}
@@ -727,7 +727,7 @@ export default function HomePage() {
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
                       <span className="text-[13px] font-semibold text-[#014E4E]">
-                        Our Testimonials
+                        Appointment
                       </span>
                     </div>
 

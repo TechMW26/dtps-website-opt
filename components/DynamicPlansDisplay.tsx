@@ -191,15 +191,16 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
         <button
           type="button"
           onClick={() => setExpanded((prev) => !prev)}
-          className="mt-3 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
+          className="mt-3 mb-4 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
           style={{ fontFamily: 'DM Sans, sans-serif' }}
         >
           {expanded ? 'Show Less' : 'Show More'}
         </button>
       )}
+      <div className="flex-1" />
       <button
         onClick={() => onSelect?.(plan)}
-        className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
+        className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer"
         style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
       >
         BUY NOW

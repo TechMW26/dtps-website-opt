@@ -180,13 +180,13 @@ img, video {
 
 @media (max-width: 768px) {
   .section-wrapper-blog {
-    padding: 3px var(--section-padding-x-mobile);
+    padding: 4px 16px;
   }
 }
 
 @media (max-width: 480px) {
   .section-wrapper-blog {
-    padding: 3px 8px;
+    padding: 4px 12px;
   }
 }
 
@@ -212,7 +212,7 @@ img, video {
 
 @media (max-width: 768px) {
   .section-wrapper {
-    padding: 3px var(--section-padding-x-mobile);
+    padding: 4px 16px;
   }
 
   .section-wrapper>section,
@@ -233,7 +233,7 @@ img, video {
 
 @media (max-width: 480px) {
   .section-wrapper {
-    padding: 3px 8px;
+    padding: 4px 12px;
   }
 
   .section-wrapper>section,
@@ -917,7 +917,7 @@ img, video {
 
   /* ===== About Section ===== */
   .about-section {
-    padding: 120px 80px;
+    padding: 80px var(--section-padding-x);
     background: var(--white);
   }
 
@@ -1646,7 +1646,7 @@ img, video {
   /* ===== Page Header for Inner Pages ===== */
   .page-header {
     background: transparent;
-    padding: 60px 80px 100px;
+    padding: 60px 60px 100px;
     text-align: center;
   }
 
@@ -1921,7 +1921,7 @@ img, video {
   .programs-section,
   .testimonials-section,
   .contact-section {
-    padding: 80px 40px;
+    padding: 60px 30px;
   }
 }
 

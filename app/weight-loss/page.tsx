@@ -226,7 +226,7 @@ export default function WeightLossPage() {
   }, []);
 
   return (
-    <section className="pt-[60px] px-4 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
+    <section className="pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
 
       <DynamicPopup page="weight-loss" />
 

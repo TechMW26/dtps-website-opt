@@ -192,7 +192,7 @@ export default function WeddingPlanPage() {
   return (
     <main className="bg-white">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-[60px] px-4 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative">
           {/* Background Image */}
           <Image
@@ -537,7 +537,7 @@ export default function WeddingPlanPage() {
 
 
       {/* ================= DESKTOP VERSION ================= */}
-      <section className="hidden md:block bg-white py-20 px-4">
+      <section className="hidden md:block bg-white py-20 px-3 md:px-[60px] lg:px-[120px]">
         <div className="max-w-[1200px] mx-auto rounded-[28px] overflow-hidden">
           <Image
             src="/5dayscycle.svg"
@@ -553,7 +553,7 @@ export default function WeddingPlanPage() {
 
 
       {/* We Do Not Push Section */}
-      <section className="bg-white py-14 md:py-20 md:px-4">
+      <section className="bg-white py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
 
         <div className="max-w-[1200px] mx-auto px-5 md:px-0">
           <div className="bg-[#E7E7E7] rounded-[30px] pt-6 pb-0 md:pt-12 md:pb- px-6 md:px-12">
@@ -688,8 +688,8 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* 100% Personalised Ghar Ka Khana Section */}
-      <section className="bg-white py-14 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-5">
+      <section className="bg-white py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
+        <div className="max-w-[1200px] mx-auto">
           <div className="bg-[#4E0101] rounded-[24px] md:rounded-[30px] px-6 py-10 md:px-16 md:py-14">
 
             {/* Heading */}
@@ -729,7 +729,7 @@ export default function WeddingPlanPage() {
             </div>
 
             {/* Mobile: Icons with label on right */}
-            <div className="flex md:hidden flex-col gap-5 mb-8 max-w-[260px] mx-auto">
+            <div className="flex md:hidden flex-col gap-5 mb-8 mx-auto items-center">
               <div className="flex items-center gap-4">
                 <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
                   <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={32} height={32} loading="lazy" />
@@ -802,7 +802,7 @@ export default function WeddingPlanPage() {
 
             {/* Bottom tagline */}
             <p className="text-center text-sm md:text-lg font-semibold text-white leading-relaxed">
-              Sirf <span className="text-[#FF850B] italic">GHAR KE KHANE</span><br className="md:hidden" />
+              Sirf <span className="text-[#FF850B] font-bold">GHAR KE KHANE</span><br className="md:hidden" />
               {" "}se bhi ho sakta hai amazing<br className="md:hidden" />
               {" "}<span className="text-[#FF850B] font-bold">WEIGHT LOSS</span>!
             </p>
@@ -812,8 +812,8 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Why People Trust DTPS Section */}
-      <section className="bg-white py-14 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-5">
+      <section className="bg-white py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
+        <div className="max-w-[1200px] mx-auto">
 
           {/* Heading */}
           <h2 className="text-center text-2xl md:text-[42px] font-bold text-black leading-tight mb-8 md:mb-12">
@@ -902,12 +902,12 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Expert's Guidance Section */}
-      <section className="bg-white px-4 md:px-5">
+      <section className="bg-white px-3 md:px-[60px] lg:px-[120px]">
         <ExpertGuidanceSection variant="maroon" />
       </section>
 
       {/* Over 75,000+ People Enjoy Weight Loss */}
-      <section className="py-12 md:py-20 px-4 md:px-12 lg:px-[120px]">
+      <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
         <div className="max-w-[1000px] mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
             <div className="max-w-[630px]">
@@ -931,7 +931,7 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-white py-12 md:py-16 px-5">
+      <section className="bg-white py-12 md:py-16 px-3 md:px-[60px] lg:px-[120px]">
         <div className="w-full flex flex-col items-center justify-center text-center">
           <span className="text-[#ff850b] text-sm md:text-base font-semibold leading-relaxed">
             Our Pricing
@@ -947,7 +947,7 @@ export default function WeddingPlanPage() {
             our wedding plan!
           </p>
 
-          <div className="w-full flex justify-center px-5">
+          <div className="w-full flex justify-center">
             <div className="max-w-[1100px] w-full">
               <DynamicPlansDisplay
                 category="new-wedding-plan"

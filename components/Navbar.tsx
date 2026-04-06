@@ -55,6 +55,18 @@ export default function Navbar({ bgColor }: NavbarProps) {
     setIsMobileDropdownOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
@@ -155,7 +167,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute left-4 right-4 top-20 z-40 rounded-2xl bg-[#F9D67B] p-5 shadow-xl lg:hidden">
+        <div className="fixed left-4 right-4 top-20 z-40 max-h-[calc(100vh-100px)] overflow-y-auto rounded-2xl bg-[#F9D67B] p-5 shadow-xl lg:hidden">
           {navItems.map((item) => (
             <div key={item.label}>
               {item.children ? (

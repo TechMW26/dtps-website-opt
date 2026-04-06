@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin, FaApple, FaAndroid } from 'react-icons/fa'; // FontAwesome Icons
@@ -25,6 +28,7 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const [isPlansOpen, setIsPlansOpen] = useState(false);
   return (
     <footer className="bg-white py-10 px-4 md:px-[120px]">
       <div className="w-full mx-auto">
@@ -80,10 +84,10 @@ export default function Footer() {
               <div className="mt-8 flex items-center gap-5">
                 <span className="text-base font-semibold">Download on :</span>
                 <div className="flex items-center gap-3">
-                  <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" aria-label="Download on iOS">
+                  <a href="https://apps.apple.com/us/app/dtps-nutrition/id6759550995" target="_blank" rel="noopener noreferrer" aria-label="Download on iOS">
                     <FaApple className="text-white text-xl" />
                   </a>
-                  <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" aria-label="Get it on Android">
+                  <a href="https://play.google.com/store/apps/details?id=mw.dtps.app&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label="Get it on Android">
                     <FaAndroid className="text-white text-xl" />
                   </a>
                 </div>
@@ -96,17 +100,37 @@ export default function Footer() {
               <ul className="list-none p-0 m-0 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0">
                 {serviceLinks.map((link) => (
                   <li key={link.href + link.label} className="mb-4">
-                    <Link
-                      href={link.href}
-                      className="text-white/90 no-underline text-[15px] font-medium inline-flex items-center gap-1.5"
-                    >
-                      {link.label}
-                      {link.hasDropdown && (
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M6 9l6 6 6-6" />
-                        </svg>
-                      )}
-                    </Link>
+                    {link.hasDropdown ? (
+                      <div className="relative">
+                        <button
+                          onClick={() => setIsPlansOpen(!isPlansOpen)}
+                          className="text-white/90 no-underline text-[15px] font-medium inline-flex items-center gap-1.5 bg-transparent border-none cursor-pointer"
+                        >
+                          {link.label}
+                          <svg
+                            className={`transition-transform duration-200 ${isPlansOpen ? 'rotate-180' : ''}`}
+                            width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                          >
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </button>
+                        <div className={`overflow-hidden transition-all duration-200 ${isPlansOpen ? 'max-h-40 mt-2' : 'max-h-0'}`}>
+                          <Link href="/plans/wedding" className="block text-white/75 no-underline text-[14px] font-medium py-1 pl-3 hover:text-white">
+                            Wedding Plan
+                          </Link>
+                          <Link href="/plans/therapeutic" className="block text-white/75 no-underline text-[14px] font-medium py-1 pl-3 hover:text-white">
+                            Therapeutic Plan
+                          </Link>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-white/90 no-underline text-[15px] font-medium inline-flex items-center gap-1.5"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
