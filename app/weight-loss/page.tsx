@@ -433,14 +433,14 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ EXPERT'S GUIDANCE ═════ */}
-      <div className="">
+      <div className="px-3 md:px-[60px] lg:px-[120px]">
         <ExpertGuidanceSection />
       </div>
 
       {/* ═════ OUR PROGRAMS ═════ */}
-      <div className="">
+      <div className="px-3 md:px-[60px] lg:px-[120px]">
         <section className="bg-white py-16 md:py-20 rounded-[30px] overflow-hidden">
-          <div className="max-w-[1200px] mx-auto px-4 md:px-8">
+          <div className="max-w-[1200px] mx-auto">
             <div className="flex items-start justify-between mb-6 md:mb-10 flex-wrap gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-2">

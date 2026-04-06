@@ -258,8 +258,8 @@ export default function WeddingPlanPage() {
         </div>
       </section>
       {/* Wedding Transformations Section */}
-      <section className="bg-[#f7f7f7] py-14 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-5">
+      <section className="bg-[#f7f7f7] py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
+        <div className="max-w-[1200px] mx-auto">
 
           <TransformationGallery
             page="wedding"
@@ -271,8 +271,8 @@ export default function WeddingPlanPage() {
         </div>
       </section>
       {/* What Happens When You Start Section */}
-      <section className="bg-white py-12">
-        <div className="max-w-[1200px] mx-auto px-5">
+      <section className="bg-white py-12 px-3 md:px-[60px] lg:px-[120px]">
+        <div className="max-w-[1200px] mx-auto">
           <h2 className="text-center text-2xl md:text-5xl font-bold text-black leading-tight mb-8 md:mb-16">
             What Happens
             <br />

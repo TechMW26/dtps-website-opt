@@ -458,7 +458,9 @@ export default function PCODPage() {
       </section>
 
       {/* Expert Guidance Section */}
-      <ExpertGuidanceSection />
+      <section className="px-3 md:px-[60px] lg:px-[120px]">
+        <ExpertGuidanceSection />
+      </section>
 
       {/* TESTIMONIALS GALLERY */}
       <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
