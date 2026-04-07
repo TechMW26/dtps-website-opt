@@ -194,7 +194,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
         <div className="absolute right-[10px] top-[70px] h-[120px] w-[50px] rounded-full border border-white/20 rotate-[22deg]" />
       </div>
 
-      <div className="mx-auto max-w-[1200px] px-2 md:px-4 lg:px-6">
+      <div className="site-card-padding site-fill">
         <div className="pt-6 md:pt-[60px] flex flex-col items-center gap-[6px]">
           <h2 className="text-center text-[#FBFBFB] text-[28px] leading-[1.05] md:text-[32px] md:leading-[36px] font-bold max-w-[330px] md:max-w-none">
             You are under Expert&apos;s Guidance

@@ -52,7 +52,7 @@ export default function PCODPage() {
   return (
     <main className="bg-white">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -94,9 +94,9 @@ export default function PCODPage() {
 
 
 
-      <section className="py-16 md:py-24 px-3 md:px-[60px] lg:px-[120px] bg-[#F5F5F5]" id="benefits">
+  <section className="site-shell py-16 md:py-24 bg-[#F5F5F5]" id="benefits">
 
-        <div className="max-w-[1230px] mx-auto">
+        <div className="site-fill">
 
           <h2 className="text-center text-[28px] md:text-[44px] font-bold text-black">
             Role of Diet in <span className="text-[#FF8A00]">PCOD/PCOS</span>
@@ -268,7 +268,7 @@ export default function PCODPage() {
 
       {/* Symptoms Image Section */}
 
-      <div className="px-3 md:px-[60px] lg:px-[120px] pcod-symptoms-image">
+  <div className="site-shell pcod-symptoms-image">
 
         {/* Desktop Banner */}
         <Image
@@ -299,9 +299,9 @@ export default function PCODPage() {
 
       {/* WHAT YOU WILL GET SECTION */}
 
-      <section className="w-full py-8 md:py-14 px-3 md:px-[60px] lg:px-[120px]">
+  <section className="site-shell w-full py-8 md:py-14">
 
-        <div className="max-w-[1200px] mx-auto">
+        <div className="site-fill">
 
           {/* grey container */}
           <div className="bg-[#EAEEF1] rounded-[24px] p-4 md:p-10">
@@ -427,8 +427,8 @@ export default function PCODPage() {
       </section>
 
       {/* Ghar Ka Khana Section */}
-      <section className="px-3 md:px-[60px] lg:px-[120px] py-16">
-        <div className="max-w-[1280px] mx-auto">
+      <section className="site-shell py-16">
+        <div className="site-fill">
           {/* Desktop Image - Hidden on Mobile */}
           <div className="hidden md:block">
             <Image
@@ -458,13 +458,13 @@ export default function PCODPage() {
       </section>
 
       {/* Expert Guidance Section */}
-      <section className="px-3 md:px-[60px] lg:px-[120px]">
+      <section className="site-shell">
         <ExpertGuidanceSection />
       </section>
 
       {/* TESTIMONIALS GALLERY */}
-      <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1000px] mx-auto">
+      <section className="site-shell py-12 md:py-20">
+        <div className="site-fill">
           <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
             <div className="max-w-[630px]">
               <div className="text-[#FF850B] text-xs md:text-sm font-semibold tracking-wide uppercase">Success Stories</div>
@@ -493,7 +493,7 @@ export default function PCODPage() {
       </section>
 
       {/* Pricing Section - Mobile */}
-      <section className="px-3 md:px-[60px] lg:px-[120px] py-8 wl-section md:hidden">
+      <section className="site-shell py-8 wl-section md:hidden">
         <div className="container">
           <div className="wl-section-label wl-center">
             <span className="wl-star wl-teal-text">✦</span> <span className="text-xs wl-teal-text">PRICING</span>
@@ -525,7 +525,7 @@ export default function PCODPage() {
       </section>
 
       {/* Pricing Section - Desktop */}
-      <section className="hidden wl-section md:block">
+      <section className="site-shell hidden wl-section md:block">
         <div className="container">
           <div className="wl-section-label wl-center">
             <span className="wl-star wl-teal-text">✦</span> <span className="wl-teal-text">PRICING</span>
@@ -535,7 +535,7 @@ export default function PCODPage() {
             Join our Plan today and embark on a journey to better health with our PCOD diet plan!
           </p>
           <div className="flex justify-center w-full">
-            <div className="max-w-[1200px] w-full">
+            <div className="w-full">
               <DynamicPlansDisplay
                 category="pcod"
                 showHeader={false}

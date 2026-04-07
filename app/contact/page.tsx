@@ -26,7 +26,7 @@ export default function ContactPage() {
   return (
     <div className="">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}

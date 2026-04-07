@@ -102,7 +102,36 @@ img, video {
   --radius-full: 50px;
   --transition: all 0.3s ease;
   --section-padding-x: 120px;
-  --section-padding-x-mobile: 12px;
+  --section-padding-x-mobile: 16px;
+}
+
+.site-shell {
+  padding-left: var(--section-padding-x-mobile);
+  padding-right: var(--section-padding-x-mobile);
+}
+
+.site-fill {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-card-padding {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .site-shell {
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+  }
+
+  .site-card-padding {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
 }
 
 /* ===== Anti-Flicker for Swiper and Carousels ===== */
@@ -170,23 +199,12 @@ img, video {
 /* ===== Section Wrapper - Consistent padding for all homepage sections ===== */
 .section-wrapper {
   background: #fff;
-  padding: 4px var(--section-padding-x);
+  padding: 4px var(--section-padding-x-mobile);
 }
 
-.section-wrapper-blog {
-  background: #fff;
-  padding: 4px 50px;
-}
-
-@media (max-width: 768px) {
-  .section-wrapper-blog {
-    padding: 4px 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-wrapper-blog {
-    padding: 4px 12px;
+@media (min-width: 768px) {
+  .section-wrapper {
+    padding: 4px var(--section-padding-x);
   }
 }
 
@@ -206,34 +224,24 @@ img, video {
 
 @media (max-width: 1024px) {
   .section-wrapper {
-    padding: 4px 60px;
+    padding: 4px var(--section-padding-x);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .section-wrapper {
-    padding: 4px 16px;
+    padding: 4px var(--section-padding-x-mobile);
   }
 
   .section-wrapper>section,
   .section-wrapper>div {
     border-radius: 20px;
   }
-
-  .section-wrapper-full-mobile {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .section-wrapper-full-mobile>section,
-  .section-wrapper-full-mobile>div {
-    border-radius: 0;
-  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 479px) {
   .section-wrapper {
-    padding: 4px 12px;
+    padding: 4px var(--section-padding-x-mobile);
   }
 
   .section-wrapper>section,
@@ -917,8 +925,14 @@ img, video {
 
   /* ===== About Section ===== */
   .about-section {
-    padding: 80px var(--section-padding-x);
+    padding: 80px var(--section-padding-x-mobile);
     background: var(--white);
+  }
+
+  @media (min-width: 768px) {
+    .about-section {
+      padding: 80px var(--section-padding-x);
+    }
   }
 
   .about-grid {
@@ -1668,8 +1682,14 @@ img, video {
 
   /* ===== Contact Section ===== */
   .contact-section {
-    padding: 120px 80px;
+    padding: 120px var(--section-padding-x-mobile);
     background: var(--white);
+  }
+
+  @media (min-width: 768px) {
+    .contact-section {
+      padding: 120px var(--section-padding-x);
+    }
   }
 
   .contact-grid {
@@ -1915,13 +1935,19 @@ img, video {
     padding: 30px 40px 60px;
   }
 
-  .about-section,
   .services-section,
   .whatwedo-section,
   .programs-section,
-  .testimonials-section,
-  .contact-section {
+  .testimonials-section {
     padding: 60px 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-section,
+  .contact-section {
+    padding-left: var(--section-padding-x-mobile);
+    padding-right: var(--section-padding-x-mobile);
   }
 }
 

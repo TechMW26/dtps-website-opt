@@ -22,7 +22,7 @@ export default function OurTeamSection() {
   ];
 
   return (
-    <section className="w-full md:max-w-7xl bg-[#f7f7f7] md:bg-white rounded-none md:rounded-[26px] overflow-hidden border-0 md:border md:border-[#d9d9d9] md:outline md:outline-[0.5px] md:outline-[#6c6c6c] md:-outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10 md:mx-auto">
+    <section className="w-full bg-[#f7f7f7] md:bg-white rounded-none md:rounded-[26px] overflow-hidden border-0 md:border md:border-[#d9d9d9] md:outline md:outline-[0.5px] md:outline-[#6c6c6c] md:-outline-offset-[0.5px] flex flex-col items-center gap-8 md:gap-10 pb-8 md:pb-10">
 
       {/* Banner */}
       <div className="relative w-full overflow-hidden aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] min-h-[220px] sm:min-h-[280px] md:min-h-[340px]">
@@ -43,7 +43,7 @@ export default function OurTeamSection() {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col items-center gap-8 w-full max-w-[1200px] px-2 md:px-4 lg:px-6">
+      <div className="site-card-padding flex flex-col items-center gap-8 w-full">
         <div className="w-full max-w-[920px]">
 
           <div className="flex flex-col items-center gap-3">
@@ -91,7 +91,7 @@ export default function OurTeamSection() {
       </div>
 
       {/* Gallery */}
-      <div className="w-full max-w-[1200px] flex gap-[14px] md:gap-5 px-2 md:px-4 lg:px-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-2 md:justify-center">
+      <div className="site-card-padding w-full flex gap-[14px] md:gap-5 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none scrollbar-hide pb-2 md:justify-center">
         {galleryImages.map((img, index) => (
           <div
             key={index}

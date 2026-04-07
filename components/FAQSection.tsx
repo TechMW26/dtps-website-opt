@@ -63,10 +63,10 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(1);
 
   return (
-    <section className="mt-2 md:mt-4 mb-12 md:mb-16 pt-4 md:pt-6 pb-8 md:pb-10">
-      <div className="max-w-[1010px] mx-auto rounded-[22px]   bg-white px-4 md:px-8 py-6 md:py-8 shadow-[0_0_20px_rgba(0,0,0,0.03)]">
+    <section className="pt-4 md:pt-6 pb-8 md:pb-10">
+      <div className="site-card-padding site-fill rounded-[22px] bg-white py-6 md:py-8 shadow-[0_0_20px_rgba(0,0,0,0.03)]">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-          <div className="relative w-full lg:w-[480px] min-h-[360px] md:min-h-[440px] flex-shrink-0">
+          <div className="relative mx-auto w-full max-w-[330px] min-h-[340px] flex-shrink-0 md:max-w-[430px] md:min-h-[440px] lg:mx-0 lg:w-[480px] lg:max-w-none">
             <div className="relative w-[200px] h-[260px] md:w-[250px] md:h-[320px] rounded-[20px] overflow-hidden z-[1]">
               <Image
                 src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c765a14dfc9fbf5ad807.jpg"

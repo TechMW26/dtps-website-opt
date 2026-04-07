@@ -75,7 +75,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
   return (
     <>
       <header className={`relative z-50 w-full ${bgColor ? bgColor : ''}`}>
-        <div className="mx-auto w-full max-w-[1200px] px-4">
+        <div className="site-card-padding w-full">
           <div className="flex items-center justify-between gap-4 py-2 md:py-4">
             <Link href="/" className="flex items-center">
               <Image

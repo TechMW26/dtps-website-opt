@@ -150,14 +150,14 @@ export default function HomePage() {
         <ExpertGuidanceSection />
       </div>
       {/* Our Team Section */}
-      <div className="section-wrapper section-wrapper-full-mobile">
+      <div className="section-wrapper">
         <OurTeamSection />
       </div>
 
       {/* Our Programs Section */}
       <div className="section-wrapper">
-        <section className="bg-white py-16 md:py-20 px-4 md:px-8 rounded-[30px] overflow-hidden">
-          <div className="max-w-[1200px] mx-auto">
+        <section className="site-card-padding bg-white py-16 md:py-20 rounded-[30px] overflow-hidden">
+          <div className="site-fill">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6 md:mb-10">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -194,7 +194,7 @@ export default function HomePage() {
                 `,
               }}
             >
-              <div className="mx-auto max-w-[1202px]">
+              <div className="site-fill">
                 {/* Header */}
                 <div className="flex items-start justify-between gap-10 px-[128px]">
                   <div className="max-w-[430px]">
@@ -423,7 +423,7 @@ export default function HomePage() {
             </div>
 
             {/* Overlap appointment card */}
-            <div className="relative z-10 mx-auto -mt-[178px] max-w-[1010px]">
+            <div className="site-fill relative z-10 -mt-[178px]">
               <div className="rounded-[22px] border border-[#F1F1F1] bg-white px-[66px] py-[66px] shadow-[0_0_20px_rgba(0,0,0,0.05)]">
                 <div className="flex items-start gap-[40px]">
                   {/* left */}
@@ -531,7 +531,7 @@ export default function HomePage() {
 
           {/* MOBILE */}
           <div className="md:hidden">
-            <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-5 pb-6 pt-7">
+            <div className="site-card-padding overflow-hidden rounded-[28px] bg-[#014E4E] pb-6 pt-7">
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
@@ -553,7 +553,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="relative px-1">
+              <div className="relative">
                 <div className="relative">
                   <div className="pointer-events-none absolute left-[12px] top-[28px] bottom-[28px] border-l border-dotted border-white/45" />
 
@@ -830,7 +830,7 @@ export default function HomePage() {
       </div>
 
       {/* Our Blogs Section */}
-      <div className="section-wrapper-blog">
+      <div className="section-wrapper">
         <OurBlogsSection />
       </div>
 

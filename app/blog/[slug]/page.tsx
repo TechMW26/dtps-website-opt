@@ -60,7 +60,7 @@ export default function BlogDetailPage() {
   if (loading) {
     return (
       <div className="bg-white min-h-screen">
-        <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+        <section className="hero-section site-shell pt-4 md:pt-[60px]">
           <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
             <div className="relative w-full">
               <Navbar />
@@ -77,7 +77,7 @@ export default function BlogDetailPage() {
   if (error || !blog) {
     return (
       <div className="bg-white min-h-screen">
-        <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+        <section className="hero-section site-shell pt-4 md:pt-[60px]">
           <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
             <div className="relative w-full">
               <Navbar />
@@ -101,7 +101,7 @@ export default function BlogDetailPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             <Navbar />
@@ -125,8 +125,8 @@ export default function BlogDetailPage() {
       </section>
 
       {/* Blog Content */}
-      <article className="py-10 md:py-16 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[800px] mx-auto">
+      <article className="site-shell py-10 md:py-16">
+        <div className="site-fill">
           {/* Featured Image */}
           {blog.featuredImage && (
             <div className="mb-8 rounded-[18px] overflow-hidden">

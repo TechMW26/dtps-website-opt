@@ -46,9 +46,9 @@ export default function OurExpertiseSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white py-8 md:py-12 px-4 md:px-8 overflow-hidden rounded-[20px] md:rounded-[30px]"
+      className="site-card-padding bg-white py-8 md:py-12 overflow-hidden rounded-[20px] md:rounded-[30px]"
     >
-      <div className="max-w-[1100px] mx-auto">
+      <div className="site-fill">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-8 md:mb-10">
           {/* Left - Title */}

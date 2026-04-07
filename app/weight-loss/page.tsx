@@ -226,7 +226,7 @@ export default function WeightLossPage() {
   }, []);
 
   return (
-    <section className="pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
+    <section className="site-shell pt-4 md:pt-[60px] bg-white" suppressHydrationWarning>
 
       <DynamicPopup page="weight-loss" />
 
@@ -246,7 +246,7 @@ export default function WeightLossPage() {
 
       {/* ═════ TESTIMONIALS GALLERY ═════ */}
       <section className="py-12 md:py-20">
-        <div className="max-w-[1000px] mx-auto">
+        <div className="site-fill">
 
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
 
@@ -317,7 +317,7 @@ export default function WeightLossPage() {
 
       {/* ═════ WHAT TO EXPECT ═════ */}
       <section className="py-14 md:py-24">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="site-fill">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
@@ -356,7 +356,7 @@ export default function WeightLossPage() {
 
       {/* ═════ MONEY BACK GUARANTEE ═════ */}
       <section>
-        <div className="max-w-[1200px] lg:max-w-none mx-auto">
+        <div className="site-fill">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
@@ -395,7 +395,7 @@ export default function WeightLossPage() {
 
       {/* ═════ WHAT DO YOU GET ═════ */}
       <section className="py-12 md:py-20">
-        <div className="max-w-[1200px] lg:max-w-none mx-auto">
+        <div className="site-fill">
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
@@ -433,14 +433,14 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ EXPERT'S GUIDANCE ═════ */}
-      <div className="px-3 md:px-[60px] lg:px-[120px]">
+      <div className="site-shell">
         <ExpertGuidanceSection />
       </div>
 
       {/* ═════ OUR PROGRAMS ═════ */}
-      <div className="px-3 md:px-[60px] lg:px-[120px]">
+      <div className="site-shell">
         <section className="bg-white py-16 md:py-20 rounded-[30px] overflow-hidden">
-          <div className="max-w-[1200px] mx-auto">
+          <div className="site-fill">
             <div className="flex items-start justify-between mb-6 md:mb-10 flex-wrap gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -472,7 +472,7 @@ export default function WeightLossPage() {
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 w-full">
             {pricingPlans.map((plan: any, index: number) => (
               <div key={index} className="w-full h-full">
                 {/* Plan Banner */}

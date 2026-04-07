@@ -9,7 +9,7 @@ const HERO_IMAGE_DESKTOP = "https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-aut
 
 export default function Hero() {
   return (
-    <section className="pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px] bg-white" suppressHydrationWarning>
+    <section className="site-shell pt-4 md:pt-[60px] bg-white" suppressHydrationWarning>
       <div className="bg-[#014E4E] rounded-3xl overflow-hidden relative">
         <Navbar />
 
@@ -114,7 +114,7 @@ export default function Hero() {
 
         {/* ================= DESKTOP ================= */}
 
-        <div className="hero-container hidden md:grid md:grid-cols-2 md:items-end w-full max-w-[1400px] mx-auto px-6 lg:px-12 xl:px-16 pb-0 h-[520px]">
+        <div className="hero-container site-card-padding hidden md:grid md:grid-cols-2 md:items-end w-full pb-0 h-[520px]">
 
           {/* LEFT CONTENT */}
 

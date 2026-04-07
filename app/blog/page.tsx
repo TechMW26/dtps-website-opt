@@ -48,7 +48,7 @@ export default function BlogPage() {
   return (
     <div className="">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -84,8 +84,8 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Grid Section */}
-      <section className="py-16 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="mx-auto max-w-[1200px]">
+      <section className="site-shell py-16">
+        <div className="site-fill">
           {loading ? (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[...Array(6)].map((_, i) => (

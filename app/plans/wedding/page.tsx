@@ -192,7 +192,7 @@ export default function WeddingPlanPage() {
   return (
     <main className="bg-white">
       {/* Hero Section with Navbar */}
-      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]">
+      <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative">
           {/* Background Image */}
           <Image
@@ -258,8 +258,8 @@ export default function WeddingPlanPage() {
         </div>
       </section>
       {/* Wedding Transformations Section */}
-      <section className="bg-[#f7f7f7] py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="site-shell bg-[#f7f7f7] py-14 md:py-20">
+        <div className="site-fill">
 
           <TransformationGallery
             page="wedding"
@@ -271,8 +271,8 @@ export default function WeddingPlanPage() {
         </div>
       </section>
       {/* What Happens When You Start Section */}
-      <section className="bg-white py-12 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="site-shell bg-white py-12">
+        <div className="site-fill">
           <h2 className="text-center text-2xl md:text-5xl font-bold text-black leading-tight mb-8 md:mb-16">
             What Happens
             <br />
@@ -281,7 +281,7 @@ export default function WeddingPlanPage() {
           </h2>
 
           {/* Desktop Tabs */}
-          <div className="hidden md:flex justify-between gap-5 max-w-[996px] mx-auto mb-8">
+          <div className="hidden md:flex justify-between gap-5 w-full mb-8">
             {/* Brides Tab */}
             <div
               onClick={() => setActiveTab("brides")}
@@ -430,7 +430,7 @@ export default function WeddingPlanPage() {
 
 
           {/* Tab Content Card - Desktop */}
-          <div className="hidden md:block bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] max-w-[1200px] mx-auto">
+          <div className="hidden md:block bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] w-full">
             <div className="absolute top-0 left-[102px] bg-[#ff850b] w-[180px] h-full"></div>
 
             <Image
@@ -537,8 +537,8 @@ export default function WeddingPlanPage() {
 
 
       {/* ================= DESKTOP VERSION ================= */}
-      <section className="hidden md:block bg-white py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1200px] mx-auto rounded-[28px] overflow-hidden">
+      <section className="site-shell hidden bg-white py-20 md:block">
+        <div className="site-fill rounded-[28px] overflow-hidden">
           <Image
             src="/5dayscycle.svg"
             alt="Our Five-Cycle Program"
@@ -553,9 +553,9 @@ export default function WeddingPlanPage() {
 
 
       {/* We Do Not Push Section */}
-      <section className="bg-white py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
+      <section className="site-shell bg-white py-14 md:py-20">
 
-        <div className="max-w-[1200px] mx-auto px-5 md:px-0">
+        <div className="site-fill px-5 md:px-0">
           <div className="bg-[#E7E7E7] rounded-[30px] pt-6 pb-0 md:pt-12 md:pb- px-6 md:px-12">
 
             <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -688,8 +688,8 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* 100% Personalised Ghar Ka Khana Section */}
-      <section className="bg-white py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="site-shell bg-white py-14 md:py-20">
+        <div className="site-fill">
           <div className="bg-[#4E0101] rounded-[24px] md:rounded-[30px] px-6 py-10 md:px-16 md:py-14">
 
             {/* Heading */}
@@ -812,8 +812,8 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Why People Trust DTPS Section */}
-      <section className="bg-white py-14 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1200px] mx-auto">
+      <section className="site-shell bg-white py-14 md:py-20">
+        <div className="site-fill">
 
           {/* Heading */}
           <h2 className="text-center text-2xl md:text-[42px] font-bold text-black leading-tight mb-8 md:mb-12">
@@ -821,7 +821,7 @@ export default function WeddingPlanPage() {
           </h2>
 
           {/* Desktop: Horizontal cards */}
-          <div className="hidden md:flex flex-col gap-5 max-w-[850px] mx-auto">
+          <div className="hidden md:flex flex-col gap-5 w-full">
             <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
                 <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={48} height={48} loading="lazy" />
@@ -902,13 +902,13 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Expert's Guidance Section */}
-      <section className="bg-white px-3 md:px-[60px] lg:px-[120px]">
+      <section className="site-shell bg-white">
         <ExpertGuidanceSection variant="maroon" />
       </section>
 
       {/* Over 75,000+ People Enjoy Weight Loss */}
-      <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1000px] mx-auto">
+      <section className="site-shell py-12 md:py-20">
+        <div className="site-fill">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
             <div className="max-w-[630px]">
               <span className="text-[#FF850B] text-sm md:text-base font-semibold">Our Testimonials</span>
@@ -931,7 +931,7 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-white py-12 md:py-16 px-3 md:px-[60px] lg:px-[120px]">
+      <section className="site-shell bg-white py-12 md:py-16">
         <div className="w-full flex flex-col items-center justify-center text-center">
           <span className="text-[#ff850b] text-sm md:text-base font-semibold leading-relaxed">
             Our Pricing
@@ -948,7 +948,7 @@ export default function WeddingPlanPage() {
           </p>
 
           <div className="w-full flex justify-center">
-            <div className="max-w-[1100px] w-full">
+            <div className="w-full">
               <DynamicPlansDisplay
                 category="new-wedding-plan"
                 showHeader={false}

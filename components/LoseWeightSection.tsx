@@ -39,9 +39,9 @@ export default function LoseWeightSection() {
   }, []);
 
   return (
-    <section className="bg-white py-12 md:py-[100px]">
+    <section className="site-card-padding bg-white py-12 md:py-[100px]">
 
-      <div className="max-w-[1200px] mx-auto px-5">
+      <div className="site-fill">
 
         {/* Heading */}
         <h2 className="text-center text-2xl md:text-5xl font-bold leading-[1.3] mb-10">

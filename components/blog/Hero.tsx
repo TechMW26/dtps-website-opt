@@ -3,7 +3,7 @@ import PageWrapper from '../PageWrapper';
 
 export default function BlogHero() {
     return (
-        <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px] rounded-3xl overflow-hidden">
+        <section className="hero-section site-shell pt-4 md:pt-[60px] rounded-3xl overflow-hidden">
             <PageWrapper>
                 {/* Hero Section */}
                 <section className="page-header">

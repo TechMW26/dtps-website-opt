@@ -67,8 +67,8 @@ export default function TransformationShowcase({
   }, [page, maxItems]);
 
   return (
-    <section className="py-10 md:py-[60px] px-5 bg-white">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="site-card-padding py-10 md:py-[60px] bg-white">
+      <div className="site-fill">
         {title && (
           <div className="text-center mb-8 md:mb-[50px]">
             <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">

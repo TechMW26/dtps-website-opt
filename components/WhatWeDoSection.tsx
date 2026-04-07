@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function WhatWeDoSection() {
   return (
     <section className="py-6  sm:py-8 md:py-12 ">
-      <div className="max-w-7xl mx-auto">
+      <div className="site-fill">
         {/* Desktop Version */}
         <div className="hidden lg:block">
           <Image

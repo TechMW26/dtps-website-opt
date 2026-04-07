@@ -184,7 +184,7 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           1. HERO BANNER — "Yes! Diabetes, Thyroid…"
       ═══════════════════════════════════════════════════════════ */}
-      <section className="hero-section pt-4 md:pt-[60px] px-3 md:px-[60px] lg:px-[120px]" suppressHydrationWarning>
+      <section className="hero-section site-shell pt-4 md:pt-[60px]" suppressHydrationWarning>
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -223,8 +223,8 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           2. ROLE OF DIET IN DIABETES, THYROID…
       ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1100px] mx-auto">
+      <section className="site-shell bg-white py-12 md:py-20">
+        <div className="site-fill">
           {/* Header */}
           <div className="mb-10 text-center md:mb-14">
             <h2 className="text-[28px] md:text-[40px] lg:text-[46px] font-extrabold leading-[1.15] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
@@ -383,8 +383,8 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           3. WHY THESE CONDITIONS NEED THERAPEUTIC NUTRITION
       ═══════════════════════════════════════════════════════════ */}
-      <section className="px-3 md:px-[60px] lg:px-[120px] pt-2 pb-10 md:pt-8 md:pb-20">
-        <div className="max-w-[1100px] mx-auto bg-gradient-to-br from-[#0d4043] to-[#0a2f31] rounded-[24px] py-12 md:py-16 px-6 md:px-16">
+      <section className="site-shell pt-2 pb-10 md:pt-8 md:pb-20">
+        <div className="site-fill bg-gradient-to-br from-[#0d4043] to-[#0a2f31] rounded-[24px] py-12 md:py-16 px-6 md:px-16">
           <div className="text-center">
             <h2 className="text-[22px] md:text-[36px] lg:text-[42px] font-extrabold text-white leading-[1.2]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
               Why These Conditions Need<br />
@@ -542,8 +542,8 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
       4. OUR THERAPEUTIC APPROACH (HOW WE WORK DIFFERENTLY)
 ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-white pt-6 pb-12 md:pt-10 md:pb-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1100px] mx-auto bg-[#EAEEF1] rounded-[24px] overflow-hidden relative">
+      <section className="site-shell bg-white pt-6 pb-12 md:pt-10 md:pb-20">
+        <div className="site-fill bg-[#EAEEF1] rounded-[24px] overflow-hidden relative">
 
           {/* Desktop Layout */}
           <div className="hidden lg:flex">
@@ -758,9 +758,9 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
     5. WHAT YOU WILL GET?
 ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-12 md:py-16 px-3 md:px-[60px] lg:px-[120px]">
+      <section className="site-shell bg-white py-12 md:py-16">
 
-        <div className="max-w-[1100px] mx-auto">
+        <div className="site-fill">
 
           {/* Heading */}
           <div className="mb-10 text-center">
@@ -960,8 +960,8 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           6. HOW GHAR KA KHANA DIET PLAN HELPS
       ═══════════════════════════════════════════════════════════ */}
-      <section className="px-3 md:px-[60px] lg:px-[120px] py-12 md:py-20">
-        <div className="max-w-[1100px] mx-auto">
+      <section className="site-shell py-12 md:py-20">
+        <div className="site-fill">
           {/* Desktop version */}
           <div className="hidden md:block">
             <Image
@@ -1001,8 +1001,8 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           8. TESTIMONIALS — Over 75,000+ People
       ═══════════════════════════════════════════════════════════ */}
-      <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
-        <div className="max-w-[1000px] mx-auto">
+      <section className="site-shell py-12 md:py-20">
+        <div className="site-fill">
           <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
             <div className="max-w-[630px]">
               <SectionLabel>Our Testimonials</SectionLabel>
@@ -1023,7 +1023,7 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           9. PRICING
       ═══════════════════════════════════════════════════════════ */}
-      <section className="py-12 md:py-20 px-3 md:px-[60px] lg:px-[120px]">
+      <section className="site-shell py-12 md:py-20">
         <div className="mb-10 text-center">
           <SectionLabel className="justify-center">Our Plans</SectionLabel>
           <SectionTitle className="text-[#1E1E1E] mt-2">Our Pricing</SectionTitle>
@@ -1037,7 +1037,7 @@ export default function TherapeuticPlanPage() {
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-[1000px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full">
             {pricingPlans.map((plan: any, index: number) => (
               <div key={index} className="w-full h-full">
                 {/* Plan Banner */}

@@ -63,9 +63,9 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-gray-100 py-12 md:py-20 px-4 md:px-[70px]  rounded-[20px] md:rounded-[30px]"
+      className="site-card-padding bg-gray-100 py-12 md:py-20 rounded-[20px] md:rounded-[30px]"
     >
-      <div className="max-w-[1200px] mx-auto">
+      <div className="site-fill">
         {/* Grid Layout */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2">
           {/* Header Card */}
