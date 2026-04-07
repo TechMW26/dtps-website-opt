@@ -1,4 +1,19 @@
 /** @type {import('next').NextConfig} */
+const noCacheHeaders = [
+  {
+    key: 'Cache-Control',
+    value: 'no-store, no-cache, must-revalidate, proxy-revalidate',
+  },
+  {
+    key: 'Pragma',
+    value: 'no-cache',
+  },
+  {
+    key: 'Expires',
+    value: '0',
+  },
+];
+
 const nextConfig = {
   turbopack: {
     root: __dirname,
@@ -10,8 +25,8 @@ const nextConfig = {
   // Optimize production builds
   poweredByHeader: false,
 
-  // Generate ETags for caching
-  generateEtags: true,
+  // Disable ETags so browsers do not keep revalidating stale assets.
+  generateEtags: false,
 
   // Experimental optimizations
   experimental: {
@@ -24,7 +39,7 @@ const nextConfig = {
     loaderFile: './lib/image-loader.js',
     formats: ['image/avif', 'image/webp'],
     qualities: [85, 90],
-    minimumCacheTTL: 31536000, // 1 year cache
+    minimumCacheTTL: 0,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     dangerouslyAllowSVG: true,
@@ -65,30 +80,13 @@ const nextConfig = {
     ],
   },
 
-  // Add security and caching headers
+  // Add security headers while disabling browser/proxy caching.
   async headers() {
     return [
       {
-        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:all*(js|css)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
         source: '/:path*',
         headers: [
+          ...noCacheHeaders,
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',

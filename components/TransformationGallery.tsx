@@ -60,7 +60,9 @@ export default function TransformationGallery({
     const fetchTransformations = async () => {
       try {
         // First try to fetch page-specific transformations
-        const response = await fetch(`/api/transformations?page=${page}&active=true`);
+        const response = await fetch(`/api/transformations?page=${page}&active=true`, {
+          cache: 'no-store'
+        });
         if (response.ok) {
           const data = await response.json();
           if (data.transformations && data.transformations.length > 0) {
@@ -70,7 +72,9 @@ export default function TransformationGallery({
         }
 
         // If no page-specific data, fetch all active transformations
-        const allResponse = await fetch('/api/transformations?active=true');
+        const allResponse = await fetch('/api/transformations?active=true', {
+          cache: 'no-store'
+        });
         if (allResponse.ok) {
           const allData = await allResponse.json();
           if (allData.transformations && allData.transformations.length > 0) {

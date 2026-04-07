@@ -24,7 +24,9 @@ export default function LoseWeightSection() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/transformations?active=true");
+        const res = await fetch("/api/transformations?active=true", {
+          cache: 'no-store'
+        });
         const data = await res.json();
 
         if (data.success) {

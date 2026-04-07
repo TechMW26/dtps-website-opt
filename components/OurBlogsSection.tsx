@@ -19,7 +19,9 @@ export default function OurBlogsSection() {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        const response = await fetch('/api/blogs?published=true&limit=3');
+        const response = await fetch('/api/blogs?published=true&limit=3', {
+          cache: 'no-store'
+        });
         const data = await response.json();
         if (data.success && data.blogs) {
           setBlogs(data.blogs);

@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth';
 import dbConnect from '@/lib/mongodb';
 import Recognition from '@/models/Recognition';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Get all recognitions
 export async function GET(request: NextRequest) {
   try {

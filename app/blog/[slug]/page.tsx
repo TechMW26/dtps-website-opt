@@ -32,7 +32,9 @@ export default function BlogDetailPage() {
   useEffect(() => {
     async function fetchBlog() {
       try {
-        const response = await fetch(`/api/blogs?slug=${encodeURIComponent(slug)}`);
+        const response = await fetch(`/api/blogs?slug=${encodeURIComponent(slug)}`, {
+          cache: 'no-store'
+        });
         const data = await response.json();
         if (data.success && data.blog) {
           setBlog(data.blog);

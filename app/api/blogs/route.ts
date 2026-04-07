@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth';
 import dbConnect from '@/lib/mongodb';
 import Blog from '@/models/Blog';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Get all blogs
 export async function GET(request: NextRequest) {
   try {

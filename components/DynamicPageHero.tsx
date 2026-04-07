@@ -63,8 +63,7 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
       try {
         setLoading(true);
         const res = await fetch(`/api/site-banners?type=hero-banner&page=${page}&active=true`, {
-          // Add cache for faster subsequent loads
-          next: { revalidate: 300 } // Cache for 5 minutes
+          cache: 'no-store'
         });
         if (!res.ok) {
           setHero(null);

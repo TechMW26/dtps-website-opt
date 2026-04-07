@@ -34,7 +34,9 @@ export default function PlanBannerDisplay({ planId }: PlanBannerDisplayProps) {
           return;
         }
 
-        const res = await fetch(`/api/plan-banners?planId=${planId}&active=true`);
+        const res = await fetch(`/api/plan-banners?planId=${planId}&active=true`, {
+          cache: 'no-store'
+        });
         
         if (!res.ok) {
           throw new Error(`Failed to fetch banner: ${res.status}`);

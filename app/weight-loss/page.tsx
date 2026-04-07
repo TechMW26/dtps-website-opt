@@ -204,7 +204,9 @@ export default function WeightLossPage() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch('/api/testimonials?page=weight-loss&active=true');
+        const res = await fetch('/api/testimonials?page=weight-loss&active=true', {
+          cache: 'no-store'
+        });
         if (!res.ok) {
           setTestimonials(fallbackTestimonials);
           return;

@@ -93,7 +93,9 @@ export default function HomePage() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch('/api/testimonials?page=home&active=true');
+        const res = await fetch('/api/testimonials?page=home&active=true', {
+          cache: 'no-store'
+        });
         if (!res.ok) {
           return;
         }

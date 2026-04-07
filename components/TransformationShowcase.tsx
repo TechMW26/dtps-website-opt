@@ -40,13 +40,17 @@ export default function TransformationShowcase({
   useEffect(() => {
     const fetchTransformations = async () => {
       try {
-        let response = await fetch(`/api/transformations?page=${page}&active=true`);
+        let response = await fetch(`/api/transformations?page=${page}&active=true`, {
+          cache: 'no-store'
+        });
         let data = await response.json();
         
         // If no data found for the specific page, try without page filter
         if (!data.transformations || data.transformations.length === 0) {
           console.log(`No transformations found for page: ${page}, fetching all...`);
-          response = await fetch(`/api/transformations?active=true`);
+          response = await fetch(`/api/transformations?active=true`, {
+            cache: 'no-store'
+          });
           data = await response.json();
         }
 

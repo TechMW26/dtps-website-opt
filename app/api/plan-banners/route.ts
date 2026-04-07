@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth';
 import dbConnect from '@/lib/mongodb';
 import PlanBanner from '@/models/PlanBanner';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Get banners by page or planId
 export async function GET(request: NextRequest) {
   try {

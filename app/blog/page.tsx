@@ -22,7 +22,9 @@ export default function BlogPage() {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        const response = await fetch('/api/blogs?published=true');
+        const response = await fetch('/api/blogs?published=true', {
+          cache: 'no-store'
+        });
         const data = await response.json();
         if (data.success && data.blogs) {
           setBlogs(data.blogs);

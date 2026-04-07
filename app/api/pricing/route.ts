@@ -4,6 +4,9 @@ import { authOptions } from '@/lib/auth';
 import dbConnect from '@/lib/mongodb';
 import Pricing from '@/models/Pricing';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 // Get all pricing plans
 export async function GET(request: NextRequest) {
   try {

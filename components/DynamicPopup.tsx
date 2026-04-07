@@ -25,7 +25,9 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
   useEffect(() => {
     const fetchPopup = async () => {
       try {
-        const res = await fetch(`/api/popups?action=getPopup&page=${page}`);
+        const res = await fetch(`/api/popups?action=getPopup&page=${page}`, {
+          cache: 'no-store'
+        });
         if (!res.ok) {
           setPopup(null);
           return;

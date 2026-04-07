@@ -1,5 +1,7 @@
 // API utility functions for fetching data from MongoDB
 
+const noStoreRequestInit: RequestInit = { cache: 'no-store' };
+
 export interface Pricing {
   _id: string;
   planName: string;
@@ -30,9 +32,7 @@ export interface Recognition {
 
 export async function getPricingByPage(page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding'): Promise<Pricing[]> {
   try {
-    const res = await fetch(`/api/pricing?page=${page}`, {
-      next: { revalidate: 60 } // Cache for 60 seconds
-    });
+    const res = await fetch(`/api/pricing?page=${page}`, noStoreRequestInit);
 
     if (!res.ok) {
       return [];
@@ -47,9 +47,7 @@ export async function getPricingByPage(page: 'weight-loss' | 'pcod' | 'therapeut
 
 export async function getPricingByCategory(category: 'weight-loss' | 'pcod' | 'new-wedding-plan' | 'therapeutic-diet-plans'): Promise<Pricing[]> {
   try {
-    const res = await fetch(`/api/pricing?category=${category}`, {
-      next: { revalidate: 60 } // Cache for 60 seconds
-    });
+    const res = await fetch(`/api/pricing?category=${category}`, noStoreRequestInit);
 
     if (!res.ok) {
       return [];
@@ -65,9 +63,7 @@ export async function getPricingByCategory(category: 'weight-loss' | 'pcod' | 'n
 export async function getRecognitions(page?: string): Promise<Recognition[]> {
   try {
     const url = page ? `/api/recognitions?page=${page}` : '/api/recognitions';
-    const res = await fetch(url, {
-      next: { revalidate: 60 } // Cache for 60 seconds
-    });
+    const res = await fetch(url, noStoreRequestInit);
 
     if (!res.ok) {
       return [];
@@ -82,9 +78,7 @@ export async function getRecognitions(page?: string): Promise<Recognition[]> {
 
 export async function getAllPricing(): Promise<Pricing[]> {
   try {
-    const res = await fetch('/api/pricing', {
-      next: { revalidate: 60 }
-    });
+    const res = await fetch('/api/pricing', noStoreRequestInit);
 
     if (!res.ok) {
       return [];

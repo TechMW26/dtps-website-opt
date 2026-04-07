@@ -30,7 +30,9 @@ export default function DynamicHeroBanner() {
 
     const fetchBannerData = async () => {
       try {
-        const res = await fetch('/api/site-banners?type=hero-banner&active=true');
+        const res = await fetch('/api/site-banners?type=hero-banner&active=true', {
+          cache: 'no-store'
+        });
         if (!res.ok) throw new Error('Failed to fetch banner data');
         const data = await res.json();
         if (data.banners && data.banners.length > 0) {
