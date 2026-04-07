@@ -152,7 +152,7 @@ export default function HomePage() {
         <ExpertGuidanceSection />
       </div>
       {/* Our Team Section */}
-      <div className="section-wrapper">
+      <div className="section-wrapper  ">
         <OurTeamSection />
       </div>
 
@@ -424,8 +424,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Overlap appointment card */}
-            <div className="site-fill relative z-10 -mt-[178px]">
+      {/* Overlap appointment card */}
+            <div className="relative z-10 mx-auto -mt-[178px] max-w-[1010px]">
               <div className="rounded-[22px] border border-[#F1F1F1] bg-white px-[66px] py-[66px] shadow-[0_0_20px_rgba(0,0,0,0.05)]">
                 <div className="flex items-start gap-[40px]">
                   {/* left */}
@@ -445,6 +445,21 @@ export default function HomePage() {
                       Easy scheduling for a personalized health coaching session.
                       Take the first step towards better health today!
                     </p>
+
+                    <div className="mt-7 overflow-hidden rounded-[20px]">
+                      <Image
+                        src="/images/Appointment%20Image.png"
+                        alt="Dietitian consultation"
+                        width={334}
+                        height={185}
+                        className="h-[185px] w-full object-cover"
+                        style={{ width: '100%', height: 'auto' }}
+                        loading="lazy"
+                        sizes="334px"
+                        quality={75}
+                        unoptimized
+                      />
+                    </div>
                   </div>
 
                   {/* right */}
@@ -518,7 +533,7 @@ export default function HomePage() {
 
           {/* MOBILE */}
           <div className="md:hidden">
-            <div className="site-card-padding overflow-hidden rounded-[28px] bg-[#014E4E] pb-6 pt-7">
+            <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-4 pb-6 pt-7">
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
@@ -540,9 +555,9 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="relative">
+              <div className="relative pl-[6px] pr-[2px]">
                 <div className="relative">
-                  <div className="pointer-events-none absolute left-[12px] top-[28px] bottom-[28px] border-l border-dotted border-white/45" />
+                  <div className="pointer-events-none absolute left-[19px] top-[28px] bottom-[170px] border-l border-dotted border-white/45" />
 
                   <div className="space-y-4">
                     {/* Mobile Step 1 */}
@@ -714,11 +729,11 @@ export default function HomePage() {
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
                       <span className="text-[13px] font-semibold text-[#014E4E]">
-                        Appointment
+                        Our Testimonials
                       </span>
                     </div>
 
-                    <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#1E1E1E]">
+                    <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#FF850B]">
                       Make appointment
                     </h3>
 
@@ -727,7 +742,22 @@ export default function HomePage() {
                       session. Take the first step towards better health today!
                     </p>
 
-                    <form className="mt-5 space-y-3">
+                    <div className="mt-4 overflow-hidden rounded-[18px]">
+                      <Image
+                        src="/images/Appointment%20Image.png"
+                        alt="Dietitian consultation"
+                        width={350}
+                        height={210}
+                        className="object-cover w-full h-auto"
+                        style={{ width: '100%', height: 'auto' }}
+                        loading="lazy"
+                        sizes="(max-width: 767px) 100vw, 350px"
+                        quality={75}
+                        unoptimized
+                      />
+                    </div>
+
+                    <form className="mt-5 space-y-3 overflow-hidden">
                       <div className="grid grid-cols-2 gap-3">
                         <input
                           type="text"
@@ -753,9 +783,9 @@ export default function HomePage() {
                         className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
                       />
 
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-2 gap-3 items-stretch">
                         <div className="relative min-w-0">
-                          <select className="h-[48px] w-full min-w-0 appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none">
+                          <select className="block h-[48px] w-full min-w-0 max-w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-4 pr-8 text-[13px] text-[#8B8B8E] outline-none">
                             <option>Service</option>
                             <option>Weight Management</option>
                             <option>PCOD/PCOS</option>
@@ -775,10 +805,12 @@ export default function HomePage() {
                           </span>
                         </div>
 
-                        <input
-                          type="date"
-                          className="h-[48px] w-full min-w-0 rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none"
-                        />
+                        <div className="min-w-0 overflow-hidden">
+                          <input
+                            type="date"
+                            className="block h-[48px] w-full min-w-0 max-w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-3 text-[13px] text-[#8B8B8E] outline-none"
+                          />
+                        </div>
                       </div>
 
                       <button
@@ -800,6 +832,8 @@ export default function HomePage() {
       <div className="section-wrapper">
         <FAQSection />
       </div>
+
+      
 
       {/* Our Blogs Section */}
       <div className="section-wrapper">

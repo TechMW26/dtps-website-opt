@@ -26,11 +26,11 @@ type CounterState = {
 };
 
 const badges = [
-  { label: "200+ Certified Dietitians", icon: "dietitians" },
+  { label: "200+ Certified Dietitians", icon: "award" },
   { label: "Science-Based Planning", icon: "brain" },
   { label: "Ghar Ka Khana Expertise", icon: "home" },
   { label: "Proven Results", icon: "chart" },
-  { label: "Award-Winning Dietitian", icon: "award" },
+  { label: "Award-Winning Dietitian", icon: "dietitians" },
   { label: "Clinically Guided Nutrition", icon: "nutrition" },
 ] as const;
 
@@ -257,9 +257,9 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
               {badges.map((badge) => (
                 <div
                   key={badge.label}
-                  className="min-h-[76px] md:min-h-[48px] rounded-[8px] bg-[#FF850B] px-[4px] py-[4px] flex flex-col md:flex-row items-center justify-center md:justify-start gap-[8px] text-center md:text-left"
+                  className="min-h-[76px] md:min-h-[48px] rounded-[8px] bg-[#FF850B] px-[6px] py-[6px] flex flex-col md:flex-row items-center justify-center md:justify-start gap-[8px] text-center md:text-left"
                 >
-                  <div className="w-[40px] h-[40px] rounded-[5px] bg-transparent flex items-center justify-center shrink-0">
+                  <div className="w-[34px] h-[34px] rounded-[5px] bg-white px-[6px] py-[6px] bg-transparent flex items-center justify-center shrink-0">
                     <BadgeIcon type={badge.icon} />
                   </div>
                   <div className="text-white text-[12px] leading-[1.1] md:text-[16px] md:leading-[1.2] font-semibold capitalize">

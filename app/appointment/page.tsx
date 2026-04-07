@@ -48,7 +48,7 @@ export default function AppointmentPage() {
                   Easy scheduling for a personalized health coaching session. Take 
                   the first step towards better health today!
                 </p>
-                <div className="appointment-image">
+                <div className="appointment-image ">
                   <Image 
                     src="https://placehold.co/400x300/0d4043/ffffff?text=Health+Coaching" 
                     alt="Health Coaching" 
