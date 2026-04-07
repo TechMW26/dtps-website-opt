@@ -199,12 +199,12 @@ img, video {
 /* ===== Section Wrapper - Consistent padding for all homepage sections ===== */
 .section-wrapper {
   background: #fff;
-  padding: 4px var(--section-padding-x-mobile);
+  padding: 6px var(--section-padding-x-mobile);
 }
 
 @media (min-width: 768px) {
   .section-wrapper {
-    padding: 4px var(--section-padding-x);
+    padding: 8px var(--section-padding-x);
   }
 }
 
@@ -224,13 +224,13 @@ img, video {
 
 @media (max-width: 1024px) {
   .section-wrapper {
-    padding: 4px var(--section-padding-x);
+    padding: 6px var(--section-padding-x);
   }
 }
 
 @media (max-width: 767px) {
   .section-wrapper {
-    padding: 4px var(--section-padding-x-mobile);
+    padding: 6px var(--section-padding-x-mobile);
   }
 
   .section-wrapper>section,
@@ -241,7 +241,7 @@ img, video {
 
 @media (max-width: 479px) {
   .section-wrapper {
-    padding: 4px var(--section-padding-x-mobile);
+    padding: 5px var(--section-padding-x-mobile);
   }
 
   .section-wrapper>section,

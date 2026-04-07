@@ -63,7 +63,7 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="site-card-padding bg-gray-100 py-12 md:py-20 rounded-[20px] md:rounded-[30px]"
+      className="site-card-padding bg-gray-100 py-10 md:py-16 rounded-[20px] md:rounded-[30px]"
     >
       <div className="site-fill">
         {/* Grid Layout */}

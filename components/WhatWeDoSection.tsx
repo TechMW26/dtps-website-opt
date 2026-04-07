@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function WhatWeDoSection() {
   return (
-    <section className="py-6  sm:py-8 md:py-12 ">
+    <section className="py-10 md:py-16">
       <div className="site-fill">
         {/* Desktop Version */}
         <div className="hidden lg:block">

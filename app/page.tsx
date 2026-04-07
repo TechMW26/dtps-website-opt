@@ -158,7 +158,7 @@ export default function HomePage() {
 
       {/* Our Programs Section */}
       <div className="section-wrapper">
-        <section className="site-card-padding bg-white py-16 md:py-20 rounded-[30px] overflow-hidden">
+        <section className="site-card-padding bg-white py-10 md:py-16 rounded-[30px] overflow-hidden">
           <div className="site-fill">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6 md:mb-10">
               <div>

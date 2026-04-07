@@ -50,8 +50,8 @@ export default function OurBlogsSection() {
     return null;
   }
   return (
-    <section className="our-blogs-wrapper">
-      <div className="site-card-padding w-full rounded-[30px] bg-[#015b5b] py-7 md:py-[58px] overflow-hidden">
+    <section className="w-full">
+      <div className="site-card-padding w-full bg-[#015b5b] py-7 md:py-[58px] overflow-hidden">
         {/* Header */}
         <div className="flex items-start justify-between gap-2 md:gap-8">
           <div>

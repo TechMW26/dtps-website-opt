@@ -33,7 +33,7 @@ export default function AboutUsSection() {
   return (
     <section
       ref={sectionRef}
-      className="site-card-padding bg-white py-12 md:py-20 overflow-hidden rounded-[20px] md:rounded-[30px]"
+      className="site-card-padding bg-white py-10 md:py-16 overflow-hidden rounded-[20px] md:rounded-[30px]"
     >
       <div className="site-fill flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
 

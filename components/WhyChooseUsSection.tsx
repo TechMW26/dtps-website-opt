@@ -21,7 +21,7 @@ export default function WhyChooseUsSection() {
   return (
     <section
       ref={sectionRef}
-      className="rounded-[28px] py-2 md:py-4"
+      className="rounded-[28px] py-10 md:py-16"
     >
       <div className="site-fill">
         {/* Desktop Version */}
