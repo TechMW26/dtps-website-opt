@@ -571,7 +571,6 @@ img, video {
     padding: 40px 40px 0 40px;
     gap: 20px;
     align-items: center;
-    min-height: calc(100vh - 100px);
     position: relative;
   }
 

@@ -114,7 +114,7 @@ export default function Hero() {
 
         {/* ================= DESKTOP ================= */}
 
-        <div className="hero-container site-card-padding hidden md:grid md:grid-cols-2 md:items-end w-full pb-0 h-[520px]">
+        <div className="hero-container site-card-padding hidden md:grid md:grid-cols-2 md:items-end w-full pb-0 h-[520px] lg:h-[560px] xl:h-[580px]">
 
           {/* LEFT CONTENT */}
 

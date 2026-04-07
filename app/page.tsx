@@ -445,21 +445,6 @@ export default function HomePage() {
                       Easy scheduling for a personalized health coaching session.
                       Take the first step towards better health today!
                     </p>
-
-                    <div className="mt-7 overflow-hidden rounded-[20px]">
-                      <Image
-                        src="/images/Appointment%20Image.png"
-                        alt="Dietitian consultation"
-                        width={334}
-                        height={185}
-                        className="h-[185px] w-full object-cover"
-                        style={{ width: '100%', height: 'auto' }}
-                        loading="lazy"
-                        sizes="334px"
-                        quality={75}
-                        unoptimized
-                      />
-                    </div>
                   </div>
 
                   {/* right */}
@@ -733,7 +718,7 @@ export default function HomePage() {
                       </span>
                     </div>
 
-                    <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#FF850B]">
+                    <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#1E1E1E]">
                       Make appointment
                     </h3>
 
@@ -741,21 +726,6 @@ export default function HomePage() {
                       Easy scheduling for a personalized health coaching
                       session. Take the first step towards better health today!
                     </p>
-
-                    <div className="mt-4 overflow-hidden rounded-[18px]">
-                      <Image
-                        src="/images/Appointment%20Image.png"
-                        alt="Dietitian consultation"
-                        width={350}
-                        height={210}
-                        className="object-cover w-full h-auto"
-                        style={{ width: '100%', height: 'auto' }}
-                        loading="lazy"
-                        sizes="(max-width: 767px) 100vw, 350px"
-                        quality={75}
-                        unoptimized
-                      />
-                    </div>
 
                     <form className="mt-5 space-y-3">
                       <div className="grid grid-cols-2 gap-3">
