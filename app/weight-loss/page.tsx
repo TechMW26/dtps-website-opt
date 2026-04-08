@@ -253,7 +253,15 @@ export default function WeightLossPage() {
           <div className="flex flex-col  md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
 
             <div className="max-w-[630px]">
-              <SectionLabel>Our Testimonials</SectionLabel>
+              <div className="flex items-center  gap-2">
+                <span className="text-[#FF850B] text-[18px] leading-none">✦</span>
+                <span
+                  className="text-[#014E4E] font-semibold text-[11px] md:text-[13px]"
+                  style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                >
+                  Our Testimonials
+                </span>
+              </div>
 
               <SectionTitle className="text-[#1E1E1E] mt-2">
                 Success stories from our clients
@@ -298,7 +306,7 @@ export default function WeightLossPage() {
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
           />
-        </div>https://ik.imagekit.io/br0mssyqj/tr:w-640,q-75,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg
+        </div>
 
         {/* Mobile Version */}
         <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
