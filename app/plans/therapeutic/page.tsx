@@ -40,17 +40,33 @@ const therapeuticNutritionPoints = [
 ];
 
 const approachBenefits = [
-  { text: 'Reduce insulin resistance' },
-  { text: 'Support liver fat reversal' },
-  { text: 'Improve thyroid hormone efficiency' },
-  { text: 'Correct cholesterol metabolism' },
+  {
+    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg',
+    alt: 'Insulin response',
+    lines: ['Reduce', 'insulin resistance'],
+  },
+  {
+    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg',
+    alt: 'Liver load',
+    lines: ['Support liver fat', 'reversal'],
+  },
+  {
+    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg',
+    alt: 'Hormonal signalling',
+    lines: ['Improve thyroid', 'hormone efficiency'],
+  },
+  {
+    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg',
+    alt: 'Lipid metabolism',
+    lines: ['Correct cholesterol', 'metabolism'],
+  },
 ];
 
 const planFeatures = [
-  { text: 'Based on medical reports' },
-  { text: 'Structured around Indian food' },
-  { text: 'Adjusted with medication timing' },
-  { text: 'Monitored continuously' },
+  { lines: ['Based on', 'medical reports'] },
+  { lines: ['Structured', 'around Indian food'] },
+  { lines: ['Adjusted with', 'medication timing'] },
+  { lines: ['Monitored', 'continuously'] },
 ];
 
 const whatYouGetCards = [
@@ -144,6 +160,51 @@ function CheckIcon24() {
       <circle cx="12" cy="12" r="12" fill="#FF850B" />
       <path d="M7 12l3 3 7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+function TherapeuticApproachIcon({
+  src,
+  alt,
+  outerSize,
+  innerSize,
+  iconSize,
+}: {
+  src: string;
+  alt: string;
+  outerSize: number;
+  innerSize: number;
+  iconSize: number;
+}) {
+  return (
+    <div
+      className="relative flex shrink-0 items-center justify-center rounded-full border border-[#FE7F2D]"
+      style={{ width: outerSize, height: outerSize }}
+    >
+      <div
+        className="flex items-center justify-center rounded-full bg-[#FF850B]"
+        style={{ width: innerSize, height: innerSize }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={iconSize}
+          height={iconSize}
+          className="object-contain brightness-0 invert"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+}
+
+function CheckSquare32() {
+  return (
+    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-[#014E4E]">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M3.75 9l3.25 3.25L14.25 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
   );
 }
 
@@ -263,28 +324,22 @@ export default function TherapeuticPlanPage() {
                 </div>
               </div>
 
-              {/* Row 1-2: Diagram + Metabolic Interconnection stacked in one cell spanning 2 rows */}
-              <div className="relative flex flex-col justify-between row-span-2">
-                {/* Diagram - fills top area */}
-                <div className="relative flex items-end justify-center flex-1 pb-4">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg"
-                      alt="Metabolic Diagram"
-                      fill
-                      className="object-contain object-bottom"
-                      loading="lazy"
-                      sizes="(max-width: 767px) 100vw, 33vw"
-                    />
-                  </div>
+              {/* Row 1-2: Metabolic Interconnection Combined Card */}
+              <div className="row-span-2 flex h-full flex-col overflow-hidden rounded-[16px] bg-[#FF850B]">
+                <div className="relative min-h-[420px] flex-1 w-full bg-[#10253d]">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg"
+                    alt="Metabolic Interconnection Diagram"
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 767px) 100vw, 33vw"
+                  />
                 </div>
-                {/* Metabolic Interconnection Card - matches height of text portion of other cards */}
-                <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
-                  <div className="p-5">
-                    <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
-                    <h3 className="text-white text-[18px] font-bold mb-2">{roleDietCards[4].title}</h3>
-                    <p className="text-white/90 text-[13px] leading-relaxed">{roleDietCards[4].description}</p>
-                  </div>
+                <div className="p-5">
+                  <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
+                  <h3 className="text-white text-[18px] font-bold mb-2">{roleDietCards[4].title}</h3>
+                  <p className="text-white/90 text-[13px] leading-relaxed">{roleDietCards[4].description}</p>
                 </div>
               </div>
 
@@ -366,13 +421,13 @@ export default function TherapeuticPlanPage() {
 
             {/* Metabolic Interconnection Card */}
             <div className="bg-[#FF850B] rounded-[16px] overflow-hidden">
-              <div className="w-full h-[200px] relative overflow-hidden">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg" alt="Metabolic Interconnection Diagram" fill className="object-cover" loading="lazy" sizes="100vw" />
+              <div className="relative w-full h-[300px] overflow-hidden bg-[#10253d]">
+                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad562.jpg" alt="Metabolic Interconnection Diagram" fill className="object-cover object-center" loading="lazy" sizes="100vw" />
               </div>
-              <div className="p-5">
+              <div className="p-5 pt-4">
                 <div className="w-8 h-[3px] bg-white/60 mb-3 rounded-full" />
-                <h3 className="text-white text-[16px] font-bold mb-2" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>{roleDietCards[4].title}</h3>
-                <p className="text-white/90 text-[12px] leading-relaxed" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{roleDietCards[4].description}</p>
+                <h3 className="text-white text-[17px] font-bold leading-tight mb-2" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>{roleDietCards[4].title}</h3>
+                <p className="text-white/90 text-[12px] leading-[1.55]" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{roleDietCards[4].description}</p>
               </div>
             </div>
           </div>
@@ -399,15 +454,17 @@ export default function TherapeuticPlanPage() {
           <div className="justify-center hidden gap-12 mt-10 md:flex lg:gap-16">
             {/* Insulin Response */}
             <div className="flex flex-col items-center gap-4">
-              <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
-                  alt="Insulin response"
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[135px] w-[135px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[90px] w-[90px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
+                    alt="Insulin response"
+                    width={50}
+                    height={50}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[15px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Insulin<br />response
@@ -415,15 +472,17 @@ export default function TherapeuticPlanPage() {
             </div>
             {/* Liver Load */}
             <div className="flex flex-col items-center gap-4">
-              <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
-                  alt="Liver load"
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[135px] w-[135px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[90px] w-[90px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
+                    alt="Liver load"
+                    width={50}
+                    height={50}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[15px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Liver<br />load
@@ -431,15 +490,17 @@ export default function TherapeuticPlanPage() {
             </div>
             {/* Hormonal Signalling */}
             <div className="flex flex-col items-center gap-4">
-              <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
-                  alt="Hormonal signalling"
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[135px] w-[135px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[90px] w-[90px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
+                    alt="Hormonal signalling"
+                    width={50}
+                    height={50}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[15px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Hormonal<br />signalling
@@ -447,15 +508,17 @@ export default function TherapeuticPlanPage() {
             </div>
             {/* Lipid Metabolism */}
             <div className="flex flex-col items-center gap-4">
-              <div className="w-[90px] h-[90px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
-                  alt="Lipid metabolism"
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[135px] w-[135px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[90px] w-[90px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
+                    alt="Lipid metabolism"
+                    width={50}
+                    height={50}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[15px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Lipid<br />metabolism
@@ -467,15 +530,17 @@ export default function TherapeuticPlanPage() {
           <div className="grid grid-cols-2 gap-6 mt-8 md:hidden">
             {/* Insulin Response */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
-                  alt="Insulin response"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[105px] w-[105px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
+                    alt="Insulin response"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[13px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Insulin<br />response
@@ -483,15 +548,17 @@ export default function TherapeuticPlanPage() {
             </div>
             {/* Liver Load */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
-                  alt="Liver load"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[105px] w-[105px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
+                    alt="Liver load"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[13px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Liver<br />load
@@ -499,15 +566,17 @@ export default function TherapeuticPlanPage() {
             </div>
             {/* Hormonal Signalling */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
-                  alt="Hormonal signalling"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[105px] w-[105px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
+                    alt="Hormonal signalling"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[13px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Hormonal<br />signalling
@@ -515,15 +584,17 @@ export default function TherapeuticPlanPage() {
             </div>
             {/* Lipid Metabolism */}
             <div className="flex flex-col items-center gap-3">
-              <div className="w-[70px] h-[70px] rounded-full bg-white flex items-center justify-center overflow-hidden relative">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
-                  alt="Lipid metabolism"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                  loading="lazy"
-                />
+              <div className="relative flex h-[105px] w-[105px] items-center justify-center rounded-full border-[1.5px] border-[#FF850B] bg-transparent">
+                <div className="relative flex h-[70px] w-[70px] items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
+                    alt="Lipid metabolism"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <p className="text-white text-[13px] font-semibold text-center leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Lipid<br />metabolism
@@ -544,213 +615,176 @@ export default function TherapeuticPlanPage() {
 ═══════════════════════════════════════════════════════════ */}
       <section className="site-shell bg-white pt-6 pb-12 md:pt-10 md:pb-20">
         <div className="site-fill bg-[#EAEEF1] rounded-[24px] overflow-hidden relative">
-
           {/* Desktop Layout */}
-          <div className="hidden lg:flex">
-            {/* Left — Team Image */}
-            <div className="w-[400px] shrink-0 relative self-stretch">
-              <Image
-                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad59a.jpg"
-                alt="Our Therapeutic Team"
-                fill
-                className="object-contain object-bottom"
-                loading="lazy"
-                sizes="400px"
-              />
+          <div className="hidden lg:grid lg:grid-cols-[minmax(340px,472px)_1fr] lg:items-end">
+            <div className="pl-[16.54px]">
+              <div className="relative min-h-[620px] xl:min-h-[703px]">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad59a.jpg"
+                  alt="Our Therapeutic Team"
+                  fill
+                  className="object-contain object-left-bottom"
+                  loading="lazy"
+                  sizes="(max-width: 1279px) 340px, 472px"
+                />
+              </div>
             </div>
 
-            {/* Right — Content */}
-            <div className="flex-1 py-12 pr-12">
-              <h2
-                className="text-[36px] lg:text-[42px] font-bold text-[#1E1E1E] leading-[1.2]"
-                style={{ fontFamily: "var(--font-epilogue), Epilogue, sans-serif" }}
-              >
-                Our Therapeutic Approach
-                <br />
-                <span className="text-[#FF850B]">
-                  (How We Work Differently)
-                </span>
-              </h2>
-
-              {/* Divider line and description */}
-              <div className="pt-4 mt-5 border-t border-gray-300">
-                <p
-                  className="text-[#6B7280] text-[15px] leading-relaxed"
-                  style={{ fontFamily: "Inter, sans-serif" }}
+            <div className="px-8 py-12 xl:px-10 xl:py-14">
+              <div className="mx-auto max-w-[680px]">
+                <h2
+                  className="text-center text-[40px] font-bold leading-[1.18] text-black xl:text-[48px] xl:leading-[1.2]"
+                  style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                 >
-                  Our therapeutic nutrition plans are designed to
-                </p>
-              </div>
+                  Our Therapeutic Approach
+                  <br />
+                  <span className="text-[#FF850B]">(How We Work Differently)</span>
+                </h2>
 
-              {/* Benefits 2x2 grid with icons */}
-              <div className="grid grid-cols-2 mt-5 gap-x-8 gap-y-4">
+                <div className="mt-8 flex flex-col items-center gap-6">
+                  <p
+                    className="text-center text-[20px] font-normal text-black"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    Our therapeutic nutrition plans are designed to
+                  </p>
+                  <div className="h-[2px] w-full max-w-[466px] bg-[#014E4E]/35" />
+                </div>
 
-                {/* Reduce insulin resistance */}
-                <div className="flex items-center gap-4">
-                  <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
-                    <Image
-                      src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad693.jpg"
-                      alt="Insulin"
-                      width={26}
-                      height={26}
-                      className="object-contain brightness-0 invert"
-                      loading="lazy"
-                    />
+                <div className="mx-auto mt-8 grid max-w-[620px] grid-cols-2 gap-x-8 gap-y-4">
+                  {approachBenefits.map((benefit) => (
+                    <div key={benefit.alt} className="flex items-center gap-4">
+                      <TherapeuticApproachIcon
+                        src={benefit.icon}
+                        alt={benefit.alt}
+                        outerSize={80}
+                        innerSize={68}
+                        iconSize={34}
+                      />
+                      <div
+                        className="max-w-[210px] text-[20px] font-semibold leading-[1.2] text-[#014E4E]"
+                        style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                      >
+                        {benefit.lines.map((line) => (
+                          <div key={line}>{line}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mx-auto mt-8 max-w-[631px] rounded-[16px] bg-[#014E4E]/10 p-4">
+                  <div className="rounded-[8px] bg-[#FF850B] px-6 py-3 text-center">
+                    <span
+                      className="text-[20px] font-medium uppercase text-white"
+                      style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                    >
+                      Each Plan Is Carefully
+                    </span>
                   </div>
-                  <span
-                    className="text-[#1E1E1E] text-[15px] font-medium leading-tight"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Reduce
-                    <br />
-                    insulin resistance
-                  </span>
-                </div>
 
-                {/* Support liver fat reversal */}
-                <div className="flex items-center gap-4">
-                  <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
-                    <Image
-                      src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad697.jpg"
-                      alt="Liver"
-                      width={26}
-                      height={26}
-                      className="object-contain brightness-0 invert"
-                      loading="lazy"
-                    />
+                  <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4">
+                    {planFeatures.map((feature) => (
+                      <div key={feature.lines.join(' ')} className="flex items-center gap-3.5">
+                        <CheckSquare32 />
+                        <div
+                          className="text-[20px] font-medium leading-[1] text-[#014E4E]"
+                          style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                        >
+                          {feature.lines.map((line) => (
+                            <div key={line}>{line}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <span
-                    className="text-[#1E1E1E] text-[15px] font-medium leading-tight"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Support liver fat
-                    <br />
-                    reversal
-                  </span>
-                </div>
-
-                {/* Improve thyroid hormone efficiency */}
-                <div className="flex items-center gap-4">
-                  <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
-                    <Image
-                      src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad68f.jpg"
-                      alt="Hormone"
-                      width={26}
-                      height={26}
-                      className="object-contain brightness-0 invert"
-                      loading="lazy"
-                    />
-                  </div>
-                  <span
-                    className="text-[#1E1E1E] text-[15px] font-medium leading-tight"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Improve thyroid
-                    <br />
-                    hormone efficiency
-                  </span>
-                </div>
-
-                {/* Correct cholesterol metabolism */}
-                <div className="flex items-center gap-4">
-                  <div className="w-[50px] h-[50px] rounded-full bg-[#FF850B] flex items-center justify-center shrink-0">
-                    <Image
-                      src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad695.jpg"
-                      alt="Lipid"
-                      width={26}
-                      height={26}
-                      className="object-contain brightness-0 invert"
-                      loading="lazy"
-                    />
-                  </div>
-                  <span
-                    className="text-[#1E1E1E] text-[15px] font-medium leading-tight"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Correct cholesterol
-                    <br />
-                    metabolism
-                  </span>
-                </div>
-              </div>
-
-              {/* EACH PLAN IS CAREFULLY bar */}
-              <div className="bg-[#FF850B] rounded-[8px] py-3 px-6 mt-6 text-center">
-                <span
-                  className="text-white text-[14px] font-bold tracking-[2px] uppercase"
-                  style={{
-                    fontFamily: "var(--font-epilogue), Epilogue, sans-serif",
-                  }}
-                >
-                  EACH PLAN IS CAREFULLY
-                </span>
-              </div>
-
-              {/* Plan features 2x2 */}
-              <div className="grid grid-cols-2 mt-5 gap-x-6 gap-y-3">
-
-                <div className="flex items-center gap-3">
-                  <CheckIcon24 />
-                  <span
-                    className="text-[#1E1E1E] text-[14px]"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Based on
-                    <br />
-                    medical reports
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <CheckIcon24 />
-                  <span
-                    className="text-[#1E1E1E] text-[14px]"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Structured
-                    <br />
-                    around Indian food
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <CheckIcon24 />
-                  <span
-                    className="text-[#1E1E1E] text-[14px]"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Adjusted with
-                    <br />
-                    medication timing
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <CheckIcon24 />
-                  <span
-                    className="text-[#1E1E1E] text-[14px]"
-                    style={{ fontFamily: "Inter, sans-serif" }}
-                  >
-                    Monitored
-                    <br />
-                    continuously
-                  </span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Mobile Layout */}
-          <div className="lg:hidden">
-            <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c726a14dfc9fbf5ad702.jpg"
-              alt="Our Therapeutic Approach"
-              width={600}
-              height={800}
-              className="w-full h-auto"
-              loading="lazy"
-              sizes="100vw"
-            />
+          <div className="lg:hidden px-5 py-8">
+            <div className="relative mx-auto h-[300px] w-full max-w-[320px]">
+              <Image
+                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad59a.jpg"
+                alt="Our Therapeutic Team"
+                fill
+                className="object-contain object-bottom"
+                loading="lazy"
+                sizes="320px"
+              />
+            </div>
+
+            <div className="mx-auto mt-4 max-w-[340px]">
+              <h2
+                className="text-center text-[28px] font-bold leading-[1.18] text-black"
+                style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+              >
+                Our Therapeutic Approach
+                <br />
+                <span className="text-[#FF850B]">(How We Work Differently)</span>
+              </h2>
+
+              <div className="mt-6 flex flex-col items-center gap-4">
+                <p
+                  className="text-center text-[15px] leading-[1.5] text-black"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Our therapeutic nutrition plans are designed to
+                </p>
+                <div className="h-[2px] w-full max-w-[240px] bg-[#014E4E]/35" />
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {approachBenefits.map((benefit) => (
+                  <div key={benefit.alt} className="flex items-center gap-3">
+                    <TherapeuticApproachIcon
+                      src={benefit.icon}
+                      alt={benefit.alt}
+                      outerSize={72}
+                      innerSize={60}
+                      iconSize={30}
+                    />
+                    <div
+                      className="text-[16px] font-semibold leading-[1.15] text-[#014E4E]"
+                      style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                    >
+                      {benefit.lines.map((line) => (
+                        <div key={line}>{line}</div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-[16px] bg-[#014E4E]/10 p-4">
+                <div className="rounded-[8px] bg-[#FF850B] px-4 py-3 text-center">
+                  <span
+                    className="text-[15px] font-medium uppercase text-white"
+                    style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                  >
+                    Each Plan Is Carefully
+                  </span>
+                </div>
+
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {planFeatures.map((feature) => (
+                    <div key={feature.lines.join(' ')} className="flex items-center gap-3">
+                      <CheckSquare32 />
+                      <div
+                        className="text-[16px] font-medium leading-[1.05] text-[#014E4E]"
+                        style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                      >
+                        {feature.lines.map((line) => (
+                          <div key={line}>{line}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

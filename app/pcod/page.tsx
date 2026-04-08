@@ -60,8 +60,13 @@ export default function PCODPage() {
 
             {/* Mobile Layout */}
             <div className="flex flex-col items-center w-full px-6 py-12 text-center md:hidden">
-              <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
-                98% Of Our <span className="text-[#FF850B]">PCOD Clients</span> See
+              <h1 className="mb-2 font-bold text-white">
+                <span className="block text-[4.25rem] leading-none tracking-[-0.04em]">
+                  98%
+                </span>
+                <span className="block text-[1.45rem] leading-[1.2] mt-1">
+                  Of Our <span className="text-[#FF850B]">PCOD Clients</span> See
+                </span>
               </h1>
               <h2 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
                 Major <span className="text-[#FF850B]">Weight Loss & Better Periods</span>

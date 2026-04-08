@@ -183,6 +183,29 @@ const awards = [
   },
 ];
 
+const noPushItems = [
+  {
+    icon: "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/no_meals.svg",
+    alt: "No meals",
+    text: "Crash diets. Starvation.",
+  },
+  {
+    icon: "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/pill-1.svg",
+    alt: "Pills",
+    text: "Glutathione. Fat-burner pills. Detox teas.",
+  },
+  {
+    icon: "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/cardio_load.svg",
+    alt: "Cardio",
+    text: "Heavy gym plans if you do not want them.",
+  },
+  {
+    icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad671.jpg",
+    alt: "Fad Diet",
+    text: "Fad expensive salad or juice-only diet.",
+  },
+];
+
 export default function WeddingPlanPage() {
   const [activeTab, setActiveTab] = useState<WeddingTabKey>("brides");
   const [arrowTab, setArrowTab] = useState<WeddingTabKey>("brides");
@@ -245,7 +268,7 @@ export default function WeddingPlanPage() {
     <main className="bg-white">
       {/* Hero Section with Navbar */}
       <section className="hero-section site-shell pt-4 md:pt-[60px]">
-        <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative">
+        <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative h-[765px] md:h-[738px]">
           {/* Background Image */}
           <Image
             src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
@@ -259,38 +282,34 @@ export default function WeddingPlanPage() {
 
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(78,1,1,0.12)] to-[rgba(78,1,1,0.9)]" />
 
-          <div className="relative w-full z-10">
+          <div className="relative z-10 flex h-full w-full flex-col">
             {/* Navbar */}
             <Navbar />
 
             {/* Mobile Layout */}
-            <div className="md:hidden w-full py-12 px-6 flex flex-col items-center text-center">
-              <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
-                India&apos;s Only <span className="text-[#FF850B]">&ldquo;Ghar Ka Khana&rdquo;</span>
-              </h1>
-              <h2 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-6">
-                Diet Plan That Gets You <span className="text-[#FF850B]">Wedding-Ready.</span>
-              </h2>
-
-              <p className="text-white/80 text-[15px] leading-[1.6] mb-8">
-                Because you shouldn&apos;t have to suffer to look beautiful.
-              </p>
-
-              {/* Button */}
-              <Link
-                href="/checkout?plan=wedding"
-                className="bg-[#FF850B] hover:bg-[#E57A09] text-white font-semibold py-3 px-8 rounded-full text-sm transition-colors"
-              >
-                Buy Wedding Plan Now
-              </Link>
+            <div className="flex w-full flex-1 flex-col items-center justify-end px-6 pb-10 text-center md:hidden">
+              <div className="max-w-[360px]">
+                <p className="text-[2rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
+                  India&apos;s Only
+                </p>
+                <p className="mt-1 text-[3.45rem] font-extrabold leading-[0.94] tracking-[-0.045em] text-[#FF850B]">
+                  Ghar Ka Khana
+                </p>
+                <p className="mt-2 text-[1.8rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
+                  Diet Plan That Gets You
+                </p>
+                <p className="mt-1 text-[1.8rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
+                  Wedding-Ready.
+                </p>
+              </div>
             </div>
 
             {/* Desktop Layout */}
-            <div className="hidden md:flex w-full py-16 lg:py-20 flex-col items-center text-center">
-              <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
+            <div className="hidden md:flex w-full flex-1 flex-col items-center justify-end mb-12  px-6 text-center lg:px-8">
+              <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
                 India&apos;s Only <span className="text-[#FF850B]">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan
               </h1>
-              <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-8">
+              <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
                 That Gets You <span className="text-[#FF850B]">Wedding-Ready.</span>
               </h2>
 
@@ -325,11 +344,25 @@ export default function WeddingPlanPage() {
       {/* What Happens When You Start Section */}
       <section className="site-shell bg-white py-12">
         <div className="site-fill">
-          <h2 className="text-center text-2xl md:text-5xl  font-bold text-black mb-8 md:mb-16">
+          <h2
+            className="mb-8 hidden text-center text-2xl font-bold text-black md:mb-16 md:block md:text-5xl"
+            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+          >
             What Happens
             <br />
             When You Start the{" "}
             <span className="text-[#ff850b]">DTPS Wedding Plan</span>
+          </h2>
+
+          <h2
+            className="mb-6 text-center text-[32px] font-bold leading-[1.125] text-[#1E1E1E] md:hidden"
+            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+          >
+            What Happens
+            <br />
+            When You Start the
+            <br />
+            <span className="text-[#FF850B]">DTPS Wedding Plan</span>
           </h2>
 
           {/* Desktop Tabs */}
@@ -442,57 +475,74 @@ export default function WeddingPlanPage() {
           </div>
 
           {/* Tab Content - Mobile */}
-          <div className="md:hidden">
-            {/* Image with orange strip */}
-            <div className="relative flex justify-center mb-6">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#ff850b] w-[130px] h-full rounded-lg"></div>
+          <div className="mx-auto flex max-w-[355px] flex-col gap-6 md:hidden">
+            <div className="relative h-[467px] w-full overflow-hidden rounded-[24px] bg-[#4E0101]">
+              <div className="absolute inset-y-0 left-1/2 w-[180px] -translate-x-1/2 bg-[#FF850B]" />
               <Image
                 src={activeTabData.image}
                 alt={activeTabData.label}
-                width={220}
-                height={280}
-                className="relative z-10 object-cover"
+                width={301}
+                height={467}
+                className="absolute bottom-0 left-[calc(50%+8px)] h-[467px] w-auto max-w-none -translate-x-1/2 object-contain"
                 loading="lazy"
-                sizes="220px"
+                sizes="301px"
                 quality={75}
               />
             </div>
 
-            {/* Tab buttons */}
-            <div className="flex flex-wrap justify-center gap-3 mb-6">
-              {weddingTabOrder.map((tab) => (
-                <button
-                  key={tab}
-                  onMouseDown={suppressMouseFocus}
-                  onClick={() => setActiveTab(tab)}
-                  style={{ WebkitTapHighlightColor: "transparent" }}
-                  className={`py-2 px-5 rounded-full text-sm font-semibold capitalize transition-all duration-300 ${activeTab === tab
-                    ? "bg-[#1a1a1a] text-white"
-                    : "bg-white text-[#1a1a1a] border border-[#e0e0e0]"
-                    }`}
-                >
-                  {tabsData[tab].label}
-                </button>
-              ))}
+            <div className="grid grid-cols-4 gap-2">
+              {weddingTabOrder.map((tab) => {
+                const isActive = activeTab === tab;
+
+                return (
+                  <button
+                    key={tab}
+                    type="button"
+                    onMouseDown={suppressMouseFocus}
+                    onClick={() => setActiveTab(tab)}
+                    style={{ WebkitTapHighlightColor: "transparent" }}
+                    className={`flex items-center justify-center rounded-[12px] px-3 py-[14px] text-center text-[16px] font-semibold leading-none text-white transition-colors ${isActive ? "bg-[#FF850B]" : "bg-[#4E0101]"
+                      }`}
+                  >
+                    {tabsData[tab].label}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Benefit cards */}
-            <div className="flex flex-col gap-3">
-              {activeTabData.benefits.map((benefit, index) => (
-                <div key={index} className="bg-white rounded-xl border border-[#f0f0f0] shadow-sm px-4 py-3.5 flex items-start gap-3">
-                  <Image
-                    src={benefitIcons[index] ?? benefitIcons[benefitIcons.length - 1]}
-                    alt=""
-                    width={32}
-                    height={32}
-                    loading="lazy"
-                    className="h-8 w-8 min-w-[32px] object-contain"
-                  />
-                  <p className="text-[#333] text-sm font-medium leading-snug pt-1">
-                    {benefit}
-                  </p>
-                </div>
-              ))}
+            <div className="flex flex-col gap-2">
+              {activeTabData.benefits.map((benefit, index) => {
+                const isPrimary = index === 0;
+
+                return (
+                  <div
+                    key={`${activeTab}-${index}`}
+                    className={`flex items-center gap-3 rounded-[14px] border border-[#FF850B] px-3 py-3 ${isPrimary ? "bg-[#FF850B]" : "bg-white"
+                      }`}
+                  >
+                    <div
+                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] ${isPrimary ? "bg-white" : "bg-transparent"
+                        }`}
+                    >
+                      <Image
+                        src={benefitIcons[index] ?? benefitIcons[benefitIcons.length - 1]}
+                        alt=""
+                        width={32}
+                        height={32}
+                        loading="lazy"
+                        className="h-8 w-8 object-contain"
+                      />
+                    </div>
+                    <p
+                      className={`flex-1 text-[14px] font-medium leading-[1.15] ${isPrimary ? "text-white" : "text-black"
+                        }`}
+                      style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                    >
+                      {benefit}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -536,129 +586,104 @@ export default function WeddingPlanPage() {
       <section className="site-shell bg-white py-14 md:py-20">
 
         <div className="site-fill px-5 md:px-0">
-          <div className="bg-[#E7E7E7] rounded-[30px] pt-6 pb-0 md:pt-12 md:pb- px-6 md:px-12">
+          <div className="overflow-hidden rounded-[30px] bg-[#EAEEF1] md:px-12 md:pt-12 md:pb-0">
 
-            <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="px-[10px] pb-4 md:hidden">
+              <div className="flex flex-col items-center gap-6">
+                <div className="relative h-[416px] w-full max-w-[315px] overflow-hidden rounded-[16px] bg-[linear-gradient(180deg,#EAEEF1_0%,#FFFFFF_100%)]">
+                  <div className="absolute left-[52px] top-0 h-full w-[137px] bg-[#FF850B]" />
+                  <Image
+                    src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
+                    alt="Bride"
+                    width={228}
+                    height={416}
+                    className="absolute left-[75px] top-0 h-[416px] w-auto max-w-none object-contain"
+                    loading="lazy"
+                    sizes="228px"
+                    quality={75}
+                  />
+                </div>
+
+                <div className="flex w-full flex-col items-center gap-8">
+                  <h2
+                    className="text-center text-[32px] font-bold leading-[1.1] text-[#1E1E1E]"
+                    style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                  >
+                    We Do Not Push
+                  </h2>
+
+                  <div className="flex w-full flex-col gap-4 px-2">
+                    {noPushItems.map((item) => (
+                      <div key={item.text} className="rounded-[16px] bg-[#4E0101] p-2">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-[100px] w-[100px] shrink-0 items-center justify-center overflow-hidden rounded-[12px] bg-[#FF850B]">
+                            <Image
+                              src={item.icon}
+                              alt={item.alt}
+                              width={56}
+                              height={56}
+                              className="h-[56px] w-[56px] object-contain brightness-0 invert"
+                              loading="lazy"
+                            />
+                          </div>
+                          <p
+                            className="flex-1 text-[20px] font-semibold leading-[1.08] text-white"
+                            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                          >
+                            {item.text}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="hidden md:grid md:grid-cols-2 md:items-center md:gap-10">
 
               {/* LEFT IMAGE */}
               <div className="flex justify-center md:justify-start">
-                <div className="relative w-[280px] md:w-[420px] h-[620px] md:h-[700px] rounded-[22px]">
+                <div className="relative h-[620px] w-[280px] rounded-[22px] md:h-[700px] md:w-[420px]">
                   <div className="absolute bottom-0 top-[-24px] left-1/4 w-[130px] -translate-x-1/2 bg-[#ff850b] md:left-[8px] md:top-[-48px] md:w-[150px] md:translate-x-0"></div>
                   <Image
                     src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
                     alt="Bride"
                     width={420}
                     height={580}
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 w-[280px] md:w-[420px] h-auto"
+                    className="absolute bottom-0 left-1/2 h-auto w-[280px] -translate-x-1/2 md:w-[420px]"
                     loading="lazy"
                     sizes="(max-width: 767px) 280px, 420px"
                     quality={75}
                   />
                 </div>
-
-
               </div>
-
 
               {/* RIGHT SIDE */}
               <div>
-
-                <h2 className="text-3xl md:text-5xl font-bold text-[#333] mb-8">
+                <h2 className="mb-8 text-3xl font-bold text-[#333] md:text-5xl">
                   We Do Not Push
                 </h2>
 
                 <div className="flex flex-col gap-6">
+                  {noPushItems.map((item) => (
+                    <div key={item.text} className="flex items-center gap-5 rounded-2xl bg-[#FF850B] p-4 md:p-5">
+                      <div className="flex items-center justify-center rounded-xl bg-[#E7E7E7] p-3">
+                        <Image
+                          src={item.icon}
+                          alt={item.alt}
+                          width={40}
+                          height={40}
+                          loading="lazy"
+                        />
+                      </div>
 
-                  {/* CARD 1 */}
-                  <div className="flex items-center gap-5 bg-[#FF850B] rounded-2xl p-4 md:p-5">
-
-                    <div className="bg-[#E7E7E7] rounded-xl p-3 flex items-center justify-center">
-
-                      <Image
-                        src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/no_meals.svg"
-                        alt="No meals"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                      />
-
-
+                      <p className="text-base font-semibold text-white md:text-lg">
+                        {item.text}
+                      </p>
                     </div>
-
-                    <p className="text-white font-semibold text-base md:text-lg">
-                      Crash diets. Starvation.
-                    </p>
-
-                  </div>
-
-
-                  {/* CARD 2 */}
-                  <div className="flex items-center gap-5 bg-[#FF850B] rounded-2xl p-4 md:p-5">
-
-                    <div className="bg-[#E7E7E7] rounded-xl p-3 flex items-center justify-center">
-
-                      <Image
-                        src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/pill-1.svg"
-                        alt="Pills"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                      />
-
-                    </div>
-
-                    <p className="text-white font-semibold text-base md:text-lg">
-                      Glutathione. Fat-burner pills. Detox teas.
-                    </p>
-
-                  </div>
-
-
-                  {/* CARD 3 */}
-                  <div className="flex items-center gap-5 bg-[#FF850B] rounded-2xl p-4 md:p-5">
-
-                    <div className="bg-[#E7E7E7] rounded-xl p-3 flex items-center justify-center">
-
-                      <Image
-                        src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/cardio_load.svg"
-                        alt="Cardio"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                      />
-
-                    </div>
-
-                    <p className="text-white font-semibold text-base md:text-lg">
-                      Heavy gym plans if you do not want them.
-                    </p>
-
-                  </div>
-
-
-                  {/* CARD 4 */}
-                  <div className="flex items-center gap-5 bg-[#FF850B] rounded-2xl p-4 md:p-5">
-
-                    <div className="bg-[#E7E7E7] rounded-xl p-3 flex items-center justify-center">
-
-                      <Image
-                        src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad671.jpg"
-                        alt="Fad Diet"
-                        width={40}
-                        height={40}
-                        loading="lazy"
-                      />
-
-                    </div>
-
-                    <p className="text-white font-semibold text-base md:text-lg">
-                      Fad expensive salad or juice-only diet.
-                    </p>
-
-                  </div>
-
+                  ))}
                 </div>
-
               </div>
 
             </div>
