@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 import Navbar from "@/components/Navbar";
 import LoseWeightSection from "@/components/LoseWeightSection";
 import DynamicPlansDisplay from "@/components/DynamicPlansDisplay";
@@ -12,8 +12,29 @@ import TransformationGallery from "@/components/TransformationGallery";
 import ExpertGuidanceSection from "@/components/ExpertGuidanceSection";
 
 // Tab data for "What Happens" section
-const tabsData: Record<string, { image: string; benefits: string[] }> = {
+type WeddingTabKey = "brides" | "grooms" | "couples" | "family";
+
+type WeddingTabConfig = {
+  label: string;
+  tabVector: string;
+  image: string;
+  benefits: string[];
+};
+
+const weddingTabOrder: WeddingTabKey[] = ["brides", "grooms", "couples", "family"];
+
+const benefitIcons = [
+  "/images/Frame%20126.png",
+  "/images/Frame%20127.png",
+  "/images/Frame%20128.png",
+  "/images/Frame%20130.png",
+  "/images/Frame%20129.png",
+] as const;
+
+const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   brides: {
+    label: "Brides",
+    tabVector: "/images/Bride-Vector.png",
     image:
       "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride.png",
     benefits: [
@@ -25,6 +46,8 @@ const tabsData: Record<string, { image: string; benefits: string[] }> = {
     ],
   },
   grooms: {
+    label: "Grooms",
+    tabVector: "/images/Groom-Vector.png",
     image:
       "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Groom.png",
     benefits: [
@@ -36,6 +59,8 @@ const tabsData: Record<string, { image: string; benefits: string[] }> = {
     ],
   },
   couples: {
+    label: "Couples",
+    tabVector: "/images/Couples-Vector.png",
     image:
       "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Couple.png",
     benefits: [
@@ -47,6 +72,8 @@ const tabsData: Record<string, { image: string; benefits: string[] }> = {
     ],
   },
   family: {
+    label: "Family",
+    tabVector: "/images/Family-Vector.png",
     image:
       "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Guest-1.png",
     benefits: [
@@ -157,7 +184,9 @@ const awards = [
 ];
 
 export default function WeddingPlanPage() {
-  const [activeTab, setActiveTab] = useState("brides");
+  const [activeTab, setActiveTab] = useState<WeddingTabKey>("brides");
+  const [arrowTab, setArrowTab] = useState<WeddingTabKey>("brides");
+  const [isArrowVisible, setIsArrowVisible] = useState(true);
   const [pricingPlans, setPricingPlans] = useState<any[]>(pricingPlansFallback);
   const [loadingPricing, setLoadingPricing] = useState(true);
 
@@ -188,6 +217,29 @@ export default function WeddingPlanPage() {
 
     fetchPricing();
   }, []);
+
+  useEffect(() => {
+    if (activeTab === arrowTab) {
+      return;
+    }
+
+    setIsArrowVisible(false);
+
+    const timeoutId = window.setTimeout(() => {
+      setArrowTab(activeTab);
+      setIsArrowVisible(true);
+    }, 140);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeTab, arrowTab]);
+
+  const activeTabData = tabsData[activeTab];
+  const arrowTabIndex = weddingTabOrder.indexOf(arrowTab);
+  const connectorLeft = `${((arrowTabIndex + 0.5) / weddingTabOrder.length) * 100}%`;
+
+  const suppressMouseFocus = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <main className="bg-white">
@@ -258,7 +310,7 @@ export default function WeddingPlanPage() {
         </div>
       </section>
       {/* Wedding Transformations Section */}
-      <section className="site-shell bg-[#f7f7f7] py-14 md:py-20">
+      <section className="site-shell  py-14 md:py-20">
         <div className="site-fill">
 
           <TransformationGallery
@@ -273,7 +325,7 @@ export default function WeddingPlanPage() {
       {/* What Happens When You Start Section */}
       <section className="site-shell bg-white py-12">
         <div className="site-fill">
-          <h2 className="text-center text-2xl md:text-5xl font-bold text-black leading-tight mb-8 md:mb-16">
+          <h2 className="text-center text-2xl md:text-5xl  font-bold text-black mb-8 md:mb-16">
             What Happens
             <br />
             When You Start the{" "}
@@ -281,148 +333,71 @@ export default function WeddingPlanPage() {
           </h2>
 
           {/* Desktop Tabs */}
-          <div className="hidden md:flex justify-between gap-5 w-full mb-8">
-            {/* Brides Tab */}
-            <div
-              onClick={() => setActiveTab("brides")}
-              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${activeTab === "brides" ? "-translate-y-1.5 scale-[1.06]" : ""
-                }`}
-            >
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${activeTab === "brides" ? "bg-[#ff850b]" : "bg-[#4e0101]"
-                  }`}
-              ></div>
-              <div className="absolute bottom-0 left-[calc(50%-79px)] w-[159px] h-60">
-                <Image
-                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-2.png"
-                  alt="Brides"
-                  fill
-                  loading="lazy"
-                  sizes="159px"
-                  className="object-cover"
-                />
-              </div>
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${activeTab === "brides"
-                  ? "bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]"
-                  : "bg-gradient-to-b from-transparent via-transparent to-[#4e0101]"
-                  }`}
-              ></div>
-              <div
-                className={`absolute top-[203px] left-[calc(50%-38px)] font-semibold text-white text-2xl ${activeTab === "brides"
-                  ? "drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]"
-                  : ""
-                  }`}
-              >
-                Brides
-              </div>
+          <div className="relative mb-7 hidden md:block">
+            <div className="grid grid-cols-4 gap-5 xl:gap-0">
+              {weddingTabOrder.map((tabKey) => {
+                const tab = tabsData[tabKey];
+                const isActive = activeTab === tabKey;
+
+                return (
+                  <button
+                    key={tabKey}
+                    type="button"
+                    onMouseDown={suppressMouseFocus}
+                    onClick={() => setActiveTab(tabKey)}
+                    aria-pressed={isActive}
+                    className={`relative mx-auto h-60 w-[220px] appearance-none overflow-hidden rounded-[30px] border-0 bg-transparent p-0 outline-none ring-0 shadow-none transition-all duration-500 ease-out focus:outline-none focus:ring-0 focus:shadow-none focus-visible:outline-none focus-visible:ring-0 focus-visible:shadow-none active:outline-none active:ring-0 active:shadow-none ${isActive
+                      ? "-translate-y-1 scale-[1.04]"
+                      : "hover:-translate-y-1"
+                      }`}
+                    style={{ WebkitTapHighlightColor: "transparent" }}
+                  >
+                    <div
+                      className={`absolute bottom-0 left-0 h-[150px] w-full rounded-[30px] transition-colors duration-500 ${isActive ? "bg-[#ff850b]" : "bg-[#620909]"
+                        }`}
+                    ></div>
+                    <div
+                      className={`absolute bottom-0 left-0 h-[150px] w-full rounded-[30px] bg-gradient-to-b from-transparent via-transparent transition-opacity duration-500 ${isActive
+                        ? "to-[rgba(255,133,11,0.58)]"
+                        : "to-[rgba(78,1,1,0.8)]"
+                        }`}
+                    ></div>
+                    <div className="absolute inset-x-0 bottom-0 h-60 w-full">
+                      <Image
+                        src={tab.tabVector}
+                        alt={tab.label}
+                        fill
+                        loading="lazy"
+                        sizes="220px"
+                        className="object-contain object-bottom"
+                      />
+                    </div>
+                    <span
+                      className={`absolute inset-x-0 bottom-4 text-center text-[18px] font-semibold text-white transition duration-500 lg:text-[20px] ${isActive
+                        ? "drop-shadow-[0_2px_12px_rgba(255,133,11,0.45)]"
+                        : ""
+                        }`}
+                    >
+                      {tab.label}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Grooms Tab */}
-            <div
-              onClick={() => setActiveTab("grooms")}
-              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${activeTab === "grooms" ? "-translate-y-1.5 scale-[1.06]" : ""
-                }`}
-            >
+            <div className="pointer-events-none absolute inset-x-0 -bottom-8 h-[45px]">
               <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${activeTab === "grooms" ? "bg-[#ff850b]" : "bg-[#4e0101]"
+                className={`absolute top-0 transition-opacity duration-150 ease-out ${isArrowVisible ? "opacity-100" : "opacity-0"
                   }`}
-              ></div>
-              <div className="absolute bottom-0 left-[calc(50%-100px)] w-[201px] h-60">
-                <Image
-                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-3.png"
-                  alt="Grooms"
-                  fill
-                  loading="lazy"
-                  sizes="201px"
-                  className="object-cover"
-                />
-              </div>
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${activeTab === "grooms"
-                  ? "bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]"
-                  : "bg-gradient-to-b from-transparent via-transparent to-[#4e0101]"
-                  }`}
-              ></div>
-              <div
-                className={`absolute top-[203px] left-[calc(50%-47px)] font-semibold text-white text-2xl ${activeTab === "grooms"
-                  ? "drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]"
-                  : ""
-                  }`}
+                style={{ left: `calc(${connectorLeft} - 25px)` }}
               >
-                Grooms
-              </div>
-            </div>
-
-            {/* Couples Tab */}
-            <div
-              onClick={() => setActiveTab("couples")}
-              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${activeTab === "couples" ? "-translate-y-1.5 scale-[1.06]" : ""
-                }`}
-            >
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${activeTab === "couples" ? "bg-[#ff850b]" : "bg-[#4e0101]"
-                  }`}
-              ></div>
-              <div className="absolute bottom-0 left-[calc(50%-80px)] w-[161px] h-60">
                 <Image
-                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-4.png"
-                  alt="Couples"
-                  fill
-                  loading="lazy"
-                  sizes="161px"
-                  className="object-cover"
+                  src="/images/Arrow-vector.png"
+                  alt=""
+                  width={25}
+                  height={45}
+                  className="h-[45px] w-[25px]"
                 />
-              </div>
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${activeTab === "couples"
-                  ? "bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]"
-                  : "bg-gradient-to-b from-transparent via-transparent to-[#4e0101]"
-                  }`}
-              ></div>
-              <div
-                className={`absolute top-[203px] left-[calc(50%-49px)] font-semibold text-white text-2xl ${activeTab === "couples"
-                  ? "drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]"
-                  : ""
-                  }`}
-              >
-                Couples
-              </div>
-            </div>
-
-            {/* Family Tab */}
-            <div
-              onClick={() => setActiveTab("family")}
-              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${activeTab === "family" ? "-translate-y-1.5 scale-[1.06]" : ""
-                }`}
-            >
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${activeTab === "family" ? "bg-[#ff850b]" : "bg-[#4e0101]"
-                  }`}
-              ></div>
-              <div className="absolute bottom-0 left-[calc(50%-100.5px)] w-[202px] h-60">
-                <Image
-                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-5.png"
-                  alt="Family"
-                  fill
-                  loading="lazy"
-                  sizes="202px"
-                  className="object-cover"
-                />
-              </div>
-              <div
-                className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${activeTab === "family"
-                  ? "bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]"
-                  : "bg-gradient-to-b from-transparent via-transparent to-[#4e0101]"
-                  }`}
-              ></div>
-              <div
-                className={`absolute top-[203px] left-[calc(50%-43px)] font-semibold text-white text-2xl ${activeTab === "family"
-                  ? "drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]"
-                  : ""
-                  }`}
-              >
-                Family
               </div>
             </div>
           </div>
@@ -430,35 +405,39 @@ export default function WeddingPlanPage() {
 
 
           {/* Tab Content Card - Desktop */}
-          <div className="hidden md:block bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] w-full">
-            <div className="absolute top-0 left-[102px] bg-[#ff850b] w-[180px] h-full"></div>
+          <div className="hidden min-h-[467px] w-full overflow-hidden rounded-[32px] bg-[#4e0101] md:block">
+            <div className="relative min-h-[467px] w-full">
+              <div className="absolute inset-y-0 left-[84px] w-[150px] bg-[#ff850b]"></div>
 
-            <Image
-              src={tabsData[activeTab].image}
-              alt={activeTab}
-              width={410}
-              height={459}
-              className="absolute bottom-0 left-[102px] object-cover"
-              loading="lazy"
-              sizes="410px"
-              quality={75}
-            />
+              <Image
+                key={activeTab}
+                src={activeTabData.image}
+                alt={activeTabData.label}
+                width={410}
+                height={459}
+                className="absolute bottom-0 left-[60px] h-auto w-[360px] object-contain"
+                loading="lazy"
+                sizes="360px"
+                quality={75}
+              />
 
-            <div className="absolute top-[126px] left-[510px] w-[580px] flex flex-col gap-6">
-              {tabsData[activeTab].benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <Image
-                    src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/ion_diamond.svg"
-                    alt="Diamond"
-                    width={24}
-                    height={24}
-                    loading="lazy"
-                  />
-                  <div className="font-semibold capitalize text-white text-base">
-                    {benefit}
+              <div className="absolute left-[430px] top-1/2 flex w-[calc(100%-470px)] -translate-y-1/2 flex-col gap-6 pr-12">
+                {activeTabData.benefits.map((benefit, index) => (
+                  <div key={`${activeTab}-${index}`} className="flex items-start gap-4">
+                    <Image
+                      src={benefitIcons[index] ?? benefitIcons[benefitIcons.length - 1]}
+                      alt=""
+                      width={32}
+                      height={32}
+                      loading="lazy"
+                      className="mt-0.5 h-8 w-8 shrink-0 object-contain"
+                    />
+                    <p className="text-[17px] font-semibold leading-[1.45] text-white lg:text-[18px]">
+                      {benefit}
+                    </p>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
@@ -468,8 +447,8 @@ export default function WeddingPlanPage() {
             <div className="relative flex justify-center mb-6">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#ff850b] w-[130px] h-full rounded-lg"></div>
               <Image
-                src={tabsData[activeTab].image}
-                alt={activeTab}
+                src={activeTabData.image}
+                alt={activeTabData.label}
                 width={220}
                 height={280}
                 className="relative z-10 object-cover"
@@ -481,33 +460,34 @@ export default function WeddingPlanPage() {
 
             {/* Tab buttons */}
             <div className="flex flex-wrap justify-center gap-3 mb-6">
-              {(["brides", "grooms", "couples", "family"] as const).map((tab) => (
+              {weddingTabOrder.map((tab) => (
                 <button
                   key={tab}
+                  onMouseDown={suppressMouseFocus}
                   onClick={() => setActiveTab(tab)}
+                  style={{ WebkitTapHighlightColor: "transparent" }}
                   className={`py-2 px-5 rounded-full text-sm font-semibold capitalize transition-all duration-300 ${activeTab === tab
                     ? "bg-[#1a1a1a] text-white"
                     : "bg-white text-[#1a1a1a] border border-[#e0e0e0]"
                     }`}
                 >
-                  {tab === "family" ? "Family" : tab}
+                  {tabsData[tab].label}
                 </button>
               ))}
             </div>
 
             {/* Benefit cards */}
             <div className="flex flex-col gap-3">
-              {tabsData[activeTab].benefits.map((benefit, index) => (
+              {activeTabData.benefits.map((benefit, index) => (
                 <div key={index} className="bg-white rounded-xl border border-[#f0f0f0] shadow-sm px-4 py-3.5 flex items-start gap-3">
-                  <div className="w-8 h-8 min-w-[32px] bg-[#FFF3E0] rounded-lg flex items-center justify-center">
-                    <Image
-                      src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/ion_diamond.svg"
-                      alt=""
-                      width={16}
-                      height={16}
-                      loading="lazy"
-                    />
-                  </div>
+                  <Image
+                    src={benefitIcons[index] ?? benefitIcons[benefitIcons.length - 1]}
+                    alt=""
+                    width={32}
+                    height={32}
+                    loading="lazy"
+                    className="h-8 w-8 min-w-[32px] object-contain"
+                  />
                   <p className="text-[#333] text-sm font-medium leading-snug pt-1">
                     {benefit}
                   </p>
@@ -563,6 +543,7 @@ export default function WeddingPlanPage() {
               {/* LEFT IMAGE */}
               <div className="flex justify-center md:justify-start">
                 <div className="relative w-[280px] md:w-[420px] h-[620px] md:h-[700px] rounded-[22px]">
+                  <div className="absolute bottom-0 top-[-24px] left-1/4 w-[130px] -translate-x-1/2 bg-[#ff850b] md:left-[8px] md:top-[-48px] md:w-[150px] md:translate-x-0"></div>
                   <Image
                     src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
                     alt="Bride"
@@ -821,8 +802,8 @@ export default function WeddingPlanPage() {
           </h2>
 
           {/* Desktop: Horizontal cards */}
-          <div className="hidden md:flex flex-col gap-5 w-full">
-            <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
+          <div className="hidden md:flex flex-col items-center gap-5 w-full">
+            <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
                 <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={48} height={48} loading="lazy" />
               </div>
@@ -831,7 +812,7 @@ export default function WeddingPlanPage() {
               </p>
             </div>
 
-            <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
+            <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
                 <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={48} height={48} loading="lazy" />
               </div>
@@ -840,7 +821,7 @@ export default function WeddingPlanPage() {
               </p>
             </div>
 
-            <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
+            <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
                 <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={48} height={48} loading="lazy" />
               </div>
@@ -849,7 +830,7 @@ export default function WeddingPlanPage() {
               </p>
             </div>
 
-            <div className="bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
+            <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
                 <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={48} height={48} loading="lazy" />
               </div>

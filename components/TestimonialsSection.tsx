@@ -52,7 +52,7 @@ export default function TestimonialsSection({
     testimonials = defaultTestimonials,
 }: TestimonialsSectionProps) {
     return (
-        <section className="site-card-padding bg-[#f0f4f8] py-10 md:py-16 rounded-[30px]">
+        <section className="site-card-padding bg-[#f0f4f8] py-10 md:py-16 rounded-[30px] mt-[32px] sm:mt-[120px]">
             <div className="site-fill">
                 {/* Mobile Layout */}
                 <div className="block lg:hidden">

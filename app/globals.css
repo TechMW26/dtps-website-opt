@@ -58,7 +58,8 @@ img.loaded,
 }
 
 /* Reduce layout shifts */
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
 }
@@ -1943,6 +1944,7 @@ img, video {
 }
 
 @media (max-width: 767px) {
+
   .about-section,
   .contact-section {
     padding-left: var(--section-padding-x-mobile);
@@ -6002,9 +6004,17 @@ img, video {
 
 /* PCOD Symptoms Image */
 .pcod-symptoms-image {
-  max-width: 1180px;
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 20px 30px;
+  padding: 0 var(--section-padding-x-mobile) 30px;
+}
+
+@media (min-width: 768px) {
+  .pcod-symptoms-image {
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+  }
 }
 
 /* PCOD Stats Section */

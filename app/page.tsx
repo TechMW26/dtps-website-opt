@@ -424,7 +424,7 @@ export default function HomePage() {
               </div>
             </div>
 
-      {/* Overlap appointment card */}
+            {/* Overlap appointment card */}
             <div className="relative z-10 mx-auto -mt-[178px] max-w-[1010px]">
               <div className="rounded-[22px] border border-[#F1F1F1] bg-white px-[66px] py-[66px] shadow-[0_0_20px_rgba(0,0,0,0.05)]">
                 <div className="flex items-start gap-[40px]">
@@ -534,7 +534,7 @@ export default function HomePage() {
           {/* MOBILE */}
           <div className="md:hidden">
             <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-4 pb-6 pt-7">
-              <div className="mb-5">
+              <div className="mb-6 px-2">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
                   <span className="text-[13px] font-semibold text-white">
@@ -542,285 +542,197 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <h2 className="text-[24px] font-bold leading-[1.18] tracking-[-0.02em] text-white">
+                <h2 className="text-[30px] font-bold leading-[1.2] tracking-[-0.02em] text-white">
                   Step-by-step guide to
                   <br />
                   your healthy journey
                 </h2>
 
-                <p className="mt-4 max-w-[335px] text-[14px] leading-[1.7] text-white/90">
+                <p className="mt-4 max-w-[320px] text-[12px] leading-[1.65] text-white/90">
                   Achieving your health goals has never been easier. Our
                   step-by-step approach provides personalized guidance,
                   actionable strategies, and ongoing support.
                 </p>
               </div>
 
-              <div className="relative pl-[6px] pr-[2px]">
-                <div className="relative">
-                  <div className="pointer-events-none absolute left-[19px] top-[28px] bottom-[170px] border-l border-dotted border-white/45" />
+              <div className="relative px-2">
+                <div className="space-y-[18px]">
+                  {[
+                    {
+                      number: '1',
+                      title: 'Choose Your Plan',
+                      description:
+                        'Select a diet plan based on your goal, health condition, and duration.',
+                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png',
+                      alt: 'Choose your plan icon',
+                    },
+                    {
+                      number: '2',
+                      title: 'Health Counsellor Connect',
+                      description:
+                        'Our health counsellor connects with you to understand your lifestyle and concerns.',
+                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png',
+                      alt: 'Health counsellor connect icon',
+                    },
+                    {
+                      number: '3',
+                      title: 'Dietitian Assessment Call',
+                      description:
+                        'Your assigned dietitian speaks with you to understand your lifestyle, food choices and health goals before planning your diet.',
+                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png',
+                      alt: 'Dietitian assessment call icon',
+                    },
+                    {
+                      number: '4',
+                      title: 'Personalised Plan Delivery',
+                      description:
+                        'Your customised diet plan is shared on OUR APP within 24 hours of the assessment.',
+                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png',
+                      alt: 'Personalised plan delivery icon',
+                    },
+                    {
+                      number: '5',
+                      title: 'Follow-Ups & Tracking',
+                      description:
+                        'Weekly or requirement-based follow-ups to track progress and make timely adjustments.',
+                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png',
+                      alt: 'Follow-ups and tracking icon',
+                    },
+                  ].map((step, index, steps) => (
+                    <div key={step.number} className="relative flex items-start gap-[10px]">
+                      {index < steps.length - 1 ? (
+                        <div className="pointer-events-none absolute left-[11px] top-[54px] bottom-[-48px] border-l border-dotted border-white/45" />
+                      ) : null}
 
-                  <div className="space-y-4">
-                    {/* Mobile Step 1 */}
-                    <div className="relative pl-10">
-                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                        1
-                      </div>
-
-                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                        <div className="flex items-start gap-3">
-                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                            <Image
-                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
-                              alt="Choose your plan icon"
-                              width={31}
-                              height={31}
-                              className="h-[31px] w-[31px] object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          <div className="pt-1">
-                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                              Choose Your Plan
-                            </h3>
-                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                              Select a diet plan based on your goal, health
-                              condition, and duration.
-                            </p>
-                          </div>
+                      <div className="relative z-[2] flex w-6 flex-shrink-0 justify-center pt-[30px]">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold leading-none text-white">
+                          {step.number}
                         </div>
                       </div>
-                    </div>
 
-                    {/* Mobile Step 2 */}
-                    <div className="relative pl-10">
-                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                        2
-                      </div>
-
-                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                        <div className="flex items-start gap-3">
-                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                            <Image
-                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
-                              alt="Health counsellor connect icon"
-                              width={31}
-                              height={31}
-                              className="h-[31px] w-[31px] object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          <div className="pt-1">
-                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                              Health Counsellor Connect
-                            </h3>
-                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                              Our health counsellor connects with you to
-                              understand your lifestyle and concerns.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Mobile Step 3 */}
-                    <div className="relative pl-10">
-                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                        3
-                      </div>
-
-                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                        <div className="flex items-start gap-3">
-                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                            <Image
-                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
-                              alt="Dietitian assessment call icon"
-                              width={31}
-                              height={31}
-                              className="h-[31px] w-[31px] object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          <div className="pt-1">
-                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                              Dietitian Assessment Call
-                            </h3>
-                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                              Your assigned dietitian speaks with you to
-                              understand your lifestyle, food choices and health
-                              goals before planning your diet.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Mobile Step 4 */}
-                    <div className="relative pl-10">
-                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                        4
-                      </div>
-
-                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                        <div className="flex items-start gap-3">
-                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                            <Image
-                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
-                              alt="Personalised plan delivery icon"
-                              width={31}
-                              height={31}
-                              className="h-[31px] w-[31px] object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          <div className="pt-1">
-                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                              Personalised Plan Delivery
-                            </h3>
-                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                              Your customised diet plan is shared on OUR APP
-                              within 24 hours of the assessment.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Mobile Step 5 */}
-                    <div className="relative pl-10">
-                      <div className="absolute left-0 top-[30px] z-[2] flex h-[26px] w-[26px] items-center justify-center rounded-full bg-[#FF850B] text-[12px] font-semibold text-white">
-                        5
-                      </div>
-
-                      <div className="rounded-[18px] bg-[rgba(255,255,255,0.10)] px-3 py-4 shadow-[0_8px_16px_rgba(0,0,0,0.16)] ring-1 ring-white/5">
-                        <div className="flex items-start gap-3">
-                          <div className="flex h-[66px] w-[66px] flex-shrink-0 items-center justify-center rounded-full border border-white/70">
-                            <Image
-                              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
-                              alt="Follow-ups and tracking icon"
-                              width={31}
-                              height={31}
-                              className="h-[31px] w-[31px] object-contain"
-                              loading="lazy"
-                            />
-                          </div>
-
-                          <div className="pt-1">
-                            <h3 className="text-[15px] font-semibold leading-[1.35] text-white">
-                              Follow-Ups &amp; Tracking
-                            </h3>
-                            <p className="mt-1.5 text-[12px] leading-[1.45] text-white/90">
-                              Weekly or requirement-based follow-ups to track
-                              progress and make timely adjustments.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* mobile appointment */}
-                <div className="mt-6 rounded-[18px] border border-white/60 bg-[linear-gradient(180deg,#0f6767_0%,#0d5555_100%)] p-[1px]">
-                  <div className="rounded-[17px] bg-white p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
-                      <span className="text-[13px] font-semibold text-[#014E4E]">
-                        Our Testimonials
-                      </span>
-                    </div>
-
-                    <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#FF850B]">
-                      Make appointment
-                    </h3>
-
-                    <p className="mt-3 text-[13px] leading-[1.6] text-[#6F6F72]">
-                      Easy scheduling for a personalized health coaching
-                      session. Take the first step towards better health today!
-                    </p>
-
-                    <div className="mt-4 overflow-hidden rounded-[18px]">
-                      <Image
-                        src="/images/Appointment%20Image.png"
-                        alt="Dietitian consultation"
-                        width={350}
-                        height={210}
-                        className="object-cover w-full h-auto"
-                        style={{ width: '100%', height: 'auto' }}
-                        loading="lazy"
-                        sizes="(max-width: 767px) 100vw, 350px"
-                        quality={75}
-                        unoptimized
-                      />
-                    </div>
-
-                    <form className="mt-5 space-y-3 overflow-hidden">
-                      <div className="grid grid-cols-2 gap-3">
-                        <input
-                          type="text"
-                          placeholder="First Name"
-                          className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
-                        />
-                        <input
-                          type="text"
-                          placeholder="Last Name"
-                          className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
-                        />
-                      </div>
-
-                      <input
-                        type="email"
-                        placeholder="Email Address"
-                        className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
-                      />
-
-                      <input
-                        type="tel"
-                        placeholder="Phone Number"
-                        className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
-                      />
-
-                      <div className="grid grid-cols-2 gap-3 items-stretch">
-                        <div className="relative min-w-0">
-                          <select className="block h-[48px] w-full min-w-0 max-w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-4 pr-8 text-[13px] text-[#8B8B8E] outline-none">
-                            <option>Service</option>
-                            <option>Weight Management</option>
-                            <option>PCOD/PCOS</option>
-                            <option>Therapeutic Diet</option>
-                            <option>Wedding Program</option>
-                          </select>
-                          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#343A40]">
-                            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-                              <path
-                                d="M2 3L7 8L12 3"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-
-                        <div className="min-w-0 overflow-hidden">
-                          <input
-                            type="date"
-                            className="block h-[48px] w-full min-w-0 max-w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-3 text-[13px] text-[#8B8B8E] outline-none"
+                      <div className="min-w-0 flex-1 rounded-[16px] bg-[rgba(255,255,255,0.07)] px-3 py-3 shadow-[0_4px_6px_rgba(0,0,0,0.22)]">
+                        <div className="flex items-center gap-3">
+                          <Image
+                            src={step.icon}
+                            alt={step.alt}
+                            width={64}
+                            height={64}
+                            className="h-16 w-16 flex-shrink-0 object-contain"
+                            loading="lazy"
                           />
+
+                          <div className="min-w-0">
+                            <h3 className="text-[12px] font-semibold leading-[1.3] text-white">
+                              {step.title}
+                            </h3>
+                            <p className="mt-1.5 text-[10px] leading-[1.4] text-white/90">
+                              {step.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                      <button
-                        type="submit"
-                        className="mt-2 inline-flex h-[46px] min-w-[155px] items-center justify-center rounded-full bg-[#FF850B] px-6 text-[14px] font-bold text-white"
-                      >
-                        Book An Appointment
-                      </button>
-                    </form>
+              {/* mobile appointment */}
+              <div className="mt-6 rounded-[18px] border border-white/60 bg-[linear-gradient(180deg,#0f6767_0%,#0d5555_100%)] p-[1px]">
+                <div className="rounded-[17px] bg-white p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
+                    <span className="text-[13px] font-semibold text-[#014E4E]">
+                      Our Testimonials
+                    </span>
                   </div>
+
+                  <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#FF850B]">
+                    Make appointment
+                  </h3>
+
+                  <p className="mt-3 text-[13px] leading-[1.6] text-[#6F6F72]">
+                    Easy scheduling for a personalized health coaching
+                    session. Take the first step towards better health today!
+                  </p>
+
+                  <div className="mt-4 overflow-hidden rounded-[18px]">
+                    <Image
+                      src="/images/Appointment%20Image.png"
+                      alt="Dietitian consultation"
+                      width={350}
+                      height={210}
+                      className="object-cover w-full h-auto"
+                      style={{ width: '100%', height: 'auto' }}
+                      loading="lazy"
+                      sizes="(max-width: 767px) 100vw, 350px"
+                      quality={75}
+                      unoptimized
+                    />
+                  </div>
+
+                  <form className="mt-5 space-y-3 overflow-hidden">
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        placeholder="First Name"
+                        className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Last Name"
+                        className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
+                      />
+                    </div>
+
+                    <input
+                      type="email"
+                      placeholder="Email Address"
+                      className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
+                    />
+
+                    <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="h-[48px] w-full rounded-[10px] border border-[#E8E8E8] bg-white px-4 text-[13px] text-[#8B8B8E] outline-none placeholder:text-[#8B8B8E]"
+                    />
+
+                    <div className="grid grid-cols-2 gap-3 items-stretch">
+                      <div className="relative min-w-0">
+                        <select className="block h-[48px] w-full min-w-0 max-w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-4 pr-8 text-[13px] text-[#8B8B8E] outline-none">
+                          <option>Service</option>
+                          <option>Weight Management</option>
+                          <option>PCOD/PCOS</option>
+                          <option>Therapeutic Diet</option>
+                          <option>Wedding Program</option>
+                        </select>
+                        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#343A40]">
+                          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+                            <path
+                              d="M2 3L7 8L12 3"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+
+                      <div className="min-w-0 overflow-hidden">
+                        <input
+                          type="date"
+                          className="block h-[48px] w-full min-w-0 max-w-full appearance-none rounded-[10px] border border-[#E8E8E8] bg-white px-3 text-[13px] text-[#8B8B8E] outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="mt-2 inline-flex h-[46px] min-w-[155px] items-center justify-center rounded-full bg-[#FF850B] px-6 text-[14px] font-bold text-white"
+                    >
+                      Book An Appointment
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -833,7 +745,7 @@ export default function HomePage() {
         <FAQSection />
       </div>
 
-      
+
 
       {/* Our Blogs Section */}
       <div className="section-wrapper">

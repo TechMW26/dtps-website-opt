@@ -248,9 +248,9 @@ export default function WeightLossPage() {
 
       {/* ═════ TESTIMONIALS GALLERY ═════ */}
       <section className="py-12 md:py-20">
-        <div className="site-fill">
+        <div className="site-fill ">
 
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
+          <div className="flex flex-col  md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
 
             <div className="max-w-[630px]">
               <SectionLabel>Our Testimonials</SectionLabel>
@@ -275,6 +275,7 @@ export default function WeightLossPage() {
             title=""
             subtitle=""
             maxItems={6}
+            cardBackgroundClassName="bg-transparent"
           />
 
         </div>
@@ -297,7 +298,7 @@ export default function WeightLossPage() {
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
           />
-        </div>
+        </div>https://ik.imagekit.io/br0mssyqj/tr:w-640,q-75,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg
 
         {/* Mobile Version */}
         <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
@@ -321,15 +322,15 @@ export default function WeightLossPage() {
       <section className="py-14 md:py-24">
         <div className="site-fill">
           {/* Desktop Version */}
-          <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
+          <div className="hidden lg:block mx-auto w-[70%] rounded-[20px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+              src="https://ik.imagekit.io/br0mssyqj/tr:w-900,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
               alt="What to Expect - Desktop"
-              width={1200}
-              height={600}
+              width={900}
+              height={450}
               loading="lazy"
               decoding="async"
-              sizes="(max-width: 1200px) 100vw, 1200px"
+              sizes="(max-width: 1200px) 70vw, 840px"
               quality={75}
               className="w-full h-auto"
               placeholder="blur"
@@ -338,7 +339,7 @@ export default function WeightLossPage() {
           </div>
 
           {/* Mobile Version */}
-          <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
+          <div className="lg:hidden rounded-[16px] overflow-hidden">
             <Image
               src="/images/what-to-expect-mobile.png"
               alt="What to Expect - Mobile"
@@ -435,7 +436,7 @@ export default function WeightLossPage() {
       </section>
 
       {/* ═════ EXPERT'S GUIDANCE ═════ */}
-      <div className="site-shell">
+      <div>
         <ExpertGuidanceSection />
       </div>
 

@@ -25,6 +25,7 @@ interface TransformationGalleryProps {
   title?: string;
   subtitle?: string;
   maxItems?: number;
+  cardBackgroundClassName?: string;
 }
 
 // Optimize ImageKit URLs
@@ -51,7 +52,8 @@ export default function TransformationGallery({
   page,
   title = 'Success Stories',
   subtitle = 'Real Results from Real People',
-  maxItems = 6
+  maxItems = 6,
+  cardBackgroundClassName = 'bg-gray-100',
 }: TransformationGalleryProps) {
   const [transformations, setTransformations] = useState<Transformation[]>(fallbackData as any);
   const [loading, setLoading] = useState(true);
@@ -166,7 +168,7 @@ export default function TransformationGallery({
         >
           {optimizedTransformations.map((transformation, index) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
-              <div className="rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)] bg-gray-100">
+              <div className={`rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)] ${cardBackgroundClassName}`}>
                 <div className="relative aspect-[4/5]">
                   <Image
                     src={transformation.optimizedImage}

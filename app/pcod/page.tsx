@@ -94,7 +94,7 @@ export default function PCODPage() {
 
 
 
-  <section className="site-shell py-16 md:py-24 bg-[#F5F5F5]" id="benefits">
+      <section className="site-shell py-16 md:py-24" id="benefits">
 
         <div className="site-fill">
 
@@ -113,151 +113,151 @@ export default function PCODPage() {
             {/* CARDS */}
 
 
-              {/* CARD 1 */}
+            {/* CARD 1 */}
 
-              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
 
-                <div className="h-[200px] bg-gray-100">
-                  <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
-                    width={500}
-                    height={300}
-                    alt="Balancing Blood Sugar"
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    sizes="(max-width: 639px) 100vw, 50vw"
-                    quality={75}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                  />
-                </div>
+              <div className="h-[200px] bg-gray-100">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
+                  width={500}
+                  height={300}
+                  alt="Balancing Blood Sugar"
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                  quality={75}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                />
+              </div>
 
-                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+              <div className="bg-[#FF8A00] text-white p-6 flex-1">
 
-                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+                <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <h3 className="mb-2 text-lg font-semibold">
-                    Balancing Blood Sugar Levels
-                  </h3>
+                <h3 className="mb-2 text-lg font-semibold">
+                  Balancing Blood Sugar Levels
+                </h3>
 
-                  <p className="text-sm opacity-90">
-                    Women with PCOS often experience insulin resistance, where the body's cells do not respond normally to insulin.
-                  </p>
-
-                </div>
+                <p className="text-sm opacity-90">
+                  Women with PCOS often experience insulin resistance, where the body's cells do not respond normally to insulin.
+                </p>
 
               </div>
 
+            </div>
 
 
-              {/* CARD 2 */}
 
-              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+            {/* CARD 2 */}
 
-                <div className="h-[200px] bg-gray-100">
-                  <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
-                    width={500}
-                    height={300}
-                    alt="Managing Weight"
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    sizes="(max-width: 639px) 100vw, 50vw"
-                    quality={75}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                  />
-                </div>
+            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
 
-                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+              <div className="h-[200px] bg-gray-100">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
+                  width={500}
+                  height={300}
+                  alt="Managing Weight"
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                  quality={75}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                />
+              </div>
 
-                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+              <div className="bg-[#FF8A00] text-white p-6 flex-1">
 
-                  <h3 className="mb-2 text-lg font-semibold">
-                    Managing Weight
-                  </h3>
+                <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <p className="text-sm opacity-90">
-                    Losing even a small amount of weight if you are overweight can help manage PCOS symptoms.
-                  </p>
+                <h3 className="mb-2 text-lg font-semibold">
+                  Managing Weight
+                </h3>
 
-                </div>
+                <p className="text-sm opacity-90">
+                  Losing even a small amount of weight if you are overweight can help manage PCOS symptoms.
+                </p>
 
               </div>
 
+            </div>
 
 
-              {/* CARD 3 */}
 
-              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+            {/* CARD 3 */}
 
-                <div className="h-[200px] bg-gray-100">
-                  <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
-                    width={500}
-                    height={300}
-                    alt="Reducing Inflammation"
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    sizes="(max-width: 639px) 100vw, 50vw"
-                    quality={75}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                  />
-                </div>
+            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
 
-                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+              <div className="h-[200px] bg-gray-100">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
+                  width={500}
+                  height={300}
+                  alt="Reducing Inflammation"
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                  quality={75}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                />
+              </div>
 
-                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+              <div className="bg-[#FF8A00] text-white p-6 flex-1">
 
-                  <h3 className="mb-2 text-lg font-semibold">
-                    Reducing Inflammation
-                  </h3>
+                <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <p className="text-sm opacity-90">
-                    PCOS is often linked with low-grade inflammation. Consuming a diet high in anti-inflammatory foods can be beneficial.
-                  </p>
+                <h3 className="mb-2 text-lg font-semibold">
+                  Reducing Inflammation
+                </h3>
 
-                </div>
+                <p className="text-sm opacity-90">
+                  PCOS is often linked with low-grade inflammation. Consuming a diet high in anti-inflammatory foods can be beneficial.
+                </p>
 
               </div>
 
+            </div>
 
 
-              {/* CARD 4 */}
 
-              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+            {/* CARD 4 */}
 
-                <div className="h-[200px] bg-gray-100">
-                  <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
-                    width={500}
-                    height={300}
-                    alt="Increasing Fertility"
-                    className="object-cover w-full h-full"
-                    loading="lazy"
-                    sizes="(max-width: 639px) 100vw, 50vw"
-                    quality={75}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                  />
-                </div>
+            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
 
-                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+              <div className="h-[200px] bg-gray-100">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
+                  width={500}
+                  height={300}
+                  alt="Increasing Fertility"
+                  className="object-cover w-full h-full"
+                  loading="lazy"
+                  sizes="(max-width: 639px) 100vw, 50vw"
+                  quality={75}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                />
+              </div>
 
-                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+              <div className="bg-[#FF8A00] text-white p-6 flex-1">
 
-                  <h3 className="mb-2 text-lg font-semibold">
-                    Increasing Fertility
-                  </h3>
+                <div className="w-10 h-[2px] bg-white mb-4"></div>
 
-                  <p className="text-sm opacity-90">
-                    PCOS is one of the leading causes of infertility in women due to hormonal imbalances affecting ovulation.
-                  </p>
+                <h3 className="mb-2 text-lg font-semibold">
+                  Increasing Fertility
+                </h3>
 
-                </div>
+                <p className="text-sm opacity-90">
+                  PCOS is one of the leading causes of infertility in women due to hormonal imbalances affecting ovulation.
+                </p>
 
               </div>
+
+            </div>
 
           </div>
 
@@ -268,7 +268,7 @@ export default function PCODPage() {
 
       {/* Symptoms Image Section */}
 
-  <div className="site-shell pcod-symptoms-image">
+      <div className="site-shell pcod-symptoms-image">
 
         {/* Desktop Banner */}
         <Image
@@ -299,27 +299,26 @@ export default function PCODPage() {
 
       {/* WHAT YOU WILL GET SECTION */}
 
-  <section className="site-shell w-full py-8 md:py-14">
+      <section className="site-shell w-full py-8 md:py-14">
 
         <div className="site-fill">
 
           {/* grey container */}
-          <div className="bg-[#EAEEF1] rounded-[24px] p-4 md:p-10">
+          <div className="bg-[#EAEEF1] rounded-[24px] p-4 md:px-10 md:pt-10 md:pb-0">
 
-            <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2 md:items-end">
 
               {/* LEFT IMAGE */}
 
-              <div className="flex justify-center">
+              <div className="flex justify-center md:self-stretch md:items-end">
 
-                <div className="bg-[#EAEEF1] rounded-[18px] overflow-hidden w-full max-w-[330px] md:max-w-[520px] border border-gray-300">
+                <div className="relative bg-[#EAEEF1] overflow-hidden w-full max-w-[330px] aspect-[3/4] md:max-w-[520px] md:h-full md:aspect-auto">
 
                   <Image
                     src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"
                     alt="Dietician Team"
-                    width={600}
-                    height={800}
-                    className="object-contain w-full h-auto"
+                    fill
+                    className="object-contain object-bottom md:translate-y-4"
                     loading="lazy"
                     sizes="(max-width: 767px) 330px, 520px"
                     quality={75}
@@ -331,7 +330,7 @@ export default function PCODPage() {
 
               {/* RIGHT SIDE */}
 
-              <div className="flex flex-col items-center md:items-start">
+              <div className="flex flex-col items-center md:items-start md:pb-10">
 
                 {/* TITLE */}
 
