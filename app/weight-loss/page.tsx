@@ -254,14 +254,12 @@ export default function WeightLossPage() {
 
             <div className="max-w-[630px]">
               <div className="flex items-center  gap-2">
-                <span className="text-[#FF850B] text-[18px] leading-none">✦</span>
-                <span
-                  className="text-[#014E4E] font-semibold text-[11px] md:text-[13px]"
-                  style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
-                >
+                    <span className="text-[#f5a623] text-lg">✦</span>
+             <span className="text-teal-600 text-base font-semibold">
                   Our Testimonials
                 </span>
               </div>
+           
 
               <SectionTitle className="text-[#1E1E1E] mt-2">
                 Success stories from our clients
@@ -470,13 +468,19 @@ export default function WeightLossPage() {
 
       {/* ═════ PRICING ═════ */}
       <section className="py-12 md:py-2">
-        <div className="text-center mb-10 mt-2">
-          <SectionLabel className="justify-center">Our Plans</SectionLabel>
-          <SectionTitle className="text-[#1E1E1E] mt-4">Our Pricing</SectionTitle>
-          <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
+           <div className='flex gap-2 items-center' >
+            <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Plans
+              </span>
+              </div>
+               <SectionTitle className="text-[#1E1E1E] mt-4">Our Pricing</SectionTitle>
+              <p className="text-[#828283]  text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
             Join our Plan today and embark on a journey to better health with our weight loss plan!
           </p>
-        </div>
+            </div>
+       
 
         {loadingPricing ? (
           <div className="flex justify-center py-14">

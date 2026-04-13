@@ -20,7 +20,16 @@ const ExpertGuidanceSection = dynamic(() => import('@/components/ExpertGuidanceS
   loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[20px]" />,
   ssr: true,
 });
-
+function SectionTitle({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return (
+    <h2
+      className={`text-[28px] md:text-[36px] lg:text-[46px] font-extrabold leading-[1.12] ${className}`}
+      style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+    >
+      {children}
+    </h2>
+  );
+}
 const whatYouGet = [
   { icon: '📊', title: 'Ongoing Support', desc: 'Regular follow-ups to adapt your diet plan as needed and ensure progress results.' },
   { icon: '❤️', title: 'Specialised Care', desc: 'Your diet is managed by dietitians who are specialised in hormonal disorders.' },
@@ -469,23 +478,28 @@ export default function PCODPage() {
       {/* TESTIMONIALS GALLERY */}
       <section className="site-shell py-12 md:py-20">
         <div className="site-fill">
-          <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
-            <div className="max-w-[630px]">
-              <div className="text-[#FF850B] text-xs md:text-sm font-semibold tracking-wide uppercase">Success Stories</div>
-              <h2 className="text-[#1E1E1E] text-[28px] md:text-[44px] font-bold leading-[1.2] mt-2">
+
+          <div className="flex flex-col gap-4 mb-10 md:flex-col md:items-start  md:justify-between md:mb-14">
+
+            <div className="flex flex-col gap-2 mb-4 md:gap-2 justify-center md:justify-start md:items-start ">
+              <div className="flex gap-2 items-center justify-center ">
+                <span className="text-[#f5a623] text-lg">✦</span>
+                <span className="text-teal-600 text-base font-semibold">
+                  Success Stories
+                </span>
+              </div>
+
+              <h2 className="text-[#1E1E1E] md:text-start text-center text-[28px] md:text-[44px] font-bold leading-[1.2] mt-2">
                 Over 75,000+<br />People Manage PCOD Successfully
               </h2>
-              <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-[#828283] md:text-start text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Join our Plan today and embark on a journey to better health with our PCOD diet plan!
               </p>
             </div>
-            {/* Dots indicator */}
-            <div className="flex items-center gap-1">
-              {[6, 6, 6, 18, 6, 6].map((w, i) => (
-                <div key={i} className={`h-[6px] rounded-full ${w === 18 ? 'bg-[#FF850B] w-[18px]' : 'bg-[#014E4E] w-[6px]'}`} />
-              ))}
-            </div>
+
           </div>
+
+
           {/* TransformationGallery for PCOD */}
           <TransformationGallery
             page="pcod"
@@ -499,31 +513,38 @@ export default function PCODPage() {
       {/* Pricing Section - Mobile */}
       <section className="site-shell py-8 wl-section md:hidden">
         <div className="container">
-          <div className="wl-section-label wl-center">
-            <span className="wl-star wl-teal-text">✦</span> <span className="text-xs wl-teal-text">PRICING</span>
-          </div>
-          <h2 className="mb-2 text-xl wl-section-title wl-center">Take the first step towards a healthier Future</h2>
-          <p className="mb-4 text-xs wl-section-desc wl-center">
-            Join our Plan today and embark on a journey to better health with our PCOD diet plan!
-          </p>
-          <div className="flex justify-center w-full">
-            <div className="w-full">
-              <DynamicPlansDisplay
-                category="pcod"
-                showHeader={false}
-                columns="1"
-                onSelectPlan={(plan) => {
-                  const product = {
-                    id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
-                    name: `PCOD Management Plan - ${plan.planName}`,
-                    price: plan.price,
-                    quantity: 1
-                  };
-                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                  window.location.href = '/checkout';
-                }}
-              />
+          <div className="flex flex-col gap-2 mb-2 justify-center items-center">
+            <div className="flex gap-2 items-center justify-center">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Plans
+              </span>
             </div>
+            <h2 className="text-[#1E1E1E] text-center text-[24px] font-bold mt-2">
+              Our Pricing
+            </h2>
+            <p className="text-[#828283] text-center text-[12px] " style={{ fontFamily: 'Inter, sans-serif' }}>
+              Join our Plan today and embark on a journey to better health with our weight loss plan!
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-center w-full">
+          <div className="w-full">
+            <DynamicPlansDisplay
+              category="pcod"
+              showHeader={false}
+              columns="1"
+              onSelectPlan={(plan) => {
+                const product = {
+                  id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                  name: `PCOD Management Plan - ${plan.planName}`,
+                  price: plan.price,
+                  quantity: 1
+                };
+                sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                window.location.href = '/checkout';
+              }}
+            />
           </div>
         </div>
       </section>
@@ -531,33 +552,41 @@ export default function PCODPage() {
       {/* Pricing Section - Desktop */}
       <section className="site-shell hidden wl-section md:block">
         <div className="container">
-          <div className="wl-section-label wl-center">
-            <span className="wl-star wl-teal-text">✦</span> <span className="wl-teal-text">PRICING</span>
-          </div>
-          <h2 className="wl-section-title wl-center">Take the first step towards a healthier Future</h2>
-          <p className="wl-section-desc wl-center">
-            Join our Plan today and embark on a journey to better health with our PCOD diet plan!
-          </p>
-          <div className="flex justify-center w-full">
-            <div className="w-full">
-              <DynamicPlansDisplay
-                category="pcod"
-                showHeader={false}
-                columns="3"
-                onSelectPlan={(plan) => {
-                  const product = {
-                    id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
-                    name: `PCOD Management Plan - ${plan.planName}`,
-                    price: plan.price,
-                    quantity: 1
-                  };
-                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                  window.location.href = '/checkout';
-                }}
-              />
+          <div className="flex flex-col gap-1 mb-1 justify-center items-center">
+            <div className="flex gap-2 items-center justify-center">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Plans
+              </span>
             </div>
+            <h2 className="text-[#1E1E1E] text-center text-[44px] font-bold mt-1">
+              Our Pricing
+            </h2>
+            <p className="text-[#828283] text-center text-[14px] mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Join our Plan today and embark on a journey to better health with our weight loss plan!
+            </p>
+          </div>
+           <div className="flex justify-center w-full">
+          <div className="w-full">
+            <DynamicPlansDisplay
+              category="pcod"
+              showHeader={false}
+              columns="3"
+              onSelectPlan={(plan) => {
+                const product = {
+                  id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                  name: `PCOD Management Plan - ${plan.planName}`,
+                  price: plan.price,
+                  quantity: 1
+                };
+                sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                window.location.href = '/checkout';
+              }}
+            />
           </div>
         </div>
+        </div>
+       
       </section>
     </main>
   );
