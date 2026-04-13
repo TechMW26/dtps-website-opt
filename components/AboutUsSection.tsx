@@ -70,7 +70,7 @@ export default function AboutUsSection() {
 
           {/* Heading */}
           <h2
-            className="text-[1.6rem] md:text-[2rem] lg:text-[30px] font-bold text-[#1E1E1E] leading-[1.2] mb-3 md:mb-4"
+            className="text-[1.5rem] md:text-[2rem] lg:text-[30px] font-bold text-[#1E1E1E] leading-[1.2] mb-3 md:mb-4"
             style={{ fontFamily: "'Epilogue', sans-serif" }}
           >
             Why Most Diets Fail &amp;<br />Why This One Works

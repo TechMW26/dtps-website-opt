@@ -162,9 +162,13 @@ export default function HomePage() {
           <div className="site-fill">
             <div className="flex flex-wrap items-start justify-between gap-4 mb-6 md:mb-10">
               <div>
+
+                    
+
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#ff9100] text-xl">✦</span>
-                  <span className="text-base font-semibold text-teal-600">Hear from our Happy Clients</span>
+                  <span className="text-[#f5a623] text-lg">✦</span>
+                  <span className="text-teal-600 text-base font-semibold">
+                    Hear from our Happy Clients</span>
                 </div>
                 <h2 className="text-[1.5rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
                   Tailored programs for<br />your wellness
@@ -201,11 +205,13 @@ export default function HomePage() {
                 <div className="flex items-start justify-between gap-10 px-[128px]">
                   <div className="max-w-[430px]">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-[#FF850B] text-[14px] leading-none">✦</span>
-                      <span className="text-[14px] font-semibold leading-[1] text-white">
+                           <span className="text-[#f5a623] text-lg">✦</span>
+                      <span className="text-white text-lg font-semibold">
                         How It Work
                       </span>
                     </div>
+   
+
 
                     <h2 className="text-[40px] font-bold leading-[1.15] tracking-[-0.02em] text-white">
                       Step-by-step guide
@@ -432,7 +438,7 @@ export default function HomePage() {
                   <div className="w-[334px] flex-shrink-0">
                     <div className="flex items-center gap-2 mb-4">
                       <span className="text-[#FF850B] text-[14px] leading-none">✦</span>
-                      <span className="text-[14px] font-semibold text-[#014E4E]">
+                      <span className="text-[14px] font-semibold text-teal-600">
                         Appointment
                       </span>
                     </div>
@@ -533,11 +539,11 @@ export default function HomePage() {
 
           {/* MOBILE */}
           <div className="md:hidden">
-            <div className="overflow-hidden rounded-[28px] bg-[#014E4E] px-4 pb-6 pt-7">
+            <div className="overflow-hidden rounded-[28px] bg-[#014E4E]  px-4 pb-6 pt-7">
               <div className="mb-6 px-2">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
-                  <span className="text-[13px] font-semibold text-white">
+                  <span className="text-[14px] font-semibold text-white">
                     How It Work
                   </span>
                 </div>
@@ -640,11 +646,13 @@ export default function HomePage() {
               <div className="mt-6 rounded-[18px] border border-white/60 bg-[linear-gradient(180deg,#0f6767_0%,#0d5555_100%)] p-[1px]">
                 <div className="rounded-[17px] bg-white p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[#FF850B] text-[13px] leading-none">✦</span>
-                    <span className="text-[13px] font-semibold text-[#014E4E]">
-                      Our Testimonials
+                  <span className="text-[#f5a623] text-lg">✦</span>
+                     <span className="text-teal-600 text-base font-semibold">
+                      Appointment
                     </span>
                   </div>
+
+   
 
                   <h3 className="text-[26px] font-bold leading-[1.05] tracking-[-0.02em] text-[#FF850B]">
                     Make appointment

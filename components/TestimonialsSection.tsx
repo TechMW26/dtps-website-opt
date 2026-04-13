@@ -75,10 +75,12 @@ export default function TestimonialsSection({
                     </div>
 
                     {/* Header for mobile */}
+         
+
                     <div className="mb-5 text-left">
                         <div className="flex items-center gap-2 mb-2">
-                            <span className="text-[#ff9100] text-lg">✦</span>
-                            <span className="text-sm font-semibold text-teal-600">{subtitle}</span>
+                           <span className="text-[#f5a623] text-lg">✦</span>
+                            <span className="text-teal-600 text-base font-semibold">{subtitle}</span>
                         </div>
                         <h2 className="text-[1.4rem] font-bold text-gray-900 leading-tight">{title}</h2>
                     </div>

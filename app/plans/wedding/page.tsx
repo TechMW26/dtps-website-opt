@@ -289,7 +289,7 @@ export default function WeddingPlanPage() {
             {/* Mobile Layout */}
             <div className="flex w-full flex-1 flex-col items-center justify-end px-6 pb-10 text-center md:hidden">
               <div className="max-w-[360px]">
-                <p className="text-[2rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
+                <p className="text-[1.5rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
                   India&apos;s Only
                 </p>
                 <p className="mt-1 text-[3.45rem] font-extrabold leading-[0.94] tracking-[-0.045em] text-[#FF850B]">

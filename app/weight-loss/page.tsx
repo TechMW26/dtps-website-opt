@@ -458,7 +458,7 @@ export default function WeightLossPage() {
                   <span className="text-[#ff9100] text-xl">✦</span>
                   <span className="text-teal-600 font-semibold text-base">Hear from our Happy Clients</span>
                 </div>
-                <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
+                <h2 className="text-[1.5rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
                   Tailored programs for<br />your wellness
                 </h2>
               </div>

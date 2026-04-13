@@ -30,7 +30,7 @@ const socialLinks = [
 export default function Footer() {
   const [isPlansOpen, setIsPlansOpen] = useState(false);
   return (
-    <footer className="site-shell bg-white py-10">
+    <footer className="bg-white py-10 px-5 md:px-[70px]">
       <div className="w-full mx-auto">
         <div
           className="bg-[#014E4E] rounded-[20px] md:rounded-[40px] pt-[30px] md:pt-[50px] px-5 md:px-[70px] pb-0 text-white bg-cover bg-center bg-[url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png')]"

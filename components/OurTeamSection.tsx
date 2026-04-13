@@ -47,14 +47,16 @@ export default function OurTeamSection() {
         <div className="w-full max-w-[920px]">
 
           <div className="flex flex-col items-center gap-3">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-[#f5a623] text-lg">✦</span>
-              <span className="text-base font-semibold text-teal-600">
-                Our Team
+
+                         <div className="flex items-center gap-2 mb-1  md:md-4 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
+           <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+              Our Team
               </span>
             </div>
+           
 
-            <h2 className="m-0 text-[#1e1e1e] text-[28px] md:text-[40px] font-bold leading-[1.12] text-center">
+            <h2 className="m-0 text-[#1e1e1e] text-[1.4rem] md:text-[40px] font-bold leading-[1.12] text-center">
               The People Behind Your Weight Loss Journey
             </h2>
           </div>

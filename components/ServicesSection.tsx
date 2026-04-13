@@ -73,25 +73,26 @@ export default function ServicesSection() {
             className={`p-6 flex flex-col justify-center transition-all duration-500 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
               }`}
           >
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
               <span className="text-[#f5a623] text-lg">✦</span>
-              <span className="text-base font-semibold text-teal-600">
+              <span className="text-teal-600 text-base font-semibold">
                 Services
               </span>
             </div>
-            <h2 className="text-[1.75rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4 whitespace-nowrap md:whitespace-normal">
-              <span className="md:hidden">What We Help With</span>
+
+            <h2 className="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4 whitespace-nowrap md:whitespace-normal">
+              <div className="md:hidden text-center">What We Help With</div>
               <span className="hidden md:inline">
                 What We Help<br />With
               </span>
             </h2>
-            <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-6">
+            <p className="text-[0.95rem] text-gray-500  text-center md:text-left leading-relaxed mb-6">
               Most people don&apos;t fail at dieting.<br />
               They just get plans that don&apos;t match their daily life.
             </p>
-            <Link href="/plans/therapeutic">
+            <Link href="/plans/therapeutic" className="flex justify-center md:justify-start">
               <button
-                className="bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-[0.95rem] font-semibold py-3.5 px-7 rounded-full border-none cursor-pointer shadow-[0_6px_20px_rgba(245,124,0,0.3)] transition-all duration-300 w-fit hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,124,0,0.4)]"
+                className=" bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-[0.95rem] font-semibold py-3.5 px-7 rounded-full border-none cursor-pointer shadow-[0_6px_20px_rgba(245,124,0,0.3)] transition-all duration-300 w-fit hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,124,0,0.4)]"
               >
                 All Services
               </button>

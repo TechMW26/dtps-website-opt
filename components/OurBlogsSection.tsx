@@ -53,28 +53,25 @@ export default function OurBlogsSection() {
     <section className="w-full">
       <div className="w-full overflow-hidden rounded-[24px] bg-[#015b5b] px-4 py-8 md:rounded-none md:px-[70px] md:py-[58px]">
         {/* Header */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-8">
+        <div className="flex flex-row gap-4 items-end justify-center md:flex-row md:items-start md:justify-between md:gap-8 md:items-center">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <span className="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#FF8A0A]/15 text-[12px] leading-none text-[#FF8A0A]">
-                ✦
-              </span>
-              <span className="text-white text-[14px] md:text-[15px] font-semibold leading-none">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-white text-base font-semibold">
                 Our Blogs
               </span>
             </div>
 
-            <h2 className="max-w-[260px] text-white text-[38px] leading-[0.98] tracking-[-0.04em] font-bold md:max-w-none md:text-[60px] md:leading-[1.05] md:tracking-[-0.02em]">
-              Stories for
-              <br className="md:hidden" />
-              <span className="hidden md:inline"> </span>
-              every mood
+
+
+            <h2 className="text-white text-[30px] leading-[0.98] tracking-[-0.04em] font-bold md:max-w-none md:text-[60px] md:leading-[1.05] md:tracking-[-0.02em]">
+              Stories for every mood
             </h2>
           </div>
 
           <a
             href="/blog"
-            className="inline-flex h-[40px] w-fit shrink-0 items-center justify-center self-start rounded-full bg-[#FF8A0A] px-5 text-white text-[13px] font-semibold leading-none md:mt-[28px] md:h-[34px] md:self-auto md:px-7"
+            className="inline-flex h-[40px] w-fit shrink-0 items-center justify-center rounded-full bg-[#FF8A0A] px-5 text-white text-[13px] font-semibold leading-none md:mt-[28px] md:h-[34px] md:self-auto md:px-7"
           >
             <span className="md:hidden">View All</span>
             <span className="hidden md:inline">View more blogs</span>
