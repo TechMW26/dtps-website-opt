@@ -478,16 +478,18 @@ export default function WeddingPlanPage() {
           <div className="mx-auto flex max-w-[355px] flex-col gap-6 md:hidden">
             <div className="relative h-[467px] w-full overflow-hidden rounded-[24px] bg-[#4E0101]">
               <div className="absolute inset-y-0 left-1/2 w-[180px] -translate-x-1/2 bg-[#FF850B]" />
-              <Image
-                src={activeTabData.image}
-                alt={activeTabData.label}
-                width={301}
-                height={467}
-                className="absolute bottom-0 left-[calc(50%+8px)] h-[467px] w-auto max-w-none -translate-x-1/2 object-contain"
-                loading="lazy"
-                sizes="301px"
-                quality={75}
-              />
+              <div className="absolute inset-x-0 bottom-0 flex justify-center">
+                <Image
+                  src={activeTabData.image}
+                  alt={activeTabData.label}
+                  width={301}
+                  height={467}
+                  className="h-[467px] w-auto max-w-none object-contain object-bottom"
+                  loading="lazy"
+                  sizes="301px"
+                  quality={75}
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-4 gap-2">

@@ -208,6 +208,18 @@ function CheckSquare32() {
   );
 }
 
+
+
+function CheckSquare28() {
+  return (
+    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[4.67px] bg-[#014E4E]">
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M3.75 9l3.25 3.25L14.25 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </div>
+  );
+}
+
 export default function TherapeuticPlanPage() {
   const [pricingPlans, setPricingPlans] = useState<any[]>([]);
   const [loadingPricing, setLoadingPricing] = useState(true);
@@ -704,84 +716,92 @@ export default function TherapeuticPlanPage() {
           </div>
 
           {/* Mobile Layout */}
-          <div className="lg:hidden px-5 py-8">
-            <div className="relative mx-auto h-[300px] w-full max-w-[320px]">
-              <Image
-                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad59a.jpg"
-                alt="Our Therapeutic Team"
-                fill
-                className="object-contain object-bottom"
-                loading="lazy"
-                sizes="320px"
-              />
-            </div>
-
-            <div className="mx-auto mt-4 max-w-[340px]">
-              <h2
-                className="text-center text-[28px] font-bold leading-[1.18] text-black"
-                style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
-              >
-                Our Therapeutic Approach
-                <br />
-                <span className="text-[#FF850B]">(How We Work Differently)</span>
-              </h2>
-
-              <div className="mt-6 flex flex-col items-center gap-4">
-                <p
-                  className="text-center text-[15px] leading-[1.5] text-black"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Our therapeutic nutrition plans are designed to
-                </p>
-                <div className="h-[2px] w-full max-w-[240px] bg-[#014E4E]/35" />
+          <div className="px-[10px] py-2 lg:hidden">
+            <div className="flex flex-col items-center gap-6">
+              <div className="inline-flex w-full items-center justify-center gap-2 self-stretch rounded-[16px] bg-[linear-gradient(180deg,#EAEEF1_0%,#FFFFFF_100%)]">
+                <Image
+                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad59a.jpg"
+                  alt="Our Therapeutic Team"
+                  width={304}
+                  height={422}
+                  className="h-[421.62px] w-[303.64px] object-contain"
+                  loading="lazy"
+                  sizes="304px"
+                />
               </div>
 
-              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {approachBenefits.map((benefit) => (
-                  <div key={benefit.alt} className="flex items-center gap-3">
-                    <TherapeuticApproachIcon
-                      src={benefit.icon}
-                      alt={benefit.alt}
-                      outerSize={72}
-                      innerSize={60}
-                      iconSize={30}
-                    />
-                    <div
-                      className="text-[16px] font-semibold leading-[1.15] text-[#014E4E]"
+
+              <div className="flex w-full flex-col items-start gap-6">
+                <h2
+                  className="w-full text-center text-[24px] font-bold leading-8 text-black"
+                  style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                >
+                  Our Therapeutic Approach
+                  <br />
+                  <span className="text-[#FF850B]">(How We Work Differently)</span>
+                </h2>
+
+                <div className="h-[2px] w-full max-w-[322px] self-center bg-[#014E4E]/35" />
+
+                <div className="flex w-full flex-col items-center gap-6">
+                  <p
+                    className="w-full text-center text-[15px] font-normal text-black"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    Our therapeutic nutrition plans are designed to
+                  </p>
+
+                  <div className="grid w-full grid-cols-2 gap-4">
+                    {approachBenefits.map((benefit) => (
+                      <div
+                        key={benefit.alt}
+                        className="flex min-h-[176px] flex-col items-center justify-center gap-4 rounded-[16px] bg-white py-4"
+                      >
+                        <TherapeuticApproachIcon
+                          src={benefit.icon}
+                          alt={benefit.alt}
+                          outerSize={80}
+                          innerSize={68}
+                          iconSize={34}
+                        />
+                        <div
+                          className="px-2 text-center text-[14px] font-semibold leading-6 text-[#014E4E]"
+                          style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                        >
+                          {benefit.lines.map((line) => (
+                            <div key={line}>{line}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex w-full flex-col items-center gap-6 rounded-[16px] bg-[#014E4E]/10 p-4">
+                  <div className="inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#FF850B] py-3">
+                    <span
+                      className="text-center text-[20px] font-medium uppercase text-white"
                       style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                     >
-                      {benefit.lines.map((line) => (
-                        <div key={line}>{line}</div>
+                      Each Plan Is Carefully
+                    </span>
+                  </div>
+
+                  <div className="flex w-full flex-col items-center gap-4">
+                    <div className="flex w-full flex-col items-start gap-4">
+                      {planFeatures.map((feature) => (
+                        <div key={feature.lines.join(' ')} className="inline-flex items-center gap-2">
+                          <CheckSquare28 />
+                          <div
+                            className="text-[18px] font-medium leading-5 text-[#014E4E]"
+                            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                          >
+                            {feature.lines.join(' ')}
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>
-                ))}
-              </div>
-
-              <div className="mt-6 rounded-[16px] bg-[#014E4E]/10 p-4">
-                <div className="rounded-[8px] bg-[#FF850B] px-4 py-3 text-center">
-                  <span
-                    className="text-[15px] font-medium uppercase text-white"
-                    style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
-                  >
-                    Each Plan Is Carefully
-                  </span>
-                </div>
-
-                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {planFeatures.map((feature) => (
-                    <div key={feature.lines.join(' ')} className="flex items-center gap-3">
-                      <CheckSquare32 />
-                      <div
-                        className="text-[16px] font-medium leading-[1.05] text-[#014E4E]"
-                        style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
-                      >
-                        {feature.lines.map((line) => (
-                          <div key={line}>{line}</div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>

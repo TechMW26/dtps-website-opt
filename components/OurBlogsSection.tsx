@@ -51,18 +51,20 @@ export default function OurBlogsSection() {
   }
   return (
     <section className="w-full">
-      <div className="site-card-padding w-full bg-[#015b5b] py-7 md:py-[58px] overflow-hidden">
+      <div className="w-full overflow-hidden rounded-[24px] bg-[#015b5b] px-4 py-8 md:rounded-none md:px-[70px] md:py-[58px]">
         {/* Header */}
-        <div className="flex items-start justify-between gap-2 md:gap-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-8">
           <div>
-            <div className="mb-3 flex items-center gap-2">
-              <span className="text-[#FF8A0A] text-[14px] leading-none">✦</span>
+            <div className="mb-4 flex items-center gap-2">
+              <span className="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#FF8A0A]/15 text-[12px] leading-none text-[#FF8A0A]">
+                ✦
+              </span>
               <span className="text-white text-[14px] md:text-[15px] font-semibold leading-none">
                 Our Blogs
               </span>
             </div>
 
-            <h2 className="text-white text-[34px] leading-[1.08] tracking-[-0.02em] font-bold md:text-[60px] md:leading-[1.05]">
+            <h2 className="max-w-[260px] text-white text-[38px] leading-[0.98] tracking-[-0.04em] font-bold md:max-w-none md:text-[60px] md:leading-[1.05] md:tracking-[-0.02em]">
               Stories for
               <br className="md:hidden" />
               <span className="hidden md:inline"> </span>
@@ -72,7 +74,7 @@ export default function OurBlogsSection() {
 
           <a
             href="/blog"
-            className="mt-[18px] md:mt-[28px] inline-flex h-[38px] md:h-[34px] shrink-0 items-center justify-center rounded-full bg-[#FF8A0A] px-4 md:px-7 text-white text-[13px] md:text-[13px] font-semibold leading-none"
+            className="inline-flex h-[40px] w-fit shrink-0 items-center justify-center self-start rounded-full bg-[#FF8A0A] px-5 text-white text-[13px] font-semibold leading-none md:mt-[28px] md:h-[34px] md:self-auto md:px-7"
           >
             <span className="md:hidden">View All</span>
             <span className="hidden md:inline">View more blogs</span>
@@ -139,16 +141,17 @@ export default function OurBlogsSection() {
 
         {/* Mobile Slider */}
         <div className="mt-8 md:hidden">
-          <div className="flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory no-scrollbar -mx-4 px-4">
+          <div className="flex gap-4 overflow-x-auto pl-1 pr-4 pb-1 snap-x snap-mandatory no-scrollbar">
             {loading ? (
               // Loading skeleton for mobile
               [...Array(3)].map((_, i) => (
-                <article key={i} className="w-[68vw] max-w-[220px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3 animate-pulse">
-                  <div className="h-[132px] w-full rounded-[12px] bg-[#D9D9D9]" />
-                  <div className="pt-3">
-                    <div className="h-3 w-20 bg-[#D9D9D9] rounded" />
-                    <div className="mt-3 h-5 w-full bg-[#D9D9D9] rounded" />
-                    <div className="mt-3 h-12 w-full bg-[#D9D9D9] rounded" />
+                <article key={i} className="w-[270px] shrink-0 snap-start rounded-[20px] bg-white p-[14px] animate-pulse">
+                  <div className="h-[166px] w-full rounded-[14px] bg-[#D9D9D9]" />
+                  <div className="pt-4">
+                    <div className="h-3 w-24 rounded bg-[#D9D9D9]" />
+                    <div className="mt-3 h-5 w-[85%] rounded bg-[#D9D9D9]" />
+                    <div className="mt-3 h-[52px] w-full rounded bg-[#D9D9D9]" />
+                    <div className="mt-4 h-[22px] w-[74px] rounded-[6px] bg-[#D9D9D9]" />
                   </div>
                 </article>
               ))
@@ -156,37 +159,37 @@ export default function OurBlogsSection() {
               blogs.map((blog) => (
                 <article
                   key={blog._id}
-                  className="w-[68vw] max-w-[220px] shrink-0 snap-center rounded-[16px] bg-[#F3F3F3] p-3"
+                  className="w-[270px] shrink-0 snap-start rounded-[20px] bg-white p-[14px]"
                 >
-                  <div className="overflow-hidden rounded-[12px]">
+                  <div className="overflow-hidden rounded-[14px]">
                     <Image
                       src={blog.featuredImage || "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
                       alt={blog.title}
                       width={260}
                       height={170}
-                      className="h-[132px] w-full rounded-[12px] object-cover bg-[#D9D9D9]"
+                      className="h-[166px] w-full rounded-[14px] object-cover bg-[#D9D9D9]"
                       loading="lazy"
                       sizes="260px"
                       quality={75}
                     />
                   </div>
 
-                  <div className="pt-3">
-                    <p className="text-[#8C8C8C] text-[12px] leading-[1.35] font-medium">
+                  <div className="pt-4">
+                    <p className="text-[#8C8C8C] text-[11px] leading-[1.35] font-medium">
                       {formatDate(blog.createdAt)}
                     </p>
 
-                    <h3 className="mt-3 text-[#222222] text-[17px] leading-[1.08] font-bold">
+                    <h3 className="mobile-blog-title mt-3 min-h-[40px] text-[#222222] text-[19px] leading-[1.08] font-bold">
                       {blog.title}
                     </h3>
 
-                    <p className="mt-3 text-[#888888] text-[12px] leading-[1.35]">
+                    <p className="mobile-blog-excerpt mt-3 min-h-[50px] text-[#888888] text-[12px] leading-[1.45]">
                       {blog.excerpt}
                     </p>
 
                     <a
                       href={`/blog/${blog.slug}`}
-                      className="mt-4 inline-flex h-[20px] items-center justify-center rounded-[6px] bg-[#FF8A0A] px-[8px] text-white text-[10px] font-semibold leading-none"
+                      className="mt-4 inline-flex h-[22px] items-center justify-center rounded-[6px] bg-[#FF8A0A] px-[9px] text-white text-[10px] font-semibold leading-none"
                     >
                       Read more <span className="ml-1">→</span>
                     </a>
@@ -220,6 +223,21 @@ export default function OurBlogsSection() {
 
         .no-scrollbar::-webkit-scrollbar {
           display: none;
+        }
+
+        .mobile-blog-title,
+        .mobile-blog-excerpt {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+        }
+
+        .mobile-blog-title {
+          -webkit-line-clamp: 2;
+        }
+
+        .mobile-blog-excerpt {
+          -webkit-line-clamp: 3;
         }
       `}</style>
     </section>
