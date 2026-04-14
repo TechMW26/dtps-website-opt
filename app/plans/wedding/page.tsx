@@ -46,8 +46,7 @@ const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   brides: {
     label: "Brides",
     tabVector: "/images/Bride-Vector.png",
-    image:
-      "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride.png",
+    image: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/Bride.png",
     benefits: [
       "You'll drop those extra inches with real, home-cooked food.",
       "Skin looks clearer and naturally glowing.",
@@ -59,8 +58,7 @@ const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   grooms: {
     label: "Grooms",
     tabVector: "/images/Groom-Vector.png",
-    image:
-      "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Groom.png",
+    image: "/images/Groom.png",
     benefits: [
       "Better sherwani fit and confident posture.",
       "Sharper jawline and reduced puffiness.",
@@ -72,8 +70,7 @@ const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   couples: {
     label: "Couples",
     tabVector: "/images/Couples-Vector.png",
-    image:
-      "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Couple.png",
+    image: "/images/Couple.png",
     benefits: [
       "Both partners feel fit & confident.",
       "Shared food routine improves bonding.",
@@ -85,8 +82,7 @@ const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   family: {
     label: "Family",
     tabVector: "/images/Family-Vector.png",
-    image:
-      "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Guest-1.png",
+    image: "/images/Family.png",
     benefits: [
       "Stay light and comfortable through events.",
       "Better digestion reduces bloating.",
@@ -318,7 +314,7 @@ export default function WeddingPlanPage() {
             {/* Desktop Layout */}
             <div className="hidden md:flex w-full flex-1 flex-col items-center justify-end mb-12  px-6 text-center lg:px-8">
               <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
-                India&apos;s Only <span className="text-[#FF850B] [1.5rem] ">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan
+                India&apos;s Only <span className="text-[#FF850B] text-[1.5rem] ">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan
               </h1>
               <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
                 That Gets You <span className="text-[#FF850B]">Wedding-Ready.</span>
@@ -499,15 +495,14 @@ export default function WeddingPlanPage() {
           <div className="mx-auto flex max-w-[355px] flex-col gap-6 md:hidden">
             <div className="relative h-[467px] w-full overflow-hidden rounded-[24px] bg-[#4E0101]">
               <div className="absolute inset-y-0 left-1/2 w-[180px] -translate-x-1/2 bg-[#FF850B]" />
-              <div className="absolute inset-x-0 bottom-0 flex justify-center">
+              <div className="absolute inset-0">
                 <Image
                   src={activeTabData.image}
                   alt={activeTabData.label}
-                  width={301}
-                  height={467}
-                  className="h-[467px] w-auto max-w-none object-contain object-bottom"
+                  fill
+                  className="h-full w-full object-cover"
                   loading="lazy"
-                  sizes="301px"
+                  sizes="(max-width: 767px) 100vw, 355px"
                   quality={75}
                 />
               </div>
