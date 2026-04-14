@@ -1057,16 +1057,23 @@ export default function TherapeuticPlanPage() {
       ═══════════════════════════════════════════════════════════ */}
       <section className="site-shell py-12 md:py-20">
         <div className="site-fill">
-          <div className="flex flex-col gap-4 mb-10 md:flex-row md:items-end md:justify-between md:mb-14">
-            <div className="max-w-[630px]">
-              <SectionLabel>Our Testimonials</SectionLabel>
-              <SectionTitle className="text-[#1E1E1E] mt-2">
-                Over 75,000+<br />
+          
+            <div className="mb-10 flex flex-col items-center gap-4 md:mb-14 md:flex-col md:items-start md:justify-between">
+           <div className="flex items-center  gap-2">
+                    <span className="text-[#f5a623] text-lg">✦</span>
+             <span className="text-teal-600 text-base font-semibold">
+                  Our Testimonials
+                </span>
+              </div>
+               <div className="mx-auto max-w-[630px] text-center md:mx-0 md:text-left">
+              {/* <span className="text-[#FF850B] text-sm md:text-base font-semibold">Our Testimonials</span> */}
+              <h2 className="mt-2 text-2xl font-bold leading-tight text-[#1E1E1E] md:text-[42px]">
+                Over <span className="text-[#FF850B] " >75,000+</span>  <br />
                 People Enjoy Weight Loss
-              </SectionTitle>
-              <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
+              </h2>
+              {/* <p className="text-[#828283] text-xs md:text-sm mt-2">
                 Choose a plan as per your requirements and start your wellness journey. See you around!
-              </p>
+              </p> */}
             </div>
           </div>
           <TransformationGallery page="therapeutic" maxItems={6} />
@@ -1079,11 +1086,19 @@ export default function TherapeuticPlanPage() {
       ═══════════════════════════════════════════════════════════ */}
       <section className="site-shell py-12 md:py-20">
         <div className="mb-10 text-center">
-          <SectionLabel className="justify-center">Our Plans</SectionLabel>
-          <SectionTitle className="text-[#1E1E1E] mt-2">Our Pricing</SectionTitle>
-          <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
-            Choose a plan as per your requirements and start your wellness journey. See you around!
-          </p>
+         <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
+            <div className='flex gap-2 items-center' >
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Plans
+              </span>
+            </div>
+            <SectionTitle className="text-[#1E1E1E] mt-4">Our Pricing</SectionTitle>
+            <p className="text-[#828283]  text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Choose a plan as per your requirements and start your wellness journey. See you around!
+            </p>
+
+          </div>
         </div>
 
         {loadingPricing ? (
