@@ -31,6 +31,17 @@ const benefitIcons = [
   "/images/Frame%20129.png",
 ] as const;
 
+function SectionTitle({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return (
+    <h2
+      className={`text-[28px] md:text-[36px] lg:text-[46px] font-extrabold leading-[1.12] ${className}`}
+      style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+    >
+      {children}
+    </h2>
+  );
+}
+
 const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   brides: {
     label: "Brides",
@@ -289,16 +300,16 @@ export default function WeddingPlanPage() {
             {/* Mobile Layout */}
             <div className="flex w-full flex-1 flex-col items-center justify-end px-6 pb-10 text-center md:hidden">
               <div className="max-w-[360px]">
-                <p className="text-[1.5rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
+                <p className="text-[1.6rem] font-extrabold leading-[1.02] tracking-[-0.03em] text-white">
                   India&apos;s Only
                 </p>
-                <p className="mt-1 text-[3.45rem] font-extrabold leading-[0.94] tracking-[-0.045em] text-[#FF850B]">
+                <p className="mt-1 text-[2.45rem] font-extrabold leading-[0.94] tracking-[-0.045em] text-[#FF850B]">
                   Ghar Ka Khana
                 </p>
-                <p className="mt-2 text-[1.8rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
+                <p className="mt-2 text-[1.6rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
                   Diet Plan That Gets You
                 </p>
-                <p className="mt-1 text-[1.8rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
+                <p className="mt-1 text-[1.6rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-white">
                   Wedding-Ready.
                 </p>
               </div>
@@ -307,7 +318,7 @@ export default function WeddingPlanPage() {
             {/* Desktop Layout */}
             <div className="hidden md:flex w-full flex-1 flex-col items-center justify-end mb-12  px-6 text-center lg:px-8">
               <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
-                India&apos;s Only <span className="text-[#FF850B]">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan
+                India&apos;s Only <span className="text-[#FF850B] [1.5rem] ">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan
               </h1>
               <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
                 That Gets You <span className="text-[#FF850B]">Wedding-Ready.</span>
@@ -332,10 +343,20 @@ export default function WeddingPlanPage() {
       <section className="site-shell  py-14 md:py-20">
         <div className="site-fill">
 
+          <div className="mb-8 text-center md:mb-[50px]">
+            <h2 className="mb-2.5 text-2xl font-bold leading-tight text-black md:text-5xl">
+              Lose
+              <span className="text-[#FF850B]"  > 5-7 Kilos </span>
+
+              in just 30 Days
+            </h2>
+            <h2 className="mb-2.5 text-2xl font-bold leading-tight text-black md:text-5xl">
+              &amp; Still Eat the Food You Love!
+            </h2>
+          </div>
+
           <TransformationGallery
             page="wedding"
-            title="Lose 5–7 Kilos in just 30 Days"
-            subtitle="& Still Eat the Food You Love!"
             maxItems={6}
           />
 
@@ -345,13 +366,13 @@ export default function WeddingPlanPage() {
       <section className="site-shell bg-white py-12">
         <div className="site-fill">
           <h2
-            className="mb-8 hidden text-center text-2xl font-bold text-black md:mb-16 md:block md:text-5xl"
+            className="mb-8 hidden text-center text-2xl font-bold text-black  md:mb-16 md:block md:text-5xl"
             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
           >
             What Happens
-            <br />
-            When You Start the{" "}
-            <span className="text-[#ff850b]">DTPS Wedding Plan</span>
+            <span className="mt-6 block">
+              When You Start the <span className="text-[#ff850b]">DTPS Wedding Plan</span>
+            </span>
           </h2>
 
           <h2
@@ -709,8 +730,9 @@ export default function WeddingPlanPage() {
             {/* Desktop: 3 Icons Row */}
             <div className="hidden md:flex items-start justify-center gap-16 mb-14">
               <div className="flex flex-col items-center gap-4">
-                <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={50} height={50} loading="lazy" />
+
+                <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
+                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={44} height={44} loading="lazy" />
                 </div>
                 <p className="text-white text-base font-medium text-center leading-snug">
                   Fully Customised<br />Diet Plan
@@ -718,8 +740,8 @@ export default function WeddingPlanPage() {
               </div>
 
               <div className="flex flex-col items-center gap-4">
-                <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={50} height={50} loading="lazy" />
+                <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
+                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={44} height={44} loading="lazy" />
                 </div>
                 <p className="text-white text-base font-medium text-center leading-snug">
                   Shaadi-Ready<br />Custom Diet Plan
@@ -727,8 +749,8 @@ export default function WeddingPlanPage() {
               </div>
 
               <div className="flex flex-col items-center gap-4">
-                <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={50} height={50} loading="lazy" />
+                <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
+                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={44} height={44} loading="lazy" />
                 </div>
                 <p className="text-white text-base font-medium text-center leading-snug">
                   Medical-Aware<br />Personalised Plan
@@ -739,8 +761,8 @@ export default function WeddingPlanPage() {
             {/* Mobile: Icons with label on right */}
             <div className="flex md:hidden flex-col gap-5 mb-8 mx-auto items-center">
               <div className="flex items-center gap-4">
-                <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={32} height={32} loading="lazy" />
+                <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
+                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={28} height={28} loading="lazy" />
                 </div>
                 <p className="text-white text-sm font-medium leading-snug">
                   Fully Customised<br />Diet Plan
@@ -748,8 +770,8 @@ export default function WeddingPlanPage() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={32} height={32} loading="lazy" />
+                <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
+                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={28} height={28} loading="lazy" />
                 </div>
                 <p className="text-white text-sm font-medium leading-snug">
                   Shaadi-Ready<br />Custom Diet Plan
@@ -757,8 +779,8 @@ export default function WeddingPlanPage() {
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={32} height={32} loading="lazy" />
+                <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
+                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={28} height={28} loading="lazy" />
                 </div>
                 <p className="text-white text-sm font-medium leading-snug">
                   Medical-Aware<br />Personalised Plan
@@ -917,22 +939,20 @@ export default function WeddingPlanPage() {
       {/* Over 75,000+ People Enjoy Weight Loss */}
       <section className="site-shell py-12 md:py-20">
         <div className="site-fill">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
-            <div className="max-w-[630px]">
-              <span className="text-[#FF850B] text-sm md:text-base font-semibold">Our Testimonials</span>
-              <h2 className="text-2xl md:text-[42px] font-bold text-[#1E1E1E] leading-tight mt-2">
-                Over 75,000+<br />
+          <div className="mb-10 flex flex-col items-center gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
+            <div className="mx-auto max-w-[630px] text-center md:mx-0 md:text-left">
+              {/* <span className="text-[#FF850B] text-sm md:text-base font-semibold">Our Testimonials</span> */}
+              <h2 className="mt-2 text-2xl font-bold leading-tight text-[#1E1E1E] md:text-[42px]">
+                Over <span className="text-[#FF850B] " >75,000+</span>  <br />
                 People Enjoy Weight Loss
               </h2>
-              <p className="text-[#828283] text-xs md:text-sm mt-2">
-                Join our Plan today and embark on a journey to better health with our weight loss plan!
-              </p>
+              {/* <p className="text-[#828283] text-xs md:text-sm mt-2">
+                Choose a plan as per your requirements and start your wellness journey. See you around!
+              </p> */}
             </div>
           </div>
           <TransformationGallery
             page="wedding"
-            title=""
-            subtitle=""
             maxItems={6}
           />
         </div>
@@ -941,20 +961,19 @@ export default function WeddingPlanPage() {
       {/* Pricing Section */}
       <section className="site-shell bg-white py-12 md:py-16">
         <div className="w-full flex flex-col items-center justify-center text-center">
-          <span className="text-[#ff850b] text-sm md:text-base font-semibold leading-relaxed">
-            Our Pricing
-          </span>
+          <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
+            <div className='flex gap-2 items-center' >
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Plans
+              </span>
+            </div>
+            <SectionTitle className="text-[#1E1E1E] mt-4">Our Pricing</SectionTitle>
+            <p className="text-[#828283]  text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Choose a plan as per your requirements and start your wellness journey. See you around!
+            </p>
 
-          <h2 className="text-2xl md:text-5xl font-bold text-black leading-tight my-2.5 max-w-full md:max-w-[56%]">
-            Take the First Step to a{" "}
-            <span className="text-[#ff850b]">Healthier Future</span>
-          </h2>
-
-          <p className="text-sm md:text-base font-light leading-relaxed text-[#828283] max-w-full md:max-w-[65%] mx-auto mb-6 md:mb-10">
-            Join our Plan today and embark on a journey to better health with
-            our wedding plan!
-          </p>
-
+          </div>
           <div className="w-full flex justify-center">
             <div className="w-full">
               <DynamicPlansDisplay

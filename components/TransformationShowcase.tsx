@@ -28,10 +28,10 @@ interface TransformationShowcaseProps {
 
 const fallbackData: Transformation[] = [];
 
-export default function TransformationShowcase({ 
-  page, 
-  title = 'Success Stories',
-  subtitle = 'Real Results from Real People',
+export default function TransformationShowcase({
+  page,
+  title,
+  subtitle,
   maxItems = 6
 }: TransformationShowcaseProps) {
   const [transformations, setTransformations] = useState<Transformation[]>(fallbackData as any);
@@ -44,7 +44,7 @@ export default function TransformationShowcase({
           cache: 'no-store'
         });
         let data = await response.json();
-        
+
         // If no data found for the specific page, try without page filter
         if (!data.transformations || data.transformations.length === 0) {
           console.log(`No transformations found for page: ${page}, fetching all...`);
@@ -74,7 +74,7 @@ export default function TransformationShowcase({
     <section className="site-card-padding py-10 md:py-[60px] bg-white">
       <div className="site-fill">
         {title && (
-          <div className="text-center mb-8 md:mb-[50px]">
+          <div className={`text-center mb-8 md:mb-[50px] ${page === 'wedding' ? 'hidden md:block' : ''}`}>
             <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
               <span className="text-[#ff850b]">Over 75,000+</span><br />
               {title}

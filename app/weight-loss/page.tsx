@@ -269,7 +269,7 @@ export default function WeightLossPage() {
                 className="text-[#828283] text-[12px] md:text-[14px] mt-2"
                 style={{ fontFamily: "Inter, sans-serif" }}
               >
-                Join our Plan today and embark on a journey to better health with our weight loss plan!
+               Choose a plan as per your requirements and start your wellness journey. See you around!
               </p>
             </div>
 
@@ -278,8 +278,6 @@ export default function WeightLossPage() {
           {/* Transformation Cards Slider */}
           <TransformationGallery
             page="weight-loss"
-            title=""
-            subtitle=""
             maxItems={6}
             cardBackgroundClassName="bg-transparent"
           />
@@ -477,8 +475,9 @@ export default function WeightLossPage() {
               </div>
                <SectionTitle className="text-[#1E1E1E] mt-4">Our Pricing</SectionTitle>
               <p className="text-[#828283]  text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Join our Plan today and embark on a journey to better health with our weight loss plan!
-          </p>
+            Choose a plan as per your requirements and start your wellness journey. See you around!
+            </p>
+
             </div>
        
 

@@ -1065,11 +1065,11 @@ export default function TherapeuticPlanPage() {
                 People Enjoy Weight Loss
               </SectionTitle>
               <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
-                Join our Plan today and embark on a journey to better health with our weight loss plan!
+                Choose a plan as per your requirements and start your wellness journey. See you around!
               </p>
             </div>
           </div>
-          <TransformationGallery page="therapeutic" title="" subtitle="" maxItems={6} />
+          <TransformationGallery page="therapeutic" maxItems={6} />
         </div>
       </section>
 
@@ -1082,7 +1082,7 @@ export default function TherapeuticPlanPage() {
           <SectionLabel className="justify-center">Our Plans</SectionLabel>
           <SectionTitle className="text-[#1E1E1E] mt-2">Our Pricing</SectionTitle>
           <p className="text-[#828283] text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
-            Join our Plan today and embark on a journey to better health with our weight loss plan!
+            Choose a plan as per your requirements and start your wellness journey. See you around!
           </p>
         </div>
 

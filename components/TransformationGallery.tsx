@@ -22,8 +22,6 @@ interface Transformation {
 
 interface TransformationGalleryProps {
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
-  title?: string;
-  subtitle?: string;
   maxItems?: number;
   cardBackgroundClassName?: string;
 }
@@ -50,8 +48,6 @@ const fallbackData: Transformation[] = [];
 
 export default function TransformationGallery({
   page,
-  title = 'Success Stories',
-  subtitle = 'Real Results from Real People',
   maxItems = 6,
   cardBackgroundClassName = 'bg-gray-100',
 }: TransformationGalleryProps) {
@@ -109,13 +105,6 @@ export default function TransformationGallery({
   if (loading && transformations.length === 0) {
     return (
       <section className="px-0 max-w-full mx-auto">
-        {title && (
-          <div className="text-center mb-8 md:mb-[50px]">
-            <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
-              {title}
-            </h2>
-          </div>
-        )}
         <div className="flex gap-4 overflow-hidden">
           {[1, 2, 3].map(i => (
             <div key={i} className="flex-shrink-0 w-[300px] h-[400px] bg-gray-200 rounded-[16px] animate-pulse" />
@@ -127,19 +116,6 @@ export default function TransformationGallery({
 
   return (
     <section className="px-0 max-w-full mx-auto">
-      {title && (
-        <div className="text-center mb-8 md:mb-[50px]">
-          <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="text-sm md:text-[17px] text-[#666] leading-relaxed max-w-full md:max-w-[680px] mx-auto">
-              {subtitle}
-            </p>
-          )}
-        </div>
-      )}
-
       <div className="max-w-full mx-auto relative">
         <Swiper
           modules={[Pagination, Autoplay]}
@@ -166,6 +142,7 @@ export default function TransformationGallery({
             },
           }}
         >
+
           {optimizedTransformations.map((transformation, index) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
               <div className={`rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)] ${cardBackgroundClassName}`}>

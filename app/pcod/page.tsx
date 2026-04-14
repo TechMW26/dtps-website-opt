@@ -493,7 +493,7 @@ export default function PCODPage() {
                 Over 75,000+<br />People Manage PCOD Successfully
               </h2>
               <p className="text-[#828283] md:text-start text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Join our Plan today and embark on a journey to better health with our PCOD diet plan!
+                Choose a plan as per your requirements and start your wellness journey. See you around!
               </p>
             </div>
 
@@ -503,8 +503,7 @@ export default function PCODPage() {
           {/* TransformationGallery for PCOD */}
           <TransformationGallery
             page="pcod"
-            title=""
-            subtitle=""
+            
             maxItems={6}
           />
         </div>
@@ -524,7 +523,7 @@ export default function PCODPage() {
               Our Pricing
             </h2>
             <p className="text-[#828283] text-center text-[12px] " style={{ fontFamily: 'Inter, sans-serif' }}>
-              Join our Plan today and embark on a journey to better health with our weight loss plan!
+              Choose a plan as per your requirements and start your wellness journey. See you around!
             </p>
           </div>
         </div>
@@ -565,7 +564,7 @@ export default function PCODPage() {
               Our Pricing
             </h2>
             <p className="text-[#828283] text-center text-[14px] mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Join our Plan today and embark on a journey to better health with our weight loss plan!
+              Choose a plan as per your requirements and start your wellness journey. See you around!
             </p>
           </div>
            <div className="flex justify-center w-full">
