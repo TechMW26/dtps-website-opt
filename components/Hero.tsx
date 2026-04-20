@@ -69,7 +69,7 @@ export default function Hero() {
 
             <div className="flex flex-row items-center gap-4">
 
-              <Link href="/weight-loss" className="px-6 py-3 text-sm btn btn-primary">
+              <Link href="/weight-loss-plan" className="px-6 py-3 text-sm btn btn-primary">
                 Know More
               </Link>
 
@@ -137,7 +137,7 @@ export default function Hero() {
 
             <div className="flex flex-row items-center justify-start gap-4 mb-8 hero-actions">
 
-              <Link href="/weight-loss" className="px-6 py-3 text-sm btn btn-primary lg:text-base lg:px-8">
+              <Link href="/weight-loss-plan" className="px-6 py-3 text-sm btn btn-primary lg:text-base lg:px-8">
                 Know More
               </Link>
 

@@ -7,7 +7,7 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin, FaApple, FaAndroid } f
 
 const serviceLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Weight Loss', href: '/weight-loss' },
+  { label: 'Weight Loss', href: '/weight-loss-plan' },
   { label: 'PCOD', href: '/pcod' },
   { label: 'All Plans', href: '#', hasDropdown: true },
   { label: 'Contact Us', href: '/contact' },

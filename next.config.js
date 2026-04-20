@@ -80,6 +80,17 @@ const nextConfig = {
     ],
   },
 
+  // Redirect old /weight-loss URL to new /weight-loss-plan
+  async redirects() {
+    return [
+      {
+        source: '/weight-loss',
+        destination: '/weight-loss-plan',
+        permanent: true,
+      },
+    ];
+  },
+
   // Add security headers while disabling browser/proxy caching.
   async headers() {
     return [

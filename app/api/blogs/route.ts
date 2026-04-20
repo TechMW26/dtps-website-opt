@@ -85,7 +85,12 @@ export async function POST(request: NextRequest) {
     }
 
     if (!payload.author) {
-      payload.author = 'DTPS Admin';
+      const authors = [
+        'Priya Sharma', 'Meera Patel', 'Ananya Gupta', 'Kavita Singh', 'Nisha Verma',
+        'Ritu Agarwal', 'Sunita Reddy', 'Deepa Joshi', 'Pooja Mehta', 'Shalini Nair',
+        'Aditi Kapoor', 'Neha Malhotra', 'Swati Tiwari', 'Anjali Deshmukh', 'Divya Iyer',
+      ];
+      payload.author = authors[Math.floor(Math.random() * authors.length)];
     }
 
     if (!payload.category) {

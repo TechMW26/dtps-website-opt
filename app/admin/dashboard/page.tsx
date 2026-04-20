@@ -317,7 +317,7 @@ export default function AdminDashboard() {
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              { page: '/weight-loss', items: 'Testimonials, Pricing, Success Stories, Transformations' },
+              { page: '/weight-loss-plan', items: 'Testimonials, Pricing, Success Stories, Transformations' },
               { page: '/pcod', items: 'Pricing, Success Stories' },
               { page: '/plans/wedding', items: 'Pricing, Transformations' },
               { page: '/plans/therapeutic', items: 'Success Stories, Pricing' },

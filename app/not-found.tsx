@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const quickLinks = [
   { label: 'Home', href: '/', icon: '🏠' },
-  { label: 'Weight Loss', href: '/weight-loss', icon: '⚖️' },
+  { label: 'Weight Loss', href: '/weight-loss-plan', icon: '⚖️' },
   { label: 'PCOD', href: '/pcod', icon: '🌿' },
   { label: 'Blog', href: '/blog', icon: '📖' },
   { label: 'Book Appointment', href: '/appointment', icon: '📅' },

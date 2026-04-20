@@ -55,7 +55,7 @@ const BlogSchema = new Schema<IBlog>(
     ],
     author: {
       type: String,
-      default: 'Dietitian Poonam Sagar',
+      default: 'Priya Sharma',
     },
     readTime: {
       type: String,

@@ -223,9 +223,9 @@ export default function BlogDetailClient() {
               </div>
               <div>
                 <p className="text-[13px] text-[#8C8C8C] mb-0.5">Written by</p>
-                <p className="font-semibold text-[#1E1E1E] text-[15px]">{blog.author || 'Dietitian Poonam Sagar'}</p>
+                <p className="font-semibold text-[#1E1E1E] text-[15px]">{blog.author || 'Priya Sharma'}</p>
                 <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
-                  Expert dietitian &amp; nutritionist with 25+ years of experience guiding 15,000+ clients towards healthier lives.
+                  Certified nutritionist &amp; wellness expert at DTPS, passionate about helping clients achieve their health goals through balanced Indian diets.
                 </p>
               </div>
             </div>

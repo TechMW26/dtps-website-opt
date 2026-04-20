@@ -40,7 +40,7 @@ export default function ServicesSection() {
         'Weight loss needs proper portions, sensible timing and food you already eat at home. When that is fixed, weight starts moving without any dramatic changes in your lifestyle.',
       icon: '/Weighticon.svg',
       featured: false,
-      link: '/weight-loss',
+      link: '/weight-loss-plan',
     },
     {
       title: 'PCOD & PCOS Nutrition',

@@ -133,21 +133,65 @@ export async function GET(req: NextRequest) {
     const orderId = searchParams.get('orderId');
 
     if (orderId) {
-      const order = await Order.findOne({ orderId });
+      const order = await Order.findOne({ orderId }).lean();
+      return NextResponse.json({ success: true, order });
+    }
+
+    // Build date filter if provided
+    const from = searchParams.get('from');
+    const to = searchParams.get('to');
+    const filter: Record<string, unknown> = {};
+    if (from || to) {
+      filter.createdAt = {};
+      if (from) (filter.createdAt as Record<string, unknown>).$gte = new Date(from + 'T00:00:00.000Z');
+      if (to)   (filter.createdAt as Record<string, unknown>).$lte = new Date(to + 'T23:59:59.999Z');
+    }
+
+    // lean() skips Mongoose hydration → much faster
+    const orders = await Order.find(filter)
+      .sort({ createdAt: -1 })
+      .select('orderId customerName customerEmail customerPhone city total paymentStatus createdAt products')
+      .lean();
+
+    return NextResponse.json({ success: true, orders });
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    return NextResponse.json(
+      { success: false, error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+// Bulk operations
+export async function PATCH(req: NextRequest) {
+  try {
+    await connectDB();
+    const { action, orderIds } = await req.json();
+
+    if (action === 'bulkDelete') {
+      if (!Array.isArray(orderIds) || orderIds.length === 0) {
+        return NextResponse.json(
+          { success: false, message: 'orderIds array is required' },
+          { status: 400 }
+        );
+      }
+
+      await Order.deleteMany({ orderId: { $in: orderIds } });
+      await Payment.deleteMany({ orderId: { $in: orderIds } });
+
       return NextResponse.json({
         success: true,
-        order,
+        message: `Deleted ${orderIds.length} order(s)`,
       });
     }
 
-    // Get all orders (admin)
-    const orders = await Order.find().sort({ createdAt: -1 });
-    return NextResponse.json({
-      success: true,
-      orders,
-    });
+    return NextResponse.json(
+      { success: false, message: 'Invalid action' },
+      { status: 400 }
+    );
   } catch (error) {
-    console.error('Error fetching orders:', error);
+    console.error('Error in bulk operation:', error);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }

@@ -18,6 +18,13 @@ import { useTheme } from '@/app/providers/ThemeProvider';
 import ImageUpload from '@/components/admin/ImageUpload';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 
+const BLOG_AUTHORS = [
+  'Priya Sharma', 'Meera Patel', 'Ananya Gupta', 'Kavita Singh', 'Nisha Verma',
+  'Ritu Agarwal', 'Sunita Reddy', 'Deepa Joshi', 'Pooja Mehta', 'Shalini Nair',
+  'Aditi Kapoor', 'Neha Malhotra', 'Swati Tiwari', 'Anjali Deshmukh', 'Divya Iyer',
+];
+function randomAuthor() { return BLOG_AUTHORS[Math.floor(Math.random() * BLOG_AUTHORS.length)]; }
+
 interface Blog {
   _id: string;
   title: string;
@@ -42,7 +49,7 @@ const initialFormState: Omit<Blog, '_id' | 'createdAt'> = {
   description: '',
   content: '',
   featuredImage: '',
-  author: 'DTPS Admin',
+  author: randomAuthor(),
   category: 'Health & Nutrition',
   tags: [],
   views: 0,

@@ -13,7 +13,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Weight Loss', href: '/weight-loss' },
+  { label: 'Weight Loss', href: '/weight-loss-plan' },
   { label: 'PCOD', href: '/pcod' },
   {
     label: 'All Plans',

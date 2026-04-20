@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         description: 'Lose up to 5 kg in a month with personalised, home-based diet plans. No supplements, no starvation.',
         type: 'website',
     },
-    alternates: { canonical: '/weight-loss' },
+    alternates: { canonical: '/weight-loss-plan' },
 };
 
 export default function WeightLossLayout({
