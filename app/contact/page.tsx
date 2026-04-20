@@ -4,9 +4,16 @@ import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Dietitian Poonam Sagar',
+  title: 'Contact Us',
   description:
-    'Get in touch with Dietitian Poonam Sagar. We are here to help you on your wellness journey.',
+    'Get in touch with Dietitian Poonam Sagar. Visit our clinic in Bhopal, email us at support@dtpoonamsagar.com, or call +91 98930 27688. We are here to guide you on your wellness journey.',
+  keywords: ['contact dietitian', 'Poonam Sagar contact', 'dietitian Bhopal', 'nutrition consultation contact'],
+  openGraph: {
+    title: 'Contact Us | Dietitian Poonam Sagar',
+    description: 'Reach out to Dietitian Poonam Sagar. Visit our Bhopal clinic or connect via phone, email, or WhatsApp.',
+    type: 'website',
+  },
+  alternates: { canonical: '/contact' },
 };
 
 const contactInfo = [

@@ -5,9 +5,16 @@ import PageWrapper from '@/components/PageWrapper';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'Book Appointment | Dietitian Poonam Sagar',
+  title: 'Book an Appointment',
   description:
-    'Schedule your consultation with Dietitian Poonam Sagar. Start your personalized wellness journey today.',
+    'Book a consultation with Dietitian Poonam Sagar. Get a personalised diet plan for weight loss, PCOD, therapeutic nutrition, or wedding wellness. Online & clinic appointments available.',
+  keywords: ['book dietitian appointment', 'diet consultation India', 'online diet appointment', 'Poonam Sagar consultation'],
+  openGraph: {
+    title: 'Book an Appointment | Dietitian Poonam Sagar',
+    description: 'Schedule your personalised nutrition consultation with Dietitian Poonam Sagar. Online & clinic appointments available.',
+    type: 'website',
+  },
+  alternates: { canonical: '/appointment' },
 };
 
  

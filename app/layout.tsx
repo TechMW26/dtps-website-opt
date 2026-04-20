@@ -27,26 +27,78 @@ export const viewport: Viewport = {
   themeColor: '#014E4E',
 };
 
+const SITE_URL = 'https://www.dtpoonamsagar.com';
+const LOGO_URL =
+  'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+
 export const metadata: Metadata = {
-  title: 'Dietitian Poonam Sagar - Transform Your Health',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
+    template: '%s | Dietitian Poonam Sagar',
+  },
   description:
-    'Achieve your wellness goals with personalized guidance, expert support, and sustainable habits for a healthier, happier you. 25+ years of expertise guiding over 15,000+ clients.',
+    'Achieve your wellness goals with personalised diet plans from Dietitian Poonam Sagar. 25+ years of expertise, 15,000+ clients transformed. Weight loss, PCOD, therapeutic nutrition & more.',
   keywords: [
-    'dietitian',
-    'nutrition',
-    'weight loss',
-    'PCOD',
+    'dietitian Bhopal',
+    'Poonam Sagar',
+    'weight loss dietitian',
+    'PCOD diet plan',
+    'therapeutic nutrition',
+    'online diet consultation',
+    'nutrition expert India',
+    'personalized diet plan',
     'health coach',
     'wellness',
-    'Poonam Sagar',
   ],
-  authors: [{ name: 'Dietitian Poonam Sagar' }],
+  authors: [{ name: 'Dietitian Poonam Sagar', url: SITE_URL }],
+  creator: 'Dietitian Poonam Sagar',
+  publisher: 'Dietitian Poonam Sagar',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/favicon.ico',
+  },
   openGraph: {
-    title: 'Dietitian Poonam Sagar - Transform Your Health',
+    title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
     description:
-      'Achieve your wellness goals with personalized guidance, expert support, and sustainable habits.',
+      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 15,000+ clients transformed.',
+    url: SITE_URL,
+    siteName: 'Dietitian Poonam Sagar',
     type: 'website',
     locale: 'en_IN',
+    images: [
+      {
+        url: LOGO_URL,
+        width: 1200,
+        height: 630,
+        alt: 'Dietitian Poonam Sagar',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
+    description:
+      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 15,000+ clients transformed.',
+    images: [LOGO_URL],
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
 };
 

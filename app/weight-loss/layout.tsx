@@ -1,8 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Weight Loss Programs - Dietitian Poonam Sagar',
-    description: 'Guaranteed weight loss upto 5 Kg in a month with personalized diet plans. No supplements, no starvation, home-based diet by expert dietitians.',
+    title: 'Weight Loss Programs',
+    description: 'Lose up to 5 kg in a month with personalised, home-based diet plans. No supplements, no starvation — expert-guided weight loss by Dietitian Poonam Sagar.',
+    keywords: [
+        'weight loss diet plan India',
+        'personalised weight loss',
+        'dietitian for weight loss',
+        'home-based diet plan',
+        'lose weight fast India',
+        'Poonam Sagar weight loss',
+    ],
+    openGraph: {
+        title: 'Weight Loss Programs | Dietitian Poonam Sagar',
+        description: 'Lose up to 5 kg in a month with personalised, home-based diet plans. No supplements, no starvation.',
+        type: 'website',
+    },
+    alternates: { canonical: '/weight-loss' },
 };
 
 export default function WeightLossLayout({
