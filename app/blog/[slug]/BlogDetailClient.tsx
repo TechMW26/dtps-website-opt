@@ -179,8 +179,8 @@ export default function BlogDetailClient() {
       </section>
 
       {/* ── Main content area ── */}
-      <div className="site-shell py-10 md:py-14">
-        <div className="max-w-[820px] mx-auto">
+      <div className="site-shell py-10 md:py-14 overflow-hidden">
+        <div className="max-w-[820px] mx-auto min-w-0 overflow-hidden">
 
           {/* Featured image — fixed 16:9 aspect, no tall stretching */}
           {blog.featuredImage && (
@@ -198,7 +198,7 @@ export default function BlogDetailClient() {
 
           {/* Article body */}
           <article
-            className="blog-prose"
+            className="blog-prose min-w-0 overflow-hidden"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
 

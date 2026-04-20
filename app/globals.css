@@ -7522,6 +7522,31 @@ video {
   font-size: 16px;
   line-height: 1.8;
   color: #3a3a3a;
+  /* Prevent ANY child from overflowing the column */
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+/* Every direct and nested child must stay in-bounds */
+/* Every direct and nested child must stay in-bounds */
+.blog-prose * {
+  max-width: 100% !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+/* Neutralise CMS-injected fixed widths on inline/block elements */
+.blog-prose span {
+  max-width: 100% !important;
+}
+
+.blog-prose div {
+  max-width: 100% !important;
+  overflow: hidden;
 }
 
 .blog-prose p {
@@ -7529,6 +7554,8 @@ video {
   margin-bottom: 1.25em;
   color: #3a3a3a;
   line-height: 1.85;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .blog-prose h1,
