@@ -174,7 +174,7 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
       <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
         What you&apos;ll get:
       </p>
-      <div className={`flex flex-col gap-1 ${expanded ? '' : 'min-h-[176px]'}`}>
+      <div className="flex flex-col gap-1">
         {visibleFeatures.map((feature, idx) => (
           <div key={idx} className="flex items-start gap-1.5">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="shrink-0">

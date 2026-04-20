@@ -1144,7 +1144,7 @@ export default function TherapeuticPlanPage() {
                         <div className="w-full h-px mb-4 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
                         {/* Features */}
                         <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>What you&apos;ll get:</p>
-                        <div className={`flex flex-col gap-1 ${isExpanded ? '' : 'min-h-[176px]'}`}>
+                        <div className="flex flex-col gap-1">
                           {visibleFeatures.map((feature: string, idx: number) => (
                             <div key={idx} className="flex items-start gap-1.5">
                               <CheckIcon24 />
