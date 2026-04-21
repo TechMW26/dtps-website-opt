@@ -88,6 +88,11 @@ const nextConfig = {
         destination: '/weight-loss-plan',
         permanent: true,
       },
+      {
+        source: '/contact-form',
+        destination: '/contact',
+        permanent: true,
+      },
     ];
   },
 
