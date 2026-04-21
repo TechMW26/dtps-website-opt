@@ -10,15 +10,6 @@ import TransformationGallery from '@/components/TransformationGallery';
 
 const PAGE_GUTTER = 'px-5 md:px-[70px]';
 const SECTION_GAP = 'mt-10 md:mt-14';
-import Link from 'next/link';
-
-const heroFeatures = [
-    'Personalized diet plan',
-    'Weekly progress tracking',
-    'Dietitian support',
-    'No supplements, no starvation',
-    'Ghar ka khana focused approach',
-];
 
 const pricingFeatures = [
     'Chat support',
@@ -80,6 +71,53 @@ function CheckIcon24() {
     return <TickIcon />;
 }
 
+function HeroPricingCard({ onCheckout }) {
+    return (
+        <div className="w-full max-w-[238px] rounded-[10px] bg-white px-[16px] py-[14px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] md:max-w-[238px] md:px-[16px] md:py-[14px]">
+            <p className="text-[10px] font-medium uppercase tracking-[0.03em] text-[#6B7280]">
+                10 DAYS TRIAL
+            </p>
+            <p className="mt-1 text-[14px] font-bold uppercase leading-none text-[#1F2937]">
+                PLAN
+            </p>
+
+            <div className="mt-4 flex items-end gap-1.5">
+                <span className="text-[28px] font-extrabold leading-none text-[#014E4E] md:text-[29px]">
+                    ₹299
+                </span>
+                <span className="pb-0.5 text-[13px] font-semibold leading-none text-[#8A8F98] line-through">
+                    ₹999
+                </span>
+            </div>
+
+            <div className="my-4 h-px bg-[#E8E8E8]" />
+
+            <h3 className="text-[13px] font-bold text-[#252525]">What you&apos;ll get:</h3>
+
+            <div className="mt-3 space-y-2">
+                {pricingFeatures.map((feature) => (
+                    <div key={`hero-${feature}`} className="flex items-start gap-2 text-[12px] leading-[1.35] text-[#7A7A7A]">
+                        <CheckIcon24 />
+                        <span>{feature}</span>
+                    </div>
+                ))}
+            </div>
+
+            <p className="mt-4 text-[10px] leading-[1.45] text-[#8B8B8B]">
+                Stay on track: weekly check-ins to ensure your progress.
+            </p>
+
+            <button
+                type="button"
+                onClick={onCheckout}
+                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-4 py-3 text-[11px] font-bold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10]"
+            >
+                Buy Now
+            </button>
+        </div>
+    );
+}
+
 export default function Plan299Page() {
     const handleCheckout = () => {
         const product = {
@@ -97,112 +135,30 @@ export default function Plan299Page() {
         <section className="site-shell bg-white pb-8 pt-4 md:pb-14 md:pt-[60px]">
             <section>
                 <PageWrapper>
-                    <div className="relative overflow-hidden rounded-b-3xl bg-[#014E4E] px-5 pb-8 pt-4 md:px-8 md:pb-12 md:pt-6 lg:px-10">
-                        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(255,255,255,0.12),transparent_30%),radial-gradient(circle_at_85%_22%,rgba(255,133,11,0.14),transparent_26%)]" />
-
-                        <div className="relative z-10 md:hidden">
-                            <div className="flex flex-col items-center px-1 py-8 text-center">
-                                <h1 className="mb-2 text-[1.8rem] font-bold leading-[1.3] text-white">
-                                    Guaranteed <span className="text-[#FF850B]">Weight Loss</span>
+                    <div className="relative overflow-hidden rounded-[28px] bg-[#045C5C] px-5 py-7 md:px-8 md:py-8 lg:px-8 lg:py-5">
+                        <div className="relative z-10 flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_238px] lg:items-center lg:gap-10">
+                            <div className="flex flex-col items-center justify-center text-center lg:px-6 lg:py-10">
+                                <h1 className="max-w-[720px] text-[2rem] font-extrabold leading-[1.08] text-white md:text-[3.15rem] lg:text-[3.55rem]">
+                                    Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
+                                    <br />
+                                    with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
                                 </h1>
-                                <h2 className="mb-6 text-[1.8rem] font-bold leading-[1.3] text-white">
-                                    with <span className="text-[#FF850B]">Ghar Ka Khana</span> Diet Plan
-                                </h2>
 
-                                <div className="mb-7 flex items-center justify-center gap-2 rounded-lg border border-white/60 px-5 py-3">
-                                    <span className="text-sm font-medium tracking-wide text-white">UPTO</span>
-                                    <span className="text-4xl font-bold leading-none text-[#FF850B]">5</span>
-                                    <span className="text-sm font-medium tracking-wide text-white">KGS IN A MONTH</span>
+                                <div className="mt-7 inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
+                                    <span className="text-[15px] font-semibold uppercase leading-none tracking-[0.02em] text-white md:text-[18px]">
+                                        UPTO
+                                    </span>
+                                    <span className="text-[56px] font-extrabold leading-none text-[#FF8A14] md:text-[68px]">
+                                        5
+                                    </span>
+                                    <span className="text-[15px] font-semibold uppercase leading-none tracking-[0.02em] text-white md:text-[18px]">
+                                        KGS IN A MONTH
+                                    </span>
                                 </div>
-
-                                <button
-                                    type="button"
-                                    onClick={handleCheckout}
-                                    className="inline-flex rounded-full bg-[#FF850B] px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#E57A09]"
-                                >
-                                    Buy Weight Loss Plan Now
-                                </button>
                             </div>
 
-                            <div className="mx-auto mt-7 w-full max-w-[350px] rounded-2xl bg-white p-4 shadow-[0_12px_30px_rgba(0,0,0,0.18)]">
-                                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6B7280]">
-                                    Healthy Plan
-                                </p>
-
-                                <div className="mt-2 flex items-end gap-2">
-                                    <p className="text-4xl font-bold leading-none text-[#014E4E]">₹299</p>
-                                    <p className="pb-1 text-lg text-[#9CA3AF] line-through">₹999</p>
-                                </div>
-
-                                <div className="mt-4 space-y-2">
-                                    {heroFeatures.map((feature) => (
-                                        <div key={feature} className="flex items-start gap-2 text-[13px] text-[#4B5563]">
-                                            <TickIcon />
-                                            <span>{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button
-                                    type="button"
-                                    onClick={handleCheckout}
-                                    className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF850B] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e47708]"
-                                >
-                                    Get This Plan
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="relative z-10 hidden md:grid md:grid-cols-[minmax(0,1fr)_330px] md:items-center md:gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10 lg:py-10">
-                            <div className="flex flex-col items-center text-center md:py-10 lg:py-14 lg:pl-10">
-                                <h1 className="mb-2 text-[2.5rem] font-bold leading-[1.2] text-white lg:text-[3rem] xl:text-[3.5rem]">
-                                    Guaranteed <span className="text-[#FF850B]">Weight Loss</span>
-                                </h1>
-                                <h2 className="mb-8 text-[2.5rem] font-bold leading-[1.2] text-white lg:text-[3rem] xl:text-[3.5rem]">
-                                    with <span className="text-[#FF850B]">Ghar Ka Khana</span> Diet Plan
-                                </h2>
-
-                                <div className="mb-8 flex items-center justify-center gap-3 rounded-lg border border-white/60 px-8 py-4">
-                                    <span className="text-base font-medium tracking-wider text-white">UPTO</span>
-                                    <span className="text-5xl font-bold leading-none text-[#FF850B] lg:text-6xl">5</span>
-                                    <span className="text-base font-medium tracking-wider text-white">KGS IN A MONTH</span>
-                                </div>
-
-                                <button
-                                    type="button"
-                                    onClick={handleCheckout}
-                                    className="inline-flex rounded-full bg-[#FF850B] px-10 py-3.5 text-base font-semibold text-white transition-colors hover:bg-[#E57A09]"
-                                >
-                                    Buy Weight Loss Plan Now
-                                </button>
-                            </div>
-
-                            <div className="mx-auto w-full max-w-[360px] rounded-2xl bg-white p-5 shadow-[0_12px_30px_rgba(0,0,0,0.18)] md:mr-2 lg:mr-0">
-                                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6B7280]">
-                                    Healthy Plan
-                                </p>
-
-                                <div className="mt-2 flex items-end gap-2">
-                                    <p className="text-4xl font-bold leading-none text-[#014E4E]">₹299</p>
-                                    <p className="pb-1 text-lg text-[#9CA3AF] line-through">₹999</p>
-                                </div>
-
-                                <div className="mt-4 space-y-2">
-                                    {heroFeatures.map((feature) => (
-                                        <div key={feature} className="flex items-start gap-2 text-[13px] text-[#4B5563]">
-                                            <TickIcon />
-                                            <span>{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button
-                                    type="button"
-                                    onClick={handleCheckout}
-                                    className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF850B] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e47708]"
-                                >
-                                    Get This Plan
-                                </button>
+                            <div className="mx-auto lg:mx-0 lg:justify-self-end">
+                                <HeroPricingCard onCheckout={handleCheckout} />
                             </div>
                         </div>
                     </div>
