@@ -168,8 +168,8 @@ export default function Plan299Page() {
             <section className="py-12 md:py-20">
                 <div className="site-fill">
                     <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
-                        <div className="max-w-[630px]">
-                            <div className="flex items-center gap-2">
+                        <div className="max-w-[630px] text-center md:text-left">
+                            <div className="flex items-center justify-center gap-2 md:justify-start">
                                 <span className="text-[#f5a623] text-lg">✦</span>
                                 <span className="text-teal-600 text-base font-semibold">Our Testimonials</span>
                             </div>
@@ -365,7 +365,7 @@ export default function Plan299Page() {
                     <div className="mx-auto max-w-[860px] text-center">
                         <div className="mb-1 flex items-center justify-center gap-1.5">
                             <span className="text-[10px] text-[#f5a623]">✦</span>
-                            <span className="text-[10px] font-medium text-[#0D9488] md:text-[11px]">Our Testimonials</span>
+                            <span className="text-[12px] font-semibold text-[#0D9488] md:text-[11px]">Our Testimonials</span>
                         </div>
 
                         <h2 className="text-[2rem] font-extrabold leading-none text-[#252525] md:text-[3rem]">
