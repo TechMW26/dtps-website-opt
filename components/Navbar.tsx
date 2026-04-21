@@ -76,26 +76,26 @@ export default function Navbar({ bgColor }: NavbarProps) {
     <>
       <header className={`relative z-50 w-full ${bgColor ? bgColor : ''}`}>
         <div className="site-card-padding w-full">
-          <div className="flex items-center justify-between gap-4 py-2 md:py-4">
-            <Link href="/" className="flex items-center">
+          <div className="flex items-center justify-between gap-3 py-2 md:py-4 xl:gap-5">
+            <Link href="/" className="flex items-center shrink-0">
               <Image
                 src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
                 alt="Dietitian Poonam Sagar"
                 width={180}
                 height={60}
-                className="h-[48px] w-auto"
+                className="h-[42px] w-auto xl:h-[48px]"
                 priority
               />
             </Link>
 
-            <nav className="items-center justify-center flex-1 hidden gap-2 lg:flex">
+            <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex xl:gap-2">
               {navItems.map((item) => (
                 <div key={item.label} className="relative" ref={item.children ? dropdownRef : undefined}>
                   {item.children ? (
                     <>
                       <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className={`rounded-full px-4 py-2 text-[15px] font-semibold text-white/90 transition-colors hover:text-[#F9D67B] ${
+                        className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${
                           isActive('/plans') ? 'text-[#F9D67B]' : ''
                         }`}
                         aria-expanded={isDropdownOpen}
@@ -133,7 +133,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`rounded-full px-4 py-2 text-[15px] font-semibold text-white/90 transition-colors hover:text-[#F9D67B] ${
+                      className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${
                         isActive(item.href) ? 'text-[#F9D67B]' : ''
                       }`}
                     >
@@ -146,7 +146,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
 
             <Link
               href="/appointment"
-              className="hidden rounded-full bg-[#FF8A1F] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e07a1a] lg:inline-flex"
+              className="hidden shrink-0 rounded-full bg-[#FF8A1F] px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-[#e07a1a] lg:inline-flex xl:px-6 xl:text-sm"
             >
               Book Appointment
             </Link>

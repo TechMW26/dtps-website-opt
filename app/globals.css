@@ -10,14 +10,14 @@
 
 /* ===== Anti-Flicker Image Optimizations ===== */
 /* Prevent layout shift and flickering */
-img {
+img:not([data-nimg]) {
   content-visibility: auto;
   background-color: transparent;
   transition: opacity 0.2s ease-in-out;
 }
 
 /* Images with aspect-ratio to prevent layout shift */
-img[width][height] {
+img[width][height]:not([data-nimg]) {
   aspect-ratio: attr(width) / attr(height);
 }
 
@@ -50,7 +50,7 @@ img.loaded,
 
 /* Prevent image flicker on mobile */
 @media (max-width: 768px) {
-  img {
+  img:not([data-nimg]) {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -58,7 +58,7 @@ img.loaded,
 }
 
 /* Reduce layout shifts */
-img,
+img:not([data-nimg]),
 video {
   max-width: 100%;
   height: auto;
@@ -269,7 +269,7 @@ video {
     transition: var(--transition);
   }
 
-  img {
+  img:not([data-nimg]) {
     max-width: 100%;
     height: auto;
     display: block;
@@ -3420,23 +3420,22 @@ video {
 }
 
 .contact-main {
-  display: flex-col;
-  align-items: center;
-  justify-content: center;
+  display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: stretch;
   gap: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
 }
 
 .contact-form-box {
   background: white;
   border-radius: 24px 0 0 24px;
-  padding: 20px ;
-  box-shadow: var(--shadow-lg);
+  padding: 20px;
 }
 
 .contact-info-card {
-  /* background: var(--primary);
-   */
   background-color: #ffffff;
   border-radius: 0 24px 24px 0;
   padding: 40px;
@@ -3452,7 +3451,7 @@ video {
 .contact-info-icon {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(1, 78, 78, 0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3472,7 +3471,7 @@ video {
 .contact-social {
   margin-top: 30px;
   padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(1, 78, 78, 0.12);
 }
 
 .social-label {
@@ -3510,6 +3509,8 @@ video {
 
 .map-container {
   margin-top: 40px;
+  overflow: hidden;
+  border-radius: 20px;
 }
 
 /* Appointment Page Styles */

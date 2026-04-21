@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Poppins, Epilogue } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { AuthProvider } from './providers';
 import { ThemeProvider } from './providers/ThemeProvider';
@@ -30,6 +31,8 @@ export const viewport: Viewport = {
 const SITE_URL = 'https://www.dtpoonamsagar.com';
 const LOGO_URL =
   'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+const META_PIXEL_PRIMARY_ID = '1249607162337272';
+const META_PIXEL_SECONDARY_ID = '451000204060350';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -67,11 +70,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icon', sizes: '32x32', type: 'image/png' },
+      { url: '/icon', sizes: '192x192', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/favicon.ico',
+    apple: [{ url: '/apple-icon', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/icon',
   },
   openGraph: {
     title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
@@ -123,8 +126,40 @@ export default function RootLayout({
           as="image"
           type="image/webp"
         />
+
+        <Script id="meta-pixel-base" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${META_PIXEL_PRIMARY_ID}');
+            fbq('init', '${META_PIXEL_SECONDARY_ID}');
+            fbq('track', 'PageView');
+          `}
+        </Script>
       </head>
       <body>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_PRIMARY_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_SECONDARY_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+        </noscript>
         <AuthProvider>
           <ThemeProvider>
             <LayoutWrapper>

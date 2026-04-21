@@ -90,7 +90,6 @@ export default function ContactPage() {
           </div>
 
           <div className="contact-grid contact-main">
-            {/* Contact Form */}
             <div className="contact-form-box">
               <form className="contact-form">
                 <div className="form-row">
@@ -114,7 +113,6 @@ export default function ContactPage() {
               </form>
             </div>
 
-            {/* Contact Info Card */}
             <div className="contact-info-card">
               {contactInfo.map((item) => (
                 <div key={item.label} className="contact-info-item">
@@ -141,7 +139,6 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Google Maps */}
           <div className="map-container">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.5!2d77.4!3d23.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDE1JzAwLjAiTiA3N8KwMjQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"

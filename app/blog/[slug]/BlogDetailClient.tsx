@@ -190,6 +190,7 @@ export default function BlogDetailClient() {
                 alt={blog.title}
                 fill
                 className="object-cover"
+                style={{ objectFit: 'cover', objectPosition: 'center' }}
                 priority
                 sizes="(max-width: 820px) 100vw, 820px"
               />

@@ -192,22 +192,22 @@ const awards = [
 
 const noPushItems = [
   {
-    icon: "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/no_meals.svg",
+    icon: "/images/icondiv1.png",
     alt: "No meals",
     text: "Crash diets. Starvation.",
   },
   {
-    icon: "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/pill-1.svg",
+    icon: "/images/icondiv2.png",
     alt: "Pills",
     text: "Glutathione. Fat-burner pills. Detox teas.",
   },
   {
-    icon: "https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/cardio_load.svg",
+    icon: "/images/icondiv3.png",
     alt: "Cardio",
     text: "Heavy gym plans if you do not want them.",
   },
   {
-    icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad671.jpg",
+    icon: "/images/icondiv4.png",
     alt: "Fad Diet",
     text: "Fad expensive salad or juice-only diet.",
   },
@@ -611,7 +611,7 @@ export default function WeddingPlanPage() {
                 <div className="relative h-[416px] w-full max-w-[315px] overflow-hidden rounded-[16px] bg-[linear-gradient(180deg,#EAEEF1_0%,#FFFFFF_100%)]">
                   <div className="absolute left-[52px] top-0 h-full w-[137px] bg-[#FF850B]" />
                   <Image
-                    src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
+                    src="/images/Bride.png"
                     alt="Bride"
                     width={228}
                     height={416}
@@ -640,7 +640,7 @@ export default function WeddingPlanPage() {
                               alt={item.alt}
                               width={56}
                               height={56}
-                              className="h-[56px] w-[56px] object-contain brightness-0 invert"
+                              className="h-[56px] w-[56px] object-contain [filter:brightness(0)_saturate(100%)_invert(23%)_sepia(47%)_saturate(940%)_hue-rotate(142deg)_brightness(90%)_contrast(101%)]"
                               loading="lazy"
                             />
                           </div>
@@ -662,16 +662,16 @@ export default function WeddingPlanPage() {
 
               {/* LEFT IMAGE */}
               <div className="flex justify-center md:justify-start">
-                <div className="relative h-[620px] w-[280px] rounded-[22px] md:h-[700px] md:w-[420px]">
+                <div className="relative h-[620px] w-[320px] rounded-[22px] md:h-[700px] md:w-[500px]">
                   <div className="absolute bottom-0 top-[-24px] left-1/4 w-[130px] -translate-x-1/2 bg-[#ff850b] md:left-[8px] md:top-[-48px] md:w-[150px] md:translate-x-0"></div>
                   <Image
-                    src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
+                    src="/images/Bride.png"
                     alt="Bride"
-                    width={420}
-                    height={580}
-                    className="absolute bottom-0 left-1/2 h-auto w-[280px] -translate-x-1/2 md:w-[420px]"
+                    width={500}
+                    height={660}
+                    className="absolute bottom-0 left-1/2 h-auto w-[320px] -translate-x-1/2 md:w-[500px]"
                     loading="lazy"
-                    sizes="(max-width: 767px) 280px, 420px"
+                    sizes="(max-width: 767px) 320px, 500px"
                     quality={75}
                   />
                 </div>
@@ -693,6 +693,7 @@ export default function WeddingPlanPage() {
                           width={40}
                           height={40}
                           loading="lazy"
+                          className="h-10 w-10 object-contain [filter:brightness(0)_saturate(100%)_invert(23%)_sepia(47%)_saturate(940%)_hue-rotate(142deg)_brightness(90%)_contrast(101%)]"
                         />
                       </div>
 

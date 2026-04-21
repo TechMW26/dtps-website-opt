@@ -110,6 +110,7 @@ export default function BlogPage() {
                         alt={featured.title}
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
                         priority
                         sizes="(max-width: 767px) 100vw, 50vw"
                       />
@@ -152,6 +153,7 @@ export default function BlogPage() {
                           alt={blog.title}
                           fill
                           className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
+                          style={{ objectFit: 'cover', objectPosition: 'center' }}
                           loading="lazy"
                           sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                         />

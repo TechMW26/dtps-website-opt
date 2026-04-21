@@ -80,13 +80,11 @@ function BadgeIcon({ type }: { type: (typeof badges)[number]["icon"] }) {
     <Image
       src={iconSrc}
       alt=""
-      width={24}
-      height={24}
-      className="object-contain"
-      style={{ width: 'auto', height: 'auto' }}
+      width={22}
+      height={22}
+      className="h-[22px] w-[22px] shrink-0 object-contain"
       loading="lazy"
-      sizes="24px"
-      unoptimized
+      sizes="22px"
     />
   );
 }
