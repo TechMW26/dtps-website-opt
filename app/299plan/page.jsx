@@ -135,10 +135,10 @@ export default function Plan299Page() {
         <section className="site-shell bg-white pb-8 pt-4 md:pb-14 md:pt-[60px]">
             <section>
                 <PageWrapper>
-                    <div className="relative overflow-hidden rounded-[28px] bg-[#045C5C] p-5 md:px-8 md:py-8 lg:px-8 lg:py-6">
+                    <div className="relative overflow-hidden  text-teal-600 p-5 md:px-8 md:py-8 lg:px-8 lg:py-6">
                         <div className="relative z-10 flex flex-col gap-7 lg:grid lg:grid-cols-[minmax(0,1fr)_238px] lg:items-center lg:gap-10 lg:px-6">
                             <div className="flex flex-col items-center justify-center text-center lg:py-10">
-                                <h1 className="max-w-[720px] text-[2rem] font-extrabold leading-[1.08] text-white md:text-[3.15rem] lg:text-[3.55rem]">
+                                <h1 className="max-w-[720px] text-[1.45rem] font-extrabold leading-[1.08] text-white md:text-[2.2rem] lg:text-[2.75rem] lg:whitespace-nowrap">
                                     Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
                                     <br />
                                     with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
