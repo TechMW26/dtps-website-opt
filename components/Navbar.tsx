@@ -88,7 +88,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
               />
             </Link>
 
-            <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex xl:gap-2">
+            <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex xl:gap-2">
               {navItems.map((item) => (
                 <div key={item.label} className="relative" ref={item.children ? dropdownRef : undefined}>
                   {item.children ? (
@@ -146,14 +146,14 @@ export default function Navbar({ bgColor }: NavbarProps) {
 
             <Link
               href="/appointment"
-              className="hidden shrink-0 rounded-full bg-[#FF8A1F] px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-[#e07a1a] lg:inline-flex xl:px-6 xl:text-sm"
+              className="hidden shrink-0 rounded-full bg-[#FF8A1F] px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-[#e07a1a] xl:inline-flex xl:px-6 xl:text-sm"
             >
               Book Appointment
             </Link>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FF8A1F] text-white lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FF8A1F] text-white xl:hidden"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -167,7 +167,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed left-4 right-4 top-20 z-40 max-h-[calc(100vh-100px)] overflow-y-auto rounded-2xl bg-[#F9D67B] p-5 shadow-xl lg:hidden">
+        <div className="fixed left-4 right-4 top-20 z-40 max-h-[calc(100vh-100px)] overflow-y-auto rounded-2xl bg-[#F9D67B] p-5 shadow-xl xl:hidden">
           {navItems.map((item) => (
             <div key={item.label}>
               {item.children ? (
