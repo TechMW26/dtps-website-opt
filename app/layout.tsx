@@ -70,11 +70,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon', sizes: '32x32', type: 'image/png' },
-      { url: '/icon', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-icon', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/icon',
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/favicon.ico',
   },
   openGraph: {
     title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',

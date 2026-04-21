@@ -192,23 +192,23 @@ const awards = [
 
 const noPushItems = [
   {
-    icon: "/images/icondiv1.png",
+    icon: "/images/no_meals.png",
     alt: "No meals",
     text: "Crash diets. Starvation.",
   },
   {
-    icon: "/images/icondiv2.png",
-    alt: "Pills",
+    icon: "/images/pill.png",
+    alt: "Pill",
     text: "Glutathione. Fat-burner pills. Detox teas.",
   },
   {
-    icon: "/images/icondiv3.png",
-    alt: "Cardio",
+    icon: "/images/cardio_load.png",
+    alt: "Cardio load",
     text: "Heavy gym plans if you do not want them.",
   },
   {
-    icon: "/images/icondiv4.png",
-    alt: "Fad Diet",
+    icon: "/images/fluent_bowl-salad-24-regular.png",
+    alt: "Fad salad",
     text: "Fad expensive salad or juice-only diet.",
   },
 ];
@@ -611,7 +611,7 @@ export default function WeddingPlanPage() {
                 <div className="relative h-[416px] w-full max-w-[315px] overflow-hidden rounded-[16px] bg-[linear-gradient(180deg,#EAEEF1_0%,#FFFFFF_100%)]">
                   <div className="absolute left-[52px] top-0 h-full w-[137px] bg-[#FF850B]" />
                   <Image
-                    src="/images/Bride.png"
+                    src="/images/edit%201.png"
                     alt="Bride"
                     width={228}
                     height={416}
@@ -640,7 +640,7 @@ export default function WeddingPlanPage() {
                               alt={item.alt}
                               width={56}
                               height={56}
-                              className="h-[56px] w-[56px] object-contain [filter:brightness(0)_saturate(100%)_invert(23%)_sepia(47%)_saturate(940%)_hue-rotate(142deg)_brightness(90%)_contrast(101%)]"
+                              className="h-[56px] w-[56px] object-contain"
                               loading="lazy"
                             />
                           </div>
@@ -665,11 +665,11 @@ export default function WeddingPlanPage() {
                 <div className="relative h-[620px] w-[320px] rounded-[22px] md:h-[700px] md:w-[500px]">
                   <div className="absolute bottom-0 top-[-24px] left-1/4 w-[130px] -translate-x-1/2 bg-[#ff850b] md:left-[8px] md:top-[-48px] md:w-[150px] md:translate-x-0"></div>
                   <Image
-                    src="/images/Bride.png"
+                    src="/images/edit%201.png"
                     alt="Bride"
                     width={500}
                     height={660}
-                    className="absolute bottom-0 left-1/2 h-auto w-[320px] -translate-x-1/2 md:w-[500px]"
+                    className="absolute left-1/2 top-0 h-full w-auto -translate-x-1/2"
                     loading="lazy"
                     sizes="(max-width: 767px) 320px, 500px"
                     quality={75}
@@ -693,7 +693,7 @@ export default function WeddingPlanPage() {
                           width={40}
                           height={40}
                           loading="lazy"
-                          className="h-10 w-10 object-contain [filter:brightness(0)_saturate(100%)_invert(23%)_sepia(47%)_saturate(940%)_hue-rotate(142deg)_brightness(90%)_contrast(101%)]"
+                          className="h-10 w-10 object-contain"
                         />
                       </div>
 
