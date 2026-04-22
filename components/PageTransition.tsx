@@ -1,71 +1,106 @@
 'use client';
 
 /**
- * PageTransition
+ * PageTransition – "Nourish & Reveal"
  * ------------------------------------------------------------------
- * A wellness-themed route transition that plays whenever the user
- * navigates between pages of the site.
+ * Wellness-themed route transition.
  *
- * Concept ("Nourish & Reveal"):
- *   - Two organic, leaf-shaped curtains in the brand teal sweep in
- *     from the top and bottom of the viewport, briefly meeting in
- *     the middle.
- *   - At the meet point, a glowing leaf glyph + "DTPS" wordmark
- *     pulses, echoing the brand's nutrition / transformation story.
- *   - The curtains then sweep back out, revealing the new page,
- *     while the page contents themselves fade & lift up (a subtle
- *     "transformation" reveal).
+ * Sequence on every navigation:
+ *   1. Curtain immediately sweeps in from top + bottom (covers screen).
+ *   2. At the midpoint (when the screen is fully covered) we swap the
+ *      rendered page from the OLD route to the NEW route. The user
+ *      never sees a hard page switch.
+ *   3. Curtain sweeps back out, revealing the new page which fades up
+ *      smoothly underneath.
  *
  * Implementation notes:
- *   - Pure CSS keyframes + a tiny React state machine. No new deps.
- *   - Skipped for /admin routes so it doesn't get in the way of the
- *     dashboard.
+ *   - We snapshot `children` in state so the previously rendered route
+ *     stays mounted until the curtain has covered the screen. A ref
+ *     holds the latest `children` so the swap always picks up the
+ *     freshest tree.
+ *   - Skipped for /admin routes.
  *   - Honours `prefers-reduced-motion` (see globals.css).
  */
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-const TRANSITION_MS = 1100; // total overlay duration (in + out)
+const COVER_MS = 480;  // time for curtains to fully cover the screen
+const TOTAL_MS = 1100; // total overlay duration (cover + hold + reveal)
+
+const LOGO_URL =
+  'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const [displayPath, setDisplayPath] = useState(pathname);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const firstRender = useRef(true);
+
+  // Frozen snapshot of the page that is currently visible to the user.
+  const [renderedChildren, setRenderedChildren] = useState(children);
+  const [renderedPath, setRenderedPath] = useState(pathname);
+  const renderedPathRef = useRef(pathname);
+
+  // 'idle' | 'covering' | 'revealing'
+  const [phase, setPhase] = useState<'idle' | 'covering' | 'revealing'>('idle');
+
+  // Always keep the latest children available for the swap.
+  const latestChildren = useRef(children);
+  useEffect(() => {
+    latestChildren.current = children;
+  }, [children]);
 
   const isAdminRoute = pathname?.startsWith('/admin');
+  const wasAdminRoute = renderedPathRef.current?.startsWith('/admin');
 
   useEffect(() => {
-    // Don't animate on first mount or on admin routes.
-    if (firstRender.current) {
-      firstRender.current = false;
-      setDisplayPath(pathname);
+    if (pathname === renderedPathRef.current) return;
+
+    // Don't run the curtain on admin routes (entering or leaving) – just swap.
+    if (isAdminRoute || wasAdminRoute) {
+      setRenderedChildren(latestChildren.current);
+      setRenderedPath(pathname);
+      renderedPathRef.current = pathname;
+      setPhase('idle');
       return;
     }
 
-    if (isAdminRoute) {
-      setDisplayPath(pathname);
-      return;
-    }
+    setPhase('covering');
 
-    setIsAnimating(true);
-    setDisplayPath(pathname);
+    const swapTimer = setTimeout(() => {
+      // At the midpoint the curtain fully covers the viewport – safe to swap.
+      setRenderedChildren(latestChildren.current);
+      setRenderedPath(pathname);
+      renderedPathRef.current = pathname;
+      setPhase('revealing');
+    }, COVER_MS);
 
-    const t = setTimeout(() => setIsAnimating(false), TRANSITION_MS);
-    return () => clearTimeout(t);
-  }, [pathname, isAdminRoute]);
+    const endTimer = setTimeout(() => {
+      setPhase('idle');
+    }, TOTAL_MS);
+
+    return () => {
+      clearTimeout(swapTimer);
+      clearTimeout(endTimer);
+    };
+  }, [pathname, isAdminRoute, wasAdminRoute]);
+
+  const isAnimating = phase !== 'idle';
 
   return (
     <>
-      {/* Page content. `key` forces a remount per route so the fade-up
-          animation replays on every navigation. */}
-      <div key={displayPath} className="page-transition-content">
-        {children}
+      {/* Currently displayed page. Fades out while the curtain covers,
+          and is keyed by renderedPath so the new page replays its
+          fade-up animation when we swap. */}
+      <div
+        key={renderedPath}
+        className={`page-transition-content ${
+          phase === 'covering' ? 'is-leaving' : ''
+        } ${phase === 'revealing' ? 'is-entering' : ''}`}
+      >
+        {renderedChildren}
       </div>
 
-      {/* Curtain overlay – only rendered on public routes */}
-      {!isAdminRoute && (
+      {/* Curtain overlay – only on public routes */}
+      {!isAdminRoute && !wasAdminRoute && (
         <div
           className={`page-transition-overlay ${isAnimating ? 'is-active' : ''}`}
           aria-hidden="true"
@@ -74,39 +109,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
           <div className="page-transition-curtain page-transition-curtain--bottom" />
 
           <div className="page-transition-badge">
-            <svg
-              className="page-transition-leaf"
-              viewBox="0 0 64 64"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Stylised leaf — echoes the nutrition / wellness theme */}
-              <path
-                d="M52 8C28 8 12 24 12 44c0 6 2 10 4 12 2-14 12-26 28-32-12 8-20 18-22 32 2 2 6 4 12 4 20 0 36-16 36-40V8H52Z"
-                fill="url(#leafGradient)"
-              />
-              <path
-                d="M14 56c4-16 16-28 32-34"
-                stroke="#ffffff"
-                strokeWidth="2"
-                strokeLinecap="round"
-                opacity="0.85"
-              />
-              <defs>
-                <linearGradient
-                  id="leafGradient"
-                  x1="12"
-                  y1="8"
-                  x2="60"
-                  y2="56"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop offset="0%" stopColor="#7be3c8" />
-                  <stop offset="100%" stopColor="#00a19a" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <span className="page-transition-wordmark">DTPS</span>
+            <img src={LOGO_URL} alt="DTPS" className="page-transition-logo" />
             <span className="page-transition-tagline">Nourish · Transform</span>
           </div>
         </div>
