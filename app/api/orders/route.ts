@@ -3,7 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 import connectDB from '@/lib/mongodb';
 import Order from '@/models/Order';
 import Payment from '@/models/Payment';
+import Coupon from '@/models/Coupon';
 import Razorpay from 'razorpay';
+import { calculateSubtotal, validateCouponForProducts } from '@/lib/coupons';
 
 // Initialize Razorpay instance safely
 let razorpay: Razorpay | null = null;
@@ -24,16 +26,49 @@ export async function POST(req: NextRequest) {
     const { action, ...data } = await req.json();
 
     if (action === 'create') {
+      const products = Array.isArray(data.products) ? data.products : [];
+      if (products.length === 0) {
+        return NextResponse.json(
+          { success: false, message: 'At least one product is required.' },
+          { status: 400 }
+        );
+      }
+
+      const subtotal = calculateSubtotal(products);
+      let discount = 0;
+      let total = subtotal;
+      let appliedCoupon: any = null;
+
+      if (data.couponCode) {
+        const couponResult = await validateCouponForProducts(data.couponCode, products);
+        if (!couponResult.valid) {
+          return NextResponse.json(
+            { success: false, message: couponResult.message, coupon: couponResult },
+            { status: 400 }
+          );
+        }
+
+        discount = couponResult.discount;
+        total = couponResult.total;
+        appliedCoupon = couponResult.coupon
+          ? {
+              ...couponResult.coupon,
+              discountAmount: couponResult.discount,
+            }
+          : null;
+      }
+
       // Create order
       const orderId = uuidv4();
       
       const razorpayOrder = await getRazorpayInstance().orders.create({
-        amount: Math.round(data.total * 100), // Amount in paise
+        amount: Math.round(total * 100), // Amount in paise
         currency: 'INR',
         receipt: orderId,
         notes: {
           customerName: data.customerName,
           customerEmail: data.customerEmail,
+          couponCode: appliedCoupon?.code || '',
         },
       });
 
@@ -44,9 +79,11 @@ export async function POST(req: NextRequest) {
         customerPhone: data.customerPhone,
         address: data.address,
         city: data.city,
-        products: data.products,
-        subtotal: data.subtotal,
-        total: data.total,
+        products,
+        subtotal,
+        discount,
+        total,
+        coupon: appliedCoupon,
         paymentStatus: 'pending',
         paymentMethod: 'razorpay',
         razorpayOrderId: razorpayOrder.id,
@@ -58,11 +95,28 @@ export async function POST(req: NextRequest) {
         success: true,
         order: order,
         razorpayOrderId: razorpayOrder.id,
+        razorpayAmount: razorpayOrder.amount,
         razorpayKey: process.env.RAZORPAY_KEY_ID,
       });
     } else if (action === 'verify') {
       // Verify payment
       const { razorpayPaymentId, razorpayOrderId, orderId } = data;
+
+      const existingOrder = await Order.findOne({ orderId });
+      if (!existingOrder) {
+        return NextResponse.json(
+          { success: false, message: 'Order not found' },
+          { status: 404 }
+        );
+      }
+
+      if (existingOrder.paymentStatus === 'completed') {
+        return NextResponse.json({
+          success: true,
+          message: 'Payment already verified',
+          order: orderId,
+        });
+      }
 
       // Get payment details from Razorpay
       const payment = await getRazorpayInstance().payments.fetch(razorpayPaymentId);
@@ -77,6 +131,13 @@ export async function POST(req: NextRequest) {
             razorpayOrderId,
           }
         );
+
+        if (existingOrder.coupon?.code) {
+          await Coupon.updateOne(
+            { code: existingOrder.coupon.code },
+            { $inc: { usedCount: 1 } }
+          );
+        }
 
         // Create payment record
         const paymentRecord = new Payment({
@@ -150,7 +211,7 @@ export async function GET(req: NextRequest) {
     // lean() skips Mongoose hydration → much faster
     const orders = await Order.find(filter)
       .sort({ createdAt: -1 })
-      .select('orderId customerName customerEmail customerPhone city total paymentStatus createdAt products')
+      .select('orderId customerName customerEmail customerPhone city subtotal discount total paymentStatus createdAt products coupon')
       .lean();
 
     return NextResponse.json({ success: true, orders });

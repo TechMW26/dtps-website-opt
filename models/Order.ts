@@ -16,7 +16,17 @@ export interface IOrder extends Document {
     quantity: number;
   }>;
   subtotal: number;
+  discount: number;
   total: number;
+  coupon?: {
+    code: string;
+    name: string;
+    scope: 'all' | 'specific';
+    discountType: 'percentage' | 'flat';
+    discountValue: number;
+    discountAmount: number;
+    applicableProductIds: string[];
+  } | null;
   paymentStatus: 'pending' | 'completed' | 'failed' | 'cancelled';
   paymentMethod: string;
   razorpayOrderId?: string;
@@ -65,9 +75,31 @@ const OrderSchema = new Schema<IOrder>(
       type: Number,
       required: true,
     },
+    discount: {
+      type: Number,
+      default: 0,
+    },
     total: {
       type: Number,
       required: true,
+    },
+    coupon: {
+      code: String,
+      name: String,
+      scope: {
+        type: String,
+        enum: ['all', 'specific'],
+      },
+      discountType: {
+        type: String,
+        enum: ['percentage', 'flat'],
+      },
+      discountValue: Number,
+      discountAmount: Number,
+      applicableProductIds: {
+        type: [String],
+        default: [],
+      },
     },
     paymentStatus: {
       type: String,

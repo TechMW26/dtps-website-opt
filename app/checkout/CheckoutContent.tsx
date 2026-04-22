@@ -20,6 +20,17 @@ interface Product {
   quantity: number;
 }
 
+interface AppliedCoupon {
+  code: string;
+  name: string;
+  scope: 'all' | 'specific';
+  applicableProductIds: string[];
+  discountType: 'percentage' | 'flat';
+  discountValue: number;
+  minOrderAmount: number;
+  maxDiscountAmount?: number | null;
+}
+
 const TERMS_AND_CONDITIONS = `Terms & Conditions
 
 These terms and conditions ("Terms") govern your use of the dietitian website "dtpoonamsagar.com" operated by Dietitian Poonam Sagar ("we," "us," or "our"). By accessing or using the Website, you agree to be bound by these Terms. If you do not agree with these Terms, please do not use the Website.
@@ -70,6 +81,13 @@ export default function CheckoutContent() {
   const [loading, setLoading] = useState(false);
   const [orderStatus, setOrderStatus] = useState<'idle' | 'processing' | 'success' | 'failed'>('idle');
   const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showCouponField, setShowCouponField] = useState(false);
+  const [couponCode, setCouponCode] = useState('');
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponMessage, setCouponMessage] = useState('');
+  const [couponError, setCouponError] = useState('');
+  const [discount, setDiscount] = useState(0);
+  const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon | null>(null);
 
   useEffect(() => {
     // Get products from URL params or session storage
@@ -89,6 +107,62 @@ export default function CheckoutContent() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) {
+      setCouponError('Please enter a coupon code.');
+      setCouponMessage('');
+      return;
+    }
+
+    setCouponLoading(true);
+    setCouponError('');
+    setCouponMessage('');
+
+    try {
+      const response = await fetch('/api/coupons/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          code: couponCode.trim(),
+          products,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.valid) {
+        setAppliedCoupon(null);
+        setDiscount(0);
+        setTotal(subtotal);
+        setCouponError(data.message || 'Unable to apply coupon.');
+        return;
+      }
+
+      setAppliedCoupon(data.coupon);
+      setDiscount(data.discount);
+      setTotal(data.total);
+      setCouponCode(data.code);
+      setCouponMessage(data.message || 'Coupon applied successfully.');
+    } catch (error) {
+      setAppliedCoupon(null);
+      setDiscount(0);
+      setTotal(subtotal);
+      setCouponError('Unable to validate coupon right now.');
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+  const handleRemoveCoupon = () => {
+    setAppliedCoupon(null);
+    setDiscount(0);
+    setTotal(subtotal);
+    setCouponMessage('Coupon removed.');
+    setCouponError('');
+    setCouponCode('');
   };
 
   const handlePlaceOrder = async () => {
@@ -120,8 +194,7 @@ export default function CheckoutContent() {
           address: formData.city,
           city: formData.city,
           products: products,
-          subtotal: subtotal,
-          total: total,
+          couponCode: appliedCoupon?.code || couponCode.trim(),
         }),
       });
 
@@ -134,7 +207,7 @@ export default function CheckoutContent() {
         // Open Razorpay directly with user details
         const options = {
           key: data.razorpayKey,
-          amount: Math.round(total * 100),
+          amount: data.razorpayAmount,
           currency: 'INR',
           name: 'Dietitian Poonam Sagar',
           description: 'Subscription Plan Purchase',
@@ -306,6 +379,14 @@ export default function CheckoutContent() {
                   <span className="text-gray-700">Subtotal</span>
                   <span className="font-semibold text-gray-900">₹{subtotal.toLocaleString()}</span>
                 </div>
+                {discount > 0 && (
+                  <div className="flex justify-between mb-2 text-green-700">
+                    <span>
+                      Coupon ({appliedCoupon?.code})
+                    </span>
+                    <span className="font-semibold">-₹{discount.toLocaleString()}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-lg font-bold">
                   <span>Total</span>
                   <span className="text-gray-900">₹{total.toLocaleString()}</span>
@@ -315,11 +396,53 @@ export default function CheckoutContent() {
               <div>
                 <button
                   className="text-orange-600 hover:text-orange-700 font-medium"
-                  onClick={() => setShowTermsModal(true)}
+                  type="button"
+                  onClick={() => setShowCouponField((current) => !current)}
                 >
                   Have a coupon? Click here to enter your coupon code
                 </button>
               </div>
+
+              {showCouponField && (
+                <div className="border border-orange-200 bg-white rounded-lg p-4 space-y-3">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Coupon Code
+                  </label>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="text"
+                      value={couponCode}
+                      onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
+                      placeholder="Enter your coupon code"
+                      className="flex-1 px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleApplyCoupon}
+                      disabled={couponLoading}
+                      className="px-5 py-2 rounded-lg bg-orange-600 text-white font-semibold hover:bg-orange-700 disabled:opacity-50"
+                    >
+                      {couponLoading ? 'Applying...' : 'Apply Coupon'}
+                    </button>
+                    {appliedCoupon && (
+                      <button
+                        type="button"
+                        onClick={handleRemoveCoupon}
+                        className="px-5 py-2 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50"
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                  {couponMessage && <p className="text-sm text-green-600">{couponMessage}</p>}
+                  {couponError && <p className="text-sm text-red-600">{couponError}</p>}
+                  {appliedCoupon?.scope === 'specific' && appliedCoupon.applicableProductIds.length > 0 && (
+                    <p className="text-xs text-gray-500">
+                      This coupon applies to: {appliedCoupon.applicableProductIds.join(', ')}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Payment Method */}
