@@ -107,9 +107,31 @@ const nextConfig = {
     ];
   },
 
-  // Add security headers while disabling browser/proxy caching.
+  // Add security headers, cache static assets aggressively, and disable
+  // browser caching only for HTML/API responses.
   async headers() {
     return [
+      // Hashed Next.js build assets – immutable & long-lived.
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Static images shipped from /public – long-lived (revalidate via filename).
+      {
+        source: '/:all*(\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.avif|\\.svg|\\.ico|\\.woff|\\.woff2)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Everything else (HTML / API): no caching.
       {
         source: '/:path*',
         headers: [

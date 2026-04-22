@@ -8,18 +8,20 @@ import LayoutWrapper from '@/components/LayoutWrapper';
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-poppins',
   display: 'swap',
   preload: true,
+  adjustFontFallback: true,
 });
 
 const epilogue = Epilogue({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['600', '700'],
   variable: '--font-epilogue',
   display: 'swap',
   preload: true,
+  adjustFontFallback: true,
 });
 
 export const viewport: Viewport = {
@@ -126,7 +128,7 @@ export default function RootLayout({
           type="image/webp"
         />
 
-        <Script id="meta-pixel-base" strategy="afterInteractive">
+        <Script id="meta-pixel-base" strategy="lazyOnload">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

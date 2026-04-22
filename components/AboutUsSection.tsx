@@ -52,7 +52,9 @@ export default function AboutUsSection() {
               height={770}
               loading="lazy"
               decoding="async"
+              fetchPriority="low"
               className="w-full h-auto object-contain"
+              style={{ aspectRatio: '700 / 770' }}
             />
           </div>
         </div>

@@ -248,6 +248,7 @@ export default function ServicesSection() {
               alt="What happens after I start"
               loading="lazy"
               decoding="async"
+              fetchPriority="low"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/80 via-black/50 to-black/30">
