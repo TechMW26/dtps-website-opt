@@ -61,7 +61,7 @@ const nextConfig = {
     loader: 'custom',
     loaderFile: './lib/image-loader.js',
     formats: ['image/avif', 'image/webp'],
-    qualities: [85, 90],
+    qualities: [ 90],
     minimumCacheTTL: 0,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],

@@ -490,7 +490,9 @@ export default function PCODPage() {
               </div>
 
               <h2 className="text-[#1E1E1E] md:text-start text-center text-[28px] md:text-[44px] font-bold leading-[1.2] mt-2">
-                Over 1,00,000+<br />People Manage PCOD Successfully
+             Over <span className="text-[#FF850B] " >1,00,000+</span>
+              <br />
+                People Manage PCOD Successfully
               </h2>
               <p className="text-[#828283] md:text-start text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Choose a plan as per your requirements and start your wellness journey. See you around!

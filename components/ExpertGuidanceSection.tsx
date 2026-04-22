@@ -170,7 +170,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
       setCounters({
         rating: Math.round(48 * progress) / 10,
         success: Math.round(98 * progress),
-        clients: Math.round(75 * progress),
+        clients: Math.round(1 * progress),
       });
 
       if (step >= steps) clearInterval(timer);
@@ -359,7 +359,7 @@ export default function ExpertGuidanceSection({ variant = 'teal' }: { variant?: 
           <div className="mx-auto grid max-w-[845px] grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             <CounterBox value={counters.rating.toFixed(1)} label="Google Rating" />
             <CounterBox value={`${counters.success}%`} label="Success Rate" />
-            <CounterBox value={`${counters.clients}K+`} label="Satisfied Clients" />
+            <CounterBox value={`${counters.clients}Lakh+`} label="Satisfied Clients" />
             <CounterBox value="" label="" stacked />
           </div>
         </div>
