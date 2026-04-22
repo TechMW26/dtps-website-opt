@@ -1,46 +1,52 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV !== 'production';
+
 const noCacheHeaders = [
-  {
-    key: 'Cache-Control',
-    value: 'no-store, no-cache, must-revalidate, proxy-revalidate',
-  },
-  {
-    key: 'Pragma',
-    value: 'no-cache',
-  },
-  {
-    key: 'Expires',
-    value: '0',
-  },
+  { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate, proxy-revalidate' },
+  { key: 'Pragma', value: 'no-cache' },
+  { key: 'Expires', value: '0' },
+];
+
+const csp = [
+  "default-src 'self'",
+  "img-src 'self' data: blob: https://ik.imagekit.io https://www.facebook.com https://*.fbcdn.net https://img.youtube.com https://placehold.co https://randomuser.me https://cdn.jsdelivr.net",
+  "media-src 'self' https://ik.imagekit.io",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://checkout.razorpay.com https://www.youtube.com",
+  "frame-src 'self' https://www.youtube.com https://api.razorpay.com https://checkout.razorpay.com",
+  "connect-src 'self' https://ik.imagekit.io https://api.razorpay.com https://www.facebook.com https://connect.facebook.net https://cdn.jsdelivr.net http://ip-api.com" + (isDev ? " ws://localhost:* wss://localhost:* http://localhost:*" : ""),
+  "worker-src 'self' blob:",
+  "manifest-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  'upgrade-insecure-requests',
+].join('; ');
+
+const securityHeaders = [
+  { key: 'Content-Security-Policy', value: csp },
+  { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+  { key: 'X-Frame-Options', value: 'DENY' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+  { key: 'X-XSS-Protection', value: '1; mode=block' },
 ];
 
 const nextConfig = {
-  turbopack: {
-    root: __dirname,
-  },
-
-  // Enable compression
+  turbopack: { root: __dirname },
   compress: true,
-
-  // Optimize production builds
   poweredByHeader: false,
-
-  // Strip non-error console statements from production bundles to avoid
-  // leaking debug info to end users.
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production'
-      ? { exclude: ['error', 'warn'] }
-      : false,
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
-
-  // Disable ETags so browsers do not keep revalidating stale assets.
   generateEtags: false,
-
-  // Experimental optimizations
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    // Tree-shake heavy libraries to reduce unused JS in shared chunks.
     optimizePackageImports: [
       'lucide-react',
       'react-icons',
@@ -52,7 +58,6 @@ const nextConfig = {
       '@radix-ui/react-tabs',
     ],
   },
-
   images: {
     loader: 'custom',
     loaderFile: './lib/image-loader.js',
@@ -64,94 +69,42 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
-      {
-        protocol: 'https',
-        hostname: 'staging.dtpoonamsagar.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'randomuser.me',
-      },
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-      },
-      {
-        protocol: 'https',
-        hostname: 'img.youtube.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.dtpoonamsagar.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'dtpoonamsagar.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'ik.imagekit.io',
-      },
+      { protocol: 'http',  hostname: 'localhost' },
+      { protocol: 'https', hostname: 'staging.dtpoonamsagar.com' },
+      { protocol: 'https', hostname: 'randomuser.me' },
+      { protocol: 'https', hostname: 'placehold.co' },
+      { protocol: 'https', hostname: 'img.youtube.com' },
+      { protocol: 'https', hostname: 'www.dtpoonamsagar.com' },
+      { protocol: 'https', hostname: 'dtpoonamsagar.com' },
+      { protocol: 'https', hostname: 'ik.imagekit.io' },
     ],
   },
-
-  // Redirect old /weight-loss URL to new /weight-loss-plan
   async redirects() {
     return [
-      {
-        source: '/weight-loss',
-        destination: '/weight-loss-plan',
-        permanent: true,
-      },
-      {
-        source: '/contact-form',
-        destination: '/contact',
-        permanent: true,
-      },
+      { source: '/weight-loss', destination: '/weight-loss-plan', permanent: true },
+      { source: '/contact-form', destination: '/contact', permanent: true },
     ];
   },
-
-  // Add security headers, cache static assets aggressively, and disable
-  // browser caching only for HTML/API responses.
   async headers() {
     return [
-      // Hashed Next.js build assets – immutable & long-lived.
       {
         source: '/_next/static/:path*',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      // Static images shipped from /public – long-lived (revalidate via filename).
       {
         source: '/:all*(\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.avif|\\.svg|\\.ico|\\.woff|\\.woff2)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      // Everything else (HTML / API): no caching.
       {
         source: '/:path*',
         headers: [
           ...noCacheHeaders,
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          ...securityHeaders,
         ],
       },
     ];

@@ -124,7 +124,7 @@ export default function SecurityPage() {
   const rowHover = isDark ? 'hover:bg-slate-700/40' : 'hover:bg-slate-50';
 
   return (
-    <div className={`p-6 space-y-6 min-h-full ${isDark ? 'bg-slate-900' : 'bg-slate-50'}`}>
+    <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -132,8 +132,8 @@ export default function SecurityPage() {
             <Shield className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className={`text-2xl font-bold ${titleText}`}>Security Center</h1>
-            <p className={`text-sm ${subtleText}`}>
+            <h1 className={titleText}>Security Center</h1>
+            <p className={subtleText}>
               Live audit trail and posture for the DTPS admin & public site.
             </p>
           </div>

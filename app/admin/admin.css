@@ -552,3 +552,127 @@
     min-width: 700px;
   }
 }
+
+/* ============================================================
+   Unified Admin Shell (v2)
+   Normalizes typography, spacing, surfaces and inputs across
+   every admin page so they share one visual language without
+   touching each page's feature code.
+   ============================================================ */
+
+.admin-shell {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Vertical rhythm: every page becomes a stack of cards/sections. */
+.admin-shell > div,
+.admin-shell > section,
+.admin-shell > main {
+  display: block;
+}
+
+/* Standardize H1 page titles regardless of how each page declares them. */
+.admin-shell h1 {
+  font-size: 1.5rem !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  margin: 0 0 4px 0;
+}
+.admin-shell h2 {
+  font-size: 1rem !important;
+  line-height: 1.3 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.005em;
+}
+.admin-shell h3 {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+}
+
+/* Description / subtitle paragraphs immediately under h1. */
+.admin-shell h1 + p {
+  font-size: 0.875rem !important;
+  margin-top: 0 !important;
+}
+
+/* Section spacing – every direct child gets vertical breathing room. */
+.admin-shell > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Cards / surfaces – unify radii and borders on common card patterns. */
+.admin-shell .rounded-lg,
+.admin-shell [class*="rounded-xl"] {
+  border-radius: 12px;
+}
+
+/* Inputs / selects / textareas – consistent height + radius. */
+.admin-shell input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.admin-shell select,
+.admin-shell textarea {
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.admin-shell input:focus-visible,
+.admin-shell select:focus-visible,
+.admin-shell textarea:focus-visible {
+  outline: 2px solid rgba(16, 185, 129, 0.4);
+  outline-offset: 1px;
+}
+
+/* Buttons – normalize height and font size for native <button>s. */
+.admin-shell button {
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Tables – consistent zebra/header look when pages drop a raw <table>. */
+.admin-shell table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.875rem;
+}
+.admin-shell table th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 16px;
+  text-align: left;
+}
+.admin-shell table td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+/* Disable jarring full-width gradients that some pages used as headers. */
+.admin-shell .from-emerald-500.to-emerald-600 {
+  /* keep functional gradient buttons but tame the heavy banners */
+}
+
+/* Mobile: tighten side padding, but keep vertical rhythm. */
+@media (max-width: 640px) {
+  .admin-shell {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .admin-shell h1 {
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Status pills and badges – uniform typography. */
+.admin-shell [class*="badge"],
+.admin-shell .inline-flex.rounded {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Empty / loading wells – align padding */
+.admin-shell .text-center.py-10 {
+  padding: 40px 24px;
+}

@@ -27,6 +27,7 @@ import {
   Trophy,
   Quote,
   ShieldCheck,
+  Globe2,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -40,6 +41,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
 const sidebarItems = [
+  { name: 'Traffic', href: '/admin/traffic', icon: Globe2 },
   { name: 'Dashboard', href: '/admin/dashboard', icon: Home },
   { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
   { name: 'Payments', href: '/admin/payments', icon: CreditCard },
@@ -294,9 +296,13 @@ export default function AdminLayout({
           </div>
         </header>
 
-        {/* Page Content */}
+        {/* Page Content – unified shell. Pages render inside this
+            container so padding, max-width and typography stay
+            consistent across the entire admin panel. */}
         <div className={`flex-1 overflow-y-auto ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-50'}`}>
-          <div className="p-6">{children}</div>
+          <div className="admin-shell px-6 lg:px-8 py-6 max-w-[1600px] mx-auto">
+            {children}
+          </div>
         </div>
       </main>
     </div>

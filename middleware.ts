@@ -2,22 +2,16 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 
 /**
- * Global security middleware.
+ * Middleware – scoped intentionally narrow:
  *
- *   1. Security headers (CSP-lite, HSTS, X-Frame-Options, etc.) are
- *      applied to every response. These complement the static headers
- *      configured in next.config.js.
- *   2. Lightweight in-memory rate limiting on auth & contact endpoints
- *      to blunt brute-force / spam attacks. (Per-instance only – fine
- *      for a single-region deploy; swap for Upstash/Redis if you scale
- *      horizontally.)
- *   3. /admin and /api/admin routes are gated by a NextAuth JWT check
- *      so unauthenticated probes never reach the React tree or APIs.
+ *   1. Rate-limit a small set of write/auth endpoints.
+ *   2. Gate `/admin/*` and `/api/admin/*` behind a NextAuth JWT.
  *
- * Rate-limit blocks and unauthorized access attempts are tagged on
- * outgoing responses with `x-rate-limit-block: 1` / `x-auth-block: 1`
- * so a Node-runtime route can persist them to the SecurityLog
- * collection (Edge runtime can't use mongoose directly).
+ * Security HEADERS (CSP, HSTS, X-Frame-Options, etc.) are configured
+ * in `next.config.js` so they apply to every response without the
+ * middleware having to run on public/static traffic. Keeping the
+ * middleware off the public hot path avoids breaking dynamic data
+ * fetches and dev-mode HMR websockets.
  */
 
 // ---------- Rate limiter ---------------------------------------------------
@@ -26,11 +20,11 @@ type Bucket = { count: number; resetAt: number };
 const buckets = new Map<string, Bucket>();
 
 const RATE_LIMITS: Record<string, { limit: number; windowMs: number }> = {
-  '/api/auth':       { limit: 10,  windowMs: 60 * 1000 },        // 10 / min
-  '/api/admin-setup':{ limit: 3,   windowMs: 10 * 60 * 1000 },   //  3 / 10min
-  '/api/orders':     { limit: 30,  windowMs: 60 * 1000 },        // 30 / min
-  '/api/payments':   { limit: 30,  windowMs: 60 * 1000 },
-  '/api/upload':     { limit: 20,  windowMs: 60 * 1000 },
+  '/api/auth':        { limit: 10, windowMs: 60 * 1000 },
+  '/api/admin-setup': { limit: 3,  windowMs: 10 * 60 * 1000 },
+  '/api/orders':      { limit: 30, windowMs: 60 * 1000 },
+  '/api/payments':    { limit: 30, windowMs: 60 * 1000 },
+  '/api/upload':      { limit: 20, windowMs: 60 * 1000 },
 };
 
 function pickRateLimitRule(pathname: string) {
@@ -43,18 +37,14 @@ function pickRateLimitRule(pathname: string) {
 function rateLimit(key: string, limit: number, windowMs: number): boolean {
   const now = Date.now();
   const bucket = buckets.get(key);
-
   if (!bucket || bucket.resetAt < now) {
     buckets.set(key, { count: 1, resetAt: now + windowMs });
     return true;
   }
-
   bucket.count += 1;
-  if (bucket.count > limit) return false;
-  return true;
+  return bucket.count <= limit;
 }
 
-// Periodic cleanup of expired buckets to bound memory.
 let lastSweep = 0;
 function sweep() {
   const now = Date.now();
@@ -63,41 +53,6 @@ function sweep() {
   for (const [key, bucket] of buckets) {
     if (bucket.resetAt < now) buckets.delete(key);
   }
-}
-
-// ---------- Security headers ----------------------------------------------
-
-function applySecurityHeaders(res: NextResponse): NextResponse {
-  // A CSP that allows the actual third-parties this site uses
-  // (ImageKit CDN, Razorpay, Meta Pixel, Google Fonts).
-  const csp = [
-    "default-src 'self'",
-    "img-src 'self' data: blob: https://ik.imagekit.io https://www.facebook.com https://*.fbcdn.net https://img.youtube.com https://placehold.co https://randomuser.me",
-    "media-src 'self' https://ik.imagekit.io",
-    "font-src 'self' data: https://fonts.gstatic.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://checkout.razorpay.com https://www.youtube.com",
-    "frame-src 'self' https://www.youtube.com https://api.razorpay.com https://checkout.razorpay.com",
-    "connect-src 'self' https://ik.imagekit.io https://api.razorpay.com https://www.facebook.com https://connect.facebook.net",
-    "object-src 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "frame-ancestors 'none'",
-    'upgrade-insecure-requests',
-  ].join('; ');
-
-  res.headers.set('Content-Security-Policy', csp);
-  res.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  res.headers.set('X-Frame-Options', 'DENY');
-  res.headers.set('X-Content-Type-Options', 'nosniff');
-  res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.headers.set(
-    'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=(), interest-cohort=()'
-  );
-  res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
-  res.headers.set('X-XSS-Protection', '1; mode=block');
-  return res;
 }
 
 // ---------- Middleware entry ----------------------------------------------
@@ -122,17 +77,14 @@ export async function middleware(req: NextRequest) {
       );
       res.headers.set('Retry-After', String(Math.ceil(rule.windowMs / 1000)));
       res.headers.set('x-rate-limit-block', '1');
-      return applySecurityHeaders(res);
+      return res;
     }
   }
 
-  // 2) Gate admin pages and admin APIs (login + setup endpoints stay public).
-  const isAdminPage =
-    pathname.startsWith('/admin') &&
-    pathname !== '/admin/login';
+  // 2) Gate admin pages and admin APIs (login + setup stay public).
+  const isAdminPage = pathname.startsWith('/admin') && pathname !== '/admin/login';
   const isAdminApi =
-    pathname.startsWith('/api/admin') &&
-    !pathname.startsWith('/api/admin-setup');
+    pathname.startsWith('/api/admin') && !pathname.startsWith('/api/admin-setup');
 
   if (isAdminPage || isAdminApi) {
     const token = await getToken({
@@ -147,21 +99,30 @@ export async function middleware(req: NextRequest) {
           { status: 401, headers: { 'content-type': 'application/json' } }
         );
         res.headers.set('x-auth-block', '1');
-        return applySecurityHeaders(res);
+        return res;
       }
       const url = req.nextUrl.clone();
       url.pathname = '/admin/login';
       url.searchParams.set('callbackUrl', pathname);
       const res = NextResponse.redirect(url);
       res.headers.set('x-auth-block', '1');
-      return applySecurityHeaders(res);
+      return res;
     }
   }
 
-  return applySecurityHeaders(NextResponse.next());
+  return NextResponse.next();
 }
 
 export const config = {
-  // Skip static assets so the middleware doesn't run on every chunk request.
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)'],
+  // Only run on admin surface and the rate-limited API prefixes — keeps
+  // middleware off the public hot path so dynamic content always loads.
+  matcher: [
+    '/admin/:path*',
+    '/api/admin/:path*',
+    '/api/auth/:path*',
+    '/api/admin-setup/:path*',
+    '/api/orders/:path*',
+    '/api/payments/:path*',
+    '/api/upload/:path*',
+  ],
 };

@@ -9,6 +9,11 @@ const PageTransition = dynamic(() => import('./PageTransition'), {
   ssr: false,
 });
 
+// Visitor analytics tracker (skips admin routes internally).
+const VisitorTracker = dynamic(() => import('./VisitorTracker'), {
+  ssr: false,
+});
+
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith('/admin');
@@ -18,6 +23,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
       <main className="flex-1">{children}</main>
       {!isAdminRoute && <Footer />}
       {!isAdminRoute && <PageTransition />}
+      {!isAdminRoute && <VisitorTracker />}
     </div>
   );
 }
