@@ -11,7 +11,7 @@ import TransformationGallery from '@/components/TransformationGallery';
 const SECTION_GAP = 'mt-10 md:mt-14';
 
 const pricingFeatures = [
-    'Chat support',
+    'Chat Support',
     'Dietitian Consultation (02)',
     'Customized Meal Plan',
     'Progress Tracking',
