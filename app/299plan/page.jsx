@@ -73,7 +73,7 @@ function CheckIcon24() {
 
 function HeroPricingCard({ onCheckout }) {
     return (
-        <div className="w-full max-w-[238px] rounded-[10px] bg-white px-[16px] py-[14px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] md:max-w-[238px] md:px-[16px] md:py-[14px]">
+        <div className="mx-auto w-full max-w-[300px] rounded-[10px] bg-white px-[18px] py-[16px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] sm:max-w-[320px] md:max-w-[350px] md:px-[20px] md:py-[18px]">
             <p className="text-[10px] font-medium uppercase tracking-[0.03em] text-[#6B7280]">
                 10 DAYS TRIAL
             </p>
@@ -110,7 +110,7 @@ function HeroPricingCard({ onCheckout }) {
             <button
                 type="button"
                 onClick={onCheckout}
-                className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-4 py-3 text-[11px] font-bold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10]"
+                className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10]"
             >
                 Buy Now
             </button>
@@ -136,12 +136,18 @@ export default function Plan299Page() {
             <section>
                 <PageWrapper>
                     <div className="relative overflow-hidden  text-teal-600 p-5 md:px-8 md:py-8 lg:px-8 lg:py-6">
-                        <div className="relative z-10 flex flex-col gap-7 lg:grid lg:grid-cols-[minmax(0,1fr)_238px] lg:items-center lg:gap-10 lg:px-6">
+                        <div className="relative z-10 flex flex-col gap-7 px-2 md:px-4 lg:grid lg:grid-cols-[minmax(0,1fr)_350px] lg:items-center lg:gap-10 lg:px-8 lg:py-10">
                             <div className="flex flex-col items-center justify-center text-center lg:py-10">
-                                <h1 className="max-w-[720px] text-[1.45rem] font-extrabold leading-[1.08] text-white md:text-[2.2rem] lg:text-[2.75rem] lg:whitespace-nowrap">
-                                    Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
-                                    <br />
-                                    with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
+                                <h1
+                                    className="max-w-[720px] text-[28px] font-[700] leading-[32px] text-white md:text-[48px] md:leading-[54px]"
+                                    style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                                >
+                                    <span className="block whitespace-nowrap">
+                                        Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
+                                    </span>
+                                    <span className="block whitespace-nowrap">
+                                        with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
+                                    </span>
                                 </h1>
 
                                 <div className="mt-7 inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
@@ -157,7 +163,7 @@ export default function Plan299Page() {
                                 </div>
                             </div>
 
-                            <div className="mx-auto w-full max-w-[238px] lg:mx-0 lg:justify-self-end">
+                            <div className="mx-auto w-full max-w-[350px] lg:mx-0 lg:justify-self-end">
                                 <HeroPricingCard onCheckout={handleCheckout} />
                             </div>
                         </div>
