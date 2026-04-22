@@ -26,6 +26,7 @@ import {
   Award,
   Trophy,
   Quote,
+  ShieldCheck,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -52,6 +53,7 @@ const sidebarItems = [
   { name: 'Testimonials', href: '/admin/testimonials', icon: Quote },
   { name: 'Recognition', href: '/admin/recognition', icon: Award },
   { name: 'Blog Posts', href: '/admin/blogs', icon: Newspaper },
+  { name: 'Security', href: '/admin/security', icon: ShieldCheck },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
 ];
 

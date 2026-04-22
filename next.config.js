@@ -25,6 +25,14 @@ const nextConfig = {
   // Optimize production builds
   poweredByHeader: false,
 
+  // Strip non-error console statements from production bundles to avoid
+  // leaking debug info to end users.
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
+      ? { exclude: ['error', 'warn'] }
+      : false,
+  },
+
   // Disable ETags so browsers do not keep revalidating stale assets.
   generateEtags: false,
 
