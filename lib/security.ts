@@ -10,7 +10,18 @@
  *   HTML (blog posts, popup content, etc.) before persisting or rendering.
  */
 
-import DOMPurify from 'isomorphic-dompurify';
+// NOTE: `isomorphic-dompurify` pulls in JSDOM, which is heavy and has caused
+// module-init failures on some serverless runtimes. We lazy-load it so that
+// importing this file (e.g. from `lib/auth.ts`) never crashes API routes that
+// don't actually sanitize HTML.
+let _DOMPurify: { sanitize: (input: string, config?: unknown) => string } | null = null;
+function getDOMPurify() {
+  if (_DOMPurify) return _DOMPurify;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const mod = require('isomorphic-dompurify');
+  _DOMPurify = (mod && (mod.default || mod)) as typeof _DOMPurify;
+  return _DOMPurify!;
+}
 import dbConnect from '@/lib/mongodb';
 import SecurityLog, {
   type ISecurityLog,
@@ -58,7 +69,7 @@ export function getUserAgent(headers: Headers): string {
  */
 export function sanitizeHtml(input: string): string {
   if (!input) return '';
-  return DOMPurify.sanitize(input, {
+  return getDOMPurify().sanitize(input, {
     ALLOWED_TAGS: [
       'p',
       'br',
@@ -104,6 +115,6 @@ export function sanitizeHtml(input: string): string {
  */
 export function sanitizeText(input: string, maxLength = 500): string {
   if (!input) return '';
-  const stripped = DOMPurify.sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
+  const stripped = getDOMPurify().sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
   return stripped.slice(0, maxLength).trim();
 }
