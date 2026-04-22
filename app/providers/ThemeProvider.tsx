@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 type Theme = 'dark' | 'light';
 
@@ -12,32 +13,32 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isAdminRoute = pathname.startsWith('/admin');
   const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Get theme from localStorage or default to dark
+    // Admin uses a fixed light theme; the public site can still honor saved preference.
     const savedTheme = localStorage.getItem('admin-theme') as Theme | null;
-    const initialTheme = savedTheme || 'dark';
+    const initialTheme = isAdminRoute ? 'light' : (savedTheme || 'dark');
     setTheme(initialTheme);
+    localStorage.setItem('admin-theme', initialTheme);
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
-    setMounted(true);
-  }, []);
+  }, [isAdminRoute]);
 
   const toggleTheme = () => {
+    if (isAdminRoute) return;
+
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
     localStorage.setItem('admin-theme', newTheme);
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
-  // Avoid hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
+  const effectiveTheme = isAdminRoute ? 'light' : theme;
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme: effectiveTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

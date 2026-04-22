@@ -15,8 +15,6 @@ import {
   Menu,
   Settings,
   ChevronDown,
-  Moon,
-  Sun,
   ShoppingCart,
   CreditCard,
   ImageIcon,
@@ -38,7 +36,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useTheme } from '@/app/providers/ThemeProvider';
 
 const sidebarItems = [
   { name: 'Traffic', href: '/admin/traffic', icon: Globe2 },
@@ -67,17 +64,7 @@ export default function AdminLayout({
   const { data: session, status } = useSession();
   const router = useRouter();
   const pathname = usePathname();
-
-  let theme: 'dark' | 'light' = 'dark';
-  let toggleTheme: () => void = () => { };
-
-  try {
-    const themeContext = useTheme();
-    theme = themeContext.theme;
-    toggleTheme = themeContext.toggleTheme;
-  } catch (e) {
-    // Theme provider not available, use defaults
-  }
+  const theme: 'dark' | 'light' = pathname.startsWith('/admin') ? 'light' : 'dark';
 
   useEffect(() => {
     if (status === 'unauthenticated' && pathname !== '/admin/login') {
@@ -249,20 +236,8 @@ export default function AdminLayout({
             </h1>
           </div>
 
-          {/* Theme Toggle and User Menu */}
+          {/* User Menu */}
           <div className="flex items-center gap-4">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${theme === 'dark' ? 'hover:bg-slate-700/50 text-slate-400 hover:text-slate-300' : 'hover:bg-slate-200 text-slate-600 hover:text-slate-900'}`}
-              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5" />
-              ) : (
-                <Moon className="w-5 h-5" />
-              )}
-            </button>
-
             {/* User Menu Mobile */}
             <div className="md:hidden">
               {session?.user && (
