@@ -32,6 +32,17 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+    // Tree-shake heavy libraries to reduce unused JS in shared chunks.
+    optimizePackageImports: [
+      'lucide-react',
+      'react-icons',
+      'recharts',
+      'swiper',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-select',
+      '@radix-ui/react-tabs',
+    ],
   },
 
   images: {
