@@ -72,7 +72,7 @@ function CheckIcon24() {
 
 function HeroPricingCard({ onCheckout }) {
     return (
-        <div className="mx-auto w-full max-w-[300px] rounded-[10px] bg-white px-[18px] py-[16px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] sm:max-w-[320px] md:max-w-[350px] md:px-[20px] md:py-[18px]">
+        <div className="mx-auto w-full rounded-[10px] bg-white px-[18px] py-[16px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] sm:max-w-[320px] md:max-w-[350px] md:px-[20px] md:py-[18px]">
             <p className="text-[10px] font-medium uppercase tracking-[0.03em] text-[#6B7280]">
                 10 DAYS TRIAL
             </p>
@@ -162,7 +162,7 @@ export default function Plan299Page() {
                                 </div>
                             </div>
 
-                            <div className="mx-auto w-full max-w-[350px] lg:mx-0 lg:justify-self-end">
+                            <div className="mx-auto w-full lg:mx-0 lg:justify-self-end">
                                 <HeroPricingCard onCheckout={handleCheckout} />
                             </div>
                         </div>
