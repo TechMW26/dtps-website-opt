@@ -72,7 +72,7 @@ function CheckIcon24() {
 
 function HeroPricingCard({ onCheckout }) {
     return (
-        <div className="mx-auto w-full rounded-[10px] bg-white px-[18px] py-[16px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] sm:max-w-[320px] md:max-w-[350px] md:px-[20px] md:py-[18px]">
+        <div className="mx-auto flex min-h-[466px] w-full max-w-[336px] flex-col rounded-[12px] bg-white px-5 py-[18px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] md:min-h-0 md:max-w-[350px] md:px-[20px] md:py-[18px]">
             <p className="text-[10px] font-medium uppercase tracking-[0.03em] text-[#6B7280]">
                 10 DAYS TRIAL
             </p>
@@ -109,7 +109,7 @@ function HeroPricingCard({ onCheckout }) {
             <button
                 type="button"
                 onClick={onCheckout}
-                className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10]"
+                className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10]"
             >
                 Buy Now
             </button>
@@ -138,7 +138,19 @@ export default function Plan299Page() {
                         <div className="site-card-padding relative z-10 flex flex-col gap-7 lg:grid lg:grid-cols-[minmax(0,1fr)_350px] lg:items-center lg:gap-10 lg:py-10">
                             <div className="flex flex-col items-center justify-center text-center lg:py-10">
                                 <h1
-                                    className="max-w-[720px] text-[20px] font-[700] leading-[1.2] text-white sm:text-[24px] sm:leading-[1.2] md:text-[48px] md:leading-[54px]"
+                                    className="max-w-[720px] text-[28px] font-[700] leading-[32px] text-white md:hidden"
+                                    style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                                >
+                                    <span className="block text-[23px]">Guaranteed</span>
+                                    <span className="block">
+                                        <span className="text-white text-[23px]">Weight Loss</span> with
+                                    </span>
+                                    <span className="block text-[42px] leading-[36px] text-[#FF8A14]">Ghar Ka Khana</span>
+                                    <span className="block text-[40px]">Diet Plan</span>
+                                </h1>
+
+                                <h1
+                                    className="hidden max-w-[720px] text-[48px] font-[700] leading-[54px] text-white md:block"
                                     style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                                 >
                                     <span className="block whitespace-nowrap">
@@ -149,7 +161,7 @@ export default function Plan299Page() {
                                     </span>
                                 </h1>
 
-                                <div className="mt-7 inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
+                                <div className="mt-7 inline-flex w-full max-w-[336px] min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:max-w-none md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
                                     <span className="text-[15px] font-semibold uppercase leading-none tracking-[0.02em] text-white md:text-[18px]">
                                         UPTO
                                     </span>
@@ -162,7 +174,7 @@ export default function Plan299Page() {
                                 </div>
                             </div>
 
-                            <div className="mx-auto w-full lg:mx-0 lg:justify-self-end">
+                            <div className="mx-auto w-full max-w-[336px] lg:mx-0 lg:max-w-[350px] lg:justify-self-end">
                                 <HeroPricingCard onCheckout={handleCheckout} />
                             </div>
                         </div>
