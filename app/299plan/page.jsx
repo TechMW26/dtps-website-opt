@@ -8,7 +8,6 @@ import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import TransformationGallery from '@/components/TransformationGallery';
 
-const PAGE_GUTTER = 'px-5 md:px-[70px]';
 const SECTION_GAP = 'mt-10 md:mt-14';
 
 const pricingFeatures = [
@@ -132,14 +131,14 @@ export default function Plan299Page() {
     };
 
     return (
-        <section className="site-shell bg-white pb-8 pt-4 md:pb-14 md:pt-[60px]">
-            <section>
+        <div className="bg-white site-shell pb-8 pt-4 md:pb-14 md:pt-[60px]">
+            <div>
                 <PageWrapper>
-                    <div className="relative overflow-hidden  text-teal-600 p-5 md:px-8 md:py-8 lg:px-8 lg:py-6">
-                        <div className="relative z-10 flex flex-col gap-7 px-2 md:px-4 lg:grid lg:grid-cols-[minmax(0,1fr)_350px] lg:items-center lg:gap-10 lg:px-8 lg:py-10">
+                    <div className="relative overflow-hidden text-teal-600 py-5 md:py-8 lg:py-6">
+                        <div className="site-card-padding relative z-10 flex flex-col gap-7 lg:grid lg:grid-cols-[minmax(0,1fr)_350px] lg:items-center lg:gap-10 lg:py-10">
                             <div className="flex flex-col items-center justify-center text-center lg:py-10">
                                 <h1
-                                    className="max-w-[720px] text-[28px] font-[700] leading-[32px] text-white md:text-[48px] md:leading-[54px]"
+                                    className="max-w-[720px] text-[20px] font-[700] leading-[1.2] text-white sm:text-[24px] sm:leading-[1.2] md:text-[48px] md:leading-[54px]"
                                     style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                                 >
                                     <span className="block whitespace-nowrap">
@@ -169,9 +168,9 @@ export default function Plan299Page() {
                         </div>
                     </div>
                 </PageWrapper>
-            </section>
+            </div>
 
-            <section className="py-12 md:py-20">
+            <div className="py-12 md:py-20">
                 <div className="site-fill">
                     <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
                         <div className="max-w-[630px] text-center md:text-left">
@@ -199,9 +198,9 @@ export default function Plan299Page() {
                         cardBackgroundClassName="bg-transparent"
                     />
                 </div>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
                     <Image
                         src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
@@ -233,9 +232,9 @@ export default function Plan299Page() {
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
                     />
                 </div>
-            </section>
+            </div>
 
-            <section className="py-14 md:py-24">
+            <div className="py-14 md:py-24">
                 <div className="site-fill">
                     <div className="mx-auto hidden w-[70%] overflow-hidden rounded-[20px] lg:block">
                         <Image
@@ -269,9 +268,9 @@ export default function Plan299Page() {
                         />
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section>
+            <div>
                 <div className="site-fill">
                     <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
                         <Image
@@ -305,9 +304,9 @@ export default function Plan299Page() {
                         />
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section className="py-12 md:py-20">
+            <div className="py-12 md:py-20">
                 <div className="site-fill">
                     <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
                         <Image
@@ -341,14 +340,14 @@ export default function Plan299Page() {
                         />
                     </div>
                 </div>
-            </section>
+            </div>
 
             <div>
                 <ExpertGuidanceSection />
             </div>
 
-            <div className="site-shell">
-                <section className="overflow-hidden rounded-[30px] bg-white py-16 md:py-20">
+            <div>
+                <div className="overflow-hidden rounded-[30px] bg-white py-16 md:py-20">
                     <div className="site-fill">
                         <div className="mb-6 flex flex-wrap items-start justify-between gap-4 md:mb-10">
                             <div>
@@ -363,10 +362,10 @@ export default function Plan299Page() {
                         </div>
                         <YouTubeShortsSlider />
                     </div>
-                </section>
+                </div>
             </div>
 
-            <section className={`${PAGE_GUTTER} ${SECTION_GAP}`}>
+            <div className={SECTION_GAP}>
                 <div className="bg-white py-[72px] md:py-[120px]">
                     <div className="mx-auto max-w-[860px] text-center">
                         <div className="mb-1 flex items-center justify-center gap-1.5">
@@ -439,11 +438,11 @@ export default function Plan299Page() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section className={SECTION_GAP}>
+            <div className={SECTION_GAP}>
                 <TestimonialsSection />
-            </section>
-        </section>
+            </div>
+        </div>
     );
 }
