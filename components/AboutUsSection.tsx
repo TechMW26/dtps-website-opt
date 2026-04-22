@@ -85,7 +85,7 @@ export default function AboutUsSection() {
             <p className="mt-2">
               That&apos;s why our approach is science-led and diet-focused, using personalised calorie planning with normal
               Indian meals. Backed by <strong className="font-bold text-[#828283]">200+ expert dietitians</strong>, we helped more than{' '}
-              <strong className="font-bold text-[#828283]">75,000+</strong> people to lose weight
+              <strong className="font-bold text-[#828283]">1,00,000+</strong> people to lose weight
               and manage Medical conditions with a <strong className="font-bold text-[#828283]">98% success rate</strong>. If you&apos;re looking for something that finally fits
               your life,
             </p>

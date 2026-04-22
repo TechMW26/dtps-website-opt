@@ -106,7 +106,7 @@ const expertBadges = [
 const stats = [
   { value: '4.8', label: 'Google Rating' },
   { value: '98%', label: 'Success Rate' },
-  { value: '75K+', label: 'Clients' },
+  { value: '1 Lakh+', label: 'Clients' },
 ];
 
 const fallbackTestimonials = [

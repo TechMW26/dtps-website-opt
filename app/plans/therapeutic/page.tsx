@@ -1053,7 +1053,7 @@ export default function TherapeuticPlanPage() {
 
 
       {/* ═══════════════════════════════════════════════════════════
-          8. TESTIMONIALS — Over 75,000+ People
+          8. TESTIMONIALS — Over 1,00,000+ People
       ═══════════════════════════════════════════════════════════ */}
       <section className="site-shell py-12 md:py-20">
         <div className="site-fill">
@@ -1068,7 +1068,7 @@ export default function TherapeuticPlanPage() {
                <div className="mx-auto max-w-[630px] text-center md:mx-0 md:text-left">
               {/* <span className="text-[#FF850B] text-sm md:text-base font-semibold">Our Testimonials</span> */}
               <h2 className="mt-2 text-2xl font-bold leading-tight text-[#1E1E1E] md:text-[42px]">
-                Over <span className="text-[#FF850B] " >75,000+</span>  <br />
+                Over <span className="text-[#FF850B] " >1,00,000+</span>  <br />
                 People Enjoy Weight Loss
               </h2>
               {/* <p className="text-[#828283] text-xs md:text-sm mt-2">

@@ -76,7 +76,7 @@ export default function TransformationShowcase({
         {title && (
           <div className={`text-center mb-8 md:mb-[50px] ${page === 'wedding' ? 'hidden md:block' : ''}`}>
             <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
-              <span className="text-[#ff850b]">Over 75,000+</span><br />
+              <span className="text-[#ff850b]">Over 1,00,000+</span><br />
               {title}
             </h2>
             {subtitle && (

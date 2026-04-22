@@ -7736,3 +7736,176 @@ video {
 
 .blog-prose tbody tr:last-child td { border-bottom: none; }
 .blog-prose tbody tr:nth-child(even) { background: #F6FAFA; }
+
+/* ===========================================================================
+   Page Transition – "Nourish & Reveal"
+   --------------------------------------------------------------------------
+   Wellness-themed route transition. Two organic leaf-shaped curtains in the
+   brand teal sweep in from the top and bottom of the viewport, briefly meet
+   in the middle (where a glowing leaf glyph + DTPS wordmark pulses), and
+   then sweep back out to reveal the new page. The new page contents
+   simultaneously fade & lift up — a subtle "transformation" reveal.
+   =========================================================================== */
+
+.page-transition-content {
+  animation: dtps-page-fade-up 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+
+@keyframes dtps-page-fade-up {
+  0%   { opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(4px); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998; /* above page content, below toasts/dialogs */
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.page-transition-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* The two organic "leaf" curtains.
+   Each is a teal panel whose inner edge is a soft, irregular leaf curve
+   (built with border-radius percentages) so the meeting line feels organic
+   rather than a hard horizontal bar.                                       */
+.page-transition-curtain {
+  position: absolute;
+  left: -8%;
+  width: 116%;
+  height: 60%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(123, 227, 200, 0.35), transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(0, 161, 154, 0.35), transparent 55%),
+    linear-gradient(135deg, #013434 0%, #014e4e 45%, #016666 100%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.page-transition-curtain--top {
+  top: 0;
+  border-radius: 0 0 55% 45% / 0 0 22% 18%;
+  transform: translateY(-105%);
+}
+
+.page-transition-curtain--bottom {
+  bottom: 0;
+  border-radius: 45% 55% 0 0 / 18% 22% 0 0;
+  transform: translateY(105%);
+}
+
+.page-transition-overlay.is-active .page-transition-curtain--top {
+  animation: dtps-curtain-top 1100ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.page-transition-overlay.is-active .page-transition-curtain--bottom {
+  animation: dtps-curtain-bottom 1100ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes dtps-curtain-top {
+  0%   { transform: translateY(-105%); }
+  45%  { transform: translateY(0); }
+  55%  { transform: translateY(0); }
+  100% { transform: translateY(-105%); }
+}
+
+@keyframes dtps-curtain-bottom {
+  0%   { transform: translateY(105%); }
+  45%  { transform: translateY(0); }
+  55%  { transform: translateY(0); }
+  100% { transform: translateY(105%); }
+}
+
+/* Centered brand badge – revealed when the curtains meet. */
+.page-transition-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  text-align: center;
+}
+
+.page-transition-overlay.is-active .page-transition-badge {
+  animation: dtps-badge-pulse 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes dtps-badge-pulse {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  35%  { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+  55%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  85%  { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+}
+
+.page-transition-leaf {
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(0 6px 18px rgba(123, 227, 200, 0.55));
+  animation: dtps-leaf-sway 1100ms ease-in-out;
+}
+
+@keyframes dtps-leaf-sway {
+  0%   { transform: rotate(-12deg); }
+  50%  { transform: rotate(8deg); }
+  100% { transform: rotate(-4deg); }
+}
+
+.page-transition-wordmark {
+  font-family: var(--font-epilogue), 'Epilogue', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.4em;
+  color: #ffffff;
+}
+
+.page-transition-tagline {
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Mobile sizing */
+@media (max-width: 640px) {
+  .page-transition-leaf { width: 56px; height: 56px; }
+  .page-transition-wordmark { font-size: 1rem; letter-spacing: 0.35em; }
+  .page-transition-tagline { font-size: 0.6rem; letter-spacing: 0.25em; }
+}
+
+/* Respect users who prefer reduced motion – just do a quick fade. */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-content {
+    animation: dtps-page-fade-simple 200ms ease both;
+  }
+
+  .page-transition-overlay,
+  .page-transition-overlay.is-active,
+  .page-transition-curtain,
+  .page-transition-badge {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .page-transition-overlay { display: none; }
+
+  @keyframes dtps-page-fade-simple {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
