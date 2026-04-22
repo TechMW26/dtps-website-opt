@@ -511,6 +511,8 @@ export default function PCODPage() {
         </div>
       </section>
 
+      <div id="plans-section" className="scroll-mt-24" />
+
       {/* Pricing Section - Mobile */}
       <section className="site-shell py-8 wl-section md:hidden">
         <div className="container">

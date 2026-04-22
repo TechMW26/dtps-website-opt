@@ -1084,7 +1084,7 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           9. PRICING
       ═══════════════════════════════════════════════════════════ */}
-      <section className="site-shell py-12 md:py-20">
+      <section id="plans-section" className="site-shell scroll-mt-24 py-12 md:py-20">
         <div className="mb-10 text-center">
          <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
             <div className='flex gap-2 items-center' >

@@ -326,7 +326,7 @@ export default function WeddingPlanPage() {
 
               {/* Button */}
               <Link
-                href="/checkout?plan=wedding"
+                href="#plans-section"
                 className="bg-[#FF850B] hover:bg-[#E57A09] text-white font-semibold py-3.5 px-10 rounded-full text-base transition-colors"
               >
                 Buy Wedding Plan Now
@@ -955,7 +955,7 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="site-shell bg-white py-12 md:py-16">
+      <section id="plans-section" className="site-shell scroll-mt-24 bg-white py-12 md:py-16">
         <div className="w-full flex flex-col items-center justify-center text-center">
           <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
             <div className='flex gap-2 items-center' >

@@ -234,16 +234,18 @@ export default function WeightLossPage() {
 
       {/* ═════ HERO ═════ */}
       <PageWrapper>
-        <DynamicPageHero
-          page="weight-loss"
-          fallback={{
-            title: 'Guaranteed Weight Loss',
-            subtitle: 'Upto 5 Kg in a Month',
-            description: "It's a journey to self-discovery and a healthier, happier you. We believe weight loss is more than just a number on the scale.",
-            buttonText: 'Buy Weight Loss Plan Now',
-            buttonLink: '/appointment',
-          }}
-        />
+        <a href="#plans-section" className="block cursor-pointer" aria-label="Scroll to weight loss plans">
+          <DynamicPageHero
+            page="weight-loss"
+            fallback={{
+              title: 'Guaranteed Weight Loss',
+              subtitle: 'Upto 5 Kg in a Month',
+              description: "It's a journey to self-discovery and a healthier, happier you. We believe weight loss is more than just a number on the scale.",
+              buttonText: 'Buy Weight Loss Plan Now',
+              buttonLink: '#plans-section',
+            }}
+          />
+        </a>
       </PageWrapper>
 
       {/* ═════ TESTIMONIALS GALLERY ═════ */}
@@ -465,7 +467,7 @@ export default function WeightLossPage() {
       </div>
 
       {/* ═════ PRICING ═════ */}
-      <section className="py-12 md:py-2">
+        <section id="plans-section" className="scroll-mt-24 py-12 md:py-2">
           <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
            <div className='flex gap-2 items-center' >
             <span className="text-[#f5a623] text-lg">✦</span>

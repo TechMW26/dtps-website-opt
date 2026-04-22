@@ -28,7 +28,7 @@ export default function WeightLossHero() {
 
                         {/* Button */}
                         <Link
-                            href="/checkout?plan=weight-loss"
+                            href="#plans-section"
                             className="bg-[#FF850B] hover:bg-[#E57A09] text-white font-semibold py-3 px-8 rounded-full text-sm transition-colors"
                         >
                             Buy Weight Loss Plan Now
@@ -53,7 +53,7 @@ export default function WeightLossHero() {
 
                         {/* Button */}
                         <Link
-                            href="/checkout?plan=weight-loss"
+                            href="#plans-section"
                             className="bg-[#FF850B] hover:bg-[#E57A09] text-white font-semibold py-3.5 px-10 rounded-full text-base transition-colors"
                         >
                             Buy Weight Loss Plan Now
