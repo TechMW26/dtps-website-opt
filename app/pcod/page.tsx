@@ -314,7 +314,7 @@ export default function PCODPage() {
 
         {/* Mobile Banner */}
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c71fa14dfc9fbf5ad6ec.jpg"
+          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/pcod/section-31-copy-1776945350341.jpg"
           alt="Symptoms & Nutritional Concerns"
           width={800}
           height={800}
@@ -578,27 +578,27 @@ export default function PCODPage() {
               Choose a plan as per your requirements and start your wellness journey. See you around!
             </p>
           </div>
-           <div className="flex justify-center w-full">
-          <div className="w-full">
-            <DynamicPlansDisplay
-              category="pcod"
-              showHeader={false}
-              columns="3"
-              onSelectPlan={(plan) => {
-                const product = {
-                  id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
-                  name: `PCOD Management Plan - ${plan.planName}`,
-                  price: plan.price,
-                  quantity: 1
-                };
-                sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                window.location.href = '/checkout';
-              }}
-            />
+          <div className="flex justify-center w-full">
+            <div className="w-full">
+              <DynamicPlansDisplay
+                category="pcod"
+                showHeader={false}
+                columns="3"
+                onSelectPlan={(plan) => {
+                  const product = {
+                    id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                    name: `PCOD Management Plan - ${plan.planName}`,
+                    price: plan.price,
+                    quantity: 1
+                  };
+                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                  window.location.href = '/checkout';
+                }}
+              />
+            </div>
           </div>
         </div>
-        </div>
-       
+
       </section>
     </main>
   );
