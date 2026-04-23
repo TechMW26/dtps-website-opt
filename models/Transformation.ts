@@ -1,13 +1,15 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface ITransformation extends Document {
-  clientName: string;
+  clientName?: string;
   beforeImage: string;
   afterImage: string;
-  weightLost: string;
-  daysToAchieve: string;
-  testimonial: string;
+  weightLost?: string;
+  daysToAchieve?: string;
+  testimonial?: string;
+  setName?: string;
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
+  targetPages: Array<'all' | 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding'>;
   featured: boolean;
   isActive: boolean;
   order: number;
@@ -19,7 +21,7 @@ const TransformationSchema = new Schema<ITransformation>(
   {
     clientName: {
       type: String,
-      required: [true, 'Client name is required'],
+      default: '',
       trim: true,
     },
     beforeImage: {
@@ -32,20 +34,31 @@ const TransformationSchema = new Schema<ITransformation>(
     },
     weightLost: {
       type: String,
-      required: [true, 'Weight lost is required'],
+      default: '',
     },
     daysToAchieve: {
       type: String,
-      required: [true, 'Days to achieve is required'],
+      default: '',
     },
     testimonial: {
       type: String,
       default: '',
     },
+    setName: {
+      type: String,
+      default: '',
+      trim: true,
+    },
     page: {
       type: String,
       enum: ['weight-loss', 'pcod', 'therapeutic', 'wedding'],
       required: [true, 'Page is required'],
+    },
+    targetPages: {
+      type: [String],
+      enum: ['all', 'weight-loss', 'pcod', 'therapeutic', 'wedding'],
+      default: ['weight-loss'],
+      index: true,
     },
     featured: {
       type: Boolean,

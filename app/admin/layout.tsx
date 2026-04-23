@@ -52,7 +52,7 @@ const sidebarItems = [
   { name: 'Banners', href: '/admin/banners', icon: Megaphone },
   { name: 'Page Heroes', href: '/admin/page-heroes', icon: LayoutTemplate },
   { name: 'Popups', href: '/admin/popups', icon: MessageSquare },
-  { name: 'Transformations', href: '/admin/transformations', icon: Images },
+  { name: 'Transformation Sliders', href: '/admin/transformations', icon: Images },
   { name: 'Success Stories', href: '/admin/success-stories', icon: Trophy },
   { name: 'Testimonials', href: '/admin/testimonials', icon: Quote },
   { name: 'Recognition', href: '/admin/recognition', icon: Award },

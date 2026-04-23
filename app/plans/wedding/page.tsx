@@ -9,6 +9,7 @@ import DynamicPlansDisplay from "@/components/DynamicPlansDisplay";
 import { getPricingByCategory } from "@/lib/api";
 import type { Pricing } from "@/lib/api";
 import TransformationGallery from "@/components/TransformationGallery";
+import TestimonialSliderSection from "@/components/TestimonialSliderSection";
 import ExpertGuidanceSection from "@/components/ExpertGuidanceSection";
 
 // Tab data for "What Happens" section
@@ -336,28 +337,20 @@ export default function WeddingPlanPage() {
         </div>
       </section>
       {/* Wedding Transformations Section */}
-      <section className="site-shell  py-14 md:py-20">
-        <div className="site-fill">
-
-          <div className="mb-8 text-center md:mb-[50px]">
+      <TestimonialSliderSection
+        page="wedding"
+        maxItems={6}
+        header={
+          <div className="text-center md:text-left">
             <h2 className="mb-2.5 text-2xl font-bold leading-tight text-black md:text-5xl">
-              Lose
-              <span className="text-[#FF850B]"  > 5-7 Kilos </span>
-
-              in just 30 Days
+              Lose <span className="text-[#FF850B]">5-7 Kilos</span> in just 30 Days
             </h2>
             <h2 className="mb-2.5 text-2xl font-bold leading-tight text-black md:text-5xl">
               &amp; Still Eat the Food You Love!
             </h2>
           </div>
-
-          <TransformationGallery
-            page="wedding"
-            maxItems={6}
-          />
-
-        </div>
-      </section>
+        }
+      />
       {/* What Happens When You Start Section */}
       <section className="site-shell bg-white py-12">
         <div className="site-fill">
@@ -933,26 +926,19 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Over 1,00,000+ People Enjoy Weight Loss */}
-      <section className="site-shell py-12 md:py-20">
-        <div className="site-fill">
-          <div className="mb-10 flex flex-col items-center gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
-            <div className="mx-auto max-w-[630px] text-center md:mx-0 md:text-left">
-              {/* <span className="text-[#FF850B] text-sm md:text-base font-semibold">Our Testimonials</span> */}
-              <h2 className="mt-2 text-2xl font-bold leading-tight text-[#1E1E1E] md:text-[42px]">
-                Over <span className="text-[#FF850B] " >1,00,000+</span>  <br />
-                People Enjoy Weight Loss
-              </h2>
-              {/* <p className="text-[#828283] text-xs md:text-sm mt-2">
-                Choose a plan as per your requirements and start your wellness journey. See you around!
-              </p> */}
-            </div>
+      <TestimonialSliderSection
+        page="wedding"
+        maxItems={6}
+        header={
+          <div className="text-center md:text-left">
+            <h2 className="mt-2 text-2xl font-bold leading-tight text-[#1E1E1E] md:text-[42px]">
+              Over <span className="text-[#FF850B]">1,00,000+</span>
+              <br />
+              People Enjoy Weight Loss
+            </h2>
           </div>
-          <TransformationGallery
-            page="wedding"
-            maxItems={6}
-          />
-        </div>
-      </section>
+        }
+      />
 
       {/* Pricing Section */}
       <section id="plans-section" className="site-shell scroll-mt-24 bg-white py-12 md:py-16">

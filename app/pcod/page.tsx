@@ -11,6 +11,11 @@ const TransformationGallery = dynamic(() => import('@/components/TransformationG
   ssr: true,
 });
 
+const TestimonialSliderSection = dynamic(() => import('@/components/TestimonialSliderSection'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: false,
+});
+
 const DynamicPlansDisplay = dynamic(() => import('@/components/DynamicPlansDisplay'), {
   loading: () => <div className="min-h-[300px] animate-pulse bg-gray-100 rounded-[20px]" />,
   ssr: true,
@@ -121,156 +126,167 @@ export default function PCODPage() {
           </p>
 
 
-          <div className="grid grid-cols-1 gap-8 mt-14 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 mt-12 md:mt-14 lg:grid-cols-3">
 
+            {/* LEFT: 4 image+orange cards in 2x2 grid (spans 2 cols on lg) */}
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2">
 
-            {/* CARDS */}
-
-
-            {/* CARD 1 */}
-
-            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
-
-              <div className="h-[200px] bg-gray-100">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
-                  width={500}
-                  height={300}
-                  alt="Balancing Blood Sugar"
-                  className="object-cover w-full h-full"
-                  loading="lazy"
-                  sizes="(max-width: 639px) 100vw, 50vw"
-                  quality={75}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                />
+              {/* CARD 1 */}
+              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+                <div className="h-[200px] bg-gray-100">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
+                    width={500}
+                    height={300}
+                    alt="Balancing Blood Sugar"
+                    className="object-cover w-full h-full"
+                    loading="lazy"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    quality={75}
+                  />
+                </div>
+                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+                  <h3 className="mb-2 text-lg font-semibold">Balancing Blood Sugar Levels</h3>
+                  <p className="text-sm opacity-90">
+                    Women with PCOS often experience insulin resistance, where the body&apos;s cells do not respond normally to insulin.
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-[#FF8A00] text-white p-6 flex-1">
-
-                <div className="w-10 h-[2px] bg-white mb-4"></div>
-
-                <h3 className="mb-2 text-lg font-semibold">
-                  Balancing Blood Sugar Levels
-                </h3>
-
-                <p className="text-sm opacity-90">
-                  Women with PCOS often experience insulin resistance, where the body's cells do not respond normally to insulin.
-                </p>
-
+              {/* CARD 2 */}
+              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+                <div className="h-[200px] bg-gray-100">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
+                    width={500}
+                    height={300}
+                    alt="Managing Weight"
+                    className="object-cover w-full h-full"
+                    loading="lazy"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    quality={75}
+                  />
+                </div>
+                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+                  <h3 className="mb-2 text-lg font-semibold">Managing Weight</h3>
+                  <p className="text-sm opacity-90">
+                    Losing even a small amount of weight if you are overweight can help manage PCOS symptoms.
+                  </p>
+                </div>
               </div>
 
-            </div>
-
-
-
-            {/* CARD 2 */}
-
-            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
-
-              <div className="h-[200px] bg-gray-100">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
-                  width={500}
-                  height={300}
-                  alt="Managing Weight"
-                  className="object-cover w-full h-full"
-                  loading="lazy"
-                  sizes="(max-width: 639px) 100vw, 50vw"
-                  quality={75}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                />
+              {/* CARD 3 */}
+              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+                <div className="h-[200px] bg-gray-100">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
+                    width={500}
+                    height={300}
+                    alt="Reducing Inflammation"
+                    className="object-cover w-full h-full"
+                    loading="lazy"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    quality={75}
+                  />
+                </div>
+                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+                  <h3 className="mb-2 text-lg font-semibold">Reducing Inflammation</h3>
+                  <p className="text-sm opacity-90">
+                    PCOS is often linked with low-grade inflammation. Consuming a diet high in anti-inflammatory foods can be beneficial.
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-[#FF8A00] text-white p-6 flex-1">
-
-                <div className="w-10 h-[2px] bg-white mb-4"></div>
-
-                <h3 className="mb-2 text-lg font-semibold">
-                  Managing Weight
-                </h3>
-
-                <p className="text-sm opacity-90">
-                  Losing even a small amount of weight if you are overweight can help manage PCOS symptoms.
-                </p>
-
-              </div>
-
-            </div>
-
-
-
-            {/* CARD 3 */}
-
-            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
-
-              <div className="h-[200px] bg-gray-100">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
-                  width={500}
-                  height={300}
-                  alt="Reducing Inflammation"
-                  className="object-cover w-full h-full"
-                  loading="lazy"
-                  sizes="(max-width: 639px) 100vw, 50vw"
-                  quality={75}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                />
-              </div>
-
-              <div className="bg-[#FF8A00] text-white p-6 flex-1">
-
-                <div className="w-10 h-[2px] bg-white mb-4"></div>
-
-                <h3 className="mb-2 text-lg font-semibold">
-                  Reducing Inflammation
-                </h3>
-
-                <p className="text-sm opacity-90">
-                  PCOS is often linked with low-grade inflammation. Consuming a diet high in anti-inflammatory foods can be beneficial.
-                </p>
-
+              {/* CARD 4 */}
+              <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
+                <div className="h-[200px] bg-gray-100">
+                  <Image
+                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
+                    width={500}
+                    height={300}
+                    alt="Increasing Fertility"
+                    className="object-cover w-full h-full"
+                    loading="lazy"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    quality={75}
+                  />
+                </div>
+                <div className="bg-[#FF8A00] text-white p-6 flex-1">
+                  <div className="w-10 h-[2px] bg-white mb-4"></div>
+                  <h3 className="mb-2 text-lg font-semibold">Increasing Fertility</h3>
+                  <p className="text-sm opacity-90">
+                    PCOS is one of the leading causes of infertility in women due to hormonal imbalances affecting ovulation.
+                  </p>
+                </div>
               </div>
 
             </div>
 
+            {/* RIGHT: Dark CTA card */}
+            <div
+              className="relative rounded-[20px] overflow-hidden text-white p-8 md:p-10 flex flex-col justify-between gap-8"
+              style={{
+                background:
+                  'radial-gradient(120% 80% at 100% 0%, rgba(255,138,0,0.28) 0%, rgba(255,138,0,0.08) 35%, rgba(15,15,15,0) 65%), linear-gradient(160deg, #1a1a1a 0%, #0c0c0c 60%, #000000 100%)',
+              }}
+            >
+              {/* Decorative orange corner bracket */}
+              <span aria-hidden className="pointer-events-none absolute top-6 right-6 w-7 h-7 border-t-2 border-r-2 border-[#FF8A00]" />
 
+              {/* TOP block */}
+              <div>
+                <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-[#FF8A00] px-4 py-1.5 text-xs font-semibold text-white">
+                  <span aria-hidden>✦</span> Get Started
+                </span>
 
-            {/* CARD 4 */}
-
-            <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
-
-              <div className="h-[200px] bg-gray-100">
-                <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
-                  width={500}
-                  height={300}
-                  alt="Increasing Fertility"
-                  className="object-cover w-full h-full"
-                  loading="lazy"
-                  sizes="(max-width: 639px) 100vw, 50vw"
-                  quality={75}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                />
-              </div>
-
-              <div className="bg-[#FF8A00] text-white p-6 flex-1">
-
-                <div className="w-10 h-[2px] bg-white mb-4"></div>
-
-                <h3 className="mb-2 text-lg font-semibold">
-                  Increasing Fertility
+                <h3 className="mt-6 text-3xl font-bold leading-[1.15]">
+                  Ready to<br />Transform Your<br />Health?
                 </h3>
 
-                <p className="text-sm opacity-90">
-                  PCOS is one of the leading causes of infertility in women due to hormonal imbalances affecting ovulation.
+                <p className="mt-4 text-sm text-white/70 leading-relaxed">
+                  Join thousands of women who have successfully managed their PCOD/PCOS through our personalized nutrition plans.
                 </p>
-
               </div>
 
+              {/* MIDDLE block */}
+              <div>
+                <ul className="space-y-3 text-sm">
+                  {[
+                    'Personalized diet plans',
+                    'Expert nutritionist support',
+                    'Traditional "Ghar ka Khana"',
+                    'Proven results',
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#FF8A00] text-white text-[11px] leading-none">✓</span>
+                      <span className="text-white/90">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="/appointment"
+                  className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#FF8A00] hover:bg-[#E57A00] transition-colors px-6 py-3.5 text-sm font-semibold text-white"
+                >
+                  Book Your Consultation <span aria-hidden>→</span>
+                </a>
+              </div>
+
+              {/* BOTTOM block */}
+              <div className="pt-6 border-t border-white/10 text-sm">
+                <p className="text-white/60 mb-2">Questions? Contact us</p>
+                <p className="flex items-center gap-2 text-white/90">
+                  <span aria-hidden>📞</span>
+                  <a href="tel:+919893027688" className="hover:text-[#FF8A00] transition-colors">+91 9893027688</a>
+                </p>
+                <p className="flex items-center gap-2 text-white/90 mt-1">
+                  <span aria-hidden>✉️</span>
+                  <a href="mailto:support@dtpoonamsagar.com" className="hover:text-[#FF8A00] transition-colors">support@dtpoonamsagar.com</a>
+                </p>
+              </div>
             </div>
 
           </div>
@@ -476,40 +492,31 @@ export default function PCODPage() {
       </section>
 
       {/* TESTIMONIALS GALLERY */}
-      <section className="site-shell py-12 md:py-20">
-        <div className="site-fill">
-
-          <div className="flex flex-col gap-4 mb-10 md:flex-col md:items-start  md:justify-between md:mb-14">
-
-            <div className="flex flex-col gap-2 mb-4 md:gap-2 justify-center md:justify-start md:items-start ">
-              <div className="flex gap-2 items-center justify-center ">
-                <span className="text-[#f5a623] text-lg">✦</span>
-                <span className="text-teal-600 text-base font-semibold">
-                  Success Stories
-                </span>
-              </div>
-
-              <h2 className="text-[#1E1E1E] md:text-start text-center text-[28px] md:text-[44px] font-bold leading-[1.2] mt-2">
-             Over <span className="text-[#FF850B] " >1,00,000+</span>
-              <br />
-                People Manage PCOD Successfully
-              </h2>
-              <p className="text-[#828283] md:text-start text-center text-[12px] md:text-[14px] mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Choose a plan as per your requirements and start your wellness journey. See you around!
-              </p>
+      <TestimonialSliderSection
+        page="pcod"
+        maxItems={6}
+        header={
+          <>
+            <div className="flex items-center gap-2">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Success Stories
+              </span>
             </div>
-
-          </div>
-
-
-          {/* TransformationGallery for PCOD */}
-          <TransformationGallery
-            page="pcod"
-            
-            maxItems={6}
-          />
-        </div>
-      </section>
+            <h2 className="text-[#1E1E1E] text-[28px] md:text-[44px] font-bold leading-[1.2] mt-2">
+              Over <span className="text-[#FF850B]">1,00,000+</span>
+              <br />
+              People Manage PCOD Successfully
+            </h2>
+            <p
+              className="text-[#828283] text-[12px] md:text-[14px] mt-2"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Choose a plan as per your requirements and start your wellness journey. See you around!
+            </p>
+          </>
+        }
+      />
 
       <div id="plans-section" className="scroll-mt-24" />
 

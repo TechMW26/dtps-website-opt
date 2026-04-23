@@ -118,6 +118,22 @@ video {
   margin-right: auto;
 }
 
+.transformations {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .transformations {
+    width: 80%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .site-card-padding {
   padding-left: 20px;
   padding-right: 20px;

@@ -22,6 +22,11 @@ const TransformationGallery = dynamic(() => import('@/components/TransformationG
   ssr: true,
 });
 
+const TestimonialSliderSection = dynamic(() => import('@/components/TestimonialSliderSection'), {
+  loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[20px]" />,
+  ssr: false,
+});
+
 const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
   ssr: false,
 });
@@ -249,43 +254,31 @@ export default function WeightLossPage() {
       </PageWrapper>
 
       {/* ═════ TESTIMONIALS GALLERY ═════ */}
-      <section className="py-12 md:py-20">
-        <div className="site-fill ">
-
-          <div className="flex flex-col  md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
-
-            <div className="max-w-[630px]">
-              <div className="flex items-center  gap-2">
-                    <span className="text-[#f5a623] text-lg">✦</span>
-             <span className="text-teal-600 text-base font-semibold">
-                  Our Testimonials
-                </span>
-              </div>
-           
-
-              <SectionTitle className="text-[#1E1E1E] mt-2">
-                Success stories from our clients
-              </SectionTitle>
-
-              <p
-                className="text-[#828283] text-[12px] md:text-[14px] mt-2"
-                style={{ fontFamily: "Inter, sans-serif" }}
-              >
-               Choose a plan as per your requirements and start your wellness journey. See you around!
-              </p>
+      <TestimonialSliderSection
+        page="weight-loss"
+        maxItems={6}
+        header={
+          <>
+            <div className="flex items-center gap-2">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
+                Our Testimonials
+              </span>
             </div>
 
-          </div>
+            <SectionTitle className="text-[#1E1E1E] mt-2">
+              Success stories from our clients
+            </SectionTitle>
 
-          {/* Transformation Cards Slider */}
-          <TransformationGallery
-            page="weight-loss"
-            maxItems={6}
-            cardBackgroundClassName="bg-transparent"
-          />
-
-        </div>
-      </section>
+            <p
+              className="text-[#828283] text-[12px] md:text-[14px] mt-2"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Choose a plan as per your requirements and start your wellness journey. See you around!
+            </p>
+          </>
+        }
+      />
 
       {/* ═════ FIVE CYCLE PROGRAM ═════ */}
       <section>

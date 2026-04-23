@@ -16,6 +16,7 @@ interface Transformation {
   daysToAchieve: string;
   testimonial?: string;
   page: string;
+  targetPages?: string[];
   featured: boolean;
   isActive: boolean;
 }
@@ -24,6 +25,7 @@ interface TransformationGalleryProps {
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
   maxItems?: number;
   cardBackgroundClassName?: string;
+  paginationElSelector?: string;
 }
 
 // Optimize ImageKit URLs
@@ -50,6 +52,7 @@ export default function TransformationGallery({
   page,
   maxItems = 6,
   cardBackgroundClassName = 'bg-gray-100',
+  paginationElSelector,
 }: TransformationGalleryProps) {
   const [transformations, setTransformations] = useState<Transformation[]>(fallbackData as any);
   const [loading, setLoading] = useState(true);
@@ -57,26 +60,14 @@ export default function TransformationGallery({
   useEffect(() => {
     const fetchTransformations = async () => {
       try {
-        // First try to fetch page-specific transformations
         const response = await fetch(`/api/transformations?page=${page}&active=true`, {
           cache: 'no-store'
         });
+
         if (response.ok) {
           const data = await response.json();
           if (data.transformations && data.transformations.length > 0) {
             setTransformations(data.transformations.slice(0, maxItems));
-            return;
-          }
-        }
-
-        // If no page-specific data, fetch all active transformations
-        const allResponse = await fetch('/api/transformations?active=true', {
-          cache: 'no-store'
-        });
-        if (allResponse.ok) {
-          const allData = await allResponse.json();
-          if (allData.transformations && allData.transformations.length > 0) {
-            setTransformations(allData.transformations.slice(0, maxItems));
             return;
           }
         }
@@ -123,7 +114,7 @@ export default function TransformationGallery({
           slidesPerView={1}
           pagination={{
             clickable: true,
-            el: '.swiper-pagination-custom',
+            el: paginationElSelector || '.swiper-pagination-custom',
           }}
           autoplay={{
             delay: 4000,
@@ -145,36 +136,35 @@ export default function TransformationGallery({
 
           {optimizedTransformations.map((transformation, index) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
-              <div className={`rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)] ${cardBackgroundClassName}`}>
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={transformation.optimizedImage}
-                    alt={`${transformation.clientName} Transformation`}
-                    fill
-                    className="object-cover rounded-[16px]"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    decoding="async"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    quality={75}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
-                  />
-                </div>
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src={transformation.optimizedImage}
+                  alt={`${transformation.clientName} Transformation`}
+                  fill
+                  className="object-cover rounded-[16px]"
+                  loading={index < 3 ? "eager" : "lazy"}
+                  decoding="async"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={75}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Pagination Dots */}
-        <div className="swiper-pagination-custom flex justify-center gap-2 mt-6 relative">
-          <style>{`
+        {/* Pagination Dots (default location, can be overridden via paginationElSelector) */}
+        {!paginationElSelector && (
+          <div className="swiper-pagination-custom flex justify-center gap-2 mt-6 relative" />
+        )}
+        <style>{`
             .swiper-pagination-custom {
               display: flex !important;
               justify-content: center;
               gap: 8px;
               margin-top: 24px;
               position: relative;
-              width: 100%;
             }
             .swiper-pagination-custom .swiper-pagination-bullet {
               width: 10px;
@@ -193,7 +183,6 @@ export default function TransformationGallery({
               height: 12px;
             }
           `}</style>
-        </div>
       </div>
     </section>
   );
