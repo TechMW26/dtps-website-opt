@@ -63,7 +63,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(1);
 
   return (
-    <section className="mt-2 md:mt-4 mb-12 md:mb-16 pt-4 md:pt-6 pb-8 md:pb-10">
+    <section className="mt-2 md:mt-4 pt-4 md:pt-6">
       <div className="max-w-[1010px] mx-auto rounded-[22px]   bg-white px-4 md:px-8 py-6 md:py-8 shadow-[0_0_20px_rgba(0,0,0,0.03)]">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           <div className="relative w-full lg:w-[480px] min-h-[360px] md:min-h-[440px] flex-shrink-0">
