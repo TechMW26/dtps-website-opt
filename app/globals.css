@@ -7934,3 +7934,90 @@ video {
   }
 }
 
+/* ============================================================
+   MOBILE FORM STREAMLINING (appointment + contact)
+   ============================================================ */
+@media (max-width: 640px) {
+  .appointment-card,
+  .contact-main {
+    border-radius: 16px;
+  }
+
+  .appointment-left {
+    padding: 20px 18px 0;
+  }
+
+  .appointment-form-box,
+  .contact-form-box {
+    padding: 18px 16px 20px;
+    border-radius: 16px;
+  }
+
+  .contact-info-card {
+    padding: 20px 18px;
+  }
+
+  /* Form group spacing — JSX already uses space-y-4, so kill the bottom margin */
+  .appointment-form .form-group,
+  .contact-form .form-group,
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  /* Tighter labels */
+  .appointment-form label,
+  .contact-form label,
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  /* Tighter inputs / selects / textareas */
+  .appointment-form input,
+  .appointment-form select,
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea,
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .form-group textarea,
+  .contact-form textarea {
+    min-height: 90px;
+  }
+
+  /* Section heading inside the form panel */
+  .appointment-left .section-title,
+  .contact-form-box .section-title {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .appointment-left .about-desc,
+  .contact-form-box .about-desc {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  /* Tighten the form's overall vertical rhythm.
+     Tailwind space-y-4 = 16px; reduce to 12px on mobile. */
+  .appointment-form > * + *,
+  .contact-form > * + * {
+    margin-top: 12px;
+  }
+
+  /* Submit button */
+  .appointment-form button[type="submit"],
+  .contact-form button[type="submit"] {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+

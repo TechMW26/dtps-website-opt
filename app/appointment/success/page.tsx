@@ -73,22 +73,26 @@ function AppointmentSuccessContent() {
   const [appt, setAppt] = useState<AppointmentSummary | null>(null);
 
   useEffect(() => {
+    let loaded: AppointmentSummary | null = null;
     try {
       const stored = sessionStorage.getItem('lastAppointment');
-      if (stored) setAppt(JSON.parse(stored));
+      if (stored) loaded = JSON.parse(stored);
     } catch {}
-    // Allow URL fallback
-    const id = params.get('id');
-    if (!appt && id) {
-      setAppt({
-        id,
-        name: params.get('name') || '',
-        email: params.get('email') || '',
-        phone: params.get('phone') || '',
-        service: params.get('service') || '',
-        preferredDate: params.get('date') || '',
-      });
+    // URL fallback only if sessionStorage didn't have it
+    if (!loaded) {
+      const id = params.get('id');
+      if (id) {
+        loaded = {
+          id,
+          name: params.get('name') || '',
+          email: params.get('email') || '',
+          phone: params.get('phone') || '',
+          service: params.get('service') || '',
+          preferredDate: params.get('date') || '',
+        };
+      }
     }
+    if (loaded) setAppt(loaded);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
