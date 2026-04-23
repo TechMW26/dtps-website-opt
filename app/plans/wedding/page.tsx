@@ -315,11 +315,10 @@ export default function WeddingPlanPage() {
             {/* Desktop Layout */}
             <div className="hidden md:flex w-full flex-1 flex-col items-center justify-end mb-12  px-6 text-center lg:px-8">
               <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
-                India&apos;s Only <span className="text-[#FF850B] text-[1.5rem] ">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan
+                <span className="block">India&apos;s Only</span>
+                <span className="block"><span className="text-[#FF850B]">&ldquo;Ghar Ka Khana&rdquo;</span> Diet Plan</span>
+                <span className="block">That Gets You <span className="">Wedding-Ready.</span></span>
               </h1>
-              <h2 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2]">
-                That Gets You <span className="text-[#FF850B]">Wedding-Ready.</span>
-              </h2>
 
               <p className="text-white/80 text-[18px] leading-[1.7] mb-8 max-w-[580px]">
                 Because you shouldn&apos;t have to suffer to look beautiful.
@@ -564,7 +563,7 @@ export default function WeddingPlanPage() {
       <section className="block md:hidden w-full">
 
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad6a1.jpg"
+          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/wedding/section-29-1776941173451.jpg"
           alt="Five Cycle Program"
           width={420}
           height={700}
@@ -581,7 +580,7 @@ export default function WeddingPlanPage() {
       <section className="site-shell hidden bg-white py-20 md:block">
         <div className="site-fill rounded-[28px] overflow-hidden">
           <Image
-            src="/5dayscycle.svg"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-29-1776941173451.jpg"
             alt="Our Five-Cycle Program"
             width={1200}
             height={700}

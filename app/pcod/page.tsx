@@ -302,7 +302,7 @@ export default function PCODPage() {
 
         {/* Desktop Banner */}
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c719a14dfc9fbf5ad6d7.jpg"
+          src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-28-1776941170242.png"
           alt="Symptoms & Nutritional Concerns"
           width={1200}
           height={600}

@@ -285,7 +285,7 @@ export default function WeightLossPage() {
         {/* Desktop Version */}
         <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-28-1776941172011.jpg"
             alt="Our Five-Cycle Program - Desktop"
             width={1200}
             height={600}
@@ -302,7 +302,7 @@ export default function WeightLossPage() {
         {/* Mobile Version */}
         <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-31-1776942021084.jpg"
             alt="Our Five-Cycle Program - Mobile"
             width={600}
             height={800}
