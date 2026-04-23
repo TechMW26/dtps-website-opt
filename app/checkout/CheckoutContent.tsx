@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
@@ -30,6 +30,8 @@ interface AppliedCoupon {
   minOrderAmount: number;
   maxDiscountAmount?: number | null;
 }
+
+type CheckoutResolutionStatus = 'cancelled' | 'failed';
 
 const TERMS_AND_CONDITIONS = `Terms & Conditions
 
@@ -88,6 +90,8 @@ export default function CheckoutContent() {
   const [couponError, setCouponError] = useState('');
   const [discount, setDiscount] = useState(0);
   const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon | null>(null);
+  const activeOrderRef = useRef<{ orderId: string; razorpayOrderId: string } | null>(null);
+  const resolvedStatusRef = useRef<'success' | CheckoutResolutionStatus | null>(null);
 
   useEffect(() => {
     // Get products from URL params or session storage
@@ -100,6 +104,88 @@ export default function CheckoutContent() {
       setTotal(subtotalAmount);
     }
   }, []);
+
+  useEffect(() => {
+    const handlePageHide = () => {
+      const activeOrder = activeOrderRef.current;
+      if (!activeOrder || resolvedStatusRef.current === 'success') {
+        return;
+      }
+
+      const status = resolvedStatusRef.current === 'failed' ? 'failed' : 'cancelled';
+      const payload = JSON.stringify({
+        action: 'resolve',
+        orderId: activeOrder.orderId,
+        status,
+        razorpayOrderId: activeOrder.razorpayOrderId,
+        paymentMethod: 'razorpay',
+      });
+
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/orders', new Blob([payload], { type: 'application/json' }));
+        return;
+      }
+
+      void fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: payload,
+        keepalive: true,
+      });
+    };
+
+    window.addEventListener('pagehide', handlePageHide);
+    return () => window.removeEventListener('pagehide', handlePageHide);
+  }, []);
+
+  const resolutionPriority = {
+    cancelled: 1,
+    failed: 2,
+    success: 3,
+  } as const;
+
+  const resolveOrder = async (
+    status: CheckoutResolutionStatus,
+    extra: {
+      razorpayPaymentId?: string;
+      responseData?: unknown;
+    } = {}
+  ) => {
+    const activeOrder = activeOrderRef.current;
+    if (!activeOrder) {
+      return;
+    }
+
+    const currentStatus = resolvedStatusRef.current;
+    const currentPriority = currentStatus ? resolutionPriority[currentStatus] : 0;
+    if (currentStatus === 'success' || currentPriority >= resolutionPriority[status]) {
+      return;
+    }
+
+    resolvedStatusRef.current = status;
+
+    try {
+      await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'resolve',
+          orderId: activeOrder.orderId,
+          status,
+          razorpayOrderId: activeOrder.razorpayOrderId,
+          paymentMethod: 'razorpay',
+          ...extra,
+        }),
+        keepalive: true,
+      });
+    } catch (error) {
+      console.error(`Failed to mark order as ${status}:`, error);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -178,6 +264,8 @@ export default function CheckoutContent() {
 
     setLoading(true);
     setOrderStatus('processing');
+    activeOrderRef.current = null;
+    resolvedStatusRef.current = null;
 
     try {
       // Create order via API
@@ -201,6 +289,11 @@ export default function CheckoutContent() {
       const data = await response.json();
 
       if (data.success) {
+        activeOrderRef.current = {
+          orderId: data.order.orderId,
+          razorpayOrderId: data.razorpayOrderId,
+        };
+
         // Get phone number from webhook/API response (not from form)
         const phoneFromAPI = data.order.customerPhone;
         
@@ -230,17 +323,29 @@ export default function CheckoutContent() {
 
               const verifyData = await verifyResponse.json();
               if (verifyData.success) {
+                resolvedStatusRef.current = 'success';
+                activeOrderRef.current = null;
                 setOrderStatus('success');
                 // Redirect to success page
                 setTimeout(() => {
                   window.location.href = `/checkout/success?orderId=${data.order.orderId}`;
                 }, 1500);
               } else {
+                await resolveOrder('failed', {
+                  razorpayPaymentId: razorpayResponse.razorpay_payment_id,
+                  responseData: verifyData,
+                });
                 setOrderStatus('failed');
                 setLoading(false);
               }
             } catch (error) {
               console.error('Payment verification error:', error);
+              await resolveOrder('failed', {
+                razorpayPaymentId: razorpayResponse.razorpay_payment_id,
+                responseData: {
+                  message: 'Payment verification error',
+                },
+              });
               setOrderStatus('failed');
               setLoading(false);
             }
@@ -266,24 +371,43 @@ export default function CheckoutContent() {
           },
           modal: {
             ondismiss: function () {
-              setOrderStatus('idle');
+              if (!resolvedStatusRef.current) {
+                void resolveOrder('cancelled');
+                setOrderStatus('idle');
+              } else if (resolvedStatusRef.current === 'failed') {
+                setOrderStatus('failed');
+              }
               setLoading(false);
             },
           },
         };
 
         const razorpayWindow = new window.Razorpay(options);
+        if (typeof razorpayWindow.on === 'function') {
+          razorpayWindow.on('payment.failed', async function (response: any) {
+            await resolveOrder('failed', {
+              razorpayPaymentId: response?.error?.metadata?.payment_id,
+              responseData: response,
+            });
+            setOrderStatus('failed');
+            setLoading(false);
+          });
+        }
         razorpayWindow.open();
       } else {
         setOrderStatus('failed');
         alert('Failed to create order');
         setLoading(false);
+        activeOrderRef.current = null;
+        resolvedStatusRef.current = null;
       }
     } catch (error) {
       console.error('Error placing order:', error);
       setOrderStatus('failed');
       alert('Error placing order');
       setLoading(false);
+      activeOrderRef.current = null;
+      resolvedStatusRef.current = null;
     }
   };
 

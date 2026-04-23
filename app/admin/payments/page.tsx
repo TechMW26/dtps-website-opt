@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
-import { Eye, Download, BarChart3 } from 'lucide-react';
+import { Eye, Download, BarChart3, Calendar } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
 interface Payment {
@@ -16,24 +16,43 @@ interface Payment {
   createdAt: string;
 }
 
+function normalizePaymentStatus(status: string) {
+  return status === 'pending' ? 'failed' : status;
+}
+
+function toInputDate(d: Date) {
+  return d.toISOString().slice(0, 10);
+}
+
 export default function PaymentsPage() {
   const [payments, setPayments] = useState<Payment[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPayment, setSelectedPayment] = useState<Payment | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState('');
 
   useEffect(() => {
     fetchPayments();
-  }, []);
+  }, [dateFrom, dateTo]);
 
-  const fetchPayments = async () => {
+  const fetchPayments = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/payments');
+      const params = new URLSearchParams();
+      if (dateFrom) params.set('from', dateFrom);
+      if (dateTo) params.set('to', dateTo);
+      const qs = params.toString();
+      const response = await fetch(`/api/payments${qs ? `?${qs}` : ''}`);
       const data = await response.json();
       if (data.success && Array.isArray(data.payments)) {
-        setPayments(data.payments);
+        setPayments(
+          data.payments.map((payment: Payment) => ({
+            ...payment,
+            status: normalizePaymentStatus(payment.status),
+          }))
+        );
         setTotalAmount(data.totalAmount || 0);
       }
     } catch (error) {
@@ -42,7 +61,21 @@ export default function PaymentsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [dateFrom, dateTo]);
+
+  function setDatePreset(preset: string) {
+    const today = new Date();
+    let from = new Date();
+    switch (preset) {
+      case 'today': from = today; break;
+      case '7d': from.setDate(today.getDate() - 7); break;
+      case '30d': from.setDate(today.getDate() - 30); break;
+      case '90d': from.setDate(today.getDate() - 90); break;
+      case 'all': setDateFrom(''); setDateTo(''); return;
+    }
+    setDateFrom(toInputDate(from));
+    setDateTo(toInputDate(today));
+  }
 
   const downloadPayment = (payment: Payment) => {
     const content = `
@@ -60,7 +93,7 @@ Email: ${payment.customerEmail}
 PAYMENT DETAILS
 ===============
 Amount: ₹${payment.amount.toLocaleString()}
-Status: ${payment.status.toUpperCase()}
+Status: ${normalizePaymentStatus(payment.status).toUpperCase()}
 Payment Method: Razorpay
     `;
 
@@ -158,6 +191,51 @@ Payment Method: Razorpay
         </div>
       </div>
 
+      {/* Date Filters */}
+      <div className="bg-white border border-gray-200 rounded-xl p-4 mb-4 space-y-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <Calendar className="w-4 h-4 text-gray-400 shrink-0" />
+          {['today', '7d', '30d', '90d', 'all'].map((p) => (
+            <button
+              key={p}
+              onClick={() => setDatePreset(p)}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors ${
+                (p === 'all' && !dateFrom && !dateTo)
+                  ? 'bg-orange-50 border-orange-300 text-orange-700'
+                  : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              {p === 'all' ? 'All Time' : p === 'today' ? 'Today' : `Last ${p}`}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 text-sm">
+          <span className="text-gray-500 text-xs font-medium">Custom range:</span>
+          <input
+            type="date"
+            value={dateFrom}
+            onChange={(e) => setDateFrom(e.target.value)}
+            className="px-2.5 py-1.5 border border-gray-200 rounded-lg text-sm bg-white focus:ring-2 focus:ring-orange-500"
+          />
+          <span className="text-gray-400">→</span>
+          <input
+            type="date"
+            value={dateTo}
+            onChange={(e) => setDateTo(e.target.value)}
+            className="px-2.5 py-1.5 border border-gray-200 rounded-lg text-sm bg-white focus:ring-2 focus:ring-orange-500"
+          />
+          {(dateFrom || dateTo) && (
+            <button
+              onClick={() => { setDateFrom(''); setDateTo(''); }}
+              className="text-xs text-red-500 hover:text-red-700 underline"
+            >
+              Clear dates
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* Table */}
       <div className="overflow-x-auto bg-white rounded-lg border border-gray-200">
         <table className="w-full">
@@ -180,7 +258,10 @@ Payment Method: Razorpay
                 </td>
               </tr>
             ) : (
-              payments.map((payment) => (
+              payments.map((payment) => {
+                const status = normalizePaymentStatus(payment.status);
+
+                return (
                 <tr key={payment._id} className="border-b border-gray-200 hover:bg-gray-50">
                   <td className="px-6 py-4 font-semibold text-gray-900 text-sm">{payment.razorpayPaymentId}</td>
                   <td className="px-6 py-4 text-gray-700 font-semibold">{payment.orderId}</td>
@@ -189,14 +270,12 @@ Payment Method: Razorpay
                   <td className="px-6 py-4">
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
-                        payment.status === 'completed'
+                        status === 'completed'
                           ? 'bg-green-100 text-green-800'
-                          : payment.status === 'pending'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-red-100 text-red-800'
+                          : 'bg-red-100 text-red-800'
                       }`}
                     >
-                      {payment.status}
+                      {status}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-gray-700 text-sm">
@@ -222,7 +301,8 @@ Payment Method: Razorpay
                     </div>
                   </td>
                 </tr>
-              ))
+                );
+              })
             )}
           </tbody>
         </table>

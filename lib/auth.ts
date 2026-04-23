@@ -3,6 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import dbConnect from '@/lib/mongodb';
 import Admin from '@/models/Admin';
 import { logSecurityEvent } from '@/lib/security';
+import { ensurePermanentAdminExists } from '@/lib/permanent-admin';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -19,6 +20,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         await dbConnect();
+        await ensurePermanentAdminExists();
 
         const admin = await Admin.findOne({ email }).select('+password');
 

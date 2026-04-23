@@ -23,10 +23,14 @@ interface Order {
   }>;
   subtotal: number;
   total: number;
-  paymentStatus: 'pending' | 'completed' | 'failed' | 'cancelled';
+  paymentStatus: 'completed' | 'failed' | 'cancelled';
   razorpayOrderId: string;
   razorpayPaymentId?: string;
   createdAt: string;
+}
+
+function normalizeOrderStatus(status: string): 'completed' | 'failed' | 'cancelled' {
+  return status === 'pending' ? 'cancelled' : status as 'completed' | 'failed' | 'cancelled';
 }
 
 export default function OrderDetailPage() {
@@ -43,7 +47,10 @@ export default function OrderDetailPage() {
         const response = await fetch(`/api/orders?orderId=${params.id}`);
         const data = await response.json();
         if (data.success && data.order) {
-          setOrder(data.order);
+          setOrder({
+            ...data.order,
+            paymentStatus: normalizeOrderStatus(data.order.paymentStatus),
+          });
         }
       } catch (error) {
         console.error('Error fetching order:', error);
@@ -129,10 +136,21 @@ Razorpay Payment ID: ${order.razorpayPaymentId || 'N/A'}
 
   const statusColor = {
     completed: 'text-green-600 bg-green-50',
-    pending: 'text-yellow-600 bg-yellow-50',
     failed: 'text-red-600 bg-red-50',
     cancelled: 'text-gray-600 bg-gray-50',
   };
+
+  const paymentStatusText = order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1);
+  const paymentStatusDot = order.paymentStatus === 'completed'
+    ? 'bg-emerald-500'
+    : order.paymentStatus === 'failed'
+      ? 'bg-red-500'
+      : 'bg-gray-400';
+  const paymentStatusTextColor = order.paymentStatus === 'completed'
+    ? 'text-emerald-600'
+    : order.paymentStatus === 'failed'
+      ? 'text-red-600'
+      : 'text-gray-600';
 
   return (
     <div className={`min-h-screen p-8 ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-50'}`}>
@@ -172,7 +190,7 @@ Razorpay Payment ID: ${order.razorpayPaymentId || 'N/A'}
               </div>
               <span className={`px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 ${statusColor[order.paymentStatus]}`}>
                 {order.paymentStatus === 'completed' && <CheckCircle className="w-4 h-4" />}
-                {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                {paymentStatusText}
               </span>
             </div>
 
@@ -336,15 +354,15 @@ Razorpay Payment ID: ${order.razorpayPaymentId || 'N/A'}
             </h3>
             <div className="space-y-2">
               <div className="flex items-center gap-3">
-                <div className={`w-2 h-2 rounded-full ${order.paymentStatus === 'completed' || order.paymentStatus === 'pending' ? 'bg-emerald-500' : 'bg-gray-400'}`}></div>
-                <span className={order.paymentStatus === 'completed' || order.paymentStatus === 'pending' ? 'text-emerald-600' : 'text-gray-600'}>
+                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                <span className="text-emerald-600">
                   Order Created
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <div className={`w-2 h-2 rounded-full ${order.paymentStatus === 'completed' ? 'bg-emerald-500' : 'bg-gray-400'}`}></div>
-                <span className={order.paymentStatus === 'completed' ? 'text-emerald-600' : 'text-gray-600'}>
-                  Payment {order.paymentStatus.charAt(0).toUpperCase() + order.paymentStatus.slice(1)}
+                <div className={`w-2 h-2 rounded-full ${paymentStatusDot}`}></div>
+                <span className={paymentStatusTextColor}>
+                  Payment {paymentStatusText}
                 </span>
               </div>
             </div>

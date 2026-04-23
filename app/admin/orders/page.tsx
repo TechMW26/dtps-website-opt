@@ -21,6 +21,10 @@ interface Order {
   }>;
 }
 
+function normalizeOrderStatus(status: string) {
+  return status === 'pending' ? 'cancelled' : status;
+}
+
 /* ── helpers ── */
 function fmtDate(d: string) {
   return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
@@ -53,7 +57,12 @@ export default function OrdersPage() {
       const res = await fetch(`/api/orders${qs ? `?${qs}` : ''}`);
       const data = await res.json();
       if (data.success && Array.isArray(data.orders)) {
-        setOrders(data.orders);
+            setOrders(
+              data.orders.map((order: Order) => ({
+                ...order,
+                paymentStatus: normalizeOrderStatus(order.paymentStatus),
+              }))
+            );
         setSelected(new Set());
       }
     } catch (err) {
@@ -74,7 +83,7 @@ export default function OrdersPage() {
   const stats = useMemo(() => ({
     total: orders.length,
     completed: orders.filter((o) => o.paymentStatus === 'completed').length,
-    pending: orders.filter((o) => o.paymentStatus === 'pending').length,
+    cancelled: orders.filter((o) => o.paymentStatus === 'cancelled').length,
     failed: orders.filter((o) => o.paymentStatus === 'failed').length,
   }), [orders]);
 
@@ -160,7 +169,7 @@ PRODUCTS
 ${order.products.map((p: { name: string; price: number; quantity: number }) => `${p.name} x${p.quantity} - ₹${p.price * p.quantity}`).join('\n')}
 
 TOTAL: ₹${order.total.toLocaleString()}
-Payment Status: ${order.paymentStatus}
+Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
 `;
     const a = document.createElement('a');
     a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
@@ -204,8 +213,8 @@ Payment Status: ${order.paymentStatus}
           <p className="text-2xl font-bold text-green-600">{stats.completed}</p>
         </div>
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-          <p className="text-gray-500 text-xs font-medium">Pending</p>
-          <p className="text-2xl font-bold text-yellow-600">{stats.pending}</p>
+          <p className="text-gray-500 text-xs font-medium">Cancelled</p>
+          <p className="text-2xl font-bold text-gray-600">{stats.cancelled}</p>
         </div>
         <div className="bg-red-50 border border-red-200 rounded-xl p-4">
           <p className="text-gray-500 text-xs font-medium">Failed</p>
@@ -225,7 +234,7 @@ Payment Status: ${order.paymentStatus}
           >
             <option value="all">All Statuses</option>
             <option value="completed">Completed</option>
-            <option value="pending">Pending</option>
+            <option value="cancelled">Cancelled</option>
             <option value="failed">Failed</option>
           </select>
 
@@ -336,6 +345,7 @@ Payment Status: ${order.paymentStatus}
               ) : (
                 filteredOrders.map((order) => {
                   const isChecked = selected.has(order.orderId);
+                  const status = normalizeOrderStatus(order.paymentStatus);
                   return (
                     <tr
                       key={order._id}
@@ -358,14 +368,14 @@ Payment Status: ${order.paymentStatus}
                       <td className="px-4 py-3">
                         <span
                           className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize ${
-                            order.paymentStatus === 'completed'
+                            status === 'completed'
                               ? 'bg-green-100 text-green-700'
-                              : order.paymentStatus === 'pending'
-                                ? 'bg-yellow-100 text-yellow-700'
+                              : status === 'cancelled'
+                                ? 'bg-gray-100 text-gray-700'
                                 : 'bg-red-100 text-red-700'
                           }`}
                         >
-                          {order.paymentStatus}
+                          {status}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-gray-500 dark:text-gray-400 whitespace-nowrap">{fmtDate(order.createdAt)}</td>

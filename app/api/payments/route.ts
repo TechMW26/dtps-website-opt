@@ -8,8 +8,12 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
   try {
     await connectDB();
+    await Payment.updateMany({ status: 'pending' }, { status: 'failed' });
+
     const { searchParams } = new URL(req.url);
     const orderId = searchParams.get('orderId');
+    const from = searchParams.get('from');
+    const to = searchParams.get('to');
 
     if (orderId) {
       const payment = await Payment.findOne({ orderId });
@@ -19,8 +23,15 @@ export async function GET(req: NextRequest) {
       });
     }
 
+    const filter: Record<string, unknown> = {};
+    if (from || to) {
+      filter.createdAt = {};
+      if (from) (filter.createdAt as Record<string, unknown>).$gte = new Date(`${from}T00:00:00.000Z`);
+      if (to) (filter.createdAt as Record<string, unknown>).$lte = new Date(`${to}T23:59:59.999Z`);
+    }
+
     // Get all payments (admin)
-    const payments = await Payment.find().sort({ createdAt: -1 });
+    const payments = await Payment.find(filter).sort({ createdAt: -1 });
     return NextResponse.json({
       success: true,
       payments,

@@ -24,6 +24,7 @@ import {
   RefreshCcw,
   Clock,
   UserCheck,
+  Send,
 } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
@@ -91,6 +92,17 @@ export default function SecurityPage() {
   const [data, setData] = useState<SecurityResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [testLoading, setTestLoading] = useState(false);
+  const [testError, setTestError] = useState<string | null>(null);
+  const [testSuccess, setTestSuccess] = useState<string | null>(null);
+  const [testResponse, setTestResponse] = useState<any>(null);
+  const [testForm, setTestForm] = useState({
+    name: 'DTPS Test User',
+    email: '',
+    phone: '',
+    orderId: `TEST-${Date.now()}`,
+    total: '299',
+  });
 
   async function load() {
     setLoading(true);
@@ -112,6 +124,51 @@ export default function SecurityPage() {
     const interval = setInterval(load, 60_000);
     return () => clearInterval(interval);
   }, []);
+
+  async function runNotificationTest(e: React.FormEvent) {
+    e.preventDefault();
+    setTestError(null);
+    setTestSuccess(null);
+    setTestResponse(null);
+    setTestLoading(true);
+
+    try {
+      const res = await fetch('/api/admin/notifications/test', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: testForm.name,
+          email: testForm.email,
+          phone: testForm.phone,
+          orderId: testForm.orderId,
+          total: Number(testForm.total || 0),
+          products: [
+            {
+              name: 'DTPS Test Plan',
+              quantity: 1,
+              price: Number(testForm.total || 0),
+            },
+          ],
+        }),
+      });
+
+      const json = await res.json();
+      if (!res.ok || !json?.success) {
+        throw new Error(json?.error || `HTTP ${res.status}`);
+      }
+
+      setTestSuccess('Test notification sent. See channel response details below.');
+      setTestResponse(json);
+      setTestForm((prev) => ({
+        ...prev,
+        orderId: `TEST-${Date.now()}`,
+      }));
+    } catch (err: any) {
+      setTestError(err?.message || 'Failed to send test notification');
+    } finally {
+      setTestLoading(false);
+    }
+  }
 
   const stats = data?.stats;
   const recentAlerts = (data?.events || []).filter(
@@ -153,6 +210,90 @@ export default function SecurityPage() {
           Could not load security data: {error}
         </div>
       )}
+
+      {/* Notification Test */}
+      <div className={`rounded-xl border ${card}`}>
+        <div className={`p-4 border-b ${isDark ? 'border-slate-700' : 'border-slate-200'}`}>
+          <h2 className={`text-base font-semibold flex items-center gap-2 ${titleText}`}>
+            <Send className="w-4 h-4" /> Send Test Notification
+          </h2>
+          <p className={`text-xs mt-1 ${subtleText}`}>
+            Triggers both SMTP email and AiSensy WhatsApp test delivery instantly.
+          </p>
+        </div>
+        <div className="p-4 space-y-4">
+          <form onSubmit={runNotificationTest} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+            <input
+              type="text"
+              placeholder="Name"
+              value={testForm.name}
+              onChange={(e) => setTestForm((prev) => ({ ...prev, name: e.target.value }))}
+              className={`px-3 py-2 rounded-lg border text-sm ${isDark ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-900'}`}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={testForm.email}
+              onChange={(e) => setTestForm((prev) => ({ ...prev, email: e.target.value }))}
+              className={`px-3 py-2 rounded-lg border text-sm ${isDark ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-900'}`}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Phone"
+              value={testForm.phone}
+              onChange={(e) => setTestForm((prev) => ({ ...prev, phone: e.target.value }))}
+              className={`px-3 py-2 rounded-lg border text-sm ${isDark ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-900'}`}
+            />
+            <input
+              type="text"
+              placeholder="Order ID"
+              value={testForm.orderId}
+              onChange={(e) => setTestForm((prev) => ({ ...prev, orderId: e.target.value }))}
+              className={`px-3 py-2 rounded-lg border text-sm ${isDark ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-900'}`}
+              required
+            />
+            <div className="flex gap-2">
+              <input
+                type="number"
+                placeholder="Amount"
+                value={testForm.total}
+                onChange={(e) => setTestForm((prev) => ({ ...prev, total: e.target.value }))}
+                className={`w-full px-3 py-2 rounded-lg border text-sm ${isDark ? 'bg-slate-900 border-slate-700 text-slate-100' : 'bg-white border-slate-300 text-slate-900'}`}
+                min="1"
+                required
+              />
+              <button
+                type="submit"
+                disabled={testLoading}
+                className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold disabled:opacity-60 whitespace-nowrap"
+              >
+                {testLoading ? 'Sending...' : 'Send Test'}
+              </button>
+            </div>
+          </form>
+
+          {testError && (
+            <div className={`text-sm px-3 py-2 rounded-lg border ${isDark ? 'bg-red-900/20 border-red-700 text-red-300' : 'bg-red-50 border-red-200 text-red-700'}`}>
+              {testError}
+            </div>
+          )}
+
+          {testSuccess && (
+            <div className={`text-sm px-3 py-2 rounded-lg border ${isDark ? 'bg-emerald-900/20 border-emerald-700 text-emerald-300' : 'bg-emerald-50 border-emerald-200 text-emerald-700'}`}>
+              {testSuccess}
+            </div>
+          )}
+
+          {testResponse && (
+            <div className={`text-xs rounded-lg border p-3 space-y-1 ${isDark ? 'bg-slate-900 border-slate-700 text-slate-300' : 'bg-slate-50 border-slate-200 text-slate-700'}`}>
+              <p><strong>Email:</strong> {JSON.stringify(testResponse.email)}</p>
+              <p><strong>WhatsApp:</strong> {JSON.stringify(testResponse.whatsapp)}</p>
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* KPI cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -3,11 +3,13 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import dbConnect from '@/lib/mongodb';
 import Admin from '@/models/Admin';
+import { ensurePermanentAdminExists } from '@/lib/permanent-admin';
 
 // Create initial admin (for setup)
 export async function POST(request: NextRequest) {
   try {
     await dbConnect();
+    await ensurePermanentAdminExists();
 
     // Check if any admin exists
     const existingAdmin = await Admin.findOne({});
@@ -40,6 +42,7 @@ export async function POST(request: NextRequest) {
       password,
       name,
       role: existingAdmin ? role : 'superadmin', // First admin is superadmin
+      isPermanent: false,
     });
 
     return NextResponse.json({
@@ -73,6 +76,7 @@ export async function GET() {
     }
 
     await dbConnect();
+  await ensurePermanentAdminExists();
 
     const admins = await Admin.find({}).select('-password');
 

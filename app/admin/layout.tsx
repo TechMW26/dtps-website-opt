@@ -27,6 +27,7 @@ import {
   Quote,
   ShieldCheck,
   Globe2,
+  Users,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -41,6 +42,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const sidebarItems = [
   { name: 'Traffic', href: '/admin/traffic', icon: Globe2 },
   { name: 'Dashboard', href: '/admin/dashboard', icon: Home },
+  { name: 'Users', href: '/admin/users', icon: Users },
   { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
   { name: 'Payments', href: '/admin/payments', icon: CreditCard },
   { name: 'Coupons', href: '/admin/coupons', icon: Percent },

@@ -6,9 +6,12 @@ import Payment from '@/models/Payment';
 import Coupon from '@/models/Coupon';
 import Razorpay from 'razorpay';
 import { calculateSubtotal, validateCouponForProducts } from '@/lib/coupons';
+import { sendPostPaymentNotifications } from '@/lib/notifications';
 
 // Initialize Razorpay instance safely
 let razorpay: Razorpay | null = null;
+
+type OrderResolutionStatus = 'cancelled' | 'failed';
 
 function getRazorpayInstance() {
   if (!razorpay) {
@@ -20,10 +23,75 @@ function getRazorpayInstance() {
   return razorpay;
 }
 
+async function parseRequestBody(req: NextRequest) {
+  const rawBody = await req.text();
+  return rawBody ? JSON.parse(rawBody) : {};
+}
+
+async function upsertPaymentRecord({
+  orderId,
+  razorpayPaymentId,
+  razorpayOrderId,
+  amount,
+  currency,
+  status,
+  paymentMethod,
+  customerName,
+  customerEmail,
+  customerPhone,
+  responseData,
+}: {
+  orderId: string;
+  razorpayPaymentId?: string;
+  razorpayOrderId?: string;
+  amount: number;
+  currency?: string;
+  status: 'completed' | 'failed';
+  paymentMethod?: string;
+  customerName?: string;
+  customerEmail?: string;
+  customerPhone?: string;
+  responseData?: unknown;
+}) {
+  if (!razorpayPaymentId || !razorpayOrderId) {
+    return;
+  }
+
+  await Payment.findOneAndUpdate(
+    { razorpayPaymentId },
+    {
+      orderId,
+      razorpayPaymentId,
+      razorpayOrderId,
+      amount,
+      currency: currency || 'INR',
+      status,
+      paymentMethod: paymentMethod || 'razorpay',
+      customerName,
+      customerEmail,
+      customerPhone,
+      responseData,
+    },
+    {
+      upsert: true,
+      new: true,
+      setDefaultsOnInsert: true,
+    }
+  );
+}
+
+async function normalizePendingOrders(orderId?: string) {
+  const filter = orderId
+    ? { orderId, paymentStatus: 'pending' }
+    : { paymentStatus: 'pending' };
+
+  await Order.updateMany(filter, { paymentStatus: 'cancelled' });
+}
+
 export async function POST(req: NextRequest) {
   try {
     await connectDB();
-    const { action, ...data } = await req.json();
+    const { action, ...data } = await parseRequestBody(req);
 
     if (action === 'create') {
       const products = Array.isArray(data.products) ? data.products : [];
@@ -139,21 +207,39 @@ export async function POST(req: NextRequest) {
           );
         }
 
-        // Create payment record
-        const paymentRecord = new Payment({
+        await upsertPaymentRecord({
           orderId,
           razorpayPaymentId,
           razorpayOrderId,
-          amount: (payment.amount as number) / 100, // Convert from paise
+          amount: Number(payment.amount) / 100,
           currency: payment.currency,
           status: 'completed',
           paymentMethod: payment.method,
-          customerName: payment.notes?.customerName,
-          customerEmail: payment.notes?.customerEmail,
+          customerName: payment.notes?.customerName || existingOrder.customerName,
+          customerEmail: payment.notes?.customerEmail || existingOrder.customerEmail,
+          customerPhone: payment.notes?.customerPhone || existingOrder.customerPhone,
           responseData: payment,
         });
 
-        await paymentRecord.save();
+        // Notifications are best-effort: payment success should not fail if email/WhatsApp delivery fails.
+        const refreshedOrder = await Order.findOne({ orderId }).lean();
+        if (refreshedOrder) {
+          void sendPostPaymentNotifications({
+            orderId: refreshedOrder.orderId,
+            customerName: refreshedOrder.customerName,
+            customerEmail: refreshedOrder.customerEmail,
+            customerPhone: refreshedOrder.customerPhone,
+            total: refreshedOrder.total,
+            createdAt: refreshedOrder.createdAt,
+            products: (refreshedOrder.products || []).map((product: any) => ({
+              name: product.name,
+              quantity: Number(product.quantity || 1),
+              price: Number(product.price || 0),
+            })),
+          }).catch((notificationError) => {
+            console.error('Post-payment notification error:', notificationError);
+          });
+        }
 
         return NextResponse.json({
           success: true,
@@ -161,17 +247,110 @@ export async function POST(req: NextRequest) {
           order: orderId,
         });
       } else {
-        // Update order status
         await Order.findOneAndUpdate(
           { orderId },
-          { paymentStatus: 'failed' }
+          {
+            paymentStatus: 'failed',
+            razorpayPaymentId,
+            razorpayOrderId,
+          }
         );
+
+        await upsertPaymentRecord({
+          orderId,
+          razorpayPaymentId,
+          razorpayOrderId,
+          amount: Number(payment.amount || existingOrder.total * 100) / 100,
+          currency: payment.currency || 'INR',
+          status: 'failed',
+          paymentMethod: payment.method,
+          customerName: payment.notes?.customerName || existingOrder.customerName,
+          customerEmail: payment.notes?.customerEmail || existingOrder.customerEmail,
+          customerPhone: payment.notes?.customerPhone || existingOrder.customerPhone,
+          responseData: payment,
+        });
 
         return NextResponse.json(
           { success: false, message: 'Payment verification failed' },
           { status: 400 }
         );
       }
+    } else if (action === 'resolve') {
+      const {
+        orderId,
+        status,
+        razorpayPaymentId,
+        razorpayOrderId,
+        paymentMethod,
+        responseData,
+      } = data;
+
+      if (!orderId || !['cancelled', 'failed'].includes(status)) {
+        return NextResponse.json(
+          { success: false, message: 'orderId and a valid status are required' },
+          { status: 400 }
+        );
+      }
+
+      const existingOrder = await Order.findOne({ orderId });
+      if (!existingOrder) {
+        return NextResponse.json(
+          { success: false, message: 'Order not found' },
+          { status: 404 }
+        );
+      }
+
+      if (existingOrder.paymentStatus === 'completed') {
+        return NextResponse.json({
+          success: true,
+          message: 'Order already completed',
+          order: existingOrder,
+        });
+      }
+
+      const nextStatus = status as OrderResolutionStatus;
+      if (
+        existingOrder.paymentStatus === nextStatus ||
+        (existingOrder.paymentStatus === 'failed' && nextStatus === 'cancelled')
+      ) {
+        return NextResponse.json({
+          success: true,
+          message: `Order already marked as ${existingOrder.paymentStatus}`,
+          order: existingOrder,
+        });
+      }
+
+      const updatedOrder = await Order.findOneAndUpdate(
+        { orderId },
+        {
+          paymentStatus: nextStatus,
+          ...(razorpayPaymentId ? { razorpayPaymentId } : {}),
+          ...(razorpayOrderId ? { razorpayOrderId } : {}),
+        },
+        { new: true }
+      );
+
+      if (nextStatus === 'failed') {
+        await upsertPaymentRecord({
+          orderId,
+          razorpayPaymentId,
+          razorpayOrderId: razorpayOrderId || existingOrder.razorpayOrderId,
+          amount: existingOrder.total,
+          currency: 'INR',
+          status: 'failed',
+          paymentMethod,
+          customerName: existingOrder.customerName,
+          customerEmail: existingOrder.customerEmail,
+          customerPhone: existingOrder.customerPhone,
+          responseData,
+        });
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: `Order marked as ${nextStatus}`,
+        order: updatedOrder,
+      });
     }
 
     return NextResponse.json(
@@ -194,9 +373,12 @@ export async function GET(req: NextRequest) {
     const orderId = searchParams.get('orderId');
 
     if (orderId) {
+      await normalizePendingOrders(orderId);
       const order = await Order.findOne({ orderId }).lean();
       return NextResponse.json({ success: true, order });
     }
+
+    await normalizePendingOrders();
 
     // Build date filter if provided
     const from = searchParams.get('from');

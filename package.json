@@ -32,6 +32,7 @@
     "mongoose": "^9.1.5",
     "next": "^16.1.6",
     "next-auth": "^4.24.13",
+    "nodemailer": "^7.0.13",
     "razorpay": "^2.9.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@types/d3-geo": "^3.1.0",
     "@types/node": "^20.0.0",
+    "@types/nodemailer": "^8.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@types/react-simple-maps": "^3.0.6",

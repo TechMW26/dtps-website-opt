@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Admin from '@/models/Admin';
+import { ensurePermanentAdminExists, getPermanentAdminConfig } from '@/lib/permanent-admin';
 
 export async function GET() {
   try {
     await dbConnect();
+    await ensurePermanentAdminExists();
     
     // Check if any admin exists
     const adminExists = await Admin.findOne({});
     
     return NextResponse.json({
       adminExists: !!adminExists,
+      hasPermanentAdmin: !!getPermanentAdminConfig(),
     });
   } catch (error: any) {
     console.error('Error checking admin:', error?.message || error);
@@ -30,6 +33,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     await dbConnect();
+    await ensurePermanentAdminExists();
     
     // Check if any admin already exists
     const existingAdmin = await Admin.findOne({});
