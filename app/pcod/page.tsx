@@ -335,8 +335,7 @@ export default function PCODPage() {
 
           {/* gradient card behind team image */}
           <div
-            className="rounded-[24px] p-4 md:px-10 md:pt-10 md:pb-0"
-            style={{ background: 'linear-gradient(180deg, #EAEEF1 0%, #FFFFFF 100%)' }}
+            className="rounded-[24px] p-4 md:px-10 md:pt-10 md:pb-0 bg-[linear-gradient(180deg,#EAEEF1_0%,#FFFFFF_100%)] md:bg-none md:bg-[#EAEEF1]"
           >
 
             <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2 md:items-end">
@@ -346,8 +345,7 @@ export default function PCODPage() {
               <div className="flex justify-center md:self-stretch md:items-end">
 
                 <div
-                  className="relative overflow-hidden w-full max-w-[330px] aspect-[3/4] md:max-w-[520px] md:h-full md:aspect-auto"
-                  style={{ background: 'linear-gradient(180deg, #EAEEF1 0%, #FFFFFF 100%)' }}
+                  className="relative overflow-hidden w-full aspect-[3/4] md:max-w-[520px] md:h-full md:aspect-auto md:px-6 rounded-[20px] bg-[linear-gradient(180deg,#EAEEF1_0%,#FFFFFF_100%)] md:bg-none md:bg-[#EAEEF1]"
                 >
 
                   <Image
