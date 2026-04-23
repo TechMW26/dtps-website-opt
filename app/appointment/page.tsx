@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Button from '@/components/ui/Button';
 import PageWrapper from '@/components/PageWrapper';
 import Navbar from '@/components/Navbar';
+import AppointmentForm from '@/components/appointment/AppointmentForm';
 
 export const metadata: Metadata = {
   title: 'Book an Appointment',
@@ -69,47 +69,7 @@ export default function AppointmentPage() {
 
               {/* Right Side - Form */}
               <div className="appointment-form-box">
-                <form className="appointment-form">
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>First Name</label>
-                      <input type="text" placeholder="First Name" required />
-                    </div>
-                    <div className="form-group">
-                      <label>Last Name</label>
-                      <input type="text" placeholder="Last Name" required />
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="Email Address" required />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" placeholder="Phone Number" required />
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label>Service</label>
-                      <select required>
-                        <option value="">Select Service</option>
-                        <option value="weight-loss">Weight Loss</option>
-                        <option value="pcod">PCOD Management</option>
-                        <option value="wedding">Wedding Plan</option>
-                        <option value="therapeutic">Therapeutic</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>Preferred Date</label>
-                      <input type="date" required />
-                    </div>
-                  </div>
-
-                  <Button type="submit">Book An Appointment</Button>
-                </form>
+                <AppointmentForm />
               </div>
             </div>
           </div>

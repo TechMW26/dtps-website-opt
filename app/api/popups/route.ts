@@ -58,7 +58,11 @@ export async function POST(request: NextRequest) {
 
       const lead = new Lead({
         phoneNumber,
-        page: page || 'unknown'
+        countryCode: '+91',
+        countryIso: 'IN',
+        e164: `+91${phoneNumber}`,
+        page: page || 'unknown',
+        source: 'popup',
       });
 
       await lead.save();

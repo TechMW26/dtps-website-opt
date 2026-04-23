@@ -6,6 +6,15 @@ import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import PhoneInput from '@/components/ui/PhoneInput';
+import {
+  validateName,
+  validateEmail,
+  validatePhone,
+  validateRequired,
+  DEFAULT_COUNTRY_CODE,
+  getCountry,
+} from '@/lib/validation';
 
 declare global {
   interface Window {
@@ -75,7 +84,9 @@ export default function CheckoutContent() {
     city: '',
     phone: '',
     email: '',
+    countryIso: DEFAULT_COUNTRY_CODE,
   });
+  const [formErrors, setFormErrors] = useState<Partial<Record<'firstName' | 'lastName' | 'city' | 'phone' | 'email', string>>>({});
   const [products, setProducts] = useState<Product[]>([]);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
@@ -193,6 +204,20 @@ export default function CheckoutContent() {
       ...prev,
       [name]: value,
     }));
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validateCheckoutForm = (): boolean => {
+    const e: typeof formErrors = {};
+    const fn = validateName(formData.firstName, 'First name'); if (fn) e.firstName = fn;
+    const ln = validateName(formData.lastName, 'Last name'); if (ln) e.lastName = ln;
+    const ct = validateRequired(formData.city, 'City'); if (ct) e.city = ct;
+    const em = validateEmail(formData.email); if (em) e.email = em;
+    const ph = validatePhone(formData.phone, formData.countryIso); if (!ph.ok) e.phone = ph.error;
+    setFormErrors(e);
+    return Object.keys(e).length === 0;
   };
 
   const handleApplyCoupon = async () => {
@@ -252,8 +277,7 @@ export default function CheckoutContent() {
   };
 
   const handlePlaceOrder = async () => {
-    if (!formData.firstName || !formData.lastName || !formData.city || !formData.phone || !formData.email) {
-      alert('Please fill in all fields');
+    if (!validateCheckoutForm()) {
       return;
     }
 
@@ -261,6 +285,9 @@ export default function CheckoutContent() {
       alert('Please agree to the Terms and Conditions');
       return;
     }
+
+    const country = getCountry(formData.countryIso);
+    const e164Phone = `${country.dialCode}${String(formData.phone).replace(/\D/g, '')}`;
 
     setLoading(true);
     setOrderStatus('processing');
@@ -278,7 +305,7 @@ export default function CheckoutContent() {
           action: 'create',
           customerName: `${formData.firstName} ${formData.lastName}`,
           customerEmail: formData.email,
-          customerPhone: formData.phone,
+          customerPhone: e164Phone,
           address: formData.city,
           city: formData.city,
           products: products,
@@ -428,8 +455,9 @@ export default function CheckoutContent() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   placeholder="First Name"
-                  className="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className={`w-full px-4 py-2 border ${formErrors.firstName ? 'border-red-400' : 'border-orange-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
                 />
+                {formErrors.firstName && <p className="mt-1 text-xs text-red-500">{formErrors.firstName}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Last Name *</label>
@@ -439,8 +467,9 @@ export default function CheckoutContent() {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   placeholder="Last Name"
-                  className="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className={`w-full px-4 py-2 border ${formErrors.lastName ? 'border-red-400' : 'border-orange-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
                 />
+                {formErrors.lastName && <p className="mt-1 text-xs text-red-500">{formErrors.lastName}</p>}
               </div>
             </div>
 
@@ -452,23 +481,27 @@ export default function CheckoutContent() {
                 value={formData.city}
                 onChange={handleInputChange}
                 placeholder="Enter your city"
-                className="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className={`w-full px-4 py-2 border ${formErrors.city ? 'border-red-400' : 'border-orange-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
               />
+              {formErrors.city && <p className="mt-1 text-xs text-red-500">{formErrors.city}</p>}
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-              <div className="flex">
-                <span className="inline-flex items-center px-4 py-2 border border-r-0 border-orange-300 bg-gray-100 text-gray-600 rounded-l-lg">+91</span>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="Phone"
-                  className="flex-1 px-4 py-2 border border-orange-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-                />
-              </div>
+              <PhoneInput
+                countryCode={formData.countryIso}
+                number={formData.phone}
+                onCountryChange={(c) => {
+                  setFormData(prev => ({ ...prev, countryIso: c }));
+                  if (formErrors.phone) setFormErrors(prev => ({ ...prev, phone: undefined }));
+                }}
+                onNumberChange={(n) => {
+                  setFormData(prev => ({ ...prev, phone: n }));
+                  if (formErrors.phone) setFormErrors(prev => ({ ...prev, phone: undefined }));
+                }}
+                error={formErrors.phone}
+                placeholder="Phone"
+              />
             </div>
 
             <div>
@@ -479,8 +512,9 @@ export default function CheckoutContent() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email Address"
-                className="w-full px-4 py-2 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className={`w-full px-4 py-2 border ${formErrors.email ? 'border-red-400' : 'border-orange-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500`}
               />
+              {formErrors.email && <p className="mt-1 text-xs text-red-500">{formErrors.email}</p>}
             </div>
           </div>
 

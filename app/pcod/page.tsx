@@ -333,8 +333,11 @@ export default function PCODPage() {
 
         <div className="site-fill">
 
-          {/* grey container */}
-          <div className="bg-[#EAEEF1] rounded-[24px] p-4 md:px-10 md:pt-10 md:pb-0">
+          {/* gradient card behind team image */}
+          <div
+            className="rounded-[24px] p-4 md:px-10 md:pt-10 md:pb-0"
+            style={{ background: 'linear-gradient(180deg, #EAEEF1 0%, #FFFFFF 100%)' }}
+          >
 
             <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2 md:items-end">
 
@@ -342,7 +345,10 @@ export default function PCODPage() {
 
               <div className="flex justify-center md:self-stretch md:items-end">
 
-                <div className="relative bg-[#EAEEF1] overflow-hidden w-full max-w-[330px] aspect-[3/4] md:max-w-[520px] md:h-full md:aspect-auto">
+                <div
+                  className="relative overflow-hidden w-full max-w-[330px] aspect-[3/4] md:max-w-[520px] md:h-full md:aspect-auto"
+                  style={{ background: 'linear-gradient(180deg, #EAEEF1 0%, #FFFFFF 100%)' }}
+                >
 
                   <Image
                     src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"

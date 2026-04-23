@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './DynamicPopup.module.css';
+import { validatePhone } from '@/lib/validation';
 
 interface PopupData {
   _id: string;
@@ -21,6 +22,8 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const [phoneError, setPhoneError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPopup = async () => {
@@ -59,9 +62,11 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPhoneError(null);
 
-    if (!/^[0-9]{10}$/.test(phoneNumber)) {
-      alert('Please enter a valid 10-digit phone number');
+    const result = validatePhone(phoneNumber, 'IN');
+    if (!result.ok) {
+      setPhoneError(result.error || 'Enter a valid 10-digit Indian mobile number');
       return;
     }
 
@@ -121,13 +126,20 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
             <form onSubmit={handleSubmit} className={styles.formSection}>
               <input
                 type="tel"
+                inputMode="numeric"
                 placeholder="Enter phone number"
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10));
+                  if (phoneError) setPhoneError(null);
+                }}
                 maxLength={10}
                 required
                 className={styles.phoneInput}
               />
+              {phoneError ? (
+                <p style={{ color: '#dc2626', fontSize: 12, marginTop: 4 }}>{phoneError}</p>
+              ) : null}
               <button
                 type="submit"
                 disabled={loading || phoneNumber.length !== 10}

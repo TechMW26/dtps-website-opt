@@ -70,7 +70,7 @@ function CheckIcon24() {
     return <TickIcon />;
 }
 
-function HeroPricingCard({ onSelectPlan }) {
+function HeroPricingCard({ onCheckout }) {
     return (
         <div className="mx-auto flex min-h-[466px] w-full max-w-[336px] flex-col rounded-[12px] bg-white px-5 py-[18px] shadow-[0_10px_26px_rgba(0,0,0,0.14)] md:min-h-0 md:max-w-[350px] md:px-[20px] md:py-[18px]">
             <p className="text-[10px] font-medium uppercase tracking-[0.03em] text-[#6B7280]">
@@ -108,7 +108,7 @@ function HeroPricingCard({ onSelectPlan }) {
 
             <button
                 type="button"
-                onClick={onSelectPlan}
+                onClick={onCheckout}
                 className="mt-auto inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-4 py-3.5 text-[11px] font-bold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10]"
             >
                 Buy Now
@@ -118,13 +118,6 @@ function HeroPricingCard({ onSelectPlan }) {
 }
 
 export default function Plan299Page() {
-    const handleScrollToPlans = () => {
-        document.getElementById('plans-section')?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        });
-    };
-
     const handleCheckout = () => {
         const product = {
             id: '299-plan-healthy-monthly',
@@ -182,14 +175,14 @@ export default function Plan299Page() {
                             </div>
 
                             <div className="mx-auto w-full max-w-[336px] lg:mx-0 lg:max-w-[350px] lg:justify-self-end">
-                                <HeroPricingCard onSelectPlan={handleScrollToPlans} />
+                                <HeroPricingCard onCheckout={handleCheckout} />
                             </div>
                         </div>
                     </div>
                 </PageWrapper>
             </div>
 
-            <div id="plans-section" className="scroll-mt-24 py-12 md:py-20">
+            <div className="py-12 md:py-20">
                 <div className="site-fill">
                     <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
                         <div className="max-w-[630px] text-center md:text-left">

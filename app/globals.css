@@ -114,8 +114,6 @@ video {
 .site-fill {
   width: 100%;
   max-width: none;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .transformations {
@@ -127,7 +125,7 @@ video {
 
 @media (min-width: 768px) {
   .transformations {
-    width: 80%;
+    width: 70% !important;
     max-width: none;
     margin-left: auto;
     margin-right: auto;

@@ -3,9 +3,10 @@
 import Image from 'next/image';
 import { useEffect, useState, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 interface Transformation {
   _id: string;
@@ -26,6 +27,7 @@ interface TransformationGalleryProps {
   maxItems?: number;
   cardBackgroundClassName?: string;
   paginationElSelector?: string;
+  showNavArrows?: boolean;
 }
 
 // Optimize ImageKit URLs
@@ -53,9 +55,12 @@ export default function TransformationGallery({
   maxItems = 6,
   cardBackgroundClassName = 'bg-gray-100',
   paginationElSelector,
+  showNavArrows = false,
 }: TransformationGalleryProps) {
   const [transformations, setTransformations] = useState<Transformation[]>(fallbackData as any);
   const [loading, setLoading] = useState(true);
+  const navPrevClass = useMemo(() => `tg-nav-prev-${Math.random().toString(36).slice(2, 8)}`, []);
+  const navNextClass = useMemo(() => `tg-nav-next-${Math.random().toString(36).slice(2, 8)}`, []);
 
   useEffect(() => {
     const fetchTransformations = async () => {
@@ -95,27 +100,32 @@ export default function TransformationGallery({
   // Show skeleton while loading
   if (loading && transformations.length === 0) {
     return (
-      <section className="px-0 max-w-full mx-auto">
+      <div className="w-full">
         <div className="flex gap-4 overflow-hidden">
           {[1, 2, 3].map(i => (
             <div key={i} className="flex-shrink-0 w-[300px] h-[400px] bg-gray-200 rounded-[16px] animate-pulse" />
           ))}
         </div>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="px-0 max-w-full mx-auto">
-      <div className="max-w-full mx-auto relative">
+    <div className="w-full">
+      <div className={`relative max-w-full mx-auto ${showNavArrows ? 'px-12 md:px-0' : ''}`}>
         <Swiper
-          modules={[Pagination, Autoplay]}
+          modules={[Pagination, Autoplay, Navigation]}
           spaceBetween={20}
           slidesPerView={1}
           pagination={{
             clickable: true,
             el: paginationElSelector || '.swiper-pagination-custom',
           }}
+          navigation={
+            showNavArrows
+              ? { prevEl: `.${navPrevClass}`, nextEl: `.${navNextClass}` }
+              : false
+          }
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
@@ -154,6 +164,30 @@ export default function TransformationGallery({
           ))}
         </Swiper>
 
+        {/* Navigation arrows (only when enabled by parent) */}
+        {showNavArrows && (
+          <>
+            <button
+              type="button"
+              aria-label="Previous"
+              className={`${navPrevClass} md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#014e4e] text-white flex items-center justify-center shadow-md hover:bg-[#013838] transition-colors`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Next"
+              className={`${navNextClass} md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#014e4e] text-white flex items-center justify-center shadow-md hover:bg-[#013838] transition-colors`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </>
+        )}
+
         {/* Pagination Dots (default location, can be overridden via paginationElSelector) */}
         {!paginationElSelector && (
           <div className="swiper-pagination-custom flex justify-center gap-2 mt-6 relative" />
@@ -184,6 +218,6 @@ export default function TransformationGallery({
             }
           `}</style>
       </div>
-    </section>
+    </div>
   );
 }

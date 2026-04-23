@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Button from '@/components/ui/Button';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import Navbar from '@/components/Navbar';
+import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -91,26 +91,7 @@ export default function ContactPage() {
 
           <div className="contact-grid contact-main">
             <div className="contact-form-box">
-              <form className="contact-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <input type="text" placeholder="First Name" required />
-                  </div>
-                  <div className="form-group">
-                    <input type="text" placeholder="Last Name" required />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <input type="email" placeholder="E-mail Address" required />
-                </div>
-                <div className="form-group">
-                  <input type="tel" placeholder="Phone Number" required />
-                </div>
-                <div className="form-group">
-                  <textarea placeholder="Message" rows={4} required />
-                </div>
-                <Button type="submit">Send Message</Button>
-              </form>
+              <ContactForm />
             </div>
 
             <div className="contact-info-card">

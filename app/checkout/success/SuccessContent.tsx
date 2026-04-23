@@ -63,7 +63,7 @@ const STEPS = [
   },
 ];
 
-function ThankYouHero({ order }: { order: Order | null }) {
+export function ThankYouHero({ order }: { order: Order | null }) {
   return (
     <section className="site-shell pt-4 md:pt-[40px] bg-white">
       <div className="relative overflow-hidden rounded-3xl bg-[#014E4E]">
@@ -192,7 +192,7 @@ function ThankYouHero({ order }: { order: Order | null }) {
   );
 }
 
-function WhatHappensNext() {
+export function WhatHappensNext() {
   return (
     <section className="site-shell mt-6 md:mt-10">
       {/* DESKTOP */}
