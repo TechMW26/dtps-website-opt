@@ -6,23 +6,11 @@
  * - `getClientIp` / `getUserAgent`: reliable client-attribution helpers
  *   for both the Edge middleware (Headers) and the Node API routes
  *   (NextRequest).
- * - `sanitizeHtml`: DOMPurify-backed XSS sanitizer for any user-supplied
+ * - `sanitizeHtml`: server-safe XSS sanitizer for any user-supplied
  *   HTML (blog posts, popup content, etc.) before persisting or rendering.
  */
-
-// NOTE: `isomorphic-dompurify` pulls in JSDOM, which is heavy and has caused
-// module-init failures on some serverless runtimes. We lazy-load it so that
-// importing this file (e.g. from `lib/auth.ts`) never crashes API routes that
-// don't actually sanitize HTML.
-let _DOMPurify: { sanitize: (input: string, config?: unknown) => string } | null = null;
-function getDOMPurify() {
-  if (_DOMPurify) return _DOMPurify;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const mod = require('isomorphic-dompurify');
-  _DOMPurify = (mod && (mod.default || mod)) as typeof _DOMPurify;
-  return _DOMPurify!;
-}
 import dbConnect from '@/lib/mongodb';
+import sanitizeHtmlLib from 'sanitize-html';
 import SecurityLog, {
   type ISecurityLog,
   type SecurityEventType,
@@ -69,8 +57,8 @@ export function getUserAgent(headers: Headers): string {
  */
 export function sanitizeHtml(input: string): string {
   if (!input) return '';
-  return getDOMPurify().sanitize(input, {
-    ALLOWED_TAGS: [
+  return sanitizeHtmlLib(input, {
+    allowedTags: [
       'p',
       'br',
       'strong',
@@ -102,10 +90,16 @@ export function sanitizeHtml(input: string): string {
       'span',
       'div',
     ],
-    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'rel', 'class'],
-    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
-    FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'style'],
-    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover'],
+    allowedAttributes: {
+      '*': ['class', 'title'],
+      a: ['href', 'target', 'rel'],
+      img: ['src', 'alt', 'title'],
+    },
+    allowedSchemes: ['http', 'https', 'mailto', 'tel'],
+    disallowedTagsMode: 'discard',
+    parser: {
+      lowerCaseTags: true,
+    },
   });
 }
 
@@ -115,6 +109,10 @@ export function sanitizeHtml(input: string): string {
  */
 export function sanitizeText(input: string, maxLength = 500): string {
   if (!input) return '';
-  const stripped = getDOMPurify().sanitize(input, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
+  const stripped = sanitizeHtmlLib(input, {
+    allowedTags: [],
+    allowedAttributes: {},
+    disallowedTagsMode: 'discard',
+  });
   return stripped.slice(0, maxLength).trim();
 }

@@ -65,7 +65,7 @@ const SECURITY_CONTROLS = [
   { label: 'Rate limiting on auth & write endpoints',  status: 'Active' },
   { label: 'Password hashing (bcrypt, 12 rounds)',     status: 'Active' },
   { label: 'JWT session, 24h expiry',                  status: 'Active' },
-  { label: 'XSS sanitization (DOMPurify)',             status: 'Active' },
+  { label: 'XSS sanitization (sanitize-html)',          status: 'Active' },
   { label: 'Production console output stripped',       status: 'Active' },
   { label: 'Admin routes gated by middleware',         status: 'Active' },
   { label: 'Audit log retention',                      status: '30 days'},

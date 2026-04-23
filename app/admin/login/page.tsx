@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -275,9 +276,14 @@ export default function AdminLoginPage() {
         <Card className="w-full max-w-md bg-slate-800/50 border-slate-700 backdrop-blur-sm relative z-10">
           <CardHeader className="space-y-1">
             <div className="flex items-center justify-center mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                DP
-              </div>
+              <Image
+                src="/images/admin-logo.png"
+                alt="DTPS Logo"
+                width={48}
+                height={48}
+                className="rounded-lg object-cover"
+                priority
+              />
             </div>
             <CardTitle className="text-2xl text-center text-white">DTPS Admin</CardTitle>
             <CardDescription className="text-center text-slate-300">

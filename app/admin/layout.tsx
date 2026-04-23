@@ -6,6 +6,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Home,
   DollarSign,
@@ -99,9 +100,14 @@ export default function AdminLayout({
         {/* Logo */}
         <div className={`h-16 flex items-center justify-center border-b ${theme === 'dark' ? 'border-slate-700 bg-slate-800/50' : 'border-slate-200 bg-slate-50/50'}`}>
           <Link href="/admin/dashboard" className="flex items-center gap-2 px-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center text-white font-bold">
-              DP
-            </div>
+            <Image
+              src="/images/admin-logo.png"
+              alt="DTPS Logo"
+              width={40}
+              height={40}
+              className="rounded-lg object-cover"
+              priority
+            />
             <span className={`font-bold text-sm ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>DTPS Admin</span>
           </Link>
         </div>
@@ -191,9 +197,14 @@ export default function AdminLayout({
                   {/* Mobile Logo */}
                   <div className={`h-16 flex items-center justify-center border-b ${theme === 'dark' ? 'border-slate-700' : 'border-slate-200'}`}>
                     <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center text-white font-bold">
-                        DP
-                      </div>
+                      <Image
+                        src="/images/admin-logo.png"
+                        alt="DTPS Logo"
+                        width={40}
+                        height={40}
+                        className="rounded-lg object-cover"
+                        priority
+                      />
                       <span className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>DTPS Admin</span>
                     </div>
                   </div>
