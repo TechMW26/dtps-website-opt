@@ -131,13 +131,18 @@ export async function sendAisensyOnboardingMessage(payload: PaymentSuccessPayloa
   const campaignName = process.env.AISENSY_CAMPAIGN_NAME || 'payment_success_onboarding';
   const source = process.env.AISENSY_SOURCE || 'dtps-website-checkout';
   const firstName = (payload.customerName || '').trim().split(/\s+/)[0] || 'user';
+  const amountFormatted = `INR ${payload.total.toLocaleString('en-IN')}`;
+  const planName =
+    payload.products && payload.products.length > 0
+      ? payload.products.map((p) => (p.quantity > 1 ? `${p.name} x${p.quantity}` : p.name)).join(', ')
+      : 'DTPS Plan';
 
   const body = {
     apiKey: process.env.AISENSY_API_KEY,
     campaignName,
     destination,
     userName: payload.customerName,
-    templateParams: [firstName, firstName, firstName, firstName],
+    templateParams: [firstName, payload.orderId, amountFormatted, planName],
     source,
     media: {},
     buttons: [],
@@ -145,10 +150,14 @@ export async function sendAisensyOnboardingMessage(payload: PaymentSuccessPayloa
     location: {},
     attributes: {
       orderId: payload.orderId,
-      amount: `INR ${payload.total.toLocaleString('en-IN')}`,
+      amount: amountFormatted,
+      planName,
     },
     paramsFallbackValue: {
       FirstName: firstName,
+      OrderId: payload.orderId,
+      Amount: amountFormatted,
+      PlanName: planName,
     },
   };
 
