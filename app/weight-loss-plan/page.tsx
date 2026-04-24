@@ -302,7 +302,7 @@ export default function WeightLossPage() {
         {/* Mobile Version */}
         <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-31-1776942021084.jpg"
+            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-25-1776942342385.jpg"
             alt="Our Five-Cycle Program - Mobile"
             width={600}
             height={800}
