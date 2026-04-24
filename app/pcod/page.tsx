@@ -354,7 +354,7 @@ export default function PCODPage() {
                     fill
                     className="object-contain object-bottom md:translate-y-4"
                     loading="lazy"
-                    sizes="(max-width: 767px) 330px, 520px"
+                    sizes="(max-width: 766px) 330px, 520px"
                     quality={75}
                   />
 
