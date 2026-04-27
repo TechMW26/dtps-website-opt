@@ -35,6 +35,9 @@ declare global {
     fbq?: (...args: any[]) => void;
     _fbq?: any;
     __META_PIXEL_IDS__?: string[];
+    gtag?: (...args: any[]) => void;
+    dataLayer?: any[];
+    __GA4_MEASUREMENT_ID__?: string;
   }
 }
 
@@ -159,4 +162,72 @@ export function readCheckoutCartParams(): Record<string, unknown> {
   } catch {
     return {};
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Google Analytics 4 (gtag.js)                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Fire a GA4 event. Safe to call before gtag has loaded — the dataLayer queue
+ * (set up by the loader in app/layout.tsx) will buffer it.
+ */
+export function gaEvent(event: string, params: Record<string, unknown> = {}): void {
+  if (typeof window === 'undefined') return;
+  const gtag = window.gtag;
+  if (typeof gtag !== 'function') return;
+  try {
+    gtag('event', event, params);
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn('[ga4] event failed', err);
+  }
+}
+
+/**
+ * Fire a GA4 page_view manually. Used by PixelTracker on every SPA route
+ * change (the loader sets `send_page_view: false` to avoid double counting).
+ */
+export function gaPageView(path: string, title?: string): void {
+  if (typeof window === 'undefined') return;
+  const gtag = window.gtag;
+  const id = window.__GA4_MEASUREMENT_ID__;
+  if (typeof gtag !== 'function' || !id) return;
+  try {
+    gtag('event', 'page_view', {
+      page_path: path,
+      page_location: window.location.href,
+      page_title: title ?? document.title,
+      send_to: id,
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.warn('[ga4] page_view failed', err);
+  }
+}
+
+/**
+ * Convert the cart params produced by `readCheckoutCartParams` (Meta Pixel
+ * shape) into GA4 ecommerce shape: `{ value, currency, items: [...] }`.
+ */
+export function toGaEcomParams(
+  fbParams: Record<string, unknown>
+): Record<string, unknown> {
+  const contents = (fbParams.contents as Array<{
+    id: string;
+    quantity: number;
+    item_price: number;
+  }>) ?? [];
+  const names = String(fbParams.content_name ?? '').split(', ').filter(Boolean);
+  const items = contents.map((c, idx) => ({
+    item_id: c.id,
+    item_name: names[idx] ?? c.id,
+    price: c.item_price,
+    quantity: c.quantity,
+  }));
+  return {
+    currency: fbParams.currency ?? 'INR',
+    value: fbParams.value ?? 0,
+    items,
+  };
 }

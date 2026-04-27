@@ -15,6 +15,7 @@ import {
   DEFAULT_COUNTRY_CODE,
   getCountry,
 } from '@/lib/validation';
+import { trackEvent, readCheckoutCartParams, gaEvent, toGaEcomParams } from '@/lib/pixel';
 
 declare global {
   interface Window {
@@ -420,6 +421,20 @@ export default function CheckoutContent() {
             setLoading(false);
           });
         }
+        // Meta Pixel: AddPaymentInfo — user is now entering payment details.
+        // eventID = orderId so a future Conversions API call can dedupe.
+        const cartParams = readCheckoutCartParams();
+        trackEvent(
+          'AddPaymentInfo',
+          { ...cartParams, order_id: data.order.orderId },
+          { eventID: `api_${data.order.orderId}` }
+        );
+        // Mirror to GA4.
+        gaEvent('add_payment_info', {
+          ...toGaEcomParams(cartParams),
+          payment_type: 'razorpay',
+          transaction_id: data.order.orderId,
+        });
         razorpayWindow.open();
       } else {
         setOrderStatus('failed');

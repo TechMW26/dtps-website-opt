@@ -28,6 +28,9 @@ import {
   fireOncePerSession,
   readCheckoutCartParams,
   generateEventId,
+  gaEvent,
+  gaPageView,
+  toGaEcomParams,
 } from '@/lib/pixel';
 
 /* -------------------------------------------------------------------------- */
@@ -155,6 +158,19 @@ async function firePurchaseForOrder(orderId: string): Promise<void> {
       { eventID: order.orderId }
     );
 
+    // Mirror to GA4 ecommerce.
+    gaEvent('purchase', {
+      transaction_id: order.orderId,
+      value: Number(order.total ?? 0),
+      currency: 'INR',
+      items: contents.map((c, idx) => ({
+        item_id: c.id,
+        item_name: products[idx]?.name ?? c.id,
+        price: c.item_price,
+        quantity: c.quantity,
+      })),
+    });
+
     try {
       localStorage.setItem(dedupKey, String(Date.now()));
     } catch {
@@ -188,9 +204,16 @@ export default function PixelTracker() {
     if (lastPageViewKey.current === key) return;
     lastPageViewKey.current = key;
     trackEvent('PageView', {}, { eventID: generateEventId() });
+    gaPageView(pathname);
   }, [pathname, searchParams]);
 
   // 2. Global click delegation for InitiateCheckout / data-fb-event.
+  //    NOTE: most existing "BUY NOW" buttons trigger a full page reload via
+  //    `window.location.href = '/checkout'`, which kills the fbq queue before
+  //    it can flush. Those are caught instead by effect (4) below, which fires
+  //    InitiateCheckout when /checkout actually mounts. This delegation still
+  //    handles SPA-style `<Link href="/checkout">` and any element opted in
+  //    via `data-fb-event`.
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const intent = resolveClickIntent(e.target);
@@ -212,6 +235,33 @@ export default function PixelTracker() {
     if (!fireOncePerSession(`purchase-attempt:${orderId}`)) return;
     void firePurchaseForOrder(orderId);
   }, [pathname, searchParams]);
+
+  // 4. InitiateCheckout when the /checkout page loads with a cart in
+  //    sessionStorage. This is the universal hook that covers every current
+  //    and future "BUY NOW" button — they all stash the cart under
+  //    `sessionStorage.checkoutProducts` and then navigate here, so adding a
+  //    new plan page requires zero pixel code.
+  //
+  //    Deduped by a cart fingerprint (so refreshing /checkout or coming back
+  //    from a failed Razorpay attempt does not re-fire), but new carts in the
+  //    same session DO fire (e.g. user buys plan A, abandons, buys plan B).
+  useEffect(() => {
+    if (pathname !== '/checkout') return;
+    const params = readCheckoutCartParams();
+    if (!params || Object.keys(params).length === 0) return;
+
+    const fingerprint = JSON.stringify({
+      ids: params.content_ids,
+      value: params.value,
+      n: params.num_items,
+    });
+    if (!fireOncePerSession(`initiate-checkout:${fingerprint}`)) return;
+
+    // Stable eventID per cart so future server-side CAPI can dedupe.
+    const eventID = `ic_${(params.content_ids as string[] | undefined)?.join('|') ?? 'cart'}_${params.value ?? 0}`;
+    trackEvent('InitiateCheckout', params, { eventID });
+    gaEvent('begin_checkout', toGaEcomParams(params));
+  }, [pathname]);
 
   return null;
 }

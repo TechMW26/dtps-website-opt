@@ -37,6 +37,7 @@ const LOGO_URL =
   'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 const META_PIXEL_PRIMARY_ID = '1249607162337272';
 const META_PIXEL_SECONDARY_ID = '451000204060350';
+const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export const metadata: Metadata = {
@@ -151,6 +152,30 @@ export default function RootLayout({
             'https://connect.facebook.net/en_US/fbevents.js');
             window.__META_PIXEL_IDS__.forEach(function(id){ fbq('init', id); });
             fbq('track', 'PageView');
+          `}
+        </Script>
+
+        {/*
+          Google Analytics 4 (gtag.js).
+          - Auto page_view on initial load is disabled (`send_page_view: false`)
+            because <PixelTracker /> fires page_view on EVERY route change
+            (initial + SPA navigations) so we don't double-count.
+          - Funnel events (begin_checkout, add_payment_info, purchase) are sent
+            by the same code paths as the Meta Pixel — single source of truth.
+        */}
+        <Script
+          id="ga4-loader"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.__GA4_MEASUREMENT_ID__ = '${GA4_MEASUREMENT_ID}';
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });
           `}
         </Script>
 
