@@ -5,6 +5,8 @@ import './globals.css';
 import { AuthProvider } from './providers';
 import { ThemeProvider } from './providers/ThemeProvider';
 import LayoutWrapper from '@/components/LayoutWrapper';
+import PixelTracker from '@/components/PixelTracker';
+import { Suspense } from 'react';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -127,10 +129,16 @@ export default function RootLayout({
           href="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png"
           as="image"
           type="image/webp"
-        />
-
-        <Script id="meta-pixel-base" strategy="lazyOnload">
+        {/*
+          Meta Pixel base snippet.
+          - Loaded `afterInteractive` so it is ready before users click "Buy Now"
+            (the previous `lazyOnload` could miss early click events).
+          - All custom events are fired by <PixelTracker /> via lib/pixel.ts.
+          - To add / remove pixels in the future, edit META_PIXEL_IDS only.
+        */}
+        <Script id="meta-pixel-base" strategy="afterInteractive">
           {`
+            window.__META_PIXEL_IDS__ = ['${META_PIXEL_PRIMARY_ID}', '${META_PIXEL_SECONDARY_ID}'];
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -139,6 +147,7 @@ export default function RootLayout({
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
+            window.__META_PIXEL_IDS__.forEach(function(id){ fbq('init', id); }ents.js');
             fbq('init', '${META_PIXEL_PRIMARY_ID}');
             fbq('init', '${META_PIXEL_SECONDARY_ID}');
             fbq('track', 'PageView');
@@ -172,6 +181,13 @@ export default function RootLayout({
             style={{ display: 'none' }}
             src={`https://www.facebook.com/tr?id=${META_PIXEL_SECONDARY_ID}&ev=PageView&noscript=1`}
             alt=""
+            {/* Global Meta Pixel router — auto-tracks PageView on every SPA
+                navigation, InitiateCheckout on any /checkout link click, and
+                Purchase on /checkout/success. Wrapped in Suspense because it
+                uses useSearchParams(). */}
+            <Suspense fallback={null}>
+              <PixelTracker />
+            </Suspense>
           />
         </noscript>
         <AuthProvider>
