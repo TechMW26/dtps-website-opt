@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
@@ -20,29 +19,50 @@ const EFFECTIVE_DATE = '27 April 2026';
 export default function PrivacyPolicyPage() {
   return (
     <div className="bg-white">
-      <Navbar />
+      {/* Hero Section with Navbar — same pattern as /contact */}
+      <section className="hero-section site-shell pt-4 md:pt-[60px]">
+        <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
+          <div className="relative w-full">
+            {/* Navbar */}
+            <Navbar />
 
-      {/* Hero */}
-      <section className="site-shell pt-6 md:pt-10">
-        <div className="rounded-3xl bg-[#014E4E] px-6 py-12 md:px-14 md:py-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#FF850B]">
-            Legal
-          </p>
-          <h1 className="mt-3 text-[2rem] font-bold leading-[1.15] tracking-[-0.01em] text-white md:text-[3rem]">
-            Privacy Policy
-          </h1>
-          <p className="mt-4 max-w-3xl text-[14px] leading-[1.7] text-white/80 md:text-[16px]">
-            Your privacy is important to us. This policy explains what
-            information {SITE_NAME} collects, how we use and safeguard it, and
-            the choices you have. Please read it together with our{' '}
-            <Link href="/contact" className="underline decoration-white/40 underline-offset-2 hover:text-white">
-              Contact
-            </Link>{' '}
-            details.
-          </p>
-          <p className="mt-3 text-[12px] text-white/60">
-            Effective date: {EFFECTIVE_DATE}
-          </p>
+            {/* Mobile Layout */}
+            <div className="flex flex-col items-center w-full px-6 py-12 text-center md:hidden">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[#FF850B] mb-3">
+                Legal
+              </p>
+              <h1 className="text-[1.8rem] font-bold text-white leading-[1.3] mb-2">
+                Privacy <span className="text-[#FF850B]">Policy</span>
+              </h1>
+              <p className="mt-3 text-[13px] leading-[1.65] text-white/80 max-w-[36ch]">
+                How {SITE_NAME} collects, uses and protects your information.
+              </p>
+              <p className="mt-4 text-[11px] text-white/60">
+                Effective date: {EFFECTIVE_DATE}
+              </p>
+            </div>
+
+            {/* Desktop Layout */}
+            <div
+              className="flex-col items-center hidden w-full py-16 text-center md:flex lg:py-20"
+              suppressHydrationWarning
+            >
+              <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#FF850B] mb-4">
+                Legal
+              </p>
+              <h1 className="text-[2.5rem] lg:text-[3rem] xl:text-[3.5rem] font-bold text-white leading-[1.2] mb-2">
+                Privacy <span className="text-[#FF850B]">Policy</span>
+              </h1>
+              <p className="mt-4 max-w-2xl px-6 text-[15px] lg:text-[16px] leading-[1.7] text-white/80">
+                How {SITE_NAME} collects, uses, stores and protects your
+                personal and health information across our website,
+                consultations and services.
+              </p>
+              <p className="mt-5 text-[12px] text-white/60">
+                Effective date: {EFFECTIVE_DATE}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
