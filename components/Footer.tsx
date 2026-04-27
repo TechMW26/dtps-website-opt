@@ -15,7 +15,7 @@ const serviceLinks = [
 ];
 
 const legalLinks = [
-  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
   { label: 'Term & Conditions', href: '/terms' },
   { label: 'Help', href: '/help' },
 ];

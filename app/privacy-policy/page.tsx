@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'Read the Privacy Policy of Dietitian Poonam Sagar (dtpoonamsagar.com). Learn how we collect, use, store, and protect your personal and health information when you use our diet, nutrition, and consultation services.',
-  alternates: { canonical: '/privacy' },
+  alternates: { canonical: '/privacy-policy' },
   robots: { index: true, follow: true },
 };
 
