@@ -31,6 +31,7 @@ import {
   gaEvent,
   gaPageView,
   toGaEcomParams,
+  fireCapi,
 } from '@/lib/pixel';
 
 /* -------------------------------------------------------------------------- */
@@ -142,21 +143,31 @@ async function firePurchaseForOrder(orderId: string): Promise<void> {
       item_price: Number(p.price ?? 0),
     }));
 
+    const purchaseCustomData = {
+      value: Number(order.total ?? 0),
+      currency: 'INR',
+      content_type: 'product',
+      content_ids: contents.map((c) => c.id),
+      contents,
+      content_name: products.map((p) => p.name).filter(Boolean).join(', '),
+      num_items: contents.reduce((s, c) => s + c.quantity, 0),
+      order_id: order.orderId,
+    };
+
     trackEvent(
       'Purchase',
-      {
-        value: Number(order.total ?? 0),
-        currency: 'INR',
-        content_type: 'product',
-        content_ids: contents.map((c) => c.id),
-        contents,
-        content_name: products.map((p) => p.name).filter(Boolean).join(', '),
-        num_items: contents.reduce((s, c) => s + c.quantity, 0),
-        order_id: order.orderId,
-      },
-      // Stable eventID = orderId → dedup with future server-side CAPI.
+      purchaseCustomData,
+      // Stable eventID = orderId → dedup with the server-side CAPI Purchase
+      // fired from /api/orders verify, AND with this browser-side mirror.
       { eventID: order.orderId }
     );
+
+    // Server-side mirror with the same eventID. The verify endpoint also fires
+    // a Purchase server-side using orderId — Meta dedupes all three.
+    fireCapi('Purchase', order.orderId, purchaseCustomData, {
+      email: order.customerEmail ?? null,
+      externalId: order.orderId,
+    });
 
     // Mirror to GA4 ecommerce.
     gaEvent('purchase', {
@@ -203,7 +214,9 @@ export default function PixelTracker() {
     }
     if (lastPageViewKey.current === key) return;
     lastPageViewKey.current = key;
-    trackEvent('PageView', {}, { eventID: generateEventId() });
+    const pvEventId = generateEventId();
+    trackEvent('PageView', {}, { eventID: pvEventId });
+    fireCapi('PageView', pvEventId);
     gaPageView(pathname);
   }, [pathname, searchParams]);
 
@@ -257,9 +270,10 @@ export default function PixelTracker() {
     });
     if (!fireOncePerSession(`initiate-checkout:${fingerprint}`)) return;
 
-    // Stable eventID per cart so future server-side CAPI can dedupe.
+    // Stable eventID per cart so server-side CAPI dedupes against the browser.
     const eventID = `ic_${(params.content_ids as string[] | undefined)?.join('|') ?? 'cart'}_${params.value ?? 0}`;
     trackEvent('InitiateCheckout', params, { eventID });
+    fireCapi('InitiateCheckout', eventID, params);
     gaEvent('begin_checkout', toGaEcomParams(params));
   }, [pathname]);
 

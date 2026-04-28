@@ -7,6 +7,7 @@ import Coupon from '@/models/Coupon';
 import Razorpay from 'razorpay';
 import { calculateSubtotal, validateCouponForProducts } from '@/lib/coupons';
 import { sendPostPaymentNotifications } from '@/lib/notifications';
+import { sendCapiEvent, deriveFbcFromUrl, getClientIp } from '@/lib/meta-capi';
 
 // Initialize Razorpay instance safely
 let razorpay: Razorpay | null = null;
@@ -238,6 +239,54 @@ export async function POST(req: NextRequest) {
             })),
           }).catch((notificationError) => {
             console.error('Post-payment notification error:', notificationError);
+          });
+        }
+
+        // Meta Conversions API: server-side Purchase. Uses orderId as event_id
+        // so it dedupes against the browser-side Purchase fired on
+        // /checkout/success. This server fire is the resilient path — it works
+        // even if the user closes the browser before the success page loads.
+        if (refreshedOrder) {
+          const products = (refreshedOrder.products || []) as Array<{
+            id?: string;
+            name?: string;
+            price?: number;
+            quantity?: number;
+          }>;
+          const contents = products.map((p) => ({
+            id: String(p.id ?? p.name ?? 'item'),
+            quantity: Number(p.quantity ?? 1),
+            item_price: Number(p.price ?? 0),
+          }));
+          const referer = req.headers.get('referer');
+          void sendCapiEvent({
+            eventName: 'Purchase',
+            eventId: refreshedOrder.orderId,
+            eventSourceUrl: referer || undefined,
+            actionSource: 'website',
+            userData: {
+              email: refreshedOrder.customerEmail || null,
+              phone: refreshedOrder.customerPhone || null,
+              firstName: (refreshedOrder.customerName || '').split(' ')[0] || null,
+              lastName: (refreshedOrder.customerName || '').split(' ').slice(1).join(' ') || null,
+              externalId: refreshedOrder.orderId,
+              clientIpAddress: getClientIp(req.headers),
+              clientUserAgent: req.headers.get('user-agent'),
+              fbp: req.cookies.get('_fbp')?.value || null,
+              fbc: deriveFbcFromUrl(referer, req.cookies.get('_fbc')?.value || null),
+            },
+            customData: {
+              value: Number(refreshedOrder.total ?? 0),
+              currency: 'INR',
+              content_type: 'product',
+              content_ids: contents.map((c) => c.id),
+              contents,
+              content_name: products.map((p) => p.name).filter(Boolean).join(', '),
+              num_items: contents.reduce((s, c) => s + c.quantity, 0),
+              order_id: refreshedOrder.orderId,
+            },
+          }).catch((capiError) => {
+            console.error('CAPI Purchase send error:', capiError);
           });
         }
 

@@ -95,6 +95,58 @@ export function trackCustom(
 }
 
 /* -------------------------------------------------------------------------- */
+/* Conversions API mirror (server-side via /api/meta/capi)                    */
+/* -------------------------------------------------------------------------- */
+
+export interface CapiUserDataInput {
+  email?: string | null;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  city?: string | null;
+  country?: string | null;
+  externalId?: string | null;
+}
+
+/**
+ * Fire a server-side Meta Conversions API event with the SAME `eventId` used
+ * by the browser pixel. Meta dedupes the pair, so we get the resilience of
+ * server-side delivery (ad blockers, ITP, browser-close-before-success, …)
+ * without inflating event counts.
+ *
+ * Fire-and-forget: never blocks the UI, never throws.
+ */
+export function fireCapi(
+  event: FbqStandardEvent,
+  eventId: string,
+  customData: Record<string, unknown> = {},
+  userData: CapiUserDataInput = {}
+): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const body = JSON.stringify({
+      event,
+      eventId,
+      eventSourceUrl: window.location.href,
+      customData,
+      userData,
+    });
+    // keepalive + no-store so it survives a navigation right after the call.
+    void fetch('/api/meta/capi', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+      keepalive: true,
+      cache: 'no-store',
+    }).catch(() => {
+      /* swallow — never break the page */
+    });
+  } catch {
+    /* never break the page */
+  }
+}
+
+/* -------------------------------------------------------------------------- */
 /* Dedup helpers                                                              */
 /* -------------------------------------------------------------------------- */
 

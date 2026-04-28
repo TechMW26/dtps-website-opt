@@ -15,7 +15,7 @@ import {
   DEFAULT_COUNTRY_CODE,
   getCountry,
 } from '@/lib/validation';
-import { trackEvent, readCheckoutCartParams, gaEvent, toGaEcomParams } from '@/lib/pixel';
+import { trackEvent, readCheckoutCartParams, gaEvent, toGaEcomParams, fireCapi } from '@/lib/pixel';
 
 declare global {
   interface Window {
@@ -422,13 +422,23 @@ export default function CheckoutContent() {
           });
         }
         // Meta Pixel: AddPaymentInfo — user is now entering payment details.
-        // eventID = orderId so a future Conversions API call can dedupe.
+        // eventID = api_<orderId> so the server-side CAPI mirror dedupes.
         const cartParams = readCheckoutCartParams();
-        trackEvent(
-          'AddPaymentInfo',
-          { ...cartParams, order_id: data.order.orderId },
-          { eventID: `api_${data.order.orderId}` }
-        );
+        const apiEventId = `api_${data.order.orderId}`;
+        const apiCustomData = { ...cartParams, order_id: data.order.orderId };
+        trackEvent('AddPaymentInfo', apiCustomData, { eventID: apiEventId });
+        // Server-side mirror with PII for stronger match quality.
+        fireCapi('AddPaymentInfo', apiEventId, apiCustomData, {
+          email: formData.email || null,
+          phone: formData.phone
+            ? `${getCountry(formData.countryIso)?.dialCode ?? ''}${formData.phone}`
+            : null,
+          firstName: formData.firstName || null,
+          lastName: formData.lastName || null,
+          city: formData.city || null,
+          country: formData.countryIso ? formData.countryIso.toLowerCase() : null,
+          externalId: data.order.orderId,
+        });
         // Mirror to GA4.
         gaEvent('add_payment_info', {
           ...toGaEcomParams(cartParams),
