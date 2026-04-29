@@ -86,7 +86,7 @@ function CheckIcon24() {
 
 function HeroMealArtwork() {
     return (
-        <div className="relative text-[#016666] mx-auto h-[350px] w-[350px] md:h-[400px] md:w-[400px]  lg:h-[400px] lg:w-[400px]">
+        <div className="relative mx-auto h-[280px] w-[280px] text-[#011666] sm:h-[300px] sm:w-[300px] md:h-[360px] md:w-[360px] lg:h-[400px] lg:w-[400px]">
             <Image
                 src={THALI_IMAGE_URL}
                 alt="Ghar Ka Khana thali"
@@ -188,28 +188,28 @@ function HeroOfferPill() {
 
 function HeroBanner() {
     return (
-        <div className="overflow-hidden rounded-[12px] px-5 py-8 md:px-8 md:py-10 lg:px-12 lg:py-11">
-            <div className="mx-auto w-full max-w-[940px]">
-                <div className="grid items-center gap-6 justify-center md:gap-10 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-10">
-                    <div className="w-full h-full order-1 flex justify-center">
+        <div className="overflow-hidden rounded-[12px] px-3 py-6 sm:px-5 sm:py-8 md:px-8 md:py-10 lg:px-12 lg:py-11">
+            <div className="mx-auto w-full max-w-[980px]">
+                <div className="grid items-center justify-center gap-4 sm:gap-6 md:gap-10 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-10">
+                    <div className="order-1 flex h-full w-full justify-center">
                         <HeroMealArtwork />
                     </div>
 
                     <div className="order-2 text-center">
                         <h1
-                            className="max-w-[720px] text-[28px] font-[700] leading-[32px] text-white md:hidden"
+                            className="mx-auto max-w-[720px] text-[24px] font-[700] leading-[30px] text-white sm:text-[28px] sm:leading-[34px] md:hidden"
                             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
-                            <span className="block text-[23px]">Guaranteed</span>
+                            <span className="block text-[26px] sm:text-[23px]">Guaranteed</span>
                             <span className="block">
-                                <span className="text-white text-[23px]">Weight Loss</span> with
+                                <span className="text-[26px] text-white sm:text-[23px]">Weight Loss</span> with
                             </span>
-                            <span className="block text-[42px] leading-[36px] text-[#FF8A14]">Ghar Ka Khana</span>
-                            <span className="block text-[40px]">Diet Plan</span>
+                            <span className="block text-[42px] leading-[42px] text-[#FF8A14] sm:text-[40px] sm:leading-[36px]">Ghar Ka Khana</span>
+                            <span className="block text-[42px] sm:text-[40px]">Diet Plan</span>
                         </h1>
 
                         <h1
-                            className="hidden max-w-[720px] text-[48px] font-[700] leading-[54px] text-white md:block"
+                            className="hidden max-w-[720px] text-[40px] font-[700] leading-[46px] text-white md:block lg:text-[48px] lg:leading-[54px]"
                             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
                             <span className="block whitespace-nowrap">
@@ -220,14 +220,14 @@ function HeroBanner() {
                             </span>
                         </h1>
 
-                        <div className="mx-auto mt-7 inline-flex w-full max-w-[82vw] min-h-[50px] items-center justify-center gap-1 rounded-full border border-white px-3 py-2 sm:max-w-[336px] sm:min-h-[54px] sm:gap-2 sm:px-5 sm:py-2.5 md:min-h-[58px] md:max-w-none md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
-                            <span className="text-[12px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
+                        <div className="mx-auto mt-5 inline-flex w-full max-w-[94vw] min-h-[50px] flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-white px-3 py-2 sm:mt-7 sm:max-w-[336px] sm:min-h-[54px] sm:flex-nowrap sm:gap-2 sm:px-5 sm:py-2.5 md:min-h-[58px] md:max-w-none md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
+                            <span className="text-[10px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
                                 UPTO
                             </span>
-                            <span className="text-[42px] font-extrabold leading-none text-[#FF8A14] sm:text-[56px] md:text-[68px]">
+                            <span className="text-[34px] font-extrabold leading-none text-[#FF8A14] sm:text-[56px] md:text-[68px]">
                                 5
                             </span>
-                            <span className="text-[12px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
+                            <span className="text-[10px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
                                 KGS IN A MONTH
                             </span>
                         </div>
@@ -337,8 +337,8 @@ export default function WeightLossPlan2499Page() {
                             </div>
 
                             <div className="relative flex min-h-[600px] w-full flex-col gap-8 overflow-hidden rounded-[12px] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)] xl:min-h-[660px] xl:px-8 xl:py-10 2xl:min-h-[720px]">
-                                <div className="pointer-events-none absolute right-0 top-0 h-[120px] w-[120px] rounded-bl-[120px] bg-[#FF850B]" />
-                                <span className="absolute right-3 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
+                                <div className="pointer-events-none absolute right-16 -top-6 h-[140px] w-[140px] rounded-bl-[120px] bg-[#FF850B]" />
+                                <span className="absolute right-20 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
                                     BESTSELLER
                                 </span>
 
