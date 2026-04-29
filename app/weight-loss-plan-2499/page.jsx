@@ -286,14 +286,14 @@ export default function WeightLossPlan2499Page() {
                                 </div>
 
                                 <div className="relative overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white px-3 pb-3 pt-4 shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
-                                    <div className="pointer-events-none absolute right-0 top-0 h-[68px] w-[68px] rounded-bl-[68px] bg-[#FF850B]" />
-                                    <span className="absolute right-2 top-5 z-10 text-[8px] font-extrabold uppercase tracking-[0.02em] text-white">
-                                        
+                                    <div className="pointer-events-none absolute -right-6 -top-10 z-10 h-[140px] w-[140px] rounded-full bg-[#FF850B]" />
+                                    <span className="pointer-events-none absolute right-2 top-10 z-20 text-[14px] font-extrabold uppercase tracking-[0.02em] leading-none text-white">
+                                        BESTSELLER
                                     </span>
 
-                                    <div className="pr-16">
+                                    <div className="pr-16 mt-6">
                                         <p className="text-[10px] font-bold uppercase text-[#252525]">PLAN</p>
-                                        <div className="mt-1 flex items-end gap-1.5">
+                                        <div className="mt-2 flex items-end gap-1.5">
                                             <span className="text-[42px] font-extrabold leading-none text-[#014E4E]">₹2,499</span>
                                             <span className="pb-1 text-[13px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
                                         </div>
@@ -304,8 +304,8 @@ export default function WeightLossPlan2499Page() {
                                     <h3 className="mt-3 text-[14px] font-extrabold text-[#1E1E1E]">What you&apos;ll get:</h3>
                                     <div className="mt-2.5 grid grid-cols-2 gap-1.5">
                                         {desktopPricingFeatures.map((feature) => (
-                                            <div key={`hero-mobile-${feature}`} className="rounded-[6px] bg-[#F9F9F9] px-1.5 py-1.5">
-                                                <div className="flex items-start gap-1 text-[8.5px] leading-[1.25] text-[#6B7280]">
+                                            <div key={`hero-mobile-${feature}`} className="rounded-[6px] bg-[#F4F4F4] px-1.5 py-1.5">
+                                                <div className="flex flex-col items-start gap-1 text-[8.5px] leading-[1.3] text-[#6B7280]">
                                                     <CheckIcon24 />
                                                     <span>{feature}</span>
                                                 </div>
@@ -356,10 +356,10 @@ export default function WeightLossPlan2499Page() {
 
                                 <div className="flex flex-1 flex-col">
                                     <h3 className="text-[20px] font-semibold leading-6 text-[#1E1E1E]">What you&apos;ll get:</h3>
-                                    <div className="mt-4 grid grid-cols-2 gap-2 xl:gap-2.5">
+                                    <div className="mt-4 grid grid-cols-4 gap-2 xl:gap-2.5">
                                         {desktopPricingFeatures.map((feature) => (
-                                            <div key={`hero-desktop-${feature}`} className="rounded-[8px] bg-[#F9F9F9] px-2 py-2">
-                                                <div className="flex items-start gap-2 text-[12px] leading-[1.5] text-[#6B7280]">
+                                            <div key={`hero-desktop-${feature}`} className="rounded-[8px] bg-[#F4F4F4] px-2.5 py-2.5">
+                                                <div className="flex flex-col items-start gap-1.5 text-[12px] leading-[1.45] text-[#6B7280]">
                                                     <CheckIcon24 />
                                                     <span>{feature}</span>
                                                 </div>
@@ -618,11 +618,13 @@ export default function WeightLossPlan2499Page() {
                                     What you&apos;ll get:
                                 </h3>
 
-                                <div className="mt-3 space-y-1.5">
+                                <div className="mt-3 grid grid-cols-2 gap-1.5">
                                     {desktopPricingFeatures.map((feature) => (
-                                        <div key={`program-pricing-mobile-${feature}`} className="flex items-start gap-1.5 text-[9px] leading-[1.28] text-[#6B7280]">
-                                            <CheckIcon24 />
-                                            <span>{feature}</span>
+                                        <div key={`program-pricing-mobile-${feature}`} className="rounded-[6px] bg-[#F4F4F4] px-2 py-1.5">
+                                            <div className="flex flex-col items-start gap-1 text-[8.5px] leading-[1.3] text-[#6B7280]">
+                                                <CheckIcon24 />
+                                                <span>{feature}</span>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
