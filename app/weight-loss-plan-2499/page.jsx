@@ -100,6 +100,119 @@ function HeroMealArtwork() {
     );
 }
 
+function PricingPlanCard({ onCheckout }) {
+    return (
+        <>
+            <div className="mx-auto w-full max-w-[760px] overflow-hidden rounded-[16px] border border-[#DCDCDC] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] lg:hidden">
+                <div className="relative border-b border-[#DFDFDF] p-6 text-left md:p-8">
+                    <div className="absolute left-0 top-0 h-[118px] w-[118px] rounded-br-[118px] bg-[#FF8A14]">
+                        <span className="absolute left-4 top-10 text-[13px] font-extrabold uppercase tracking-[0.02em] text-white">
+                            BESTSELLER
+                        </span>
+                    </div>
+
+                    <div className="pt-[122px]">
+                        <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
+                            PLAN
+                        </p>
+                        <p className="text-[40px] font-extrabold leading-none text-[#045F5E] md:text-[52px]">
+                            ₹2,499
+                        </p>
+                        <p className="mt-1 text-[17px] font-semibold text-[#7A8291] line-through md:text-[24px]">
+                            ₹3,000
+                        </p>
+
+                        <button
+                            type="button"
+                            onClick={onCheckout}
+                            className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[14px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10] md:max-w-[300px]"
+                        >
+                            BUY NOW
+                        </button>
+                    </div>
+                </div>
+
+                <div className="p-6 text-left md:p-8">
+                    <h3 className="mb-4 text-[24px] font-bold leading-none text-[#252525] md:text-[30px]">
+                        What you&apos;ll get:
+                    </h3>
+
+                    <div className="space-y-2.5">
+                        {desktopPricingFeatures.map((feature) => (
+                            <div key={feature} className="flex items-start gap-2.5 text-[14px] leading-[1.35] text-[#6B7280] md:text-[16px]">
+                                <CheckIcon24 />
+                                <span>{feature}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="mx-auto hidden w-full max-w-[940px] overflow-hidden rounded-[18px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] lg:block">
+                <div className="grid grid-cols-[182px_minmax(0,1fr)] gap-3 p-0">
+                    <div className="relative min-h-[404px] overflow-hidden rounded-l-[18px]">
+                        <Image
+                            src={RECTANGLE_IMAGE_URL}
+                            alt="Weight loss plan visual"
+                            fill
+                            sizes="182px"
+                            quality={85}
+                            className="h-full w-full object-cover object-center"
+                        />
+                    </div>
+
+                    <div className="relative flex min-h-[404px] flex-col px-4 pb-4 pt-4 text-left">
+                        <div className="absolute right-0 top-0 h-[70px] w-[104px] rounded-bl-[70px] bg-[#FF8A14]">
+                            <span className="absolute right-4 top-6 text-[11px] font-extrabold uppercase tracking-[0.01em] text-white">
+                                BESTSELLER
+                            </span>
+                        </div>
+
+                        <div className="pr-[110px]">
+                            <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
+                                PLAN
+                            </p>
+                            <div className="mt-1 flex items-end gap-2">
+                                <span className="text-[21px] font-extrabold leading-none text-[#045F5E] xl:text-[22px]">
+                                    ₹2,499
+                                </span>
+                                <span className="pb-[2px] text-[11px] font-semibold leading-none text-[#8B93A2] line-through xl:text-[12px]">
+                                    ₹3,000
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="mt-3 h-px w-full bg-[#E8E8E8]" />
+
+                        <h3 className="mt-4 text-[20px] font-bold leading-none text-[#252525]">
+                            What you&apos;ll get:
+                        </h3>
+
+                        <div className="mt-4 grid grid-cols-4 gap-2">
+                            {desktopPricingFeatures.map((feature) => (
+                                <div key={feature} className="min-h-[70px] rounded-[8px] bg-[#FAFAFA] px-2.5 py-2 shadow-[0_1px_0_rgba(0,0,0,0.04)]">
+                                    <div className="flex items-start gap-1.5 text-[8.5px] leading-[1.35] text-[#7A7A7A]">
+                                        <CheckIcon24 />
+                                        <span>{feature}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={onCheckout}
+                            className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[12px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10]"
+                        >
+                            BUY NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
 function HeroPlanSummaryCard({ onCheckout }) {
     return (
         <div className="mx-auto mt-6 w-full max-w-[1040px] overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.08)] md:mt-8">
@@ -211,8 +324,6 @@ function HeroBanner() {
                         <p className="mx-auto mt-4 max-w-[560px] text-[14px] leading-[1.6] text-white/80 lg:text-[16px]">
                             Sustainable fat loss with personalized Indian meals, structured consultations, and expert support designed around your routine.
                         </p>
-
-                        <HeroOfferPill />
                     </div>
                 </div>
             </div>
@@ -462,119 +573,20 @@ export default function WeightLossPlan2499Page() {
                         </p>
 
                         {isHydrated ? (
-                            <>
-                                <div className="mx-auto mt-10 max-w-[760px] overflow-hidden rounded-[16px] border border-[#DCDCDC] shadow-[0_8px_24px_rgba(0,0,0,0.06)] lg:hidden">
-                                    <div className="relative border-b border-[#DFDFDF] p-6 text-left md:p-8">
-                                        <div className="absolute left-0 top-0 h-[118px] w-[118px] rounded-br-[118px] bg-[#FF8A14]">
-                                            <span className="absolute left-4 top-10 text-[13px] font-extrabold uppercase tracking-[0.02em] text-white">
-                                                BESTSELLER
-                                            </span>
-                                        </div>
-
-                                        <div className="pt-[122px]">
-                                            <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
-                                                PLAN
-                                            </p>
-                                            <p className="text-[40px] font-extrabold leading-none text-[#045F5E] md:text-[52px]">
-                                                ₹2,499
-                                            </p>
-                                            <p className="mt-1 text-[17px] font-semibold text-[#7A8291] line-through md:text-[24px]">
-                                                ₹3,000
-                                            </p>
-
-                                            <button
-                                                type="button"
-                                                onClick={handleCheckout}
-                                                className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[14px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10] md:max-w-[300px]"
-                                            >
-                                                BUY NOW
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div className="p-6 text-left md:p-8">
-                                        <h3 className="mb-4 text-[24px] font-bold leading-none text-[#252525] md:text-[30px]">
-                                            What you&apos;ll get:
-                                        </h3>
-
-                                        <div className="space-y-2.5">
-                                            {desktopPricingFeatures.map((feature) => (
-                                                <div key={feature} className="flex items-start gap-2.5 text-[14px] leading-[1.35] text-[#6B7280] md:text-[16px]">
-                                                    <CheckIcon24 />
-                                                    <span>{feature}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="mx-auto mt-8 hidden w-full max-w-[940px] overflow-hidden rounded-[18px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] lg:block">
-                                    <div className="grid grid-cols-[182px_minmax(0,1fr)] gap-3 p-0">
-                                        <div className="relative min-h-[404px] overflow-hidden rounded-l-[18px]">
-                                            <Image
-                                                src={RECTANGLE_IMAGE_URL}
-                                                alt="Weight loss plan visual"
-                                                fill
-                                                sizes="182px"
-                                                quality={85}
-                                                className="h-full w-full object-cover object-center"
-                                            />
-                                        </div>
-
-                                        <div className="relative flex min-h-[404px] flex-col px-4 pb-4 pt-4 text-left">
-                                            <div className="absolute right-0 top-0 h-[70px] w-[104px] rounded-bl-[70px] bg-[#FF8A14]">
-                                                <span className="absolute right-4 top-6 text-[11px] font-extrabold uppercase tracking-[0.01em] text-white">
-                                                    BESTSELLER
-                                                </span>
-                                            </div>
-
-                                            <div className="pr-[110px]">
-                                                <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
-                                                    PLAN
-                                                </p>
-                                                <div className="mt-1 flex items-end gap-2">
-                                                    <span className="text-[21px] font-extrabold leading-none text-[#045F5E] xl:text-[22px]">
-                                                        ₹2,499
-                                                    </span>
-                                                    <span className="pb-[2px] text-[11px] font-semibold leading-none text-[#8B93A2] line-through xl:text-[12px]">
-                                                        ₹3,000
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div className="mt-3 h-px w-full bg-[#E8E8E8]" />
-
-                                            <h3 className="mt-4 text-[20px] font-bold leading-none text-[#252525]">
-                                                What you&apos;ll get:
-                                            </h3>
-
-                                            <div className="mt-4 grid grid-cols-4 gap-2">
-                                                {desktopPricingFeatures.map((feature) => (
-                                                    <div key={feature} className="min-h-[70px] rounded-[8px] bg-[#FAFAFA] px-2.5 py-2 shadow-[0_1px_0_rgba(0,0,0,0.04)]">
-                                                        <div className="flex items-start gap-1.5 text-[8.5px] leading-[1.35] text-[#7A7A7A]">
-                                                            <CheckIcon24 />
-                                                            <span>{feature}</span>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <button
-                                                type="button"
-                                                onClick={handleCheckout}
-                                                className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[12px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10]"
-                                            >
-                                                BUY NOW
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
+                            <div className="mt-10">
+                                <PricingPlanCard onCheckout={handleCheckout} />
+                            </div>
                         ) : (
                             <div className="mx-auto mt-10 h-[402px] w-full max-w-[1000px] rounded-[18px] border border-[#D7D7D7] bg-white" />
                         )}
                     </div>
                 </div>
+            </div>
+
+            <div className={SECTION_GAP}>
+                <PageWrapper>
+                    <PricingPlanCard onCheckout={handleCheckout} />
+                </PageWrapper>
             </div>
 
             <div className={SECTION_GAP}>
