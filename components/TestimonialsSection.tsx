@@ -48,7 +48,7 @@ const defaultTestimonials: TestimonialCard[] = [
 export default function TestimonialsSection({
     title = 'Success stories from our clients',
     subtitle = 'Our Testimonials',
-    imageUrl = '/images/threetesti.png',
+    imageUrl = '/images/Testimonial Profile Image.png',
     testimonials = defaultTestimonials,
 }: TestimonialsSectionProps) {
     return (
