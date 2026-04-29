@@ -220,13 +220,8 @@ function HeroBanner() {
                             </span>
                         </h1>
 
-<<<<<<< Updated upstream
-                        <div className="mx-auto mt-7 inline-flex w-full min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:gap-3 md:px-9 lg:min-w-[370px] lg:w-auto lg:px-10">
-                            <span className="text-[15px] font-semibold uppercase leading-none tracking-[0.02em] text-white md:text-[18px]">
-=======
                         <div className="mx-auto mt-7 inline-flex w-full max-w-[82vw] min-h-[50px] items-center justify-center gap-1 rounded-full border border-white px-3 py-2 sm:max-w-[336px] sm:min-h-[54px] sm:gap-2 sm:px-5 sm:py-2.5 md:min-h-[58px] md:max-w-none md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
                             <span className="text-[12px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
->>>>>>> Stashed changes
                                 UPTO
                             </span>
                             <span className="text-[42px] font-extrabold leading-none text-[#FF8A14] sm:text-[56px] md:text-[68px]">
@@ -293,7 +288,7 @@ export default function WeightLossPlan2499Page() {
                                 <div className="relative overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white px-3 pb-3 pt-4 shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
                                     <div className="pointer-events-none absolute right-0 top-0 h-[68px] w-[68px] rounded-bl-[68px] bg-[#FF850B]" />
                                     <span className="absolute right-2 top-5 z-10 text-[8px] font-extrabold uppercase tracking-[0.02em] text-white">
-                                        BESTSELLER
+                                        
                                     </span>
 
                                     <div className="pr-16">
@@ -651,11 +646,11 @@ export default function WeightLossPlan2499Page() {
                                         </span>
                                     </div>
 
-                                    <div className="mt-[40px] flex items-end gap-2">
+                                    <div className="mt-[40px] flex-col items-end  gap-2 ">
                                         <p className="text-[14px] text-left font-bold uppercase tracking-[0.02em] text-[#252525]">
                                             PLAN
                                         </p>
-                                        <div className="flex items-end gap-2">
+                                        <div className="flex items-end gap-2 mt-2">
                                             <span className="text-[46px] font-extrabold leading-none text-[#045F5E]">
                                                 ₹2,499
                                             </span>
