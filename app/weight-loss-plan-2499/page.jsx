@@ -119,7 +119,8 @@ function HeroPlanSummaryCard({ onCheckout }) {
                 <div className="p-5 md:p-7 lg:px-10 lg:py-8">
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                         <div className="flex h-full flex-col lg:max-w-[250px] lg:pr-4">
-                            <span className="inline-flex rounded-full bg-[#FFF0E0] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.08em] text-[#FF8A14]">
+                            <span className="inline-flex rounded-full bg-[#FFF0E0] px-3 py-1 text-[11px] font-extrabold uppercase
+                             tracking-[0.08em] text-[#FF8A14]">
                                 Bestseller
                             </span>
 
@@ -257,118 +258,115 @@ export default function WeightLossPlan2499Page() {
                 </PageWrapper>
             </div>
 
-            <section className="mt-6 md:mt-8" aria-label="Pricing section">
+            <section className="mt-6 md:mt-8 w-[84vw] h-screen rounded-[16px] overflow-hidden" aria-label="Pricing section">
                 {isHydrated ? (
-                    <>
-                        <div className="mx-auto w-full max-w-[760px] overflow-hidden rounded-[16px] border border-[#DCDCDC] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)] lg:hidden">
-                            <div className="relative p-6 text-left md:p-8">
-                                <div className="absolute left-0 top-0 h-[118px] w-[118px] rounded-br-[118px] bg-[#FF8A14]">
-                                    <span className="absolute left-4 top-10 text-[13px] font-extrabold uppercase tracking-[0.02em] text-white">
+                    <div className="h-full w-full overflow-hidden p-2.5">
+                        <div className="flex h-full w-full flex-col gap-3 lg:hidden">
+                            <div className="relative h-[260px] w-full overflow-hidden rounded-[12px]">
+                                <Image
+                                    src={RECTANGLE_IMAGE_URL}
+                                    alt="Weight loss plan preview"
+                                    fill
+                                    sizes="84vw"
+                                    quality={90}
+                                    className="object-cover"
+                                />
+                            </div>
+
+                            <div className="relative w-full overflow-hidden rounded-[12px] bg-white px-5 py-6 shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+                                <div className="mb-5 flex items-end justify-between gap-3">
+                                    <div>
+                                        <p className="text-[16px] font-semibold uppercase text-[#1E1E1E]">PLAN</p>
+                                        <div className="mt-2 flex items-end gap-2">
+                                            <span className="text-[38px] font-semibold leading-none text-[#014E4E]">₹2,499</span>
+                                            <span className="pb-1 text-[20px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
+                                        </div>
+                                    </div>
+                                    <span className="inline-flex rounded-full bg-[#FF850B] px-3 py-1.5 text-[12px] font-semibold text-white">
                                         BESTSELLER
                                     </span>
                                 </div>
 
-                                <div className="pt-[122px]">
-                                    <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
-                                        PLAN
-                                    </p>
-                                    <p className="text-[40px] font-extrabold leading-none text-[#045F5E] md:text-[52px]">
-                                        ₹2,499
-                                    </p>
-                                    <p className="mt-1 text-[17px] font-semibold text-[#7A8291] line-through md:text-[24px]">
-                                        ₹3,000
-                                    </p>
+                                <div className="mb-5 h-px w-[70%] bg-black/45" />
 
-                                    <button
-                                        type="button"
-                                        onClick={handleCheckout}
-                                        className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[14px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10] md:max-w-[300px]"
-                                    >
-                                        BUY NOW
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="p-6 text-left md:p-8">
-                                <h3 className="mb-4 text-[24px] font-bold leading-none text-[#252525] md:text-[30px]">
-                                    What you&apos;ll get:
-                                </h3>
-
-                                <div className="space-y-2.5">
+                                <h3 className="text-[20px] font-semibold text-[#1E1E1E]">What you&apos;ll get:</h3>
+                                <div className="mt-4 space-y-2">
                                     {desktopPricingFeatures.map((feature) => (
-                                        <div key={feature} className="flex items-start gap-2.5 text-[14px] leading-[1.35] text-[#6B7280] md:text-[16px]">
-                                            <CheckIcon24 />
-                                            <span>{feature}</span>
+                                        <div key={`hero-mobile-${feature}`} className="rounded-[8px] bg-[#F9F9F9] px-2 py-2">
+                                            <div className="flex items-start gap-2 text-[12px] leading-[1.5] text-[#6B7280]">
+                                                <CheckIcon24 />
+                                                <span>{feature}</span>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
+
+                                <button
+                                    type="button"
+                                    onClick={handleCheckout}
+                                    className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF850B] px-4 py-3 text-[12px] font-bold uppercase text-white transition-colors hover:bg-[#ea7c10]"
+                                >
+                                    BUY NOW
+                                </button>
                             </div>
                         </div>
 
-                        <div className="mx-auto hidden w-full max-w-[940px] overflow-hidden rounded-[18px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] lg:block">
-                            <div className="grid grid-cols-[182px_minmax(0,1fr)] gap-3 p-0">
-                                <div className="relative min-h-[404px] overflow-hidden rounded-l-[18px]">
-                                    <Image
-                                        src={RECTANGLE_IMAGE_URL}
-                                        alt="Weight loss plan visual"
-                                        fill
-                                        sizes="182px"
-                                        quality={85}
-                                        className="h-full w-full object-cover object-center"
-                                    />
-                                </div>
+                        <div className="hidden h-full w-full items-center justify-between gap-3 lg:inline-flex">
+                            <div className="relative h-full w-[338px] shrink-0 overflow-hidden rounded-[12px]">
+                                <Image
+                                    src={RECTANGLE_IMAGE_URL}
+                                    alt="Weight loss plan artwork"
+                                    fill
+                                    sizes="338px"
+                                    quality={92}
+                                    className="object-cover"
+                                />
+                            </div>
 
-                                <div className="relative flex min-h-[404px] flex-col px-4 pb-4 pt-4 text-left">
-                                    <div className="absolute right-0 top-0 h-[70px] w-[104px] rounded-bl-[70px] bg-[#FF8A14]">
-                                        <span className="absolute right-4 top-6 text-[11px] font-extrabold uppercase tracking-[0.01em] text-white">
-                                            BESTSELLER
-                                        </span>
-                                    </div>
+                            <div className="relative flex h-full w-[840px] flex-col gap-8 overflow-hidden rounded-[12px] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+                                <div className="pointer-events-none absolute right-0 top-0 h-[120px] w-[120px] rounded-bl-[120px] bg-[#FF850B]" />
+                                <span className="absolute right-3 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
+                                    BESTSELLER
+                                </span>
 
-                                    <div className="pr-[110px]">
-                                        <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
-                                            PLAN
-                                        </p>
-                                        <div className="mt-1 flex items-end gap-2">
-                                            <span className="text-[21px] font-extrabold leading-none text-[#045F5E] xl:text-[22px]">
-                                                ₹2,499
-                                            </span>
-                                            <span className="pb-[2px] text-[11px] font-semibold leading-none text-[#8B93A2] line-through xl:text-[12px]">
-                                                ₹3,000
-                                            </span>
+                                <div className="relative flex items-start justify-between gap-10">
+                                    <div>
+                                        <p className="text-[18px] font-semibold uppercase text-[#1E1E1E]">PLAN</p>
+                                        <div className="mt-3 flex items-end gap-2">
+                                            <span className="text-[48px] font-semibold leading-none text-[#014E4E]">₹2,499</span>
+                                            <span className="pb-1 text-[24px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div className="mt-3 h-px w-full bg-[#E8E8E8]" />
+                                <div className="h-px w-[308px] bg-black/50" />
 
-                                    <h3 className="mt-4 text-[20px] font-bold leading-none text-[#252525]">
-                                        What you&apos;ll get:
-                                    </h3>
-
-                                    <div className="mt-4 grid grid-cols-4 gap-2">
+                                <div className="flex flex-1 flex-col">
+                                    <h3 className="text-[20px] font-semibold leading-6 text-[#1E1E1E]">What you&apos;ll get:</h3>
+                                    <div className="mt-4 grid grid-cols-2 gap-2">
                                         {desktopPricingFeatures.map((feature) => (
-                                            <div key={feature} className="min-h-[70px] rounded-[8px] bg-[#FAFAFA] px-2.5 py-2 shadow-[0_1px_0_rgba(0,0,0,0.04)]">
-                                                <div className="flex items-start gap-1.5 text-[8.5px] leading-[1.35] text-[#7A7A7A]">
+                                            <div key={`hero-desktop-${feature}`} className="rounded-[8px] bg-[#F9F9F9] px-2 py-2">
+                                                <div className="flex items-start gap-2 text-[12px] leading-[1.5] text-[#6B7280]">
                                                     <CheckIcon24 />
                                                     <span>{feature}</span>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-
-                                    <button
-                                        type="button"
-                                        onClick={handleCheckout}
-                                        className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[12px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10]"
-                                    >
-                                        BUY NOW
-                                    </button>
                                 </div>
+
+                                <button
+                                    type="button"
+                                    onClick={handleCheckout}
+                                    className="inline-flex w-full items-center justify-center rounded-full bg-[#FF850B] px-4 py-3.5 text-[12px] font-bold uppercase text-white transition-colors hover:bg-[#ea7c10]"
+                                >
+                                    BUY NOW
+                                </button>
                             </div>
                         </div>
-                    </>
+                    </div>
                 ) : (
-                    <div className="mx-auto h-[404px] w-full max-w-[940px] rounded-[18px] border border-[#D7D7D7] bg-white" />
+                    <div className="h-full w-full rounded-[16px] bg-white/80" />
                 )}
             </section>
 
@@ -568,9 +566,9 @@ export default function WeightLossPlan2499Page() {
                     </div>
                 </div>
             </div>
-            <section className="py-12 md:py-16" aria-label="Our pricing section">
-                <div className="site-fill">
-                    <div className="mx-auto max-w-[940px]">
+            <section className="mt-6 md:mt-8 w-[84vw] h-screen rounded-e overflow-y-auto" aria-label="Our pricing section">
+                <div className="w-full h-full px-4 py-8 md:px-8 md:py-10">
+                    <div className="mx-auto w-full max-w-[940px]">
                         <div className="mb-6 text-center md:mb-8">
                             <div className="flex items-center justify-center gap-2">
                                 <span className="text-[#f5a623] text-lg">✦</span>
@@ -588,9 +586,11 @@ export default function WeightLossPlan2499Page() {
                             <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
                                 <div className="relative border-b border-[#EFEFEF] px-6 pb-8 pt-24 md:border-b-0 md:border-r md:border-[#EFEFEF] md:px-7 md:pb-10 md:pt-28
                                 md:flex md:flex-col md:items-start md:justify-center md:gap-28">
-                                    <div className="absolute left-0 top-0 h-[88px] w-[88px] rounded-br-[88px] bg-[#FF8A14] md:h-[130px] md:w-[140px] md:rounded-br-[110px]">
-                                        <span className="absolute left-4 top-7 text-[10px] font-extrabold uppercase tracking-[0.02em] text-white md:left-4 md:top-9
-                                         md:text-[16px]">
+                                    <div className="absolute left-0 top-0 h-[88px] w-[88px] rounded-br-[88px] bg-[#FF8A14] md:h-[140px] md:w-[140px] 
+                                    md:rounded-br-[110px]">
+                                        <span className="absolute left-4 top-7 text-[10px] font-extrabold uppercase tracking-[0.02em]
+                                         text-white md:left-4 md:top-9
+                                         md:text-[18px]">
                                             BESTSELLER
                                         </span>
                                     </div>
