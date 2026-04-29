@@ -103,7 +103,7 @@ video {
   --radius-full: 50px;
   --transition: all 0.3s ease;
   --section-padding-x: 120px;
-  --section-padding-x-mobile: 16px;
+  --section-padding-x-mobile: 14px;
 }
 
 .site-shell {
