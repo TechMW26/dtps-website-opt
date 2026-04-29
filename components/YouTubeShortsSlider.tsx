@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type CSSProperties } from 'react';
 
 const youtubeVideos = [
   { id: 'QnvX0T0dH3g' },
@@ -11,12 +11,20 @@ const youtubeVideos = [
   { id: 'QRIWXRkjEXE' },
 ];
 
-export default function YouTubeShortsSlider() {
+type YouTubeShortsSliderProps = {
+  desktopVisibleCount?: number;
+};
+
+export default function YouTubeShortsSlider({ desktopVisibleCount }: YouTubeShortsSliderProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
   const [paused, setPaused] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const sliderTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const hasFixedDesktopCount = typeof desktopVisibleCount === 'number' && desktopVisibleCount > 0;
+  const gridStyle = hasFixedDesktopCount
+    ? ({ '--yt-desktop-count': String(desktopVisibleCount) } as CSSProperties)
+    : undefined;
 
   const getGapPx = () => {
     if (!gridRef.current) return 0;
@@ -38,7 +46,7 @@ export default function YouTubeShortsSlider() {
   const slideNext = () => {
     const grid = gridRef.current;
     if (!grid) return;
-    
+
     const step = getStepSize();
     const maxScroll = grid.scrollWidth - grid.clientWidth;
     if (maxScroll <= 0) return;
@@ -54,10 +62,10 @@ export default function YouTubeShortsSlider() {
   const slidePrev = () => {
     const grid = gridRef.current;
     if (!grid) return;
-    
+
     const step = getStepSize();
     const prev = grid.scrollLeft - step;
-    
+
     if (prev <= 0) {
       const maxScroll = grid.scrollWidth - grid.clientWidth;
       grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
@@ -115,7 +123,8 @@ export default function YouTubeShortsSlider() {
     <>
       <div
         ref={gridRef}
-        className="yt-video-grid"
+        className={`yt-video-grid${hasFixedDesktopCount ? ' yt-video-grid--fixed-count' : ''}`}
+        style={gridStyle}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onTouchStart={() => setPaused(true)}
@@ -164,12 +173,14 @@ export default function YouTubeShortsSlider() {
           display: flex;
           gap: 16px;
           overflow-x: auto;
-          padding: 0 0 12px;
+          padding: 0 4px 12px;
           width: 100%;
           max-width: 1300px;
-          margin: 0;
+          margin: 0 auto;
           scrollbar-width: none;
           scroll-snap-type: x mandatory;
+          scroll-behavior: smooth;
+          scroll-padding-inline: 4px;
           -webkit-overflow-scrolling: touch;
         }
         .yt-video-grid::-webkit-scrollbar {
@@ -260,13 +271,28 @@ export default function YouTubeShortsSlider() {
 
         @media (min-width: 769px) {
           .yt-video-grid {
-            overflow-x: hidden;
-            padding: 0;
-            gap: 16px;
+            overflow-x: auto;
+            padding: 0 4px 12px;
+            gap: 18px;
           }
 
           .yt-video-container {
-            width: 230px;
+            width: 208px;
+          }
+
+          .yt-video-grid--fixed-count {
+            padding: 0 0 12px;
+            scroll-padding-inline: 0;
+          }
+
+          .yt-video-grid--fixed-count .yt-video-container {
+            width: calc((100% - ((var(--yt-desktop-count, 5) - 1) * 18px)) / var(--yt-desktop-count, 5));
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .yt-video-container {
+            width: 220px;
           }
         }
       `}</style>

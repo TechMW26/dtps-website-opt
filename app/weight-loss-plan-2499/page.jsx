@@ -197,26 +197,42 @@ function HeroBanner() {
 
                     <div className="order-2 text-center">
                         <h1
-                            className="text-[34px] font-extrabold leading-[1.05] text-white md:text-[46px] lg:text-[50px]"
+                            className="max-w-[720px] text-[28px] font-[700] leading-[32px] text-white md:hidden"
                             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
-                            <span className="block">Guaranteed</span>
+                            <span className="block text-[23px]">Guaranteed</span>
                             <span className="block">
-                                <span className="text-[#FF8A14]">Weight Loss</span> with
+                                <span className="text-white text-[23px]">Weight Loss</span> with
                             </span>
-                            <span className="block">
-                                <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
+                            <span className="block text-[42px] leading-[36px] text-[#FF8A14]">Ghar Ka Khana</span>
+                            <span className="block text-[40px]">Diet Plan</span>
+                        </h1>
+
+                        <h1
+                            className="hidden max-w-[720px] text-[48px] font-[700] leading-[54px] text-white md:block"
+                            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                        >
+                            <span className="block whitespace-nowrap">
+                                Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
+                            </span>
+                            <span className="block whitespace-nowrap">
+                                with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
                             </span>
                         </h1>
 
-                        <div className="mt-7 inline-flex w-full max-w-[336px] min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:max-w-none md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
+<<<<<<< Updated upstream
+                        <div className="mx-auto mt-7 inline-flex w-full min-h-[54px] items-center justify-center gap-2 rounded-full border border-white px-5 py-2.5 md:min-h-[58px] md:gap-3 md:px-9 lg:min-w-[370px] lg:w-auto lg:px-10">
                             <span className="text-[15px] font-semibold uppercase leading-none tracking-[0.02em] text-white md:text-[18px]">
+=======
+                        <div className="mx-auto mt-7 inline-flex w-full max-w-[82vw] min-h-[50px] items-center justify-center gap-1 rounded-full border border-white px-3 py-2 sm:max-w-[336px] sm:min-h-[54px] sm:gap-2 sm:px-5 sm:py-2.5 md:min-h-[58px] md:max-w-none md:gap-3 md:px-9 lg:min-w-[370px] lg:px-10">
+                            <span className="text-[12px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
+>>>>>>> Stashed changes
                                 UPTO
                             </span>
-                            <span className="text-[56px] font-extrabold leading-none text-[#FF8A14] md:text-[68px]">
+                            <span className="text-[42px] font-extrabold leading-none text-[#FF8A14] sm:text-[56px] md:text-[68px]">
                                 5
                             </span>
-                            <span className="text-[15px] font-semibold uppercase leading-none tracking-[0.02em] text-white md:text-[18px]">
+                            <span className="text-[12px] font-semibold uppercase leading-none tracking-[0.02em] text-white sm:text-[15px] md:text-[18px]">
                                 KGS IN A MONTH
                             </span>
                         </div>
@@ -258,72 +274,74 @@ export default function WeightLossPlan2499Page() {
                 </PageWrapper>
             </div>
 
-            <section className="mt-6 md:mt-8 w-[84vw] h-screen rounded-[16px] overflow-hidden" aria-label="Pricing section">
+            <section className="mt-6 w-full rounded-[16px] overflow-hidden md:mt-8" aria-label="Pricing section">
                 {isHydrated ? (
-                    <div className="h-full w-full overflow-hidden p-2.5">
-                        <div className="flex h-full w-full flex-col gap-3 lg:hidden">
-                            <div className="relative h-[260px] w-full overflow-hidden rounded-[12px]">
-                                <Image
-                                    src={RECTANGLE_IMAGE_URL}
-                                    alt="Weight loss plan preview"
-                                    fill
-                                    sizes="84vw"
-                                    quality={90}
-                                    className="object-cover"
-                                />
-                            </div>
+                    <div className="w-full overflow-hidden p-0 md:p-3 lg:p-0">
+                        <div className="lg:hidden">
+                            <div className="w-full space-y-2.5">
+                                <div className="relative h-[400px] w-full overflow-hidden rounded-[12px] border border-[#E4E4E4] shadow-[0_10px_24px_rgba(17,24,39,0.08)] sm:h-[300px]">
+                                    <Image
+                                        src={RECTANGLE_IMAGE_URL}
+                                        alt="Weight loss plan preview"
+                                        fill
+                                        sizes="(max-width: 640px) 92vw, 360px"
+                                        quality={90}
+                                        className="object-cover object-top"
+                                    />
+                                </div>
 
-                            <div className="relative w-full overflow-hidden rounded-[12px] bg-white px-5 py-6 shadow-[0_0_4px_rgba(0,0,0,0.25)]">
-                                <div className="mb-5 flex items-end justify-between gap-3">
-                                    <div>
-                                        <p className="text-[16px] font-semibold uppercase text-[#1E1E1E]">PLAN</p>
-                                        <div className="mt-2 flex items-end gap-2">
-                                            <span className="text-[38px] font-semibold leading-none text-[#014E4E]">₹2,499</span>
-                                            <span className="pb-1 text-[20px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
-                                        </div>
-                                    </div>
-                                    <span className="inline-flex rounded-full bg-[#FF850B] px-3 py-1.5 text-[12px] font-semibold text-white">
+                                <div className="relative overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white px-3 pb-3 pt-4 shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
+                                    <div className="pointer-events-none absolute right-0 top-0 h-[68px] w-[68px] rounded-bl-[68px] bg-[#FF850B]" />
+                                    <span className="absolute right-2 top-5 z-10 text-[8px] font-extrabold uppercase tracking-[0.02em] text-white">
                                         BESTSELLER
                                     </span>
-                                </div>
 
-                                <div className="mb-5 h-px w-[70%] bg-black/45" />
-
-                                <h3 className="text-[20px] font-semibold text-[#1E1E1E]">What you&apos;ll get:</h3>
-                                <div className="mt-4 space-y-2">
-                                    {desktopPricingFeatures.map((feature) => (
-                                        <div key={`hero-mobile-${feature}`} className="rounded-[8px] bg-[#F9F9F9] px-2 py-2">
-                                            <div className="flex items-start gap-2 text-[12px] leading-[1.5] text-[#6B7280]">
-                                                <CheckIcon24 />
-                                                <span>{feature}</span>
-                                            </div>
+                                    <div className="pr-16">
+                                        <p className="text-[10px] font-bold uppercase text-[#252525]">PLAN</p>
+                                        <div className="mt-1 flex items-end gap-1.5">
+                                            <span className="text-[42px] font-extrabold leading-none text-[#014E4E]">₹2,499</span>
+                                            <span className="pb-1 text-[13px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
                                         </div>
-                                    ))}
-                                </div>
+                                    </div>
 
-                                <button
-                                    type="button"
-                                    onClick={handleCheckout}
-                                    className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF850B] px-4 py-3 text-[12px] font-bold uppercase text-white transition-colors hover:bg-[#ea7c10]"
-                                >
-                                    BUY NOW
-                                </button>
+                                    <div className="mt-3 h-px w-full bg-black/30" />
+
+                                    <h3 className="mt-3 text-[14px] font-extrabold text-[#1E1E1E]">What you&apos;ll get:</h3>
+                                    <div className="mt-2.5 grid grid-cols-2 gap-1.5">
+                                        {desktopPricingFeatures.map((feature) => (
+                                            <div key={`hero-mobile-${feature}`} className="rounded-[6px] bg-[#F9F9F9] px-1.5 py-1.5">
+                                                <div className="flex items-start gap-1 text-[8.5px] leading-[1.25] text-[#6B7280]">
+                                                    <CheckIcon24 />
+                                                    <span>{feature}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        onClick={handleCheckout}
+                                        className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-[#FF850B] px-4 py-2.5 text-[10px] font-bold uppercase text-white transition-colors hover:bg-[#ea7c10]"
+                                    >
+                                        BUY NOW
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="hidden h-full w-full items-center justify-between gap-3 lg:inline-flex">
-                            <div className="relative h-full w-[338px] shrink-0 overflow-hidden rounded-[12px]">
+                        <div className="hidden w-full gap-6 lg:grid lg:grid-cols-[minmax(280px,28%)_minmax(0,1fr)] xl:gap-7 xl:grid-cols-[minmax(320px,30%)_minmax(0,1fr)] 2xl:grid-cols-[minmax(360px,30%)_minmax(0,1fr)]">
+                            <div className="relative min-h-[600px] w-full overflow-hidden rounded-[12px] bg-[#F7F7F7] xl:min-h-[660px] 2xl:min-h-[720px]">
                                 <Image
                                     src={RECTANGLE_IMAGE_URL}
                                     alt="Weight loss plan artwork"
                                     fill
-                                    sizes="338px"
+                                    sizes="(max-width: 1279px) 28vw, (max-width: 1535px) 30vw, 30vw"
                                     quality={92}
-                                    className="object-cover"
+                                    className="object-cover object-top"
                                 />
                             </div>
 
-                            <div className="relative flex h-full w-[840px] flex-col gap-8 overflow-hidden rounded-[12px] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+                            <div className="relative flex min-h-[600px] w-full flex-col gap-8 overflow-hidden rounded-[12px] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)] xl:min-h-[660px] xl:px-8 xl:py-10 2xl:min-h-[720px]">
                                 <div className="pointer-events-none absolute right-0 top-0 h-[120px] w-[120px] rounded-bl-[120px] bg-[#FF850B]" />
                                 <span className="absolute right-3 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
                                     BESTSELLER
@@ -333,8 +351,8 @@ export default function WeightLossPlan2499Page() {
                                     <div>
                                         <p className="text-[18px] font-semibold uppercase text-[#1E1E1E]">PLAN</p>
                                         <div className="mt-3 flex items-end gap-2">
-                                            <span className="text-[48px] font-semibold leading-none text-[#014E4E]">₹2,499</span>
-                                            <span className="pb-1 text-[24px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
+                                            <span className="text-[48px] font-semibold leading-none text-[#014E4E] 2xl:text-[56px]">₹2,499</span>
+                                            <span className="pb-1 text-[24px] font-semibold leading-none text-[#6B7280] line-through 2xl:text-[28px]">₹3,000</span>
                                         </div>
                                     </div>
                                 </div>
@@ -343,7 +361,7 @@ export default function WeightLossPlan2499Page() {
 
                                 <div className="flex flex-1 flex-col">
                                     <h3 className="text-[20px] font-semibold leading-6 text-[#1E1E1E]">What you&apos;ll get:</h3>
-                                    <div className="mt-4 grid grid-cols-2 gap-2">
+                                    <div className="mt-4 grid grid-cols-2 gap-2 xl:gap-2.5">
                                         {desktopPricingFeatures.map((feature) => (
                                             <div key={`hero-desktop-${feature}`} className="rounded-[8px] bg-[#F9F9F9] px-2 py-2">
                                                 <div className="flex items-start gap-2 text-[12px] leading-[1.5] text-[#6B7280]">
@@ -551,9 +569,9 @@ export default function WeightLossPlan2499Page() {
             <div>
                 <div className="overflow-hidden rounded-[30px] bg-white py-16 md:py-20">
                     <div className="site-fill">
-                        <div className="mb-6 flex flex-wrap items-start justify-between gap-4 md:mb-10">
+                        <div className="mb-6 flex flex-wrap items-start justify-between gap-4 md:mb-10 md:ml-2">
                             <div>
-                                <div className="mb-2 flex items-center gap-2">
+                                <div className="mb-2  flex items-center gap-2">
                                     <span className="text-[#ff9100] text-xl">✦</span>
                                     <span className="text-teal-600 text-base font-semibold">Hear from our Happy Clients</span>
                                 </div>
@@ -562,17 +580,20 @@ export default function WeightLossPlan2499Page() {
                                 </h2>
                             </div>
                         </div>
-                        <YouTubeShortsSlider />
+                    </div>
+
+                    <div className="px-4 md:px-8 lg:px-10 xl:px-14">
+                        <YouTubeShortsSlider desktopVisibleCount={5} />
                     </div>
                 </div>
             </div>
-            <section className="mt-6 md:mt-8 w-[84vw] h-screen rounded-e overflow-y-auto" aria-label="Our pricing section">
-                <div className="w-full h-full px-4 py-8 md:px-8 md:py-10">
-                    <div className="mx-auto w-full max-w-[940px]">
+            <section className="mt-6 w-full md:mt-8" aria-label="Our pricing section">
+                <div className="w-full px-4 py-8 md:px-8 md:py-8">
+                    <div className="mx-auto w-full max-w-[1080px]">
                         <div className="mb-6 text-center md:mb-8">
                             <div className="flex items-center justify-center gap-2">
                                 <span className="text-[#f5a623] text-lg">✦</span>
-                                <span className="text-teal-600 text-base font-semibold">Our Pricing</span>
+                                <span className="text-teal-600 text-base font-semibold">Our Plan</span>
                             </div>
                             <SectionTitle className="mt-2 text-[#1E1E1E]">
                                 Our Pricing
@@ -582,31 +603,66 @@ export default function WeightLossPlan2499Page() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden rounded-[18px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)]">
+                        <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] md:hidden">
+                            <div className="relative px-4 pb-4 pt-24">
+                                <div className="absolute left-0 top-0 h-[88px] w-[88px] rounded-br-[72px] bg-[#FF8A14]">
+                                    <span className="absolute left-2 top-7 text-[12px] font-extrabold uppercase tracking-[0.02em] text-white">
+                                        BESTSELLER
+                                    </span>
+                                </div>
+
+                                <p className="text-[11px] font-bold uppercase tracking-[0.02em] text-[#252525]">PLAN</p>
+                                <div className="mt-1 flex items-end gap-1.5">
+                                    <span className="text-[46px] font-extrabold leading-none text-[#045F5E]">₹2,499</span>
+                                    <span className="pb-1 text-[14px] font-semibold leading-none text-[#7A8291] line-through">₹3,000</span>
+                                </div>
+
+                                <div className="mt-3 h-px w-full bg-black/25" />
+
+                                <h3 className="mt-3 text-[15px] font-extrabold text-[#252525]">
+                                    What you&apos;ll get:
+                                </h3>
+
+                                <div className="mt-3 space-y-1.5">
+                                    {desktopPricingFeatures.map((feature) => (
+                                        <div key={`program-pricing-mobile-${feature}`} className="flex items-start gap-1.5 text-[9px] leading-[1.28] text-[#6B7280]">
+                                            <CheckIcon24 />
+                                            <span>{feature}</span>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={handleCheckout}
+                                    className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-2.5 text-[10px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10]"
+                                >
+                                    BUY NOW
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="hidden overflow-hidden rounded-[18px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] md:block">
                             <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
-                                <div className="relative border-b border-[#EFEFEF] px-6 pb-8 pt-24 md:border-b-0 md:border-r md:border-[#EFEFEF] md:px-7 md:pb-10 md:pt-28
-                                md:flex md:flex-col md:items-start md:justify-center md:gap-28">
-                                    <div className="absolute left-0 top-0 h-[88px] w-[88px] rounded-br-[88px] bg-[#FF8A14] md:h-[140px] md:w-[140px] 
-                                    md:rounded-br-[110px]">
-                                        <span className="absolute left-4 top-7 text-[10px] font-extrabold uppercase tracking-[0.02em]
-                                         text-white md:left-4 md:top-9
-                                         md:text-[18px]">
+                                <div className="relative border-r border-[#EFEFEF] px-7 pb-10 pt-28 md:flex md:flex-col md:items-start md:justify-center md:gap-28">
+                                    <div className="absolute left-0 top-0 h-[140px] w-[140px] rounded-br-[110px] bg-[#FF8A14]">
+                                        <span className="absolute left-4 top-9 text-[18px] font-extrabold uppercase tracking-[0.02em] text-white">
                                             BESTSELLER
                                         </span>
                                     </div>
 
-
-                                    <div className="mt-2 flex items-end gap-2 md:mb-[40px] md:flex-col md:items-start md:gap-2.5 md:mt-[40px]">
+                                    <div className="mt-[40px] flex items-end gap-2">
                                         <p className="text-[14px] text-left font-bold uppercase tracking-[0.02em] text-[#252525]">
                                             PLAN
                                         </p>
-                                        <div className='md:flex md:gap-2 md:items-end' >
+                                        <div className="flex items-end gap-2">
                                             <span className="text-[46px] font-extrabold leading-none text-[#045F5E]">
                                                 ₹2,499
                                             </span>
                                             <span className="pb-1 text-[29px] font-semibold leading-none text-[#7A8291] line-through">
                                                 ₹3,000
-                                            </span></div>
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <button
@@ -618,14 +674,14 @@ export default function WeightLossPlan2499Page() {
                                     </button>
                                 </div>
 
-                                <div className="px-6 py-6 md:px-7 md:py-8">
-                                    <h3 className="text-[24px] font-bold leading-none text-[#252525] md:text-[28px]">
+                                <div className="px-7 py-8">
+                                    <h3 className="text-[28px] font-bold leading-none text-[#252525]">
                                         What you&apos;ll get:
                                     </h3>
 
                                     <div className="mt-5 space-y-2.5">
                                         {desktopPricingFeatures.map((feature) => (
-                                            <div key={`program-pricing-${feature}`} className="flex items-start gap-2.5 text-[13px] leading-[1.35] text-[#6B7280] md:text-[14px]">
+                                            <div key={`program-pricing-${feature}`} className="flex items-start gap-2.5 text-[14px] leading-[1.35] text-[#6B7280]">
                                                 <CheckIcon24 />
                                                 <span>{feature}</span>
                                             </div>

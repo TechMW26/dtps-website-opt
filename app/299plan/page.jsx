@@ -382,7 +382,7 @@ export default function Plan299Page() {
                     <div className="mx-auto max-w-[860px] text-center">
                         <div className="mb-1 flex items-center justify-center gap-1.5">
                             <span className="text-[10px] text-[#f5a623]">✦</span>
-                            <span className="text-[12px] font-semibold text-[#0D9488] md:text-[11px]">Our Testimonials</span>
+                            <span className="text-[12px]  text-base font-semibold text-[#0D9488] ">Our Plan</span>
                         </div>
 
                         <h2 className="text-[2rem] font-extrabold leading-none text-[#252525] md:text-[3rem]">
