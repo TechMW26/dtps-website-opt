@@ -1,0 +1,585 @@
+"use client";
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+
+import PageWrapper from '@/components/PageWrapper';
+import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
+import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import TransformationGallery from '@/components/TransformationGallery';
+
+const SECTION_GAP = 'mt-10 md:mt-14';
+const THALI_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/4ca0ad9f-3706-4478-9c4b-6de3909f56c2-1.png';
+const RECTANGLE_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/Rectangle-45.png';
+
+const desktopPricingFeatures = [
+    'Daily Expert Access (10 AM - 6 PM) - Dedicated Dietitian & Health Counsellor',
+    '6 Private 1-on-1 Consultations - 30 to 60 Min Sessions Every Month',
+    'Fully Personalized Diet Plan based on your health, taste, routine & lifestyle',
+    'Weekly Progress Tracking with App-Based Monitoring & Smart Guidance',
+    'Advanced 5-Phase Proven Weight Loss System for faster visible results',
+    'Day 1 Gut Health, Metabolism & Hormone Balance Optimization',
+    'Strategic Nutrition Plan to reduce inflammation & support recovery',
+    'Multiple Food Choices for Every Meal - no boring fixed diets',
+    '100% Home Food Based Plan - practical, tasty & sustainable',
+    'No Bounce Back Strategy - results designed to stay long-term',
+    'Craving & Hunger Control Meal Structuring',
+    'Belly Fat Focused Nutrition Approach',
+    'Festival / Travel Friendly Diet Flexibility',
+    'Mindful Eating Guidance for Better Control',
+    '50+ Premium Fat Loss Recipes eBook FREE',
+    'Priority 24x7 Chat Support whenever you need help',
+];
+
+function TickIcon() {
+    return (
+        <svg
+            viewBox="0 0 24 24"
+            className="h-4 w-4 shrink-0"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <circle cx="12" cy="12" r="12" fill="#FF850B" />
+            <path
+                d="M7 12.3L10.1 15.2L17 8.5"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    );
+}
+
+function SectionTitle({ children, className = '' }) {
+    return (
+        <h2
+            className={`text-[28px] md:text-[36px] lg:text-[46px] font-extrabold leading-[1.12] ${className}`}
+            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+        >
+            {children}
+        </h2>
+    );
+}
+
+function SectionHeading({ label, title, description }) {
+    return (
+        <div className="mb-5 md:mb-8">
+            <div className="mb-2 flex items-center gap-2">
+                <span className="text-lg text-[#F5A623]">✦</span>
+                <span className="text-base font-semibold text-[#016666]">{label}</span>
+            </div>
+            <SectionTitle className="text-[#1E1E1E]">{title}</SectionTitle>
+            {description ? (
+                <p className="mt-2 max-w-[760px] text-[13px] text-[#6B7280] md:text-[15px]">
+                    {description}
+                </p>
+            ) : null}
+        </div>
+    );
+}
+
+function CheckIcon24() {
+    return <TickIcon />;
+}
+
+function HeroMealArtwork() {
+    return (
+        <div className="relative text-[#016666] mx-auto h-[350px] w-[350px] md:h-[400px] md:w-[400px]  lg:h-[400px] lg:w-[400px]">
+            <Image
+                src={THALI_IMAGE_URL}
+                alt="Ghar Ka Khana thali"
+                fill
+                
+                className="h-full w-full object-contain"
+                quality={95}
+                priority
+            />
+        </div>
+    );
+}
+
+function HeroPlanSummaryCard({ onCheckout }) {
+    return (
+        <div className="mx-auto mt-6 w-full max-w-[1040px] overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.08)] md:mt-8">
+            <div className="grid lg:grid-cols-[220px_minmax(0,1fr)]">
+                <div className="relative hidden overflow-hidden bg-[linear-gradient(180deg,#f6f1e7_0%,#fffaf1_100%)] lg:block">
+                    <div className="absolute inset-x-0 bottom-0 top-0 bg-[radial-gradient(circle_at_top,_rgba(255,138,20,0.14),_transparent_58%)]" />
+                    <Image
+                        src={RECTANGLE_IMAGE_URL}
+                        alt="Weight loss plan visual"
+                        fill
+                        sizes="220px"
+                        className="object-contain object-center p-4"
+                        quality={85}
+                    />
+                </div>
+
+                <div className="p-5 md:p-7 lg:px-10 lg:py-8">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                        <div className="flex h-full flex-col lg:max-w-[250px] lg:pr-4">
+                            <span className="inline-flex rounded-full bg-[#FFF0E0] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.08em] text-[#FF8A14]">
+                                Bestseller
+                            </span>
+
+                            <p className="mt-4 text-[13px] font-bold uppercase tracking-[0.08em] text-[#252525]">
+                                Plan
+                            </p>
+                            <div className="mt-2 flex items-end gap-2.5">
+                                <span className="text-[42px] font-extrabold leading-none text-[#045F5E] md:text-[48px]">
+                                    ₹2,499
+                                </span>
+                                <span className="pb-1 text-[20px] font-semibold leading-none text-[#7A8291] line-through md:text-[22px]">
+                                    ₹3,000
+                                </span>
+                            </div>
+
+                            <p className="mt-3 max-w-[220px] text-[13px] leading-[1.5] text-[#6B7280]">
+                                Personalized ghar ka khana based fat-loss plan with expert tracking, consultations, and daily support.
+                            </p>
+
+                            <button
+                                type="button"
+                                onClick={onCheckout}
+                                className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-6 py-3.5 text-[14px] font-extrabold uppercase tracking-[0.03em] text-white transition-colors hover:bg-[#ea7c10] lg:mt-auto lg:max-w-[220px]"
+                            >
+                                Buy Now
+                            </button>
+                        </div>
+
+                        <div className="min-w-0 flex-1">
+                            <h3 className="text-[24px] font-extrabold leading-none text-[#252525] md:text-[28px]">
+                                What you&apos;ll get:
+                            </h3>
+
+                            <div className="mt-5 grid gap-x-5 gap-y-3 sm:grid-cols-2">
+                                {desktopPricingFeatures.map((feature) => (
+                                    <div key={`summary-${feature}`} className="flex items-start gap-2.5 text-[13px] leading-[1.4] text-[#6B7280] md:text-[14px]">
+                                        <CheckIcon24 />
+                                        <span>{feature}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function HeroOfferPill() {
+    return (
+        <div className="mt-6 inline-flex min-h-[58px] items-center justify-center gap-2 rounded-full border border-white/45 px-5 py-2.5 text-center md:gap-3 md:px-7 md:py-3">
+            <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-white md:text-[14px]">
+                Upto
+            </span>
+            <span className="text-[46px] font-extrabold leading-none text-[#FF8A14] md:text-[58px]">
+                5
+            </span>
+            <span className="text-[13px] font-semibold uppercase tracking-[0.06em] text-white md:text-[14px]">
+                Kgs in a month
+            </span>
+        </div>
+    );
+}
+
+function HeroBanner() {
+    return (
+        <div className="overflow-hidden rounded-[12px] px-5 py-8 md:px-8 md:py-10 lg:px-12 lg:py-11">
+            <div className="mx-auto w-full max-w-[980px]">
+                <div className="grid items-center gap-6 md:gap-10 lg:grid-cols-[300px_minmax(0,1fr)]  lg:gap-10 justify-center">
+                    <div className="w-full h-full order-1 flex justify-center">
+                        <HeroMealArtwork />
+                    </div>
+
+                    <div className="order-2 text-center">
+                        <h1
+                            className="text-[34px] font-extrabold leading-[1.05] text-white md:text-[46px] lg:text-[50px]"
+                            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                        >
+                            <span className="block">Guaranteed</span>
+                            <span className="block">
+                                <span className="text-[#FF8A14]">Weight Loss</span> with
+                            </span>
+                            <span className="block">
+                                <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
+                            </span>
+                        </h1>
+
+                        <p className="mx-auto mt-4 max-w-[560px] text-[14px] leading-[1.6] text-white/80 lg:text-[16px]">
+                            Sustainable fat loss with personalized Indian meals, structured consultations, and expert support designed around your routine.
+                        </p>
+
+                        <HeroOfferPill />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function WeightLossPlan2499Page() {
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
+
+    const handleCheckout = () => {
+        const product = {
+            id: '2499-plan-healthy-monthly',
+            name: '2499 Plan - Healthy Monthly Program',
+            price: 2499,
+            quantity: 1,
+        };
+
+        sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+        window.location.href = '/checkout';
+    };
+
+    return (
+        <div className="bg-white site-shell pb-8 pt-4 md:pb-14 md:pt-[60px]">
+            <div>
+                <PageWrapper>
+                    <div className="py-5 md:py-8 lg:py-6">
+                        <HeroBanner />
+                        <HeroPlanSummaryCard onCheckout={handleCheckout} />
+                    </div>
+                </PageWrapper>
+            </div>
+
+            <div className="py-12 md:py-20">
+                <div className="site-fill">
+                    <div className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
+                        <div className="max-w-[630px] text-center md:text-left">
+                            <div className="flex items-center justify-center gap-2 md:justify-start">
+                                <span className="text-[#f5a623] text-lg">✦</span>
+                                <span className="text-teal-600 text-base font-semibold">Our Testimonials</span>
+                            </div>
+
+                            <SectionTitle className="mt-2 text-[#1E1E1E]">
+                                Success stories from our clients
+                            </SectionTitle>
+
+                            <p
+                                className="mt-2 text-[12px] text-[#828283] md:text-[14px]"
+                                style={{ fontFamily: 'Inter, sans-serif' }}
+                            >
+                                Choose a plan as per your requirements and start your wellness journey. See you around!
+                            </p>
+                        </div>
+                    </div>
+
+                    <TransformationGallery
+                        page="weight-loss"
+                        maxItems={6}
+                        cardBackgroundClassName="bg-transparent"
+                    />
+                </div>
+            </div>
+
+            <div>
+                <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
+                    <Image
+                        src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
+                        alt="Our Five-Cycle Program - Desktop"
+                        width={1200}
+                        height={600}
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 1200px) 100vw, 1200px"
+                        quality={75}
+                        className="h-auto w-full"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                    />
+                </div>
+
+                <div className="overflow-hidden rounded-[16px] bg-gray-100 lg:hidden">
+                    <Image
+                        src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
+                        alt="Our Five-Cycle Program - Mobile"
+                        width={600}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
+                        sizes="100vw"
+                        quality={70}
+                        className="h-auto w-full"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                    />
+                </div>
+            </div>
+
+            <div className="py-14 md:py-24">
+                <div className="site-fill">
+                    <div className="mx-auto hidden w-[70%] overflow-hidden rounded-[20px] lg:block">
+                        <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:w-900,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+                            alt="What to Expect - Desktop"
+                            width={900}
+                            height={450}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="(max-width: 1200px) 70vw, 840px"
+                            quality={75}
+                            className="h-auto w-full"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                        />
+                    </div>
+
+                    <div className="overflow-hidden rounded-[16px] lg:hidden">
+                        <Image
+                            src="/images/what-to-expect-mobile.png"
+                            alt="What to Expect - Mobile"
+                            width={600}
+                            height={800}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="100vw"
+                            quality={70}
+                            className="h-auto w-full"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div className="site-fill">
+                    <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
+                        <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
+                            alt="100% Money Back Guarantee - Desktop"
+                            width={1200}
+                            height={600}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="(max-width: 1200px) 100vw, 1200px"
+                            quality={75}
+                            className="h-auto w-full"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                        />
+                    </div>
+
+                    <div className="overflow-hidden rounded-[16px] bg-gray-100 lg:hidden">
+                        <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
+                            alt="100% Money Back Guarantee - Mobile"
+                            width={600}
+                            height={800}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="100vw"
+                            quality={70}
+                            className="h-auto w-full"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div className="py-12 md:py-20">
+                <div className="site-fill">
+                    <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
+                        <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
+                            alt="What You Get - Desktop"
+                            width={1200}
+                            height={600}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="(max-width: 1200px) 100vw, 1200px"
+                            quality={75}
+                            className="h-auto w-full"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                        />
+                    </div>
+
+                    <div className="overflow-hidden rounded-[16px] bg-gray-100 lg:hidden">
+                        <Image
+                            src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
+                            alt="What You Get - Mobile"
+                            width={600}
+                            height={800}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="100vw"
+                            quality={70}
+                            className="h-auto w-full"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIhAAAgEDAwUBAAAAAAAAAAAAAQIDAAQRBQYhEhMxQVFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwT/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBES/9oADAMBAAIRAxEAPwCzq+6ru21m5tLa1tYYYpGRXaNi7gEgFiSOT9wKiHerEkm0tySegf2lKYUNB5ZOiVYfJ//Z"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <ExpertGuidanceSection />
+            </div>
+
+            <div>
+                <div className="overflow-hidden rounded-[30px] bg-white py-16 md:py-20">
+                    <div className="site-fill">
+                        <div className="mb-6 flex flex-wrap items-start justify-between gap-4 md:mb-10">
+                            <div>
+                                <div className="mb-2 flex items-center gap-2">
+                                    <span className="text-[#ff9100] text-xl">✦</span>
+                                    <span className="text-teal-600 text-base font-semibold">Hear from our Happy Clients</span>
+                                </div>
+                                <h2 className="text-[1.5rem] font-bold leading-tight text-gray-900 md:text-[2.5rem]">
+                                    Tailored programs for<br />your wellness
+                                </h2>
+                            </div>
+                        </div>
+                        <YouTubeShortsSlider />
+                    </div>
+                </div>
+            </div>
+
+            <div className={SECTION_GAP}>
+                <div className="bg-white py-[72px] md:py-[120px]">
+                    <div className="mx-auto max-w-[860px] text-center">
+                        <div className="mb-1 flex items-center justify-center gap-1.5">
+                            <span className="text-[10px] text-[#f5a623]">✦</span>
+                            <span className="text-[12px] font-semibold text-[#0D9488] md:text-[11px]">Our Testimonials</span>
+                        </div>
+
+                        <h2 className="text-[2rem] font-extrabold leading-none text-[#252525] md:text-[3rem]">
+                            Our Pricing
+                        </h2>
+
+                        <p className="mx-auto mt-2 max-w-[520px] text-[11px] text-[#8B8B8B] md:text-[12px]">
+                            Join our Plan today and embark on a journey to better health with our weight loss plan!
+                        </p>
+
+                        {isHydrated ? (
+                            <>
+                                <div className="mx-auto mt-10 max-w-[760px] overflow-hidden rounded-[16px] border border-[#DCDCDC] shadow-[0_8px_24px_rgba(0,0,0,0.06)] lg:hidden">
+                                    <div className="relative border-b border-[#DFDFDF] p-6 text-left md:p-8">
+                                        <div className="absolute left-0 top-0 h-[118px] w-[118px] rounded-br-[118px] bg-[#FF8A14]">
+                                            <span className="absolute left-4 top-10 text-[13px] font-extrabold uppercase tracking-[0.02em] text-white">
+                                                BESTSELLER
+                                            </span>
+                                        </div>
+
+                                        <div className="pt-[122px]">
+                                            <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
+                                                PLAN
+                                            </p>
+                                            <p className="text-[40px] font-extrabold leading-none text-[#045F5E] md:text-[52px]">
+                                                ₹2,499
+                                            </p>
+                                            <p className="mt-1 text-[17px] font-semibold text-[#7A8291] line-through md:text-[24px]">
+                                                ₹3,000
+                                            </p>
+
+                                            <button
+                                                type="button"
+                                                onClick={handleCheckout}
+                                                className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[14px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10] md:max-w-[300px]"
+                                            >
+                                                BUY NOW
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div className="p-6 text-left md:p-8">
+                                        <h3 className="mb-4 text-[24px] font-bold leading-none text-[#252525] md:text-[30px]">
+                                            What you&apos;ll get:
+                                        </h3>
+
+                                        <div className="space-y-2.5">
+                                            {desktopPricingFeatures.map((feature) => (
+                                                <div key={feature} className="flex items-start gap-2.5 text-[14px] leading-[1.35] text-[#6B7280] md:text-[16px]">
+                                                    <CheckIcon24 />
+                                                    <span>{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mx-auto mt-8 hidden w-full max-w-[940px] overflow-hidden rounded-[18px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] lg:block">
+                                    <div className="grid grid-cols-[182px_minmax(0,1fr)] gap-3 p-0">
+                                        <div className="relative min-h-[404px] overflow-hidden rounded-l-[18px]">
+                                            <Image
+                                                src={RECTANGLE_IMAGE_URL}
+                                                alt="Weight loss plan visual"
+                                                fill
+                                                sizes="182px"
+                                                quality={85}
+                                                className="h-full w-full object-cover object-center"
+                                            />
+                                        </div>
+
+                                        <div className="relative flex min-h-[404px] flex-col px-4 pb-4 pt-4 text-left">
+                                            <div className="absolute right-0 top-0 h-[70px] w-[104px] rounded-bl-[70px] bg-[#FF8A14]">
+                                                <span className="absolute right-4 top-6 text-[11px] font-extrabold uppercase tracking-[0.01em] text-white">
+                                                    BESTSELLER
+                                                </span>
+                                            </div>
+
+                                            <div className="pr-[110px]">
+                                                <p className="text-[14px] font-bold uppercase tracking-[0.02em] text-[#252525]">
+                                                    PLAN
+                                                </p>
+                                                <div className="mt-1 flex items-end gap-2">
+                                                    <span className="text-[21px] font-extrabold leading-none text-[#045F5E] xl:text-[22px]">
+                                                        ₹2,499
+                                                    </span>
+                                                    <span className="pb-[2px] text-[11px] font-semibold leading-none text-[#8B93A2] line-through xl:text-[12px]">
+                                                        ₹3,000
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div className="mt-3 h-px w-full bg-[#E8E8E8]" />
+
+                                            <h3 className="mt-4 text-[20px] font-bold leading-none text-[#252525]">
+                                                What you&apos;ll get:
+                                            </h3>
+
+                                            <div className="mt-4 grid grid-cols-4 gap-2">
+                                                {desktopPricingFeatures.map((feature) => (
+                                                    <div key={feature} className="min-h-[70px] rounded-[8px] bg-[#FAFAFA] px-2.5 py-2 shadow-[0_1px_0_rgba(0,0,0,0.04)]">
+                                                        <div className="flex items-start gap-1.5 text-[8.5px] leading-[1.35] text-[#7A7A7A]">
+                                                            <CheckIcon24 />
+                                                            <span>{feature}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <button
+                                                type="button"
+                                                onClick={handleCheckout}
+                                                className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#FF8A14] px-8 py-3 text-[12px] font-extrabold uppercase text-white transition-colors hover:bg-[#ea7c10]"
+                                            >
+                                                BUY NOW
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        ) : (
+                            <div className="mx-auto mt-10 h-[402px] w-full max-w-[1000px] rounded-[18px] border border-[#D7D7D7] bg-white" />
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            <div className={SECTION_GAP}>
+                <TestimonialsSection />
+            </div>
+        </div>
+    );
+}
