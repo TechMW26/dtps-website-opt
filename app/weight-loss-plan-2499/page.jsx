@@ -274,7 +274,7 @@ export default function WeightLossPlan2499Page() {
                     <div className="w-full overflow-hidden p-0 md:p-3 lg:p-0">
                         <div className="lg:hidden">
                             <div className="w-full space-y-2.5">
-                                <div className="relative h-[400px] w-full overflow-hidden rounded-[12px] border border-[#E4E4E4] shadow-[0_10px_24px_rgba(17,24,39,0.08)] sm:h-[300px]">
+                                <div className="relative h-[490px] w-full overflow-hidden rounded-[12px] border border-[#E4E4E4] shadow-[0_10px_24px_rgba(17,24,39,0.08)] sm:h-[300px]">
                                     <Image
                                         src={RECTANGLE_IMAGE_URL}
                                         alt="Weight loss plan preview"
