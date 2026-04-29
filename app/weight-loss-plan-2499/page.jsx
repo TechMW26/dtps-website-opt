@@ -14,7 +14,7 @@ const THALI_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/
 const RECTANGLE_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/Rectangle-45.png';
 
 const desktopPricingFeatures = [
-    'Daily Expert Access (10 AM - 6 PM) - Dedicated Dietitian & Health Counsellor',
+    'Daily Expert Access (10AM - 6PM) - Dedicated Dietitian & Health Counsellor',
     '6 Private 1-on-1 Consultations - 30 to 60 Min Sessions Every Month',
     'Fully Personalized Diet Plan based on your health, taste, routine & lifestyle',
     'Weekly Progress Tracking with App-Based Monitoring & Smart Guidance',
