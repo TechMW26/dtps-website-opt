@@ -336,9 +336,9 @@ export default function WeightLossPlan2499Page() {
                                 />
                             </div>
 
-                            <div className="relative flex min-h-[600px] w-full flex-col gap-8 overflow-hidden rounded-[12px] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)] xl:min-h-[660px] xl:px-8 xl:py-10 2xl:min-h-[720px]">
-                                <div className="pointer-events-none absolute right-16 -top-6 h-[140px] w-[140px] rounded-bl-[120px] bg-[#FF850B]" />
-                                <span className="absolute right-20 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
+                            <div className="relative flex min-h-[600px] w-full flex-col gap-8 overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)] xl:min-h-[660px] xl:px-8 xl:py-10 2xl:min-h-[720px]">
+                                <div className="pointer-events-none absolute right-0 top-0 h-[140px] w-[140px] rounded-bl-[120px] bg-[#FF850B]" />
+                                <span className="absolute right-4 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
                                     BESTSELLER
                                 </span>
 
