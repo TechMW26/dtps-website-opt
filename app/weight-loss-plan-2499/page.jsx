@@ -11,7 +11,7 @@ import TransformationGallery from '@/components/TransformationGallery';
 
 const SECTION_GAP = 'mt-10 md:mt-14';
 const THALI_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/4ca0ad9f-3706-4478-9c4b-6de3909f56c2-1.png';
-const RECTANGLE_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/Rectangle-45.png';
+const RECTANGLE_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/weight-loss-plan-2499-frame-427318463.png';
 
 const desktopPricingFeatures = [
     'Daily Expert Access (10AM - 6PM) - Dedicated Dietitian & Health Counsellor',
@@ -274,7 +274,7 @@ export default function WeightLossPlan2499Page() {
                     <div className="w-full overflow-hidden p-0 md:p-3 lg:p-0">
                         <div className="lg:hidden">
                             <div className="w-full space-y-2.5">
-                                <div className="relative h-[490px] w-full overflow-hidden rounded-[12px] border border-[#E4E4E4] shadow-[0_10px_24px_rgba(17,24,39,0.08)] sm:h-[300px]">
+                                <div className="relative h-[530px] w-full overflow-hidden rounded-[12px] border border-[#E4E4E4] shadow-[0_10px_24px_rgba(17,24,39,0.08)] sm:h-[300px]">
                                     <Image
                                         src={RECTANGLE_IMAGE_URL}
                                         alt="Weight loss plan preview"
@@ -598,33 +598,37 @@ export default function WeightLossPlan2499Page() {
                             </p>
                         </div>
 
-                        <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(17,24,39,0.08)] md:hidden">
-                            <div className="relative px-4 pb-4 pt-24">
-                                <div className="absolute left-0 top-0 h-[88px] w-[88px] rounded-br-[72px] bg-[#FF8A14]">
-                                    <span className="absolute left-2 top-7 text-[12px] font-extrabold uppercase tracking-[0.02em] text-white">
+                        <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-[#F8F8F8] shadow-[0_8px_20px_rgba(17,24,39,0.06)] md:hidden">
+                            <div className="relative px-4 pb-5 pt-20">
+                                <div className="absolute left-0 top-0 h-[76px] w-[102px] rounded-br-[90px] bg-[#FF8A14]">
+                                    <span className="absolute left-3 top-6 text-[11px] font-extrabold uppercase tracking-[0.01em] text-white">
                                         BESTSELLER
                                     </span>
                                 </div>
 
-                                <p className="text-[11px] font-bold uppercase tracking-[0.02em] text-[#252525]">PLAN</p>
-                                <div className="mt-1 flex items-end gap-1.5">
-                                    <span className="text-[46px] font-extrabold leading-none text-[#045F5E]">₹2,499</span>
-                                    <span className="pb-1 text-[14px] font-semibold leading-none text-[#7A8291] line-through">₹3,000</span>
+                                <p className="text-[20px] font-bold uppercase tracking-[0.02em] text-[#252525]">PLAN</p>
+                                <div className="mt-1.5 flex items-end gap-2">
+                                    <span className="text-[48px] font-extrabold leading-none text-[#045F5E]">₹2,499</span>
+                                    <span className="pb-1 text-[24px] font-semibold leading-none text-[#7A8291] line-through">₹3,000</span>
                                 </div>
 
-                                <div className="mt-3 h-px w-full bg-black/25" />
+                                <div className="mt-3 h-px w-full bg-[#BFC4CA]" />
 
-                                <h3 className="mt-3 text-[15px] font-extrabold text-[#252525]">
+                                <h3 className="mt-3 text-[14px] font-extrabold text-[#252525]">
                                     What you&apos;ll get:
                                 </h3>
 
-                                <div className="mt-3 grid grid-cols-2 gap-1.5">
+                                <div className="mt-2.5 space-y-1.5">
                                     {desktopPricingFeatures.map((feature) => (
-                                        <div key={`program-pricing-mobile-${feature}`} className="rounded-[6px] bg-[#F4F4F4] px-2 py-1.5">
-                                            <div className="flex flex-col items-start gap-1 text-[8.5px] leading-[1.3] text-[#6B7280]">
-                                                <CheckIcon24 />
+                                        <div key={`program-pricing-mobile-${feature}`} className="flex items-start gap-1.5 text-[8.5px] leading-[1.35] text-[#6B7280]">
+                                            <span className="mt-[1px] inline-flex h-3 w-3 flex-none items-center justify-center rounded-full bg-[#FF8A14]">
+                                                <svg viewBox="0 0 12 12" className="h-[8px] w-[8px]" aria-hidden="true" focusable="false">
+                                                    <path d="M4.85 8.55L2.2 5.9l.85-.85 1.8 1.8 4.1-4.1.85.85-4.95 4.95z" fill="white" />
+                                                </svg>
+                                            </span>
+                                            <span>
                                                 <span>{feature}</span>
-                                            </div>
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
