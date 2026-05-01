@@ -9,13 +9,13 @@ const noCacheHeaders = [
 
 const csp = [
   "default-src 'self'",
-  "img-src 'self' data: blob: https://ik.imagekit.io https://www.facebook.com https://*.facebook.com https://*.fbcdn.net https://img.youtube.com https://placehold.co https://randomuser.me https://cdn.jsdelivr.net https://staging.dtpoonamsagar.com https://*.dtpoonamsagar.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.google.com https://www.google.co.in",
+  "img-src 'self' data: blob: https://ik.imagekit.io https://www.facebook.com https://*.facebook.com https://*.fbcdn.net https://img.youtube.com https://placehold.co https://randomuser.me https://cdn.jsdelivr.net https://staging.dtpoonamsagar.com https://*.dtpoonamsagar.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.google.com https://www.google.co.in https://www.clarity.ms https://*.clarity.ms",
   "media-src 'self' https://ik.imagekit.io",
   "font-src 'self' data: https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://*.facebook.net https://checkout.razorpay.com https://www.youtube.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://*.facebook.net https://checkout.razorpay.com https://www.youtube.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms",
   "frame-src 'self' https://www.youtube.com https://api.razorpay.com https://checkout.razorpay.com https://www.facebook.com https://td.doubleclick.net https://www.google.com https://maps.google.com https://www.google.co.in",
-  "connect-src 'self' https://ik.imagekit.io https://api.razorpay.com https://www.facebook.com https://*.facebook.com https://connect.facebook.net https://*.facebook.net https://cdn.jsdelivr.net https://*.a.run.app https://*.conversionsapigateway.com https://ip-api.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net" + (isDev ? " ws://localhost:* wss://localhost:* http://localhost:*" : ""),
+  "connect-src 'self' https://ik.imagekit.io https://api.razorpay.com https://www.facebook.com https://*.facebook.com https://connect.facebook.net https://*.facebook.net https://cdn.jsdelivr.net https://*.a.run.app https://*.conversionsapigateway.com https://ip-api.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.clarity.ms https://*.clarity.ms" + (isDev ? " ws://localhost:* wss://localhost:* http://localhost:*" : ""),
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "object-src 'none'",
@@ -37,6 +37,7 @@ const securityHeaders = [
 
 const nextConfig = {
   turbopack: { root: __dirname },
+  transpilePackages: ['@microsoft/clarity'],
   compress: true,
   poweredByHeader: false,
   compiler: {
