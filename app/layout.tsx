@@ -40,6 +40,7 @@ const META_PIXEL_PRIMARY_ID = '1249607162337272';
 const META_PIXEL_SECONDARY_ID = '451000204060350';
 const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+const CLARITY_ALLOWED_HOSTS = ['www.dtpoonamsagar.com', 'dtpoonamsagar.com'];
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -201,7 +202,7 @@ export default function RootLayout({
         </noscript>
         <AuthProvider>
           <ThemeProvider>
-            <ClarityTracker projectId={CLARITY_PROJECT_ID} />
+            <ClarityTracker projectId={CLARITY_PROJECT_ID} enabledHosts={CLARITY_ALLOWED_HOSTS} />
             <LayoutWrapper>
               {children}
             </LayoutWrapper>
