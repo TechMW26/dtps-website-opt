@@ -15,6 +15,7 @@ declare global {
   var mongoose: CachedConnection | undefined;
 }
 
+
 let cached: CachedConnection = global.mongoose || { conn: null, promise: null };
 
 if (!global.mongoose) {

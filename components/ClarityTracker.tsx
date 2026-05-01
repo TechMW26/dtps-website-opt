@@ -39,6 +39,13 @@ export default function ClarityTracker({
         }
 
         Clarity.init(projectId);
+        try {
+            Clarity.setTag('site_host', window.location.hostname);
+            Clarity.setTag('site_env', process.env.NODE_ENV === 'production' ? 'production' : 'development');
+            Clarity.event('dtps_clarity_initialized');
+        } catch {
+            // Never block rendering if analytics tagging fails.
+        }
         window.__dtpsClarityInitialized = true;
     }, [projectId, enabledHosts, allowInDevelopment]);
 
