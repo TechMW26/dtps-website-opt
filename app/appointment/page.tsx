@@ -4,6 +4,7 @@ import PageWrapper from '@/components/PageWrapper';
 import Navbar from '@/components/Navbar';
 import AppointmentForm from '@/components/appointment/AppointmentForm';
 
+
 export const metadata: Metadata = {
   title: 'Book an Appointment',
   description:
