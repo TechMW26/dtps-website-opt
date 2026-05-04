@@ -15,6 +15,7 @@ export default function AboutUsSection() {
       { threshold: 0.2 }
     );
 
+    
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
