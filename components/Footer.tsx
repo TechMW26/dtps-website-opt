@@ -27,6 +27,7 @@ const socialLinks = [
   { label: 'LinkedIn', icon: <FaLinkedin />, href: 'https://in.linkedin.com/company/dietitian-poonam-sagar' },
 ];
 
+
 export default function Footer() {
   const [isPlansOpen, setIsPlansOpen] = useState(false);
   return (
