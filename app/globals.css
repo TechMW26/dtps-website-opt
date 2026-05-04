@@ -104,9 +104,20 @@ video {
   --transition: all 0.3s ease;
   --section-padding-x: 120px;
   --section-padding-x-mobile: 16px;
+  --section-padding-x-lg: 130px;
+  --section-padding-x-xl: 120px;
+  --section-padding-x-2xl: 310px;
+  --section-padding-x-3xl: 350px;
+  --section-padding-x-4xl: 400px;
+  --section-padding-x-5xl: 450px;
 }
 
 .site-shell {
+  padding-left: var(--section-padding-x-mobile);
+  padding-right: var(--section-padding-x-mobile);
+}
+
+.footer-shell {
   padding-left: var(--section-padding-x-mobile);
   padding-right: var(--section-padding-x-mobile);
 }
@@ -147,7 +158,116 @@ video {
     padding-left: 70px;
     padding-right: 70px;
   }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
+  }
 }
+
+@media (min-width: 1024px) {
+  .site-shell {
+    padding-left: var(--section-padding-x-lg);
+    padding-right: var(--section-padding-x-lg);
+  }
+
+  .site-card-padding {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x-lg);
+    padding-right: var(--section-padding-x-lg);
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-shell {
+    padding-left: var(--section-padding-x-xl);
+    padding-right: var(--section-padding-x-xl);
+  }
+
+  .site-card-padding {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x-xl);
+    padding-right: var(--section-padding-x-xl);
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-shell {
+    padding-left: var(--section-padding-x-2xl);
+    padding-right: var(--section-padding-x-2xl);
+  }
+
+  .site-card-padding {
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x-2xl);
+    padding-right: var(--section-padding-x-2xl);
+  }
+}
+
+@media (min-width: 1920px) {
+  .site-shell {
+    padding-left: var(--section-padding-x-3xl);
+    padding-right: var(--section-padding-x-3xl);
+  }
+
+  .site-card-padding {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x-3xl);
+    padding-right: var(--section-padding-x-3xl);
+  }
+}
+
+@media (min-width: 2560px) {
+  .site-shell {
+    padding-left: var(--section-padding-x-4xl);
+    padding-right: var(--section-padding-x-4xl);
+  }
+
+  .site-card-padding {
+    padding-left: 95px;
+    padding-right: 95px;
+  }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x-4xl);
+    padding-right: var(--section-padding-x-4xl);
+  }
+}
+
+@media (min-width: 3440px) {
+  .site-shell {
+    padding-left: var(--section-padding-x-5xl);
+    padding-right: var(--section-padding-x-5xl);
+  }
+
+  .site-card-padding {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .footer-shell {
+    padding-left: var(--section-padding-x-5xl);
+    padding-right: var(--section-padding-x-5xl);
+  }
+}
+
+
 
 /* ===== Anti-Flicker for Swiper and Carousels ===== */
 .swiper-wrapper {
@@ -177,37 +297,58 @@ video {
 /* ===== Page Content Wrapper - Consistent padding for all pages ===== */
 .page-content {
   padding-top: 50px;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 768px) {
   .page-content {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-top: 50px;
+    padding-left: 120px;
+    padding-right: 120px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
   .page-content {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 130px;
+    padding-right: 130px;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1280px) {
   .page-content {
-    padding-top: 40px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 140px;
+    padding-right: 140px;
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 1536px) {
   .page-content {
-    padding-top: 30px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-top: 50px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .page-content {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .page-content {
+    padding-left: 170px;
+    padding-right: 170px;
+  }
+}
+
+@media (min-width: 3440px) {
+  .page-content {
+    padding-left: 180px;
+    padding-right: 180px;
   }
 }
 
@@ -8018,6 +8159,119 @@ video {
   .contact-form button[type="submit"] {
     padding: 12px 20px;
     font-size: 14px;
+  }
+}
+
+/* ============================================================
+   LARGE SCREEN LAYOUT FIXES (desktop/tablet landscape only)
+   ============================================================ */
+
+@media (min-width: 1024px) {
+  :root {
+    --section-padding-x: clamp(32px, 3.2vw, 64px);
+  }
+
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-lg) !important;
+    padding-right: var(--section-padding-x-lg) !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-xl) !important;
+    padding-right: var(--section-padding-x-xl) !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper {
+    padding-left: var(--section-padding-x-2xl) !important;
+    padding-right: var(--section-padding-x-2xl) !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-3xl) !important;
+    padding-right: var(--section-padding-x-3xl) !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-4xl) !important;
+    padding-right: var(--section-padding-x-4xl) !important;
+  }
+}
+
+@media (min-width: 3440px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-5xl) !important;
+    padding-right: var(--section-padding-x-5xl) !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-2xl) !important;
+    padding-right: var(--section-padding-x-2xl) !important;
+  }
+
+  .page-wrapper {
+    margin-left: var(--section-padding-x-2xl);
+    margin-right: var(--section-padding-x-2xl);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .transformations {
+    width: 100% !important;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .site-card-padding {
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+
+  .container,
+  .hero-container,
+  .about-grid,
+  .contact-grid,
+  .why-container,
+  .how-container,
+  .whatwedo-container,
+  .wl-hero-container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
