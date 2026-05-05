@@ -102,24 +102,24 @@ video {
   --radius-xl: 24px;
   --radius-full: 48px;
   --transition: all 0.3s ease;
-  --section-padding-x: 120px;
   --section-padding-x-mobile: 16px;
-  --section-padding-x-lg: 130px;
-  --section-padding-x-xl: 120px;
-  --section-padding-x-2xl: 310px;
-  --section-padding-x-3xl: 350px;
-  --section-padding-x-4xl: 400px;
-  --section-padding-x-5xl: 450px;
+  --section-padding-x-tablet: 40px;
+  --section-padding-x-desktop: 80px;
 }
+
+/* ===== Layout Shell — 3-tier only: mobile / tablet / desktop ===== */
+/* Fixes Chrome DPI crush caused by the old 310px+ padding at 1536px breakpoint */
 
 .site-shell {
   padding-left: var(--section-padding-x-mobile);
   padding-right: var(--section-padding-x-mobile);
+  box-sizing: border-box;
 }
 
 .footer-shell {
   padding-left: var(--section-padding-x-mobile);
   padding-right: var(--section-padding-x-mobile);
+  box-sizing: border-box;
 }
 
 .site-fill {
@@ -146,46 +146,53 @@ video {
 .site-card-padding {
   padding-left: 20px;
   padding-right: 20px;
+  box-sizing: border-box;
 }
 
+/* Tablet (768px+) */
 @media (min-width: 768px) {
   .site-shell {
-    padding-left: var(--section-padding-x);
-    padding-right: var(--section-padding-x);
+    padding-left: var(--section-padding-x-tablet);
+    padding-right: var(--section-padding-x-tablet);
   }
 
   .site-card-padding {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   .footer-shell {
-    padding-left: var(--section-padding-x);
-    padding-right: var(--section-padding-x);
+    padding-left: var(--section-padding-x-tablet);
+    padding-right: var(--section-padding-x-tablet);
   }
 }
 
+/* Desktop (1024px+) */
 @media (min-width: 1024px) {
   .site-shell {
-    padding-left: var(--section-padding-x-lg);
-    padding-right: var(--section-padding-x-lg);
+    padding-left: var(--section-padding-x-desktop);
+    padding-right: var(--section-padding-x-desktop);
   }
 
   .site-card-padding {
-    padding-left: 75px;
-    padding-right: 75px;
+    padding-left: 60px;
+    padding-right: 60px;
   }
 
   .footer-shell {
-    padding-left: var(--section-padding-x-lg);
-    padding-right: var(--section-padding-x-lg);
+    padding-left: var(--section-padding-x-desktop);
+    padding-right: var(--section-padding-x-desktop);
   }
 }
 
+/* Wide desktop (1280px+) — cap via max-width, not more padding */
 @media (min-width: 1280px) {
   .site-shell {
-    padding-left: var(--section-padding-x-xl);
-    padding-right: var(--section-padding-x-xl);
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-padding-x-desktop);
+    padding-right: var(--section-padding-x-desktop);
   }
 
   .site-card-padding {
@@ -194,76 +201,11 @@ video {
   }
 
   .footer-shell {
-    padding-left: var(--section-padding-x-xl);
-    padding-right: var(--section-padding-x-xl);
-  }
-}
-
-@media (min-width: 1536px) {
-  .site-shell {
-    padding-left: var(--section-padding-x-2xl);
-    padding-right: var(--section-padding-x-2xl);
-  }
-
-  .site-card-padding {
-    padding-left: 85px;
-    padding-right: 85px;
-  }
-
-  .footer-shell {
-    padding-left: var(--section-padding-x-2xl);
-    padding-right: var(--section-padding-x-2xl);
-  }
-}
-
-@media (min-width: 1920px) {
-  .site-shell {
-    padding-left: var(--section-padding-x-3xl);
-    padding-right: var(--section-padding-x-3xl);
-  }
-
-  .site-card-padding {
-    padding-left: 90px;
-    padding-right: 90px;
-  }
-
-  .footer-shell {
-    padding-left: var(--section-padding-x-3xl);
-    padding-right: var(--section-padding-x-3xl);
-  }
-}
-
-@media (min-width: 2560px) {
-  .site-shell {
-    padding-left: var(--section-padding-x-4xl);
-    padding-right: var(--section-padding-x-4xl);
-  }
-
-  .site-card-padding {
-    padding-left: 95px;
-    padding-right: 95px;
-  }
-
-  .footer-shell {
-    padding-left: var(--section-padding-x-4xl);
-    padding-right: var(--section-padding-x-4xl);
-  }
-}
-
-@media (min-width: 3440px) {
-  .site-shell {
-    padding-left: var(--section-padding-x-5xl);
-    padding-right: var(--section-padding-x-5xl);
-  }
-
-  .site-card-padding {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-
-  .footer-shell {
-    padding-left: var(--section-padding-x-5xl);
-    padding-right: var(--section-padding-x-5xl);
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-padding-x-desktop);
+    padding-right: var(--section-padding-x-desktop);
   }
 }
 
@@ -360,7 +302,7 @@ video {
 
 @media (min-width: 768px) {
   .section-wrapper {
-    padding: 8px var(--section-padding-x);
+    padding: 8px var(--section-padding-x-tablet);
   }
 }
 
@@ -380,7 +322,7 @@ video {
 
 @media (max-width: 1024px) {
   .section-wrapper {
-    padding: 6px var(--section-padding-x);
+    padding: 6px var(--section-padding-x-tablet);
   }
 }
 
@@ -1086,7 +1028,7 @@ video {
 
   @media (min-width: 768px) {
     .about-section {
-      padding: 80px var(--section-padding-x);
+      padding: 80px var(--section-padding-x-tablet);
     }
   }
 
@@ -1713,7 +1655,7 @@ video {
 
   @media (min-width: 768px) {
     .contact-section {
-      padding: 120px var(--section-padding-x);
+      padding: 120px var(--section-padding-x-tablet);
     }
   }
 
@@ -6015,8 +5957,8 @@ video {
 
 @media (min-width: 768px) {
   .pcod-symptoms-image {
-    padding-left: var(--section-padding-x);
-    padding-right: var(--section-padding-x);
+    padding-left: var(--section-padding-x-tablet);
+    padding-right: var(--section-padding-x-tablet);
   }
 }
 
@@ -8163,102 +8105,29 @@ video {
 }
 
 /* ============================================================
-   LARGE SCREEN LAYOUT FIXES (desktop/tablet landscape only)
+   LAYOUT FIXES — 3 tiers only: mobile / tablet / desktop
+   Removed all 1536px+ breakpoints that caused Chrome DPI crush
    ============================================================ */
 
 @media (min-width: 1024px) {
-  :root {
-    --section-padding-x: clamp(32px, 3.2vw, 64px);
-  }
-
   .site-shell,
   .page-content,
   .section-wrapper,
   .footer-shell {
-    padding-left: var(--section-padding-x-lg) !important;
-    padding-right: var(--section-padding-x-lg) !important;
+    padding-left: var(--section-padding-x-desktop) !important;
+    padding-right: var(--section-padding-x-desktop) !important;
   }
 }
 
+/* Cap at 1280px+ with max-width so content never gets squeezed */
 @media (min-width: 1280px) {
   .site-shell,
-  .page-content,
-  .section-wrapper,
   .footer-shell {
-    padding-left: var(--section-padding-x-xl) !important;
-    padding-right: var(--section-padding-x-xl) !important;
-  }
-}
-
-@media (min-width: 1536px) {
-  .site-shell,
-  .page-content,
-  .section-wrapper {
-    padding-left: var(--section-padding-x-2xl) !important;
-    padding-right: var(--section-padding-x-2xl) !important;
-  }
-}
-
-@media (min-width: 1920px) {
-  .site-shell,
-  .page-content,
-  .section-wrapper,
-  .footer-shell {
-    padding-left: var(--section-padding-x-3xl) !important;
-    padding-right: var(--section-padding-x-3xl) !important;
-  }
-}
-
-@media (min-width: 2560px) {
-  .site-shell,
-  .page-content,
-  .section-wrapper,
-  .footer-shell {
-    padding-left: var(--section-padding-x-4xl) !important;
-    padding-right: var(--section-padding-x-4xl) !important;
-  }
-}
-
-@media (min-width: 3440px) {
-  .site-shell,
-  .page-content,
-  .section-wrapper,
-  .footer-shell {
-    padding-left: var(--section-padding-x-5xl) !important;
-    padding-right: var(--section-padding-x-5xl) !important;
-  }
-}
-
-@media (min-width: 1536px) {
-  .site-shell,
-  .page-content,
-  .section-wrapper,
-  .footer-shell {
-    padding-left: var(--section-padding-x-2xl) !important;
-    padding-right: var(--section-padding-x-2xl) !important;
-  }
-
-  .page-wrapper {
-    margin-left: var(--section-padding-x-2xl);
-    margin-right: var(--section-padding-x-2xl);
-  }
-
-  .container {
-    max-width: 1200px;
+    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .transformations {
-    width: 100% !important;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .site-card-padding {
-    padding-left: 85px;
-    padding-right: 85px;
+    padding-left: var(--section-padding-x-desktop) !important;
+    padding-right: var(--section-padding-x-desktop) !important;
   }
 
   .container,
@@ -8270,6 +8139,13 @@ video {
   .whatwedo-container,
   .wl-hero-container {
     max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .transformations {
+    width: 100% !important;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }

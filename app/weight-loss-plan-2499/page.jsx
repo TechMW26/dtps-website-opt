@@ -209,13 +209,13 @@ function HeroBanner() {
                         </h1>
 
                         <h1
-                            className="hidden max-w-[720px] text-[32px] font-[700] leading-[38px] text-white md:block lg:text-[42px] lg:leading-[48px]"
+                            className="hidden max-w-[720px] text-[40px] font-[700] leading-[46px] text-white md:block lg:text-[48px] lg:leading-[54px]"
                             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
-                            <span className="block">
+                            <span className="block whitespace-nowrap">
                                 Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
                             </span>
-                            <span className="block">
+                            <span className="block whitespace-nowrap">
                                 with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
                             </span>
                         </h1>
@@ -324,19 +324,19 @@ export default function WeightLossPlan2499Page() {
                             </div>
                         </div>
 
-                        <div className="hidden w-full gap-6 lg:grid lg:grid-cols-[minmax(300px,30%)_minmax(0,1fr)]">
-                            <div className="relative min-h-[620px] w-full overflow-hidden rounded-[12px] bg-[#F7F7F7]">
+                        <div className="hidden w-full gap-6 lg:grid lg:grid-cols-[minmax(280px,28%)_minmax(0,1fr)] xl:gap-7 xl:grid-cols-[minmax(320px,30%)_minmax(0,1fr)] 2xl:grid-cols-[minmax(360px,30%)_minmax(0,1fr)]">
+                            <div className="relative min-h-[600px] w-full overflow-hidden rounded-[12px] bg-[#F7F7F7] xl:min-h-[660px] 2xl:min-h-[720px]">
                                 <Image
                                     src={RECTANGLE_IMAGE_URL}
                                     alt="Weight loss plan artwork"
                                     fill
-                                    sizes="(max-width: 1024px) 100vw, 30vw"
+                                    sizes="(max-width: 1279px) 28vw, (max-width: 1535px) 30vw, 30vw"
                                     quality={92}
                                     className="object-cover object-top"
                                 />
                             </div>
 
-                            <div className="relative flex min-h-[620px] w-full flex-col gap-8 overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)]">
+                            <div className="relative flex min-h-[600px] w-full flex-col gap-8 overflow-hidden rounded-[12px] border border-[#E4E4E4] bg-white px-6 py-8 shadow-[0_0_4px_rgba(0,0,0,0.25)] xl:min-h-[660px] xl:px-8 xl:py-10 2xl:min-h-[720px]">
                                 <div className="pointer-events-none absolute right-0 top-0 h-[140px] w-[140px] rounded-bl-[120px] bg-[#FF850B]" />
                                 <span className="absolute right-4 top-8 z-10 text-[14px] font-semibold uppercase tracking-[0.02em] text-white">
                                     BESTSELLER
@@ -346,8 +346,8 @@ export default function WeightLossPlan2499Page() {
                                     <div>
                                         <p className="text-[18px] font-semibold uppercase text-[#1E1E1E]">PLAN</p>
                                         <div className="mt-3 flex items-end gap-2">
-                                            <span className="text-[48px] font-semibold leading-none text-[#014E4E]">₹2,499</span>
-                                            <span className="pb-1 text-[24px] font-semibold leading-none text-[#6B7280] line-through">₹3,000</span>
+                                            <span className="text-[48px] font-semibold leading-none text-[#014E4E] 2xl:text-[56px]">₹2,499</span>
+                                            <span className="pb-1 text-[24px] font-semibold leading-none text-[#6B7280] line-through 2xl:text-[28px]">₹3,000</span>
                                         </div>
                                     </div>
                                 </div>
@@ -356,7 +356,7 @@ export default function WeightLossPlan2499Page() {
 
                                 <div className="flex flex-1 flex-col">
                                     <h3 className="text-[20px] font-semibold leading-6 text-[#1E1E1E]">What you&apos;ll get:</h3>
-                                    <div className="mt-4 grid grid-cols-4 gap-2">
+                                    <div className="mt-4 grid grid-cols-4 gap-2 xl:gap-2.5">
                                         {desktopPricingFeatures.map((feature) => (
                                             <div key={`hero-desktop-${feature}`} className="rounded-[8px] bg-[#F4F4F4] px-2.5 py-2.5">
                                                 <div className="flex flex-col items-start gap-1.5 text-[12px] leading-[1.45] text-[#6B7280]">
