@@ -104,8 +104,7 @@ video {
   --transition: all 0.3s ease;
   --section-padding-x-mobile: 16px;
   --section-padding-x-tablet: 40px;
-  --section-padding-x-desktop: 100px;
-  --section-padding-x-desktop-large: 120px;
+  --section-padding-x-desktop: 120px;
 }
 
 /* ===== Layout Shell — 3-tier only: mobile / tablet / desktop ===== */
@@ -205,8 +204,11 @@ video {
 /* Wide desktop (1280px+) — cap via max-width, not more padding */
 @media (min-width: 1280px) {
   .site-shell {
-    padding-left: var(--section-padding-x-desktop-large);
-    padding-right: var(--section-padding-x-desktop-large);
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-padding-x-desktop);
+    padding-right: var(--section-padding-x-desktop);
   }
 
   .site-card-padding {
@@ -215,8 +217,11 @@ video {
   }
 
   .footer-shell {
-    padding-left: var(--section-padding-x-desktop-large);
-    padding-right: var(--section-padding-x-desktop-large);
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-padding-x-desktop);
+    padding-right: var(--section-padding-x-desktop);
   }
 }
 
@@ -250,22 +255,58 @@ video {
 /* ===== Page Content Wrapper - Consistent padding for all pages ===== */
 .page-content {
   padding-top: 50px;
-  padding-left: var(--section-padding-x-mobile);
-  padding-right: var(--section-padding-x-mobile);
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 @media (min-width: 768px) {
   .page-content {
     padding-top: 50px;
-    padding-left: var(--section-padding-x-tablet);
-    padding-right: var(--section-padding-x-tablet);
+    padding-left: 120px;
+    padding-right: 120px;
   }
 }
 
 @media (min-width: 1024px) {
   .page-content {
-    padding-left: var(--section-padding-x-desktop);
-    padding-right: var(--section-padding-x-desktop);
+    padding-left: 130px;
+    padding-right: 130px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-content {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .page-content {
+    padding-top: 50px;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .page-content {
+    padding-left: 160px;
+    padding-right: 160px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .page-content {
+    padding-left: 170px;
+    padding-right: 170px;
+  }
+}
+
+@media (min-width: 3440px) {
+  .page-content {
+    padding-left: 180px;
+    padding-right: 180px;
   }
 }
 
@@ -8097,22 +8138,23 @@ video {
 /* Cap at 1280px+ with max-width so content never gets squeezed */
 @media (min-width: 1280px) {
   .site-shell,
-  .page-content,
-  .section-wrapper,
   .footer-shell {
-    width: 100%;
-    padding-left: var(--section-padding-x-desktop-large) !important;
-    padding-right: var(--section-padding-x-desktop-large) !important;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--section-padding-x-desktop) !important;
+    padding-right: var(--section-padding-x-desktop) !important;
   }
 
-  /* Keep footer card gutter aligned with global desktop gutter */
+  /* Footer should match section-wrapper/page-content width at large screens */
   .footer-shell {
-    max-width: none;
+    width: 100%;
+    max-width: none !important;
   }
 
   .footer-shell > div {
-    padding-left: var(--section-padding-x-desktop-large) !important;
-    padding-right: var(--section-padding-x-desktop-large) !important;
+    padding-left: 80px !important;
+    padding-right: 80px !important;
   }
 
   .container,
