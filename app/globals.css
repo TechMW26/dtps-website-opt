@@ -149,6 +149,12 @@ video {
   box-sizing: border-box;
 }
 
+/* Keep footer card gutter aligned with other section cards */
+.footer-shell > div {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
 /* Tablet (768px+) */
 @media (min-width: 768px) {
   .site-shell {
@@ -164,6 +170,11 @@ video {
   .footer-shell {
     padding-left: var(--section-padding-x-tablet);
     padding-right: var(--section-padding-x-tablet);
+  }
+
+  .footer-shell > div {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
   }
 }
 
@@ -182,6 +193,11 @@ video {
   .footer-shell {
     padding-left: var(--section-padding-x-desktop);
     padding-right: var(--section-padding-x-desktop);
+  }
+
+  .footer-shell > div {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
   }
 }
 
@@ -8128,6 +8144,17 @@ video {
     margin-right: auto;
     padding-left: var(--section-padding-x-desktop) !important;
     padding-right: var(--section-padding-x-desktop) !important;
+  }
+
+  /* Footer should match section-wrapper/page-content width at large screens */
+  .footer-shell {
+    width: 100%;
+    max-width: none !important;
+  }
+
+  .footer-shell > div {
+    padding-left: 80px !important;
+    padding-right: 80px !important;
   }
 
   .container,
