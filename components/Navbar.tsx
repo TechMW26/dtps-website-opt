@@ -76,28 +76,27 @@ export default function Navbar({ bgColor }: NavbarProps) {
     <>
       <header className={`relative z-50 w-full ${bgColor ? bgColor : ''}`}>
         <div className="site-card-padding w-full">
-          <div className="flex items-center justify-between gap-3 py-2 md:py-4 xl:gap-5">
+          <div className="flex items-center justify-between gap-2 py-2 md:py-4 xl:gap-3 2xl:gap-5">
             <Link href="/" className="flex items-center shrink-0">
               <Image
                 src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
                 alt="Dietitian Poonam Sagar"
                 width={180}
                 height={60}
-                className="h-[42px] w-auto xl:h-[48px]"
+                className="h-[40px] w-auto xl:h-[44px] 2xl:h-[48px]"
                 priority
               />
             </Link>
 
-            <nav className="hidden flex-1 items-center justify-center gap-0.5 xl:flex xl:gap-2">
+            <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex xl:gap-1 2xl:gap-2">
               {navItems.map((item) => (
                 <div key={item.label} className="relative" ref={item.children ? dropdownRef : undefined}>
                   {item.children ? (
                     <>
                       <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${
-                          isActive('/plans') ? 'text-[#F9D67B]' : ''
-                        }`}
+                        className={`rounded-full px-2 py-2 text-[12px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-2.5 xl:text-[13px] 2xl:px-4 2xl:text-[15px] ${isActive('/plans') ? 'text-[#F9D67B]' : ''
+                          }`}
                         aria-expanded={isDropdownOpen}
                         aria-haspopup="true"
                       >
@@ -133,9 +132,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${
-                        isActive(item.href) ? 'text-[#F9D67B]' : ''
-                      }`}
+                      className={`rounded-full px-2 py-2 text-[12px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-2.5 xl:text-[13px] 2xl:px-4 2xl:text-[15px] ${isActive(item.href) ? 'text-[#F9D67B]' : ''
+                        }`}
                     >
                       {item.label}
                     </Link>
@@ -146,7 +144,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
 
             <Link
               href="/appointment"
-              className="hidden shrink-0 rounded-full bg-[#FF8A1F] px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-[#e07a1a] xl:inline-flex xl:px-6 xl:text-sm"
+              className="hidden shrink-0 rounded-full bg-[#FF8A1F] px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-[#e07a1a] 2xl:inline-flex 2xl:px-6 2xl:text-sm"
             >
               Book Appointment
             </Link>
@@ -174,9 +172,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
                 <>
                   <button
                     onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-                    className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-[15px] font-semibold text-[#014E4E] ${
-                      isActive('/plans') ? 'bg-white/60' : ''
-                    }`}
+                    className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-[15px] font-semibold text-[#014E4E] ${isActive('/plans') ? 'bg-white/60' : ''
+                      }`}
                   >
                     {item.label}
                     <svg
@@ -205,9 +202,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
               ) : (
                 <Link
                   href={item.href}
-                  className={`block rounded-xl px-4 py-3 text-[15px] font-semibold text-[#014E4E] ${
-                    isActive(item.href) ? 'bg-white/60' : ''
-                  }`}
+                  className={`block rounded-xl px-4 py-3 text-[15px] font-semibold text-[#014E4E] ${isActive(item.href) ? 'bg-white/60' : ''
+                    }`}
                 >
                   {item.label}
                 </Link>

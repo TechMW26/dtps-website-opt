@@ -209,13 +209,13 @@ function HeroBanner() {
                         </h1>
 
                         <h1
-                            className="hidden max-w-[720px] text-[40px] font-[700] leading-[46px] text-white md:block lg:text-[48px] lg:leading-[54px]"
+                            className="hidden max-w-[720px] text-[34px] font-[700] leading-[40px] text-white md:block lg:text-[42px] lg:leading-[48px] xl:text-[48px] xl:leading-[54px]"
                             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
-                            <span className="block whitespace-nowrap">
+                            <span className="block">
                                 Guaranteed <span className="text-[#FF8A14]">Weight Loss</span>
                             </span>
-                            <span className="block whitespace-nowrap">
+                            <span className="block">
                                 with <span className="text-[#FF8A14]">Ghar Ka Khana</span> Diet Plan
                             </span>
                         </h1>
