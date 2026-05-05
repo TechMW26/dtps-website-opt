@@ -209,6 +209,7 @@ function HeroBanner() {
                         </h1>
 
                         <h1
+                        
                             className="hidden max-w-[720px] text-[34px] font-[700] leading-[40px] text-white md:block lg:text-[42px] lg:leading-[48px] xl:text-[48px] xl:leading-[54px]"
                             style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
