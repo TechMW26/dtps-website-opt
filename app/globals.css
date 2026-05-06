@@ -106,7 +106,7 @@ video {
   --section-padding-x-tablet: 40px;
   --section-padding-x-desktop:100px;
   --section-padding-x-desktop-large: 120px;
-   --section-padding-x-desktop-xlarge:570px;
+    --section-padding-x-desktop-xlarge:140px;
 }
 
 /* ===== Layout Shell — 3-tier only: mobile / tablet / desktop ===== */
