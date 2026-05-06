@@ -634,7 +634,7 @@ export default function CheckoutContent() {
               <div className="border-2 border-orange-500 rounded-lg p-4 flex items-center gap-2 bg-orange-50">
                 <input type="radio" id="razorpay" name="payment" checked readOnly />
                 <label htmlFor="razorpay" className="font-semibold text-orange-600">
-                  Credit Card/Debit Card/NetBanking/UPI
+                  UPI Credit Card/Debit Card/NetBanking
                 </label>
               </div>
               <p className="text-sm text-gray-600">

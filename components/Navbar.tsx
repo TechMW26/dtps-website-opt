@@ -95,9 +95,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
                     <>
                       <button
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${
-                          isActive('/plans') ? 'text-[#F9D67B]' : ''
-                        }`}
+                        className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${isActive('/plans') ? 'text-[#F9D67B]' : ''
+                          }`}
                         aria-expanded={isDropdownOpen}
                         aria-haspopup="true"
                       >
@@ -133,9 +132,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${
-                        isActive(item.href) ? 'text-[#F9D67B]' : ''
-                      }`}
+                      className={`rounded-full px-2.5 py-2 text-[13px] font-semibold whitespace-nowrap text-white/90 transition-colors hover:text-[#F9D67B] xl:px-4 xl:text-[15px] ${isActive(item.href) ? 'text-[#F9D67B]' : ''
+                        }`}
                     >
                       {item.label}
                     </Link>
@@ -174,9 +172,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
                 <>
                   <button
                     onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-                    className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-[15px] font-semibold text-[#014E4E] ${
-                      isActive('/plans') ? 'bg-white/60' : ''
-                    }`}
+                    className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-[15px] font-semibold text-[#014E4E] ${isActive('/plans') ? 'bg-white/60' : ''
+                      }`}
                   >
                     {item.label}
                     <svg
@@ -205,9 +202,8 @@ export default function Navbar({ bgColor }: NavbarProps) {
               ) : (
                 <Link
                   href={item.href}
-                  className={`block rounded-xl px-4 py-3 text-[15px] font-semibold text-[#014E4E] ${
-                    isActive(item.href) ? 'bg-white/60' : ''
-                  }`}
+                  className={`block rounded-xl px-4 py-3 text-[15px] font-semibold text-[#014E4E] ${isActive(item.href) ? 'bg-white/60' : ''
+                    }`}
                 >
                   {item.label}
                 </Link>

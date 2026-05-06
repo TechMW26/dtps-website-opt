@@ -104,8 +104,9 @@ video {
   --transition: all 0.3s ease;
   --section-padding-x-mobile: 16px;
   --section-padding-x-tablet: 40px;
-  --section-padding-x-desktop: 100px;
+  --section-padding-x-desktop:100px;
   --section-padding-x-desktop-large: 120px;
+   --section-padding-x-desktop-xlarge:570px;
 }
 
 /* ===== Layout Shell — 3-tier only: mobile / tablet / desktop ===== */
@@ -150,12 +151,6 @@ video {
   box-sizing: border-box;
 }
 
-/* Keep footer card gutter aligned with other section cards */
-.footer-shell > div {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-
 /* Tablet (768px+) */
 @media (min-width: 768px) {
   .site-shell {
@@ -171,11 +166,6 @@ video {
   .footer-shell {
     padding-left: var(--section-padding-x-tablet);
     padding-right: var(--section-padding-x-tablet);
-  }
-
-  .footer-shell > div {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
   }
 }
 
@@ -194,11 +184,6 @@ video {
   .footer-shell {
     padding-left: var(--section-padding-x-desktop);
     padding-right: var(--section-padding-x-desktop);
-  }
-
-  .footer-shell > div {
-    padding-left: 60px !important;
-    padding-right: 60px !important;
   }
 }
 
@@ -219,6 +204,7 @@ video {
     padding-right: var(--section-padding-x-desktop-large);
   }
 }
+
 
 
 
@@ -8110,11 +8096,6 @@ video {
     max-width: none;
   }
 
-  .footer-shell > div {
-    padding-left: var(--section-padding-x-desktop-large) !important;
-    padding-right: var(--section-padding-x-desktop-large) !important;
-  }
-
   .container,
   .hero-container,
   .about-grid,
@@ -8133,6 +8114,17 @@ video {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* Ultra-wide desktop (1536px+) — 310px gutter override */
+@media (min-width: 1536px) {
+  .site-shell,
+  .page-content,
+  .section-wrapper,
+  .footer-shell {
+    padding-left: var(--section-padding-x-desktop-xlarge) !important;
+    padding-right: var(--section-padding-x-desktop-xlarge) !important;
   }
 }
 

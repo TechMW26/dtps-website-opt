@@ -652,7 +652,7 @@ export default function WeightLossPlan2499Page() {
                                         </span>
                                     </div>
 
-                                    <div className="mt-[40px] flex-col items-end  gap-2 ">
+                                    <div className="mt-[140px] flex-col items-end  gap-12 ">
                                         <p className="text-[14px] text-left font-bold uppercase tracking-[0.02em] text-[#252525]">
                                             PLAN
                                         </p>

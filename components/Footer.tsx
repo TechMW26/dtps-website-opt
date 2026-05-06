@@ -33,12 +33,14 @@ export default function Footer() {
   return (
     <footer className="bg-white py-10 footer-shell">
       <div
-        className="bg-[#014E4E] rounded-[20px] md:rounded-[40px] pt-[30px] md:pt-[50px] pb-0 px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 text-white bg-cover bg-center bg-[url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png')]"
+        className="bg-[#014E4E] rounded-[20px] md:rounded-[40px] pt-[30px] md:pt-[50px] pb-0 px-5 sm:px-6 md:px-8 lg:px-10 
+        xl:px-12 xl: text-white bg-cover bg-center 
+         bg-[url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png')]"
       >
         {/* Main Content */}
-        <div className="flex justify-between gap-8 md:gap-[60px] flex-wrap pb-10">
+        <div className="flex justify-between gap-8 md:gap-[60px] flex-wrap pb-10 ">
           {/* Left Column - Logo & Info */}
-          <div className="flex-1 min-w-full md:min-w-0 md:max-w-[550px]">
+          <div className="mflex-1 min-w-full md:min-w-0 md:max-w-[550px]">
             <Image
               src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
               alt="Dietitian Poonam Sagar"
