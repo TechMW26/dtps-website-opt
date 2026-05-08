@@ -5,6 +5,7 @@ import Order from '@/models/Order';
 import Payment from '@/models/Payment';
 import Coupon from '@/models/Coupon';
 import Razorpay from 'razorpay';
+import { buildIndiaCreatedAtRange } from '@/lib/admin-date-range';
 import { calculateSubtotal, validateCouponForProducts } from '@/lib/coupons';
 import { sendPostPaymentNotifications } from '@/lib/notifications';
 import { sendCapiEvent, deriveFbcFromUrl, getClientIp } from '@/lib/meta-capi';
@@ -121,15 +122,15 @@ export async function POST(req: NextRequest) {
         total = couponResult.total;
         appliedCoupon = couponResult.coupon
           ? {
-              ...couponResult.coupon,
-              discountAmount: couponResult.discount,
-            }
+            ...couponResult.coupon,
+            discountAmount: couponResult.discount,
+          }
           : null;
       }
 
       // Create order
       const orderId = uuidv4();
-      
+
       const razorpayOrder = await getRazorpayInstance().orders.create({
         amount: Math.round(total * 100), // Amount in paise
         currency: 'INR',
@@ -433,10 +434,9 @@ export async function GET(req: NextRequest) {
     const from = searchParams.get('from');
     const to = searchParams.get('to');
     const filter: Record<string, unknown> = {};
-    if (from || to) {
-      filter.createdAt = {};
-      if (from) (filter.createdAt as Record<string, unknown>).$gte = new Date(from + 'T00:00:00.000Z');
-      if (to)   (filter.createdAt as Record<string, unknown>).$lte = new Date(to + 'T23:59:59.999Z');
+    const createdAtRange = buildIndiaCreatedAtRange(from, to);
+    if (createdAtRange) {
+      filter.createdAt = createdAtRange;
     }
 
     // lean() skips Mongoose hydration → much faster

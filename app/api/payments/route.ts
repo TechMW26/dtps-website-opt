@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Payment from '@/models/Payment';
+import { buildIndiaCreatedAtRange } from '@/lib/admin-date-range';
 
 // Mark this route as dynamic since it uses request.url
 export const dynamic = 'force-dynamic';
@@ -24,10 +25,9 @@ export async function GET(req: NextRequest) {
     }
 
     const filter: Record<string, unknown> = {};
-    if (from || to) {
-      filter.createdAt = {};
-      if (from) (filter.createdAt as Record<string, unknown>).$gte = new Date(`${from}T00:00:00.000Z`);
-      if (to) (filter.createdAt as Record<string, unknown>).$lte = new Date(`${to}T23:59:59.999Z`);
+    const createdAtRange = buildIndiaCreatedAtRange(from, to);
+    if (createdAtRange) {
+      filter.createdAt = createdAtRange;
     }
 
     // Get all payments (admin)
