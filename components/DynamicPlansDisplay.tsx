@@ -171,17 +171,17 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
         )}
       </div>
       <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
-      <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+      <p className="font-semibold text-[#1E1E1E] text-[16px] mb-3 text-left" style={{ fontFamily: 'DM Sans, sans-serif' }}>
         What you&apos;ll get:
       </p>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2.5 w-full">
         {visibleFeatures.map((feature, idx) => (
-          <div key={idx} className="flex items-start gap-1.5">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="shrink-0">
+          <div key={idx} className="flex items-start gap-2.5 w-full">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="shrink-0 mt-0.5 flex-shrink-0">
               <circle cx="12" cy="12" r="12" fill="#FF850B" />
               <path d="M7 12l3 3 7-7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-[#6B7280] text-[13px] md:text-[14px] leading-snug" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+            <span className="text-[#6B7280] text-[13px] md:text-[14px] leading-relaxed text-left flex-1" style={{ fontFamily: 'DM Sans, sans-serif' }}>
               {feature.text}
             </span>
           </div>
