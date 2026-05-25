@@ -247,8 +247,9 @@ export default function WeightLossPlan2499Page() {
 
     const handleCheckout = () => {
         const product = {
-            id: '2499-plan-healthy-monthly',
-            name: '2499 Plan - Healthy Monthly Program',
+            id: '2499-plan-1-monthly',
+            name: '2499 Plan - 1 Month Weight-Loss Program',
+            duration: '1 Month',
             price: 2499,
             quantity: 1,
         };
