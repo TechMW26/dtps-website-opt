@@ -199,32 +199,6 @@ export default function HelpPage() {
                             </a>
                         </div>
 
-                        <div className="rounded-md border border-[#E4E7E9] bg-white px-5 py-8 text-center md:col-span-2 md:rounded-xl md:px-8 md:py-8">
-                            <div className="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#FF850B] text-white">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 13.5C13.3807 13.5 14.5 12.3807 14.5 11C14.5 9.61929 13.3807 8.5 12 8.5C10.6193 8.5 9.5 9.61929 9.5 11C9.5 12.3807 10.6193 13.5 12 13.5Z"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                    />
-                                    <path
-                                        d="M4.5 10.5C4.5 6.35786 7.85786 3 12 3C16.1421 3 19.5 6.35786 19.5 10.5C19.5 15.4196 14.3333 19.875 12.8 21.1038C12.3333 21.4774 11.6667 21.4774 11.2 21.1038C9.66667 19.875 4.5 15.4196 4.5 10.5Z"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                    />
-                                </svg>
-                            </div>
-                            <h4 className="mt-4 text-[1.2rem] font-bold leading-[1.28] text-[#093F46] sm:text-[1.25rem] md:text-[24px]">Visit Clinic</h4>
-                            <p className="mt-1 text-[13px] leading-[1.5] text-[#27343A] md:text-[16px]">226, Gufa Mandir Rd, Bhopal</p>
-                            <a
-                                href="https://maps.google.com/?q=226,+Gufa+Mandir+Rd,+Bhopal"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="mt-3 block text-[13px] font-semibold text-[#0A5B5B] md:text-[16px]"
-                            >
-                                Get Directions
-                            </a>
-                        </div>
                     </div>
                 </div>
             </section>
