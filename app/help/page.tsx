@@ -127,7 +127,7 @@ export default function HelpPage() {
                                                 viewBox="0 0 24 24"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                className={isOpen ? 'rotate-180 transition-transform' : 'transition-transform'}
+                                                className={isOpen ? 'rotate-180 transition-transform duration-300' : 'transition-transform duration-300'}
                                             >
                                                 <path
                                                     d="M6 9L12 15L18 9"
@@ -140,11 +140,16 @@ export default function HelpPage() {
                                         </span>
                                     </button>
 
-                                    {isOpen ? (
-                                        <div className="border-t border-[#E8ECEE] px-4 pb-4 pt-3 md:px-6 md:pb-5 md:pt-4">
-                                            <p className="text-[12px] leading-[1.65] text-[#27343A] md:text-[16px]">{item.answer}</p>
+                                    <div
+                                        className={`grid overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                                            }`}
+                                    >
+                                        <div className={`min-h-0 ${isOpen ? 'border-t border-[#E8ECEE]' : 'border-t border-transparent'}`}>
+                                            <div className="px-4 pb-4 pt-3 md:px-6 md:pb-5 md:pt-4">
+                                                <p className="text-[12px] leading-[1.65] text-[#27343A] md:text-[16px]">{item.answer}</p>
+                                            </div>
                                         </div>
-                                    ) : null}
+                                    </div>
                                 </article>
                             );
                         })}
