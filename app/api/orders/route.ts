@@ -235,6 +235,7 @@ export async function POST(req: NextRequest) {
             createdAt: refreshedOrder.createdAt,
             products: (refreshedOrder.products || []).map((product: any) => ({
               name: product.name,
+              duration: product.duration,
               quantity: Number(product.quantity || 1),
               price: Number(product.price || 0),
             })),

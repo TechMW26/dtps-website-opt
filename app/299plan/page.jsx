@@ -120,8 +120,9 @@ function HeroPricingCard({ onCheckout }) {
 export default function Plan299Page() {
     const handleCheckout = () => {
         const product = {
-            id: '299-plan-healthy-monthly',
-            name: '299 Plan - Healthy Monthly Program',
+            id: '299-plan-healthy-10days-plan',
+            name: '299 Plan - Healthy Weight Loss Program',
+            duration: '10 Days Trial',
             price: 299,
             quantity: 1,
         };

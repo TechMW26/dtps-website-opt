@@ -26,6 +26,7 @@ declare global {
 interface Product {
   id: string;
   name: string;
+  duration?: string;
   price: number;
   quantity: number;
 }
@@ -324,7 +325,7 @@ export default function CheckoutContent() {
 
         // Get phone number from webhook/API response (not from form)
         const phoneFromAPI = data.order.customerPhone;
-        
+
         // Open Razorpay directly with user details
         const options = {
           key: data.razorpayKey,
@@ -377,7 +378,7 @@ export default function CheckoutContent() {
               setOrderStatus('failed');
               setLoading(false);
             }
-            
+
           },
           prefill: {
             name: `${formData.firstName} ${formData.lastName}`,
@@ -470,7 +471,7 @@ export default function CheckoutContent() {
           {/* Billing Details */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold text-gray-900">Billing and Shipping Details</h2>
-            
+
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">First Name *</label>

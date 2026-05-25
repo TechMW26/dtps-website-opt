@@ -6,6 +6,7 @@ import { sendAisensyOnboardingMessage, sendPaymentSuccessEmail } from '@/lib/not
 
 type TestProduct = {
   name: string;
+  duration?: string;
   quantity: number;
   price: number;
 };
@@ -25,6 +26,7 @@ function normalizeProducts(products: unknown): TestProduct[] {
     const product = item as Record<string, unknown>;
     return {
       name: sanitizeText(String(product.name || 'DTPS Plan'), 80),
+      duration: sanitizeText(String(product.duration || ''), 40) || undefined,
       quantity: Number(product.quantity || 1),
       price: Number(product.price || 0),
     };

@@ -12,6 +12,7 @@ export interface IOrder extends Document {
   products: Array<{
     id: string;
     name: string;
+    duration?: string;
     price: number;
     quantity: number;
   }>;
@@ -67,6 +68,7 @@ const OrderSchema = new Schema<IOrder>(
       {
         id: String,
         name: String,
+        duration: String,
         price: Number,
         quantity: Number,
       },

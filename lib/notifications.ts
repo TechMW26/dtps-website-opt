@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 
 type PurchasedProduct = {
   name: string;
+  duration?: string;
   quantity: number;
   price: number;
 };
@@ -48,10 +49,26 @@ function normalizePhoneNumber(phone: string) {
 function buildProductsHtml(products: PurchasedProduct[]) {
   return products
     .map(
-      (product) =>
-        `<li style="margin-bottom:6px;">${product.name} x${product.quantity} - INR ${(product.price * product.quantity).toLocaleString('en-IN')}</li>`
+      (product) => {
+        const durationLabel = product.duration ? `${product.duration} - ` : '';
+        return `<li style="margin-bottom:6px;">${durationLabel}${product.name} x${product.quantity} - INR ${(product.price * product.quantity).toLocaleString('en-IN')}</li>`;
+      }
     )
     .join('');
+}
+
+function buildPlanLabel(products: PurchasedProduct[]) {
+  if (!products.length) {
+    return 'DTPS Plan';
+  }
+
+  return products
+    .map((product) => {
+      const duration = product.duration?.trim();
+      const name = product.name?.trim() || 'DTPS Plan';
+      return duration ? `${duration} - ${name}` : name;
+    })
+    .join(', ');
 }
 
 export async function sendPaymentSuccessEmail(payload: PaymentSuccessPayload) {
@@ -132,10 +149,8 @@ export async function sendAisensyOnboardingMessage(payload: PaymentSuccessPayloa
   const source = process.env.AISENSY_SOURCE || 'dtps-website-checkout';
   const firstName = (payload.customerName || '').trim().split(/\s+/)[0] || 'user';
   const amountFormatted = `INR ${payload.total.toLocaleString('en-IN')}`;
-  const planName =
-    payload.products && payload.products.length > 0
-      ? payload.products.map((p) => (p.quantity > 1 ? `${p.name} x${p.quantity}` : p.name)).join(', ')
-      : 'DTPS Plan';
+  const planName = buildPlanLabel(payload.products);
+  const planDuration = payload.products[0]?.duration?.trim() || '';
 
   const body = {
     apiKey: process.env.AISENSY_API_KEY,
@@ -152,12 +167,14 @@ export async function sendAisensyOnboardingMessage(payload: PaymentSuccessPayloa
       orderId: payload.orderId,
       amount: amountFormatted,
       planName,
+      planDuration,
     },
     paramsFallbackValue: {
       FirstName: firstName,
       OrderId: payload.orderId,
       Amount: amountFormatted,
       PlanName: planName,
+      PlanDuration: planDuration,
     },
   };
 

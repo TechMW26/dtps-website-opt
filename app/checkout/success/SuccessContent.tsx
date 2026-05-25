@@ -17,6 +17,7 @@ interface Order {
   createdAt: string;
   products: Array<{
     name: string;
+    duration?: string;
     price: number;
     quantity: number;
   }>;
@@ -164,6 +165,7 @@ export function ThankYouHero({ order }: { order: Order | null }) {
                     <span className="max-w-[260px] truncate">
                       Plan:{' '}
                       <span className="font-semibold text-white">
+                        {order.products[0].duration ? `${order.products[0].duration} - ` : ''}
                         {order.products[0].name}
                         {order.products.length > 1 ? ` +${order.products.length - 1} more` : ''}
                       </span>
