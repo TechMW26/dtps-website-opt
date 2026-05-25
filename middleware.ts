@@ -20,11 +20,11 @@ type Bucket = { count: number; resetAt: number };
 const buckets = new Map<string, Bucket>();
 
 const RATE_LIMITS: Record<string, { limit: number; windowMs: number }> = {
-  '/api/auth':        { limit: 30, windowMs: 60 * 1000 },
-  '/api/admin-setup': { limit: 3,  windowMs: 10 * 60 * 1000 },
-  '/api/orders':      { limit: 30, windowMs: 60 * 1000 },
-  '/api/payments':    { limit: 30, windowMs: 60 * 1000 },
-  '/api/upload':      { limit: 20, windowMs: 60 * 1000 },
+  '/api/auth': { limit: 30, windowMs: 60 * 1000 },
+  '/api/admin-setup': { limit: 3, windowMs: 10 * 60 * 1000 },
+  '/api/orders': { limit: 30, windowMs: 60 * 1000 },
+  '/api/payments': { limit: 30, windowMs: 60 * 1000 },
+  '/api/upload': { limit: 20, windowMs: 60 * 1000 },
 };
 
 function pickRateLimitRule(pathname: string) {
