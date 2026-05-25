@@ -20,7 +20,7 @@ type Bucket = { count: number; resetAt: number };
 const buckets = new Map<string, Bucket>();
 
 const RATE_LIMITS: Record<string, { limit: number; windowMs: number }> = {
-  '/api/auth':        { limit: 10, windowMs: 60 * 1000 },
+  '/api/auth':        { limit: 30, windowMs: 60 * 1000 },
   '/api/admin-setup': { limit: 3,  windowMs: 10 * 60 * 1000 },
   '/api/orders':      { limit: 30, windowMs: 60 * 1000 },
   '/api/payments':    { limit: 30, windowMs: 60 * 1000 },
@@ -28,6 +28,16 @@ const RATE_LIMITS: Record<string, { limit: number; windowMs: number }> = {
 };
 
 function pickRateLimitRule(pathname: string) {
+  // NextAuth client calls these frequently for normal app behavior.
+  // Do not throttle them to avoid CLIENT_FETCH_ERROR noise.
+  if (
+    pathname.startsWith('/api/auth/session') ||
+    pathname.startsWith('/api/auth/csrf') ||
+    pathname.startsWith('/api/auth/providers')
+  ) {
+    return null;
+  }
+
   for (const prefix of Object.keys(RATE_LIMITS)) {
     if (pathname.startsWith(prefix)) return RATE_LIMITS[prefix];
   }
@@ -69,7 +79,7 @@ export async function middleware(req: NextRequest) {
   // 1) Rate limit hot endpoints.
   const rule = pickRateLimitRule(pathname);
   if (rule) {
-    const ok = rateLimit(`${ip}:${pathname}`, rule.limit, rule.windowMs);
+    const ok = rateLimit(`${ip}:${req.method}:${pathname}`, rule.limit, rule.windowMs);
     if (!ok) {
       const res = new NextResponse(
         JSON.stringify({ error: 'Too many requests. Please try again later.' }),

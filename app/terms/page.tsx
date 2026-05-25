@@ -13,7 +13,7 @@ export default function TermsPage() {
     return (
         <div className="bg-[#F5F5F5]">
             <section className="hero-section site-shell pt-4 md:pt-[60px]">
-                <div className="w-full overflow-hidden rounded-3xl bg-[#015A5A]">
+                <div className="w-full overflow-hidden rounded-3xl bg-[#014E4E]">
                     <div className="relative w-full">
                         <Navbar />
 
@@ -125,6 +125,16 @@ export default function TermsPage() {
                                 <strong>Eligibility Review:</strong> Your adherence to the diet plan will
                                 be reviewed. We will assess the provided documentation and confirm
                                 whether the terms and conditions have been met.
+                            </li>
+                            <li>
+                                If a client has used the
+                                freeze facility even for 1 day, they will not be eligible for any refund
+                                in the future in case of any plan-related issue.
+                            </li>
+                            <li>
+                                Clients must
+                                inform the team in advance via email regarding any freeze or pause
+                                request to ensure smooth plan management.
                             </li>
                         </ul>
                     </section>

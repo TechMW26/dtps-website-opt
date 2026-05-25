@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="bg-[#F5F5F5]">
       <section className="hero-section site-shell pt-4 md:pt-[60px]">
-        <div className="w-full overflow-hidden rounded-3xl bg-[#015A5A]">
+        <div className="w-full overflow-hidden rounded-3xl bg-[#014E4E]">
           <div className="relative w-full">
             <Navbar />
 

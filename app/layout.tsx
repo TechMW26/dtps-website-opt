@@ -120,7 +120,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${epilogue.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${poppins.variable} ${epilogue.variable}`}>
       <head>
         {/* Preconnect to critical external domains */}
         <link rel="preconnect" href="https://ik.imagekit.io" crossOrigin="anonymous" />
