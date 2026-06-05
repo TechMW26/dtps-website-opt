@@ -17,11 +17,12 @@ const VisitorTracker = dynamic(() => import('./VisitorTracker'), {
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith('/admin');
+  const isLeadFormRoute = pathname?.startsWith('/weight-loss/Leadform');
 
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">{children}</main>
-      {!isAdminRoute && <Footer />}
+      {!isAdminRoute && !isLeadFormRoute && <Footer />}
       {!isAdminRoute && <PageTransition />}
       {!isAdminRoute && <VisitorTracker />}
     </div>

@@ -29,6 +29,7 @@ import {
   ShieldCheck,
   Globe2,
   Users,
+  ClipboardList,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -45,6 +46,7 @@ const sidebarItems = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: Home },
   { name: 'Users', href: '/admin/users', icon: Users },
   { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
+  { name: 'Form Data', href: '/admin/form-data', icon: ClipboardList },
   { name: 'Payments', href: '/admin/payments', icon: CreditCard },
   { name: 'Coupons', href: '/admin/coupons', icon: Percent },
   { name: 'Pricing Plans', href: '/admin/pricing', icon: DollarSign },
