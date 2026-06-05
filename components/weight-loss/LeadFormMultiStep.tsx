@@ -6,8 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { X, ChevronDown } from 'lucide-react';
 
-const LOGO_SRC =
-    'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+const LOGO_SRC = '/logo (2).png';
 
 interface FormState {
     name: string;
@@ -241,9 +240,9 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
                     <Image
                         src={LOGO_SRC}
                         alt="Dietitian Poonam Sagar"
-                        width={200}
-                        height={64}
-                        className="h-12 w-auto"
+                        width={320}
+                        height={97}
+                        className="h-auto w-[74%] max-w-[240px] sm:w-full sm:max-w-[220px]"
                         priority
                     />
                 </div>
