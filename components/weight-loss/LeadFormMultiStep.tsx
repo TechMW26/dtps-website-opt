@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { X, ChevronDown } from 'lucide-react';
 
-const LOGO_SRC = '/logo (2).png';
+const LOGO_SRC = '/logo%20(2).png';
 
 interface FormState {
     name: string;
@@ -84,9 +84,17 @@ const TOTAL_STEPS = 5;
 
 interface Props {
     formId?: string;
+    variant?: 'page' | 'sheet';
+    onClose?: () => void;
+    onSuccess?: () => void;
 }
 
-export default function LeadFormMultiStep({ formId = '1' }: Props) {
+export default function LeadFormMultiStep({
+    formId = '1',
+    variant = 'page',
+    onClose,
+    onSuccess,
+}: Props) {
     const router = useRouter();
     const [step, setStep] = useState(1);
     const [data, setData] = useState<FormState>(INITIAL);
@@ -100,6 +108,23 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
     const setField = <K extends keyof FormState>(k: K, v: FormState[K]) => {
         setData((d) => ({ ...d, [k]: v }));
         if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
+    };
+
+    const handleContactNumberChange = (rawValue: string) => {
+        const digitsOnly = rawValue.replace(/\D/g, '').slice(0, 10);
+        setData((d) => ({ ...d, contactNumber: digitsOnly }));
+
+        if (digitsOnly.length === 0) {
+            setErrors((e) => ({ ...e, contactNumber: undefined }));
+            return;
+        }
+
+        if (digitsOnly.length < 10) {
+            setErrors((e) => ({ ...e, contactNumber: 'Contact number must be exactly 10 digits' }));
+            return;
+        }
+
+        setErrors((e) => ({ ...e, contactNumber: undefined }));
     };
 
     const validateStep = (s: number): boolean => {
@@ -119,8 +144,8 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
                 e.email = 'Please enter a valid email';
             }
             const digits = data.contactNumber.replace(/\D/g, '');
-            if (data.contactNumber && (digits.length < 7 || digits.length > 15)) {
-                e.contactNumber = 'Please enter a valid number';
+            if (data.contactNumber && digits.length !== 10) {
+                e.contactNumber = 'Contact number must be exactly 10 digits';
             }
         } else if (s === 2) {
             req('height');
@@ -167,11 +192,21 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
                 return;
             }
             setSubmitted(true);
+            onSuccess?.();
         } catch (err) {
             console.error(err);
             setServerError('Network error. Please try again.');
             setSubmitting(false);
         }
+    };
+
+    const isSheet = variant === 'sheet';
+    const handleClose = () => {
+        if (onClose) {
+            onClose();
+            return;
+        }
+        router.push('/weight-loss-plan');
     };
 
     const inputCls = (err?: string) =>
@@ -224,16 +259,27 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
     );
 
     return (
-        <div className="flex min-h-screen w-full items-center justify-center bg-slate-50 px-4 py-8">
-            <div className="relative w-full max-w-3xl rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/5 sm:p-10">
+        <div className={isSheet ? 'w-full px-1 sm:px-2' : 'flex min-h-screen w-full items-center justify-center bg-slate-50 px-4 py-8'}>
+            <div className={`relative w-full rounded-[28px] bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.24)] ring-1 ring-black/5 sm:p-10 ${isSheet ? 'min-h-[76vh] max-w-[1120px]' : 'max-w-3xl'}`}>
                 {/* Close button */}
-                <Link
-                    href="/weight-loss-plan"
-                    aria-label="Close"
-                    className="absolute right-4 top-4 rounded-full p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700"
-                >
-                    <X className="h-5 w-5" />
-                </Link>
+                {isSheet ? (
+                    <button
+                        type="button"
+                        onClick={handleClose}
+                        aria-label="Close"
+                        className="absolute right-4 top-4 rounded-full p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700"
+                    >
+                        <X className="h-5 w-5" />
+                    </button>
+                ) : (
+                    <Link
+                        href="/weight-loss-plan"
+                        aria-label="Close"
+                        className="absolute right-4 top-4 rounded-full p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700"
+                    >
+                        <X className="h-5 w-5" />
+                    </Link>
+                )}
 
                 {/* Logo */}
                 <div className="flex justify-center">
@@ -266,7 +312,7 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
                             your preferred time.
                         </p>
                         <button
-                            onClick={() => router.push('/weight-loss-plan')}
+                            onClick={handleClose}
                             className="mt-6 rounded-md bg-orange-500 px-8 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600"
                         >
                             Done
@@ -299,7 +345,7 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
                                             type="text"
                                             value={data.name}
                                             onChange={(e) => setField('name', e.target.value)}
-                                            placeholder="Text"
+                                            placeholder="Enter your name"
                                             className={inputCls(errors.name)}
                                         />
                                         <FieldError msg={errors.name} />
@@ -320,8 +366,11 @@ export default function LeadFormMultiStep({ formId = '1' }: Props) {
                                         <input
                                             type="tel"
                                             value={data.contactNumber}
-                                            onChange={(e) => setField('contactNumber', e.target.value)}
-                                            placeholder="Your WhatsApp number here"
+                                            onChange={(e) => handleContactNumberChange(e.target.value)}
+                                            placeholder="Enter your 10-digit number"
+                                            inputMode="numeric"
+                                            pattern="[0-9]*"
+                                            maxLength={10}
                                             className={inputCls(errors.contactNumber)}
                                         />
                                         <FieldError msg={errors.contactNumber} />

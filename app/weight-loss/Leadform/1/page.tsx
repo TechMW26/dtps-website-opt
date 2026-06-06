@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import LeadFormMultiStep from '@/components/weight-loss/LeadFormMultiStep';
+import LeadFormLandingPage from '@/components/weight-loss/LeadFormLandingPage';
 
 export const metadata: Metadata = {
     title: 'Get Started | Dietitian Poonam Sagar',
@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function LeadFormPage() {
-    return <LeadFormMultiStep formId="1" />;
+    return <LeadFormLandingPage formId="1" />;
 }
