@@ -29,6 +29,7 @@ interface Submission {
     medicalConditions: string;
     triedMethods: string;
     dailyRoutine: string;
+    preferredDate: string;
     preferredCallTime: string;
     page?: string;
     source?: string;
@@ -48,6 +49,7 @@ const FIELD_LABELS: { key: keyof Submission; label: string }[] = [
     { key: 'medicalConditions', label: 'Medical Conditions' },
     { key: 'triedMethods', label: 'Tried Methods Before' },
     { key: 'dailyRoutine', label: 'Daily Routine' },
+    { key: 'preferredDate', label: 'Preferred Date' },
     { key: 'preferredCallTime', label: 'Preferred Call Time' },
 ];
 
@@ -64,6 +66,18 @@ function fmtDateTime(d: string) {
 function toInputDate(d: Date) {
     const tz = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
     return tz.toISOString().slice(0, 10);
+}
+
+function fmtPreferredDate(value: string) {
+    if (!value) return '';
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return value;
+    return d.toLocaleDateString('en-IN', {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+    });
 }
 
 export default function FormSubmissionsPage() {
@@ -159,7 +173,11 @@ export default function FormSubmissionsPage() {
         const headers = ['Submitted At', ...FIELD_LABELS.map((f) => f.label)];
         const rows = submissions.map((s) => [
             fmtDateTime(s.createdAt),
-            ...FIELD_LABELS.map((f) => String(s[f.key] ?? '')),
+            ...FIELD_LABELS.map((f) =>
+                f.key === 'preferredDate'
+                    ? fmtPreferredDate(String(s[f.key] ?? '')) || ''
+                    : String(s[f.key] ?? '')
+            ),
         ]);
         const csv = [headers, ...rows]
             .map((row) => row.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(','))
@@ -232,8 +250,8 @@ export default function FormSubmissionsPage() {
                                     key={p.key}
                                     onClick={() => setDatePreset(p.key)}
                                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${isAllActive
-                                            ? 'border-orange-300 bg-orange-50 text-orange-700'
-                                            : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+                                        ? 'border-orange-300 bg-orange-50 text-orange-700'
+                                        : 'border-gray-200 text-gray-600 hover:bg-gray-50'
                                         }`}
                                 >
                                     {p.label}
@@ -374,7 +392,9 @@ export default function FormSubmissionsPage() {
                                 <div key={f.key} className="flex items-start justify-between gap-4 py-3">
                                     <span className="text-sm font-medium text-gray-500">{f.label}</span>
                                     <span className="text-right text-sm text-gray-900">
-                                        {String(active[f.key] || '—')}
+                                        {f.key === 'preferredDate'
+                                            ? fmtPreferredDate(String(active[f.key] || '')) || '—'
+                                            : String(active[f.key] || '—')}
                                     </span>
                                 </div>
                             ))}

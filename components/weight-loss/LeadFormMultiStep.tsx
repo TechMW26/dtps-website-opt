@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { X, ChevronDown } from 'lucide-react';
+import { X, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const LOGO_SRC = '/logo%20(2).png';
 
@@ -21,6 +21,7 @@ interface FormState {
     medicalConditions: string;
     triedMethods: string;
     dailyRoutine: string;
+    preferredDate: string;
     preferredCallTime: string;
 }
 
@@ -37,6 +38,7 @@ const INITIAL: FormState = {
     medicalConditions: '',
     triedMethods: '',
     dailyRoutine: '',
+    preferredDate: '',
     preferredCallTime: '',
 };
 
@@ -73,12 +75,22 @@ const ROUTINE_OPTIONS = [
     'Hormonal Issues (Thyroid/PCOS)',
     'Sitting Job',
 ];
-const CALL_TIME_OPTIONS = [
+
+const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+const TIME_SLOTS = [
     '09:00 AM - 12:00 PM',
     '12:00 PM - 03:00 PM',
     '03:00 PM - 06:00 PM',
     '06:00 PM - 09:00 PM',
 ];
+
+const toDateKey = (y: number, m: number, d: number) =>
+    `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
 
 const TOTAL_STEPS = 5;
 
@@ -88,6 +100,198 @@ interface Props {
     onClose?: () => void;
     onSuccess?: () => void;
 }
+
+const inputCls = (err?: string) =>
+    `w-full rounded-md border ${err ? 'border-red-400' : 'border-gray-200'
+    } bg-gray-50 px-3.5 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30 transition`;
+
+const selectCls = (err?: string) =>
+    `w-full appearance-none rounded-md border ${err ? 'border-red-400' : 'border-gray-200'
+    } bg-gray-50 px-3.5 py-2.5 pr-9 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30 transition`;
+
+const Label = ({ children }: { children: React.ReactNode }) => (
+    <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        {children} <span className="text-red-500">*</span>
+    </label>
+);
+
+const FieldError = ({ msg }: { msg?: string }) =>
+    msg ? <p className="mt-1 text-xs text-red-500">{msg}</p> : null;
+
+const SelectField = ({
+    value,
+    onChange,
+    options,
+    placeholder,
+    err,
+}: {
+    value: string;
+    onChange: (v: string) => void;
+    options: string[];
+    placeholder: string;
+    err?: string;
+}) => (
+    <div className="relative">
+        <select
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            className={`${selectCls(err)} ${value ? 'text-gray-800' : 'text-gray-400'}`}
+        >
+            <option value="" disabled>
+                {placeholder}
+            </option>
+            {options.map((o) => (
+                <option key={o} value={o} className="text-gray-800">
+                    {o}
+                </option>
+            ))}
+        </select>
+        <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+    </div>
+);
+
+const CallSchedulePicker = ({
+    selectedDate,
+    selectedTime,
+    onSelectDate,
+    onSelectTime,
+    dateErr,
+    timeErr,
+}: {
+    selectedDate: string;
+    selectedTime: string;
+    onSelectDate: (v: string) => void;
+    onSelectTime: (v: string) => void;
+    dateErr?: string;
+    timeErr?: string;
+}) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const todayKey = toDateKey(today.getFullYear(), today.getMonth(), today.getDate());
+
+    const initial = selectedDate ? new Date(selectedDate) : today;
+    const [viewYear, setViewYear] = useState(initial.getFullYear());
+    const [viewMonth, setViewMonth] = useState(initial.getMonth());
+
+    const firstDay = new Date(viewYear, viewMonth, 1).getDay();
+    const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const cells: (number | null)[] = [
+        ...Array(firstDay).fill(null),
+        ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+    ];
+
+    const goPrevMonth = () => {
+        if (viewMonth === 0) {
+            setViewMonth(11);
+            setViewYear((y) => y - 1);
+        } else {
+            setViewMonth((m) => m - 1);
+        }
+    };
+    const goNextMonth = () => {
+        if (viewMonth === 11) {
+            setViewMonth(0);
+            setViewYear((y) => y + 1);
+        } else {
+            setViewMonth((m) => m + 1);
+        }
+    };
+
+    return (
+        <div>
+            <div className="mx-auto flex max-w-[580px] flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-4 sm:flex-row">
+                {/* Calendar */}
+                <div className="flex-1">
+                    <div className="mb-3 flex items-center justify-between px-1">
+                        <button
+                            type="button"
+                            onClick={goPrevMonth}
+                            aria-label="Previous month"
+                            className="rounded-full p-1.5 text-gray-500 transition hover:bg-gray-100"
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </button>
+                        <p className="text-sm font-semibold text-gray-800">
+                            {MONTHS[viewMonth]} {viewYear}
+                        </p>
+                        <button
+                            type="button"
+                            onClick={goNextMonth}
+                            aria-label="Next month"
+                            className="rounded-full p-1.5 text-gray-500 transition hover:bg-gray-100"
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </button>
+                    </div>
+                    <div className="grid grid-cols-7 gap-1 rounded-lg bg-teal-400 p-1.5 text-center">
+                        {WEEKDAYS.map((d) => (
+                            <div key={d} className="py-1 text-[11px] font-semibold text-white">
+                                {d}
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-1.5 grid grid-cols-7 gap-1">
+                        {cells.map((day, idx) => {
+                            if (day === null) return <div key={`b-${idx}`} />;
+                            const key = toDateKey(viewYear, viewMonth, day);
+                            const cellDate = new Date(viewYear, viewMonth, day);
+                            cellDate.setHours(0, 0, 0, 0);
+                            const isPast = cellDate < today;
+                            const isSelected = selectedDate === key;
+                            const isToday = key === todayKey;
+                            return (
+                                <button
+                                    key={key}
+                                    type="button"
+                                    disabled={isPast}
+                                    onClick={() => onSelectDate(key)}
+                                    className={`flex aspect-square items-center justify-center rounded-md text-[13px] transition ${isPast
+                                        ? 'cursor-not-allowed text-gray-300'
+                                        : isSelected
+                                            ? 'bg-orange-500 font-semibold text-white'
+                                            : isToday
+                                                ? 'border border-teal-400 text-gray-700 hover:bg-teal-50'
+                                                : 'text-gray-700 hover:bg-teal-50'
+                                        }`}
+                                >
+                                    {day}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                {/* Time slots */}
+                <div className="flex w-full flex-col items-center sm:w-44">
+                    <div className="flex w-full flex-col gap-2.5 px-1">
+                        {TIME_SLOTS.map((t) => {
+                            const isSel = selectedTime === t;
+                            return (
+                                <button
+                                    key={t}
+                                    type="button"
+                                    onClick={() => onSelectTime(t)}
+                                    className={`shrink-0 rounded-lg border px-3 py-2.5 text-[13px] font-medium transition ${isSel
+                                        ? 'border-orange-500 bg-orange-500 text-white'
+                                        : 'border-gray-200 text-gray-700 hover:border-orange-300 hover:bg-orange-50'
+                                        }`}
+                                >
+                                    {t}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+            {(dateErr || timeErr) && (
+                <div className="mt-1 space-y-1">
+                    {dateErr && <p className="text-xs text-red-500">{dateErr}</p>}
+                    {timeErr && <p className="text-xs text-red-500">{timeErr}</p>}
+                </div>
+            )}
+        </div>
+    );
+};
 
 export default function LeadFormMultiStep({
     formId = '1',
@@ -127,6 +331,45 @@ export default function LeadFormMultiStep({
         setErrors((e) => ({ ...e, contactNumber: undefined }));
     };
 
+    const handleDecimalFieldChange = (field: 'height' | 'weight', rawValue: string) => {
+        // Allow digits and one decimal point only.
+        let value = rawValue.replace(/[^\d.]/g, '');
+        const firstDot = value.indexOf('.');
+        if (firstDot !== -1) {
+            value = value.slice(0, firstDot + 1) + value.slice(firstDot + 1).replace(/\./g, '');
+        }
+
+        setData((d) => ({ ...d, [field]: value }));
+
+        if (!value) {
+            setErrors((e) => ({ ...e, [field]: undefined }));
+            return;
+        }
+
+        if (!/^\d+(\.\d+)?$/.test(value)) {
+            setErrors((e) => ({ ...e, [field]: `Please enter a valid ${field}` }));
+            return;
+        }
+
+        setErrors((e) => ({ ...e, [field]: undefined }));
+    };
+
+    const handleGenderChange = (rawValue: string) => {
+        const normalizedValue = rawValue.trim();
+        const matchedOption = GENDER_OPTIONS.find(
+            (option) => option.toLowerCase() === normalizedValue.toLowerCase()
+        );
+
+        setData((d) => ({ ...d, gender: matchedOption ?? '' }));
+
+        if (matchedOption) {
+            setErrors((e) => ({ ...e, gender: undefined }));
+            return;
+        }
+
+        setErrors((e) => ({ ...e, gender: 'Please select a valid gender' }));
+    };
+
     const validateStep = (s: number): boolean => {
         const e: Partial<Record<keyof FormState, string>> = {};
         const req = (k: keyof FormState, msg = 'This field is required') => {
@@ -140,8 +383,11 @@ export default function LeadFormMultiStep({
             req('email');
             req('age');
             req('gender');
-            if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
-                e.email = 'Please enter a valid email';
+            if (data.email && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email.trim())) {
+                e.email = 'Please enter a valid email address (example@gmail.com)';
+            }
+            if (data.gender && !GENDER_OPTIONS.some((option) => option.toLowerCase() === data.gender.trim().toLowerCase())) {
+                e.gender = 'Please select a valid gender';
             }
             const digits = data.contactNumber.replace(/\D/g, '');
             if (data.contactNumber && digits.length !== 10) {
@@ -152,11 +398,18 @@ export default function LeadFormMultiStep({
             req('weight');
             req('primaryGoal');
             req('medicalConditions');
+            if (data.height && !/^\d+(\.\d+)?$/.test(data.height.trim())) {
+                e.height = 'Please enter a valid height in feet';
+            }
+            if (data.weight && !/^\d+(\.\d+)?$/.test(data.weight.trim())) {
+                e.weight = 'Please enter a valid weight in KG';
+            }
         } else if (s === 3) {
             req('triedMethods');
             req('dailyRoutine');
         } else if (s === 5) {
-            req('preferredCallTime');
+            req('preferredDate', 'Please select a date');
+            req('preferredCallTime', 'Please select a time slot');
         }
 
         setErrors(e);
@@ -208,55 +461,6 @@ export default function LeadFormMultiStep({
         }
         router.push('/weight-loss-plan');
     };
-
-    const inputCls = (err?: string) =>
-        `w-full rounded-md border ${err ? 'border-red-400' : 'border-gray-200'
-        } bg-gray-50 px-3.5 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30 transition`;
-
-    const selectCls = (err?: string) =>
-        `w-full appearance-none rounded-md border ${err ? 'border-red-400' : 'border-gray-200'
-        } bg-gray-50 px-3.5 py-2.5 pr-9 text-sm outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/30 transition`;
-
-    const Label = ({ children }: { children: React.ReactNode }) => (
-        <label className="mb-1.5 block text-sm font-medium text-gray-700">
-            {children} <span className="text-red-500">*</span>
-        </label>
-    );
-
-    const FieldError = ({ msg }: { msg?: string }) =>
-        msg ? <p className="mt-1 text-xs text-red-500">{msg}</p> : null;
-
-    const SelectField = ({
-        value,
-        onChange,
-        options,
-        placeholder,
-        err,
-    }: {
-        value: string;
-        onChange: (v: string) => void;
-        options: string[];
-        placeholder: string;
-        err?: string;
-    }) => (
-        <div className="relative">
-            <select
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                className={`${selectCls(err)} ${value ? 'text-gray-800' : 'text-gray-400'}`}
-            >
-                <option value="" disabled>
-                    {placeholder}
-                </option>
-                {options.map((o) => (
-                    <option key={o} value={o} className="text-gray-800">
-                        {o}
-                    </option>
-                ))}
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-        </div>
-    );
 
     return (
         <div className={isSheet ? 'w-full px-1 sm:px-2' : 'flex min-h-screen w-full items-center justify-center bg-slate-50 px-4 py-8'}>
@@ -399,13 +603,23 @@ export default function LeadFormMultiStep({
                                     </div>
                                     <div>
                                         <Label>Gender</Label>
-                                        <SelectField
-                                            value={data.gender}
-                                            onChange={(v) => setField('gender', v)}
-                                            options={GENDER_OPTIONS}
-                                            placeholder="Select your gender"
-                                            err={errors.gender}
-                                        />
+                                        <div className="relative">
+                                            <select
+                                                value={data.gender}
+                                                onChange={(e) => handleGenderChange(e.target.value)}
+                                                className={`${selectCls(errors.gender)} ${data.gender ? 'text-gray-800' : 'text-gray-400'}`}
+                                            >
+                                                <option value="" disabled>
+                                                    Select your gender
+                                                </option>
+                                                {GENDER_OPTIONS.map((option) => (
+                                                    <option key={option} value={option} className="text-gray-800">
+                                                        {option}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                                        </div>
                                         <FieldError msg={errors.gender} />
                                     </div>
                                 </div>
@@ -419,8 +633,10 @@ export default function LeadFormMultiStep({
                                         <input
                                             type="text"
                                             value={data.height}
-                                            onChange={(e) => setField('height', e.target.value)}
-                                            placeholder="Enter your height"
+                                            onChange={(e) => handleDecimalFieldChange('height', e.target.value)}
+                                            placeholder="Enter your height in feet"
+                                            inputMode="decimal"
+                                            pattern="[0-9]*[.]?[0-9]*"
                                             className={inputCls(errors.height)}
                                         />
                                         <FieldError msg={errors.height} />
@@ -430,8 +646,10 @@ export default function LeadFormMultiStep({
                                         <input
                                             type="text"
                                             value={data.weight}
-                                            onChange={(e) => setField('weight', e.target.value)}
-                                            placeholder="Enter your weight in Kg"
+                                            onChange={(e) => handleDecimalFieldChange('weight', e.target.value)}
+                                            placeholder="Enter your weight in KG"
+                                            inputMode="decimal"
+                                            pattern="[0-9]*[.]?[0-9]*"
                                             className={inputCls(errors.weight)}
                                         />
                                         <FieldError msg={errors.weight} />
@@ -504,15 +722,15 @@ export default function LeadFormMultiStep({
                             {step === 5 && (
                                 <div className="grid grid-cols-1 gap-y-4">
                                     <div>
-                                        <Label>Please select your preferred time for a call</Label>
-                                        <SelectField
-                                            value={data.preferredCallTime}
-                                            onChange={(v) => setField('preferredCallTime', v)}
-                                            options={CALL_TIME_OPTIONS}
-                                            placeholder="Choose an option"
-                                            err={errors.preferredCallTime}
+                                        <Label>Please select your preferred date &amp; time for a call</Label>
+                                        <CallSchedulePicker
+                                            selectedDate={data.preferredDate}
+                                            selectedTime={data.preferredCallTime}
+                                            onSelectDate={(v) => setField('preferredDate', v)}
+                                            onSelectTime={(v) => setField('preferredCallTime', v)}
+                                            dateErr={errors.preferredDate}
+                                            timeErr={errors.preferredCallTime}
                                         />
-                                        <FieldError msg={errors.preferredCallTime} />
                                     </div>
                                 </div>
                             )}

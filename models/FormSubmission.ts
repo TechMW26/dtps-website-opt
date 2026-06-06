@@ -14,6 +14,7 @@ export interface IFormSubmission extends Document {
     medicalConditions: string;
     triedMethods: string;
     dailyRoutine: string;
+    preferredDate: string;
     preferredCallTime: string;
     page?: string;
     source?: string;
@@ -36,6 +37,7 @@ const FormSubmissionSchema = new Schema<IFormSubmission>(
         medicalConditions: { type: String, required: true, trim: true },
         triedMethods: { type: String, required: true, trim: true },
         dailyRoutine: { type: String, required: true, trim: true },
+        preferredDate: { type: String, required: true, trim: true },
         preferredCallTime: { type: String, required: true, trim: true },
         page: { type: String, default: 'weight-loss/Leadform/1' },
         source: { type: String, default: 'lead-form' },
@@ -43,5 +45,11 @@ const FormSubmissionSchema = new Schema<IFormSubmission>(
     { timestamps: true }
 );
 
-export default mongoose.models.FormSubmission ||
-    mongoose.model<IFormSubmission>('FormSubmission', FormSubmissionSchema);
+// Remove any model cached from a previous schema version so updated fields
+// (e.g. preferredDate) are always registered. Mongoose caches models on its
+// singleton, which survives Next.js HMR and would otherwise strip new fields.
+if (mongoose.models.FormSubmission) {
+    delete mongoose.models.FormSubmission;
+}
+
+export default mongoose.model<IFormSubmission>('FormSubmission', FormSubmissionSchema);

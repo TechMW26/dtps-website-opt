@@ -19,10 +19,18 @@ const REQUIRED_FIELDS = [
     'medicalConditions',
     'triedMethods',
     'dailyRoutine',
+    'preferredDate',
     'preferredCallTime',
 ] as const;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const DATE_KEY_RE = /^\d{4}-\d{2}-\d{2}$/;
+const CALL_TIME_OPTIONS = new Set([
+    '09:00 AM - 12:00 PM',
+    '12:00 PM - 03:00 PM',
+    '03:00 PM - 06:00 PM',
+    '06:00 PM - 09:00 PM',
+]);
 
 // Public: submit a lead form
 export async function POST(request: NextRequest) {
@@ -44,6 +52,21 @@ export async function POST(request: NextRequest) {
         const digits = String(body?.contactNumber || '').replace(/\D/g, '');
         if (body?.contactNumber && (digits.length < 7 || digits.length > 15)) {
             errors.contactNumber = 'Please enter a valid contact number';
+        }
+
+        if (body?.preferredDate) {
+            const dateValue = String(body.preferredDate).trim();
+            const isValidDateKey = DATE_KEY_RE.test(dateValue) && !Number.isNaN(new Date(dateValue).getTime());
+            if (!isValidDateKey) {
+                errors.preferredDate = 'Please select a valid date';
+            }
+        }
+
+        if (body?.preferredCallTime) {
+            const callTime = String(body.preferredCallTime).trim();
+            if (!CALL_TIME_OPTIONS.has(callTime)) {
+                errors.preferredCallTime = 'Please select a valid time slot';
+            }
         }
 
         if (Object.keys(errors).length > 0) {
@@ -68,6 +91,7 @@ export async function POST(request: NextRequest) {
             medicalConditions: String(body.medicalConditions).trim(),
             triedMethods: String(body.triedMethods).trim(),
             dailyRoutine: String(body.dailyRoutine).trim(),
+            preferredDate: String(body.preferredDate).trim(),
             preferredCallTime: String(body.preferredCallTime).trim(),
             page: `weight-loss/Leadform/${formId}`,
             source: 'lead-form',
