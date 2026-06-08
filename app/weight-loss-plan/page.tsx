@@ -7,7 +7,7 @@ import PageWrapper from '@/components/PageWrapper';
 import DynamicPageHero from '@/components/DynamicPageHero';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import { getPricingByCategory } from '@/lib/api';
-import { getOptimizedUrl } from '@/lib/imagekit';
+import { getOptimizedUrl } from '@/lib/imagekit-url';
 import type { Pricing } from '@/lib/api';
 import Navbar from '@/components/Navbar';
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getOptimizedUrl } from '@/lib/imagekit';
+import { getOptimizedUrl } from '@/lib/imagekit-url';
 
 interface BannerItem {
   _id: string;

@@ -446,6 +446,7 @@ export default function LeadFormMultiStep({
             }
             setSubmitted(true);
             onSuccess?.();
+            router.push(`/weight-loss/Leadform/${formId}/thankyou`);
         } catch (err) {
             console.error(err);
             setServerError('Network error. Please try again.');

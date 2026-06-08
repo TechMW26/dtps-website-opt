@@ -3,7 +3,7 @@ import { useState, useEffect, Suspense, lazy } from 'react';
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import Image from 'next/image';
-import { getOptimizedUrl } from '@/lib/imagekit';
+import { getOptimizedUrl } from '@/lib/imagekit-url';
 
 // Critical above-fold component loaded immediately
 import AboutUsSection from '@/components/AboutUsSection';

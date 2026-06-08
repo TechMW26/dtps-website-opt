@@ -1,19 +1,25 @@
 import ImageKit from 'imagekit';
 
-const hasImageKitConfig = Boolean(
-  process.env.IMAGEKIT_PUBLIC_KEY &&
-    process.env.IMAGEKIT_PRIVATE_KEY &&
-    process.env.IMAGEKIT_URL_ENDPOINT
-);
+function getImageKitInstance() {
+  const publicKey = process.env.IMAGEKIT_PUBLIC_KEY;
+  const privateKey = process.env.IMAGEKIT_PRIVATE_KEY;
+  const urlEndpoint = process.env.IMAGEKIT_URL_ENDPOINT;
 
-// Initialize ImageKit only when config is available (server-side)
-const imagekit = hasImageKitConfig
-  ? new ImageKit({
-      publicKey: process.env.IMAGEKIT_PUBLIC_KEY as string,
-      privateKey: process.env.IMAGEKIT_PRIVATE_KEY as string,
-      urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT as string,
-    })
-  : null;
+  if (!publicKey || !privateKey || !urlEndpoint) {
+    return null;
+  }
+
+  try {
+    return new ImageKit({
+      publicKey,
+      privateKey,
+      urlEndpoint,
+    });
+  } catch (error) {
+    console.error('ImageKit initialization error:', error);
+    return null;
+  }
+}
 
 // Folder structure for DTPS-Ecommerce
 export const IMAGEKIT_FOLDERS = {
@@ -51,6 +57,7 @@ interface UploadResponse {
  * ImageKit automatically compresses and optimizes images
  */
 export async function uploadImage(options: UploadOptions): Promise<UploadResponse> {
+  const imagekit = getImageKitInstance();
   if (!imagekit) {
     if (typeof window === 'undefined') {
       console.warn('ImageKit upload skipped: missing IMAGEKIT_* environment variables.');
@@ -96,6 +103,7 @@ export async function uploadImage(options: UploadOptions): Promise<UploadRespons
  * Delete image from ImageKit
  */
 export async function deleteImage(fileId: string): Promise<{ success: boolean; error?: string }> {
+  const imagekit = getImageKitInstance();
   if (!imagekit) {
     if (typeof window === 'undefined') {
       console.warn('ImageKit delete skipped: missing IMAGEKIT_* environment variables.');
@@ -174,6 +182,7 @@ export function getOptimizedUrl(
  * Get authentication parameters for client-side upload
  */
 export function getAuthenticationParameters() {
+  const imagekit = getImageKitInstance();
   if (!imagekit) {
     if (typeof window === 'undefined') {
       console.warn('ImageKit auth skipped: missing IMAGEKIT_* environment variables.');
@@ -183,4 +192,4 @@ export function getAuthenticationParameters() {
   return imagekit.getAuthenticationParameters();
 }
 
-export default imagekit;
+export default getImageKitInstance;
