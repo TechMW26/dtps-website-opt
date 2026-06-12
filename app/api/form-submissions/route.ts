@@ -110,19 +110,22 @@ export async function POST(request: NextRequest) {
 // Protected: list submissions or the list of forms with counts
 export async function GET(request: NextRequest) {
     try {
+        const { searchParams } = new URL(request.url);
+        const formId = searchParams.get('formId');
+        const distinct = searchParams.get('distinct');
+        const isDistinctForms = distinct === 'forms';
+
         const session = await getServerSession(authOptions);
-        if (!session) {
+        // Public access is allowed only for form-specific reads (e.g. ?formId=1)
+        // so Apps Script can fetch lead data without admin login.
+        if (!session && (!formId || isDistinctForms)) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
 
         await dbConnect();
 
-        const { searchParams } = new URL(request.url);
-        const formId = searchParams.get('formId');
-        const distinct = searchParams.get('distinct');
-
         // Return the list of forms with submission counts
-        if (distinct === 'forms') {
+        if (isDistinctForms) {
             const forms = await FormSubmission.aggregate([
                 {
                     $group: {
