@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { uploadImage, deleteImage, IMAGEKIT_FOLDERS, getAuthenticationParameters } from '@/lib/imagekit';
+import { uploadBlob, deleteBlob, BLOB_FOLDERS } from '@/lib/blob';
 import { compressImage, base64ToBuffer, bufferToBase64 } from '@/lib/imageCompression';
 
 // Folder mapping
 const folderMap: Record<string, string> = {
-  testimonials: IMAGEKIT_FOLDERS.TESTIMONIALS,
-  recognition: IMAGEKIT_FOLDERS.RECOGNITION,
-  pricing: IMAGEKIT_FOLDERS.PRICING,
-  'success-stories': IMAGEKIT_FOLDERS.SUCCESS_STORIES,
-  transformations: IMAGEKIT_FOLDERS.TRANSFORMATIONS,
-  blogs: IMAGEKIT_FOLDERS.BLOGS,
-  admin: IMAGEKIT_FOLDERS.ADMIN,
-  'plan-banners': IMAGEKIT_FOLDERS.PLAN_BANNERS,
+  testimonials: BLOB_FOLDERS.TESTIMONIALS,
+  recognition: BLOB_FOLDERS.RECOGNITION,
+  pricing: BLOB_FOLDERS.PRICING,
+  'success-stories': BLOB_FOLDERS.SUCCESS_STORIES,
+  transformations: BLOB_FOLDERS.TRANSFORMATIONS,
+  blogs: BLOB_FOLDERS.BLOGS,
+  admin: BLOB_FOLDERS.ADMIN,
+  'plan-banners': BLOB_FOLDERS.PLAN_BANNERS,
 };
 
 // POST - Upload image
@@ -51,9 +51,6 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Convert back to base64 for ImageKit upload
-    const compressedBase64 = bufferToBase64(imageBuffer);
-
     // Generate filename with timestamp
     const timestamp = Date.now();
     const safeName = (fileName || 'image')
@@ -61,13 +58,12 @@ export async function POST(request: NextRequest) {
       .toLowerCase();
     const finalFileName = `${safeName}-${timestamp}.webp`;
 
-    // Upload to ImageKit
-    const result = await uploadImage({
-      file: compressedBase64,
+    // Upload to Vercel Blob Storage
+    const result = await uploadBlob({
+      file: imageBuffer,
       fileName: finalFileName,
       folder: folderMap[folder],
-      tags: [folder, 'dtps-ecommerce'],
-      useUniqueFileName: false,
+      contentType: 'image/webp',
     });
 
     if (!result.success) {
@@ -78,7 +74,6 @@ export async function POST(request: NextRequest) {
       success: true,
       url: result.url,
       fileId: result.fileId,
-      thumbnailUrl: result.thumbnailUrl,
     });
   } catch (error: any) {
     console.error('Upload error:', error);
@@ -104,7 +99,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'File ID is required' }, { status: 400 });
     }
 
-    const result = await deleteImage(fileId);
+    const result = await deleteBlob(fileId);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 500 });
@@ -115,20 +110,6 @@ export async function DELETE(request: NextRequest) {
     console.error('Delete error:', error);
     return NextResponse.json(
       { error: error.message || 'Failed to delete image' },
-      { status: 500 }
-    );
-  }
-}
-
-// GET - Get authentication parameters for client-side upload
-export async function GET() {
-  try {
-    const authParams = getAuthenticationParameters();
-    return NextResponse.json(authParams);
-  } catch (error: any) {
-    console.error('Auth params error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to get auth params' },
       { status: 500 }
     );
   }

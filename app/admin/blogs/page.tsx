@@ -6,14 +6,11 @@ import { Badge } from '@/components/ui/badge';
 import Button from '@/components/ui/Button';
 import {
   Dialog,
+  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
-  DialogFooter,
 } from '@/components/ui/dialog';
-import { Plus, Edit, Trash2, Newspaper, AlertCircle, CheckCircle, Eye, X } from 'lucide-react';
+import { Plus, Edit, Trash2, Newspaper, AlertCircle, CheckCircle, Eye, X, Sparkles, BarChart3, Search, Clock, ImageIcon, Hash, User, Globe } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import ImageUpload from '@/components/admin/ImageUpload';
 import RichTextEditor from '@/components/admin/RichTextEditor';
@@ -24,6 +21,59 @@ const BLOG_AUTHORS = [
   'Aditi Kapoor', 'Neha Malhotra', 'Swati Tiwari', 'Anjali Deshmukh', 'Divya Iyer',
 ];
 function randomAuthor() { return BLOG_AUTHORS[Math.floor(Math.random() * BLOG_AUTHORS.length)]; }
+
+// ── SEO Helper Functions ──
+function wordCount(html: string): number {
+  const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  return text ? text.split(' ').length : 0;
+}
+
+function readingTime(html: string): number {
+  const wc = wordCount(html);
+  return Math.max(1, Math.ceil(wc / 200));
+}
+
+function headingCount(html: string): number {
+  const matches = html.match(/<h[1-6][^>]*>/gi);
+  return matches ? matches.length : 0;
+}
+
+function seoScore(form: typeof initialFormState): {
+  score: number;
+  color: string;
+  barColor: string;
+  tips: string[];
+} {
+  let score = 0;
+  const tips: string[] = [];
+
+  if (form.title.length >= 40 && form.title.length <= 60) { score += 25; }
+  else if (form.title.length > 0) { score += 15; tips.push('Title should be 40-60 characters for best SEO'); }
+  else { tips.push('Add a blog title'); }
+
+  if (form.description.length >= 120 && form.description.length <= 160) { score += 20; }
+  else if (form.description.length > 0) { score += 10; tips.push('Meta description should be 120-160 characters'); }
+  else { tips.push('Add a meta description for search results'); }
+
+  if (form.featuredImage) { score += 15; }
+  else { tips.push('Add a featured image for social sharing'); }
+
+  if (form.tags.length >= 2) { score += 15; }
+  else if (form.tags.length > 0) { score += 8; tips.push('Add at least 2 tags for better discoverability'); }
+  else { tips.push('Add tags to help readers find your content'); }
+
+  const wc = wordCount(form.content);
+  if (wc >= 600) { score += 15; }
+  else if (wc > 0) { score += 5; tips.push(`Content is short (${wc} words). Aim for 600+ words for good SEO`); }
+  else { tips.push('Start writing your blog content'); }
+
+  if (form.excerpt) { score += 5; }
+  if (form.slug) { score += 5; }
+
+  if (score >= 80) return { score, color: 'text-emerald-500', barColor: 'bg-emerald-500', tips };
+  if (score >= 50) return { score, color: 'text-amber-500', barColor: 'bg-amber-500', tips };
+  return { score, color: 'text-red-400', barColor: 'bg-red-400', tips };
+}
 
 interface Blog {
   _id: string;
@@ -190,18 +240,18 @@ export default function BlogsPage() {
   const openEditModal = (blog: Blog) => {
     setEditingId(blog._id);
     setFormData({
-      title: blog.title,
-      slug: blog.slug,
-      excerpt: blog.excerpt,
-      description: blog.description,
-      content: blog.content,
-      featuredImage: blog.featuredImage,
-      author: blog.author,
-      category: blog.category,
-      tags: blog.tags,
-      views: blog.views,
-      published: blog.published,
-      featured: blog.featured,
+      title: blog.title || '',
+      slug: blog.slug || '',
+      excerpt: blog.excerpt || '',
+      description: blog.description || '',
+      content: blog.content || '',
+      featuredImage: blog.featuredImage || '',
+      author: blog.author || randomAuthor(),
+      category: blog.category || 'Health & Nutrition',
+      tags: blog.tags || [],
+      views: blog.views || 0,
+      published: blog.published ?? false,
+      featured: blog.featured ?? false,
     });
     setOpen(true);
   };
@@ -251,244 +301,347 @@ export default function BlogsPage() {
           <DialogContent 
             className={`${
               theme === 'dark'
-                ? 'bg-slate-800 border-slate-700'
-                : 'bg-white border-slate-200'
-            } max-w-4xl max-h-[90vh] overflow-y-auto`}
+                ? 'bg-slate-900 border-slate-700'
+                : 'bg-gray-50 border-slate-200'
+            } !w-screen !h-screen !max-w-none !max-h-screen !rounded-none !translate-x-0 !translate-y-0 !top-0 !left-0 overflow-hidden flex flex-col p-0`}
             onOpenAutoFocus={(e) => e.preventDefault()}
           >
-            <DialogHeader>
-              <DialogTitle className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>
-                {editingId ? 'Edit Blog Post' : 'Create New Blog Post'}
-              </DialogTitle>
-              <DialogDescription className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>
-                {editingId ? 'Update the blog details below' : 'Fill in the blog details below'}
-              </DialogDescription>
-            </DialogHeader>
+            {/* ── Sticky Header ── */}
+            <div className={`sticky top-0 z-30 flex items-center justify-between px-6 py-4 border-b shrink-0 ${
+              theme === 'dark' ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'
+            }`}>
+              <div className="flex items-center gap-4">
+                <DialogClose asChild>
+                  <button className={`p-2 rounded-lg transition-colors ${
+                    theme === 'dark' ? 'hover:bg-slate-700 text-slate-400' : 'hover:bg-gray-100 text-slate-500'
+                  }`}>
+                    <X className="w-5 h-5" />
+                  </button>
+                </DialogClose>
+                <div>
+                  <h2 className={`text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+                    {editingId ? 'Edit Blog Post' : 'Create New Blog Post'}
+                  </h2>
+                  <p className={`text-xs ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    {editingId ? 'Update and optimize your content' : 'Write and optimize your content for search'}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button type="button" variant="outline" onClick={closeModal} size="sm">
+                  Cancel
+                </Button>
+                <button
+                  type="submit"
+                  form="blog-editor-form"
+                  disabled={saving}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 rounded-lg transition-colors disabled:opacity-50"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  {saving ? 'Saving...' : editingId ? 'Update Post' : 'Publish Post'}
+                </button>
+              </div>
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Featured Image */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Featured Image
-                </label>
-                <ImageUpload
-                  label="Upload Featured Image"
-                  folder="blogs"
-                  value={formData.featuredImage}
-                  onChange={(url) => setFormData({ ...formData, featuredImage: url })}
-                />
-                {formData.featuredImage && (
-                  <div className="mt-2">
+            {/* ── Two-Column Body ── */}
+            <form id="blog-editor-form" onSubmit={handleSubmit} className="flex-1 overflow-hidden flex">
+              {/* ── LEFT: Main Editor (65%) ── */}
+              <div className="w-[65%] overflow-y-auto p-6 space-y-5 border-r ${
+                theme === 'dark' ? 'border-slate-700' : 'border-slate-200'
+              }">
+                {/* Featured Image */}
+                <div className="space-y-2">
+                  <label className={`text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <ImageIcon className="w-3.5 h-3.5" /> Featured Image
+                  </label>
+                  <ImageUpload
+                    label="Upload Featured Image"
+                    folder="blogs"
+                    value={formData.featuredImage}
+                    onChange={(url) => setFormData({ ...formData, featuredImage: url })}
+                  />
+                  {formData.featuredImage && (
                     <img
                       src={formData.featuredImage}
                       alt="Preview"
-                      className="w-32 h-32 object-cover rounded-lg cursor-pointer hover:opacity-75"
+                      className="w-24 h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 mt-2"
                       onClick={() => setLightboxImage(formData.featuredImage)}
                     />
+                  )}
+                </div>
+
+                {/* Title */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                      Title *
+                    </label>
+                    <span className={`text-xs ${formData.title.length > 60 ? 'text-amber-500' : formData.title.length >= 40 ? 'text-emerald-500' : 'text-slate-400'}`}>
+                      {formData.title.length}/60
+                    </span>
                   </div>
-                )}
-              </div>
-
-              {/* Title */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Title *
-                </label>
-                <input
-                  type="text"
-                  value={formData.title}
-                  onChange={handleTitleChange}
-                  placeholder="Enter blog title"
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
-                  } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
-                />
-              </div>
-
-              {/* Slug (Auto-generated) */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Slug (Auto-generated)
-                </label>
-                <input
-                  type="text"
-                  value={formData.slug}
-                  readOnly
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-slate-400'
-                      : 'bg-slate-100 border-slate-300 text-slate-600'
-                  } cursor-not-allowed`}
-                />
-              </div>
-
-              {/* Excerpt */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Excerpt
-                </label>
-                <textarea
-                  value={formData.excerpt}
-                  onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
-                  placeholder="Brief summary of the blog post (for SEO and listings)"
-                  rows={2}
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
-                  } focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none`}
-                />
-              </div>
-
-              {/* Description */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Description
-                </label>
-                <textarea
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Short description of the blog"
-                  rows={2}
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
-                  } focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none`}
-                />
-              </div>
-
-              {/* Content (Rich Text) */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Content * (Rich Text)
-                </label>
-                <RichTextEditor
-                  value={formData.content}
-                  onChange={(content) => setFormData({ ...formData, content })}
-                />
-              </div>
-
-              {/* Category */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Category
-                </label>
-                <select
-                  value={formData.category}
-                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white'
-                      : 'bg-white border-slate-300 text-slate-900'
-                  } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
-                >
-                  <option>Health & Nutrition</option>
-                  <option>Weight Loss</option>
-                  <option>PCOD Management</option>
-                  <option>Wellness</option>
-                  <option>Fitness</option>
-                  <option>Recipes</option>
-                  <option>Tips & Tricks</option>
-                </select>
-              </div>
-
-              {/* Tags */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Tags
-                </label>
-                <div className="flex gap-2">
                   <input
                     type="text"
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
-                    placeholder="Add a tag and press Enter"
-                    className={`flex-1 px-4 py-2 rounded-lg border ${
+                    value={formData.title}
+                    onChange={handleTitleChange}
+                    placeholder="Enter a compelling blog title"
+                    className={`w-full px-4 py-2.5 rounded-lg border text-base font-medium ${
                       theme === 'dark'
-                        ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
+                        ? 'bg-slate-800 border-slate-600 text-white placeholder-slate-500'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                    } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500`}
+                  />
+                </div>
+
+                {/* Slug */}
+                <div className="space-y-1.5">
+                  <label className={`text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <Globe className="w-3.5 h-3.5" /> Slug
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.slug}
+                    readOnly
+                    className={`w-full px-4 py-2 rounded-lg border text-sm font-mono ${
+                      theme === 'dark'
+                        ? 'bg-slate-800/50 border-slate-600 text-slate-400'
+                        : 'bg-gray-100 border-slate-300 text-slate-500'
+                    } cursor-not-allowed`}
+                  />
+                </div>
+
+                {/* Excerpt */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                      Excerpt
+                    </label>
+                    <span className={`text-xs ${(formData.excerpt?.length || 0) > 160 ? 'text-amber-500' : 'text-slate-400'}`}>
+                      {formData.excerpt?.length || 0}/160
+                    </span>
+                  </div>
+                  <textarea
+                    value={formData.excerpt}
+                    onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                    placeholder="Brief summary shown in blog listings and search results"
+                    rows={2}
+                    className={`w-full px-4 py-2 rounded-lg border text-sm ${
+                      theme === 'dark'
+                        ? 'bg-slate-800 border-slate-600 text-white placeholder-slate-500'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                    } focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none`}
+                  />
+                </div>
+
+                {/* Description (meta) */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between">
+                    <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                      Meta Description
+                    </label>
+                    <span className={`text-xs ${(formData.description?.length || 0) > 160 ? 'text-amber-500' : (formData.description?.length || 0) >= 120 ? 'text-emerald-500' : 'text-slate-400'}`}>
+                      {formData.description?.length || 0}/160
+                    </span>
+                  </div>
+                  <textarea
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder="SEO meta description — shown in Google search results"
+                    rows={2}
+                    className={`w-full px-4 py-2 rounded-lg border text-sm ${
+                      theme === 'dark'
+                        ? 'bg-slate-800 border-slate-600 text-white placeholder-slate-500'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                    } focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none`}
+                  />
+                </div>
+
+                {/* Content (Rich Text) */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-3">
+                    <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                      Content * (Rich Text)
+                    </label>
+                    <span className={`text-xs ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>
+                      {wordCount(formData.content)} words · {readingTime(formData.content)} min read
+                    </span>
+                  </div>
+                  <RichTextEditor
+                    value={formData.content}
+                    onChange={(content) => setFormData({ ...formData, content })}
+                    theme={theme === 'dark' ? 'dark' : 'light'}
+                    size="lg"
+                  />
+                </div>
+              </div>
+
+              {/* ── RIGHT: SEO & Settings Sidebar (35%) ── */}
+              <div className={`w-[35%] overflow-y-auto p-6 space-y-5 ${
+                theme === 'dark' ? 'bg-slate-800/50' : 'bg-white'
+              }`}>
+                {/* SEO Score */}
+                <div className={`p-4 rounded-xl border ${seoScore(formData).color} border-current/20`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Search className="w-4 h-4" />
+                    <span className="text-sm font-semibold">SEO Score</span>
+                    <span className="ml-auto text-lg font-bold">{seoScore(formData).score}/100</span>
+                  </div>
+                  <div className="w-full h-2 rounded-full bg-current/10 mb-2">
+                    <div className={`h-2 rounded-full transition-all duration-500 ${seoScore(formData).barColor}`} style={{ width: `${seoScore(formData).score}%` }} />
+                  </div>
+                  <ul className="space-y-1 text-xs">
+                    {seoScore(formData).tips.map((tip: string, i: number) => (
+                      <li key={i} className="flex items-start gap-1.5">
+                        <span className="mt-0.5">•</span> {tip}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* SERP Preview */}
+                <div className="space-y-1.5">
+                  <label className={`text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <Globe className="w-3.5 h-3.5" /> Google Preview
+                  </label>
+                  <div className={`p-3 rounded-lg border ${theme === 'dark' ? 'border-slate-600 bg-slate-900' : 'border-slate-200 bg-gray-50'}`}>
+                    <p className="text-xs text-blue-600 truncate">www.dtpoonamsagar.com › blog › {formData.slug || '...'}</p>
+                    <p className="text-sm font-medium text-blue-700 truncate mt-0.5">
+                      {formData.title || 'Blog Title'} | Dietitian Poonam Sagar
+                    </p>
+                    <p className={`text-xs mt-0.5 line-clamp-2 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
+                      {formData.description || formData.excerpt || 'Meta description will appear here...'}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Content Stats */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className={`p-3 rounded-lg border ${theme === 'dark' ? 'border-slate-600 bg-slate-800' : 'border-slate-200 bg-gray-50'}`}>
+                    <p className="text-xs text-slate-500">Words</p>
+                    <p className="text-lg font-bold">{wordCount(formData.content)}</p>
+                  </div>
+                  <div className={`p-3 rounded-lg border ${theme === 'dark' ? 'border-slate-600 bg-slate-800' : 'border-slate-200 bg-gray-50'}`}>
+                    <p className="text-xs text-slate-500">Reading Time</p>
+                    <p className="text-lg font-bold">{readingTime(formData.content)} min</p>
+                  </div>
+                  <div className={`p-3 rounded-lg border ${theme === 'dark' ? 'border-slate-600 bg-slate-800' : 'border-slate-200 bg-gray-50'}`}>
+                    <p className="text-xs text-slate-500">Headings</p>
+                    <p className="text-lg font-bold">{headingCount(formData.content)}</p>
+                  </div>
+                  <div className={`p-3 rounded-lg border ${theme === 'dark' ? 'border-slate-600 bg-slate-800' : 'border-slate-200 bg-gray-50'}`}>
+                    <p className="text-xs text-slate-500">Has Image</p>
+                    <p className="text-lg font-bold">{formData.featuredImage ? '✅' : '❌'}</p>
+                  </div>
+                </div>
+
+                {/* Category */}
+                <div className="space-y-1.5">
+                  <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    Category
+                  </label>
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    className={`w-full px-3 py-2 rounded-lg border text-sm ${
+                      theme === 'dark'
+                        ? 'bg-slate-800 border-slate-600 text-white'
+                        : 'bg-white border-slate-300 text-slate-900'
+                    } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                  >
+                    <option>Health & Nutrition</option>
+                    <option>Weight Loss</option>
+                    <option>PCOD Management</option>
+                    <option>Wellness</option>
+                    <option>Fitness</option>
+                    <option>Recipes</option>
+                    <option>Tips & Tricks</option>
+                  </select>
+                </div>
+
+                {/* Tags */}
+                <div className="space-y-1.5">
+                  <label className={`text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <Hash className="w-3.5 h-3.5" /> Tags
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={tagInput}
+                      onChange={(e) => setTagInput(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
+                      placeholder="Add tag..."
+                      className={`flex-1 px-3 py-2 rounded-lg border text-sm ${
+                        theme === 'dark'
+                          ? 'bg-slate-800 border-slate-600 text-white placeholder-slate-500'
+                          : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                      } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                    />
+                    <Button type="button" onClick={handleAddTag} size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-white text-xs">
+                      Add
+                    </Button>
+                  </div>
+                  {formData.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-2">
+                      {formData.tags.map((tag) => (
+                        <Badge
+                          key={tag}
+                          className="bg-emerald-500/10 text-emerald-600 border-emerald-500/30 hover:bg-emerald-500/20 cursor-pointer text-xs"
+                          onClick={() => handleRemoveTag(tag)}
+                        >
+                          {tag}
+                          <X className="w-3 h-3 ml-1" />
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Author */}
+                <div className="space-y-1.5">
+                  <label className={`text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <User className="w-3.5 h-3.5" /> Author
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.author}
+                    onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                    className={`w-full px-3 py-2 rounded-lg border text-sm ${
+                      theme === 'dark'
+                        ? 'bg-slate-800 border-slate-600 text-white placeholder-slate-500'
                         : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
                     } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
                   />
-                  <Button type="button" onClick={handleAddTag} className="bg-emerald-500 hover:bg-emerald-600">
-                    Add
-                  </Button>
                 </div>
-                {formData.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {formData.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        className="bg-emerald-500/10 text-emerald-600 border-emerald-500/30 hover:bg-emerald-500/20 cursor-pointer"
-                        onClick={() => handleRemoveTag(tag)}
-                      >
-                        {tag}
-                        <X className="w-3 h-3 ml-1" />
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-              </div>
 
-              {/* Author */}
-              <div className="space-y-2">
-                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Author
-                </label>
-                <input
-                  type="text"
-                  value={formData.author}
-                  onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                  placeholder="Author name"
-                  className={`w-full px-4 py-2 rounded-lg border ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
-                  } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
-                />
+                {/* Publish Settings */}
+                <div className={`p-4 rounded-xl border space-y-3 ${
+                  theme === 'dark' ? 'border-slate-600' : 'border-slate-200'
+                }`}>
+                  <h4 className="text-sm font-semibold">Publish Settings</h4>
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.published}
+                      onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                      className="w-4 h-4 accent-emerald-500 rounded"
+                    />
+                    <span className={`text-sm ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                      Publish immediately
+                    </span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.featured}
+                      onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                      className="w-4 h-4 accent-emerald-500 rounded"
+                    />
+                    <span className={`text-sm ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                      Mark as featured
+                    </span>
+                  </label>
+                </div>
               </div>
-
-              {/* Checkboxes */}
-              <div className="space-y-3">
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={formData.published}
-                    onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                    className="w-5 h-5 accent-emerald-500 rounded"
-                  />
-                  <span className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Publish this blog
-                  </span>
-                </label>
-                <label className="flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={formData.featured}
-                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                    className="w-5 h-5 accent-emerald-500 rounded"
-                  />
-                  <span className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Mark as featured
-                  </span>
-                </label>
-              </div>
-
-              <DialogFooter>
-                <Button type="button" variant="outline" onClick={closeModal}>
-                  Cancel
-                </Button>
-                <Button
-                  type="submit"
-                  disabled={saving}
-                  className="bg-emerald-500 hover:bg-emerald-600 text-white"
-                >
-                  {saving ? 'Saving...' : editingId ? 'Update' : 'Create'}
-                </Button>
-              </DialogFooter>
             </form>
           </DialogContent>
         </Dialog>

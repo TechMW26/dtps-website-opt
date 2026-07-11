@@ -33,7 +33,7 @@ interface RichTextEditorProps {
   placeholder?: string;
   className?: string;
   theme?: 'dark' | 'light';
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg';
   required?: boolean;
   name?: string;
 }
@@ -125,6 +125,10 @@ export default function RichTextEditor({
 
         .rte-md .ql-editor {
           min-height: 200px;
+        }
+
+        .rte-lg .ql-editor {
+          min-height: 380px;
         }
 
         .rte-light .ql-toolbar {
