@@ -87,14 +87,32 @@ const nextConfig = {
   },
   async headers() {
     return [
+      // Static assets — cache aggressively (fingerprinted by build)
       {
         source: '/:all*(\\.png|\\.jpg|\\.jpeg|\\.gif|\\.webp|\\.avif|\\.svg|\\.ico|\\.woff|\\.woff2)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
+      // JS/CSS bundles — cache with revalidation (fingerprinted)
       {
-        source: '/:path*',
+        source: '/_next/static/:all*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      // Static pre-rendered pages — cache with stale-while-revalidate
+      {
+        source: '/((?!api|admin|checkout|_next).*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=3600, stale-while-revalidate=86400' },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          ...securityHeaders,
+        ],
+      },
+      // Dynamic/API routes — no cache
+      {
+        source: '/(api|admin|checkout)/:path*',
         headers: [
           ...noCacheHeaders,
           { key: 'X-DNS-Prefetch-Control', value: 'on' },

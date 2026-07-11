@@ -2,9 +2,14 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-    title: 'Terms & Conditions',
+    title: 'Terms & Conditions – Dietitian Poonam Sagar',
     description:
-        'Read the Terms & Conditions, including Refund Policy and Cancellation terms for Dietitian Poonam Sagar services.',
+        'Terms & Conditions for Dietitian Poonam Sagar services — including refund policy, cancellation terms, payment terms, and service usage guidelines for diet plans & consultations.',
+    openGraph: {
+        title: 'Terms & Conditions | Dietitian Poonam Sagar',
+        description: 'Read our Terms & Conditions including refund policy, cancellation terms, and service usage guidelines for diet plans & consultations.',
+        type: 'website',
+    },
     alternates: { canonical: '/terms' },
     robots: { index: true, follow: true },
 };

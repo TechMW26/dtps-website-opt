@@ -2,9 +2,14 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy – Dietitian Poonam Sagar',
   description:
-    'Read the Privacy Policy of Dietitian Poonam Sagar (dtpoonamsagar.com). Learn how we collect, use, store, and protect your personal and health information when you use our diet, nutrition, and consultation services.',
+    'Privacy Policy of Dietitian Poonam Sagar — learn how we collect, use, store, and protect your personal & health information on dtpoonamsagar.com. Your data privacy and trust matter to us.',
+  openGraph: {
+    title: 'Privacy Policy | Dietitian Poonam Sagar',
+    description: 'Learn how we collect, use, store, and protect your personal & health information on dtpoonamsagar.com.',
+    type: 'website',
+  },
   alternates: { canonical: '/privacy-policy' },
   robots: { index: true, follow: true },
 };

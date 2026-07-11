@@ -4,14 +4,19 @@ import Navbar from '@/components/Navbar';
 import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Dietitian Poonam Sagar – Get in Touch',
   description:
-    'Get in touch with Dietitian Poonam Sagar. Visit our clinic in Bhopal, email us at support@dtpoonamsagar.com, or call +91 98930 27688. We are here to guide you on your wellness journey.',
-  keywords: ['contact dietitian', 'Poonam Sagar contact', 'dietitian Bhopal', 'nutrition consultation contact'],
+    'Contact Dietitian Poonam Sagar for personalised diet plans & nutrition counselling. Visit our Bhopal clinic at 226, Gufa Mandir Rd, Lalghati, call +91 98930 27688, or email support@dtpoonamsagar.com.',
+  keywords: ['contact dietitian', 'Poonam Sagar contact', 'dietitian Bhopal', 'nutrition consultation contact', 'diet clinic Bhopal', 'best dietitian near me'],
   openGraph: {
-    title: 'Contact Us | Dietitian Poonam Sagar',
-    description: 'Reach out to Dietitian Poonam Sagar. Visit our Bhopal clinic or connect via phone, email, or WhatsApp.',
+    title: 'Contact Dietitian Poonam Sagar | Get in Touch',
+    description: 'Reach out for personalised diet plans. Visit our Bhopal clinic or connect via phone, email, or WhatsApp.',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Dietitian Poonam Sagar | Get in Touch',
+    description: 'Reach out for personalised diet plans. Visit our Bhopal clinic or connect via phone, email, or WhatsApp.',
   },
   alternates: { canonical: '/contact' },
 };

@@ -8,6 +8,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Defer off-screen section rendering to reduce initial layout cost */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
 /* ===== Anti-Flicker Image Optimizations ===== */
 /* Prevent layout shift and flickering */
 img:not([data-nimg]) {

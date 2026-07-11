@@ -47,7 +47,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       alternates: { canonical: `/blog/${slug}` },
     };
   } catch {
-    return { title: 'Blog | Dietitian Poonam Sagar' };
+    return {
+      title: 'Blog | Dietitian Poonam Sagar',
+      description: 'Read expert health, nutrition, and wellness articles by Dietitian Poonam Sagar.',
+    };
   }
 }
 
