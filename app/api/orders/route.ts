@@ -10,6 +10,8 @@ import { calculateSubtotal, validateCouponForProducts } from '@/lib/coupons';
 import { sendPostPaymentNotifications } from '@/lib/notifications';
 import { sendCapiEvent, deriveFbcFromUrl, getClientIp } from '@/lib/meta-capi';
 
+export const dynamic = 'force-dynamic';
+
 // Initialize Razorpay instance safely
 let razorpay: Razorpay | null = null;
 
@@ -423,13 +425,16 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const orderId = searchParams.get('orderId');
 
+    // Fire-and-forget: normalize stale pending orders without blocking the response.
+    // A failure here must never break the GET — the AppScript sync depends on it.
+    normalizePendingOrders(orderId || undefined).catch((e) =>
+      console.error('[orders GET] normalizePendingOrders failed:', e?.message ?? e)
+    );
+
     if (orderId) {
-      await normalizePendingOrders(orderId);
       const order = await Order.findOne({ orderId }).lean();
       return NextResponse.json({ success: true, order });
     }
-
-    await normalizePendingOrders();
 
     // Build date filter if provided
     const from = searchParams.get('from');
