@@ -8,17 +8,17 @@ import AppointmentForm from '@/components/appointment/AppointmentForm';
 export const metadata: Metadata = {
   title: 'Book a Diet Consultation – Dietitian Poonam Sagar',
   description:
-    'Book your personalised nutrition consultation with Dietitian Poonam Sagar — 25+ years of expertise, 15,000+ clients transformed. Available online & at our Bhopal clinic. Start your weight loss, PCOD, or wellness journey today.',
+    'Book your personalised nutrition consultation with Dietitian Poonam Sagar — 25+ years of expertise, 1,00,000+ clients transformed. Available online & at our Bhopal clinic. Start your weight loss, PCOD, or wellness journey today.',
   keywords: ['book dietitian appointment', 'diet consultation India', 'online diet appointment', 'Poonam Sagar consultation', 'nutritionist Bhopal', 'diet plan consultation', 'book nutritionist online'],
   openGraph: {
     title: 'Book a Diet Consultation | Dietitian Poonam Sagar',
-    description: 'Book your personalised nutrition consultation — 25+ years of expertise, 15,000+ clients transformed. Online & clinic appointments available.',
+    description: 'Book your personalised nutrition consultation — 25+ years of expertise, 1,00,000+ clients transformed. Online & clinic appointments available.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Book a Diet Consultation | Dietitian Poonam Sagar',
-    description: 'Book your personalised nutrition consultation — 25+ years of expertise, 15,000+ clients transformed.',
+    description: 'Book your personalised nutrition consultation — 25+ years of expertise, 1,00,000+ clients transformed.'
   },
   alternates: { canonical: '/appointment' },
 };

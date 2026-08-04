@@ -38,6 +38,7 @@ const LOGO_URL =
   'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 const META_PIXEL_PRIMARY_ID = '1249607162337272';
 const META_PIXEL_SECONDARY_ID = '451000204060350';
+const META_PIXEL_TERTIARY_ID = '28310721625213137';
 const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CLARITY_ALLOWED_HOSTS = ['www.dtpoonamsagar.com', 'dtpoonamsagar.com'];
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     template: '%s | Dietitian Poonam Sagar',
   },
   description:
-    'Achieve your wellness goals with personalised diet plans from Dietitian Poonam Sagar. 25+ years of expertise, 15,000+ clients transformed. Weight loss, PCOD, therapeutic nutrition & more.',
+    'Achieve your wellness goals with personalised diet plans from Dietitian Poonam Sagar. 25+ years of expertise, 1,00,000+ clients transformed. Weight loss, PCOD, therapeutic nutrition & more.',
   keywords: [
     'dietitian Bhopal',
     'Poonam Sagar',
@@ -88,7 +89,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
     description:
-      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 15,000+ clients transformed.',
+      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 1,00,000+ clients transformed.',
     url: SITE_URL,
     siteName: 'Dietitian Poonam Sagar',
     type: 'website',
@@ -106,7 +107,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
     description:
-      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 15,000+ clients transformed.',
+      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 1,00,000+ clients transformed.',
     images: [LOGO_URL],
   },
   alternates: {
@@ -154,7 +155,7 @@ export default function RootLayout({
         */}
         <Script id="meta-pixel-base" strategy="afterInteractive">
           {`
-            window.__META_PIXEL_IDS__ = ['${META_PIXEL_PRIMARY_ID}', '${META_PIXEL_SECONDARY_ID}'];
+            window.__META_PIXEL_IDS__ = ['${META_PIXEL_PRIMARY_ID}', '${META_PIXEL_SECONDARY_ID}', '${META_PIXEL_TERTIARY_ID}'];
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -208,6 +209,13 @@ export default function RootLayout({
             width="1"
             style={{ display: 'none' }}
             src={`https://www.facebook.com/tr?id=${META_PIXEL_SECONDARY_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_TERTIARY_ID}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>
