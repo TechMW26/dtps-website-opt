@@ -136,19 +136,28 @@
 .confettiLayer {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   pointer-events: none;
+  contain: strict;
+  isolation: isolate;
 }
 
 .confettiPiece {
   --confetti-drift: 0vw;
   --confetti-rotation: 540deg;
+  --confetti-width: 9px;
+  --confetti-height: 15px;
+  --confetti-radius: 0px;
   position: absolute;
-  top: -20px;
-  width: 9px;
-  height: 15px;
+  top: -5vh;
+  width: var(--confetti-width);
+  height: var(--confetti-height);
   border: 1px solid rgb(0 0 0 / 8%);
+  border-radius: var(--confetti-radius);
   opacity: 0;
   animation-name: tricolor-fall;
   animation-timing-function: cubic-bezier(0.18, 0.72, 0.3, 1);
@@ -165,7 +174,7 @@
   }
   100% {
     opacity: 0;
-    transform: translate3d(var(--confetti-drift), 108vh, 0) rotate(var(--confetti-rotation));
+    transform: translate3d(var(--confetti-drift), 112dvh, 0) rotate(var(--confetti-rotation));
   }
 }
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 import styles from './IndependenceDayOffer.module.css';
 
@@ -20,6 +21,19 @@ interface OfferPriceProps {
 }
 
 const CONFETTI_COLORS = ['#FF9933', '#FFFFFF', '#138808'] as const;
+const ANIMATED_PRICE_PAIRS = [
+  { offerPrice: 199, regularPrice: 299 },
+  { offerPrice: 8000, regularPrice: 16000 },
+] as const;
+
+export function isAnimatedPriceOffer(plan: {
+  price: number;
+  originalPrice: number;
+}) {
+  return ANIMATED_PRICE_PAIRS.some(
+    (pair) => plan.price === pair.offerPrice && plan.originalPrice === pair.regularPrice
+  );
+}
 
 export function isIndependenceDayTrialOffer(plan: {
   planName?: string;
@@ -27,24 +41,22 @@ export function isIndependenceDayTrialOffer(plan: {
   price: number;
   originalPrice: number;
 }) {
-  return (
-    plan.price === 199 &&
-    plan.originalPrice === 299 &&
-    /10\s*days?|trial/i.test(`${plan.planName || ''} ${plan.duration || ''}`)
-  );
+  return isAnimatedPriceOffer(plan);
 }
 
 function TricolorConfetti({ burstId }: { burstId: number }) {
-  if (!burstId) return null;
+  if (!burstId || typeof document === 'undefined') return null;
 
-  return (
+  return createPortal(
     <div key={burstId} className={styles.confettiLayer} aria-hidden="true">
-      {Array.from({ length: 108 }, (_, index) => {
-        const left = (index * 37) % 100;
-        const drift = ((index * 29) % 41) - 20;
-        const delay = (index % 12) * 0.025;
-        const duration = 1.65 + (index % 8) * 0.1;
-        const rotation = 360 + (index % 5) * 120;
+      {Array.from({ length: 160 }, (_, index) => {
+        const left = (index * 47 + (index % 9) * 3) % 100;
+        const drift = ((index * 31) % 61) - 30;
+        const delay = (index % 20) * 0.018;
+        const duration = 2.1 + (index % 10) * 0.11;
+        const rotation = 540 + (index % 7) * 150;
+        const width = 6 + (index % 5);
+        const height = index % 4 === 0 ? width : 10 + (index % 8);
         const color = CONFETTI_COLORS[index % CONFETTI_COLORS.length];
 
         return (
@@ -58,11 +70,15 @@ function TricolorConfetti({ burstId }: { burstId: number }) {
               animationDuration: `${duration}s`,
               '--confetti-drift': `${drift}vw`,
               '--confetti-rotation': `${rotation}deg`,
+              '--confetti-width': `${width}px`,
+              '--confetti-height': `${height}px`,
+              '--confetti-radius': index % 4 === 0 ? '50%' : index % 3 === 0 ? '2px' : '0px',
             } as CSSProperties}
           />
         );
       })}
-    </div>
+    </div>,
+    document.body
   );
 }
 
@@ -86,42 +102,23 @@ export function IndependenceDayOfferCard({ enabled, className = '', children }: 
   }, [enabled]);
 
   useEffect(() => {
+    if (!burstId) return;
+    const cleanupTimer = window.setTimeout(() => setBurstId(0), 4000);
+    return () => window.clearTimeout(cleanupTimer);
+  }, [burstId]);
+
+  useEffect(() => {
     if (!enabled || revealed || !cardRef.current) return;
-    const isMobileInteraction =
-      window.matchMedia('(hover: none), (pointer: coarse)').matches || window.innerWidth < 768;
-    const viewportRevealDelay = isMobileInteraction ? 2000 : 3000;
-
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    let animationFrame = 0;
-
-    const updateVisibility = () => {
-      const card = cardRef.current;
-      if (!card) return;
-
-      const rect = card.getBoundingClientRect();
-      const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
-      const visibleRatio = rect.height > 0 ? visibleHeight / rect.height : 0;
-
-      if (visibleRatio >= 0.45) {
-        if (!timer) timer = setTimeout(revealOffer, viewportRevealDelay);
-      } else if (timer) {
-        clearTimeout(timer);
-        timer = undefined;
-      }
-    };
-
-    const observer = new IntersectionObserver(updateVisibility, { threshold: [0, 0.45, 0.75] });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.2) revealOffer();
+      },
+      { threshold: [0.2], rootMargin: '0px 0px -8% 0px' }
+    );
     observer.observe(cardRef.current);
-    window.addEventListener('scroll', updateVisibility, { passive: true });
-    window.addEventListener('resize', updateVisibility);
-    animationFrame = window.requestAnimationFrame(updateVisibility);
 
     return () => {
-      if (timer) clearTimeout(timer);
-      window.cancelAnimationFrame(animationFrame);
       observer.disconnect();
-      window.removeEventListener('scroll', updateVisibility);
-      window.removeEventListener('resize', updateVisibility);
     };
   }, [enabled, revealOffer, revealed]);
 
@@ -167,7 +164,7 @@ export function IndependenceDayOfferPrice({
     <div className={`${styles.priceStage} ${className}`} aria-live="polite">
       <span className="sr-only">
         {revealed
-          ? `Independence Day offer price ${currency}${offerPrice}, reduced from ${currency}${regularPrice}`
+          ? `Offer price ${currency}${offerPrice}, reduced from ${currency}${regularPrice}`
           : `Price ${currency}${regularPrice}`}
       </span>
       <span aria-hidden="true" className={`${styles.initialPrice} ${revealed ? styles.initialPriceRevealed : ''}`}>

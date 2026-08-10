@@ -13,7 +13,7 @@ import Navbar from '@/components/Navbar';
 import {
   IndependenceDayOfferCard,
   IndependenceDayOfferPrice,
-  isIndependenceDayTrialOffer,
+  isAnimatedPriceOffer,
 } from '@/components/IndependenceDayOffer';
 
 // Dynamic imports for below-fold components
@@ -500,9 +500,7 @@ export default function WeightLossPage() {
                 )}
                 {/* Card */}
                 <IndependenceDayOfferCard
-                  enabled={isIndependenceDayTrialOffer({
-                    planName: plan.label,
-                    duration: plan.duration,
+                  enabled={isAnimatedPriceOffer({
                     price: plan.priceValue,
                     originalPrice: plan.originalPriceValue,
                   })}
@@ -530,9 +528,7 @@ export default function WeightLossPage() {
                         </div>
                         {/* Price */}
                         <IndependenceDayOfferPrice
-                          enabled={isIndependenceDayTrialOffer({
-                            planName: plan.label,
-                            duration: plan.duration,
+                          enabled={isAnimatedPriceOffer({
                             price: plan.priceValue,
                             originalPrice: plan.originalPriceValue,
                           })}
