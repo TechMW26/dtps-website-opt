@@ -3804,15 +3804,26 @@ video {
 
 /* ===== Weight Loss Page Specific Styles ===== */
 
+/* Custom page banners size themselves from the uploaded artwork, matching the
+   homepage banner instead of inheriting fixed hero heights or mobile padding. */
+.dynamic-page-hero {
+  display: block;
+  min-height: 0;
+  padding: 0 !important;
+}
+
 .wl-hero {
-  padding: 0;
+  padding: 0 !important;
   position: relative;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 0;
+  aspect-ratio: 3245 / 1201;
+  display: block;
   overflow: hidden;
   background: linear-gradient(135deg, #0d4043 0%, #0a2f31 100%);
+}
+
+.wl-hero img {
+  object-fit: contain !important;
 }
 
 .wl-hero::before {
@@ -5214,8 +5225,9 @@ video {
 
 @media (max-width: 768px) {
   .wl-hero {
-    padding: 40px 20px 60px;
-    min-height: 500px;
+    padding: 0 !important;
+    min-height: 0;
+    aspect-ratio: 1906 / 2001;
   }
 
   .wl-hero-container {
@@ -5972,8 +5984,8 @@ video {
 
 @media (max-width: 640px) {
   .wl-hero {
-    padding: 30px 15px 50px;
-    min-height: 400px;
+    padding: 0 !important;
+    min-height: 0;
   }
 
   .wl-hero-container {
@@ -8133,4 +8145,3 @@ video {
     padding-right: var(--section-padding-x-desktop-xlarge) !important;
   }
 }
-
