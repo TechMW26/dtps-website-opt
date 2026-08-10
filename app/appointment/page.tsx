@@ -1,13 +1,9 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import PageWrapper from '@/components/PageWrapper';
 import Navbar from '@/components/Navbar';
 import AppointmentForm from '@/components/appointment/AppointmentForm';
-
-const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
-  ssr: false,
-});
+import DynamicPopup from '@/components/DynamicPopup';
 
 
 export const metadata: Metadata = {

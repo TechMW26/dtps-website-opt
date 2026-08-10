@@ -1,12 +1,8 @@
 import { Metadata } from 'next';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
-import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import ContactForm from '@/components/contact/ContactForm';
-
-const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
-  ssr: false,
-});
+import DynamicPopup from '@/components/DynamicPopup';
 
 export const metadata: Metadata = {
   title: 'Contact Dietitian Poonam Sagar – Get in Touch',
