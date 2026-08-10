@@ -30,6 +30,7 @@ import {
   Globe2,
   Users,
   ClipboardList,
+  PanelTop,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -51,6 +52,7 @@ const sidebarItems = [
   { name: 'Coupons', href: '/admin/coupons', icon: Percent },
   { name: 'Pricing Plans', href: '/admin/pricing', icon: DollarSign },
   { name: 'Plan Banners', href: '/admin/plan-banners', icon: ImageIcon },
+  { name: 'Top Ribbon', href: '/admin/marquee', icon: PanelTop },
   { name: 'Banners', href: '/admin/banners', icon: Megaphone },
   { name: 'Page Heroes', href: '/admin/page-heroes', icon: LayoutTemplate },
   { name: 'Popups', href: '/admin/popups', icon: MessageSquare },
