@@ -11,6 +11,11 @@ import type { Pricing } from "@/lib/api";
 import TransformationGallery from "@/components/TransformationGallery";
 import TestimonialSliderSection from "@/components/TestimonialSliderSection";
 import ExpertGuidanceSection from "@/components/ExpertGuidanceSection";
+import dynamic from 'next/dynamic';
+
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
 
 // Tab data for "What Happens" section
 type WeddingTabKey = "brides" | "grooms" | "couples" | "family";
@@ -274,6 +279,7 @@ export default function WeddingPlanPage() {
 
   return (
     <main className="bg-white">
+      <DynamicPopup page="wedding" />
       {/* Hero Section with Navbar */}
       <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative h-[765px] md:h-[738px]">

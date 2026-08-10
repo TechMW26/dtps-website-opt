@@ -1,8 +1,13 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import PageWrapper from '@/components/PageWrapper';
 import Navbar from '@/components/Navbar';
 import AppointmentForm from '@/components/appointment/AppointmentForm';
+
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
 
 
 export const metadata: Metadata = {
@@ -27,6 +32,7 @@ export const metadata: Metadata = {
 export default function AppointmentPage() {
   return (
       <div className="">
+        <DynamicPopup page="appointment" />
         <section className="hero-section site-shell pt-4 md:pt-[60px]">
          <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
                         

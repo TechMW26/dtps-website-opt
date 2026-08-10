@@ -1,0 +1,184 @@
+.priceStage {
+  position: relative;
+  min-height: 1.4em;
+  overflow: visible;
+}
+
+.initialPrice {
+  position: absolute;
+  inset: 0 auto auto 0;
+  color: #014e4e;
+  white-space: nowrap;
+}
+
+.initialPriceRevealed {
+  animation: original-price-exit 760ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.initialStrike {
+  position: absolute;
+  top: 52%;
+  left: -3%;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #6b7280;
+  transform: rotate(-3deg);
+  transform-origin: left center;
+}
+
+.initialPriceRevealed .initialStrike {
+  animation: strike-across 300ms ease-out forwards;
+}
+
+.revealedPrices {
+  display: inline-flex;
+  min-height: 1.4em;
+  align-items: flex-end;
+  gap: 0.42em;
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.revealedPricesVisible {
+  animation: changed-price-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) 340ms both;
+}
+
+.offerPrice {
+  color: #014e4e;
+  font-size: 1.25em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.finalRegularPrice {
+  position: relative;
+  margin-bottom: 0.12em;
+  color: #6b7280;
+  font-size: 0.48em;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.offerCard {
+  transform-origin: center;
+  transition: transform 220ms ease, filter 220ms ease;
+  will-change: transform;
+}
+
+.offerCard[data-independence-offer='ready']:hover {
+  transform: translateY(-4px);
+  filter: drop-shadow(0 10px 16px rgb(255 153 51 / 22%));
+}
+
+.offerCardRevealed {
+  animation: card-celebrate 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes strike-across {
+  from { width: 0; }
+  to { width: 106%; }
+}
+
+@keyframes original-price-exit {
+  0%, 38% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  58% {
+    opacity: 1;
+    transform: translate3d(0.08em, 0, 0) scale(1.04);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-0.35em, -0.18em, 0) scale(0.72);
+  }
+}
+
+@keyframes changed-price-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0.7em, 0) rotateX(-72deg) scale(0.65);
+  }
+  62% {
+    opacity: 1;
+    transform: translate3d(0, -0.08em, 0) rotateX(8deg) scale(1.08);
+    text-shadow: 0 0 18px rgb(255 153 51 / 55%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateX(0) scale(1);
+    text-shadow: none;
+  }
+}
+
+@keyframes card-celebrate {
+  0% {
+    transform: translateY(0) rotate(0) scale(1);
+    filter: drop-shadow(0 0 0 rgb(255 153 51 / 0%));
+  }
+  24% {
+    transform: translateY(-8px) rotate(-0.45deg) scale(0.985);
+    filter: drop-shadow(-8px 10px 14px rgb(255 153 51 / 30%));
+  }
+  52% {
+    transform: translateY(-5px) rotate(0.35deg) scale(1.025);
+    filter: drop-shadow(8px 12px 16px rgb(19 136 8 / 28%));
+  }
+  100% {
+    transform: translateY(0) rotate(0) scale(1);
+    filter: drop-shadow(0 0 0 rgb(19 136 8 / 0%));
+  }
+}
+
+.confettiLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confettiPiece {
+  --confetti-drift: 0vw;
+  --confetti-rotation: 540deg;
+  position: absolute;
+  top: -20px;
+  width: 9px;
+  height: 15px;
+  border: 1px solid rgb(0 0 0 / 8%);
+  opacity: 0;
+  animation-name: tricolor-fall;
+  animation-timing-function: cubic-bezier(0.18, 0.72, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes tricolor-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -4vh, 0) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--confetti-drift), 108vh, 0) rotate(var(--confetti-rotation));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .initialPriceRevealed,
+  .initialPriceRevealed .initialStrike,
+  .revealedPricesVisible,
+  .offerCardRevealed {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+
+  .confettiLayer {
+    display: none;
+  }
+}

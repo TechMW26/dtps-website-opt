@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
+
 // Dynamic imports for below-fold components
 const TransformationGallery = dynamic(() => import('@/components/TransformationGallery'), {
   loading: () => <div className="min-h-[400px] animate-pulse bg-gray-100 rounded-[20px]" />,
@@ -65,6 +69,7 @@ export default function PCODPage() {
 
   return (
     <main className="bg-white">
+      <DynamicPopup page="pcod" />
       {/* Hero Section with Navbar */}
       <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">

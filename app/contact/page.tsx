@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import ContactForm from '@/components/contact/ContactForm';
+
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: 'Contact Dietitian Poonam Sagar – Get in Touch',
@@ -37,6 +42,7 @@ const socialLinks = [
 export default function ContactPage() {
   return (
     <div className="">
+      <DynamicPopup page="contact" />
       {/* Hero Section with Navbar */}
       <section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">

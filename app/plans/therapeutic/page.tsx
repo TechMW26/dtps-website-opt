@@ -5,9 +5,14 @@ import Navbar from '@/components/Navbar';
 import TransformationGallery from '@/components/TransformationGallery';
 import TestimonialSliderSection from '@/components/TestimonialSliderSection';
 import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
+import dynamic from 'next/dynamic';
 import PlanBannerDisplay from '@/components/PlanBannerDisplay';
 import { getPricingByCategory } from '@/lib/api';
 import type { Pricing } from '@/lib/api';
+
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
 
 /* ─── DATA ─── */
 const roleDietCards = [
@@ -254,6 +259,7 @@ export default function TherapeuticPlanPage() {
 
   return (
     <main className="bg-white" suppressHydrationWarning>
+      <DynamicPopup page="therapeutic" />
 
       {/* ═══════════════════════════════════════════════════════════
           1. HERO BANNER — "Yes! Diabetes, Thyroid…"
@@ -1104,15 +1110,15 @@ export default function TherapeuticPlanPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full">
             {pricingPlans.map((plan: any, index: number) => (
-              <div key={index} className="w-full h-full">
+              <div key={index} className="w-full h-full flex flex-col">
                 {/* Plan Banner */}
                 {plan.planId && (
-                  <div className="mb-2">
+                  <div className="mb-2 shrink-0">
                     <PlanBannerDisplay planId={plan.planId} />
                   </div>
                 )}
                 {/* Card */}
-                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col h-full relative">
+                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col flex-1 min-h-0 relative">
                   {(() => {
                     const cardKey = String(plan.planId || plan.label || index);
                     const isExpanded = !!expandedPricingCards[cardKey];

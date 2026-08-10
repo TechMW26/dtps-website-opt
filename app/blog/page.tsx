@@ -3,7 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
+
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
 
 interface Blog {
   _id: string;
@@ -66,6 +71,7 @@ export default function BlogPage() {
 
   return (
     <div className="bg-white min-h-screen">
+      <DynamicPopup page="blog" />
 
       {/* ── Hero ── */}
       <section className="site-shell pt-4 md:pt-[60px]">

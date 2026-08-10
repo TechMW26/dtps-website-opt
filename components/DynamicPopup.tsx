@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import styles from './DynamicPopup.module.css';
 import { validatePhone } from '@/lib/validation';
 
@@ -113,47 +112,45 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
 
         <div className={styles.popupContent}>
           <div className={styles.imageSection}>
-            <Image
+            <img
               src={popup.image}
               alt={popup.title || 'Special Offer'}
-              fill
-              className="object-cover"
-              priority
+              style={{ width: '100%', height: 'auto', display: 'block' }}
             />
           </div>
-
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className={styles.formSection}>
-              <input
-                type="tel"
-                inputMode="numeric"
-                placeholder="Enter phone number"
-                value={phoneNumber}
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10));
-                  if (phoneError) setPhoneError(null);
-                }}
-                maxLength={10}
-                required
-                className={styles.phoneInput}
-              />
-              {phoneError ? (
-                <p style={{ color: '#dc2626', fontSize: 12, marginTop: 4 }}>{phoneError}</p>
-              ) : null}
-              <button
-                type="submit"
-                disabled={loading || phoneNumber.length !== 10}
-                className={styles.submitBtn}
-              >
-                {loading ? 'Saving...' : 'Claim'}
-              </button>
-            </form>
-          ) : (
-            <div className={styles.successMessage}>
-              <p>Thank you! We'll contact you soon.</p>
-            </div>
-          )}
         </div>
+
+        {!submitted ? (
+          <form onSubmit={handleSubmit} className={styles.formSection}>
+            <input
+              type="tel"
+              inputMode="numeric"
+              placeholder="Enter phone number"
+              value={phoneNumber}
+              onChange={(e) => {
+                setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10));
+                if (phoneError) setPhoneError(null);
+              }}
+              maxLength={10}
+              required
+              className={styles.phoneInput}
+            />
+            {phoneError ? (
+              <p style={{ color: '#fca5a5', fontSize: 12, marginTop: 4 }}>{phoneError}</p>
+            ) : null}
+            <button
+              type="submit"
+              disabled={loading || phoneNumber.length !== 10}
+              className={styles.submitBtn}
+            >
+              {loading ? 'Saving...' : 'Claim'}
+            </button>
+          </form>
+        ) : (
+          <div className={styles.successMessage}>
+            <p>Thank you! We'll contact you soon.</p>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,11 @@ import { getPricingByCategory } from '@/lib/api';
 import { getOptimizedUrl } from '@/lib/imagekit-url';
 import type { Pricing } from '@/lib/api';
 import Navbar from '@/components/Navbar';
+import {
+  IndependenceDayOfferCard,
+  IndependenceDayOfferPrice,
+  isIndependenceDayTrialOffer,
+} from '@/components/IndependenceDayOffer';
 
 // Dynamic imports for below-fold components
 const YouTubeShortsSlider = dynamic(() => import('@/components/YouTubeShortsSlider'), {
@@ -190,6 +195,9 @@ export default function WeightLossPage() {
             badgeColor: plan.badgeColor?.toLowerCase() || 'gray',
             price: `₹${plan.price.toLocaleString()}`,
             original: `₹${plan.originalPrice.toLocaleString()}`,
+            priceValue: plan.price,
+            originalPriceValue: plan.originalPrice,
+            duration: plan.duration,
             features: plan.features.map(f => f.text),
             planId: plan._id,
           }));
@@ -481,17 +489,27 @@ export default function WeightLossPage() {
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 w-full">
+          <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-3 md:gap-8 w-full">
             {pricingPlans.map((plan: any, index: number) => (
-              <div key={index} className="w-full h-full">
+              <div key={index} className="w-full flex flex-col">
                 {/* Plan Banner */}
                 {plan.planId && (
-                  <div className="mb-2">
+                  <div className="mb-2 shrink-0">
                     <PlanBannerDisplay planId={plan.planId} />
                   </div>
                 )}
                 {/* Card */}
-                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col h-full relative">
+                <IndependenceDayOfferCard
+                  enabled={isIndependenceDayTrialOffer({
+                    planName: plan.label,
+                    duration: plan.duration,
+                    price: plan.priceValue,
+                    originalPrice: plan.originalPriceValue,
+                  })}
+                  className="flex flex-col"
+                >
+                  {(offerRevealed) => (
+                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col relative">
                   {(() => {
                     const cardKey = String(plan.planId || plan.label || index);
                     const isExpanded = !!expandedPricingCards[cardKey];
@@ -511,10 +529,18 @@ export default function WeightLossPage() {
                           </span>
                         </div>
                         {/* Price */}
-                        <div className="flex items-end gap-2 mb-3">
-                          <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.price}</span>
-                          <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>
-                        </div>
+                        <IndependenceDayOfferPrice
+                          enabled={isIndependenceDayTrialOffer({
+                            planName: plan.label,
+                            duration: plan.duration,
+                            price: plan.priceValue,
+                            originalPrice: plan.originalPriceValue,
+                          })}
+                          revealed={offerRevealed}
+                          regularPrice={plan.originalPriceValue}
+                          offerPrice={plan.priceValue}
+                          className="mb-3 text-[28px] font-semibold capitalize md:text-[32px]"
+                        />
                         {/* Divider */}
                         <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
                         {/* Features */}
@@ -545,27 +571,31 @@ export default function WeightLossPage() {
                         )}
 
                         {/* Buy button */}
-                        <button
-                          onClick={() => {
-                            const price = plan.price.replace('₹', '').replace(',', '');
-                            const product = {
-                              id: `weight-loss-${plan.label.toLowerCase().replace(/\s+/g, '-')}`,
-                              name: `Weight Loss Plan - ${plan.label}`,
-                              price: parseInt(price),
-                              quantity: 1,
-                            };
-                            sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                            window.location.href = '/checkout';
-                          }}
-                          className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
-                          style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
-                        >
-                          BUY NOW
-                        </button>
+                        <div className="mt-auto pt-6">
+                          <button
+                            onClick={() => {
+                              const product = {
+                                id: `weight-loss-${plan.label.toLowerCase().replace(/\s+/g, '-')}`,
+                                name: `Weight Loss Plan - ${plan.label}`,
+                                duration: plan.duration,
+                                price: plan.priceValue,
+                                quantity: 1,
+                              };
+                              sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                              window.location.href = '/checkout';
+                            }}
+                            className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer"
+                            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+                          >
+                            BUY NOW
+                          </button>
+                        </div>
                       </>
                     );
                   })()}
                 </div>
+                  )}
+                </IndependenceDayOfferCard>
               </div>
             ))}
           </div>

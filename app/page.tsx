@@ -50,6 +50,9 @@ const OurBlogsSection = dynamic(() => import('@/components/OurBlogsSection'), {
   ssr: true,
 });
 
+const DynamicPopup = dynamic(() => import('@/components/DynamicPopup'), {
+  ssr: false,
+});
 
 type Testimonial = {
   _id?: string;
@@ -134,6 +137,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-white">
+      <DynamicPopup page="home" />
       <Hero />
       <div className="section-wrapper">
         <AboutUsSection />
