@@ -1,6 +1,10 @@
 var API_URL = "https://dtpoonamsagar.com/api/form-submissions?formId=1";
 var SHEET_NAME = "Lead Form 1";
 
+// ── Configuration ──
+var MAX_RETRIES = 3;
+var RETRY_DELAY_MS = 2000;
+
 var HEADER = [
 	"Submission ID",
 	"Form ID",
@@ -51,33 +55,66 @@ function getOrCreateSheet() {
 	return sh;
 }
 
+// ── API fetching with retry logic ──
+
 function fetchSubmissions() {
-	var resp = UrlFetchApp.fetch(API_URL, {
-		method: "get",
-		muteHttpExceptions: true,
-		followRedirects: true,
-		headers: {
-			"Accept": "application/json",
-			"Cache-Control": "no-cache, no-store, must-revalidate",
-			"Pragma": "no-cache",
-			"Expires": "0"
+	var lastError = null;
+
+	for (var attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+		try {
+			var resp = UrlFetchApp.fetch(API_URL, {
+				method: "get",
+				muteHttpExceptions: true,
+				followRedirects: true,
+				headers: {
+					"Accept": "application/json",
+					"User-Agent": "Google-Apps-Script LeadSync/1.1",
+					"Cache-Control": "no-cache, no-store, must-revalidate",
+					"Pragma": "no-cache",
+					"Expires": "0"
+				}
+			});
+
+			var code = resp.getResponseCode();
+			var body = resp.getContentText();
+
+			if (code === 429) {
+				Logger.log("⚠️  Rate limited (429). Attempt " + attempt + "/" + MAX_RETRIES);
+				Utilities.sleep(RETRY_DELAY_MS * 2);
+				lastError = new Error("Rate limited (HTTP 429)");
+				continue;
+			}
+
+			if (code !== 200) {
+				var preview = body.length > 500 ? body.substring(0, 500) + "..." : body;
+				Logger.log("❌ API error HTTP " + code + " | attempt " + attempt + "/" + MAX_RETRIES + " | " + preview);
+				lastError = new Error("API error HTTP " + code + " | " + preview);
+				if (attempt < MAX_RETRIES) Utilities.sleep(RETRY_DELAY_MS);
+				continue;
+			}
+
+			var json = JSON.parse(body);
+			if (!json || json.success !== true || !Array.isArray(json.submissions)) {
+				Logger.log("❌ Unexpected API response format. attempt " + attempt + "/" + MAX_RETRIES);
+				Logger.log("   Received: " + body.substring(0, 300));
+				lastError = new Error("Unexpected API response. Expected { success: true, submissions: [] }");
+				if (attempt < MAX_RETRIES) Utilities.sleep(RETRY_DELAY_MS);
+				continue;
+			}
+
+			Logger.log("✅ Fetched " + json.submissions.length + " submissions (attempt " + attempt + ")");
+			return json.submissions;
+		} catch (e) {
+			Logger.log("❌ Fetch error attempt " + attempt + "/" + MAX_RETRIES + ": " + e.toString());
+			lastError = e;
+			if (attempt < MAX_RETRIES) Utilities.sleep(RETRY_DELAY_MS);
 		}
-	});
-
-	var code = resp.getResponseCode();
-	var body = resp.getContentText();
-
-	if (code !== 200) {
-		throw new Error("API error HTTP " + code + " | " + body.substring(0, 700));
 	}
 
-	var json = JSON.parse(body);
-	if (!json || json.success !== true || !Array.isArray(json.submissions)) {
-		throw new Error("Unexpected API response. Expected { success: true, submissions: [] }");
-	}
-
-	return json.submissions;
+	throw lastError || new Error("Failed to fetch submissions after " + MAX_RETRIES + " attempts");
 }
+
+// ── Row mapping ──
 
 function submissionToRow(s) {
 	return [
@@ -136,32 +173,39 @@ function appendNewRowsOnly(sh, rows) {
 	return toAppend.length;
 }
 
+// ── Main sync ──
+
 function syncLeadFormData() {
 	var startTime = new Date();
 	var sh = getOrCreateSheet();
-	var submissions = fetchSubmissions();
 
-	var rows = submissions.map(submissionToRow);
-	var added = appendNewRowsOnly(sh, rows);
+	try {
+		var submissions = fetchSubmissions();
+		var rows = submissions.map(submissionToRow);
+		var added = appendNewRowsOnly(sh, rows);
 
-	Logger.log(
-		"Sync done @ " + formatIST(new Date()) +
-		" | fetched=" + submissions.length +
-		" | added=" + added +
-		" | duration=" + ((new Date() - startTime) / 1000) + "s"
-	);
+		var duration = ((new Date() - startTime) / 1000).toFixed(1);
+		Logger.log(
+			"✅ Sync done @ " + formatIST(new Date()) +
+			" (" + duration + "s)" +
+			" | fetched=" + submissions.length +
+			" | added=" + added
+		);
+	} catch (err) {
+		Logger.log("❌ Sync FAILED @ " + formatIST(new Date()) + " | " + err.toString());
+		throw err;
+	}
 }
+
+// ── Trigger management ──
 
 function setupAutoRefreshTrigger() {
 	deleteAutoRefreshTrigger();
-
-	// Apps Script supports time-driven triggers for auto refresh.
 	ScriptApp.newTrigger("syncLeadFormData")
 		.timeBased()
 		.everyMinutes(5)
 		.create();
-
-	Logger.log("Auto-refresh trigger installed: every 5 minutes");
+	Logger.log("✅ Trigger installed: every 5 minutes for syncLeadFormData");
 }
 
 function deleteAutoRefreshTrigger() {
@@ -180,20 +224,41 @@ function checkAutoRefreshTrigger() {
 	});
 
 	if (active.length > 0) {
-		Logger.log("Trigger active for syncLeadFormData. Count=" + active.length);
+		Logger.log("✅ Trigger active for syncLeadFormData. Count=" + active.length);
 	} else {
-		Logger.log("No active trigger found. Run setupAutoRefreshTrigger()");
+		Logger.log("❌ No active trigger found. Run setupAutoRefreshTrigger()");
 	}
 }
 
+// ── Diagnostics ──
+
 function testApi() {
-	var resp = UrlFetchApp.fetch(API_URL, {
-		method: "get",
-		muteHttpExceptions: true,
-		headers: {
-			"Accept": "application/json"
+	Logger.log("🔍 Testing API: " + API_URL);
+	try {
+		var resp = UrlFetchApp.fetch(API_URL, {
+			method: "get",
+			muteHttpExceptions: true,
+			followRedirects: true,
+			headers: {
+				"Accept": "application/json",
+				"User-Agent": "Google-Apps-Script LeadSync/1.1"
+			}
+		});
+		var code = resp.getResponseCode();
+		var body = resp.getContentText();
+		Logger.log("HTTP " + code);
+		Logger.log("Response length: " + body.length + " chars");
+		if (code === 200) {
+			var json = JSON.parse(body);
+			Logger.log("success: " + json.success);
+			Logger.log("submissions count: " + (json.submissions ? json.submissions.length : "N/A"));
+			if (json.submissions && json.submissions.length > 0) {
+				Logger.log("First submission: " + JSON.stringify(json.submissions[0]).substring(0, 400));
+			}
+		} else {
+			Logger.log("Response preview: " + body.substring(0, 500));
 		}
-	});
-	Logger.log("HTTP " + resp.getResponseCode());
-	Logger.log(resp.getContentText());
+	} catch (e) {
+		Logger.log("❌ Test failed: " + e.toString());
+	}
 }
