@@ -1,7 +1,7 @@
 ﻿"use client"
 import { useState, useEffect, Suspense, lazy } from 'react';
 import dynamic from 'next/dynamic';
-import Hero from '@/components/Hero';
+import HomeHeroSwitcher from '@/components/HomeHeroSwitcher';
 import Image from 'next/image';
 import { getOptimizedUrl } from '@/lib/imagekit-url';
 
@@ -130,7 +130,7 @@ export default function HomePage() {
   if (!isClient) {
     return (
       <div className="min-h-screen bg-white">
-        <Hero />
+        <HomeHeroSwitcher />
       </div>
     );
   }
@@ -138,7 +138,7 @@ export default function HomePage() {
   return (
     <div className="bg-white">
       <DynamicPopup page="home" />
-      <Hero />
+      <HomeHeroSwitcher />
       <div className="section-wrapper">
         <AboutUsSection />
       </div>

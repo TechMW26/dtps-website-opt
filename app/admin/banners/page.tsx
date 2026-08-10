@@ -24,6 +24,7 @@ export default function SiteBannersPage() {
   const [uploadingDesktop, setUploadingDesktop] = useState(false);
   const [uploadingMobile, setUploadingMobile] = useState(false);
   const [uploadingIcon, setUploadingIcon] = useState(false);
+  const [togglingBannerId, setTogglingBannerId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     type: 'marquee' as 'marquee' | 'hero-banner',
     title: '',
@@ -77,11 +78,11 @@ export default function SiteBannersPage() {
       const data = await res.json();
       
       if (deviceType === 'desktop') {
-        setFormData({ ...formData, desktopImage: data.optimizedUrl });
+        setFormData((current) => ({ ...current, desktopImage: data.optimizedUrl }));
       } else if (deviceType === 'mobile') {
-        setFormData({ ...formData, mobileImage: data.optimizedUrl });
+        setFormData((current) => ({ ...current, mobileImage: data.optimizedUrl }));
       } else if (deviceType === 'icon') {
-        setFormData({ ...formData, icon: data.optimizedUrl });
+        setFormData((current) => ({ ...current, icon: data.optimizedUrl }));
       }
 
       alert(`${deviceType} uploaded and compressed successfully!`);
@@ -97,8 +98,13 @@ export default function SiteBannersPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.title) {
+    if (!formData.title.trim()) {
       alert('Please fill in title');
+      return;
+    }
+
+    if (formData.type === 'hero-banner' && (!formData.page || !formData.desktopImage)) {
+      alert('Please select a page and upload a desktop banner image');
       return;
     }
 
@@ -145,6 +151,29 @@ export default function SiteBannersPage() {
     }
   };
 
+  const handleToggleActive = async (banner: SiteBanner) => {
+    try {
+      setTogglingBannerId(banner._id);
+      const res = await fetch('/api/site-banners', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: banner._id, isActive: !banner.isActive }),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to update banner status');
+      }
+
+      await fetchBanners();
+    } catch (error: any) {
+      console.error('Error updating banner status:', error);
+      alert(error.message);
+    } finally {
+      setTogglingBannerId(null);
+    }
+  };
+
   const handleEdit = (banner: SiteBanner) => {
     setEditingBanner(banner);
     setFormData({
@@ -180,7 +209,12 @@ export default function SiteBannersPage() {
   return (
     <div style={{ padding: '20px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1>Site Banners & Marquee</h1>
+        <div>
+          <h1>Site Banners & Marquee</h1>
+          <p style={{ margin: '4px 0 0', color: '#64748b', fontSize: '14px' }}>
+            Upload responsive banners and control when they replace a page hero.
+          </p>
+        </div>
         <button
           onClick={() => setIsModalOpen(true)}
           style={{
@@ -250,7 +284,53 @@ export default function SiteBannersPage() {
                   </div>
                 )}
                 <div style={{ marginBottom: '15px' }}>
-                  <strong>Status:</strong> {banner.isActive ? '✅ Active' : '⭕ Inactive'}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+                    <div>
+                      <strong>{banner.type === 'hero-banner' ? 'Show custom banner' : 'Active'}</strong>
+                      {banner.type === 'hero-banner' && (
+                        <div style={{ color: '#64748b', fontSize: '12px', marginTop: '3px' }}>
+                          {banner.isActive
+                            ? 'The custom image is replacing the normal hero on this page.'
+                            : 'The normal page hero is currently visible.'}
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={banner.isActive}
+                      aria-label={`${banner.isActive ? 'Hide' : 'Show'} ${banner.title}`}
+                      disabled={togglingBannerId === banner._id}
+                      onClick={() => handleToggleActive(banner)}
+                      style={{
+                        position: 'relative',
+                        width: '48px',
+                        height: '26px',
+                        flexShrink: 0,
+                        padding: 0,
+                        border: 0,
+                        borderRadius: '999px',
+                        backgroundColor: banner.isActive ? '#059669' : '#cbd5e1',
+                        cursor: togglingBannerId === banner._id ? 'wait' : 'pointer',
+                        opacity: togglingBannerId === banner._id ? 0.65 : 1,
+                        transition: 'background-color 160ms ease',
+                      }}
+                    >
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '3px',
+                          left: banner.isActive ? '25px' : '3px',
+                          width: '20px',
+                          height: '20px',
+                          borderRadius: '50%',
+                          backgroundColor: 'white',
+                          boxShadow: '0 1px 3px rgba(15, 23, 42, 0.3)',
+                          transition: 'left 160ms ease',
+                        }}
+                      />
+                    </button>
+                  </div>
                 </div>
                 {banner.link && (
                   <div style={{ marginBottom: '15px' }}>
@@ -342,7 +422,15 @@ export default function SiteBannersPage() {
                   </label>
                   <select
                     value={formData.type}
-                    onChange={(e) => setFormData({ ...formData, type: e.target.value as 'marquee' | 'hero-banner' })}
+                    onChange={(e) => {
+                      const type = e.target.value as 'marquee' | 'hero-banner';
+                      setFormData({
+                        ...formData,
+                        type,
+                        page: type === 'hero-banner' && !formData.page ? 'home' : formData.page,
+                        isActive: type === 'hero-banner' ? false : formData.isActive,
+                      });
+                    }}
                     style={{
                       width: '100%',
                       padding: '10px',
@@ -499,14 +587,21 @@ export default function SiteBannersPage() {
                 </div>
 
                 <div style={{ marginBottom: '15px' }}>
-                  <label style={{ display: 'flex', alignItems: 'center' }}>
+                  <label style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                     <input
                       type="checkbox"
                       checked={formData.isActive}
                       onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                      style={{ marginRight: '8px' }}
+                      style={{ marginTop: '3px' }}
                     />
-                    Active
+                    <span>
+                      {formData.type === 'hero-banner' ? 'Show custom banner immediately' : 'Active'}
+                      {formData.type === 'hero-banner' && (
+                        <span style={{ display: 'block', color: '#64748b', fontSize: '12px', marginTop: '2px' }}>
+                          Off by default. When enabled, this image replaces the selected page&apos;s normal hero.
+                        </span>
+                      )}
+                    </span>
                   </label>
                 </div>
 
