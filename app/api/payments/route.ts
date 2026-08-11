@@ -9,7 +9,6 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
   try {
     await connectDB();
-    await Payment.updateMany({ status: 'pending' }, { status: 'failed' });
 
     const { searchParams } = new URL(req.url);
     const orderId = searchParams.get('orderId');

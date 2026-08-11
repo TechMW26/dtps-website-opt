@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     template: '%s | Dietitian Poonam Sagar',
   },
   description:
-    'Achieve your wellness goals with personalised diet plans from Dietitian Poonam Sagar. 25+ years of expertise, 1,00,000+ clients transformed. Weight loss, PCOD, therapeutic nutrition & more.',
+    'Achieve your wellness goals with personalised diet plans from Dietitian Poonam Sagar. 25+ years of expertise, 1 lakh+ clients transformed. Weight loss, PCOD, therapeutic nutrition & more.',
   keywords: [
     'dietitian Bhopal',
     'Poonam Sagar',
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
     description:
-      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 1,00,000+ clients transformed.',
+      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 1 lakh+ clients transformed.',
     url: SITE_URL,
     siteName: 'Dietitian Poonam Sagar',
     type: 'website',
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dietitian Poonam Sagar – Expert Nutrition & Weight Loss',
     description:
-      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 1,00,000+ clients transformed.',
+      'Personalised diet plans for weight loss, PCOD, therapeutic nutrition & wedding wellness. 25+ years of expertise, 1 lakh+ clients transformed.',
     images: [LOGO_URL],
   },
   alternates: {

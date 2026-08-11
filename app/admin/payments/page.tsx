@@ -16,10 +16,6 @@ interface Payment {
   createdAt: string;
 }
 
-function normalizePaymentStatus(status: string) {
-  return status === 'pending' ? 'failed' : status;
-}
-
 function toInputDate(d: Date) {
   return d.toISOString().slice(0, 10);
 }
@@ -47,12 +43,7 @@ export default function PaymentsPage() {
       const response = await fetch(`/api/payments${qs ? `?${qs}` : ''}`);
       const data = await response.json();
       if (data.success && Array.isArray(data.payments)) {
-        setPayments(
-          data.payments.map((payment: Payment) => ({
-            ...payment,
-            status: normalizePaymentStatus(payment.status),
-          }))
-        );
+        setPayments(data.payments);
         setTotalAmount(data.totalAmount || 0);
       }
     } catch (error) {
@@ -93,7 +84,7 @@ Email: ${payment.customerEmail}
 PAYMENT DETAILS
 ===============
 Amount: ₹${payment.amount.toLocaleString()}
-Status: ${normalizePaymentStatus(payment.status).toUpperCase()}
+Status: ${payment.status.toUpperCase()}
 Payment Method: Razorpay
     `;
 
@@ -259,7 +250,7 @@ Payment Method: Razorpay
               </tr>
             ) : (
               payments.map((payment) => {
-                const status = normalizePaymentStatus(payment.status);
+                const status = payment.status;
 
                 return (
                 <tr key={payment._id} className="border-b border-gray-200 hover:bg-gray-50">
@@ -272,6 +263,8 @@ Payment Method: Razorpay
                       className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
                         status === 'completed'
                           ? 'bg-green-100 text-green-800'
+                          : status === 'pending'
+                            ? 'bg-amber-100 text-amber-800'
                           : 'bg-red-100 text-red-800'
                       }`}
                     >

@@ -21,10 +21,6 @@ interface Order {
   }>;
 }
 
-function normalizeOrderStatus(status: string) {
-  return status === 'pending' ? 'cancelled' : status;
-}
-
 /* ── helpers ── */
 function fmtDate(d: string) {
   return new Date(d).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
@@ -57,12 +53,7 @@ export default function OrdersPage() {
       const res = await fetch(`/api/orders${qs ? `?${qs}` : ''}`);
       const data = await res.json();
       if (data.success && Array.isArray(data.orders)) {
-            setOrders(
-              data.orders.map((order: Order) => ({
-                ...order,
-                paymentStatus: normalizeOrderStatus(order.paymentStatus),
-              }))
-            );
+        setOrders(data.orders);
         setSelected(new Set());
       }
     } catch (err) {
@@ -83,6 +74,7 @@ export default function OrdersPage() {
   const stats = useMemo(() => ({
     total: orders.length,
     completed: orders.filter((o) => o.paymentStatus === 'completed').length,
+    pending: orders.filter((o) => o.paymentStatus === 'pending').length,
     cancelled: orders.filter((o) => o.paymentStatus === 'cancelled').length,
     failed: orders.filter((o) => o.paymentStatus === 'failed').length,
   }), [orders]);
@@ -169,7 +161,7 @@ PRODUCTS
 ${order.products.map((p: { name: string; price: number; quantity: number }) => `${p.name} x${p.quantity} - ₹${p.price * p.quantity}`).join('\n')}
 
 TOTAL: ₹${order.total.toLocaleString()}
-Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
+Payment Status: ${order.paymentStatus}
 `;
     const a = document.createElement('a');
     a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(content);
@@ -203,7 +195,7 @@ Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
           <p className="text-gray-500 text-xs font-medium">Total</p>
           <p className="text-2xl font-bold text-blue-600">{stats.total}</p>
@@ -211,6 +203,10 @@ Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
         <div className="bg-green-50 border border-green-200 rounded-xl p-4">
           <p className="text-gray-500 text-xs font-medium">Completed</p>
           <p className="text-2xl font-bold text-green-600">{stats.completed}</p>
+        </div>
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <p className="text-gray-500 text-xs font-medium">Pending</p>
+          <p className="text-2xl font-bold text-amber-600">{stats.pending}</p>
         </div>
         <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
           <p className="text-gray-500 text-xs font-medium">Cancelled</p>
@@ -234,6 +230,7 @@ Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
           >
             <option value="all">All Statuses</option>
             <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
             <option value="cancelled">Cancelled</option>
             <option value="failed">Failed</option>
           </select>
@@ -345,7 +342,7 @@ Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
               ) : (
                 filteredOrders.map((order) => {
                   const isChecked = selected.has(order.orderId);
-                  const status = normalizeOrderStatus(order.paymentStatus);
+                  const status = order.paymentStatus;
                   return (
                     <tr
                       key={order._id}
@@ -370,6 +367,8 @@ Payment Status: ${normalizeOrderStatus(order.paymentStatus)}
                           className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize ${
                             status === 'completed'
                               ? 'bg-green-100 text-green-700'
+                              : status === 'pending'
+                                ? 'bg-amber-100 text-amber-700'
                               : status === 'cancelled'
                                 ? 'bg-gray-100 text-gray-700'
                                 : 'bg-red-100 text-red-700'

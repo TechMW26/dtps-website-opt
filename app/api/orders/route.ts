@@ -84,14 +84,6 @@ async function upsertPaymentRecord({
   );
 }
 
-async function normalizePendingOrders(orderId?: string) {
-  const filter = orderId
-    ? { orderId, paymentStatus: 'pending' }
-    : { paymentStatus: 'pending' };
-
-  await Order.updateMany(filter, { paymentStatus: 'cancelled' });
-}
-
 export async function POST(req: NextRequest) {
   try {
     await connectDB();
@@ -424,12 +416,6 @@ export async function GET(req: NextRequest) {
     await connectDB();
     const { searchParams } = new URL(req.url);
     const orderId = searchParams.get('orderId');
-
-    // Fire-and-forget: normalize stale pending orders without blocking the response.
-    // A failure here must never break the GET — the AppScript sync depends on it.
-    normalizePendingOrders(orderId || undefined).catch((e) =>
-      console.error('[orders GET] normalizePendingOrders failed:', e?.message ?? e)
-    );
 
     if (orderId) {
       const order = await Order.findOne({ orderId }).lean();

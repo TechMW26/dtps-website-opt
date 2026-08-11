@@ -23,14 +23,10 @@ interface Order {
   }>;
   subtotal: number;
   total: number;
-  paymentStatus: 'completed' | 'failed' | 'cancelled';
+  paymentStatus: 'pending' | 'completed' | 'failed' | 'cancelled';
   razorpayOrderId: string;
   razorpayPaymentId?: string;
   createdAt: string;
-}
-
-function normalizeOrderStatus(status: string): 'completed' | 'failed' | 'cancelled' {
-  return status === 'pending' ? 'cancelled' : status as 'completed' | 'failed' | 'cancelled';
 }
 
 export default function OrderDetailPage() {
@@ -47,10 +43,7 @@ export default function OrderDetailPage() {
         const response = await fetch(`/api/orders?orderId=${params.id}`);
         const data = await response.json();
         if (data.success && data.order) {
-          setOrder({
-            ...data.order,
-            paymentStatus: normalizeOrderStatus(data.order.paymentStatus),
-          });
+          setOrder(data.order);
         }
       } catch (error) {
         console.error('Error fetching order:', error);
@@ -135,6 +128,7 @@ Razorpay Payment ID: ${order.razorpayPaymentId || 'N/A'}
   }
 
   const statusColor = {
+    pending: 'text-amber-600 bg-amber-50',
     completed: 'text-green-600 bg-green-50',
     failed: 'text-red-600 bg-red-50',
     cancelled: 'text-gray-600 bg-gray-50',
@@ -145,12 +139,16 @@ Razorpay Payment ID: ${order.razorpayPaymentId || 'N/A'}
     ? 'bg-emerald-500'
     : order.paymentStatus === 'failed'
       ? 'bg-red-500'
-      : 'bg-gray-400';
+      : order.paymentStatus === 'pending'
+        ? 'bg-amber-500'
+        : 'bg-gray-400';
   const paymentStatusTextColor = order.paymentStatus === 'completed'
     ? 'text-emerald-600'
     : order.paymentStatus === 'failed'
       ? 'text-red-600'
-      : 'text-gray-600';
+      : order.paymentStatus === 'pending'
+        ? 'text-amber-600'
+        : 'text-gray-600';
 
   return (
     <div className={`min-h-screen p-8 ${theme === 'dark' ? 'bg-slate-900' : 'bg-slate-50'}`}>

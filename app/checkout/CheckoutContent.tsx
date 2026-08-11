@@ -118,41 +118,6 @@ export default function CheckoutContent() {
     }
   }, []);
 
-  useEffect(() => {
-    const handlePageHide = () => {
-      const activeOrder = activeOrderRef.current;
-      if (!activeOrder || resolvedStatusRef.current === 'success') {
-        return;
-      }
-
-      const status = resolvedStatusRef.current === 'failed' ? 'failed' : 'cancelled';
-      const payload = JSON.stringify({
-        action: 'resolve',
-        orderId: activeOrder.orderId,
-        status,
-        razorpayOrderId: activeOrder.razorpayOrderId,
-        paymentMethod: 'razorpay',
-      });
-
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/orders', new Blob([payload], { type: 'application/json' }));
-        return;
-      }
-
-      void fetch('/api/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: payload,
-        keepalive: true,
-      });
-    };
-
-    window.addEventListener('pagehide', handlePageHide);
-    return () => window.removeEventListener('pagehide', handlePageHide);
-  }, []);
-
   const resolutionPriority = {
     cancelled: 1,
     failed: 2,
