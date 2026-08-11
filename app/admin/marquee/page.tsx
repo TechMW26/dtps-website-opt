@@ -47,14 +47,13 @@ function Toggle({
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={`relative h-6 w-11 flex-shrink-0 rounded-full transition-colors ${
-          checked ? 'bg-emerald-600' : 'bg-slate-300'
+        className={`relative h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 ${
+          checked ? 'border-emerald-700 bg-emerald-600' : 'border-slate-600 bg-slate-500'
         }`}
       >
         <span
-          className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
-            checked ? 'translate-x-5' : 'translate-x-0.5'
-          }`}
+          className="absolute left-1 top-1 h-[18px] w-[18px] rounded-full bg-white shadow-md transition-transform duration-200 ease-out"
+          style={{ transform: checked ? 'translateX(20px)' : 'translateX(0)' }}
         />
         <span className="sr-only">{label}</span>
       </button>

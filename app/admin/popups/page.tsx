@@ -16,8 +16,8 @@ function Toggle({ checked, onChange, label, description }: { checked: boolean; o
   return (
     <div className="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-white p-3">
       <div><p className="text-sm font-semibold text-slate-900">{label}</p>{description && <p className="mt-0.5 text-xs text-slate-500">{description}</p>}</div>
-      <button type="button" role="switch" aria-checked={checked} aria-label={label} onClick={() => onChange(!checked)} className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${checked ? 'bg-emerald-600' : 'bg-slate-300'}`}>
-        <span className={`absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${checked ? 'translate-x-5' : 'translate-x-0'}`} />
+      <button type="button" role="switch" aria-checked={checked} aria-label={label} onClick={() => onChange(!checked)} className={`relative h-7 w-12 shrink-0 cursor-pointer rounded-full border transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 ${checked ? 'border-emerald-700 bg-emerald-600' : 'border-slate-600 bg-slate-500'}`}>
+        <span className="absolute left-1 top-1 h-[18px] w-[18px] rounded-full bg-white shadow-md transition-transform duration-200 ease-out" style={{ transform: checked ? 'translateX(20px)' : 'translateX(0)' }} />
       </button>
     </div>
   );
