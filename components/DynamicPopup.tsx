@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
 import { COUNTRIES, getCountry, validatePhone } from '@/lib/validation';
 import { withPopupDefaults, type PopupSettings } from '@/lib/popup-settings';
@@ -30,6 +30,41 @@ function markShown(popup: PopupSettings) {
     if (popup.displayFrequency === 'session') sessionStorage.setItem(frequencyKey(popup._id), '1');
     else localStorage.setItem(frequencyKey(popup._id), new Date().toISOString().slice(0, 10));
   } catch {}
+}
+
+const CONFETTI_COLORS = ['#ff850b', '#ffb21c', '#008c5a', '#00a86b', '#ffffff', '#ffd166'];
+
+function confettiValue(index: number, salt: number) {
+  const value = Math.sin(index * 91.73 + salt * 37.11) * 10000;
+  return value - Math.floor(value);
+}
+
+function PopupConfetti() {
+  return (
+    <div className={styles.confettiLayer} aria-hidden="true">
+      {Array.from({ length: 84 }, (_, index) => {
+        const width = 5 + confettiValue(index, 1) * 7;
+        const height = 8 + confettiValue(index, 2) * 12;
+        return (
+          <span
+            key={index}
+            className={styles.confettiPiece}
+            style={{
+              '--confetti-left': `${confettiValue(index, 3) * 100}%`,
+              '--confetti-delay': `${confettiValue(index, 4) * 650}ms`,
+              '--confetti-duration': `${2600 + confettiValue(index, 5) * 1500}ms`,
+              '--confetti-drift': `${-16 + confettiValue(index, 6) * 32}vw`,
+              '--confetti-rotation': `${420 + confettiValue(index, 7) * 720}deg`,
+              '--confetti-width': `${width}px`,
+              '--confetti-height': `${height}px`,
+              '--confetti-color': CONFETTI_COLORS[index % CONFETTI_COLORS.length],
+              '--confetti-radius': index % 5 === 0 ? '50%' : index % 3 === 0 ? '3px' : '1px',
+            } as CSSProperties}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 export default function DynamicPopup({ page }: DynamicPopupProps) {
@@ -168,9 +203,10 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
         if (event.target === event.currentTarget && popup.dismissOnOverlay) setShowPopup(false);
       }}
     >
+      {popup.showConfetti && <PopupConfetti />}
       <section
         className={styles.popupContainer}
-        style={{ '--popup-width': `${popup.desktopMaxWidth}px`, '--popup-surface': popup.surfaceColor, '--popup-text': popup.textColor, '--popup-accent': popup.accentColor } as React.CSSProperties}
+        style={{ '--popup-width': `${popup.desktopMaxWidth}px`, '--popup-surface': popup.surfaceColor, '--popup-text': popup.textColor, '--popup-accent': popup.accentColor } as CSSProperties}
         role="dialog"
         aria-modal="true"
         aria-labelledby={`popup-title-${popup._id}`}

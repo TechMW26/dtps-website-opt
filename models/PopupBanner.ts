@@ -12,6 +12,7 @@ export interface IPopupBanner extends Document {
   displayFrequency: PopupFrequency;
   showOnDesktop: boolean;
   showOnMobile: boolean;
+  showConfetti: boolean;
   startAt: Date | null;
   endAt: Date | null;
   priority: number;
@@ -46,6 +47,7 @@ const PopupBannerSchema = new Schema<IPopupBanner>(
     displayFrequency: { type: String, enum: ['every_load', 'session', 'daily'], default: 'every_load' },
     showOnDesktop: { type: Boolean, default: true },
     showOnMobile: { type: Boolean, default: true },
+    showConfetti: { type: Boolean, default: false },
     startAt: { type: Date, default: null },
     endAt: { type: Date, default: null },
     priority: { type: Number, min: 0, max: 100, default: 0 },

@@ -78,6 +78,7 @@ function sanitize(body: Record<string, unknown>): PopupPersistenceSettings {
       ? body.displayFrequency as PopupSettings['displayFrequency'] : d.displayFrequency,
     showOnDesktop: body.showOnDesktop !== false,
     showOnMobile: body.showOnMobile !== false,
+    showConfetti: Boolean(body.showConfetti),
     startAt,
     endAt,
     priority: Math.round(number(body.priority, 0, 100, d.priority)),

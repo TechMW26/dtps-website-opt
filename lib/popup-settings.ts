@@ -13,6 +13,7 @@ export interface PopupSettings {
   displayFrequency: PopupFrequency;
   showOnDesktop: boolean;
   showOnMobile: boolean;
+  showConfetti: boolean;
   startAt: string;
   endAt: string;
   priority: number;
@@ -58,6 +59,7 @@ export const DEFAULT_POPUP_SETTINGS: PopupSettings = {
   displayFrequency: 'every_load',
   showOnDesktop: true,
   showOnMobile: true,
+  showConfetti: false,
   startAt: '',
   endAt: '',
   priority: 0,
