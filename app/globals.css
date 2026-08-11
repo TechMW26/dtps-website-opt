@@ -157,6 +157,30 @@ video {
   box-sizing: border-box;
 }
 
+/* ₹299 plan hero */
+.plan299-background,
+.plan299-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.plan299-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.plan299-hero-content {
+  min-height: var(--plan299-height-mobile);
+  padding-top: var(--plan299-padding-mobile);
+  padding-bottom: var(--plan299-padding-mobile);
+}
+
+.plan299-card-position {
+  transform: translate3d(var(--plan299-card-x-mobile), var(--plan299-card-y-mobile), 0);
+  transition: transform 180ms ease;
+}
+
 /* Tablet (768px+) */
 @media (min-width: 768px) {
   .site-shell {
@@ -185,6 +209,17 @@ video {
   .site-card-padding {
     padding-left: 60px;
     padding-right: 60px;
+  }
+
+  .plan299-hero-content {
+    height: var(--plan299-height-desktop);
+    min-height: 0;
+    padding-top: var(--plan299-padding-desktop);
+    padding-bottom: var(--plan299-padding-desktop);
+  }
+
+  .plan299-card-position {
+    transform: translate3d(var(--plan299-card-x-desktop), var(--plan299-card-y-desktop), 0);
   }
 
   .footer-shell {
