@@ -4,7 +4,7 @@ import 'react-quill-new/dist/quill.snow.css';
 
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -32,6 +32,7 @@ import {
   ClipboardList,
   PanelTop,
   BadgeIndianRupee,
+  UserRoundSearch,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -58,6 +59,7 @@ const sidebarItems = [
   { name: 'Banners', href: '/admin/banners', icon: Megaphone },
   { name: 'Page Heroes', href: '/admin/page-heroes', icon: LayoutTemplate },
   { name: 'Popups', href: '/admin/popups', icon: MessageSquare },
+  { name: 'Popup Leads', href: '/admin/popup-leads', icon: UserRoundSearch },
   { name: 'Transformation Sliders', href: '/admin/transformations', icon: Images },
   { name: 'Success Stories', href: '/admin/success-stories', icon: Trophy },
   { name: 'Testimonials', href: '/admin/testimonials', icon: Quote },

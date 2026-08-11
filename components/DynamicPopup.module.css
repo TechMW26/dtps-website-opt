@@ -1,323 +1,175 @@
 .popupOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
   z-index: 99999;
-  animation: fadeIn 0.3s ease-in;
-  padding: 20px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: auto;
+  backdrop-filter: blur(8px);
+  animation: overlayIn 180ms ease-out both;
 }
 
 .popupContainer {
+  --popup-width: 860px;
+  --popup-surface: #fff;
+  --popup-text: #172033;
+  --popup-accent: #ff850b;
   position: relative;
-  width: auto;
-  max-width: min(520px, 88vw);
-  max-height: 85vh;
-  background: white;
-  border-radius: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  width: min(var(--popup-width), calc(100vw - 48px));
+  max-height: min(88dvh, 760px);
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  animation: slideUp 0.4s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 26px;
+  background: var(--popup-surface);
+  box-shadow: 0 30px 90px rgba(0,0,0,.32), 0 8px 24px rgba(0,0,0,.16);
+  animation: modalIn 240ms cubic-bezier(.2,.8,.2,1) both;
 }
 
 .closeBtn {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50%;
-  font-size: 24px;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(15,23,42,.1);
+  border-radius: 999px;
+  background: rgba(255,255,255,.94);
+  color: #16202a;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(15,23,42,.15);
+  transition: transform 160ms ease, background 160ms ease;
 }
 
-.closeBtn:hover {
-  background: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.popupContent {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
+.closeBtn:hover { transform: scale(1.05); background: #fff; }
+.closeBtn:focus-visible { outline: 3px solid color-mix(in srgb, var(--popup-accent) 35%, transparent); outline-offset: 2px; }
+.closeBtn svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
 .imageSection {
-  position: relative;
-  width: 100%;
-  height: auto;
-  line-height: 0;
+  min-height: 480px;
+  overflow: hidden;
+  background: #f4efe7;
 }
+.imageSection picture { display: block; width: 100%; height: 100%; }
+.imageSection img { display: block; width: 100%; height: 100%; }
+.imageContain { object-fit: contain; }
+.imageCover { object-fit: cover; }
 
-.formSection {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 40px 25px 28px;
+.conversionPanel {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+  min-width: 0;
+  align-items: center;
+  overflow-y: auto;
+  background: var(--popup-surface);
+  color: var(--popup-text);
 }
-
-.phoneInput {
-  width: 100%;
-  padding: 14px 16px;
-  border: 2px solid rgba(255,255,255,0.4);
-  border-radius: 8px;
-  font-size: 16px;
-  font-family: inherit;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+.formSection { width: 100%; padding: 52px 40px 38px; }
+.offerLabel {
+  display: inline-flex;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--popup-accent) 13%, white);
+  padding: 7px 11px;
+  color: var(--popup-accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
-
-.phoneInput:focus {
-  outline: none;
-  border-color: #FF850B;
-  background: rgba(255,255,255,0.25);
-  box-shadow: 0 0 0 4px rgba(255, 133, 11, 0.25);
+.popupTitle { margin: 0; color: var(--popup-text); font-size: clamp(25px, 2.3vw, 34px); font-weight: 800; line-height: 1.12; letter-spacing: -.035em; }
+.popupSubtitle { margin: 12px 0 26px; color: color-mix(in srgb, var(--popup-text) 65%, transparent); font-size: 14px; line-height: 1.65; }
+.fieldLabel { display: block; margin-bottom: 8px; color: var(--popup-text); font-size: 13px; font-weight: 700; }
+.phoneGroup {
+  display: grid;
+  grid-template-columns: auto 1px minmax(0,1fr);
+  align-items: center;
+  min-height: 54px;
+  overflow: hidden;
+  border: 1.5px solid #d7dde5;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15,23,42,.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
-
-.phoneInput::placeholder {
-  color: rgba(255,255,255,0.6);
-}
-
+.phoneGroup:focus-within { border-color: var(--popup-accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--popup-accent) 14%, transparent); }
+.phoneGroupError { border-color: #dc2626; }
+.countrySelect { height: 52px; max-width: 118px; border: 0; background: transparent; padding: 0 10px; color: #263241; font: inherit; font-size: 14px; font-weight: 700; outline: none; cursor: pointer; }
+.phoneDivider { width: 1px; height: 28px; background: #d7dde5; }
+.phoneInput { min-width: 0; height: 52px; border: 0; outline: none; background: transparent; padding: 0 14px; color: #172033; font: inherit; font-size: 15px; }
+.phoneInput::placeholder { color: #929cab; }
+.fieldError { margin: 7px 2px 0; color: #dc2626; font-size: 12px; font-weight: 600; }
 .submitBtn {
+  display: inline-flex;
   width: 100%;
-  padding: 14px 20px;
-  background: linear-gradient(135deg, #FF850B 0%, #e67a0a 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 133, 11, 0.3);
-}
-
-.submitBtn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #e67a0a 0%, #d46a09 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 133, 11, 0.4);
-}
-
-.submitBtn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-.successMessage {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 50px 25px;
-  text-align: center;
-  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
-}
-
-.successMessage p {
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--popup-accent);
   color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--popup-accent) 30%, transparent);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+.submitBtn:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(.96); }
+.submitBtn:disabled { cursor: not-allowed; opacity: .55; box-shadow: none; }
+.privacyNote { margin: 14px 0 0; color: #8a94a3; font-size: 10.5px; line-height: 1.5; text-align: center; }
+.spinner { width: 17px; height: 17px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
+.successMessage { width: 100%; padding: 48px 38px; text-align: center; }
+.successIcon { display: grid; width: 58px; height: 58px; margin: 0 auto 18px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--popup-accent) 14%, white); color: var(--popup-accent); font-size: 28px; font-weight: 900; }
+.successMessage h2 { margin: 0; color: var(--popup-text); font-size: 26px; }
+.successMessage p { margin: 10px 0 0; color: color-mix(in srgb, var(--popup-text) 65%, transparent); font-size: 14px; line-height: 1.6; }
+
+@media (max-width: 767px) {
+  .popupOverlay { place-items: center; padding: 14px; }
+  .popupContainer {
+    display: flex;
+    width: min(420px, calc(100vw - 28px));
+    max-height: min(90dvh, 820px);
+    flex-direction: column;
+    overflow-y: auto;
+    border-radius: 22px;
+  }
+  .closeBtn { position: fixed; top: max(22px, calc(5dvh + 6px)); right: max(22px, calc((100vw - min(420px, calc(100vw - 28px))) / 2 + 8px)); width: 38px; height: 38px; }
+  .imageSection { flex: 0 0 auto; min-height: 0; max-height: 49dvh; }
+  .imageSection picture { height: auto; }
+  .imageSection img { width: 100%; height: auto; max-height: 49dvh; object-fit: contain; }
+  .conversionPanel { flex: 0 0 auto; overflow: visible; }
+  .formSection { padding: 24px 20px 20px; }
+  .offerLabel { margin-bottom: 10px; padding: 6px 9px; font-size: 10px; }
+  .popupTitle { font-size: 24px; }
+  .popupSubtitle { margin: 8px 0 18px; font-size: 13px; line-height: 1.5; }
+  .phoneGroup { min-height: 52px; border-radius: 13px; }
+  .countrySelect { height: 50px; max-width: 112px; font-size: 13px; }
+  .phoneInput { height: 50px; padding: 0 12px; font-size: 14px; }
+  .submitBtn { min-height: 50px; margin-top: 13px; border-radius: 13px; }
+  .privacyNote { margin-top: 10px; }
+  .successMessage { padding: 36px 24px; }
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  .popupOverlay {
-    padding: 16px;
-    align-items: flex-end;
-  }
-
-  .popupContainer {
-    max-width: 100%;
-    width: 100%;
-    max-height: 85vh;
-    border-radius: 16px 16px 0 0;
-    animation: slideUpMobile 0.4s ease-out;
-  }
-
-  @keyframes slideUpMobile {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .imageSection {
-    height: auto;
-    max-height: 50vh;
-  }
-
-  .imageSection img {
-    max-height: 50vh;
-    object-fit: contain;
-  }
-
-  .formSection {
-    padding: 36px 20px 22px;
-    gap: 12px;
-  }
-
-  .closeBtn {
-    top: 15px;
-    right: 15px;
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-  }
-
-  .phoneInput {
-    padding: 12px 14px;
-    font-size: 16px;
-    border-radius: 6px;
-  }
-
-  .submitBtn {
-    padding: 12px 16px;
-    font-size: 15px;
-    border-radius: 6px;
-  }
-
-  .successMessage {
-    padding: 36px 20px 22px;
-  }
-
-  .successMessage p {
-    color: #fff;
-    font-size: 16px;
-  }
+@media (max-width: 380px), (max-height: 700px) {
+  .popupContainer { max-height: calc(100dvh - 20px); }
+  .imageSection, .imageSection img { max-height: 40dvh; }
+  .formSection { padding: 18px 16px 16px; }
+  .popupSubtitle { margin-bottom: 13px; }
+  .privacyNote { display: none; }
 }
 
-/* Extra Small Mobile Devices */
-@media (max-width: 480px) {
-  .popupOverlay {
-    padding: 12px;
-  }
+@keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: none; } }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-  .popupContainer {
-    border-radius: 12px 12px 0 0;
-  }
-
-  .imageSection {
-    height: auto;
-    max-height: 45vh;
-  }
-
-  .imageSection img {
-    max-height: 45vh;
-    object-fit: contain;
-  }
-
-  .formSection {
-    padding: 32px 16px 18px;
-    gap: 10px;
-  }
-
-  .closeBtn {
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-  }
-
-  .phoneInput {
-    padding: 11px 12px;
-    font-size: 16px;
-  }
-
-  .submitBtn {
-    padding: 11px 14px;
-    font-size: 14px;
-  }
-
-  .successMessage {
-    padding: 30px 16px 18px;
-  }
-
-  .successMessage p {
-    color: #fff;
-    font-size: 15px;
-  }
-}
-
-/* Tablet Landscape */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .popupContainer {
-    max-width: 550px;
-  }
-
-  .imageSection {
-    height: 320px;
-  }
-
-  .formSection {
-    padding: 30px 22px;
-  }
-}
-
-@media (max-width: 640px) {
-  .popupContainer {
-    width: 95%;
-    max-width: none;
-  }
-
-  .imageSection {
-    height: 250px;
-  }
-
-  .formSection {
-    padding: 20px 15px;
-    gap: 12px;
-  }
-
-  .phoneInput,
-  .submitBtn {
-    font-size: 16px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .popupOverlay, .popupContainer, .spinner { animation: none; }
 }
