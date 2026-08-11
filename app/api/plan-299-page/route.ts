@@ -44,7 +44,7 @@ function sanitize(body: Record<string, unknown>): Plan299SettingsType {
   }
 
   return {
-    heroLayoutVersion: 4,
+    heroLayoutVersion: 5,
     showTextContent: body.showTextContent !== false,
     showPricingCard: body.showPricingCard !== false,
     showPlanBanner: body.showPlanBanner !== false,
@@ -124,9 +124,9 @@ export async function GET() {
                 heroPaddingDesktop: DEFAULT_PLAN_299_SETTINGS.heroPaddingDesktop,
               }
             : {}),
-          ...(Number(settings.heroLayoutVersion || 0) < 4
+          ...(Number(settings.heroLayoutVersion || 0) < 5
             ? {
-                heroLayoutVersion: 4,
+                heroLayoutVersion: 5,
                 heroMinHeightMobile: DEFAULT_PLAN_299_SETTINGS.heroMinHeightMobile,
               }
             : {}),

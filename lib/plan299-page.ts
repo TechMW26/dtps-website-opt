@@ -69,7 +69,7 @@ export interface Plan299PageSettings {
 }
 
 export const DEFAULT_PLAN_299_SETTINGS: Plan299PageSettings = {
-  heroLayoutVersion: 4,
+  heroLayoutVersion: 5,
   showTextContent: true,
   showPricingCard: true,
   showPlanBanner: true,
@@ -109,7 +109,7 @@ export const DEFAULT_PLAN_299_SETTINGS: Plan299PageSettings = {
   textAlignment: 'center',
   cardPosition: 'right',
   heroMinHeightDesktop: 560,
-  heroMinHeightMobile: 740,
+  heroMinHeightMobile: 760,
   heroPaddingDesktop: 12,
   heroPaddingMobile: 32,
   cardMaxWidth: 350,
