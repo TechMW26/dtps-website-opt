@@ -69,7 +69,7 @@ export interface IPlan299PageSettings extends Document {
 const Plan299PageSettingsSchema = new Schema<IPlan299PageSettings>(
   {
     key: { type: String, enum: ['global'], default: 'global', unique: true },
-    heroLayoutVersion: { type: Number, min: 2, default: 3 },
+    heroLayoutVersion: { type: Number, min: 2, default: 4 },
     showTextContent: { type: Boolean, default: true },
     showPricingCard: { type: Boolean, default: true },
     showPlanBanner: { type: Boolean, default: true },
@@ -109,7 +109,7 @@ const Plan299PageSettingsSchema = new Schema<IPlan299PageSettings>(
     textAlignment: { type: String, enum: ['left', 'center', 'right'], default: 'center' },
     cardPosition: { type: String, enum: ['left', 'right'], default: 'right' },
     heroMinHeightDesktop: { type: Number, min: 300, max: 1000, default: 560 },
-    heroMinHeightMobile: { type: Number, min: 300, max: 1400, default: 680 },
+    heroMinHeightMobile: { type: Number, min: 300, max: 1400, default: 740 },
     heroPaddingDesktop: { type: Number, min: 0, max: 160, default: 12 },
     heroPaddingMobile: { type: Number, min: 0, max: 120, default: 32 },
     cardMaxWidth: { type: Number, min: 280, max: 600, default: 350 },
