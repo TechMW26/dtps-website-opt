@@ -10,7 +10,7 @@ interface PageWrapperProps {
 export default function PageWrapper({ children }: PageWrapperProps) {
   return (
    <div className="bg-[#014E4E] rounded-3xl overflow-hidden relative">
-          <Navbar />
+          <Navbar bgColor="bg-[#014E4E]" />
       {children}
     </div>
   );

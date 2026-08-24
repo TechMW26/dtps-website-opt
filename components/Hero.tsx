@@ -173,8 +173,8 @@ export default function Hero() {
 
                 <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full border-2 border-[#0d4043] -ml-2 lg:-ml-2.5 bg-[#0d9488] flex items-center justify-center text-white text-[10px] lg:text-[11px] font-bold">R</div>
 
-                <span className="review-count w-8 h-8 lg:w-9 lg:h-9 bg-[#0d9488] rounded-full flex items-center justify-center text-white text-[0.65rem] lg:text-[0.7rem] font-bold -ml-2 lg:-ml-2.5">
-                  15K
+                <span className="review-count min-w-[3.75rem] h-8 lg:min-w-[4.25rem] lg:h-9 px-2 bg-[#0d9488] rounded-full flex items-center justify-center whitespace-nowrap text-white text-[0.58rem] lg:text-[0.65rem] font-bold -ml-2 lg:-ml-2.5">
+                  1 Lakh+
                 </span>
 
               </div>

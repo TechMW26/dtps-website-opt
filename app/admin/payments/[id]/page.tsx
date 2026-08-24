@@ -21,10 +21,6 @@ interface Payment {
   createdAt: string;
 }
 
-function normalizePaymentStatus(status: string) {
-  return status === 'pending' ? 'failed' : status;
-}
-
 export default function PaymentDetailPage() {
   const params = useParams();
   const { theme } = useTheme();
@@ -39,10 +35,7 @@ export default function PaymentDetailPage() {
         const data = await response.json();
         if (data.success && data.payments && data.payments.length > 0) {
           const payment = data.payments[0];
-          setPayment({
-            ...payment,
-            status: normalizePaymentStatus(payment.status),
-          });
+          setPayment(payment);
         }
       } catch (error) {
         console.error('Error fetching payment:', error);
@@ -125,6 +118,7 @@ Razorpay Payment ID: ${payment.razorpayPaymentId}
   }
 
   const statusColor: Record<string, string> = {
+    pending: 'text-amber-600 bg-amber-50',
     completed: 'text-green-600 bg-green-50',
     failed: 'text-red-600 bg-red-50',
     captured: 'text-green-600 bg-green-50',

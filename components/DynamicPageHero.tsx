@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
-import Image from 'next/image';
 
 interface PageHero {
   _id: string;
@@ -85,77 +84,41 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
   const currentHero = hero || fallback;
 
   // Pre-compute optimized image URLs
+  const desktopImage = currentHero?.desktopImage || currentHero?.image || '';
+
   const optimizedDesktopImage = useMemo(() => {
-    if (!currentHero?.desktopImage) return '';
-    return getOptimizedImageUrl(currentHero.desktopImage, 1920, 80);
-  }, [currentHero?.desktopImage]);
+    if (!desktopImage) return '';
+    return getOptimizedImageUrl(desktopImage, 1920, 80);
+  }, [desktopImage]);
 
   const optimizedMobileImage = useMemo(() => {
-    if (!currentHero?.mobileImage) return '';
-    return getOptimizedImageUrl(currentHero.mobileImage, 768, 75);
-  }, [currentHero?.mobileImage]);
+    const mobileImage = currentHero?.mobileImage || desktopImage;
+    if (!mobileImage) return '';
+    return getOptimizedImageUrl(mobileImage, 768, 75);
+  }, [currentHero?.mobileImage, desktopImage]);
 
-  if (!currentHero) {
+  if (loading || !currentHero || !optimizedDesktopImage) {
     return null;
   }
 
   return (
-    <section className="wl-hero relative overflow-hidden p-0">
-      {/* Loading skeleton while image loads */}
+    <section className="dynamic-page-hero relative overflow-hidden" aria-label={currentHero.title}>
       {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse z-0" />
+        <div className="absolute inset-0 z-10 animate-pulse bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200" />
       )}
 
-      {/* Desktop Image - Full Screen */}
-      {optimizedDesktopImage && (
-        <div className="wl-hero-desktop-image absolute top-0 right-0 w-full h-full z-0">
-          <Image
-            src={optimizedDesktopImage}
-            alt={currentHero.title}
-            fill
-            className={`object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            priority
-            fetchPriority="high"
-            quality={80}
-            sizes="100vw"
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
-      )}
-
-      {/* Mobile Image - Full Screen */}
-      {optimizedMobileImage && (
-        <div className="wl-hero-mobile-image absolute top-0 left-0 w-full h-full z-0">
-          <Image
-            src={optimizedMobileImage}
-            alt={currentHero.title}
-            fill
-            className={`object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            priority
-            fetchPriority="high"
-            quality={75}
-            sizes="100vw"
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
-      )}
-
-      {/* Fallback: Use desktopImage for mobile if mobileImage not provided */}
-      {!currentHero.mobileImage && optimizedDesktopImage && (
-        <div className="wl-hero-fallback-image absolute top-0 left-0 w-full h-full z-0">
-          <Image
-            src={optimizedDesktopImage}
-            alt={currentHero.title}
-            fill
-            className={`object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            priority
-            fetchPriority="high"
-            quality={80}
-            sizes="100vw"
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
-      )}
+      <picture>
+        <source media="(max-width: 767px)" srcSet={optimizedMobileImage} />
+        <img
+          src={optimizedDesktopImage}
+          alt={currentHero.title}
+          className={`block h-auto w-full transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          onLoad={() => setImageLoaded(true)}
+        />
+      </picture>
     </section>
   );
 }

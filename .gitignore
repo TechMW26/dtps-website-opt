@@ -42,3 +42,4 @@ coverage/
 
 #App Script Code 
 appScript.md
+.env*

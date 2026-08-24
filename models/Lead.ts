@@ -14,6 +14,28 @@ export interface ILead extends Document {
   message?: string;
   source?: string;              // 'appointment' | 'contact' | 'popup' | ...
   page?: string;
+  popupId?: string;
+  popupTitle?: string;
+  sessionId?: string;
+  pageUrl?: string;
+  referrer?: string;
+  language?: string;
+  timezone?: string;
+  device?: string;
+  browser?: string;
+  os?: string;
+  ip?: string;
+  screenWidth?: number;
+  screenHeight?: number;
+  viewportWidth?: number;
+  viewportHeight?: number;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
+  leadStatus?: 'new' | 'contacted' | 'converted' | 'closed';
+  adminNote?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -41,6 +63,28 @@ const LeadSchema = new Schema<ILead>(
     message: { type: String, trim: true },
     source: { type: String, trim: true, default: 'unknown' },
     page: { type: String, default: 'unknown' },
+    popupId: { type: String, trim: true, index: true },
+    popupTitle: { type: String, trim: true, maxlength: 120 },
+    sessionId: { type: String, trim: true, index: true },
+    pageUrl: { type: String, trim: true, maxlength: 1200 },
+    referrer: { type: String, trim: true, maxlength: 1200 },
+    language: { type: String, trim: true, maxlength: 40 },
+    timezone: { type: String, trim: true, maxlength: 100 },
+    device: { type: String, trim: true, maxlength: 30 },
+    browser: { type: String, trim: true, maxlength: 60 },
+    os: { type: String, trim: true, maxlength: 60 },
+    ip: { type: String, trim: true, maxlength: 100 },
+    screenWidth: { type: Number, min: 0, max: 20000 },
+    screenHeight: { type: Number, min: 0, max: 20000 },
+    viewportWidth: { type: Number, min: 0, max: 20000 },
+    viewportHeight: { type: Number, min: 0, max: 20000 },
+    utmSource: { type: String, trim: true, maxlength: 200 },
+    utmMedium: { type: String, trim: true, maxlength: 200 },
+    utmCampaign: { type: String, trim: true, maxlength: 200 },
+    utmTerm: { type: String, trim: true, maxlength: 200 },
+    utmContent: { type: String, trim: true, maxlength: 200 },
+    leadStatus: { type: String, enum: ['new', 'contacted', 'converted', 'closed'], default: 'new', index: true },
+    adminNote: { type: String, trim: true, maxlength: 2000, default: '' },
   },
   { timestamps: true }
 );

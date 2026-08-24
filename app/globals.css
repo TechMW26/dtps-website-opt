@@ -157,6 +157,30 @@ video {
   box-sizing: border-box;
 }
 
+/* ₹299 plan hero */
+.plan299-background,
+.plan299-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.plan299-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.plan299-hero-content {
+  min-height: var(--plan299-height-mobile);
+  padding-top: var(--plan299-padding-mobile);
+  padding-bottom: var(--plan299-padding-mobile);
+}
+
+.plan299-card-position {
+  transform: translate3d(var(--plan299-card-x-mobile), var(--plan299-card-y-mobile), 0);
+  transition: transform 180ms ease;
+}
+
 /* Tablet (768px+) */
 @media (min-width: 768px) {
   .site-shell {
@@ -185,6 +209,17 @@ video {
   .site-card-padding {
     padding-left: 60px;
     padding-right: 60px;
+  }
+
+  .plan299-hero-content {
+    height: var(--plan299-height-desktop);
+    min-height: 0;
+    padding-top: var(--plan299-padding-desktop);
+    padding-bottom: var(--plan299-padding-desktop);
+  }
+
+  .plan299-card-position {
+    transform: translate3d(var(--plan299-card-x-desktop), var(--plan299-card-y-desktop), 0);
   }
 
   .footer-shell {
@@ -3804,15 +3839,26 @@ video {
 
 /* ===== Weight Loss Page Specific Styles ===== */
 
+/* Custom page banners size themselves from the uploaded artwork, matching the
+   homepage banner instead of inheriting fixed hero heights or mobile padding. */
+.dynamic-page-hero {
+  display: block;
+  min-height: 0;
+  padding: 0 !important;
+}
+
 .wl-hero {
-  padding: 0;
+  padding: 0 !important;
   position: relative;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 0;
+  aspect-ratio: 3245 / 1201;
+  display: block;
   overflow: hidden;
   background: linear-gradient(135deg, #0d4043 0%, #0a2f31 100%);
+}
+
+.wl-hero img {
+  object-fit: contain !important;
 }
 
 .wl-hero::before {
@@ -5214,8 +5260,9 @@ video {
 
 @media (max-width: 768px) {
   .wl-hero {
-    padding: 40px 20px 60px;
-    min-height: 500px;
+    padding: 0 !important;
+    min-height: 0;
+    aspect-ratio: 1906 / 2001;
   }
 
   .wl-hero-container {
@@ -5972,8 +6019,8 @@ video {
 
 @media (max-width: 640px) {
   .wl-hero {
-    padding: 30px 15px 50px;
-    min-height: 400px;
+    padding: 0 !important;
+    min-height: 0;
   }
 
   .wl-hero-container {
@@ -8133,4 +8180,3 @@ video {
     padding-right: var(--section-padding-x-desktop-xlarge) !important;
   }
 }
-

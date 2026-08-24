@@ -4,7 +4,7 @@ import 'react-quill-new/dist/quill.snow.css';
 
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -30,6 +30,9 @@ import {
   Globe2,
   Users,
   ClipboardList,
+  PanelTop,
+  BadgeIndianRupee,
+  UserRoundSearch,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -51,9 +54,12 @@ const sidebarItems = [
   { name: 'Coupons', href: '/admin/coupons', icon: Percent },
   { name: 'Pricing Plans', href: '/admin/pricing', icon: DollarSign },
   { name: 'Plan Banners', href: '/admin/plan-banners', icon: ImageIcon },
+  { name: '₹299 Plan Page', href: '/admin/299plan', icon: BadgeIndianRupee },
+  { name: 'Top Ribbon', href: '/admin/marquee', icon: PanelTop },
   { name: 'Banners', href: '/admin/banners', icon: Megaphone },
   { name: 'Page Heroes', href: '/admin/page-heroes', icon: LayoutTemplate },
   { name: 'Popups', href: '/admin/popups', icon: MessageSquare },
+  { name: 'Popup Leads', href: '/admin/popup-leads', icon: UserRoundSearch },
   { name: 'Transformation Sliders', href: '/admin/transformations', icon: Images },
   { name: 'Success Stories', href: '/admin/success-stories', icon: Trophy },
   { name: 'Testimonials', href: '/admin/testimonials', icon: Quote },

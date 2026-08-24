@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Footer from './Footer';
+import DynamicMarquee from './DynamicMarquee';
 
 // Load route transition lazily so it stays out of the critical bundle.
 const PageTransition = dynamic(() => import('./PageTransition'), {
@@ -21,6 +22,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return (
     <div className="min-h-screen flex flex-col">
+      {!isAdminRoute && !isLeadFormRoute && <DynamicMarquee />}
       <main className="flex-1">{children}</main>
       {!isAdminRoute && !isLeadFormRoute && <Footer />}
       {!isAdminRoute && <PageTransition />}
