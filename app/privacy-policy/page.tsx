@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const SITE_NAME = 'Dietitian Poonam Sagar';
-const CONTACT_EMAIL = 'support@dtpoonamsagar.com';
+const CONTACT_EMAIL = 'support.dtps@mushroomworldgroup.com';
 const CONTACT_PHONE = '+91 98930 27688';
 const CONTACT_ADDRESS =
   '226, Gufa Mandir Rd, Jain Nagar, Lalghati, Bhopal, Madhya Pradesh 462001, India';

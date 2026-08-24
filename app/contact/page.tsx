@@ -7,7 +7,7 @@ import DynamicPopup from '@/components/DynamicPopup';
 export const metadata: Metadata = {
   title: 'Contact Dietitian Poonam Sagar – Get in Touch',
   description:
-    'Contact Dietitian Poonam Sagar for personalised diet plans & nutrition counselling. Visit our Bhopal clinic at 226, Gufa Mandir Rd, Lalghati, call +91 98930 27688, or email support@dtpoonamsagar.com.',
+    'Contact Dietitian Poonam Sagar for personalised diet plans & nutrition counselling. Visit our Bhopal clinic at 226, Gufa Mandir Rd, Lalghati, call +91 98930 27688, or email support.dtps@mushroomworldgroup.com.',
   keywords: ['contact dietitian', 'Poonam Sagar contact', 'dietitian Bhopal', 'nutrition consultation contact', 'diet clinic Bhopal', 'best dietitian near me'],
   openGraph: {
     title: 'Contact Dietitian Poonam Sagar | Get in Touch',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 const contactInfo = [
   { icon: '📍', label: 'Office Address', value: 'Dt. Poonam Sagar, 226, Gufa Mandir Rd, Jain Nagar, Lalghati, Bhopal, Madhya Pradesh 462001' },
-  { icon: '📧', label: 'E-Mail Us', value: 'support@dtpoonamsagar.com' },
+  { icon: '📧', label: 'E-Mail Us', value: 'support.dtps@mushroomworldgroup.com' },
   { icon: '📞', label: 'Contact us', value: '+91 98930 27688' },
 ];
 

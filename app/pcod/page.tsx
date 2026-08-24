@@ -289,7 +289,7 @@ export default function PCODPage() {
                 </p>
                 <p className="flex items-center gap-2 text-white/90 mt-1">
                   <span aria-hidden>✉️</span>
-                  <a href="mailto:support@dtpoonamsagar.com" className="hover:text-[#FF8A00] transition-colors">support@dtpoonamsagar.com</a>
+                  <a href="mailto:support.dtps@mushroomworldgroup.com" className="hover:text-[#FF8A00] transition-colors">support.dtps@mushroomworldgroup.com</a>
                 </p>
               </div>
             </div>

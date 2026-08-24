@@ -176,8 +176,8 @@ export default function HelpPage() {
                             </div>
                             <h4 className="mt-4 text-[1.2rem] font-bold leading-[1.28] text-[#093F46] sm:text-[1.25rem] md:text-[24px]">Email Support</h4>
                             <p className="mt-1 text-[13px] leading-[1.5] text-[#27343A] md:text-[16px]">Drop us a line anytime</p>
-                            <a href="mailto:support@dtpoonamsagar.com" className="mt-3 block text-[13px] font-semibold text-[#0A5B5B] md:text-[16px]">
-                                support@dtpoonamsagar.com
+                            <a href="mailto:support.dtps@mushroomworldgroup.com" className="mt-3 block text-[13px] font-semibold text-[#0A5B5B] md:text-[16px]">
+                                support.dtps@mushroomworldgroup.com
                             </a>
                         </div>
 

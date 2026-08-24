@@ -60,10 +60,10 @@ export default function Footer() {
                 +91 9893027688
               </a>
               <a
-                href="mailto:support@dtpoonamsagar.com"
+                href="mailto:support.dtps@mushroomworldgroup.com"
                 className="rounded-xl border border-white/35 py-3.5 px-6 text-sm text-white no-underline font-medium"
               >
-                support@dtpoonamsagar.com
+                support.dtps@mushroomworldgroup.com
               </a>
             </div>
             <div className="mt-8 flex items-center gap-5">
