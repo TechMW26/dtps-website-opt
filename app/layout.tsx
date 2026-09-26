@@ -39,6 +39,7 @@ const LOGO_URL =
 const META_PIXEL_PRIMARY_ID = '1249607162337272';
 const META_PIXEL_SECONDARY_ID = '451000204060350';
 const META_PIXEL_TERTIARY_ID = '28310721625213137';
+const META_PIXEL_QUATERNARY_ID = '1499311531960054';
 const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CLARITY_ALLOWED_HOSTS = ['www.dtpoonamsagar.com', 'dtpoonamsagar.com'];
@@ -155,7 +156,7 @@ export default function RootLayout({
         */}
         <Script id="meta-pixel-base" strategy="afterInteractive">
           {`
-            window.__META_PIXEL_IDS__ = ['${META_PIXEL_PRIMARY_ID}', '${META_PIXEL_SECONDARY_ID}', '${META_PIXEL_TERTIARY_ID}'];
+            window.__META_PIXEL_IDS__ = ['${META_PIXEL_PRIMARY_ID}', '${META_PIXEL_SECONDARY_ID}', '${META_PIXEL_TERTIARY_ID}', '${META_PIXEL_QUATERNARY_ID}'];
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -216,6 +217,13 @@ export default function RootLayout({
             width="1"
             style={{ display: 'none' }}
             src={`https://www.facebook.com/tr?id=${META_PIXEL_TERTIARY_ID}&ev=PageView&noscript=1`}
+            alt=""
+          />
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_QUATERNARY_ID}&ev=PageView&noscript=1`}
             alt=""
           />
         </noscript>
