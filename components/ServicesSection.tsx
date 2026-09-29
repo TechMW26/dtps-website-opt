@@ -32,7 +32,7 @@ export default function ServicesSection() {
         'At DTPS, we first understand how you eat, how your day looks, and what health issues you\'re dealing with. Then we plan food using regular ghar ka khana in a way that can actually be followed.',
       icon: '/Personalizedicon.svg',
       featured: true,
-      link: '/plans/therapeutic',
+      link: '/tpdtps',
     },
     {
       title: 'Weight Loss & Wellness',
@@ -40,7 +40,7 @@ export default function ServicesSection() {
         'Weight loss needs proper portions, sensible timing and food you already eat at home. When that is fixed, weight starts moving without any dramatic changes in your lifestyle.',
       icon: '/Weighticon.svg',
       featured: false,
-      link: '/weight-loss-plan',
+      link: '/wldtps',
     },
     {
       title: 'PCOD & PCOS Nutrition',
@@ -48,7 +48,7 @@ export default function ServicesSection() {
         'With PCOD, the problem isn\'t food quantity. It\'s irregular meals, sugar spikes, and confused eating patterns. We correct that slowly so the body starts responding instead of resisting.',
       icon: '/pcodicon.svg',
       featured: false,
-      link: '/pcod',
+      link: '/pcdtps',
     },
     {
       title: 'Therapeutic Nutrition',
@@ -56,7 +56,7 @@ export default function ServicesSection() {
         'When you have thyroid, diabetes, or cholesterol, food can\'t be random. We plan meals that support your treatment and daily energy, not just weight loss.',
       icon: '/Therapeuticicon.svg',
       featured: false,
-      link: '/plans/therapeutic',
+      link: '/tpdtps',
     },
   ];
 
@@ -90,7 +90,7 @@ export default function ServicesSection() {
               Most people don&apos;t fail at dieting.<br />
               They just get plans that don&apos;t match their daily life.
             </p>
-            <Link href="/plans/therapeutic" className="flex justify-center md:justify-start">
+            <Link href="/tpdtps" className="flex justify-center md:justify-start">
               <button
                 className=" bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-[0.95rem] font-semibold py-3.5 px-7 rounded-full border-none cursor-pointer shadow-[0_6px_20px_rgba(245,124,0,0.3)] transition-all duration-300 w-fit hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,124,0,0.4)]"
               >

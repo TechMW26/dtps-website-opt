@@ -22,6 +22,7 @@
  */
 
 import { useEffect, useRef } from 'react';
+import { sanitizeMetaCustomData } from '@/lib/meta-policy';
 import { usePathname, useSearchParams } from 'next/navigation';
 import {
   trackEvent,
@@ -143,16 +144,11 @@ async function firePurchaseForOrder(orderId: string): Promise<void> {
       item_price: Number(p.price ?? 0),
     }));
 
-    const purchaseCustomData = {
+    const purchaseCustomData = sanitizeMetaCustomData({
       value: Number(order.total ?? 0),
       currency: 'INR',
-      content_type: 'product',
-      content_ids: contents.map((c) => c.id),
-      contents,
-      content_name: products.map((p) => p.name).filter(Boolean).join(', '),
       num_items: contents.reduce((s, c) => s + c.quantity, 0),
-      order_id: order.orderId,
-    };
+    });
 
     trackEvent(
       'Purchase',
@@ -270,10 +266,11 @@ export default function PixelTracker() {
     });
     if (!fireOncePerSession(`initiate-checkout:${fingerprint}`)) return;
 
-    // Stable eventID per cart so server-side CAPI dedupes against the browser.
-    const eventID = `ic_${(params.content_ids as string[] | undefined)?.join('|') ?? 'cart'}_${params.value ?? 0}`;
-    trackEvent('InitiateCheckout', params, { eventID });
-    fireCapi('InitiateCheckout', eventID, params);
+    // Share one random ID across both transports; never embed product identity.
+    const eventID = generateEventId();
+    const metaParams = sanitizeMetaCustomData(params);
+    trackEvent('InitiateCheckout', metaParams, { eventID });
+    fireCapi('InitiateCheckout', eventID, metaParams);
     gaEvent('begin_checkout', toGaEcomParams(params));
   }, [pathname]);
 

@@ -317,10 +317,10 @@ export default function AdminDashboard() {
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              { page: '/weight-loss-plan', items: 'Testimonials, Pricing, Success Stories, Transformations' },
-              { page: '/pcod', items: 'Pricing, Success Stories' },
-              { page: '/plans/wedding', items: 'Pricing, Transformations' },
-              { page: '/plans/therapeutic', items: 'Success Stories, Pricing' },
+              { page: '/wldtps', items: 'Testimonials, Pricing, Success Stories, Transformations' },
+              { page: '/pcdtps', items: 'Pricing, Success Stories' },
+              { page: '/wddtps', items: 'Pricing, Transformations' },
+              { page: '/tpdtps', items: 'Success Stories, Pricing' },
               { page: '/blog', items: 'All Blog Posts' },
               { page: 'Home Page', items: 'Testimonials, Recognition' },
             ].map((section) => (

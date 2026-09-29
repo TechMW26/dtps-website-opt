@@ -18,7 +18,7 @@ const VisitorTracker = dynamic(() => import('./VisitorTracker'), {
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdminRoute = pathname?.startsWith('/admin');
-  const isLeadFormRoute = pathname?.startsWith('/weight-loss/Leadform');
+  const isLeadFormRoute = pathname?.startsWith('/wldtps/lead/') || pathname?.startsWith('/weight-loss/Leadform');
 
   return (
     <div className="min-h-screen flex flex-col">

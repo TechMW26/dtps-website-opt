@@ -19,7 +19,7 @@ const CONTACT_EMAIL = 'support.dtps@mushroomworldgroup.com';
 const CONTACT_PHONE = '+91 98930 27688';
 const CONTACT_ADDRESS =
   '226, Gufa Mandir Rd, Jain Nagar, Lalghati, Bhopal, Madhya Pradesh 462001, India';
-const EFFECTIVE_DATE = '27 April 2026';
+const EFFECTIVE_DATE = '29 September 2026';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -219,7 +219,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <div className="bg-[#F7F8F8] px-4 py-3 md:px-5 md:py-4">
                 <h4 className="mb-2 text-[14px] font-bold text-[#083F46] md:text-[15px]">Analytics &amp; advertising</h4>
-                <p className="text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">Google Analytics 4, Meta (Facebook) Pixel and Microsoft Clarity, as described in Section 6.</p>
+                <p className="text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">Google Analytics 4 and Microsoft Clarity, as described in Section 6. Meta Pixel and Conversions API event sharing are disabled.</p>
               </div>
               <div className="bg-[#F7F8F8] px-4 py-3 md:px-5 md:py-4 md:col-span-2">
                 <h4 className="mb-2 text-[14px] font-bold text-[#083F46] md:text-[15px]">Professional advisors &amp; authorities</h4>
@@ -241,7 +241,7 @@ export default function PrivacyPolicyPage() {
               <ul className="space-y-2 text-[13px] leading-[1.7] text-[#2E3A3D] md:text-[14px]">
                 <li><strong>Essential</strong> functionality (session, security, CSRF, login).</li>
                 <li><strong>Analytics</strong> — Google Analytics 4 (<code>G-R647JLBMXD</code>) and Microsoft Clarity, which help us understand how visitors use the site so we can improve it.</li>
-                <li><strong>Marketing</strong> — Meta (Facebook) Pixel, used to measure ad performance and show relevant content. We share event-level data such as page views, &ldquo;Initiate Checkout&rdquo;, &ldquo;Add Payment Info&rdquo; and &ldquo;Purchase&rdquo; (with order ID and value, never your health information).</li>
+                <li><strong>Marketing</strong> — Meta (Facebook) Pixel and Conversions API are disabled. This website does not send browsing, enquiry, checkout or purchase events to Meta through these tools, because activity on a nutrition programme can reveal health interests.</li>
               </ul>
               <p className="mt-3 text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">
                 You can disable cookies in your browser, opt out of Google Analytics via

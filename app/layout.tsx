@@ -36,10 +36,6 @@ export const viewport: Viewport = {
 const SITE_URL = 'https://www.dtpoonamsagar.com';
 const LOGO_URL =
   'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
-const META_PIXEL_PRIMARY_ID = '1249607162337272';
-const META_PIXEL_SECONDARY_ID = '451000204060350';
-const META_PIXEL_TERTIARY_ID = '28310721625213137';
-const META_PIXEL_QUATERNARY_ID = '1499311531960054';
 const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CLARITY_ALLOWED_HOSTS = ['www.dtpoonamsagar.com', 'dtpoonamsagar.com'];
@@ -126,7 +122,6 @@ export default function RootLayout({
       <head>
         {/* Preconnect to critical external domains */}
         <link rel="preconnect" href="https://ik.imagekit.io" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="anonymous" />
@@ -147,28 +142,7 @@ export default function RootLayout({
           type="image/webp"
         />
 
-        {/*
-          Meta Pixel base snippet.
-          - Loaded `afterInteractive` so it is ready before users click "Buy Now"
-            (the previous `lazyOnload` could miss early click events).
-          - All custom events are fired by <PixelTracker /> via lib/pixel.ts.
-          - To add / remove pixels in the future, edit META_PIXEL_IDS only.
-        */}
-        <Script id="meta-pixel-base" strategy="afterInteractive">
-          {`
-            window.__META_PIXEL_IDS__ = ['${META_PIXEL_PRIMARY_ID}', '${META_PIXEL_SECONDARY_ID}', '${META_PIXEL_TERTIARY_ID}', '${META_PIXEL_QUATERNARY_ID}'];
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            window.__META_PIXEL_IDS__.forEach(function(id){ fbq('init', id); });
-            fbq('track', 'PageView');
-          `}
-        </Script>
+        {/* Meta scripts are intentionally absent: see lib/meta-policy.ts. */}
 
         {/*
           Google Analytics 4 (gtag.js).
@@ -197,46 +171,13 @@ export default function RootLayout({
 
       </head>
       <body>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_PRIMARY_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_SECONDARY_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_TERTIARY_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_QUATERNARY_ID}&ev=PageView&noscript=1`}
-            alt=""
-          />
-        </noscript>
         <AuthProvider>
           <ThemeProvider>
             <ClarityTracker projectId={CLARITY_PROJECT_ID} enabledHosts={CLARITY_ALLOWED_HOSTS} />
             <LayoutWrapper>
               {children}
             </LayoutWrapper>
-            {/* Global Meta Pixel router — auto-tracks PageView on every SPA
-                navigation, InitiateCheckout on any /checkout link click, and
-                Purchase on /checkout/success. Wrapped in Suspense because it
-                uses useSearchParams(). */}
+            {/* Analytics router; Meta transports are disabled by policy. */}
             <Suspense fallback={null}>
               <PixelTracker />
             </Suspense>

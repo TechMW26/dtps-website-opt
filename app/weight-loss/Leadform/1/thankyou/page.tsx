@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'Thank you for submitting your details. Explore what happens next in your personalised health journey with Dietitian Poonam Sagar.',
   robots: { index: false, follow: false },
+  alternates: { canonical: '/wldtps/lead/1/thankyou' },
 };
 
 export default function LeadFormThankYouPage() {

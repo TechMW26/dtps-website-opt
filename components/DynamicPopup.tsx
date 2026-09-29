@@ -1,4 +1,5 @@
 'use client';
+import { toPublicUrl } from '@/lib/public-routes';
 
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { createPortal } from 'react-dom';
@@ -133,7 +134,7 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
       return;
     }
     if (popup.openInNewTab) window.open(popup.redirectUrl, '_blank', 'noopener,noreferrer');
-    else window.location.assign(popup.redirectUrl);
+    else window.location.assign(toPublicUrl(popup.redirectUrl));
   }
 
   async function handleSubmit(event: React.FormEvent) {

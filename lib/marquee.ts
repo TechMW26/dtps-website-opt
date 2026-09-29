@@ -1,3 +1,5 @@
+import { toPublicUrl } from './public-routes';
+
 export type MarqueeAnimationMode = 'scroll' | 'static';
 export type MarqueeDirection = 'left' | 'right';
 
@@ -46,8 +48,8 @@ export interface MarqueeSettings {
 export const MARQUEE_PAGE_OPTIONS = [
   { label: 'All public pages', value: '*' },
   { label: 'Home', value: '/' },
-  { label: 'Weight Loss', value: '/weight-loss-plan' },
-  { label: 'PCOD', value: '/pcod' },
+  { label: 'Weight Loss', value: '/wldtps' },
+  { label: 'PCOD', value: '/pcdtps' },
   { label: 'All Plans', value: '/plans' },
   { label: 'Contact', value: '/contact' },
   { label: 'Appointment', value: '/appointment' },
@@ -106,9 +108,14 @@ export function isSafeMarqueeLink(value: string) {
 
 export function marqueeMatchesPath(pathname: string, pages: string[]) {
   if (!pages.length || pages.includes('*')) return true;
+  const publicPath = toPublicUrl(pathname);
 
   return pages.some((page) => {
-    if (page === '/') return pathname === '/';
-    return pathname === page || pathname.startsWith(`${page}/`);
+    // Preserve previously saved CMS targeting after the public URL migration.
+    if (page === '/plans' && ['/tpdtps', '/thydtps', '/wddtps'].includes(publicPath)) return true;
+    page = toPublicUrl(page);
+    if (page === '/tpdtps' && publicPath === '/thydtps') return true;
+    if (page === '/') return publicPath === '/';
+    return publicPath === page || publicPath.startsWith(`${page}/`);
   });
 }

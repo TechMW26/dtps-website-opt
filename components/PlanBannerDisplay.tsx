@@ -1,4 +1,5 @@
 'use client';
+import { toPublicUrl } from '@/lib/public-routes';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -83,7 +84,7 @@ export default function PlanBannerDisplay({ planId }: PlanBannerDisplayProps) {
   if (banner.link) {
     return (
       <div className="w-full cursor-pointer">
-        <Link href={banner.link}>
+        <Link href={toPublicUrl(banner.link)}>
           {BannerContent}
         </Link>
       </div>

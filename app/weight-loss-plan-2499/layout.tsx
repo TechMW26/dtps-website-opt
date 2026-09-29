@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description:
       'Start your transformation with our ₹2,499 weight loss plan. Personalised diet chart, 2 consultations, chat support & progress tracking.',
   },
-  alternates: { canonical: '/weight-loss-plan-2499' },
+  alternates: { canonical: '/wldtps-2499' },
 };
 
 export default function WeightLossPlan2499Layout({ children }: { children: React.ReactNode }) {

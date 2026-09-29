@@ -575,7 +575,7 @@ export default function SiteBannersPage() {
                     type="text"
                     value={formData.link}
                     onChange={(e) => setFormData({ ...formData, link: e.target.value })}
-                    placeholder="/weight-loss-plan"
+                    placeholder="/wldtps"
                     style={{
                       width: '100%',
                       padding: '10px',

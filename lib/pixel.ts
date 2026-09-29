@@ -11,6 +11,8 @@
  * editing that one array — no other code change needed.
  */
 
+import { canSendMetaEvents, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
+
 export type FbqStandardEvent =
   | 'PageView'
   | 'ViewContent'
@@ -61,13 +63,14 @@ export function trackEvent(
   params: Record<string, unknown> = {},
   options: FbqEventOptions = {}
 ): void {
+  if (!canSendMetaEvents()) return;
   if (typeof window === 'undefined') return;
   const fbq = window.fbq;
   if (typeof fbq !== 'function') return;
 
   const eventID = options.eventID ?? generateEventId();
   try {
-    fbq('track', event, params, { eventID });
+    fbq('track', event, sanitizeMetaCustomData(params), { eventID });
   } catch (err) {
     // Never let analytics break the page.
     // eslint-disable-next-line no-console
@@ -81,13 +84,14 @@ export function trackCustom(
   params: Record<string, unknown> = {},
   options: FbqEventOptions = {}
 ): void {
+  if (!canSendMetaEvents()) return;
   if (typeof window === 'undefined') return;
   const fbq = window.fbq;
   if (typeof fbq !== 'function') return;
 
   const eventID = options.eventID ?? generateEventId();
   try {
-    fbq('trackCustom', event, params, { eventID });
+    fbq('trackCustom', event, sanitizeMetaCustomData(params), { eventID });
   } catch (err) {
     // eslint-disable-next-line no-console
     console.warn('[pixel] trackCustom failed', err);
@@ -122,13 +126,14 @@ export function fireCapi(
   customData: Record<string, unknown> = {},
   userData: CapiUserDataInput = {}
 ): void {
+  if (!canSendMetaEvents()) return;
   if (typeof window === 'undefined') return;
   try {
     const body = JSON.stringify({
       event,
       eventId,
-      eventSourceUrl: window.location.href,
-      customData,
+      eventSourceUrl: sanitizeMetaSourceUrl(window.location.href),
+      customData: sanitizeMetaCustomData(customData),
       userData,
     });
     // keepalive + no-store so it survives a navigation right after the call.

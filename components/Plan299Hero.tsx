@@ -1,4 +1,5 @@
 'use client';
+import { toPublicUrl } from '@/lib/public-routes';
 
 import type { CSSProperties, ReactNode } from 'react';
 import type { Plan299PageSettings } from '@/lib/plan299-page';
@@ -126,7 +127,7 @@ export default function Plan299Hero({ settings, cardContent }: Plan299HeroProps)
 
             {settings.showHeroButton && settings.heroButtonText && (
               <a
-                href={settings.heroButtonLink}
+                href={toPublicUrl(settings.heroButtonLink)}
                 className="mt-6 inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-bold transition-transform hover:scale-[1.02]"
                 style={{ color: settings.heroButtonTextColor, backgroundColor: settings.heroButtonBackgroundColor }}
               >

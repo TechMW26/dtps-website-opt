@@ -25,6 +25,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { canSendMetaEvents } from '@/lib/meta-policy';
 import {
   sendCapiEvent,
   deriveFbcFromUrl,
@@ -65,6 +66,10 @@ interface IncomingBody {
 }
 
 export async function POST(req: NextRequest) {
+  // Also covers old browser bundles and direct requests. Do not process PII.
+  if (!canSendMetaEvents()) {
+    return NextResponse.json({ ok: true, sent: 0, suppressed: true }, { headers: { 'Cache-Control': 'no-store' } });
+  }
   let body: IncomingBody;
   try {
     body = (await req.json()) as IncomingBody;

@@ -1,4 +1,5 @@
 'use client';
+import { toPublicUrl } from '@/lib/public-routes';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -101,7 +102,7 @@ export default function HomeHeroSwitcher() {
       <div className="relative overflow-hidden rounded-3xl bg-[#014E4E]">
         <Navbar />
         {banner.link ? (
-          <Link href={banner.link} className="block" aria-label={banner.title}>
+          <Link href={toPublicUrl(banner.link)} className="block" aria-label={banner.title}>
             {image}
           </Link>
         ) : (

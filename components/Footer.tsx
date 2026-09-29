@@ -7,8 +7,8 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin, FaApple, FaAndroid } f
 
 const serviceLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Weight Loss', href: '/weight-loss-plan' },
-  { label: 'PCOD', href: '/pcod' },
+  { label: 'Weight Loss', href: '/wldtps' },
+  { label: 'PCOD', href: '/pcdtps' },
   { label: 'All Plans', href: '#', hasDropdown: true },
   { label: 'Contact Us', href: '/contact' },
   { label: 'Good Read', href: '/blog' },
@@ -117,10 +117,10 @@ export default function Footer() {
                         </svg>
                       </button>
                       <div className={`overflow-hidden transition-all duration-200 ${isPlansOpen ? 'max-h-40 mt-2' : 'max-h-0'}`}>
-                        <Link href="/plans/wedding" className="block text-white/75 no-underline text-[14px] font-medium py-1 pl-3 hover:text-white">
+                        <Link href="/wddtps" className="block text-white/75 no-underline text-[14px] font-medium py-1 pl-3 hover:text-white">
                           Wedding Plan
                         </Link>
-                        <Link href="/plans/therapeutic" className="block text-white/75 no-underline text-[14px] font-medium py-1 pl-3 hover:text-white">
+                        <Link href="/tpdtps" className="block text-white/75 no-underline text-[14px] font-medium py-1 pl-3 hover:text-white">
                           Therapeutic Plan
                         </Link>
                       </div>

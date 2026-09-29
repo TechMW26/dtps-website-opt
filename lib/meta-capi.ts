@@ -17,6 +17,7 @@
  */
 
 import crypto from 'crypto';
+import { canSendMetaEvents, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
 
 const DEFAULT_PIXEL_IDS = ['1249607162337272', '451000204060350'];
 const DEFAULT_API_VERSION = 'v21.0';
@@ -169,6 +170,7 @@ function getAccessToken(): string | null {
  * break the request flow).
  */
 export async function sendCapiEvent(input: CapiEventInput): Promise<CapiSendResult[]> {
+  if (!canSendMetaEvents()) return [];
   const accessToken = getAccessToken();
   if (!accessToken) {
     // eslint-disable-next-line no-console
@@ -190,9 +192,11 @@ export async function sendCapiEvent(input: CapiEventInput): Promise<CapiSendResu
     action_source: input.actionSource ?? 'website',
     user_data: userData,
   };
-  if (input.eventSourceUrl) dataItem.event_source_url = input.eventSourceUrl;
-  if (input.customData && Object.keys(input.customData).length > 0) {
-    dataItem.custom_data = input.customData;
+  const sourceUrl = sanitizeMetaSourceUrl(input.eventSourceUrl);
+  if (sourceUrl) dataItem.event_source_url = sourceUrl;
+  const customData = sanitizeMetaCustomData(input.customData);
+  if (Object.keys(customData).length > 0) {
+    dataItem.custom_data = customData;
   }
 
   const payload: Record<string, unknown> = { data: [dataItem] };

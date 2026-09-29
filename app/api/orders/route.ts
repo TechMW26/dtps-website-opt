@@ -249,11 +249,6 @@ export async function POST(req: NextRequest) {
             price?: number;
             quantity?: number;
           }>;
-          const contents = products.map((p) => ({
-            id: String(p.id ?? p.name ?? 'item'),
-            quantity: Number(p.quantity ?? 1),
-            item_price: Number(p.price ?? 0),
-          }));
           const referer = req.headers.get('referer');
           void sendCapiEvent({
             eventName: 'Purchase',
@@ -274,12 +269,7 @@ export async function POST(req: NextRequest) {
             customData: {
               value: Number(refreshedOrder.total ?? 0),
               currency: 'INR',
-              content_type: 'product',
-              content_ids: contents.map((c) => c.id),
-              contents,
-              content_name: products.map((p) => p.name).filter(Boolean).join(', '),
-              num_items: contents.reduce((s, c) => s + c.quantity, 0),
-              order_id: refreshedOrder.orderId,
+              num_items: products.reduce((sum, product) => sum + Number(product.quantity ?? 1), 0),
             },
           }).catch((capiError) => {
             console.error('CAPI Purchase send error:', capiError);

@@ -16,6 +16,7 @@ import {
   getCountry,
 } from '@/lib/validation';
 import { trackEvent, readCheckoutCartParams, gaEvent, toGaEcomParams, fireCapi } from '@/lib/pixel';
+import { sanitizeMetaCustomData } from '@/lib/meta-policy';
 
 declare global {
   interface Window {
@@ -391,7 +392,7 @@ export default function CheckoutContent() {
         // eventID = api_<orderId> so the server-side CAPI mirror dedupes.
         const cartParams = readCheckoutCartParams();
         const apiEventId = `api_${data.order.orderId}`;
-        const apiCustomData = { ...cartParams, order_id: data.order.orderId };
+        const apiCustomData = sanitizeMetaCustomData(cartParams);
         trackEvent('AddPaymentInfo', apiCustomData, { eventID: apiEventId });
         // Server-side mirror with PII for stronger match quality.
         fireCapi('AddPaymentInfo', apiEventId, apiCustomData, {

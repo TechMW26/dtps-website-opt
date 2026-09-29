@@ -13,14 +13,14 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Weight Loss', href: '/weight-loss-plan' },
-  { label: 'PCOD', href: '/pcod' },
+  { label: 'Weight Loss', href: '/wldtps' },
+  { label: 'PCOD', href: '/pcdtps' },
   {
     label: 'All Plans',
     href: '#',
     children: [
-      { label: 'Wedding Plan', href: '/plans/wedding' },
-      { label: 'Therapeutic Plan', href: '/plans/therapeutic' },
+      { label: 'Wedding Plan', href: '/wddtps' },
+      { label: 'Therapeutic Plan', href: '/tpdtps' },
     ],
   },
   { label: 'Contact Us', href: '/contact' },
@@ -69,6 +69,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
+    if (href === '/plans') return ['/tpdtps', '/thydtps', '/wddtps'].includes(pathname);
     return pathname.startsWith(href);
   };
 

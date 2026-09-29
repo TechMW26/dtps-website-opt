@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   alternates: {
-    canonical: '/pcod',
+    canonical: '/pcdtps',
   },
 };
 

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
     description:
         'Start your personalised weight loss journey with Dietitian Poonam Sagar. Fill in your details and our team will reach out to you.',
     robots: { index: false, follow: false },
+    alternates: { canonical: '/wldtps/lead/1' },
 };
 
 export default function LeadFormPage() {

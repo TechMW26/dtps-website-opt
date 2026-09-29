@@ -1,4 +1,5 @@
 'use client';
+import { toPublicUrl } from '@/lib/public-routes';
 
 import { X } from 'lucide-react';
 import type { CSSProperties } from 'react';
@@ -44,7 +45,7 @@ function RibbonItem({
       {item.link ? (
         <a
           className="marquee-link"
-          href={item.link}
+          href={toPublicUrl(item.link)}
           target={item.openInNewTab ? '_blank' : undefined}
           rel={item.openInNewTab ? 'noopener noreferrer' : undefined}
           tabIndex={duplicate ? -1 : undefined}

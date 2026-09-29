@@ -390,7 +390,7 @@ export default function MarqueeAdminPage() {
                         </label>
                         <label className="block">
                           <span className="mb-1.5 block text-sm font-medium text-slate-700">Redirect route or full URL</span>
-                          <Input value={item.link} onChange={(event) => updateItem(index, { link: event.target.value })} maxLength={500} placeholder="/weight-loss-plan or https://example.com" />
+                          <Input value={item.link} onChange={(event) => updateItem(index, { link: event.target.value })} maxLength={500} placeholder="/wldtps or https://example.com" />
                           <span className="mt-1 block text-xs text-slate-500">Internal routes, https links, email, and phone links are supported.</span>
                         </label>
                         <div>

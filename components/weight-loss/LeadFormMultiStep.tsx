@@ -446,7 +446,7 @@ export default function LeadFormMultiStep({
             }
             setSubmitted(true);
             onSuccess?.();
-            router.push(`/weight-loss/Leadform/${formId}/thankyou`);
+            router.push(`/wldtps/lead/${formId}/thankyou`);
         } catch (err) {
             console.error(err);
             setServerError('Network error. Please try again.');
@@ -460,7 +460,7 @@ export default function LeadFormMultiStep({
             onClose();
             return;
         }
-        router.push('/weight-loss-plan');
+        router.push('/wldtps');
     };
 
     return (
@@ -478,7 +478,7 @@ export default function LeadFormMultiStep({
                     </button>
                 ) : (
                     <Link
-                        href="/weight-loss-plan"
+                        href="/wldtps"
                         aria-label="Close"
                         className="absolute right-4 top-4 rounded-full p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700"
                     >
