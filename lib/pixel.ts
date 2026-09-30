@@ -6,12 +6,12 @@
  * consistent eventIDs (for Conversions API dedup) and a single place to add /
  * remove pixels in the future.
  *
- * Pixel IDs are read from `window.__META_PIXEL_IDS__` which is populated by
- * the inline script in `app/layout.tsx`. Adding a new pixel ID only requires
- * editing that one array — no other code change needed.
+ * The only pixel ID is configured in lib/meta-config.ts. Browser PageView
+ * is enabled; conversion/custom events and CAPI remain disabled by policy.
  */
 
 import { canSendMetaEvents, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
+import { META_PIXEL_ID } from './meta-config';
 
 export type FbqStandardEvent =
   | 'PageView'
@@ -63,14 +63,14 @@ export function trackEvent(
   params: Record<string, unknown> = {},
   options: FbqEventOptions = {}
 ): void {
-  if (!canSendMetaEvents()) return;
+  if (event !== 'PageView' && !canSendMetaEvents()) return;
   if (typeof window === 'undefined') return;
   const fbq = window.fbq;
   if (typeof fbq !== 'function') return;
 
   const eventID = options.eventID ?? generateEventId();
   try {
-    fbq('track', event, sanitizeMetaCustomData(params), { eventID });
+    fbq('trackSingle', META_PIXEL_ID, event, event === 'PageView' ? {} : sanitizeMetaCustomData(params), { eventID });
   } catch (err) {
     // Never let analytics break the page.
     // eslint-disable-next-line no-console

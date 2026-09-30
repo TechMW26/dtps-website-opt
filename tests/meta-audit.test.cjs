@@ -14,7 +14,7 @@ function loadTs(file, globals = {}, imports = {}) {
   const exports = {};
   vm.runInNewContext(code, {
     exports, console, URL, process, ...globals,
-    require: (name) => Object.hasOwn(imports, name) ? imports[name] : require(name),
+    require: (name) => Object.hasOwn(imports, name) ? imports[name] : name === './meta-config' ? loadTs('lib/meta-config.ts') : require(name),
   }, { filename: file });
   return exports;
 }
@@ -108,7 +108,7 @@ test('browser standard/custom events and CAPI cannot transmit health or identity
     window: { fbq: () => calls++, location: { href: 'https://www.dtpoonamsagar.com/pcdtps?email=person@example.com' } },
     fetch: () => { calls++; throw Error('unexpected network'); },
   }, { './meta-policy': policy });
-  for (const event of ['PageView', 'ViewContent', 'Lead', 'InitiateCheckout', 'AddPaymentInfo', 'Purchase']) {
+  for (const event of ['ViewContent', 'Lead', 'InitiateCheckout', 'AddPaymentInfo', 'Purchase']) {
     pixel.trackEvent(event, { content_name: 'PCOD Plan' });
     pixel.fireCapi(event, 'test', { diagnosis: 'PCOD' }, { email: 'person@example.com' });
   }
@@ -139,11 +139,43 @@ test('old clients and direct CAPI requests are suppressed before reading PII or 
   assert.deepEqual(await response.json(), { ok: true, sent: 0, suppressed: true });
 });
 
-test('initial HTML has no Meta script or noscript pixels, and CSP blocks Meta transports', async () => {
+test('only the replacement pixel is bootstrapped, automatic events are off, and CSP permits it', async () => {
+  const { META_PIXEL_ID, META_PIXEL_BOOTSTRAP } = loadTs('lib/meta-config.ts');
+  assert.equal(META_PIXEL_ID, '1444341400930947');
+  const inserted = [];
+  const window = {};
+  const document = { createElement: () => ({}), getElementsByTagName: () => [{ parentNode: { insertBefore: (el) => inserted.push(el) } }] };
+  const context = vm.createContext({ window, document });
+  // Browser global names resolve through window.
+  Object.defineProperty(context, 'fbq', { get: () => window.fbq });
+  vm.runInContext(META_PIXEL_BOOTSTRAP, context);
+  const queue = window.fbq.queue.map(args => Array.from(args));
+  assert.equal(inserted[0].src, 'https://connect.facebook.net/en_US/fbevents.js');
+  assert.equal(JSON.stringify(queue), JSON.stringify([
+    ['set', 'autoConfig', false, META_PIXEL_ID], ['init', META_PIXEL_ID], ['trackSingle', META_PIXEL_ID, 'PageView'],
+  ]));
   const layout = fs.readFileSync('app/layout.tsx', 'utf8');
-  assert(!/fbevents\.js|facebook\.com\/tr|fbq\(/.test(layout));
+  assert(layout.includes('strategy="beforeInteractive"'));
+  assert.equal((layout.match(/facebook.com\/tr/g) || []).length, 1);
   for (const entry of await config.headers()) {
     const csp = entry.headers.find(h => h.key === 'Content-Security-Policy');
-    if (csp) assert(!/facebook|fbcdn|conversionsapigateway/.test(csp.value));
+    if (csp) {
+      assert(csp.value.includes('https://connect.facebook.net'));
+      assert(csp.value.includes('https://www.facebook.com'));
+      assert(!csp.value.includes('conversionsapigateway'));
+    }
   }
+});
+
+test('SPA PageView targets only the replacement pixel with no custom data; CAPI stays blocked', () => {
+  const calls = [];
+  const pixel = loadTs('lib/pixel.ts', {
+    window: { fbq: (...args) => calls.push(args) },
+    fetch: () => { throw Error('CAPI must stay blocked'); },
+  }, { './meta-policy': policy });
+  pixel.trackEvent('PageView', { content_name: 'PCOD', value: 199 }, { eventID: 'page-event' });
+  pixel.fireCapi('PageView', 'page-event');
+  assert.equal(JSON.stringify(calls), JSON.stringify([['trackSingle', '1444341400930947', 'PageView', {}, { eventID: 'page-event' }]]));
+  const retired = /1249607162337272|451000204060350|28310721625213137|1499311531960054/;
+  for (const file of ['app/layout.tsx', 'lib/meta-config.ts', 'lib/meta-capi.ts', 'lib/pixel.ts']) assert(!retired.test(fs.readFileSync(file, 'utf8')));
 });

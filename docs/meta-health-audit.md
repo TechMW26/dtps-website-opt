@@ -1,5 +1,18 @@
 # Health audit remediation — 29 September 2026
 
+## Current configuration — 30 September 2026
+
+At the user's request, browser PageView is now enabled only for pixel
+`1444341400930947`, with one noscript fallback. Initial PageView is queued by
+the bootstrap and subsequent SPA page views target this same pixel. Automatic
+event configuration is off. Previous pixel IDs and the CAPI environment-list
+override have been removed from the runtime configuration. Conversion/custom
+events and CAPI remain disabled; product-data filtering remains in place.
+The privacy notice and CSP reflect this change. PageView can transmit page URLs
+and browser metadata; this change does not establish Meta approval or remove a
+data-source restriction. The all-tracking-paused descriptions below document
+the earlier audit state and are superseded by this configuration.
+
 The supplied Zappush PDF reports a category-level Health and Wellness restriction
 and health inference through navigation, URLs and conversion events. Its one-page
 export cuts off the individual violation details. This is a third-party report,

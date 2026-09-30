@@ -1,9 +1,9 @@
 /**
  * The whole site offers condition-related nutrition services. Renaming a URL,
  * hashing identifiers or sending an event through CAPI does not remove the
- * health inference. Keep Meta transmission disabled until an approved data
+ * health inference. Keep conversion/custom events and CAPI disabled until a
  * sharing design is implemented and reviewed against the actual data source.
- * This applies to generic/custom events as well as purchase and lead events.
+ * Browser PageView is separately enabled for the user-selected pixel.
  */
 export function canSendMetaEvents(): boolean {
   return false;

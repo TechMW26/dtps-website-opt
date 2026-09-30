@@ -8,6 +8,7 @@ import LayoutWrapper from '@/components/LayoutWrapper';
 import PixelTracker from '@/components/PixelTracker';
 import ClarityTracker from '@/components/ClarityTracker';
 import { Suspense } from 'react';
+import { META_PIXEL_ID, META_PIXEL_BOOTSTRAP } from '@/lib/meta-config';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -142,7 +143,9 @@ export default function RootLayout({
           type="image/webp"
         />
 
-        {/* Meta scripts are intentionally absent: see lib/meta-policy.ts. */}
+        <Script id="meta-pixel-base" strategy="beforeInteractive">
+          {META_PIXEL_BOOTSTRAP}
+        </Script>
 
         {/*
           Google Analytics 4 (gtag.js).
@@ -171,13 +174,17 @@ export default function RootLayout({
 
       </head>
       <body>
+        <noscript>
+          <img height="1" width="1" style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`} alt="" />
+        </noscript>
         <AuthProvider>
           <ThemeProvider>
             <ClarityTracker projectId={CLARITY_PROJECT_ID} enabledHosts={CLARITY_ALLOWED_HOSTS} />
             <LayoutWrapper>
               {children}
             </LayoutWrapper>
-            {/* Analytics router; Meta transports are disabled by policy. */}
+            {/* PageView on client navigation; Meta conversion events remain disabled. */}
             <Suspense fallback={null}>
               <PixelTracker />
             </Suspense>

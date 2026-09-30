@@ -10,16 +10,15 @@
  *
  * Env vars (set in Vercel and locally in .env):
  *   META_CAPI_ACCESS_TOKEN     — required, system-user token from Events Manager
- *   META_PIXEL_IDS             — optional, comma-separated; defaults to known IDs
  *   META_CAPI_TEST_EVENT_CODE  — optional, e.g. TEST12345 for Events Manager
  *                                "Test Events" tab. Leave unset in production.
  *   META_CAPI_API_VERSION      — optional override, defaults to v21.0
  */
 
 import crypto from 'crypto';
+import { META_PIXEL_ID } from './meta-config';
 import { canSendMetaEvents, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
 
-const DEFAULT_PIXEL_IDS = ['1249607162337272', '451000204060350'];
 const DEFAULT_API_VERSION = 'v21.0';
 
 /* -------------------------------------------------------------------------- */
@@ -150,10 +149,8 @@ function buildUserData(u: CapiUserData): Record<string, unknown> {
 /* -------------------------------------------------------------------------- */
 
 function getPixelIds(): string[] {
-  const raw = process.env.META_PIXEL_IDS;
-  if (!raw) return DEFAULT_PIXEL_IDS;
-  const ids = raw.split(',').map((s) => s.trim()).filter(Boolean);
-  return ids.length > 0 ? ids : DEFAULT_PIXEL_IDS;
+  // Ignore legacy environment lists so retired pixels cannot be reconnected.
+  return [META_PIXEL_ID];
 }
 
 function getApiVersion(): string {
