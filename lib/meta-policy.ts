@@ -1,12 +1,18 @@
 /**
  * The whole site offers condition-related nutrition services. Renaming a URL,
  * hashing identifiers or sending an event through CAPI does not remove the
- * health inference. Keep conversion/custom events and CAPI disabled until a
- * sharing design is implemented and reviewed against the actual data source.
- * Browser PageView is separately enabled for the user-selected pixel.
+ * health inference. Browser events are explicitly allowlisted and filtered.
+ * CAPI and arbitrary custom events remain disabled; enabling browser events
+ * does not establish Meta approval for this data source.
  */
 export function canSendMetaEvents(): boolean {
   return false;
+}
+
+// Browser actions only; CAPI and arbitrary custom event names stay disabled.
+export function isAllowedMetaBrowserEvent(event: string): boolean {
+  return ['PageView', 'ViewContent', 'AddToCart', 'InitiateCheckout',
+    'AddPaymentInfo', 'Purchase', 'Lead', 'Contact', 'Schedule'].includes(event);
 }
 
 /**

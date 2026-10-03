@@ -7,10 +7,10 @@
  * remove pixels in the future.
  *
  * The only pixel ID is configured in lib/meta-config.ts. Browser PageView
- * is enabled; conversion/custom events and CAPI remain disabled by policy.
+ * uses filtered browser funnel events; custom events and CAPI remain disabled.
  */
 
-import { canSendMetaEvents, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
+import { canSendMetaEvents, isAllowedMetaBrowserEvent, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
 import { META_PIXEL_ID } from './meta-config';
 
 export type FbqStandardEvent =
@@ -62,19 +62,21 @@ export function trackEvent(
   event: FbqStandardEvent,
   params: Record<string, unknown> = {},
   options: FbqEventOptions = {}
-): void {
-  if (event !== 'PageView' && !canSendMetaEvents()) return;
-  if (typeof window === 'undefined') return;
+): boolean {
+  if (!isAllowedMetaBrowserEvent(event)) return false;
+  if (typeof window === 'undefined') return false;
   const fbq = window.fbq;
-  if (typeof fbq !== 'function') return;
+  if (typeof fbq !== 'function') return false;
 
   const eventID = options.eventID ?? generateEventId();
   try {
     fbq('trackSingle', META_PIXEL_ID, event, event === 'PageView' ? {} : sanitizeMetaCustomData(params), { eventID });
+    return true;
   } catch (err) {
     // Never let analytics break the page.
     // eslint-disable-next-line no-console
     console.warn('[pixel] trackEvent failed', err);
+    return false;
   }
 }
 

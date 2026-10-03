@@ -1,4 +1,5 @@
 'use client';
+import { trackEvent } from '@/lib/pixel';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -91,6 +92,7 @@ export default function AppointmentForm() {
         );
       } catch {}
 
+      trackEvent('Schedule');
       router.push(`/appointment/success?id=${json.appointmentId}`);
     } catch (err) {
       console.error(err);

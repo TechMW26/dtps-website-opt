@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { paymentMatchesOrder } from '@/lib/payment-verification';
 import { v4 as uuidv4 } from 'uuid';
 import connectDB from '@/lib/mongodb';
 import Order from '@/models/Order';
@@ -184,6 +185,10 @@ export async function POST(req: NextRequest) {
 
       // Get payment details from Razorpay
       const payment = await getRazorpayInstance().payments.fetch(razorpayPaymentId);
+
+      if (!paymentMatchesOrder(payment, existingOrder, razorpayOrderId)) {
+        return NextResponse.json({ success: false, message: 'Payment does not match this order' }, { status: 400 });
+      }
 
       if (payment.status === 'captured') {
         // Update order

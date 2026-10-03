@@ -1,4 +1,5 @@
 'use client';
+import { trackEvent } from '@/lib/pixel';
 
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
@@ -72,6 +73,7 @@ export default function ContactForm() {
         return;
       }
       setSuccess(true);
+      trackEvent('Contact');
       setData(INITIAL);
     } catch (err) {
       console.error(err);

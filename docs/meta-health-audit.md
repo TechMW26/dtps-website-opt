@@ -1,6 +1,30 @@
 # Health audit remediation — 29 September 2026
 
-## Current configuration — 30 September 2026
+## Current configuration — 3 October 2026
+
+At the user's request, the replacement pixel `1444341400930947` now receives
+allowlisted browser events: PageView, ViewContent, AddToCart, InitiateCheckout,
+AddPaymentInfo, Purchase, Lead, Contact and Schedule. No Search or registration
+events are fabricated. Product names, catalog IDs, item arrays, contact fields
+and form answers are excluded from Meta custom data; only value, INR currency
+and item count are allowed. Visible commerce data and GA reporting are unchanged.
+
+Buy Now stores the real cart and a separate selection marker; AddToCart is
+flushed on checkout arrival to survive hard navigation. Checkout/payment events
+deduplicate by selection/order. Purchase requires a matching DB order with
+completed payment and uses its discounted total. The verified payment callback
+and success page share an in-flight guard and persistent browser dedup marker.
+Failed fetches/missing pixel can retry; the success page retries twice. Markers
+mean queued to fbq, not confirmed receipt by Meta. Blocking, cleared storage,
+different browsers and provider restrictions cannot be eliminated by this code.
+
+CAPI, arbitrary custom events and automatic event configuration remain disabled.
+Native Pixel URLs, cookies and browser metadata are still transmitted: custom
+data minimization does not remove health inference or establish Meta approval.
+Validate allowed events in Events Manager before relying on campaign reporting.
+No live payment or Meta-account acceptance is established by local tests.
+
+## Previous configuration — 30 September 2026
 
 At the user's request, browser PageView is now enabled only for pixel
 `1444341400930947`, with one noscript fallback. Initial PageView is queued by

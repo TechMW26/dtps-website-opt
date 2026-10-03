@@ -15,8 +15,9 @@ import {
   DEFAULT_COUNTRY_CODE,
   getCountry,
 } from '@/lib/validation';
-import { trackEvent, readCheckoutCartParams, gaEvent, toGaEcomParams, fireCapi } from '@/lib/pixel';
+import { readCheckoutCartParams, gaEvent, toGaEcomParams } from '@/lib/pixel';
 import { sanitizeMetaCustomData } from '@/lib/meta-policy';
+import { trackMetaOnce, trackPurchaseForOrder } from '@/lib/meta-funnel';
 
 declare global {
   interface Window {
@@ -317,10 +318,12 @@ export default function CheckoutContent() {
               });
 
               const verifyData = await verifyResponse.json();
-              if (verifyData.success) {
+              if (verifyResponse.ok && verifyData.success) {
                 resolvedStatusRef.current = 'success';
                 activeOrderRef.current = null;
                 setOrderStatus('success');
+                // Also recover on the success page if the browser navigates early.
+                void trackPurchaseForOrder(data.order.orderId);
                 // Redirect to success page
                 setTimeout(() => {
                   window.location.href = `/checkout/success?orderId=${data.order.orderId}`;
@@ -388,31 +391,18 @@ export default function CheckoutContent() {
             setLoading(false);
           });
         }
-        // Meta Pixel: AddPaymentInfo — user is now entering payment details.
-        // eventID = api_<orderId> so the server-side CAPI mirror dedupes.
+        razorpayWindow.open();
+        // Payment UI opened successfully; no customer fields are sent to Meta.
         const cartParams = readCheckoutCartParams();
         const apiEventId = `api_${data.order.orderId}`;
-        const apiCustomData = sanitizeMetaCustomData(cartParams);
-        trackEvent('AddPaymentInfo', apiCustomData, { eventID: apiEventId });
-        // Server-side mirror with PII for stronger match quality.
-        fireCapi('AddPaymentInfo', apiEventId, apiCustomData, {
-          email: formData.email || null,
-          phone: formData.phone
-            ? `${getCountry(formData.countryIso)?.dialCode ?? ''}${formData.phone}`
-            : null,
-          firstName: formData.firstName || null,
-          lastName: formData.lastName || null,
-          city: formData.city || null,
-          country: formData.countryIso ? formData.countryIso.toLowerCase() : null,
-          externalId: data.order.orderId,
-        });
+        const apiCustomData = sanitizeMetaCustomData({ ...cartParams, value: data.order.total });
+        trackMetaOnce('AddPaymentInfo', apiEventId, apiCustomData);
         // Mirror to GA4.
         gaEvent('add_payment_info', {
           ...toGaEcomParams(cartParams),
           payment_type: 'razorpay',
           transaction_id: data.order.orderId,
         });
-        razorpayWindow.open();
       } else {
         setOrderStatus('failed');
         alert('Failed to create order');

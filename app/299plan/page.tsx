@@ -1,4 +1,5 @@
 'use client';
+import { storeCheckoutProducts } from '@/lib/meta-funnel';
 
 import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -85,7 +86,7 @@ function PricingCard({
       quantity: 1,
     };
 
-    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+    storeCheckoutProducts([product]);
     window.location.assign(settings.cardButtonLink || '/checkout');
   };
 

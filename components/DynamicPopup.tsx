@@ -1,4 +1,5 @@
 'use client';
+import { trackEvent } from '@/lib/pixel';
 import { toPublicUrl } from '@/lib/public-routes';
 
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
@@ -184,6 +185,7 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Unable to submit your number');
+      trackEvent('Lead');
       setSubmitted(true);
       setPhoneNumber('');
       window.setTimeout(redirect, popup.successDelayMs);

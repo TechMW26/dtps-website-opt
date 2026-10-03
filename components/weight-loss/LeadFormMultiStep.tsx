@@ -1,4 +1,5 @@
 'use client';
+import { trackEvent } from '@/lib/pixel';
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -445,6 +446,7 @@ export default function LeadFormMultiStep({
                 return;
             }
             setSubmitted(true);
+            trackEvent('Lead');
             onSuccess?.();
             router.push(`/wldtps/lead/${formId}/thankyou`);
         } catch (err) {

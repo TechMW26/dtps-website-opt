@@ -1,4 +1,5 @@
 "use client";
+import { storeCheckoutProducts } from '@/lib/meta-funnel';
 
 import Image from "next/image";
 import Link from "next/link";
@@ -976,10 +977,7 @@ export default function WeddingPlanPage() {
                     price: plan.price,
                     quantity: 1,
                   };
-                  sessionStorage.setItem(
-                    "checkoutProducts",
-                    JSON.stringify([product])
-                  );
+                  storeCheckoutProducts([product]);
                   window.location.href = "/checkout";
                 }}
               />

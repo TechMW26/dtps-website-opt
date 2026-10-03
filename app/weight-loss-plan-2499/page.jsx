@@ -1,4 +1,5 @@
 "use client";
+import { storeCheckoutProducts } from '@/lib/meta-funnel';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -254,7 +255,7 @@ export default function WeightLossPlan2499Page() {
             quantity: 1,
         };
 
-        sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+        storeCheckoutProducts([product]);
         window.location.href = '/checkout';
     };
 

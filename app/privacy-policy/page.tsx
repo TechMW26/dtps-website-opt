@@ -19,7 +19,7 @@ const CONTACT_EMAIL = 'support.dtps@mushroomworldgroup.com';
 const CONTACT_PHONE = '+91 98930 27688';
 const CONTACT_ADDRESS =
   '226, Gufa Mandir Rd, Jain Nagar, Lalghati, Bhopal, Madhya Pradesh 462001, India';
-const EFFECTIVE_DATE = '30 September 2026';
+const EFFECTIVE_DATE = '3 October 2026';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -219,7 +219,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <div className="bg-[#F7F8F8] px-4 py-3 md:px-5 md:py-4">
                 <h4 className="mb-2 text-[14px] font-bold text-[#083F46] md:text-[15px]">Analytics &amp; advertising</h4>
-                <p className="text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">Google Analytics 4 and Microsoft Clarity, as described in Section 6. Meta Pixel records page views; Conversions API and conversion-event sharing remain disabled.</p>
+                <p className="text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">Google Analytics 4 and Microsoft Clarity, as described in Section 6. Meta Pixel records page views and limited interaction and conversion events; server-side Conversions API sharing remains disabled.</p>
               </div>
               <div className="bg-[#F7F8F8] px-4 py-3 md:px-5 md:py-4 md:col-span-2">
                 <h4 className="mb-2 text-[14px] font-bold text-[#083F46] md:text-[15px]">Professional advisors &amp; authorities</h4>
@@ -241,7 +241,7 @@ export default function PrivacyPolicyPage() {
               <ul className="space-y-2 text-[13px] leading-[1.7] text-[#2E3A3D] md:text-[14px]">
                 <li><strong>Essential</strong> functionality (session, security, CSRF, login).</li>
                 <li><strong>Analytics</strong> — Google Analytics 4 (<code>G-R647JLBMXD</code>) and Microsoft Clarity, which help us understand how visitors use the site so we can improve it.</li>
-                <li><strong>Marketing</strong> — Meta (Facebook) Pixel records page views, which can include the page URL and browser information. We do not send product names or customer contact details in custom event parameters. Enquiry, checkout and purchase events, automatic event detection, and server-side Conversions API sharing remain disabled.</li>
+                <li><strong>Marketing</strong> — Meta (Facebook) Pixel records page views, plan views, cart additions, checkout and payment-stage actions, confirmed purchases, and successful enquiry or appointment submissions. Custom event parameters are limited to INR amounts and item counts; we do not include product names, product identifiers, customer contact details or form answers. The Pixel can still collect page URLs, cookies and browser information, and events use identifiers for deduplication. Automatic event detection and server-side Conversions API sharing remain disabled.</li>
               </ul>
               <p className="mt-3 text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">
                 You can disable cookies in your browser, opt out of Google Analytics via

@@ -102,18 +102,21 @@ test('saved marquee page targeting works on new routes and stays scoped', () => 
   assert(!matches('/checkout', ['/plans']));
 });
 
-test('browser standard/custom events and CAPI cannot transmit health or identity data', () => {
-  let calls = 0;
+test('allowed browser events strip identity while custom events and CAPI remain blocked', () => {
+  const calls = [];
   const pixel = loadTs('lib/pixel.ts', {
-    window: { fbq: () => calls++, location: { href: 'https://www.dtpoonamsagar.com/pcdtps?email=person@example.com' } },
-    fetch: () => { calls++; throw Error('unexpected network'); },
+    window: { fbq: (...args) => calls.push(args), location: { href: 'https://www.dtpoonamsagar.com/pcdtps?email=person@example.com' } },
+    fetch: () => { throw Error('unexpected network'); },
   }, { './meta-policy': policy });
   for (const event of ['ViewContent', 'Lead', 'InitiateCheckout', 'AddPaymentInfo', 'Purchase']) {
     pixel.trackEvent(event, { content_name: 'PCOD Plan' });
     pixel.fireCapi(event, 'test', { diagnosis: 'PCOD' }, { email: 'person@example.com' });
   }
   pixel.trackCustom('ThyroidConsultation', { phone: '1234567890' });
-  assert.equal(calls, 0);
+  pixel.trackEvent('Search', { search_string: 'PCOD' });
+  pixel.trackEvent('CompleteRegistration', { email: 'person@example.com' });
+  assert.equal(calls.length, 5);
+  assert(!/PCOD|person@example|phone|content_name/.test(JSON.stringify(calls)));
 });
 
 test('server purchase sender is blocked even with configured credentials', async () => {

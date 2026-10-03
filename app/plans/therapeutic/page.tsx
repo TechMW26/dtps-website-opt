@@ -1,4 +1,5 @@
 "use client";
+import { storeCheckoutProducts } from '@/lib/meta-funnel';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
@@ -1181,7 +1182,7 @@ export default function TherapeuticPlanPage() {
                               price: parseInt(price),
                               quantity: 1,
                             };
-                            sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                            storeCheckoutProducts([product]);
                             window.location.href = '/checkout';
                           }}
                           className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer mt-auto"
