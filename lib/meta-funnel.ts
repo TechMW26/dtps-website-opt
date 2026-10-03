@@ -56,7 +56,7 @@ export function isVerifiedPurchase(order: any, requestedId: string): boolean {
     && order.products.every((p: any) => p && Number.isSafeInteger(p.quantity) && p.quantity > 0));
 }
 
-/** Uses DB status and discounted total, shared by callback and success page. */
+/** Success-page only: uses DB status and discounted total before emitting. */
 export function trackPurchaseForOrder(orderId: string): Promise<boolean> {
   const existing = purchases.get(orderId);
   if (existing) return existing;

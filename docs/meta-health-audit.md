@@ -12,8 +12,10 @@ and item count are allowed. Visible commerce data and GA reporting are unchanged
 Buy Now stores the real cart and a separate selection marker; AddToCart is
 flushed on checkout arrival to survive hard navigation. Checkout/payment events
 deduplicate by selection/order. Purchase requires a matching DB order with
-completed payment and uses its discounted total. The verified payment callback
-and success page share an in-flight guard and persistent browser dedup marker.
+completed payment and uses its discounted total. Purchase is emitted only on the
+success page, with an in-flight guard and persistent browser dedup marker. The
+payment callback redirects without emitting Purchase, so it cannot prematurely
+mark the event as sent before the thank-you page loads.
 Failed fetches/missing pixel can retry; the success page retries twice. Markers
 mean queued to fbq, not confirmed receipt by Meta. Blocking, cleared storage,
 different browsers and provider restrictions cannot be eliminated by this code.

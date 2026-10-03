@@ -94,3 +94,27 @@ test('payment verification binds provider payment to exact order, amount and INR
   assert.equal(matches(payment, saved, 'order-2'), false);
   assert.equal(matches(payment, { total: 179 }, 'order-1'), false);
 });
+
+test('Purchase is triggered on the success route, never before the checkout redirect', async () => {
+  const checkout = fs.readFileSync('app/checkout/CheckoutContent.tsx', 'utf8');
+  assert(!checkout.includes('trackPurchaseForOrder'));
+  assert(!/track(?:Event|MetaOnce)\(['"]Purchase/.test(checkout));
+  assert(checkout.includes('verifyResponse.ok && verifyData.success'));
+  const runRoute = async (pathname, orderId) => {
+    const effects = []; const calls = [];
+    const component = load('components/PixelTracker.tsx', { setTimeout, clearTimeout }, {
+      react: { useEffect: fn => effects.push(fn), useRef: () => ({ current: null }) },
+      'next/navigation': { usePathname: () => pathname, useSearchParams: () => new URLSearchParams(orderId ? { orderId } : {}) },
+      '@/lib/pixel': { trackEvent() {}, gaPageView() {}, readCheckoutCartParams: () => ({}), fireOncePerSession: () => false },
+      '@/lib/meta-funnel': { trackCheckoutArrival() {}, trackPurchaseForOrder: async id => { calls.push(id); return true; } },
+    });
+    component.default();
+    const cleanups = effects.map(fn => fn());
+    await Promise.resolve();
+    cleanups.forEach(fn => { if (typeof fn === 'function') fn(); });
+    return calls;
+  };
+  assert.deepEqual(await runRoute('/checkout', 'opaque-123'), []);
+  assert.deepEqual(await runRoute('/checkout/success', null), []);
+  assert.deepEqual(await runRoute('/checkout/success', 'opaque-123'), ['opaque-123']);
+});

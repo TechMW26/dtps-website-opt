@@ -17,7 +17,7 @@ import {
 } from '@/lib/validation';
 import { readCheckoutCartParams, gaEvent, toGaEcomParams } from '@/lib/pixel';
 import { sanitizeMetaCustomData } from '@/lib/meta-policy';
-import { trackMetaOnce, trackPurchaseForOrder } from '@/lib/meta-funnel';
+import { trackMetaOnce } from '@/lib/meta-funnel';
 
 declare global {
   interface Window {
@@ -322,8 +322,8 @@ export default function CheckoutContent() {
                 resolvedStatusRef.current = 'success';
                 activeOrderRef.current = null;
                 setOrderStatus('success');
-                // Also recover on the success page if the browser navigates early.
-                void trackPurchaseForOrder(data.order.orderId);
+                // Purchase is emitted on the success page, not before this hard
+                // navigation: queuing here would suppress that page's event.
                 // Redirect to success page
                 setTimeout(() => {
                   window.location.href = `/checkout/success?orderId=${data.order.orderId}`;
