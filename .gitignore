@@ -43,3 +43,6 @@ coverage/
 #App Script Code 
 appScript.md
 .env*
+
+# Local recovery evidence
+.recovery/
