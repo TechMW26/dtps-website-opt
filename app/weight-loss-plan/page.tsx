@@ -253,6 +253,8 @@ export default function WeightLossPage() {
             page="weight-loss"
             fallback={{
               title: 'Guaranteed Weight Loss',
+              desktopImage: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/desktop/desktop-1788201011236-n8nKC2TRhtVP6x07zXb87B6UbXZlnI.png",
+              mobileImage: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/mobile/mobile-1788201467546-0P6AFHdU8zhHnvcQdNbFGNVivE8P9A.png",
               subtitle: 'Upto 5 Kg in a Month',
               description: "It's a journey to self-discovery and a healthier, happier you. We believe weight loss is more than just a number on the scale.",
               buttonText: 'Buy Weight Loss Plan Now',

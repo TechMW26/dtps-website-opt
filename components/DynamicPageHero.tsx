@@ -35,13 +35,11 @@ function getOptimizedImageUrl(url: string, _width: number = 400, _quality: numbe
 
 export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps) {
   const [hero, setHero] = useState<PageHero | null>(null);
-  const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const fetchHero = async () => {
       try {
-        setLoading(true);
         const res = await fetch(`/api/site-banners?type=hero-banner&page=${page}&active=true`, {
           cache: 'no-store'
         });
@@ -54,8 +52,6 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
         setHero(banners.length > 0 ? banners[0] : null);
       } catch {
         setHero(null);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -78,7 +74,7 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
     return getOptimizedImageUrl(mobileImage, 768, 75);
   }, [currentHero?.mobileImage, desktopImage]);
 
-  if (loading || !currentHero || !optimizedDesktopImage) {
+  if (!currentHero || !optimizedDesktopImage) {
     return null;
   }
 
