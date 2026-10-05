@@ -5,7 +5,7 @@
     "duration": "10 days",
     "durationLabel": "10 days",
     "price": 299,
-    "originalPrice": 299,
+    "originalPrice": 999,
     "currency": "₹",
     "badge": "Trial",
     "badgeColor": "orange",
@@ -14,21 +14,30 @@
     "popular": false,
     "isActive": true,
     "order": 0,
-    "source": "User-confirmed 2026-10-05",
+    "source": "User-supplied weight-loss price and feature list, 2026-10-05",
     "features": [
       {
-        "text": "Personalised diet plan",
+        "text": "Chat Support",
         "included": true
       },
       {
-        "text": "Dietitian consultations",
+        "text": "Dietitian Consultation (02)",
         "included": true
       },
       {
-        "text": "Progress tracking",
+        "text": "Customized Meal Plan",
+        "included": true
+      },
+      {
+        "text": "Progress Tracking",
+        "included": true
+      },
+      {
+        "text": "Diet Recipe eBook (10+)",
         "included": true
       }
-    ]
+    ],
+    "sourceNote": "Prices in INR as confirmed by user; features and original prices transcribed from supplied image."
   },
   {
     "id": "weight-loss-1-month-2499",
@@ -36,26 +45,54 @@
     "duration": "1 month",
     "durationLabel": "30 days",
     "price": 2499,
-    "originalPrice": 2499,
+    "originalPrice": 3000,
     "currency": "₹",
-    "badge": "",
+    "badge": "Saving",
     "badgeColor": "orange",
     "page": "weight-loss",
     "category": "weight-loss",
     "popular": false,
     "isActive": true,
     "order": 10,
-    "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "10 Days Plan SAME; 2,499 Plan 1 month",
+    "source": "User-supplied weight-loss price and feature list, 2026-10-05",
+    "sourceNote": "Prices in INR as confirmed by user; features and original prices transcribed from supplied image.",
     "features": [
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "24x7 chat and customer support", "included": true },
-      { "text": "Dietitian consultation (06)", "included": true },
-      { "text": "Diet recipe eBook (50+)", "included": true },
-      { "text": "Customized meal plan", "included": true },
-      { "text": "Progress tracking", "included": true },
-      { "text": "3 cycle weight loss plan", "included": true },
-      { "text": "Gut issue and inflammation support", "included": true }
+      {
+        "text": "8-Hour Diet Coach and Customer Support",
+        "included": true
+      },
+      {
+        "text": "24×7 Chat Support",
+        "included": true
+      },
+      {
+        "text": "Dietitian Consultations (06 Consultation Sessions)",
+        "included": true
+      },
+      {
+        "text": "Personalized Diet Plan",
+        "included": true
+      },
+      {
+        "text": "Weekly Progress & Outcome Monitoring",
+        "included": true
+      },
+      {
+        "text": "3-Phase Structured Weight Loss Cycle",
+        "included": true
+      },
+      {
+        "text": "Gut Health Optimization Protocol",
+        "included": true
+      },
+      {
+        "text": "Anti-Inflammatory Nutrition Strategy",
+        "included": true
+      },
+      {
+        "text": "Diet Recipe eBook (50+)",
+        "included": true
+      }
     ]
   },
   {
@@ -64,27 +101,58 @@
     "duration": "3 months",
     "durationLabel": "90 days",
     "price": 5999,
-    "originalPrice": 5999,
+    "originalPrice": 8000,
     "currency": "₹",
-    "badge": "",
+    "badge": "Value",
     "badgeColor": "orange",
     "page": "weight-loss",
     "category": "weight-loss",
     "popular": true,
     "isActive": true,
     "order": 20,
-    "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "5,999 Plan 3 month plan",
+    "source": "User-supplied weight-loss price and feature list, 2026-10-05",
+    "sourceNote": "Prices in INR as confirmed by user; features and original prices transcribed from supplied image.",
     "features": [
-      { "text": "24x7 chat and customer support", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation (12)", "included": true },
-      { "text": "Customized meal plan", "included": true },
-      { "text": "Progress tracking", "included": true },
-      { "text": "Diet recipe eBook (100+)", "included": true },
-      { "text": "5 cycle weight loss plan", "included": true },
-      { "text": "Maintenance cycle and lifestyle correction", "included": true },
-      { "text": "Immunity booster nutrition", "included": true }
+      {
+        "text": "8-Hour Diet Coach and Customer Support",
+        "included": true
+      },
+      {
+        "text": "24×7 Chat Support",
+        "included": true
+      },
+      {
+        "text": "Dietitian Consultations (12 Consultation Sessions)",
+        "included": true
+      },
+      {
+        "text": "Phase-Wise Personalized Diet Plan",
+        "included": true
+      },
+      {
+        "text": "Comprehensive Progress Tracking",
+        "included": true
+      },
+      {
+        "text": "5-Phase Structured Weight Loss Cycle",
+        "included": true
+      },
+      {
+        "text": "Weight Stabilization & Maintenance Phase",
+        "included": true
+      },
+      {
+        "text": "Lifestyle Modification Program",
+        "included": true
+      },
+      {
+        "text": "Immunity-Boosting Nutrition Framework",
+        "included": true
+      },
+      {
+        "text": "Diet Recipe eBook (100+)",
+        "included": true
+      }
     ]
   },
   {
@@ -93,30 +161,70 @@
     "duration": "6 months",
     "durationLabel": "180 days",
     "price": 11999,
-    "originalPrice": 11999,
+    "originalPrice": 16000,
     "currency": "₹",
-    "badge": "",
+    "badge": "Results",
     "badgeColor": "orange",
     "page": "weight-loss",
     "category": "weight-loss",
     "popular": false,
     "isActive": true,
     "order": 30,
-    "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "06 Months Plan ₹11,999",
+    "source": "User-supplied weight-loss price and feature list, 2026-10-05",
+    "sourceNote": "Prices in INR as confirmed by user; features and original prices transcribed from supplied image.",
     "features": [
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "24x7 chat and customer support", "included": true },
-      { "text": "Dietitian consultation (24)", "included": true },
-      { "text": "Customized meal plan", "included": true },
-      { "text": "Progress tracking", "included": true },
-      { "text": "Diet recipe eBook (100+)", "included": true },
-      { "text": "5 cycle weight loss plan", "included": true },
-      { "text": "Maintenance, immunity, stress and lifestyle support", "included": true },
-      { "text": "Hormone-balancing nutrition", "included": true },
-      { "text": "Monthly body composition and health review", "included": true },
-      { "text": "Mindful eating and craving control", "included": true },
-      { "text": "Pause facility (30 days)", "included": true }
+      {
+        "text": "8-Hour Diet Coach and Customer Support",
+        "included": true
+      },
+      {
+        "text": "24×7 Chat Support",
+        "included": true
+      },
+      {
+        "text": "Dietitian Consultations (24 Consultation Sessions)",
+        "included": true
+      },
+      {
+        "text": "Phase-Wise Personalized Diet Plan",
+        "included": true
+      },
+      {
+        "text": "Comprehensive Progress Tracking",
+        "included": true
+      },
+      {
+        "text": "5-Phase Structured Weight Loss Cycle",
+        "included": true
+      },
+      {
+        "text": "Long-Term Weight Stabilization & Maintenance Phase",
+        "included": true
+      },
+      {
+        "text": "Immunity-Boosting Nutrition Framework",
+        "included": true
+      },
+      {
+        "text": "Stress Management & Lifestyle Optimization Framework",
+        "included": true
+      },
+      {
+        "text": "Hormone Balancing Nutrition",
+        "included": true
+      },
+      {
+        "text": "Monthly Body Composition Analysis & Health Review",
+        "included": true
+      },
+      {
+        "text": "Mindful Eating & Craving Management",
+        "included": true
+      },
+      {
+        "text": "Pause Facility (30 Days Structured Plan Hold Option)",
+        "included": true
+      }
     ]
   },
   {
@@ -125,33 +233,78 @@
     "duration": "9 months",
     "durationLabel": "270 days",
     "price": 17999,
-    "originalPrice": 17999,
+    "originalPrice": 22000,
     "currency": "₹",
-    "badge": "",
+    "badge": "Results",
     "badgeColor": "orange",
     "page": "weight-loss",
     "category": "weight-loss",
     "popular": false,
     "isActive": true,
     "order": 40,
-    "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "09 Months Plan ₹17,999 (the source lists a detailed version twice)",
+    "source": "User-supplied weight-loss price and feature list, 2026-10-05",
+    "sourceNote": "Prices in INR as confirmed by user; features and original prices transcribed from supplied image.",
     "features": [
-      { "text": "8-hour diet coach support", "included": true },
-      { "text": "24x7 chat and customer support", "included": true },
-      { "text": "Dietitian consultations (36 structured clinical sessions)", "included": true },
-      { "text": "Personalized, periodized nutrition protocol", "included": true },
-      { "text": "Comprehensive progress monitoring and outcome tracking", "included": true },
-      { "text": "Advanced diet recipe eBook (100+ functional recipes)", "included": true },
-      { "text": "5-phase cyclic process", "included": true },
-      { "text": "Long-term sustainable weight maintenance and metabolic stabilization", "included": true },
-      { "text": "Immunity-enhancing nutrition protocol", "included": true },
-      { "text": "Integrated stress management and lifestyle optimization", "included": true },
-      { "text": "Hormone-modulating and metabolism-balancing nutrition", "included": true },
-      { "text": "Monthly body composition and health parameter review", "included": true },
-      { "text": "Mindful eating, behavioral and craving management", "included": true },
-      { "text": "Structured daily routine alignment", "included": true },
-      { "text": "Pause facility (up to 45 days)", "included": true }
+      {
+        "text": "8-Hour Diet Coach and Customer Support",
+        "included": true
+      },
+      {
+        "text": "24×7 Chat Support",
+        "included": true
+      },
+      {
+        "text": "Dietitian Consultations (36 Consultation Sessions)",
+        "included": true
+      },
+      {
+        "text": "Phase-Wise Personalized Diet Plan",
+        "included": true
+      },
+      {
+        "text": "Comprehensive Progress Tracking",
+        "included": true
+      },
+      {
+        "text": "Advanced Diet Recipe eBook (100+ Functional Recipes)",
+        "included": true
+      },
+      {
+        "text": "5-Phase Structured Weight Loss Cycle",
+        "included": true
+      },
+      {
+        "text": "Long-Term Weight Stabilization & Maintenance Phase",
+        "included": true
+      },
+      {
+        "text": "Immunity Boosting Nutrition Protocol",
+        "included": true
+      },
+      {
+        "text": "Stress Management & Lifestyle Optimization Framework",
+        "included": true
+      },
+      {
+        "text": "Hormone Balancing Nutrition Strategy",
+        "included": true
+      },
+      {
+        "text": "Monthly Body Composition Analysis & Health Review",
+        "included": true
+      },
+      {
+        "text": "Mindful Eating, Behavioral & Craving Management",
+        "included": true
+      },
+      {
+        "text": "Structured Daily Routine Alignment Program",
+        "included": true
+      },
+      {
+        "text": "Pause Facility (Up to 45 Days – Structured Continuity Support)",
+        "included": true
+      }
     ]
   },
   {
@@ -160,27 +313,86 @@
     "duration": "1 year",
     "durationLabel": "365 days",
     "price": 21999,
-    "originalPrice": 21999,
+    "originalPrice": 28000,
     "currency": "₹",
-    "badge": "",
+    "badge": "Results",
     "badgeColor": "orange",
     "page": "weight-loss",
     "category": "weight-loss",
     "popular": false,
     "isActive": true,
     "order": 50,
-    "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "1 year Plan 21,999",
+    "source": "User-supplied weight-loss price and feature list, 2026-10-05",
+    "sourceNote": "Prices in INR as confirmed by user; features and original prices transcribed from supplied image.",
     "features": [
-      { "text": "24x7 chat and customer support", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation (45)", "included": true },
-      { "text": "Customized meal plan and progress tracking", "included": true },
-      { "text": "Diet recipe eBook (100+)", "included": true },
-      { "text": "5 cycle weight loss plan", "included": true },
-      { "text": "Maintenance, immunity, hormone and lifestyle support", "included": true },
-      { "text": "Festival and travel smart eating plans", "included": true },
-      { "text": "Pause facility (60 days)", "included": true }
+      {
+        "text": "8-Hour Diet Coach and Customer Support",
+        "included": true
+      },
+      {
+        "text": "24×7 Chat Support",
+        "included": true
+      },
+      {
+        "text": "Dietitian Consultations (36 Consultation Sessions)",
+        "included": true
+      },
+      {
+        "text": "Phase-Wise Personalized Diet Plan",
+        "included": true
+      },
+      {
+        "text": "Comprehensive Progress Monitoring & Outcome Tracking",
+        "included": true
+      },
+      {
+        "text": "Advanced Diet Recipe eBook (100+ Functional Recipes)",
+        "included": true
+      },
+      {
+        "text": "5-Phase Structured Weight Loss Cycle",
+        "included": true
+      },
+      {
+        "text": "Long-Term Sustainable Weight Maintenance Phase",
+        "included": true
+      },
+      {
+        "text": "Immunity Boosting Nutrition Protocol",
+        "included": true
+      },
+      {
+        "text": "Stress Management & Lifestyle Optimization Framework",
+        "included": true
+      },
+      {
+        "text": "Hormone Balancing Nutrition Strategy",
+        "included": true
+      },
+      {
+        "text": "Monthly Body Composition Analysis & Health Parameter Review",
+        "included": true
+      },
+      {
+        "text": "Mindful Eating, Craving Management",
+        "included": true
+      },
+      {
+        "text": "Structured Daily Routine Alignment Program",
+        "included": true
+      },
+      {
+        "text": "Vitamin and Nutrition Deficiency Support Plan",
+        "included": true
+      },
+      {
+        "text": "Skin & Hair Quality Support Plan",
+        "included": true
+      },
+      {
+        "text": "Pause Facility (Up to 60 Days – Structured Continuity Support)",
+        "included": true
+      }
     ]
   },
   {
