@@ -952,7 +952,7 @@ export default function WeddingPlanPage() {
       {/* Pricing Section */}
       <section id="plans-section" className="site-shell scroll-mt-24 bg-white py-12 md:py-16">
         <div className="w-full flex flex-col items-center justify-center text-center">
-          <div className="flex items-center flex-col gap- mb-1 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
+          <div className="flex items-center flex-col gap-2 mb-8 md:flex md:items-center md:gap-2 md:justify-normal justify-center">
             <div className='flex gap-2 items-center' >
               <span className="text-[#f5a623] text-lg">✦</span>
               <span className="text-teal-600 text-base font-semibold">
@@ -970,7 +970,8 @@ export default function WeddingPlanPage() {
               <DynamicPlansDisplay
                 category="new-wedding-plan"
                 showHeader={false}
-                columns="3-2"
+                columns="2"
+                sortBy="duration"
                 onSelectPlan={(plan) => {
                   const product = {
                     id: `wedding-${plan.planName
