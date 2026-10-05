@@ -1,4 +1,5 @@
 "use client";
+import ManagedPageHero from '@/components/ManagedPageHero';
 import { storeCheckoutProducts } from '@/lib/meta-funnel';
 
 import Image from "next/image";
@@ -282,7 +283,7 @@ export default function WeddingPlanPage() {
     <main className="bg-white">
       <DynamicPopup page="wedding" />
       {/* Hero Section with Navbar */}
-      <section className="hero-section site-shell pt-4 md:pt-[60px]">
+      <ManagedPageHero page="plans-wedding"><section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative h-[765px] md:h-[738px]">
           {/* Background Image */}
           <Image
@@ -341,7 +342,7 @@ export default function WeddingPlanPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section></ManagedPageHero>
       {/* Wedding Transformations Section */}
       <TestimonialSliderSection
         page="wedding"

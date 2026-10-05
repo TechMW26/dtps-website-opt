@@ -1,5 +1,28 @@
 [
   {
+    "id": "weight-loss-10-days-trial-299",
+    "planName": "Weight Loss - 10 Days Trial",
+    "duration": "10 days",
+    "durationLabel": "10 days",
+    "price": 299,
+    "originalPrice": 299,
+    "currency": "₹",
+    "badge": "Trial",
+    "badgeColor": "orange",
+    "page": "weight-loss",
+    "category": "weight-loss",
+    "popular": false,
+    "isActive": true,
+    "order": 0,
+    "source": "User-confirmed 2026-10-05",
+    "features": [
+      {
+        "text": "10-day weight-loss trial",
+        "included": true
+      }
+    ]
+  },
+  {
     "id": "weight-loss-1-month-2499",
     "planName": "Weight Loss - 1 Month",
     "duration": "1 month",

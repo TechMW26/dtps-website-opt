@@ -1,0 +1,98 @@
+[
+  {
+    "id": "recovered-weight-loss-hero",
+    "type": "hero-banner",
+    "page": "weight-loss",
+    "title": "Weight loss with Ghar Ka Khana",
+    "desktopImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/desktop/desktop-1788201011236-n8nKC2TRhtVP6x07zXb87B6UbXZlnI.png",
+    "mobileImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/mobile/mobile-1788201467546-0P6AFHdU8zhHnvcQdNbFGNVivE8P9A.png",
+    "isActive": true,
+    "order": 0,
+    "link": "/wldtps#plans-section",
+    "recoveryNote": "Matched non-seasonal desktop/mobile artwork, visually verified.",
+    "sourcePaths": [
+      "dtps/banners/desktop/desktop-1788201011236-n8nKC2TRhtVP6x07zXb87B6UbXZlnI.png",
+      "dtps/banners/mobile/mobile-1788201467546-0P6AFHdU8zhHnvcQdNbFGNVivE8P9A.png"
+    ]
+  },
+  {
+    "id": "recovered-pcod-hero",
+    "type": "hero-banner",
+    "page": "pcod",
+    "title": "PCOD nutrition plan",
+    "desktopImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS_Ecommerce/banners/desktop/desktop-1772640452258-pcod_2IK2NBgk1.png",
+    "mobileImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS_Ecommerce/banners/mobile/mobile-1772640467518-Section_1_ImKwFe0gl.png",
+    "isActive": true,
+    "order": 0,
+    "link": "",
+    "recoveryNote": "Matched PCOD desktop/mobile artwork, visually verified.",
+    "sourcePaths": [
+      "DTPS_Ecommerce/banners/desktop/desktop-1772640452258-pcod_2IK2NBgk1.png",
+      "DTPS_Ecommerce/banners/mobile/mobile-1772640467518-Section_1_ImKwFe0gl.png"
+    ]
+  },
+  {
+    "id": "recovered-republic-day-archive",
+    "type": "hero-banner",
+    "page": "home",
+    "title": "Archive: Republic Day sale",
+    "desktopImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS_Ecommerce/banners/desktop/desktop-1769593884214-WhatsApp_Image_2026-01-28_at_14.00.09_Sfaz2CQYZ.jpeg",
+    "mobileImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS_Ecommerce/banners/mobile/mobile-1769593890848-WhatsApp_Image_2026-01-28_at_14.00.08_XPiag8Jvc.jpeg",
+    "isActive": false,
+    "order": 0,
+    "link": "",
+    "recoveryNote": "Expired seasonal offer; original page assignment unavailable.",
+    "sourcePaths": [
+      "DTPS_Ecommerce/banners/desktop/desktop-1769593884214-WhatsApp_Image_2026-01-28_at_14.00.09_Sfaz2CQYZ.jpeg",
+      "DTPS_Ecommerce/banners/mobile/mobile-1769593890848-WhatsApp_Image_2026-01-28_at_14.00.08_XPiag8Jvc.jpeg"
+    ]
+  },
+  {
+    "id": "recovered-independence-day-archive",
+    "type": "hero-banner",
+    "page": "home",
+    "title": "Archive: Independence Day sale",
+    "desktopImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/desktop/desktop-1787139133871-qjPX0sofgUXlfAP81d4uDbjGtgOPJr.webp",
+    "mobileImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/mobile/mobile-1787139183710-qm3TlrOYaQt7A2pBmZHCvoGHndzEq2.webp",
+    "isActive": false,
+    "order": 0,
+    "link": "",
+    "recoveryNote": "Expired seasonal offer; original page assignment unavailable.",
+    "sourcePaths": [
+      "dtps/banners/desktop/desktop-1787139133871-qjPX0sofgUXlfAP81d4uDbjGtgOPJr.webp",
+      "dtps/banners/mobile/mobile-1787139183710-qm3TlrOYaQt7A2pBmZHCvoGHndzEq2.webp"
+    ]
+  },
+  {
+    "id": "recovered-raksha-bandhan-archive",
+    "type": "hero-banner",
+    "page": "weight-loss",
+    "title": "Archive: Raksha Bandhan ₹199 sale",
+    "desktopImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/desktop/desktop-1787166505185-WErUo8l8ZTbhAmiZT1c89hwKuTg9dW.webp",
+    "mobileImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/mobile/mobile-1787166515116-O1QzKQJgBSxjahnmOovr8lxsblCDH3.webp",
+    "isActive": false,
+    "order": 0,
+    "link": "/wldtps#plans-section",
+    "recoveryNote": "Expired offer conflicts with current confirmed ₹299 price.",
+    "sourcePaths": [
+      "dtps/banners/desktop/desktop-1787166505185-WErUo8l8ZTbhAmiZT1c89hwKuTg9dW.webp",
+      "dtps/banners/mobile/mobile-1787166515116-O1QzKQJgBSxjahnmOovr8lxsblCDH3.webp"
+    ]
+  },
+  {
+    "id": "recovered-trial-promotion-archive",
+    "type": "hero-banner",
+    "page": "weight-loss",
+    "title": "Archive: trial page ₹199 promotion",
+    "desktopImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/plan-299-hero-desktop/plan-299-hero-desktop-1787167127836-S75NNea9whRUoDfndnEzp8AVnrtLGQ.webp",
+    "mobileImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/banners/plan-299-hero-mobile/plan-299-hero-mobile-1787167238325-sJxDmqd47gTaZF86NXJRDHOXjcqtsN.webp",
+    "isActive": false,
+    "order": 0,
+    "link": "/wldtps#plans-section",
+    "recoveryNote": "Former trial background; not activated because the price is obsolete.",
+    "sourcePaths": [
+      "dtps/banners/plan-299-hero-desktop/plan-299-hero-desktop-1787167127836-S75NNea9whRUoDfndnEzp8AVnrtLGQ.webp",
+      "dtps/banners/plan-299-hero-mobile/plan-299-hero-mobile-1787167238325-sJxDmqd47gTaZF86NXJRDHOXjcqtsN.webp"
+    ]
+  }
+]

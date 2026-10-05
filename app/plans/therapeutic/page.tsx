@@ -1,4 +1,5 @@
 "use client";
+import ManagedPageHero from '@/components/ManagedPageHero';
 import { storeCheckoutProducts } from '@/lib/meta-funnel';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
@@ -265,7 +266,7 @@ export default function TherapeuticPlanPage() {
       {/* ═══════════════════════════════════════════════════════════
           1. HERO BANNER — "Yes! Diabetes, Thyroid…"
       ═══════════════════════════════════════════════════════════ */}
-      <section className="hero-section site-shell pt-4 md:pt-[60px]" suppressHydrationWarning>
+      <ManagedPageHero page="plans-therapeutic"><section className="hero-section site-shell pt-4 md:pt-[60px]" suppressHydrationWarning>
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -298,7 +299,7 @@ export default function TherapeuticPlanPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section></ManagedPageHero>
 
 
       {/* ═══════════════════════════════════════════════════════════

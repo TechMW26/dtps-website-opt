@@ -25,3 +25,12 @@ test('transaction revalidates changed order price before any settlement writes',
 test('existing payment identity cannot be rebound to a different order',async()=>{const h=harness();h.order();h.docs.set('websitePayments/pay_1',{orderId:'other',razorpayOrderId:'other_provider',status:'completed'});const res=await h.api.POST(h.request({action:'verify',orderId:'order_1',razorpayOrderId:'rzp_1',razorpayPaymentId:'pay_1'}));assert.equal(res.status,500);assert.equal(h.docs.get('websitePayments/pay_1').orderId,'other');assert.equal(h.docs.get('websiteCoupons/coupon_1').usedCount,0);});
 
 test('payment listing rejects missing and deleted admin sessions but permits an established viewer',async()=>{const h=harness();assert.equal((await h.paymentApi.GET(h.request({},'GET'))).status,401);h.setSession({user:{email:'viewer@example.test',role:'admin'}});h.docs.set('websiteAdmins/viewer',{email:'viewer@example.test',role:'viewer',isDeleted:true});assert.equal((await h.paymentApi.GET(h.request({},'GET'))).status,401);h.docs.get('websiteAdmins/viewer').isDeleted=false;assert.equal((await h.paymentApi.GET(h.request({},'GET'))).status,200);});
+
+test('trial checkout resolves the public slug to the confirmed 299 INR ten-day plan',async()=>{
+ const h=harness();
+ const plan=JSON.parse(fs.readFileSync('data/firebase-website-plans.json','utf8')).find(p=>p.id==='weight-loss-10-days-trial-299');
+ h.docs.set('websitePricing/'+plan.id,plan);
+ const res=await h.api.POST(h.request({action:'create',customerName:'Test',customerEmail:'test@example.test',customerPhone:'0000000000',products:[{id:'weight-loss-weight-loss-10-days-trial',price:1,quantity:1}]}));
+ assert.equal(res.status,200);assert.equal(h.calls.providerOrders[0].amount,29900);
+ assert.equal(h.docs.get('websiteOrders/order_created').products[0].duration,'10 days');
+});

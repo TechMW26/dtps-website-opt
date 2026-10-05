@@ -1,4 +1,5 @@
 'use client';
+import ManagedPageHero from '@/components/ManagedPageHero';
 import { storeCheckoutProducts } from '@/lib/meta-funnel';
 
 import Image from 'next/image';
@@ -72,7 +73,7 @@ export default function PCODPage() {
     <main className="bg-white">
       <DynamicPopup page="pcod" />
       {/* Hero Section with Navbar */}
-      <section className="hero-section site-shell pt-4 md:pt-[60px]">
+      <ManagedPageHero page="pcod"><section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -110,7 +111,7 @@ export default function PCODPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section></ManagedPageHero>
 
 
 

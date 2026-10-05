@@ -1,5 +1,6 @@
 'use client';
 
+import ManagedPageHero from '@/components/ManagedPageHero';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -74,7 +75,7 @@ export default function BlogPage() {
       <DynamicPopup page="blog" />
 
       {/* ── Hero ── */}
-      <section className="site-shell pt-4 md:pt-[60px]">
+      <ManagedPageHero page="blog"><section className="site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <Navbar />
           <div className="flex flex-col items-center w-full px-6 py-12 text-center md:py-20">
@@ -90,7 +91,7 @@ export default function BlogPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section></ManagedPageHero>
 
       <section className="site-shell py-12 md:py-16">
         <div className="site-fill">

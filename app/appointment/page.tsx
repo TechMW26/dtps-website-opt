@@ -1,3 +1,4 @@
+import ManagedPageHero from '@/components/ManagedPageHero';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import PageWrapper from '@/components/PageWrapper';
@@ -29,7 +30,7 @@ export default function AppointmentPage() {
   return (
       <div className="">
         <DynamicPopup page="appointment" />
-        <section className="hero-section site-shell pt-4 md:pt-[60px]">
+        <ManagedPageHero page="appointment"><section className="hero-section site-shell pt-4 md:pt-[60px]">
          <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
                         
                         
@@ -45,7 +46,7 @@ export default function AppointmentPage() {
         </section>
                        
                         </div>
-        </section>
+        </section></ManagedPageHero>
 
 
       {/* Appointment Form Section */}

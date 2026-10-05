@@ -1,3 +1,4 @@
+import ManagedPageHero from '@/components/ManagedPageHero';
 import { Metadata } from 'next';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import Navbar from '@/components/Navbar';
@@ -40,7 +41,7 @@ export default function ContactPage() {
     <div className="">
       <DynamicPopup page="contact" />
       {/* Hero Section with Navbar */}
-      <section className="hero-section site-shell pt-4 md:pt-[60px]">
+      <ManagedPageHero page="contact"><section className="hero-section site-shell pt-4 md:pt-[60px]">
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full">
           <div className="relative w-full">
             {/* Navbar */}
@@ -73,7 +74,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section></ManagedPageHero>
 
       {/* Get in Touch Section */}
       <section className="about-section">
