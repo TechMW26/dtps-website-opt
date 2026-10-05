@@ -11,6 +11,7 @@ const TransformationGallery = dynamic(
 interface TestimonialSliderSectionProps {
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
   maxItems?: number;
+  fallbackPage?: TestimonialSliderSectionProps['page'];
   /** Header content (eyebrow, title, subtitle). Will be left-aligned on desktop. */
   header: ReactNode;
   /** Optional className for the outer <section>. */
@@ -25,6 +26,7 @@ interface TestimonialSliderSectionProps {
 export default function TestimonialSliderSection({
   page,
   maxItems = 6,
+  fallbackPage,
   header,
   className = '',
 }: TestimonialSliderSectionProps) {
@@ -73,6 +75,7 @@ export default function TestimonialSliderSection({
 
         <TransformationGallery
           page={page}
+          fallbackPage={fallbackPage}
           maxItems={maxItems}
           cardBackgroundClassName="bg-transparent"
           paginationElSelector={`.${activePaginationClass}`}

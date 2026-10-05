@@ -346,14 +346,15 @@ export default function WeddingPlanPage() {
       {/* Wedding Transformations Section */}
       <TestimonialSliderSection
         page="wedding"
+        fallbackPage="weight-loss"
         maxItems={6}
         header={
           <div className="text-center md:text-left">
             <h2 className="mb-2.5 text-2xl font-bold leading-tight text-black md:text-5xl">
-              Lose <span className="text-[#FF850B]">5-7 Kilos</span> in just 30 Days
+              Real <span className="text-[#FF850B]">client transformations</span>
             </h2>
             <h2 className="mb-2.5 text-2xl font-bold leading-tight text-black md:text-5xl">
-              &amp; Still Eat the Food You Love!
+              Weight-loss journeys from DTPS clients
             </h2>
           </div>
         }
@@ -935,6 +936,7 @@ export default function WeddingPlanPage() {
       {/* Over 1,00,000+ People Enjoy Weight Loss */}
       <TestimonialSliderSection
         page="wedding"
+        fallbackPage="weight-loss"
         maxItems={6}
         header={
           <div className="text-center md:text-left">

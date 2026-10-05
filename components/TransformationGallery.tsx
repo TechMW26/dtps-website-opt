@@ -26,6 +26,7 @@ interface Transformation {
 interface TransformationGalleryProps {
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
   maxItems?: number;
+  fallbackPage?: TransformationGalleryProps['page'];
   cardBackgroundClassName?: string;
   paginationElSelector?: string;
   showNavArrows?: boolean;
@@ -39,6 +40,7 @@ const fallbackData: Transformation[] = [];
 export default function TransformationGallery({
   page,
   maxItems = 6,
+  fallbackPage,
   cardBackgroundClassName = 'bg-gray-100',
   paginationElSelector,
   showNavArrows = false,
@@ -49,28 +51,30 @@ export default function TransformationGallery({
   const navNextClass = useMemo(() => `tg-nav-next-${Math.random().toString(36).slice(2, 8)}`, []);
 
   useEffect(() => {
+    const controller = new AbortController();
+    setLoading(true);
+    setTransformations([]);
     const fetchTransformations = async () => {
       try {
-        const response = await fetch(`/api/transformations?page=${page}&active=true`, {
-          cache: 'no-store'
-        });
-
-        if (response.ok) {
+        for (const sourcePage of [page, ...(fallbackPage && fallbackPage !== page ? [fallbackPage] : [])]) {
+          const response = await fetch(`/api/transformations?page=${sourcePage}&active=true`, { cache: 'no-store', signal: controller.signal });
+          if (!response.ok) continue;
           const data = await response.json();
-          if (data.transformations && data.transformations.length > 0) {
-            setTransformations(data.transformations.slice(0, maxItems));
+          const items = (data.transformations || []).filter((item: Transformation) => item.afterImage || item.beforeImage);
+          if (items.length) {
+            if (!controller.signal.aborted) setTransformations(items.slice(0, maxItems));
             return;
           }
         }
       } catch (error) {
-        console.error('Error fetching transformations:', error);
+        if (!controller.signal.aborted) console.error('Error fetching transformations:', error);
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) setLoading(false);
       }
     };
-
-    fetchTransformations();
-  }, [page, maxItems]);
+    void fetchTransformations();
+    return () => controller.abort();
+  }, [page, fallbackPage, maxItems]);
 
   // Memoize optimized image URLs
   const optimizedTransformations = useMemo(() => {
