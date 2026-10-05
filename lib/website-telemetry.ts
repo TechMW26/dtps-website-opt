@@ -22,10 +22,13 @@ export function summarizeWebsiteTraffic(rows:DocumentData[],live:DocumentData[],
  const add=(map:Map<string,any>,key:string,value:any)=>{const item=map.get(key);if(item)item.count++;else map.set(key,{...value,count:1});};
  let pageViews=0,duration=0;for(const row of selected){pageViews+=(row.pageViews||[]).length;duration+=Number(row.totalDurationMs)||0;
   if(row.country!=null)add(countries,JSON.stringify([row.country,row.countryCode]),{country:row.country,code:row.countryCode});
-  if(row.city!=null)add(cities,JSON.stringify([row.city,row.country]),{city:row.city,country:row.country,lat:row.lat,lng:row.lng});
+  const lat = row.lat == null || row.lat === '' ? NaN : Number(row.lat);
+  const lng = row.lng == null || row.lng === '' ? NaN : Number(row.lng);
+  const hasCoordinates = Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180;
+  if(row.city!=null)add(cities,JSON.stringify([row.city,row.country]),{city:row.city,country:row.country,lat:hasCoordinates?lat:undefined,lng:hasCoordinates?lng:undefined});
   add(devices,row.device||'unknown',{device:row.device||'unknown'});
   for(const view of row.pageViews||[]){const item=pages.get(view.path);if(item)item.views++;else pages.set(view.path,{path:view.path,views:1});}
-  if(row.lat!=null&&row.lng!=null)add(locations,JSON.stringify([row.lat,row.lng,row.city,row.country]),{lat:row.lat,lng:row.lng,city:row.city,country:row.country});
+  if(hasCoordinates)add(locations,JSON.stringify([lat,lng,row.city,row.country]),{lat,lng,city:row.city,country:row.country});
  }
  const top=(map:Map<string,any>,limit:number)=>[...map.values()].sort((a,b)=>b.count-a.count).slice(0,limit);
  return {liveVisitors:live.length,stats:{sessions:selected.length,pageViews,avgSessionMs:Math.round(duration/(selected.length||1))},byCountry:top(countries,50),byCity:top(cities,100),byDevice:top(devices,100),byPage:[...pages.values()].sort((a,b)=>b.views-a.views).slice(0,10),locations:top(locations,500),liveList:live.sort((a,b)=>telemetryMillis(b.lastSeen)-telemetryMillis(a.lastSeen)).slice(0,50).map(v=>({sessionId:v.sessionId,ip:v.ip,country:v.country,city:v.city,device:v.device,browser:v.browser,os:v.os,currentPath:v.pageViews?.at(-1)?.path||v.landingPath,lastSeen:v.lastSeen,sessionStart:v.sessionStart,totalDurationMs:v.totalDurationMs,pageViewsCount:v.pageViews?.length||0}))};

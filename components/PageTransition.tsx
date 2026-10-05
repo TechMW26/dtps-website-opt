@@ -23,14 +23,16 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { preload } from 'react-dom';
 
 const TOTAL_MS = 1100;
 
 const LOGO_URL =
-  'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+  '/images/admin-logo.png';
 
 export default function PageTransition() {
   const pathname = usePathname();
+  preload(LOGO_URL, { as: 'image' });
   const [isActive, setIsActive] = useState(false);
   const firstRender = useRef(true);
 
@@ -40,7 +42,10 @@ export default function PageTransition() {
       return;
     }
 
-    if (pathname?.startsWith('/admin')) return;
+    if (pathname?.startsWith('/admin')) {
+      setIsActive(false);
+      return;
+    }
 
     setIsActive(true);
     const t = setTimeout(() => setIsActive(false), TOTAL_MS);

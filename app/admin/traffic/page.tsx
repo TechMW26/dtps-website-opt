@@ -94,6 +94,7 @@ function timeAgo(iso: string): string {
 export default function TrafficPage() {
   const t = useAdminTheme();
   const [data, setData] = useState<TrafficResponse | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [range, setRange] = useState<'24h' | '7d' | '30d'>('24h');
 
@@ -103,7 +104,8 @@ export default function TrafficPage() {
       const res = await fetch(`/api/admin/traffic?range=${range}`, { cache: 'no-store' });
       if (!res.ok) throw new Error('Failed');
       setData(await res.json());
-    } catch { /* swallow */ } finally {
+      setLoadError(null);
+    } catch { setLoadError('Traffic data could not refresh. Please try again.'); } finally {
       setLoading(false);
     }
   }
@@ -145,6 +147,7 @@ export default function TrafficPage() {
         </>
       }
     >
+      {loadError && <p role="alert" className="mb-4 rounded-lg bg-amber-50 p-3 text-amber-900">{loadError}</p>}
       {/* KPI strip */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
@@ -218,7 +221,7 @@ export default function TrafficPage() {
                     <p className={`text-sm truncate ${t.text}`}>{c.city || 'Unknown'}</p>
                     <p className={`text-xs ${t.textMuted}`}>
                       {c.country}
-                      {c.lat && c.lng && ` · ${c.lat.toFixed(2)}, ${c.lng.toFixed(2)}`}
+                      {typeof c.lat === 'number' && typeof c.lng === 'number' && ` · ${c.lat.toFixed(2)}, ${c.lng.toFixed(2)}`}
                     </p>
                   </div>
                   <AdminBadge tone="info">{c.count}</AdminBadge>
