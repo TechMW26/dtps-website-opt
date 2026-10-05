@@ -22,24 +22,24 @@ type TrialPlan = Pricing & { currency?: string };
 
 const PROMO_SECTIONS = [
   {
-    desktop: 'https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg',
-    mobile: 'https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg',
+    desktop: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg',
+    mobile: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg',
     alt: 'Our Five-Cycle Program',
   },
   {
-    desktop: 'https://ik.imagekit.io/br0mssyqj/tr:w-900,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg',
+    desktop: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg',
     mobile: '/images/what-to-expect-mobile.png',
     alt: 'What to Expect',
     narrow: true,
   },
   {
-    desktop: 'https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg',
-    mobile: 'https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg',
+    desktop: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg',
+    mobile: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg',
     alt: '100% Money Back Guarantee',
   },
   {
-    desktop: 'https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg',
-    mobile: 'https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg',
+    desktop: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg',
+    mobile: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg',
     alt: 'What You Get',
   },
 ] as const;

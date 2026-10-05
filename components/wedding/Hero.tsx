@@ -8,7 +8,7 @@ export default function WeddingHero() {
             <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative">
                 {/* Background Image */}
                 <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
+                    src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
                     alt="Wedding couple"
                     fill
                     priority

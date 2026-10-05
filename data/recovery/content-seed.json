@@ -1,0 +1,3011 @@
+{
+  "version": 1,
+  "sourceCapturedAt": "2026-10-05T06:48:36.470Z",
+  "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+  "records": [
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-4ee3b9598afaeba3a03c14df",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 0,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+          "sourceSize": 151644,
+          "sourceEtag": "\"7e9ffecdfe23b4aa205e3b6eed1ae3c6-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            16,
+            0,
+            1,
+            17
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941550256.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941550256.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941614145.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941614145.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-01-1776941503331.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776941503331.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-4ee3b9598afaeba3a03c14df",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 0,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+          "sourceSize": 151644,
+          "sourceEtag": "\"7e9ffecdfe23b4aa205e3b6eed1ae3c6-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            16,
+            0,
+            1,
+            17
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776939975804.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941550256.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941550256.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941614145.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-01-1776941614145.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-01-1776941503331.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-01-1776941503331.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-69248b2c9d3f6893cb5766e3",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 1,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+          "sourceSize": 129822,
+          "sourceEtag": "\"c4e26d6569281f478dbad2682086dee0-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            19,
+            2,
+            3,
+            36,
+            53
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941550292.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941550292.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941614212.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941614212.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-38-1769862235464.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-38-1769862235464.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857620830.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857620830.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-69248b2c9d3f6893cb5766e3",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 1,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+          "sourceSize": 129822,
+          "sourceEtag": "\"c4e26d6569281f478dbad2682086dee0-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            19,
+            2,
+            3,
+            36,
+            53
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-03-1776941503313.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941550292.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941550292.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941614212.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-02-1776941614212.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-38-1769862235464.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-38-1769862235464.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857620830.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857620830.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-c1f964aa427607eade7c79da",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 2,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+          "sourceSize": 141257,
+          "sourceEtag": "\"4a38100072a7c9a6115989874c8d4225-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            20,
+            4,
+            5,
+            15,
+            32,
+            57
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941550291.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941550291.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941614138.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941614138.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimon3-1775561647182.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimon3-1775561647182.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-21--1--1769862130512.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-21--1--1769862130512.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857732694.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857732694.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-c1f964aa427607eade7c79da",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 2,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+          "sourceSize": 141257,
+          "sourceEtag": "\"4a38100072a7c9a6115989874c8d4225-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            20,
+            4,
+            5,
+            15,
+            32,
+            57
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-04-1776941503330.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941550291.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941550291.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941614138.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-03-1776941614138.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimon3-1775561647182.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimon3-1775561647182.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-21--1--1769862130512.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-21--1--1769862130512.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857732694.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857732694.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-28b232dc1fc843e31b257f62",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 3,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+          "sourceSize": 154667,
+          "sourceEtag": "\"323fd2683cf4894f9233e32383f2ad60-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            21,
+            6,
+            7,
+            33,
+            34,
+            55,
+            60
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941550297.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941550297.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941614169.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941614169.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-23-1769862176758.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-23-1769862176758.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-23-1769862204265.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-23-1769862204265.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857698347.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857698347.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769861630442.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769861630442.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-28b232dc1fc843e31b257f62",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 3,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+          "sourceSize": 154667,
+          "sourceEtag": "\"323fd2683cf4894f9233e32383f2ad60-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            21,
+            6,
+            7,
+            33,
+            34,
+            55,
+            60
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-05-1776941503372.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941550297.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941550297.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941614169.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-04-1776941614169.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-23-1769862176758.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-23-1769862176758.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-23-1769862204265.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-23-1769862204265.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857698347.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857698347.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769861630442.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769861630442.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-1b5304b15da34d07bedc4b72",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 4,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+          "sourceSize": 135611,
+          "sourceEtag": "\"228b624554e0d1f9a0acd36fc26eb7f4-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            22,
+            8,
+            9,
+            37,
+            52
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941550309.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941550309.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941614160.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941614160.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-39-1769862250710.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-39-1769862250710.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857594020.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857594020.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-1b5304b15da34d07bedc4b72",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 4,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+          "sourceSize": 135611,
+          "sourceEtag": "\"228b624554e0d1f9a0acd36fc26eb7f4-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            22,
+            8,
+            9,
+            37,
+            52
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-06-1776941503369.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941550309.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941550309.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941614160.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-05-1776941614160.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-39-1769862250710.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-39-1769862250710.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857594020.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857594020.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-148fc2a641e0f2de40c997c2",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 5,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+          "sourceSize": 108309,
+          "sourceEtag": "\"8b651b6e2f228ba1422c6c29a0480e6d-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            27,
+            10,
+            39,
+            56
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-06-1776941614189.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-06-1776941614189.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-41-1769862288778.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-41-1769862288778.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857713391.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857713391.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-148fc2a641e0f2de40c997c2",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 5,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+          "sourceSize": 108309,
+          "sourceEtag": "\"8b651b6e2f228ba1422c6c29a0480e6d-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            27,
+            10,
+            39,
+            56
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-12-1776941514319.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-06-1776941614189.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-06-1776941614189.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-41-1769862288778.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-41-1769862288778.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857713391.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857713391.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-6c5f3a3587e32b17ba7ed5fa",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 6,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+          "sourceSize": 101634,
+          "sourceEtag": "\"9719a44c29930ef2b7ba59017dc523f8-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            28,
+            11,
+            40,
+            54
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-07-1776941625628.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-07-1776941625628.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-42-1769862308929.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-42-1769862308929.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857677100.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857677100.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-6c5f3a3587e32b17ba7ed5fa",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 6,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+          "sourceSize": 101634,
+          "sourceEtag": "\"9719a44c29930ef2b7ba59017dc523f8-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            28,
+            11,
+            40,
+            54
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-13-1776941514325.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-07-1776941625628.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-07-1776941625628.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-42-1769862308929.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-42-1769862308929.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857677100.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857677100.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-7549f45a3a12c0ecd19ee5a0",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 7,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+          "sourceSize": 122326,
+          "sourceEtag": "\"e3a6ab83b1b83ff0d02b25bdc3dd8769-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            30,
+            12,
+            13,
+            35,
+            59
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-08-1776941622725.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-08-1776941622725.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimon1-1775561659994.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimon1-1775561659994.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-24-1769862218716.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-24-1769862218716.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857767482.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857767482.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-7549f45a3a12c0ecd19ee5a0",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss",
+          "pcod"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 7,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+          "sourceSize": 122326,
+          "sourceEtag": "\"e3a6ab83b1b83ff0d02b25bdc3dd8769-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            30,
+            12,
+            13,
+            35,
+            59
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-15-1776941518005.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/pcod-testimonial-08-1776941622725.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/pcod-testimonial-08-1776941622725.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimon1-1775561659994.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimon1-1775561659994.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-24-1769862218716.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-24-1769862218716.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857767482.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857767482.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-539bfac930560ba27747daf6",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 8,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+          "sourceSize": 119461,
+          "sourceEtag": "\"369d936b7dde9566bf38a80adcd5b3e8-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            29,
+            14,
+            31,
+            58
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimon2-1775561672387.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimon2-1775561672387.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-20-1769862113053.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-20-1769862113053.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857747509.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857747509.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-539bfac930560ba27747daf6",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 8,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+          "sourceSize": 119461,
+          "sourceEtag": "\"369d936b7dde9566bf38a80adcd5b3e8-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            29,
+            14,
+            31,
+            58
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-14-1776941517976.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimon2-1775561672387.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimon2-1775561672387.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-20-1769862113053.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-20-1769862113053.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857747509.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-30-at-4-1769857747509.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-49832e682520640e86ef68e9",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 9,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+          "sourceSize": 104254,
+          "sourceEtag": "\"0b9cfea1e5567189ffef38f32df32012-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            18
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-49832e682520640e86ef68e9",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 9,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+          "sourceSize": 104254,
+          "sourceEtag": "\"0b9cfea1e5567189ffef38f32df32012-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            18
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-02-1776941503319.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-0a4cf44f59bde89e243ef3d2",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 10,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+          "sourceSize": 161715,
+          "sourceEtag": "\"e57e59d9e8b5ed673f0a51cb6c3ff21d-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            23
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-0a4cf44f59bde89e243ef3d2",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 10,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+          "sourceSize": 161715,
+          "sourceEtag": "\"e57e59d9e8b5ed673f0a51cb6c3ff21d-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            23
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-08-1776941514282.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-c35c7e804f5fc1f8880587c6",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 11,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+          "sourceSize": 115992,
+          "sourceEtag": "\"ab48b588e300e91f7012570af4e92631-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            24
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-c35c7e804f5fc1f8880587c6",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 11,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+          "sourceSize": 115992,
+          "sourceEtag": "\"ab48b588e300e91f7012570af4e92631-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            24
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-09-1776941514276.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-f626649ac0234db75a58d5c1",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 12,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+          "sourceSize": 104284,
+          "sourceEtag": "\"9419ca01b3619742a8c794d9c41ba2dc-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            25
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-f626649ac0234db75a58d5c1",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 12,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+          "sourceSize": 104284,
+          "sourceEtag": "\"9419ca01b3619742a8c794d9c41ba2dc-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            25
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-10-1776941514273.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteTransformations",
+      "id": "recovered-composite-b7c6ee06f5802135a16dae9a",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 13,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+          "sourceSize": 118957,
+          "sourceEtag": "\"ce6f03245a76033ce90c7a3e4db98a2e-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            26,
+            38,
+            61
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-40--1--1769862270556.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-40--1--1769862270556.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-31-at-15-1769853449914.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-31-at-15-1769853449914.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteSuccessStories",
+      "id": "recovered-composite-b7c6ee06f5802135a16dae9a",
+      "data": {
+        "name": "Transformation",
+        "clientName": "Transformation",
+        "beforeImage": "",
+        "afterImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+        "image": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+        "imageLayout": "composite",
+        "weightLost": "",
+        "daysToAchieve": "",
+        "testimonial": "",
+        "results": "",
+        "transformation": "",
+        "page": "weight-loss",
+        "category": "weight-loss",
+        "targetPages": [
+          "weight-loss"
+        ],
+        "featured": false,
+        "isFeatured": false,
+        "isActive": true,
+        "order": 13,
+        "provenance": {
+          "kind": "existing-composite-media",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourcePath": "DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+          "sourceUrl": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+          "sourceSize": 118957,
+          "sourceEtag": "\"ce6f03245a76033ce90c7a3e4db98a2e-1\"",
+          "visualAudit": "All selected images already contain labeled Before and After photos; original image is preserved whole.",
+          "sourceAssetIndices": [
+            26,
+            38,
+            61
+          ],
+          "aliases": [
+            {
+              "pathname": "DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/testimonial-11-1776941514280.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/untitled-design-40--1--1769862270556.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/untitled-design-40--1--1769862270556.webp"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-31-at-15-1769853449914.webp",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-31-at-15-1769853449914.webp"
+            }
+          ],
+          "unknown": [
+            "originalDatabaseId",
+            "originalPublishState",
+            "originalDisplayOrder",
+            "testimonialText"
+          ],
+          "recoveryPolicy": "No names, metrics, durations, testimonial text, or before/after pairings synthesized. Page weight-loss follows explicit weight-loss card content; pcod follows existing asset prefix only."
+        },
+        "type": "transformation"
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-d6fd7367e7d8bf3c7911ae04",
+      "data": {
+        "title": "Recovered media: 30 days ghar ka khana wedding special weight loss diet plan with dtps",
+        "slug": "recovered-blog-d6fd7367e7d8bf3c7911ae04",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-stock-cover_Xk3l0K5xw.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-stock-cover_Xk3l0K5xw.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-cover-v2_TBVy-EE7A.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-cover-v2_TBVy-EE7A.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-cover-v3_OLFWI3n4q.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-cover-v3_OLFWI3n4q.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-stock-cover_Xk3l0K5xw.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-stock-cover_Xk3l0K5xw.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-stock-cover_cg1SgpVVYx.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/30-days-ghar-ka-khana-wedding-special-weight-loss-diet-plan-with-dtps-stock-cover_cg1SgpVVYx.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-e94341252131844a63f86df6",
+      "data": {
+        "title": "Recovered media: 4 healthier beverages for the festive season diwali edition by dtps",
+        "slug": "recovered-blog-e94341252131844a63f86df6",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-stock-cover_DdN9OBc4E.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-stock-cover_DdN9OBc4E.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-cover-v2_UWiBrL4-2.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-cover-v2_UWiBrL4-2.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-cover-v3_0yqwt2Gdey.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-cover-v3_0yqwt2Gdey.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-cover_Ou-S9SrQnG.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-cover_Ou-S9SrQnG.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-stock-cover_DdN9OBc4E.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-stock-cover_DdN9OBc4E.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-stock-cover_fVUEzw2Xm.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/4-healthier-beverages-for-the-festive-season-diwali-edition-by-dtps-stock-cover_fVUEzw2Xm.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-5779049cf6f67912d4a361a8",
+      "data": {
+        "title": "Recovered media: 6 reasons to stop drinking energy drinks right now and what to drink instead",
+        "slug": "recovered-blog-5779049cf6f67912d4a361a8",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-stock-cover_6CKRyr7FV-.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-stock-cover_6CKRyr7FV-.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-cover-v2_xjFwuA-qC.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-cover-v2_xjFwuA-qC.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-cover-v3_LHwzW08Jc.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-cover-v3_LHwzW08Jc.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-cover_nR6mg1cSbq.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-cover_nR6mg1cSbq.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-stock-cover_6CKRyr7FV-.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-stock-cover_6CKRyr7FV-.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-stock-cover_Yg6iB1DwD.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/6-reasons-to-stop-drinking-energy-drinks-right-now-and-what-to-drink-instead-stock-cover_Yg6iB1DwD.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-434d0cb14ef24b3cf36d21e4",
+      "data": {
+        "title": "Recovered media: bmi explained why this common health metric isnt always accurate",
+        "slug": "recovered-blog-434d0cb14ef24b3cf36d21e4",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/bmi-explained-why-this-common-health-metric-isnt-always-accurate-stock-cover_Luo3SnYpx.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "bmi-explained-why-this-common-health-metric-isnt-always-accurate",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/bmi-explained-why-this-common-health-metric-isnt-always-accurate-stock-cover_Luo3SnYpx.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/bmi-explained-why-this-common-health-metric-isnt-always-accurate-cover-v2_gJE1XylyH9.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/bmi-explained-why-this-common-health-metric-isnt-always-accurate-cover-v2_gJE1XylyH9.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/bmi-explained-why-this-common-health-metric-isnt-always-accurate-cover-v3_lYCgnZUe69.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/bmi-explained-why-this-common-health-metric-isnt-always-accurate-cover-v3_lYCgnZUe69.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/bmi-explained-why-this-common-health-metric-isnt-always-accurate-cover_Q8b6nsk1sh.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/bmi-explained-why-this-common-health-metric-isnt-always-accurate-cover_Q8b6nsk1sh.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/bmi-explained-why-this-common-health-metric-isnt-always-accurate-stock-cover_Luo3SnYpx.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/bmi-explained-why-this-common-health-metric-isnt-always-accurate-stock-cover_Luo3SnYpx.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/bmi-explained-why-this-common-health-metric-isnt-always-accurate-stock-cover_TevfzbqbJ.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/bmi-explained-why-this-common-health-metric-isnt-always-accurate-stock-cover_TevfzbqbJ.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-c278172b04a37a77f7600728",
+      "data": {
+        "title": "Recovered media: can diet improve your fertility naturally",
+        "slug": "recovered-blog-c278172b04a37a77f7600728",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/can-diet-improve-your-fertility-naturally-stock-cover_SYi9EjcGi.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "can-diet-improve-your-fertility-naturally",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/can-diet-improve-your-fertility-naturally-stock-cover_SYi9EjcGi.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/can-diet-improve-your-fertility-naturally-cover-v2__AL0iTPXK.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/can-diet-improve-your-fertility-naturally-cover-v2__AL0iTPXK.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/can-diet-improve-your-fertility-naturally-cover-v3_nJ9pvjmsU.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/can-diet-improve-your-fertility-naturally-cover-v3_nJ9pvjmsU.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/can-diet-improve-your-fertility-naturally-cover_-4qSNgC7G.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/can-diet-improve-your-fertility-naturally-cover_-4qSNgC7G.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/can-diet-improve-your-fertility-naturally-stock-cover_SYi9EjcGi.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/can-diet-improve-your-fertility-naturally-stock-cover_SYi9EjcGi.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/can-diet-improve-your-fertility-naturally-stock-cover_mecosND-y.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/can-diet-improve-your-fertility-naturally-stock-cover_mecosND-y.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-de705e4df7bbcce66529de82",
+      "data": {
+        "title": "Recovered media: can thyroid patients lose weight without extreme diets",
+        "slug": "recovered-blog-de705e4df7bbcce66529de82",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/can-thyroid-patients-lose-weight-without-extreme-diets-stock-cover_PqVP_CxfF.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "can-thyroid-patients-lose-weight-without-extreme-diets",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/can-thyroid-patients-lose-weight-without-extreme-diets-stock-cover_PqVP_CxfF.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/can-thyroid-patients-lose-weight-without-extreme-diets-cover-v2_oGOvJVkf3.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/can-thyroid-patients-lose-weight-without-extreme-diets-cover-v2_oGOvJVkf3.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/can-thyroid-patients-lose-weight-without-extreme-diets-cover-v3_gV9TNOwlHn.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/can-thyroid-patients-lose-weight-without-extreme-diets-cover-v3_gV9TNOwlHn.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/can-thyroid-patients-lose-weight-without-extreme-diets-cover_YvC__03Ag.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/can-thyroid-patients-lose-weight-without-extreme-diets-cover_YvC__03Ag.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/can-thyroid-patients-lose-weight-without-extreme-diets-stock-cover_PqVP_CxfF.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/can-thyroid-patients-lose-weight-without-extreme-diets-stock-cover_PqVP_CxfF.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/can-thyroid-patients-lose-weight-without-extreme-diets-stock-cover_lvmHELWSF.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/can-thyroid-patients-lose-weight-without-extreme-diets-stock-cover_lvmHELWSF.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-20e67a3025a8db0d0180066c",
+      "data": {
+        "title": "Recovered media: desi superfoods that outshine any facial ghee haldi and chana",
+        "slug": "recovered-blog-20e67a3025a8db0d0180066c",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-stock-cover_2U7hBP2dq.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-stock-cover_2U7hBP2dq.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-cover-v2_LeU1meO36w.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-cover-v2_LeU1meO36w.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-cover-v3_34-bz3ajAb.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-cover-v3_34-bz3ajAb.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-cover_hwoxjpMfKc.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-cover_hwoxjpMfKc.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-stock-cover_2U7hBP2dq.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-stock-cover_2U7hBP2dq.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-stock-cover_g8LLPFWfK.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/desi-superfoods-that-outshine-any-facial-ghee-haldi-and-chana-stock-cover_g8LLPFWfK.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-86b17a079fd6a4c5ad53c92e",
+      "data": {
+        "title": "Recovered media: do you gain weight after stopping ozempic heres the truth",
+        "slug": "recovered-blog-86b17a079fd6a4c5ad53c92e",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-stock-cover_6r9HNYvJ4.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "do-you-gain-weight-after-stopping-ozempic-heres-the-truth",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-stock-cover_6r9HNYvJ4.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-cover-v2_JNg8KCb3Yd.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-cover-v2_JNg8KCb3Yd.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-cover-v3_fpFlUMx1f.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-cover-v3_fpFlUMx1f.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-stock-cover_6r9HNYvJ4.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-stock-cover_6r9HNYvJ4.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-stock-cover_QFv2qGBzXk.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/do-you-gain-weight-after-stopping-ozempic-heres-the-truth-stock-cover_QFv2qGBzXk.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-c5f26a67dd5f8880e781b73e",
+      "data": {
+        "title": "Recovered media: does drinking less water slow down your weight loss",
+        "slug": "recovered-blog-c5f26a67dd5f8880e781b73e",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/does-drinking-less-water-slow-down-your-weight-loss-stock-cover_N-ewnpc-P.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "does-drinking-less-water-slow-down-your-weight-loss",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/does-drinking-less-water-slow-down-your-weight-loss-stock-cover_N-ewnpc-P.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/does-drinking-less-water-slow-down-your-weight-loss-cover-v3_isbisYCfFh.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/does-drinking-less-water-slow-down-your-weight-loss-cover-v3_isbisYCfFh.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/does-drinking-less-water-slow-down-your-weight-loss-stock-cover_N-ewnpc-P.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/does-drinking-less-water-slow-down-your-weight-loss-stock-cover_N-ewnpc-P.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/does-drinking-less-water-slow-down-your-weight-loss-stock-cover__ibIapY2f.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/does-drinking-less-water-slow-down-your-weight-loss-stock-cover__ibIapY2f.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-2a5d79fec3e9c4e7a4dfea98",
+      "data": {
+        "title": "Recovered media: dtps explains how ghar ka khana help with pcos diabetes and thyroid",
+        "slug": "recovered-blog-2a5d79fec3e9c4e7a4dfea98",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-stock-cover_7hl_yBjh5.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-stock-cover_7hl_yBjh5.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-cover-v2_fcx3vEL2W.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-cover-v2_fcx3vEL2W.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-cover-v3_r4x0iEWlmu.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-cover-v3_r4x0iEWlmu.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-cover_Cn7aWBYgD.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-cover_Cn7aWBYgD.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-stock-cover_7hl_yBjh5.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-stock-cover_7hl_yBjh5.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-stock-cover_CUoJhwyXH.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/dtps-explains-how-ghar-ka-khana-help-with-pcos-diabetes-and-thyroid-stock-cover_CUoJhwyXH.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-1927bc5d6d8881b2e23301f8",
+      "data": {
+        "title": "Recovered media: healthy indian sweet recipes for gut skin dtps diwali special",
+        "slug": "recovered-blog-1927bc5d6d8881b2e23301f8",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-stock-cover_ID3zRQGRB.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-stock-cover_ID3zRQGRB.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-cover-v2_Oh_l_Ozi9R.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-cover-v2_Oh_l_Ozi9R.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-cover-v3_J7FajTRYUv.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-cover-v3_J7FajTRYUv.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-cover_x6G5We2vv.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-cover_x6G5We2vv.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-stock-cover_ID3zRQGRB.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-stock-cover_ID3zRQGRB.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-stock-cover_J9DnTQm88.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/healthy-indian-sweet-recipes-for-gut-skin-dtps-diwali-special-stock-cover_J9DnTQm88.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-1d9cd9d2343aefafa34b50e4",
+      "data": {
+        "title": "Recovered media: healthy namkeen recipes that dont mess with your weight",
+        "slug": "recovered-blog-1d9cd9d2343aefafa34b50e4",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/healthy-namkeen-recipes-that-dont-mess-with-your-weight-stock-cover_LR3wEOPcD.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "healthy-namkeen-recipes-that-dont-mess-with-your-weight",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/healthy-namkeen-recipes-that-dont-mess-with-your-weight-stock-cover_LR3wEOPcD.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/healthy-namkeen-recipes-that-dont-mess-with-your-weight-cover-v2_7t3LYVaRE.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/healthy-namkeen-recipes-that-dont-mess-with-your-weight-cover-v2_7t3LYVaRE.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/healthy-namkeen-recipes-that-dont-mess-with-your-weight-cover-v3_DgjP4jwG1.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/healthy-namkeen-recipes-that-dont-mess-with-your-weight-cover-v3_DgjP4jwG1.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/healthy-namkeen-recipes-that-dont-mess-with-your-weight-cover_7Mxrl3prx.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/healthy-namkeen-recipes-that-dont-mess-with-your-weight-cover_7Mxrl3prx.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/healthy-namkeen-recipes-that-dont-mess-with-your-weight-stock-cover_LR3wEOPcD.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/healthy-namkeen-recipes-that-dont-mess-with-your-weight-stock-cover_LR3wEOPcD.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/healthy-namkeen-recipes-that-dont-mess-with-your-weight-stock-cover_Tl-DthabN.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/healthy-namkeen-recipes-that-dont-mess-with-your-weight-stock-cover_Tl-DthabN.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-982c40442cfc5540bcf7a168",
+      "data": {
+        "title": "Recovered media: is your slow metabolism actually your fault",
+        "slug": "recovered-blog-982c40442cfc5540bcf7a168",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/is-your-slow-metabolism-actually-your-fault-stock-cover_QO1vyP_5l.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "is-your-slow-metabolism-actually-your-fault",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/is-your-slow-metabolism-actually-your-fault-stock-cover_QO1vyP_5l.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/is-your-slow-metabolism-actually-your-fault-cover-v2_I3SXAiyuj.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/is-your-slow-metabolism-actually-your-fault-cover-v2_I3SXAiyuj.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/is-your-slow-metabolism-actually-your-fault-cover-v3_2wbkAyRVw.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/is-your-slow-metabolism-actually-your-fault-cover-v3_2wbkAyRVw.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/is-your-slow-metabolism-actually-your-fault-cover_OgK_b6Tj68.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/is-your-slow-metabolism-actually-your-fault-cover_OgK_b6Tj68.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/is-your-slow-metabolism-actually-your-fault-stock-cover_QO1vyP_5l.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/is-your-slow-metabolism-actually-your-fault-stock-cover_QO1vyP_5l.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/is-your-slow-metabolism-actually-your-fault-stock-cover_o76IvQ1JH.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/is-your-slow-metabolism-actually-your-fault-stock-cover_o76IvQ1JH.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-5592544695b43ef0551a311c",
+      "data": {
+        "title": "Recovered media: ozempic for weight loss reality risks and myths",
+        "slug": "recovered-blog-5592544695b43ef0551a311c",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/ozempic-for-weight-loss-reality-risks-and-myths-stock-cover_WmmxepN2S.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "ozempic-for-weight-loss-reality-risks-and-myths",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/ozempic-for-weight-loss-reality-risks-and-myths-stock-cover_WmmxepN2S.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/ozempic-for-weight-loss-reality-risks-and-myths-cover-v2_LJSEBOfer.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/ozempic-for-weight-loss-reality-risks-and-myths-cover-v2_LJSEBOfer.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/ozempic-for-weight-loss-reality-risks-and-myths-cover-v3_ohpWTv2qwi.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/ozempic-for-weight-loss-reality-risks-and-myths-cover-v3_ohpWTv2qwi.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/ozempic-for-weight-loss-reality-risks-and-myths-cover_VStE4AbUNg.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/ozempic-for-weight-loss-reality-risks-and-myths-cover_VStE4AbUNg.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/ozempic-for-weight-loss-reality-risks-and-myths-stock-cover_WmmxepN2S.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/ozempic-for-weight-loss-reality-risks-and-myths-stock-cover_WmmxepN2S.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/ozempic-for-weight-loss-reality-risks-and-myths-stock-cover_o9kqOYnoh.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/ozempic-for-weight-loss-reality-risks-and-myths-stock-cover_o9kqOYnoh.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-5c528927b6bc956792590954",
+      "data": {
+        "title": "Recovered media: pre wedding nutrition tips every bride should know for a natural glow",
+        "slug": "recovered-blog-5c528927b6bc956792590954",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-stock-cover_NssayEblPv.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-stock-cover_NssayEblPv.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-cover-v2_Km3dujSWg.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-cover-v2_Km3dujSWg.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-cover-v3_-hrtJwPKOy.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-cover-v3_-hrtJwPKOy.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-cover_BB_JD-3Td8.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-cover_BB_JD-3Td8.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-stock-cover_NssayEblPv.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-stock-cover_NssayEblPv.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-stock-cover_ybegdnjDs.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/pre-wedding-nutrition-tips-every-bride-should-know-for-a-natural-glow-stock-cover_ybegdnjDs.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-5d9a24c518bda9eaa3e75f94",
+      "data": {
+        "title": "Recovered media: what is diet learn everything about a perfect diet",
+        "slug": "recovered-blog-5d9a24c518bda9eaa3e75f94",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/what-is-diet-learn-everything-about-a-perfect-diet-stock-cover_azeB9dQZD.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "what-is-diet-learn-everything-about-a-perfect-diet",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/what-is-diet-learn-everything-about-a-perfect-diet-stock-cover_azeB9dQZD.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/what-is-diet-learn-everything-about-a-perfect-diet-cover-v2_kXQ0ZXXtl.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/what-is-diet-learn-everything-about-a-perfect-diet-cover-v2_kXQ0ZXXtl.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/what-is-diet-learn-everything-about-a-perfect-diet-cover-v3_U2Elhhe_6n.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/what-is-diet-learn-everything-about-a-perfect-diet-cover-v3_U2Elhhe_6n.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/what-is-diet-learn-everything-about-a-perfect-diet-cover_KXAIcRgKkj.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/what-is-diet-learn-everything-about-a-perfect-diet-cover_KXAIcRgKkj.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/what-is-diet-learn-everything-about-a-perfect-diet-stock-cover_azeB9dQZD.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/what-is-diet-learn-everything-about-a-perfect-diet-stock-cover_azeB9dQZD.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/what-is-diet-learn-everything-about-a-perfect-diet-stock-cover_ibCxHf9Mk.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/what-is-diet-learn-everything-about-a-perfect-diet-stock-cover_ibCxHf9Mk.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-55a4fa1191efe42d0fd8d233",
+      "data": {
+        "title": "Recovered media: what to eat before your wedding for clear skin and strong hair",
+        "slug": "recovered-blog-55a4fa1191efe42d0fd8d233",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-stock-cover_6bKbYst13u.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-stock-cover_6bKbYst13u.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-cover-v2_hGPzDAn5F.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-cover-v2_hGPzDAn5F.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-cover-v3_MlEnofMvf.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-cover-v3_MlEnofMvf.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-cover_eAMfU88v7s.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-cover_eAMfU88v7s.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-stock-cover_6bKbYst13u.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-stock-cover_6bKbYst13u.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-stock-cover_u7BJft5t8.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/what-to-eat-before-your-wedding-for-clear-skin-and-strong-hair-stock-cover_u7BJft5t8.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    },
+    {
+      "collection": "websiteBlogs",
+      "id": "recovered-blog-77bb26392adb7eaf3162ed13",
+      "data": {
+        "title": "Recovered media: why do i feel bloated even after eating healthy explains dtps",
+        "slug": "recovered-blog-77bb26392adb7eaf3162ed13",
+        "excerpt": "",
+        "content": "",
+        "featuredImage": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-stock-cover_l9Wy9FixD.jpg",
+        "author": "",
+        "category": "",
+        "tags": [],
+        "readTime": "",
+        "published": false,
+        "featured": false,
+        "views": 0,
+        "recoveryStatus": "missing-original-article",
+        "provenance": {
+          "kind": "blog-filename-metadata-only",
+          "inventoryPath": ".recovery/website-blob-inventory.json",
+          "inventorySha256": "04d48e3257beeb7155cf712415e176682b52e76a13ed5a8630757707c2c63df6",
+          "sourceSlugHint": "why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps",
+          "titleIsRecoveryLabel": true,
+          "sourcePath": "DTPS-Ecommerce/blogs/stock-covers/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-stock-cover_l9Wy9FixD.jpg",
+          "mediaVariants": [
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-cover-v2_TFlWZALCz.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-cover-v2_TFlWZALCz.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-cover-v3_cqgpccH9I-.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-cover-v3_cqgpccH9I-.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/ai-generated/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-cover_zBaQH0UdJ8.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ai-generated/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-cover_zBaQH0UdJ8.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-stock-cover_l9Wy9FixD.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-stock-cover_l9Wy9FixD.jpg"
+            },
+            {
+              "pathname": "DTPS-Ecommerce/blogs/stock-covers/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-stock-cover_sjADw0Biy.jpg",
+              "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/stock-covers/why-do-i-feel-bloated-even-after-eating-healthy-explains-dtps-stock-cover_sjADw0Biy.jpg"
+            }
+          ],
+          "unknown": [
+            "originalTitle",
+            "articleBody",
+            "author",
+            "publicationDate",
+            "originalSlug",
+            "originalDatabaseId"
+          ],
+          "excludedSource": "scripts/fix-blogs-authors-images.cjs randomized authors; those names are not evidence of authorship"
+        }
+      }
+    }
+  ],
+  "unresolved": {
+    "individualTransformationPhotos": [
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323124979.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323124979.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323128130.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323128130.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323138299.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323138299.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323210677.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323210677.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323214185.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323214185.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323229130.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323229130.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323234181.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323234181.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323249359.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323249359.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323301663.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323301663.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323305099.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323305099.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323315116.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/transformations/whatsapp-image-2026-01-25-at-12-1769323315116.webp",
+        "reason": "Individual photo; no inferred pairing or identity"
+      }
+    ],
+    "unassignedBlogMedia": [
+      {
+        "pathname": "DTPS-Ecommerce/blogs/glass-jar-full-water-1024x684-1773632433389.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/glass-jar-full-water-1024x684-1773632433389.webp",
+        "reason": "No reliable source article mapping"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/blogs/hands-indian-bride-groom-intertwined-together-making-authentic-wedding-ritual-1024x683-1773632233142.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/hands-indian-bride-groom-intertwined-together-making-authentic-wedding-ritual-1024x683-1773632233142.webp",
+        "reason": "No reliable source article mapping"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/blogs/ozempic-injection-pen-close-up-1773632689705.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/blogs/ozempic-injection-pen-close-up-1773632689705.webp",
+        "reason": "No reliable source article mapping"
+      },
+      {
+        "pathname": "dtps/blogs/chatgpt-image-jul-8--2026--01-48-27-pm-1783770073628-1ErvyC4a7sIb5u8qv3Q51IIoACqkHm.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/blogs/chatgpt-image-jul-8--2026--01-48-27-pm-1783770073628-1ErvyC4a7sIb5u8qv3Q51IIoACqkHm.webp",
+        "reason": "No reliable source article mapping"
+      },
+      {
+        "pathname": "dtps/blogs/thumbnail--1--1783770282437-rd7zxYKngMH78GImlRdh4xnzCKkIoe.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/dtps/blogs/thumbnail--1--1783770282437-rd7zxYKngMH78GImlRdh4xnzCKkIoe.webp",
+        "reason": "No reliable source article mapping"
+      }
+    ],
+    "testimonialAssets": [
+      {
+        "pathname": "DTPS-Ecommerce/testimonials/anshu-jain-weight-819x1024-1769081562603.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/testimonials/anshu-jain-weight-819x1024-1769081562603.webp",
+        "reason": "Not conflated with success-story composites"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/testimonials/garima-mam-819x1024-1769081583781.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/testimonials/garima-mam-819x1024-1769081583781.webp",
+        "reason": "Not conflated with success-story composites"
+      },
+      {
+        "pathname": "DTPS-Ecommerce/testimonials/whatsapp-image-2025-11-22-at-2-1769081616751.webp",
+        "url": "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/testimonials/whatsapp-image-2025-11-22-at-2-1769081616751.webp",
+        "reason": "Not conflated with success-story composites"
+      }
+    ],
+    "articleBodySource": "Referenced WordPress XML is absent; git contains importer code and image filenames, not original articles.",
+    "elementor": "Three exports contain header/footer/home design; not a recovered blog or transformation database.",
+    "staticTestimonials": "Existing static fallback texts retained in original source; not seeded as newly verified client records."
+  }
+}

@@ -36,28 +36,28 @@ const badges = [
 
 const mediaCards = [
   {
-    image: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c64aa14dfc9fbf5ad48f.jpg",
+    image: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c64aa14dfc9fbf5ad48f.jpg",
     title: "Iconic Business Women (Health & Nutrition) Award 2024",
     desc: "Poonam Ma'am was recognized for her impactful work in wellness and evidence-based nutrition. The award was graciously presented by Actress Bhagyashree.",
   },
   {
-    image: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ea.jpg",
+    image: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6f2a14dfc9fbf5ad5ea.jpg",
     title: "Dainik Bhaskar Women Entrepreneur Award",
     desc: "Poonam Ma'am was honored for her exceptional leadership in the health and nutrition field. The award was presented by India's first female IPS officer, Dr. Kiran Bedi.",
   },
   {
-    image: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6eaa14dfc9fbf5ad5ba.jpg",
+    image: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6eaa14dfc9fbf5ad5ba.jpg",
     title: "News 18 Narayani Namah Award",
     desc: "This award acknowledges Poonam Ma'am's dedication to transforming lives through personalized nutrition. Her commitment to community well-being continues to inspire many.",
   },
 ];
 
 const newsLogos = [
-  "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c662a14dfc9fbf5ad4d0.jpg",
-  "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c64aa14dfc9fbf5ad48d.jpg",
-  "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c659a14dfc9fbf5ad4bc.jpg",
-  "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c649a14dfc9fbf5ad48b.jpg",
-  "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c668a14dfc9fbf5ad4dd.jpg",
+  "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c662a14dfc9fbf5ad4d0.jpg",
+  "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c64aa14dfc9fbf5ad48d.jpg",
+  "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c659a14dfc9fbf5ad4bc.jpg",
+  "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c649a14dfc9fbf5ad48b.jpg",
+  "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c668a14dfc9fbf5ad4dd.jpg",
 ];
 
 function BadgeIcon({ type }: { type: (typeof badges)[number]["icon"] }) {

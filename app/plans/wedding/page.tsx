@@ -53,7 +53,7 @@ const tabsData: Record<WeddingTabKey, WeddingTabConfig> = {
   brides: {
     label: "Brides",
     tabVector: "/images/Bride-Vector.png",
-    image: "https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/Bride.png",
+    image: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/Bride.png",
     benefits: [
       "You'll drop those extra inches with real, home-cooked food.",
       "Skin looks clearer and naturally glowing.",
@@ -286,7 +286,7 @@ export default function WeddingPlanPage() {
         <div className="bg-[#014E4E] rounded-3xl overflow-hidden w-full relative h-[765px] md:h-[738px]">
           {/* Background Image */}
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
+            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c727a14dfc9fbf5ad706.jpg"
             alt="Wedding couple"
             fill
             priority
@@ -570,7 +570,7 @@ export default function WeddingPlanPage() {
       <section className="block md:hidden w-full">
 
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/wedding/section-29-1776941173451.jpg"
+          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-29-1776941173451.jpg"
           alt="Five Cycle Program"
           width={420}
           height={700}
@@ -587,7 +587,7 @@ export default function WeddingPlanPage() {
       <section className="site-shell hidden bg-white py-20 md:block">
         <div className="site-fill rounded-[28px] overflow-hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-29-1776941173451.jpg"
+            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-29-1776941173451.jpg"
             alt="Our Five-Cycle Program"
             width={1200}
             height={700}
@@ -727,7 +727,7 @@ export default function WeddingPlanPage() {
               <div className="flex flex-col items-center gap-4">
 
                 <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={44} height={44} loading="lazy" />
+                  <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={44} height={44} loading="lazy" />
                 </div>
                 <p className="text-white text-base font-medium text-center leading-snug">
                   Fully Customised<br />Diet Plan
@@ -736,7 +736,7 @@ export default function WeddingPlanPage() {
 
               <div className="flex flex-col items-center gap-4">
                 <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={44} height={44} loading="lazy" />
+                  <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={44} height={44} loading="lazy" />
                 </div>
                 <p className="text-white text-base font-medium text-center leading-snug">
                   Shaadi-Ready<br />Custom Diet Plan
@@ -745,7 +745,7 @@ export default function WeddingPlanPage() {
 
               <div className="flex flex-col items-center gap-4">
                 <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={44} height={44} loading="lazy" />
+                  <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={44} height={44} loading="lazy" />
                 </div>
                 <p className="text-white text-base font-medium text-center leading-snug">
                   Medical-Aware<br />Personalised Plan
@@ -757,7 +757,7 @@ export default function WeddingPlanPage() {
             <div className="flex md:hidden flex-col gap-5 mb-8 mx-auto items-center">
               <div className="flex items-center gap-4">
                 <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={28} height={28} loading="lazy" />
+                  <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4f6.jpg" alt="Fully Customised Diet Plan" width={28} height={28} loading="lazy" />
                 </div>
                 <p className="text-white text-sm font-medium leading-snug">
                   Fully Customised<br />Diet Plan
@@ -766,7 +766,7 @@ export default function WeddingPlanPage() {
 
               <div className="flex items-center gap-4">
                 <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={28} height={28} loading="lazy" />
+                  <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad594.jpg" alt="Shaadi-Ready Custom Diet Plan" width={28} height={28} loading="lazy" />
                 </div>
                 <p className="text-white text-sm font-medium leading-snug">
                   Shaadi-Ready<br />Custom Diet Plan
@@ -775,7 +775,7 @@ export default function WeddingPlanPage() {
 
               <div className="flex items-center gap-4">
                 <div className="w-[56px] h-[56px] min-w-[56px] bg-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-[#B22222] ring-offset-4 ring-offset-[#4E0101]">
-                  <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={28} height={28} loading="lazy" />
+                  <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6b3a14dfc9fbf5ad560.jpg" alt="Medical-Aware Personalised Plan" width={28} height={28} loading="lazy" />
                 </div>
                 <p className="text-white text-sm font-medium leading-snug">
                   Medical-Aware<br />Personalised Plan
@@ -849,7 +849,7 @@ export default function WeddingPlanPage() {
           <div className="hidden md:flex flex-col items-center gap-5 w-full">
             <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={48} height={48} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={48} height={48} loading="lazy" />
               </div>
               <p className="text-white text-base md:text-lg font-medium leading-snug">
                 Personalised plan built around<br />your taste, work hours, travel, and culture
@@ -858,7 +858,7 @@ export default function WeddingPlanPage() {
 
             <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={48} height={48} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={48} height={48} loading="lazy" />
               </div>
               <p className="text-white text-base md:text-lg font-medium leading-snug">
                 Medical aware for PCOS, thyroid,<br />and diabetes with reports considered
@@ -867,7 +867,7 @@ export default function WeddingPlanPage() {
 
             <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={48} height={48} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={48} height={48} loading="lazy" />
               </div>
               <p className="text-white text-base md:text-lg font-medium leading-snug">
                 We don&apos;t recommend eating expensive<br />fat-burning supplements
@@ -876,7 +876,7 @@ export default function WeddingPlanPage() {
 
             <div className="w-full max-w-[840px] bg-[#4E0101] rounded-2xl flex items-center gap-6 px-8 py-6">
               <div className="w-[80px] h-[80px] min-w-[80px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={48} height={48} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={48} height={48} loading="lazy" />
               </div>
               <p className="text-white text-base md:text-lg font-medium leading-snug">
                 We don&apos;t promote any<br />heavy workouts or starvation
@@ -888,7 +888,7 @@ export default function WeddingPlanPage() {
           <div className="md:hidden flex flex-col gap-4">
             <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
               <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={36} height={36} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c716a14dfc9fbf5ad6c9.jpg" alt="Personalised" width={36} height={36} loading="lazy" />
               </div>
               <p className="text-white text-sm font-medium leading-snug">
                 Personalised plan built around your taste, work hours, travel, and culture
@@ -897,7 +897,7 @@ export default function WeddingPlanPage() {
 
             <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
               <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={36} height={36} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69b.jpg" alt="Medical" width={36} height={36} loading="lazy" />
               </div>
               <p className="text-white text-sm font-medium leading-snug">
                 Medical aware for PCOS, thyroid, and diabetes with reports considered
@@ -906,7 +906,7 @@ export default function WeddingPlanPage() {
 
             <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
               <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={36} height={36} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6e9a14dfc9fbf5ad5a3.jpg" alt="No supplements" width={36} height={36} loading="lazy" />
               </div>
               <p className="text-white text-sm font-medium leading-snug">
                 We don&apos;t recommend eating expensive fat-burning supplements
@@ -915,7 +915,7 @@ export default function WeddingPlanPage() {
 
             <div className="bg-[#4E0101] rounded-2xl flex items-center gap-4 px-5 py-5">
               <div className="w-[60px] h-[60px] min-w-[60px] bg-white rounded-xl flex items-center justify-center">
-                <Image src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={36} height={36} loading="lazy" />
+                <Image src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad4fa.jpg" alt="No heavy workouts" width={36} height={36} loading="lazy" />
               </div>
               <p className="text-white text-sm font-medium leading-snug">
                 We don&apos;t promote any heavy workouts or starvation

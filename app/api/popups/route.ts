@@ -1,12 +1,11 @@
+import { createContent, updateContent, deleteContent, getContent } from '@/lib/website-content';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
 import { DEFAULT_POPUP_SETTINGS, POPUP_PAGE_OPTIONS, withPopupDefaults, type PopupSettings } from '@/lib/popup-settings';
 import { getCountry, validatePhone } from '@/lib/validation';
 import { parseUserAgent } from '@/lib/geoip';
-import Lead from '@/models/Lead';
-import PopupBanner from '@/models/PopupBanner';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -106,20 +105,15 @@ async function requireAdmin() {
 
 export async function GET(request: NextRequest) {
   try {
-    await dbConnect();
     const { searchParams } = new URL(request.url);
     const page = searchParams.get('page');
 
     if (searchParams.get('action') === 'getPopup' && page) {
       const now = new Date();
-      const popup = await PopupBanner.findOne({
-        pages: { $in: [page, '*'] },
-        isActive: true,
-        $and: [
-          { $or: [{ startAt: null }, { startAt: { $exists: false } }, { startAt: { $lte: now } }] },
-          { $or: [{ endAt: null }, { endAt: { $exists: false } }, { endAt: { $gte: now } }] },
-        ],
-      }).sort({ priority: -1, updatedAt: -1 }).lean();
+      const popup = (await getWebsiteFirestore().collection('websitePopups').get()).docs
+        .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>) as any)
+        .filter((item: any) => Array.isArray(item.pages) && item.pages.some((target: string) => target === page || target === '*') && item.isActive === true && (!item.startAt || new Date(item.startAt) <= now) && (!item.endAt || new Date(item.endAt) >= now))
+        .sort((a: any, b: any) => Number(b.priority || 0) - Number(a.priority || 0) || String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')))[0] || null;
 
       return NextResponse.json(
         { popup: popup ? withPopupDefaults(popup as unknown as Partial<PopupSettings>) : null, success: true },
@@ -128,7 +122,9 @@ export async function GET(request: NextRequest) {
     }
 
     if (!(await requireAdmin())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const popups = await PopupBanner.find().sort({ priority: -1, createdAt: -1 }).lean();
+    const popups = (await getWebsiteFirestore().collection('websitePopups').get()).docs
+      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>) as any)
+      .sort((a: any, b: any) => Number(b.priority || 0) - Number(a.priority || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
     return NextResponse.json({ popups: popups.map((popup) => withPopupDefaults(popup as unknown as Partial<PopupSettings>)), success: true });
   } catch (error) {
     console.error('Popup fetch error:', error);
@@ -139,7 +135,6 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    await dbConnect();
 
     if (body.action === 'saveLead') {
       const countryIso = text(body.countryIso, 2, 'IN').toUpperCase();
@@ -152,7 +147,7 @@ export async function POST(request: NextRequest) {
         request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
         request.headers.get('x-real-ip') ||
         'unknown';
-      const lead = await Lead.create({
+      const lead = await createContent('websiteLeads', {
         phoneNumber: text(body.phoneNumber, 20).replace(/\D/g, ''),
         countryCode: country.dialCode,
         countryIso: country.code,
@@ -185,7 +180,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!(await requireAdmin())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const popup = await PopupBanner.create(sanitize(body));
+    const popup = await createContent('websitePopups', sanitize(body));
     return NextResponse.json({ success: true, message: 'Popup created successfully', popup }, { status: 201 });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to process request';
@@ -200,8 +195,7 @@ export async function PUT(request: NextRequest) {
     const body = await request.json();
     const id = text(body._id, 80);
     if (!id) return NextResponse.json({ error: 'Popup ID is required' }, { status: 400 });
-    await dbConnect();
-    const popup = await PopupBanner.findByIdAndUpdate(id, { $set: sanitize(body) }, { new: true, runValidators: true });
+    const popup = await updateContent('websitePopups', id, sanitize(body));
     if (!popup) return NextResponse.json({ error: 'Popup not found' }, { status: 404 });
     return NextResponse.json({ popup, success: true, message: 'Popup updated successfully' });
   } catch (error) {
@@ -216,8 +210,7 @@ export async function DELETE(request: NextRequest) {
     if (!(await requireAdmin())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     const id = new URL(request.url).searchParams.get('id');
     if (!id) return NextResponse.json({ error: 'Popup ID is required' }, { status: 400 });
-    await dbConnect();
-    await PopupBanner.findByIdAndDelete(id);
+    await deleteContent('websitePopups', id);
     return NextResponse.json({ success: true, message: 'Popup deleted successfully' });
   } catch (error) {
     console.error('Popup delete error:', error);

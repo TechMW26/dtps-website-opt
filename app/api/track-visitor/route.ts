@@ -1,89 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongodb';
-import Visitor from '@/models/Visitor';
-import { geoLookup, parseUserAgent } from '@/lib/geoip';
-
-/**
- * POST /api/track-visitor
- *
- * Body:
- *   {
- *     sessionId: string,        // generated client-side, persisted in sessionStorage
- *     event: 'pageview' | 'heartbeat',
- *     path: string,
- *     title?: string,
- *     referrer?: string,
- *     language?: string,
- *     durationMs?: number       // sent on heartbeat for the previous page
- *   }
- *
- * Always returns 200 quickly so the client never waits on it.
- */
-export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { sessionId, event, path, title, referrer, language, durationMs } = body || {};
-    if (!sessionId || !path) {
-      return NextResponse.json({ ok: true });
-    }
-
-    const ip =
-      req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-      req.headers.get('x-real-ip') ||
-      'unknown';
-    const userAgent = req.headers.get('user-agent') || '';
-
-    await dbConnect();
-
-    let visitor = await Visitor.findOne({ sessionId });
-
-    if (!visitor) {
-      // New session – do a one-time geo + UA lookup and write the seed doc.
-      const [geo, ua] = await Promise.all([geoLookup(ip), Promise.resolve(parseUserAgent(userAgent))]);
-      visitor = await Visitor.create({
-        sessionId,
-        ip,
-        userAgent,
-        device: ua.device,
-        browser: ua.browser,
-        os: ua.os,
-        country: geo.country,
-        countryCode: geo.countryCode,
-        region: geo.region,
-        city: geo.city,
-        lat: geo.lat,
-        lng: geo.lng,
-        isp: geo.isp,
-        language,
-        referrer,
-        landingPath: path,
-        pageViews: [{ path, title, referrer, enteredAt: new Date() }],
-        sessionStart: new Date(),
-        lastSeen: new Date(),
-      });
-    } else {
-      const now = new Date();
-      visitor.lastSeen = now;
-
-      if (typeof durationMs === 'number' && durationMs > 0 && visitor.pageViews.length > 0) {
-        const last = visitor.pageViews[visitor.pageViews.length - 1];
-        last.durationMs = (last.durationMs || 0) + Math.min(durationMs, 30 * 60 * 1000);
-        visitor.totalDurationMs = (visitor.totalDurationMs || 0) + Math.min(durationMs, 30 * 60 * 1000);
-      }
-
-      if (event === 'pageview') {
-        const last = visitor.pageViews[visitor.pageViews.length - 1];
-        if (!last || last.path !== path) {
-          visitor.pageViews.push({ path, title, referrer, enteredAt: now });
-        }
-      }
-
-      await visitor.save();
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch {
-    // Tracking must never throw user-facing errors.
-    return NextResponse.json({ ok: true });
-  }
-}
+import {NextRequest,NextResponse} from 'next/server';
+import {getWebsiteFirestore} from '@/lib/firebase-admin';
+import {recordWebsiteVisit} from '@/lib/website-telemetry';
+import {geoLookup,parseUserAgent} from '@/lib/geoip';
+export async function POST(req:NextRequest){try{
+ const body=await req.json();if(typeof body?.sessionId!=='string'||!body.sessionId||body.sessionId.length>200||typeof body.path!=='string'||!body.path)return NextResponse.json({ok:true});
+ const clean=(value:unknown,max:number)=>typeof value==='string'?value.slice(0,max):'';
+ const input={sessionId:body.sessionId,event:body.event,path:clean(body.path,500),title:clean(body.title,200),referrer:clean(body.referrer,500),durationMs:body.durationMs};
+ const db=getWebsiteFirestore(),existing=await db.collection('websiteVisitors').where('sessionId','==',input.sessionId).limit(1).get();let seed={};
+ if(existing.empty){const ip=clean(req.headers.get('x-forwarded-for')?.split(',')[0]?.trim()||req.headers.get('x-real-ip')||'unknown',100),userAgent=clean(req.headers.get('user-agent'),1000);const geo=await geoLookup(ip),ua=parseUserAgent(userAgent);seed=Object.fromEntries(Object.entries({...geo,...ua,ip,userAgent,language:clean(body.language,100),referrer:input.referrer}).filter(([,value])=>value!==undefined));}
+ await recordWebsiteVisit(db,input,seed);return NextResponse.json({ok:true});
+ }catch{return NextResponse.json({ok:true});}}

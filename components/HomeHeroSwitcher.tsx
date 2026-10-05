@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
-import { getOptimizedUrl } from '@/lib/imagekit-url';
+import { getOptimizedUrl } from '@/lib/image-url';
 
 interface HomeBanner {
   _id: string;

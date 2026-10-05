@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 interface Transformation {
   _id: string;
   clientName: string;
+  imageLayout?: string;
   beforeImage?: string;
   afterImage?: string;
   weightLost: string;
@@ -272,6 +273,9 @@ export default function TransformationShowcase({
             {transformations.map((transformation) => (
               <SwiperSlide key={transformation._id || transformation.clientName}>
                 <div className="transformation-showcase-card">
+                  {transformation.imageLayout === 'composite' && transformation.afterImage ? (
+                    <img src={transformation.afterImage} alt="Client before and after transformation" className="w-full h-auto object-contain" loading="lazy" decoding="async" />
+                  ) : (<>
                   {/* Before/After Images */}
                   <div className="transformation-showcase-images">
                     {/* Before Image */}
@@ -318,6 +322,7 @@ export default function TransformationShowcase({
                       )}
                     </div>
                   </div>
+                  </>)}
                 </div>
               </SwiperSlide>
             ))}

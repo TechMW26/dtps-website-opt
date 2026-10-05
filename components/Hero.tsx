@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Navbar from './Navbar';
 
 // Optimized hero image URL with proper transformations
-const HERO_IMAGE_MOBILE = "https://ik.imagekit.io/br0mssyqj/tr:w-400,q-75,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png";
-const HERO_IMAGE_DESKTOP = "https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png";
+const HERO_IMAGE_MOBILE = "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png";
+const HERO_IMAGE_DESKTOP = "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png";
 
 export default function Hero() {
   return (

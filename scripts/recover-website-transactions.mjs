@@ -53,7 +53,9 @@ if (state.complete) {
   state.paymentScanned ||= 0;
   let paymentPages = 0;
   while (!state.paymentsComplete && paymentPages < 500) {
-    const page = await readProvider(() => api.payments.all({ count: 100, skip: state.paymentScanned, to: state.to }));
+    const start = state.paymentScanned;
+    const pages = await Promise.all([0, 1, 2].map(offset => readProvider(() => api.payments.all({ count: 100, skip: start + offset * 100, to: state.to }))));
+    for (const page of pages) {
     for (const payment of page.items) {
       if (!ids.has(payment.order_id)) continue;
       const path = `${directory}/${payment.order_id}.json`;
@@ -69,5 +71,7 @@ if (state.complete) {
     await save(statePath, state);
     paymentPages++;
     if (paymentPages % 10 === 0 || state.paymentsComplete) console.log(JSON.stringify(state));
+    if (state.paymentsComplete) break;
+    }
   }
 }

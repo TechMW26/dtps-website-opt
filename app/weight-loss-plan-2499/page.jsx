@@ -11,8 +11,8 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import TransformationGallery from '@/components/TransformationGallery';
 
 const SECTION_GAP = 'mt-10 md:mt-14';
-const THALI_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/4ca0ad9f-3706-4478-9c4b-6de3909f56c2-1.png';
-const RECTANGLE_IMAGE_URL = 'https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/weight-loss/weight-loss-plan-2499-frame-427318463.png';
+const THALI_IMAGE_URL = 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/weight-loss/4ca0ad9f-3706-4478-9c4b-6de3909f56c2-1.png';
+const RECTANGLE_IMAGE_URL = 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/weight-loss/weight-loss-plan-2499-frame-427318463.png';
 
 const desktopPricingFeatures = [
     'Daily Expert Access (10AM - 6PM) - Dedicated Dietitian & Health Counsellor',
@@ -418,7 +418,7 @@ export default function WeightLossPlan2499Page() {
             <div>
                 <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
                     <Image
-                        src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
+                        src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad567.jpg"
                         alt="Our Five-Cycle Program - Desktop"
                         width={1200}
                         height={600}
@@ -434,7 +434,7 @@ export default function WeightLossPlan2499Page() {
 
                 <div className="overflow-hidden rounded-[16px] bg-gray-100 lg:hidden">
                     <Image
-                        src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
+                        src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6caa14dfc9fbf5ad56f.jpg"
                         alt="Our Five-Cycle Program - Mobile"
                         width={600}
                         height={800}
@@ -455,7 +455,7 @@ export default function WeightLossPlan2499Page() {
                 <div className="site-fill">
                     <div className="mx-auto hidden w-[70%] overflow-hidden rounded-[20px] lg:block">
                         <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:w-900,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
                             alt="What to Expect - Desktop"
                             width={900}
                             height={450}
@@ -491,7 +491,7 @@ export default function WeightLossPlan2499Page() {
                 <div className="site-fill">
                     <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
                         <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
                             alt="100% Money Back Guarantee - Desktop"
                             width={1200}
                             height={600}
@@ -507,7 +507,7 @@ export default function WeightLossPlan2499Page() {
 
                     <div className="overflow-hidden rounded-[16px] bg-gray-100 lg:hidden">
                         <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
                             alt="100% Money Back Guarantee - Mobile"
                             width={600}
                             height={800}
@@ -527,7 +527,7 @@ export default function WeightLossPlan2499Page() {
                 <div className="site-fill">
                     <div className="hidden overflow-hidden rounded-[20px] bg-gray-100 lg:block">
                         <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
                             alt="What You Get - Desktop"
                             width={1200}
                             height={600}
@@ -543,7 +543,7 @@ export default function WeightLossPlan2499Page() {
 
                     <div className="overflow-hidden rounded-[16px] bg-gray-100 lg:hidden">
                         <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
                             alt="What You Get - Mobile"
                             width={600}
                             height={800}

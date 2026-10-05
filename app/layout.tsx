@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 
 const SITE_URL = 'https://www.dtpoonamsagar.com';
 const LOGO_URL =
-  'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+  'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CLARITY_ALLOWED_HOSTS = ['www.dtpoonamsagar.com', 'dtpoonamsagar.com'];
@@ -122,14 +122,14 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth" className={`${poppins.variable} ${epilogue.variable}`}>
       <head>
         {/* Preconnect to critical external domains */}
-        <link rel="preconnect" href="https://ik.imagekit.io" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* DNS prefetch for secondary domains */}
-        <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+        <link rel="dns-prefetch" href="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://checkout.razorpay.com" />
         <link rel="dns-prefetch" href="https://api.razorpay.com" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
@@ -138,7 +138,7 @@ export default function RootLayout({
         {/* Preload critical hero image */}
         <link
           rel="preload"
-          href="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png"
+          href="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png"
           as="image"
           type="image/webp"
         />

@@ -215,7 +215,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <div className="bg-[#F7F8F8] px-4 py-3 md:px-5 md:py-4">
                 <h4 className="mb-2 text-[14px] font-bold text-[#083F46] md:text-[15px]">Hosting &amp; infrastructure</h4>
-                <p className="text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">our cloud hosting provider, MongoDB Atlas (database), and ImageKit (media delivery).</p>
+                <p className="text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">our cloud hosting provider Vercel, Google Firebase (database), and Vercel Blob (media storage).</p>
               </div>
               <div className="bg-[#F7F8F8] px-4 py-3 md:px-5 md:py-4">
                 <h4 className="mb-2 text-[14px] font-bold text-[#083F46] md:text-[15px]">Analytics &amp; advertising</h4>

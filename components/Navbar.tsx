@@ -80,7 +80,7 @@ export default function Navbar({ bgColor }: NavbarProps) {
           <div className="flex items-center justify-between gap-3 py-2 md:py-4 xl:gap-5">
             <Link href="/" className="flex items-center shrink-0">
               <Image
-                src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
+                src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg"
                 alt="Dietitian Poonam Sagar"
                 width={180}
                 height={60}

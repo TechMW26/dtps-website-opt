@@ -13,7 +13,7 @@ interface OptimizedImageProps extends Omit<ImageProps, 'onLoad' | 'onError'> {
  * - Lazy loading by default (except when priority is set)
  * - Error handling with fallback
  * - Blur placeholder support
- * - Automatic format optimization via ImageKit
+ * - Automatic format optimization via Vercel Blob
  */
 export default function OptimizedImage({
     src,

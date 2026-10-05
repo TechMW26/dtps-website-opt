@@ -1,124 +1,89 @@
+import { FieldValue } from 'firebase-admin/firestore';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import Pricing from '@/models/Pricing';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-// Get all pricing plans
+const collection = 'websitePricing';
+
+async function listPricing() {
+  const snapshot = await getWebsiteFirestore().collection(collection).get();
+  return snapshot.docs
+    .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+    .sort((a, b) => Number(a.order ?? 0) - Number(b.order ?? 0) || Number(a.price ?? 0) - Number(b.price ?? 0));
+}
+
 export async function GET(request: NextRequest) {
   try {
-    await dbConnect();
-
     const { searchParams } = new URL(request.url);
     const page = searchParams.get('page');
     const category = searchParams.get('category');
     const isActive = searchParams.get('active');
-
-    const query: any = {};
-    if (page) query.page = page;
-    if (category) query.category = category;
-    if (isActive === 'true') query.isActive = true;
-
-    const pricing = await Pricing.find(query).sort({ order: 1, price: 1 });
-
-    return NextResponse.json({
-      success: true,
-      pricing,
-    });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || 'Failed to fetch pricing' },
-      { status: 500 }
+    const pricing = (await listPricing()).filter((plan) =>
+      (!page || plan.page === page) &&
+      (!category || plan.category === category) &&
+      (isActive !== 'true' || plan.isActive === true),
     );
+    return NextResponse.json({ success: true, pricing }, { headers: { 'Cache-Control': 'no-store' } });
+  } catch (error) {
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to fetch pricing' }, { status: 503 });
   }
 }
 
-// Create pricing (protected)
+async function requireSession() {
+  const session = await getServerSession(authOptions);
+  if (!session) throw new Response('Unauthorized', { status: 401 });
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    await dbConnect();
-
+    await requireSession();
     const body = await request.json();
-    const pricing = await Pricing.create(body);
-
-    return NextResponse.json({
-      success: true,
-      pricing,
-    });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || 'Failed to create pricing' },
-      { status: 500 }
-    );
+    if (!body?.planName || !body?.duration || !body?.page || !body?.category) {
+      return NextResponse.json({ error: 'planName, duration, page and category are required' }, { status: 400 });
+    }
+    const ref = getWebsiteFirestore().collection(collection).doc();
+    const now = FieldValue.serverTimestamp();
+    await ref.set({ ...body, createdAt: now, updatedAt: now });
+    return NextResponse.json({ success: true, pricing: serializeFirestoreDocument(ref.id, { ...body }) }, { status: 201 });
+  } catch (error) {
+    if (error instanceof Response) return error;
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to create pricing' }, { status: 503 });
   }
 }
 
-// Update pricing (protected)
 export async function PUT(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    await dbConnect();
-
+    await requireSession();
     const body = await request.json();
-    const { id, ...updateData } = body;
-
-    const pricing = await Pricing.findByIdAndUpdate(id, updateData, { new: true });
-
-    if (!pricing) {
-      return NextResponse.json({ error: 'Pricing not found' }, { status: 404 });
-    }
-
-    return NextResponse.json({
-      success: true,
-      pricing,
-    });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || 'Failed to update pricing' },
-      { status: 500 }
-    );
+    const id = typeof body?.id === 'string' ? body.id : '';
+    if (!id) return NextResponse.json({ error: 'Pricing id is required' }, { status: 400 });
+    const ref = getWebsiteFirestore().collection(collection).doc(id);
+    const current = await ref.get();
+    if (!current.exists) return NextResponse.json({ error: 'Pricing not found' }, { status: 404 });
+    const { id: _id, ...updateData } = body;
+    await ref.update({ ...updateData, updatedAt: FieldValue.serverTimestamp() });
+    return NextResponse.json({ success: true, pricing: serializeFirestoreDocument(id, { ...current.data(), ...updateData } as Record<string, unknown>) });
+  } catch (error) {
+    if (error instanceof Response) return error;
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to update pricing' }, { status: 503 });
   }
 }
 
-// Delete pricing (protected)
 export async function DELETE(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    await dbConnect();
-
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
-
-    const pricing = await Pricing.findByIdAndDelete(id);
-
-    if (!pricing) {
-      return NextResponse.json({ error: 'Pricing not found' }, { status: 404 });
-    }
-
-    return NextResponse.json({
-      success: true,
-      message: 'Pricing deleted successfully',
-    });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message || 'Failed to delete pricing' },
-      { status: 500 }
-    );
+    await requireSession();
+    const id = new URL(request.url).searchParams.get('id') || '';
+    if (!id) return NextResponse.json({ error: 'Pricing id is required' }, { status: 400 });
+    const ref = getWebsiteFirestore().collection(collection).doc(id);
+    if (!(await ref.get()).exists) return NextResponse.json({ error: 'Pricing not found' }, { status: 404 });
+    await ref.delete();
+    return NextResponse.json({ success: true, message: 'Pricing deleted successfully' });
+  } catch (error) {
+    if (error instanceof Response) return error;
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to delete pricing' }, { status: 503 });
   }
 }

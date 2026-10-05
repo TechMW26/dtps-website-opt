@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import dbConnect from '@/lib/mongodb';
-import BlogModel from '@/models/Blog';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 import BlogDetailClient from './BlogDetailClient';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -8,16 +7,15 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   try {
-    await dbConnect();
-    const blog = await BlogModel.findOne({ slug, published: true }).lean();
-    if (!blog) {
+    const snapshot = await getWebsiteFirestore().collection('websiteBlogs').where('slug', '==', slug).where('published', '==', true).limit(1).get();
+    if (snapshot.empty) {
       return {
         title: 'Blog Post Not Found',
         description: 'The article you are looking for does not exist.',
         robots: { index: false, follow: false },
       };
     }
-    const b = blog as {
+    const b = serializeFirestoreDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>) as unknown as {
       title: string;
       excerpt?: string;
       featuredImage?: string;

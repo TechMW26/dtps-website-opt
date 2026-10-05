@@ -1,27 +1,23 @@
+import { saveSiteBanner, getContent, deleteContent } from '@/lib/website-content';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import dbConnect from '@/lib/mongodb';
 import { authOptions } from '@/lib/auth';
-import SiteBanner from '@/models/SiteBanner';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function GET(req: NextRequest) {
   try {
-    await dbConnect();
-    
     const { searchParams } = new URL(req.url);
     const type = searchParams.get('type');
     const active = searchParams.get('active');
     const page = searchParams.get('page');
 
-    const query: any = {};
-    if (type) query.type = type;
-    if (active === 'true') query.isActive = true;
-    if (page) query.page = page;
-
-    const banners = await SiteBanner.find(query).sort({ order: 1, createdAt: -1 });
+    const banners = (await getWebsiteFirestore().collection('websiteSiteBanners').get()).docs
+      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+      .filter((item: any) => (!type || item.type === type) && (active !== 'true' || item.isActive === true) && (!page || item.page === page))
+      .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
     
     return NextResponse.json({ banners }, { status: 200 });
   } catch (error: any) {
@@ -39,7 +35,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
     
     const body = await req.json();
     const { type, title, icon, desktopImage, mobileImage, link, page, isActive, order } = body;
@@ -70,15 +65,7 @@ export async function POST(req: NextRequest) {
         ? false
         : true;
 
-    // A page can only have one custom hero replacing its normal hero at a time.
-    if (type === 'hero-banner' && activeStatus) {
-      await SiteBanner.updateMany(
-        { type: 'hero-banner', page },
-        { $set: { isActive: false } }
-      );
-    }
-
-    const banner = new SiteBanner({
+    const banner = await saveSiteBanner(null, {
       type,
       title: title.trim(),
       icon: icon || null,
@@ -90,7 +77,6 @@ export async function POST(req: NextRequest) {
       order: order || 0,
     });
 
-    await banner.save();
     
     return NextResponse.json(banner, { status: 201 });
   } catch (error: any) {
@@ -109,7 +95,6 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
     
     const body = await req.json();
     const { id } = body;
@@ -121,7 +106,7 @@ export async function PUT(req: NextRequest) {
       );
     }
 
-    const existingBanner = await SiteBanner.findById(id);
+    const existingBanner = await getContent('websiteSiteBanners', id);
     if (!existingBanner) {
       return NextResponse.json(
         { error: 'Banner not found' },
@@ -173,16 +158,7 @@ export async function PUT(req: NextRequest) {
       updateData.title = updateData.title.trim();
     }
 
-    // Activating a custom hero automatically disables any other custom hero
-    // for that same page, giving the storefront a deterministic selection.
-    if (nextType === 'hero-banner' && body.isActive === true) {
-      await SiteBanner.updateMany(
-        { _id: { $ne: id }, type: 'hero-banner', page: nextPage },
-        { $set: { isActive: false } }
-      );
-    }
-
-    const banner = await SiteBanner.findByIdAndUpdate(id, updateData, { new: true });
+    const banner = await saveSiteBanner(id, updateData);
 
     return NextResponse.json(banner, { status: 200 });
   } catch (error: any) {
@@ -200,7 +176,6 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
     
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
@@ -212,7 +187,7 @@ export async function DELETE(req: NextRequest) {
       );
     }
 
-    const banner = await SiteBanner.findByIdAndDelete(id);
+    const banner = await deleteContent('websiteSiteBanners', id);
 
     if (!banner) {
       return NextResponse.json(

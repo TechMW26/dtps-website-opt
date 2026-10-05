@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const NAVBAR_LOGO_SRC = 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+const NAVBAR_LOGO_SRC = 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 
 type Tone = 'yes' | 'warn' | 'no';
 

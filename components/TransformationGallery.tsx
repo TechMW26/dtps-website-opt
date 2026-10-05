@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 interface Transformation {
   _id: string;
   clientName: string;
+  imageLayout?: string;
   beforeImage?: string;
   afterImage?: string;
   weightLost: string;
@@ -30,23 +31,8 @@ interface TransformationGalleryProps {
   showNavArrows?: boolean;
 }
 
-// Optimize ImageKit URLs
-function optimizeImageUrl(url: string, width: number = 400): string {
-  if (!url || !url.includes('ik.imagekit.io')) return url;
-  const cleaned = url.replace(/\/tr:[^/]+\//, '/');
-  try {
-    const urlObj = new URL(cleaned);
-    const parts = urlObj.pathname.split('/').filter(Boolean);
-    if (parts.length >= 2) {
-      const endpoint = parts[0];
-      const rest = parts.slice(1).join('/');
-      return `${urlObj.origin}/${endpoint}/tr:w-${width},q-75,f-auto,pr-true/${rest}`;
-    }
-  } catch {
-    return url;
-  }
-  return url;
-}
+// Responsive optimization is handled by Next.js for Vercel Blob images.
+function optimizeImageUrl(url: string, _width: number = 400, _quality: number = 80): string { return url; }
 
 const fallbackData: Transformation[] = [];
 
@@ -91,7 +77,7 @@ export default function TransformationGallery({
     return transformations.map(t => ({
       ...t,
       optimizedImage: optimizeImageUrl(
-        t.afterImage || t.beforeImage || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e5.jpg',
+        t.afterImage || t.beforeImage || 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e5.jpg',
         400
       )
     }));
@@ -149,9 +135,9 @@ export default function TransformationGallery({
               <div className="relative aspect-[4/5]">
                 <Image
                   src={transformation.optimizedImage}
-                  alt={`${transformation.clientName} Transformation`}
+                  alt={transformation.clientName === 'Transformation' ? 'Client before and after transformation' : `${transformation.clientName} transformation`}
                   fill
-                  className="object-cover rounded-[16px]"
+                  className={`${transformation.imageLayout === 'composite' ? 'object-contain' : 'object-cover'} rounded-[16px]`}
                   loading={index < 3 ? "eager" : "lazy"}
                   decoding="async"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

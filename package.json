@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "firebase:seed": "node --env-file=.env.local scripts/seed-firebase-website.mjs",
+    "firebase:import-recovery": "node --env-file=.env.local scripts/import-razorpay-recovery-to-firebase.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -28,9 +30,9 @@
     "clsx": "^2.1.1",
     "critters": "^0.0.23",
     "d3-geo": "^3.1.1",
+    "firebase-admin": "^13.10.0",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.562.0",
-    "mongoose": "^9.1.5",
     "next": "^16.1.6",
     "next-auth": "^4.24.14",
     "node-modules": "^1.0.1",

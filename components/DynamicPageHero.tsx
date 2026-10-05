@@ -30,27 +30,8 @@ interface DynamicPageHeroProps {
   };
 }
 
-// Optimize ImageKit URLs with proper transformations
-function getOptimizedImageUrl(url: string, width: number, quality: number = 80): string {
-  if (!url || !url.includes('ik.imagekit.io')) return url;
-
-  // Remove existing transformations
-  const cleaned = url.replace(/\/tr:[^/]+\//, '/');
-
-  try {
-    const urlObj = new URL(cleaned);
-    const parts = urlObj.pathname.split('/').filter(Boolean);
-    if (parts.length >= 2) {
-      const endpoint = parts[0];
-      const rest = parts.slice(1).join('/');
-      // pr-true for progressive loading, f-auto for format auto-detection
-      return `${urlObj.origin}/${endpoint}/tr:w-${width},q-${quality},f-auto,pr-true/${rest}`;
-    }
-  } catch {
-    return url;
-  }
-  return url;
-}
+// Responsive optimization is handled by Next.js for Vercel Blob images.
+function getOptimizedImageUrl(url: string, _width: number = 400, _quality: number = 80): string { return url; }
 
 export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps) {
   const [hero, setHero] = useState<PageHero | null>(null);

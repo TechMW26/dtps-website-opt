@@ -1,8 +1,8 @@
+import { createContent, updateContent, deleteContent, getContent } from '@/lib/website-content';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import Transformation from '@/models/Transformation';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -56,33 +56,16 @@ function normalizeTransformationPayload(raw: Record<string, any>) {
 // Get all transformations
 export async function GET(request: NextRequest) {
   try {
-    await dbConnect();
-
     const { searchParams } = new URL(request.url);
     const page = searchParams.get('page');
     const featured = searchParams.get('featured');
     const isActive = searchParams.get('active');
     const includeGlobal = searchParams.get('includeGlobal') !== 'false';
 
-    const query: any = {};
-
-    if (page && PAGE_VALUES.includes(page as PageValue)) {
-      const pageQuery = [
-        { targetPages: page },
-        { page },
-      ];
-
-      if (includeGlobal) {
-        pageQuery.push({ targetPages: 'all' });
-      }
-
-      query.$or = pageQuery;
-    }
-
-    if (featured === 'true') query.featured = true;
-    if (isActive === 'true') query.isActive = true;
-
-    const transformations = await Transformation.find(query).sort({ order: 1, createdAt: -1 });
+    const transformations = (await getWebsiteFirestore().collection('websiteTransformations').get()).docs
+      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+      .filter((item: any) => (!page || !PAGE_VALUES.includes(page as PageValue) || (Array.isArray(item.targetPages) ? (item.targetPages.includes(page) || (includeGlobal && item.targetPages.includes('all'))) : item.page === page)) && (featured !== 'true' || item.featured === true) && (isActive !== 'true' || item.isActive === true))
+      .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 
     return NextResponse.json({
       success: true,
@@ -104,7 +87,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const body = await request.json();
     const incomingItems: unknown[] = Array.isArray(body?.items) ? body.items : [body];
@@ -116,7 +98,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'No valid transformation payload provided' }, { status: 400 });
     }
 
-    const created = await Transformation.insertMany(items);
+    const created = await Promise.all(items.map((item) => createContent('websiteTransformations', item)));
     const transformation = created[0];
 
     return NextResponse.json({
@@ -141,13 +123,14 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const body = await request.json();
     const { id, ...updateData } = body;
-  const normalizedUpdate = normalizeTransformationPayload(updateData);
+  const existing = await getContent('websiteTransformations', id);
+  if (!existing) return NextResponse.json({ error: 'Transformation not found' }, { status: 404 });
+  const normalizedUpdate = normalizeTransformationPayload({ ...existing, ...updateData });
 
-  const transformation = await Transformation.findByIdAndUpdate(id, normalizedUpdate, { new: true });
+  const transformation = await updateContent('websiteTransformations', id, normalizedUpdate);
 
     if (!transformation) {
       return NextResponse.json({ error: 'Transformation not found' }, { status: 404 });
@@ -173,12 +156,11 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
-    const transformation = await Transformation.findByIdAndDelete(id);
+    const transformation = await deleteContent('websiteTransformations', id);
 
     if (!transformation) {
       return NextResponse.json({ error: 'Transformation not found' }, { status: 404 });

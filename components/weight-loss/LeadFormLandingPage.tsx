@@ -9,9 +9,9 @@ import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import LeadFormMultiStep from '@/components/weight-loss/LeadFormMultiStep';
 import ResponsiveWhyChooseDtpsTable from '@/components/weight-loss/ResponsiveWhyChooseDtpsTable';
 
-const NAVBAR_LOGO_SRC = 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
-const HOME_HERO_IMAGE_MOBILE = 'https://ik.imagekit.io/br0mssyqj/tr:w-400,q-75,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png';
-const HOME_HERO_IMAGE_DESKTOP = 'https://ik.imagekit.io/br0mssyqj/tr:w-600,q-80,f-auto/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png';
+const NAVBAR_LOGO_SRC = 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+const HOME_HERO_IMAGE_MOBILE = 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png';
+const HOME_HERO_IMAGE_DESKTOP = 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png';
 
 interface Props {
     formId?: string;

@@ -8,7 +8,7 @@ export default function WhatWeDoSection() {
         {/* Desktop Version */}
         <div className="hidden lg:block">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-28-1776941172011.jpg"
+            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-28-1776941172011.jpg"
             alt="5-Cycle Weight Loss Process - Desktop"
             width={1200}
             height={800}
@@ -22,7 +22,7 @@ export default function WhatWeDoSection() {
         {/* Mobile Version */}
         <div className="lg:hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-25-1776942342385.jpg"
+            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-25-1776942342385.jpg"
             alt="5-Cycle Weight Loss Process - Mobile"
             width={600}
             height={800}

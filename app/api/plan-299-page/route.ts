@@ -1,13 +1,12 @@
+import { saveSettings, getContent } from '@/lib/website-content';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
 import {
   DEFAULT_PLAN_299_SETTINGS,
   isSafePlan299Url,
   type Plan299PageSettings as Plan299SettingsType,
 } from '@/lib/plan299-page';
-import Plan299PageSettings from '@/models/Plan299PageSettings';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -112,8 +111,7 @@ function sanitize(body: Record<string, unknown>): Plan299SettingsType {
 
 export async function GET() {
   try {
-    await dbConnect();
-    const settings = await Plan299PageSettings.findOne({ key: 'global' }).lean();
+    const settings = await getContent('websitePlan299Settings', 'global');
     const mergedSettings = settings
       ? {
           ...DEFAULT_PLAN_299_SETTINGS,
@@ -152,12 +150,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: 'Upload at least one background image before enabling the custom background' }, { status: 400 });
     }
 
-    await dbConnect();
-    const saved = await Plan299PageSettings.findOneAndUpdate(
-      { key: 'global' },
-      { $set: { ...settings, key: 'global' } },
-      { upsert: true, new: true, runValidators: true, setDefaultsOnInsert: true }
-    );
+    const saved = await saveSettings('websitePlan299Settings', settings);
     return NextResponse.json({ settings: saved });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to save ₹299 page settings';

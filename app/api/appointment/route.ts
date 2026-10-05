@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Lead from '@/models/Lead';
-import dbConnect from '@/lib/mongodb';
+import { FieldValue } from 'firebase-admin/firestore';
+import { getWebsiteFirestore } from '@/lib/firebase-admin';
 import { validatePhone, validateEmail, validateName, validateRequired, validateFutureDate, getCountry } from '@/lib/validation';
 
 export const dynamic = 'force-dynamic';
@@ -35,10 +35,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
 
-    await dbConnect();
     const country = getCountry(countryIso || 'IN');
-
-    const lead = await Lead.create({
+    const ref = getWebsiteFirestore().collection('websiteLeads').doc();
+    await ref.set({
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       fullName: `${firstName.trim()} ${lastName.trim()}`,
@@ -51,11 +50,13 @@ export async function POST(request: NextRequest) {
       preferredDate: new Date(preferredDate),
       source: 'appointment',
       page: 'appointment',
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
     });
 
     return NextResponse.json({
       success: true,
-      appointmentId: String(lead._id),
+      appointmentId: ref.id,
     });
   } catch (err) {
     console.error('[appointment] error:', err);

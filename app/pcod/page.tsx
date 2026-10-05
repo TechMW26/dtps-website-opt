@@ -48,11 +48,11 @@ const whatYouGet = [
 ];
 
 const gkkBenefits = [
-  { title: 'Inflammation down', desc: 'Less bloating, less pain, better skin', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg' },
-  { title: 'Hormones Balanced', desc: 'Regular cycles, better mood', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg' },
-  { title: 'Energy Boost', desc: 'Feel more active and vibrant', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg' },
-  { title: 'Weight Loss', desc: 'Sustainable and healthy reduction', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg' },
-  { title: 'Better Skin', desc: 'Clear, glowing, and healthy', icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg' },
+  { title: 'Inflammation down', desc: 'Less bloating, less pain, better skin', icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad691.jpg' },
+  { title: 'Hormones Balanced', desc: 'Regular cycles, better mood', icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad637.jpg' },
+  { title: 'Energy Boost', desc: 'Feel more active and vibrant', icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c70ea14dfc9fbf5ad699.jpg' },
+  { title: 'Weight Loss', desc: 'Sustainable and healthy reduction', icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c709a14dfc9fbf5ad677.jpg' },
+  { title: 'Better Skin', desc: 'Clear, glowing, and healthy', icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c70fa14dfc9fbf5ad69f.jpg' },
 ];
 
 export default function PCODPage() {
@@ -141,7 +141,7 @@ export default function PCODPage() {
               <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
                 <div className="h-[200px] bg-gray-100">
                   <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
+                    src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c669a14dfc9fbf5ad4e3.jpg"
                     width={500}
                     height={300}
                     alt="Balancing Blood Sugar"
@@ -164,7 +164,7 @@ export default function PCODPage() {
               <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
                 <div className="h-[200px] bg-gray-100">
                   <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
+                    src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c68ba14dfc9fbf5ad53d.jpg"
                     width={500}
                     height={300}
                     alt="Managing Weight"
@@ -187,7 +187,7 @@ export default function PCODPage() {
               <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
                 <div className="h-[200px] bg-gray-100">
                   <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
+                    src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6d1a14dfc9fbf5ad572.jpg"
                     width={500}
                     height={300}
                     alt="Reducing Inflammation"
@@ -210,7 +210,7 @@ export default function PCODPage() {
               <div className="rounded-[20px] overflow-hidden bg-white shadow-lg flex flex-col">
                 <div className="h-[200px] bg-gray-100">
                   <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
+                    src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c66fa14dfc9fbf5ad500.jpg"
                     width={500}
                     height={300}
                     alt="Increasing Fertility"
@@ -308,7 +308,7 @@ export default function PCODPage() {
 
         {/* Desktop Banner */}
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-28-1776941170242.png"
+          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-28-1776941170242.png"
           alt="Symptoms & Nutritional Concerns"
           width={1200}
           height={600}
@@ -320,7 +320,7 @@ export default function PCODPage() {
 
         {/* Mobile Banner */}
         <Image
-          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/pcod/section-31-copy-1776945350341.jpg"
+          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/pcod/section-31-copy-1776945350341.jpg"
           alt="Symptoms & Nutritional Concerns"
           width={800}
           height={800}
@@ -355,7 +355,7 @@ export default function PCODPage() {
                 >
 
                   <Image
-                    src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"
+                    src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c654a14dfc9fbf5ad4ad.jpg"
                     alt="Dietician Team"
                     fill
                     className="object-contain object-bottom md:translate-y-4"
@@ -392,22 +392,22 @@ export default function PCODPage() {
                     {
                       title: "Ongoing Support",
                       desc: "Regular follow-ups to adapt your diet plan as needed and ensure progress results.",
-                      icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad565.jpg",
+                      icon: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6b6a14dfc9fbf5ad565.jpg",
                     },
                     {
                       title: "Specialised Care",
                       desc: "Your diet is managed by dietitians who are specialised in hormonal disorders.",
-                      icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad596.jpg",
+                      icon: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad596.jpg",
                     },
                     {
                       title: "Tailored to You",
                       desc: "Every diet plan is crafted to meet your unique health needs and lifestyle preferences.",
-                      icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c725a14dfc9fbf5ad6fc.jpg",
+                      icon: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c725a14dfc9fbf5ad6fc.jpg",
                     },
                     {
                       title: "Sustainable Weight Management",
                       desc: "We focus on long-term lifestyle changes for lasting success.",
-                      icon: "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad598.jpg",
+                      icon: "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6e6a14dfc9fbf5ad598.jpg",
                     },
                   ].map((item, index) => (
 
@@ -471,7 +471,7 @@ export default function PCODPage() {
           {/* Desktop Image - Hidden on Mobile */}
           <div className="hidden md:block">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c713a14dfc9fbf5ad6b7.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c713a14dfc9fbf5ad6b7.jpg"
               alt="How Ghar Ka Khana Diet Plan Fixes PCOD & Weight"
               width={1280}
               height={800}
@@ -484,7 +484,7 @@ export default function PCODPage() {
           {/* Mobile Image - Hidden on Desktop */}
           <div className="block md:hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c714a14dfc9fbf5ad6c0.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c714a14dfc9fbf5ad6c0.jpg"
               alt="How Ghar Ka Khana Diet Plan Fixes PCOD & Weight"
               width={400}
               height={600}

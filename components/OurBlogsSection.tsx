@@ -100,7 +100,7 @@ export default function OurBlogsSection() {
               >
                 <div className="overflow-hidden rounded-[12px]">
                   <Image
-                    src={blog.featuredImage || "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
+                    src={blog.featuredImage || "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
                     alt={blog.title}
                     width={360}
                     height={195}
@@ -160,7 +160,7 @@ export default function OurBlogsSection() {
                 >
                   <div className="overflow-hidden rounded-[14px]">
                     <Image
-                      src={blog.featuredImage || "https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
+                      src={blog.featuredImage || "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c908bfd19f93f09dc3df.jpg"}
                       alt={blog.title}
                       width={260}
                       height={170}

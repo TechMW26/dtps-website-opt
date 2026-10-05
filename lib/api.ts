@@ -1,4 +1,4 @@
-// API utility functions for fetching data from MongoDB
+// API utility functions for fetching website data from Firebase-backed API routes
 
 const noStoreRequestInit: RequestInit = { cache: 'no-store' };
 

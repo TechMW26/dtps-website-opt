@@ -1,8 +1,7 @@
 import { put, del, head } from '@vercel/blob';
 
 /**
- * Vercel Blob Storage client — replacement for ImageKit upload/delete.
- * Existing ImageKit CDN URLs continue to work for already-uploaded images.
+ * Uploads and deletes media in the existing Vercel Blob store.
  */
 
 // Folder mapping — used as path prefixes in blob storage

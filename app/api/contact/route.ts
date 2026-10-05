@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Lead from '@/models/Lead';
-import dbConnect from '@/lib/mongodb';
+import { FieldValue } from 'firebase-admin/firestore';
+import { getWebsiteFirestore } from '@/lib/firebase-admin';
 import { validatePhone, validateEmail, validateName, validateMessage, getCountry } from '@/lib/validation';
 
 export const dynamic = 'force-dynamic';
@@ -22,10 +22,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
 
-    await dbConnect();
     const country = getCountry(countryIso || 'IN');
-
-    const lead = await Lead.create({
+    const ref = getWebsiteFirestore().collection('websiteLeads').doc();
+    await ref.set({
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       fullName: `${firstName.trim()} ${lastName.trim()}`,
@@ -37,9 +36,11 @@ export async function POST(request: NextRequest) {
       message: message.trim(),
       source: 'contact',
       page: 'contact',
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
     });
 
-    return NextResponse.json({ success: true, leadId: String(lead._id) });
+    return NextResponse.json({ success: true, leadId: ref.id });
   } catch (err) {
     console.error('[contact] error:', err);
     return NextResponse.json({ success: false, message: 'Failed to send message' }, { status: 500 });

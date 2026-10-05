@@ -10,13 +10,13 @@ const noCacheHeaders = [
 
 const csp = [
   "default-src 'self'",
-  "img-src https://www.facebook.com 'self' data: blob: https://ik.imagekit.io https://*.public.blob.vercel-storage.com https://img.youtube.com https://placehold.co https://randomuser.me https://cdn.jsdelivr.net https://staging.dtpoonamsagar.com https://*.dtpoonamsagar.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.google.com https://www.google.co.in https://www.clarity.ms https://*.clarity.ms",
-  "media-src 'self' https://ik.imagekit.io",
+  "img-src https://www.facebook.com 'self' data: blob: https://*.public.blob.vercel-storage.com https://img.youtube.com https://placehold.co https://randomuser.me https://cdn.jsdelivr.net https://staging.dtpoonamsagar.com https://*.dtpoonamsagar.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.google.com https://www.google.co.in https://www.clarity.ms https://*.clarity.ms",
+  "media-src 'self' https://*.public.blob.vercel-storage.com",
   "font-src 'self' data: https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "script-src https://connect.facebook.net 'self' 'unsafe-inline' 'unsafe-eval' https://checkout.razorpay.com https://www.youtube.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms",
   "frame-src 'self' https://www.youtube.com https://api.razorpay.com https://checkout.razorpay.com https://td.doubleclick.net https://www.google.com https://maps.google.com https://www.google.co.in",
-  "connect-src https://www.facebook.com https://connect.facebook.net 'self' https://ik.imagekit.io https://*.public.blob.vercel-storage.com https://api.razorpay.com https://cdn.jsdelivr.net https://*.a.run.app https://ip-api.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.clarity.ms https://*.clarity.ms" + (isDev ? " ws://localhost:* wss://localhost:* http://localhost:*" : ""),
+  "connect-src https://www.facebook.com https://connect.facebook.net 'self' https://*.public.blob.vercel-storage.com https://api.razorpay.com https://cdn.jsdelivr.net https://*.a.run.app https://ip-api.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.g.doubleclick.net https://www.clarity.ms https://*.clarity.ms" + (isDev ? " ws://localhost:* wss://localhost:* http://localhost:*" : ""),
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "object-src 'none'",
@@ -60,11 +60,9 @@ const nextConfig = {
     ],
   },
   images: {
-    loader: 'custom',
-    loaderFile: './lib/image-loader.js',
     formats: ['image/avif', 'image/webp'],
     qualities: [70, 75, 80, 90],
-    minimumCacheTTL: 0,
+    minimumCacheTTL: 86400,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     dangerouslyAllowSVG: true,
@@ -77,7 +75,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'img.youtube.com' },
       { protocol: 'https', hostname: 'www.dtpoonamsagar.com' },
       { protocol: 'https', hostname: 'dtpoonamsagar.com' },
-      { protocol: 'https', hostname: 'ik.imagekit.io' },
+      { protocol: 'https', hostname: 'n1ryg7cslgpozeiu.public.blob.vercel-storage.com' },
     ],
   },
   async redirects() {

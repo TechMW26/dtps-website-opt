@@ -1,3 +1,4 @@
+import { saveSettings, getContent } from '@/lib/website-content';
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '@/lib/auth';
@@ -6,8 +7,7 @@ import {
   isSafeMarqueeLink,
   type MarqueeSettings as MarqueeSettingsType,
 } from '@/lib/marquee';
-import dbConnect from '@/lib/mongodb';
-import MarqueeSettings from '@/models/MarqueeSettings';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -103,8 +103,8 @@ function sanitizeSettings(body: Record<string, unknown>): MarqueeSettingsType {
 
 export async function GET() {
   try {
-    await dbConnect();
-    const settings = await MarqueeSettings.findOne({ key: 'global' }).lean();
+    const snapshot = await getWebsiteFirestore().collection('websiteMarquee').where('key', '==', 'global').limit(1).get();
+    const settings = snapshot.empty ? null : serializeFirestoreDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>);
 
     return NextResponse.json(
       { settings: settings || DEFAULT_MARQUEE_SETTINGS },
@@ -140,12 +140,7 @@ export async function PUT(req: NextRequest) {
       );
     }
 
-    await dbConnect();
-    const saved = await MarqueeSettings.findOneAndUpdate(
-      { key: 'global' },
-      { $set: { ...settings, key: 'global' } },
-      { upsert: true, new: true, runValidators: true, setDefaultsOnInsert: true }
-    );
+    const saved = await saveSettings('websiteMarquee', settings);
 
     return NextResponse.json({ settings: saved });
   } catch (error) {

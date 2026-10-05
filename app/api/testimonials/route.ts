@@ -1,8 +1,8 @@
+import { createContent, updateContent, deleteContent, getContent } from '@/lib/website-content';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import Testimonial from '@/models/Testimonial';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -10,19 +10,15 @@ export const revalidate = 0;
 // Get all testimonials
 export async function GET(request: NextRequest) {
   try {
-    await dbConnect();
-
     const { searchParams } = new URL(request.url);
     const page = searchParams.get('page') || 'all';
     const featured = searchParams.get('featured');
     const isActive = searchParams.get('active');
 
-    const query: any = {};
-    if (page !== 'all') query.page = page;
-    if (featured === 'true') query.featured = true;
-    if (isActive === 'true') query.isActive = true;
-
-    const testimonials = await Testimonial.find(query).sort({ order: 1, createdAt: -1 });
+    const testimonials = (await getWebsiteFirestore().collection('websiteTestimonials').get()).docs
+      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+      .filter((item: any) => (page === 'all' || item.page === page) && (featured !== 'true' || item.featured === true) && (isActive !== 'true' || item.isActive === true))
+      .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 
     return NextResponse.json({
       success: true,
@@ -44,7 +40,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
   const body = await request.json();
   const payload = { ...body };
@@ -57,7 +52,7 @@ export async function POST(request: NextRequest) {
   if (payload.isActive === undefined) payload.isActive = true;
   if (payload.order === undefined || payload.order === null) payload.order = 0;
 
-  const testimonial = await Testimonial.create(payload);
+  const testimonial = await createContent('websiteTestimonials', payload);
 
     return NextResponse.json({
       success: true,
@@ -79,12 +74,11 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const body = await request.json();
     const { id, ...updateData } = body;
 
-    const testimonial = await Testimonial.findByIdAndUpdate(id, updateData, { new: true });
+    const testimonial = await updateContent('websiteTestimonials', id, updateData);
 
     if (!testimonial) {
       return NextResponse.json({ error: 'Testimonial not found' }, { status: 404 });
@@ -110,12 +104,11 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
-    const testimonial = await Testimonial.findByIdAndDelete(id);
+    const testimonial = await deleteContent('websiteTestimonials', id);
 
     if (!testimonial) {
       return NextResponse.json({ error: 'Testimonial not found' }, { status: 404 });

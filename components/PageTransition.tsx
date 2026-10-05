@@ -27,7 +27,7 @@ import { useEffect, useRef, useState } from 'react';
 const TOTAL_MS = 1100;
 
 const LOGO_URL =
-  'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+  'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 
 export default function PageTransition() {
   const pathname = usePathname();

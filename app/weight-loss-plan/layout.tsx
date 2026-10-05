@@ -26,21 +26,6 @@ export default function WeightLossLayout({
 }) {
     return (
         <>
-            {/* Preload weight-loss specific hero images */}
-            <link
-                rel="preload"
-                href="https://ik.imagekit.io/br0mssyqj/tr:w-1920,q-80,f-auto,pr-true/DTPS-Ecommerce/dynamic/plan-banners/weight-loss-hero-desktop.png"
-                as="image"
-                type="image/webp"
-                media="(min-width: 768px)"
-            />
-            <link
-                rel="preload"
-                href="https://ik.imagekit.io/br0mssyqj/tr:w-768,q-75,f-auto,pr-true/DTPS-Ecommerce/dynamic/plan-banners/weight-loss-hero-mobile.png"
-                as="image"
-                type="image/webp"
-                media="(max-width: 767px)"
-            />
             {children}
         </>
     );

@@ -1,8 +1,8 @@
+import { createContent, updateContent, deleteContent, getContent } from '@/lib/website-content';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import Recognition from '@/models/Recognition';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -10,15 +10,12 @@ export const revalidate = 0;
 // Get all recognitions
 export async function GET(request: NextRequest) {
   try {
-    await dbConnect();
-
     const { searchParams } = new URL(request.url);
     const isActive = searchParams.get('active');
-
-    const query: any = {};
-    if (isActive === 'true') query.isActive = true;
-
-    const recognitions = await Recognition.find(query).sort({ order: 1, createdAt: -1 });
+    const recognitions = (await getWebsiteFirestore().collection('websiteRecognitions').get()).docs
+      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+      .filter((item: any) => isActive !== 'true' || item.isActive === true)
+      .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 
     return NextResponse.json({
       success: true,
@@ -40,7 +37,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
   const body = await request.json();
   const payload = { ...body };
@@ -51,7 +47,7 @@ export async function POST(request: NextRequest) {
   if (payload.isActive === undefined) payload.isActive = true;
   if (payload.order === undefined || payload.order === null) payload.order = 0;
 
-  const recognition = await Recognition.create(payload);
+  const recognition = await createContent('websiteRecognitions', payload);
 
     return NextResponse.json({
       success: true,
@@ -73,12 +69,11 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const body = await request.json();
     const { id, ...updateData } = body;
 
-    const recognition = await Recognition.findByIdAndUpdate(id, updateData, { new: true });
+    const recognition = await updateContent('websiteRecognitions', id, updateData);
 
     if (!recognition) {
       return NextResponse.json({ error: 'Recognition not found' }, { status: 404 });
@@ -104,12 +99,11 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
-    const recognition = await Recognition.findByIdAndDelete(id);
+    const recognition = await deleteContent('websiteRecognitions', id);
 
     if (!recognition) {
       return NextResponse.json({ error: 'Recognition not found' }, { status: 404 });

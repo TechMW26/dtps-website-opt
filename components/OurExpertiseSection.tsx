@@ -90,7 +90,7 @@ export default function OurExpertiseSection() {
             <div className="absolute inset-0 z-10 flex items-end justify-center">
               <div className="relative w-[280px] h-[400px] sm:w-[320px] sm:h-[460px] md:w-[360px] md:h-[500px] lg:w-[320px] lg:h-[470px]">
                 <Image
-                  src="https://ik.imagekit.io/br0mssyqj/tr:q-85,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6f6a14dfc9fbf5ad602.jpg"
+                  src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6f6a14dfc9fbf5ad602.jpg"
                   alt="Dietitian Poonam Sagar"
                   fill
                   className="object-contain object-bottom"

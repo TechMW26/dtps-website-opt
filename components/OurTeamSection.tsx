@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function OurTeamSection() {
   const [teamBannerSrc, setTeamBannerSrc] = useState(
-    "https://ik.imagekit.io/br0mssyqj/tr:w-1920,q-90,f-auto/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
+    "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/team/dtps-full-team-image-v1.png"
   );
   const highlights = [
     { number: "01", label: "Years of Hands-On Experience" },
@@ -15,10 +15,10 @@ export default function OurTeamSection() {
   ];
 
   const galleryImages = [
-    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad639.jpg",
-    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c65ca14dfc9fbf5ad4c4.jpg",
-    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c701a14dfc9fbf5ad644.jpg",
-    "https://ik.imagekit.io/br0mssyqj/tr:q-90,f-auto/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad665.jpg",
+    "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c6ffa14dfc9fbf5ad639.jpg",
+    "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c65ca14dfc9fbf5ad4c4.jpg",
+    "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c701a14dfc9fbf5ad644.jpg",
+    "https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c707a14dfc9fbf5ad665.jpg",
   ];
 
   return (

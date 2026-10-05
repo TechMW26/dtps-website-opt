@@ -8,7 +8,7 @@ import PageWrapper from '@/components/PageWrapper';
 import DynamicPageHero from '@/components/DynamicPageHero';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import { getPricingByCategory } from '@/lib/api';
-import { getOptimizedUrl } from '@/lib/imagekit-url';
+import { getOptimizedUrl } from '@/lib/image-url';
 import type { Pricing } from '@/lib/api';
 import Navbar from '@/components/Navbar';
 import {
@@ -121,10 +121,10 @@ const stats = [
 ];
 
 const fallbackTestimonials = [
-  { name: 'Bessie Cooper', role: 'Co-Founder', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78c.jpg' },
-  { name: 'Floyd Miles', role: 'Chairman', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78e.jpg' },
-  { name: 'Kathryn Murphy', role: 'CEO', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c75ca14dfc9fbf5ad7de.jpg' },
-  { name: 'Jerome Bell', role: 'Finance Director', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4f4.jpg' },
+  { name: 'Bessie Cooper', role: 'Co-Founder', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78c.jpg' },
+  { name: 'Floyd Miles', role: 'Chairman', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78e.jpg' },
+  { name: 'Kathryn Murphy', role: 'CEO', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c75ca14dfc9fbf5ad7de.jpg' },
+  { name: 'Jerome Bell', role: 'Finance Director', content: "I've struggled with chronic pain for years, but health coaching gave me the tools and support.", image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c66ea14dfc9fbf5ad4f4.jpg' },
 ];
 
 type Testimonial = { _id?: string; name: string; role?: string; content: string; image: string };
@@ -180,9 +180,9 @@ export default function WeightLossPage() {
   const [expandedPricingCards, setExpandedPricingCards] = useState<Record<string, boolean>>({});
 
   const testimonialImages = testimonials.length > 0 ? testimonials : fallbackTestimonials;
-  const heroImage1 = testimonialImages[0]?.image || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78c.jpg';
-  const heroImage2 = testimonialImages[1]?.image || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78e.jpg';
-  const heroImage3 = testimonialImages[2]?.image || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c75ca14dfc9fbf5ad7de.jpg';
+  const heroImage1 = testimonialImages[0]?.image || 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78c.jpg';
+  const heroImage2 = testimonialImages[1]?.image || 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c744a14dfc9fbf5ad78e.jpg';
+  const heroImage3 = testimonialImages[2]?.image || 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c75ca14dfc9fbf5ad7de.jpg';
 
   /* Fetch pricing */
   useEffect(() => {
@@ -231,7 +231,7 @@ export default function WeightLossPage() {
           name: item.name || 'Client',
           role: item.role || '',
           content: item.content || '',
-          image: getOptimizedUrl(item.image || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e1.jpg', { width: 180, height: 180, quality: 80, format: 'auto' }),
+          image: getOptimizedUrl(item.image || 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e1.jpg', { width: 180, height: 180, quality: 80, format: 'auto' }),
         }));
         if (normalized.length > 0) setTestimonials(normalized);
       } catch {
@@ -294,7 +294,7 @@ export default function WeightLossPage() {
         {/* Desktop Version */}
         <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-28-1776941172011.jpg"
+            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-28-1776941172011.jpg"
             alt="Our Five-Cycle Program - Desktop"
             width={1200}
             height={600}
@@ -311,7 +311,7 @@ export default function WeightLossPage() {
         {/* Mobile Version */}
         <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
           <Image
-            src="https://ik.imagekit.io/br0mssyqj/DTPS-Ecommerce/static/home/wedding/section-25-1776942342385.jpg"
+            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/wedding/section-25-1776942342385.jpg"
             alt="Our Five-Cycle Program - Mobile"
             width={600}
             height={800}
@@ -332,7 +332,7 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block mx-auto w-[70%] rounded-[20px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-900,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c729a14dfc9fbf5ad70f.jpg"
               alt="What to Expect - Desktop"
               width={900}
               height={450}
@@ -371,7 +371,7 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c710a14dfc9fbf5ad6a4.jpg"
               alt="100% Money Back Guarantee - Desktop"
               width={1200}
               height={600}
@@ -388,7 +388,7 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c711a14dfc9fbf5ad6ab.jpg"
               alt="100% Money Back Guarantee - Mobile"
               width={600}
               height={800}
@@ -410,7 +410,7 @@ export default function WeightLossPage() {
           {/* Desktop Version */}
           <div className="hidden lg:block bg-gray-100 rounded-[20px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-1200,q-75,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c732a14dfc9fbf5ad73f.jpg"
               alt="What You Get - Desktop"
               width={1200}
               height={600}
@@ -427,7 +427,7 @@ export default function WeightLossPage() {
           {/* Mobile Version */}
           <div className="lg:hidden bg-gray-100 rounded-[16px] overflow-hidden">
             <Image
-              src="https://ik.imagekit.io/br0mssyqj/tr:w-600,q-70,f-auto,pr-true/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
+              src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c73ca14dfc9fbf5ad766.jpg"
               alt="What You Get - Mobile"
               width={600}
               height={800}
@@ -523,9 +523,9 @@ export default function WeightLossPage() {
                             <p className="text-[#6B7280] text-[14px] font-semibold" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.label}</p>
                             <p className="text-[#1E1E1E] text-[18px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>PLAN</p>
                           </div>
-                          <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
+                          {plan.badge && <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
                             {plan.badge}
-                          </span>
+                          </span>}
                         </div>
                         {/* Price */}
                         <IndependenceDayOfferPrice

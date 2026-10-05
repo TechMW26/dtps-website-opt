@@ -3,7 +3,7 @@ import { useState, useEffect, Suspense, lazy } from 'react';
 import dynamic from 'next/dynamic';
 import HomeHeroSwitcher from '@/components/HomeHeroSwitcher';
 import Image from 'next/image';
-import { getOptimizedUrl } from '@/lib/imagekit-url';
+import { getOptimizedUrl } from '@/lib/image-url';
 
 // Critical above-fold component loaded immediately
 import AboutUsSection from '@/components/AboutUsSection';
@@ -66,22 +66,22 @@ const fallbackTestimonials: Testimonial[] = [
   {
     name: 'Kalyani Satpathy',
     content: 'The diet plan is very simple and it included home cooked meal. Nothing fancy they will tell you and this is the best part of my journey.',
-    image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg',
+    image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg',
   },
   {
     name: 'Farah',
     content: 'I saw ad of Dt Poonam Sagar on Instagram and thought to give it a try and I dont regret my decision.',
-    image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e9.jpg',
+    image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e9.jpg',
   },
   {
     name: 'Rimpy Thakur',
     content: "Great experience with Dietician Poonam Sagar's team. Special thanks to Ritika Bhatnagar ma'am who created a special diet plan for me",
-    image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3eb.jpg',
+    image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3eb.jpg',
   },
   {
     name: 'Payal Padamwar',
     content: 'I lost 6 kg in just 3 months with a simple yet highly effective diet plan. The best part was the team\'s support.',
-    image: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg',
+    image: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg',
   },
 ];
 
@@ -108,7 +108,7 @@ export default function HomePage() {
           name: item.name || 'Client',
           role: item.role || '',
           content: item.content || '',
-          image: getOptimizedUrl(item.image || 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg', {
+          image: getOptimizedUrl(item.image || 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c909bfd19f93f09dc3e7.jpg', {
             width: 300,
             height: 350,
             quality: 80,
@@ -242,7 +242,7 @@ export default function HomePage() {
                       <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
                         style={{ width: 'calc(100% - 50px)' }}>
                         <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
                           alt=""
                           width={170}
                           height={10}
@@ -254,7 +254,7 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full  ">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png"
 
                             alt="Choose your plan icon"
                             width={31}
@@ -284,7 +284,7 @@ export default function HomePage() {
                       <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
                         style={{ width: 'calc(100% - 50px)' }}>
                         <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
                           alt=""
                           width={170}
                           height={10}
@@ -296,7 +296,7 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[68px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png"
 
                             alt="Health counsellor connect icon"
                             width={31}
@@ -325,7 +325,7 @@ export default function HomePage() {
                       <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
                         style={{ width: 'calc(100% - 50px)' }}>
                         <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
                           alt=""
                           width={170}
                           height={10}
@@ -338,7 +338,7 @@ export default function HomePage() {
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
                           <Image
 
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png"
 
                             alt="Dietitian assessment call icon"
                             width={31}
@@ -367,7 +367,7 @@ export default function HomePage() {
                       <div className="pointer-events-none absolute left-[74px] top-[32px] z-[5] flex items-center"
                         style={{ width: 'calc(100% - 50px)' }}>
                         <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
                           alt=""
                           width={170}
                           height={10}
@@ -379,7 +379,7 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full ">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png"
 
                             alt="Personalised plan delivery icon"
                             width={31}
@@ -407,7 +407,7 @@ export default function HomePage() {
                       <div className="relative mb-5 h-[72px]">
                         <div className="relative z-[2] flex h-[64px] w-[64px] items-center justify-center rounded-full">
                           <Image
-                            src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
+                            src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png"
                             alt="Follow-ups and tracking icon"
                             width={31}
                             height={31}
@@ -573,7 +573,7 @@ export default function HomePage() {
                       title: 'Choose Your Plan',
                       description:
                         'Select a diet plan based on your goal, health condition, and duration.',
-                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png',
+                      icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png',
                       alt: 'Choose your plan icon',
                     },
                     {
@@ -581,7 +581,7 @@ export default function HomePage() {
                       title: 'Health Counsellor Connect',
                       description:
                         'Our health counsellor connects with you to understand your lifestyle and concerns.',
-                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png',
+                      icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png',
                       alt: 'Health counsellor connect icon',
                     },
                     {
@@ -589,7 +589,7 @@ export default function HomePage() {
                       title: 'Dietitian Assessment Call',
                       description:
                         'Your assigned dietitian speaks with you to understand your lifestyle, food choices and health goals before planning your diet.',
-                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png',
+                      icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png',
                       alt: 'Dietitian assessment call icon',
                     },
                     {
@@ -597,7 +597,7 @@ export default function HomePage() {
                       title: 'Personalised Plan Delivery',
                       description:
                         'Your customised diet plan is shared on OUR APP within 24 hours of the assessment.',
-                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png',
+                      icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png',
                       alt: 'Personalised plan delivery icon',
                     },
                     {
@@ -605,7 +605,7 @@ export default function HomePage() {
                       title: 'Follow-Ups & Tracking',
                       description:
                         'Weekly or requirement-based follow-ups to track progress and make timely adjustments.',
-                      icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png',
+                      icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png',
                       alt: 'Follow-ups and tracking icon',
                     },
                   ].map((step, index, steps) => (

@@ -1,27 +1,22 @@
+import { createContent, updateContent, deleteContent, getContent } from '@/lib/website-content';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import dbConnect from '@/lib/mongodb';
-import SuccessStory from '@/models/SuccessStory';
+import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
 
 // Get all success stories
 export async function GET(request: NextRequest) {
   try {
-    await dbConnect();
-
     const { searchParams } = new URL(request.url);
     const page = searchParams.get('page');
     const type = searchParams.get('type');
     const featured = searchParams.get('featured');
     const isActive = searchParams.get('active');
 
-    const query: any = {};
-    if (page) query.page = page;
-    if (type) query.type = type;
-    if (featured === 'true') query.featured = true;
-    if (isActive === 'true') query.isActive = true;
-
-    const successStories = await SuccessStory.find(query).sort({ order: 1, createdAt: -1 });
+    const successStories = (await getWebsiteFirestore().collection('websiteSuccessStories').get()).docs
+      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+      .filter((item: any) => (!page || item.page === page) && (!type || item.type === type) && (featured !== 'true' || item.featured === true) && (isActive !== 'true' || item.isActive === true))
+      .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 
     return NextResponse.json({
       success: true,
@@ -43,7 +38,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
   const body = await request.json();
   const payload = { ...body };
@@ -55,7 +49,7 @@ export async function POST(request: NextRequest) {
   if (payload.isActive === undefined) payload.isActive = true;
   if (payload.order === undefined || payload.order === null) payload.order = 0;
 
-  const successStory = await SuccessStory.create(payload);
+  const successStory = await createContent('websiteSuccessStories', payload);
 
     return NextResponse.json({
       success: true,
@@ -77,12 +71,11 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const body = await request.json();
     const { id, ...updateData } = body;
 
-    const successStory = await SuccessStory.findByIdAndUpdate(id, updateData, { new: true });
+    const successStory = await updateContent('websiteSuccessStories', id, updateData);
 
     if (!successStory) {
       return NextResponse.json({ error: 'Success story not found' }, { status: 404 });
@@ -108,12 +101,11 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    await dbConnect();
 
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
-    const successStory = await SuccessStory.findByIdAndDelete(id);
+    const successStory = await deleteContent('websiteSuccessStories', id);
 
     if (!successStory) {
       return NextResponse.json({ error: 'Success story not found' }, { status: 404 });

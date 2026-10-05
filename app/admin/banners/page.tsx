@@ -495,7 +495,7 @@ export default function SiteBannersPage() {
                 {formData.type === 'marquee' && (
                   <div style={{ marginBottom: '15px' }}>
                     <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>
-                      Marquee Icon Image * (uploaded to ImageKit with compression)
+                      Marquee Icon Image * (uploaded to Vercel Blob with compression)
                     </label>
                     <input
                       type="file"

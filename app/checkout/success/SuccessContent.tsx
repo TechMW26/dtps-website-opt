@@ -24,42 +24,42 @@ interface Order {
 }
 
 const HERO_LOGO =
-  'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
+  'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
 
 const STEPS = [
   {
     title: 'Health Counsellor Connect',
     description:
       'Our health counsellor connects with you to understand your lifestyle and concerns.',
-    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png',
+    icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-choose-plan-v2.png',
     alt: 'Health counsellor connect icon',
   },
   {
     title: 'Choose Your Plan',
     description:
       'Select a diet plan based on your goal, health condition, and duration.',
-    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png',
+    icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-followups-tracking-v2.png',
     alt: 'Choose your plan icon',
   },
   {
     title: 'Dietitian Assessment Call',
     description:
       'Your assigned dietitian speaks with you to understand your lifestyle, food choices and health goals before planning your diet.',
-    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png',
+    icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-counsellor-connect-v2.png',
     alt: 'Dietitian assessment call icon',
   },
   {
     title: 'Personalised Plan Delivery',
     description:
       'Your customised diet plan is shared on OUR APP within 24 hours of the assessment.',
-    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png',
+    icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-dietitian-assessment-v2.png',
     alt: 'Personalised plan delivery icon',
   },
   {
     title: 'Follow-Ups & Tracking',
     description:
       'Weekly or requirement-based follow-ups to track progress and make timely adjustments.',
-    icon: 'https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png',
+    icon: 'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-icon-plan-delivery-v2.png',
     alt: 'Follow-ups and tracking icon',
   },
 ];
@@ -246,7 +246,7 @@ export function WhatHappensNext() {
                         style={{ width: 'calc(100% - 50px)' }}
                       >
                         <Image
-                          src="https://ik.imagekit.io/br0mssyqj/tr:q-80,f-auto/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
+                          src="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/how-it-work/step-connector-dashed-arrow-v2.png"
                           alt=""
                           width={170}
                           height={10}

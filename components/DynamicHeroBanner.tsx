@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { getOptimizedUrl } from '@/lib/imagekit-url';
+import { getOptimizedUrl } from '@/lib/image-url';
 
 interface BannerItem {
   _id: string;
@@ -59,7 +59,7 @@ export default function DynamicHeroBanner() {
     return null;
   }
 
-  // Get optimized ImageKit URL with compression
+  // Get optimized Vercel Blob URL with compression
   const optimizedUrl = getOptimizedUrl(imageUrl, {
     width: isMobile ? 600 : 1200,
     height: isMobile ? 300 : 400,
