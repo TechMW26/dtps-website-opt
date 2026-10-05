@@ -2,6 +2,7 @@
 import ManagedPageHero from '@/components/ManagedPageHero';
 import { storeCheckoutProducts } from '@/lib/meta-funnel';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import TransformationGallery from '@/components/TransformationGallery';
@@ -240,6 +241,7 @@ export default function TherapeuticPlanPage() {
         if (dbPricing && dbPricing.length > 0) {
           const formattedPricing = dbPricing.map((plan: Pricing) => ({
             label: plan.planName,
+            enquiryOnly: plan.pricePending === true || !Number.isFinite(plan.price) || plan.price <= 0,
             badge: plan.badge,
             badgeColor: plan.badgeColor?.toLowerCase() || 'gray',
             price: `₹${plan.price.toLocaleString()}`,
@@ -1066,6 +1068,7 @@ export default function TherapeuticPlanPage() {
       ═══════════════════════════════════════════════════════════ */}
       <TestimonialSliderSection
         page="therapeutic"
+        fallbackPage="weight-loss"
         maxItems={6}
         header={
           <>
@@ -1076,9 +1079,8 @@ export default function TherapeuticPlanPage() {
               </span>
             </div>
             <h2 className="mt-2 text-2xl font-bold leading-tight text-[#1E1E1E] md:text-[42px]">
-              Over <span className="text-[#FF850B]">1,00,000+</span>
-              <br />
-              People Enjoy Weight Loss
+              Real <span className="text-[#FF850B]">DTPS client journeys</span>
+              <span className="mt-3 block text-base font-normal text-gray-600">Weight-loss transformations from DTPS clients</span>
             </h2>
           </>
         }
@@ -1141,8 +1143,8 @@ export default function TherapeuticPlanPage() {
                         </div>
                         {/* Price */}
                         <div className="flex items-end gap-2 mb-3">
-                          <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.price}</span>
-                          <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>
+                          <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.enquiryOnly ? 'Contact us for pricing' : plan.price}</span>
+                          {!plan.enquiryOnly && <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.original}</span>}
                         </div>
                         {/* Divider */}
                         <div className="w-full h-px mb-4 bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
@@ -1166,15 +1168,15 @@ export default function TherapeuticPlanPage() {
                                 [cardKey]: !prev[cardKey],
                               }));
                             }}
-                            className="mt-3 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
+                            className="mt-3 mb-5 text-[#FF850B] text-[12px] md:text-[13px] font-bold w-fit"
                             style={{ fontFamily: 'DM Sans, sans-serif' }}
                           >
                             {isExpanded ? 'Show Less' : 'Show More'}
                           </button>
                         )}
 
-                        {/* Buy button */}
-                        <button
+                        {/* Never send unpriced plans to checkout. */}
+                        {plan.enquiryOnly ? <Link href="/contact" className="mt-auto block rounded-full bg-[#FF850B] px-5 py-3 text-center text-sm font-bold text-white">Contact us for pricing</Link> : <button
                           onClick={() => {
                             const price = plan.price.replace('₹', '').replace(',', '');
                             const product = {
@@ -1190,7 +1192,7 @@ export default function TherapeuticPlanPage() {
                           style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
                         >
                           BUY NOW
-                        </button>
+                        </button>}
                       </>
                     );
                   })()}

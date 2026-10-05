@@ -414,14 +414,38 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "Temporary price authorized by user on 2026-10-05; replace with final pricing",
     "features": [
-      { "text": "Customized therapeutic plan for PCOD/PCOS", "included": true },
-      { "text": "Senior dietitian and health counsellor support", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation sessions (06)", "included": true },
-      { "text": "Customized therapeutic meal plan", "included": true },
-      { "text": "Diet recipe eBook (50+)", "included": true },
-      { "text": "Hormonal balance, insulin resistance and gut healing support", "included": true },
-      { "text": "Mindful eating and seed cycle guidance", "included": true }
+      {
+        "text": "Customized therapeutic plan for PCOD/PCOS",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and health counsellor support",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultation sessions (06)",
+        "included": true
+      },
+      {
+        "text": "Customized therapeutic meal plan",
+        "included": true
+      },
+      {
+        "text": "Diet recipe eBook (50+)",
+        "included": true
+      },
+      {
+        "text": "Hormonal balance, insulin resistance and gut healing support",
+        "included": true
+      },
+      {
+        "text": "Mindful eating and seed cycle guidance",
+        "included": true
+      }
     ]
   },
   {
@@ -443,14 +467,38 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "Temporary price authorized by user on 2026-10-05; replace with final pricing",
     "features": [
-      { "text": "Customized therapeutic plan for PCOD/PCOS", "included": true },
-      { "text": "Senior dietitian and health counsellor support", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation sessions (12)", "included": true },
-      { "text": "Customized therapeutic meal plan", "included": true },
-      { "text": "Diet recipe eBook (100+)", "included": true },
-      { "text": "Hormonal balance, insulin resistance and gut healing support", "included": true },
-      { "text": "Stress and lifestyle correction for hormonal health", "included": true }
+      {
+        "text": "Customized therapeutic plan for PCOD/PCOS",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and health counsellor support",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultation sessions (12)",
+        "included": true
+      },
+      {
+        "text": "Customized therapeutic meal plan",
+        "included": true
+      },
+      {
+        "text": "Diet recipe eBook (100+)",
+        "included": true
+      },
+      {
+        "text": "Hormonal balance, insulin resistance and gut healing support",
+        "included": true
+      },
+      {
+        "text": "Stress and lifestyle correction for hormonal health",
+        "included": true
+      }
     ]
   },
   {
@@ -472,14 +520,38 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "Temporary price authorized by user on 2026-10-05; replace with final pricing",
     "features": [
-      { "text": "Customized therapeutic plan for PCOD/PCOS", "included": true },
-      { "text": "Senior dietitian and health counsellor support", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation sessions (24)", "included": true },
-      { "text": "Customized therapeutic meal plan", "included": true },
-      { "text": "Diet recipe eBook (100+)", "included": true },
-      { "text": "Hormonal balance, fertility and insulin resistance support", "included": true },
-      { "text": "Hormonal balance and cycle stabilization program", "included": true }
+      {
+        "text": "Customized therapeutic plan for PCOD/PCOS",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and health counsellor support",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultation sessions (24)",
+        "included": true
+      },
+      {
+        "text": "Customized therapeutic meal plan",
+        "included": true
+      },
+      {
+        "text": "Diet recipe eBook (100+)",
+        "included": true
+      },
+      {
+        "text": "Hormonal balance, fertility and insulin resistance support",
+        "included": true
+      },
+      {
+        "text": "Hormonal balance and cycle stabilization program",
+        "included": true
+      }
     ]
   },
   {
@@ -487,90 +559,174 @@
     "planName": "Therapeutic Nutrition - 1 Month",
     "duration": "1 month",
     "durationLabel": "30 days",
-    "price": 0,
-    "originalPrice": 0,
+    "price": 3499,
+    "originalPrice": 4000,
     "currency": "₹",
-    "badge": "Price pending",
+    "badge": "",
     "badgeColor": "slate",
     "page": "therapeutic",
     "category": "therapeutic-diet-plans",
     "popular": false,
-    "isActive": false,
-    "pricePending": true,
+    "isActive": true,
+    "pricePending": false,
     "order": 10,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "The PDF defines this package but does not state a price",
+    "sourceNote": "Temporary prices and MRPs authorized by user on 2026-10-05; replace with final pricing",
     "features": [
-      { "text": "Customized therapeutic nutrition plan as per condition", "included": true },
-      { "text": "Senior dietitian and therapeutic expert", "included": true },
-      { "text": "Clinical dietitian or health counsellor", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation sessions (06)", "included": true },
-      { "text": "Personalized disease-specific meal plan", "included": true },
-      { "text": "Progress and symptom tracking", "included": true },
-      { "text": "Phase-wise therapeutic updates", "included": true },
-      { "text": "Blood sugar stabilization, inflammation control and gut healing", "included": true }
-    ]
+      {
+        "text": "Customized therapeutic nutrition plan as per condition",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and therapeutic expert",
+        "included": true
+      },
+      {
+        "text": "Clinical dietitian or health counsellor",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultation sessions (06)",
+        "included": true
+      },
+      {
+        "text": "Personalized disease-specific meal plan",
+        "included": true
+      },
+      {
+        "text": "Progress and symptom tracking",
+        "included": true
+      },
+      {
+        "text": "Phase-wise therapeutic updates",
+        "included": true
+      },
+      {
+        "text": "Blood sugar stabilization, inflammation control and gut healing",
+        "included": true
+      }
+    ],
+    "temporaryPrice": true
   },
   {
     "id": "therapeutic-3-month",
     "planName": "Therapeutic Nutrition - 3 Months",
     "duration": "3 months",
     "durationLabel": "90 days",
-    "price": 0,
-    "originalPrice": 0,
+    "price": 8999,
+    "originalPrice": 10000,
     "currency": "₹",
-    "badge": "Price pending",
+    "badge": "",
     "badgeColor": "slate",
     "page": "therapeutic",
     "category": "therapeutic-diet-plans",
     "popular": false,
-    "isActive": false,
-    "pricePending": true,
+    "isActive": true,
+    "pricePending": false,
     "order": 20,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "The PDF defines this package but does not state a price",
+    "sourceNote": "Temporary prices and MRPs authorized by user on 2026-10-05; replace with final pricing",
     "features": [
-      { "text": "Customized therapeutic nutrition plan as per condition", "included": true },
-      { "text": "Senior dietitian and therapeutic expert", "included": true },
-      { "text": "Clinical dietitian or health counsellor", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation sessions (06)", "included": true },
-      { "text": "Personalized disease-specific meal plan", "included": true },
-      { "text": "Progress and symptom tracking", "included": true },
-      { "text": "Diabetes reversal, sugar control and inflammation support", "included": true },
-      { "text": "Lifestyle and food habit correction", "included": true }
-    ]
+      {
+        "text": "Customized therapeutic nutrition plan as per condition",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and therapeutic expert",
+        "included": true
+      },
+      {
+        "text": "Clinical dietitian or health counsellor",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultation sessions (06)",
+        "included": true
+      },
+      {
+        "text": "Personalized disease-specific meal plan",
+        "included": true
+      },
+      {
+        "text": "Progress and symptom tracking",
+        "included": true
+      },
+      {
+        "text": "Diabetes reversal, sugar control and inflammation support",
+        "included": true
+      },
+      {
+        "text": "Lifestyle and food habit correction",
+        "included": true
+      }
+    ],
+    "temporaryPrice": true
   },
   {
     "id": "therapeutic-6-month",
     "planName": "Therapeutic Nutrition - 6 Months",
     "duration": "6 months",
     "durationLabel": "180 days",
-    "price": 0,
-    "originalPrice": 0,
+    "price": 16999,
+    "originalPrice": 20000,
     "currency": "₹",
-    "badge": "Price pending",
+    "badge": "",
     "badgeColor": "slate",
     "page": "therapeutic",
     "category": "therapeutic-diet-plans",
     "popular": false,
-    "isActive": false,
-    "pricePending": true,
+    "isActive": true,
+    "pricePending": false,
     "order": 30,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "The PDF defines this package but does not state a price",
+    "sourceNote": "Temporary prices and MRPs authorized by user on 2026-10-05; replace with final pricing",
     "features": [
-      { "text": "Customized therapeutic nutrition plan as per condition", "included": true },
-      { "text": "Senior dietitian and therapeutic expert", "included": true },
-      { "text": "Clinical dietitian or health counsellor", "included": true },
-      { "text": "8 hours of chat support", "included": true },
-      { "text": "Dietitian consultation sessions (06)", "included": true },
-      { "text": "Personalized disease-specific meal plan", "included": true },
-      { "text": "Progress and symptom tracking", "included": true },
-      { "text": "Diabetes, cholesterol, blood pressure and metabolism support", "included": true },
-      { "text": "Inflammation, stress, sleep and lifestyle health correction", "included": true }
-    ]
+      {
+        "text": "Customized therapeutic nutrition plan as per condition",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and therapeutic expert",
+        "included": true
+      },
+      {
+        "text": "Clinical dietitian or health counsellor",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultation sessions (06)",
+        "included": true
+      },
+      {
+        "text": "Personalized disease-specific meal plan",
+        "included": true
+      },
+      {
+        "text": "Progress and symptom tracking",
+        "included": true
+      },
+      {
+        "text": "Diabetes, cholesterol, blood pressure and metabolism support",
+        "included": true
+      },
+      {
+        "text": "Inflammation, stress, sleep and lifestyle health correction",
+        "included": true
+      }
+    ],
+    "temporaryPrice": true
   },
   {
     "id": "wedding-1-month-4999",
@@ -590,15 +746,42 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "01 Month Plan - ₹4,999 ( ~₹6,000~ )",
     "features": [
-      { "text": "8-hour diet coach and customer support", "included": true },
-      { "text": "24x7 chat support", "included": true },
-      { "text": "6 dietitian consultations", "included": true },
-      { "text": "Bridal/groom pre-wedding detox plan", "included": true },
-      { "text": "Skin brightening and hair strengthening nutrition", "included": true },
-      { "text": "Anemia correction support", "included": true },
-      { "text": "Simple home-based workouts", "included": true },
-      { "text": "Customized bridal diet plan and 50+ recipe eBook", "included": true },
-      { "text": "Weekly progress monitoring and plan adjustments", "included": true }
+      {
+        "text": "8-hour diet coach and customer support",
+        "included": true
+      },
+      {
+        "text": "24x7 chat support",
+        "included": true
+      },
+      {
+        "text": "6 dietitian consultations",
+        "included": true
+      },
+      {
+        "text": "Bridal/groom pre-wedding detox plan",
+        "included": true
+      },
+      {
+        "text": "Skin brightening and hair strengthening nutrition",
+        "included": true
+      },
+      {
+        "text": "Anemia correction support",
+        "included": true
+      },
+      {
+        "text": "Simple home-based workouts",
+        "included": true
+      },
+      {
+        "text": "Customized bridal diet plan and 50+ recipe eBook",
+        "included": true
+      },
+      {
+        "text": "Weekly progress monitoring and plan adjustments",
+        "included": true
+      }
     ]
   },
   {
@@ -619,16 +802,46 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "03 Month Plan - ₹12,999 ( ~₹15,000~ )",
     "features": [
-      { "text": "8-hour diet coach and customer support", "included": true },
-      { "text": "24x7 chat support", "included": true },
-      { "text": "12 dietitian consultations", "included": true },
-      { "text": "Pre-wedding detox and structured 5-phase weight loss", "included": true },
-      { "text": "Fat loss and body sculpting strategy", "included": true },
-      { "text": "Natural skin brightening and hair strengthening nutrition", "included": true },
-      { "text": "Gut health support diet", "included": true },
-      { "text": "Therapeutic care for anemia, PCOS, thyroid and insulin resistance", "included": true },
-      { "text": "Progressive home workout and lifestyle modification", "included": true },
-      { "text": "100+ premium wedding recipes and weekly check-ins", "included": true }
+      {
+        "text": "8-hour diet coach and customer support",
+        "included": true
+      },
+      {
+        "text": "24x7 chat support",
+        "included": true
+      },
+      {
+        "text": "12 dietitian consultations",
+        "included": true
+      },
+      {
+        "text": "Pre-wedding detox and structured 5-phase weight loss",
+        "included": true
+      },
+      {
+        "text": "Fat loss and body sculpting strategy",
+        "included": true
+      },
+      {
+        "text": "Natural skin brightening and hair strengthening nutrition",
+        "included": true
+      },
+      {
+        "text": "Gut health support diet",
+        "included": true
+      },
+      {
+        "text": "Therapeutic care for anemia, PCOS, thyroid and insulin resistance",
+        "included": true
+      },
+      {
+        "text": "Progressive home workout and lifestyle modification",
+        "included": true
+      },
+      {
+        "text": "100+ premium wedding recipes and weekly check-ins",
+        "included": true
+      }
     ]
   },
   {
@@ -649,17 +862,50 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "06 Month Plan - ₹23,999 ( ~₹28,000~ )",
     "features": [
-      { "text": "8-hour diet coach and customer support", "included": true },
-      { "text": "24x7 chat support", "included": true },
-      { "text": "25 dietitian consultations", "included": true },
-      { "text": "Pre-wedding detox and structured 5-phase weight loss", "included": true },
-      { "text": "Weight loss and body recomposition", "included": true },
-      { "text": "Natural skin brightening and hair strengthening nutrition", "included": true },
-      { "text": "Nutrient deficiency support plan", "included": true },
-      { "text": "Gut health and therapeutic care support", "included": true },
-      { "text": "Progressive home workout and lifestyle modification", "included": true },
-      { "text": "100+ bridal recipes, weekly monitoring and monthly review", "included": true },
-      { "text": "Post-wedding weight maintenance guidance", "included": true }
+      {
+        "text": "8-hour diet coach and customer support",
+        "included": true
+      },
+      {
+        "text": "24x7 chat support",
+        "included": true
+      },
+      {
+        "text": "25 dietitian consultations",
+        "included": true
+      },
+      {
+        "text": "Pre-wedding detox and structured 5-phase weight loss",
+        "included": true
+      },
+      {
+        "text": "Weight loss and body recomposition",
+        "included": true
+      },
+      {
+        "text": "Natural skin brightening and hair strengthening nutrition",
+        "included": true
+      },
+      {
+        "text": "Nutrient deficiency support plan",
+        "included": true
+      },
+      {
+        "text": "Gut health and therapeutic care support",
+        "included": true
+      },
+      {
+        "text": "Progressive home workout and lifestyle modification",
+        "included": true
+      },
+      {
+        "text": "100+ bridal recipes, weekly monitoring and monthly review",
+        "included": true
+      },
+      {
+        "text": "Post-wedding weight maintenance guidance",
+        "included": true
+      }
     ]
   },
   {
@@ -680,17 +926,50 @@
     "source": "DTPS_Plans_and_Packages.pdf",
     "sourceNote": "1 Year Plan - ₹45,999 ( ~₹54,000~ )",
     "features": [
-      { "text": "8-hour diet coach and customer support", "included": true },
-      { "text": "24x7 chat support", "included": true },
-      { "text": "45 dietitian consultations", "included": true },
-      { "text": "Pre-wedding detox and structured 5-phase weight loss", "included": true },
-      { "text": "Weight loss and body recomposition", "included": true },
-      { "text": "Natural skin brightening and hair strengthening nutrition", "included": true },
-      { "text": "Nutrient deficiency, gut health and therapeutic care support", "included": true },
-      { "text": "Progressive home workout and lifestyle modification", "included": true },
-      { "text": "Ogv and rainbow diet", "included": true },
-      { "text": "100+ bridal recipes, weekly monitoring and monthly review", "included": true },
-      { "text": "Post-wedding maintenance, stress and sleep optimization", "included": true }
+      {
+        "text": "8-hour diet coach and customer support",
+        "included": true
+      },
+      {
+        "text": "24x7 chat support",
+        "included": true
+      },
+      {
+        "text": "45 dietitian consultations",
+        "included": true
+      },
+      {
+        "text": "Pre-wedding detox and structured 5-phase weight loss",
+        "included": true
+      },
+      {
+        "text": "Weight loss and body recomposition",
+        "included": true
+      },
+      {
+        "text": "Natural skin brightening and hair strengthening nutrition",
+        "included": true
+      },
+      {
+        "text": "Nutrient deficiency, gut health and therapeutic care support",
+        "included": true
+      },
+      {
+        "text": "Progressive home workout and lifestyle modification",
+        "included": true
+      },
+      {
+        "text": "Ogv and rainbow diet",
+        "included": true
+      },
+      {
+        "text": "100+ bridal recipes, weekly monitoring and monthly review",
+        "included": true
+      },
+      {
+        "text": "Post-wedding maintenance, stress and sleep optimization",
+        "included": true
+      }
     ]
   }
 ]
