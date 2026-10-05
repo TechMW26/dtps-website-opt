@@ -492,7 +492,7 @@ export default function WeightLossPage() {
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 items-start gap-5 md:grid-cols-3 md:gap-8 w-full">
+          <div className="plan-card-grid">
             {pricingPlans.map((plan: any, index: number) => (
               <div key={index} className="w-full flex flex-col">
                 {/* Plan Banner */}
@@ -510,7 +510,7 @@ export default function WeightLossPage() {
                   className="flex flex-col"
                 >
                   {(offerRevealed) => (
-                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col relative">
+                <div className="bg-white rounded-[12px] border border-gray-200 shadow-sm overflow-hidden p-6 flex flex-col relative">
                   {(() => {
                     const cardKey = String(plan.planId || plan.label || index);
                     const isExpanded = !!expandedPricingCards[cardKey];
@@ -525,7 +525,7 @@ export default function WeightLossPage() {
                             <p className="text-[#6B7280] text-[14px] font-semibold" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.label}</p>
                             <p className="text-[#1E1E1E] text-[18px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>PLAN</p>
                           </div>
-                          {plan.badge && <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
+                          {plan.badge?.trim() && <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
                             {plan.badge}
                           </span>}
                         </div>

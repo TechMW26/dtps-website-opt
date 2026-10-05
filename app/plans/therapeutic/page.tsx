@@ -1112,7 +1112,7 @@ export default function TherapeuticPlanPage() {
             <div className="w-10 h-10 border-4 border-[#014E4E] border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full">
+          <div className="plan-card-grid">
             {pricingPlans.map((plan: any, index: number) => (
               <div key={index} className="w-full h-full flex flex-col">
                 {/* Plan Banner */}
@@ -1122,7 +1122,7 @@ export default function TherapeuticPlanPage() {
                   </div>
                 )}
                 {/* Card */}
-                <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col flex-1 min-h-0 relative">
+                <div className="bg-white rounded-[12px] border border-gray-200 shadow-sm overflow-hidden p-6 flex flex-col flex-1 min-h-0 relative">
                   {(() => {
                     const cardKey = String(plan.planId || plan.label || index);
                     const isExpanded = !!expandedPricingCards[cardKey];
@@ -1137,9 +1137,9 @@ export default function TherapeuticPlanPage() {
                             <p className="text-[#6B7280] text-[14px] font-semibold" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>{plan.label}</p>
                             <p className="text-[#1E1E1E] text-[18px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>PLAN</p>
                           </div>
-                          <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
+                          {plan.badge?.trim() && <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
                             {plan.badge}
-                          </span>
+                          </span>}
                         </div>
                         {/* Price */}
                         <div className="flex items-end gap-2 mb-3">

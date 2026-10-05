@@ -8180,3 +8180,27 @@ video {
     padding-right: var(--section-padding-x-desktop-xlarge) !important;
   }
 }
+
+/* Shared pricing layout. Six tracks center either one or two final cards. */
+.plan-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  overflow: visible;
+  align-items: stretch;
+}
+.plan-card-grid > * { min-width: 0; }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .plan-card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .plan-card-grid > * { grid-column: span 2; }
+  .plan-card-grid > :last-child:nth-child(odd) { grid-column: 2 / span 2; }
+}
+@media (min-width: 1024px) {
+  .plan-card-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 28px; }
+  .plan-card-grid > * { grid-column: span 2; }
+  .plan-card-grid > :last-child:nth-child(3n + 1) { grid-column: 3 / span 2; }
+  .plan-card-grid > :nth-last-child(2):nth-child(3n + 1) { grid-column: 2 / span 2; }
+}
