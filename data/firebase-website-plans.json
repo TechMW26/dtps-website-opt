@@ -400,8 +400,8 @@
     "planName": "PCOD/PCOS - 1 Month",
     "duration": "1 month",
     "durationLabel": "30 days",
-    "price": 2999,
-    "originalPrice": 2999,
+    "price": 4999,
+    "originalPrice": 6000,
     "currency": "₹",
     "badge": "",
     "badgeColor": "slate",
@@ -412,7 +412,7 @@
     "pricePending": false,
     "order": 10,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "Temporary price authorized by user on 2026-10-05; replace with final pricing",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
     "features": [
       {
         "text": "Customized therapeutic plan for PCOD/PCOS",
@@ -446,15 +446,16 @@
         "text": "Mindful eating and seed cycle guidance",
         "included": true
       }
-    ]
+    ],
+    "temporaryPrice": false
   },
   {
     "id": "pcod-pcos-3-month",
     "planName": "PCOD/PCOS - 3 Months",
     "duration": "3 months",
     "durationLabel": "90 days",
-    "price": 7999,
-    "originalPrice": 7999,
+    "price": 11999,
+    "originalPrice": 15000,
     "currency": "₹",
     "badge": "",
     "badgeColor": "slate",
@@ -465,7 +466,7 @@
     "pricePending": false,
     "order": 20,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "Temporary price authorized by user on 2026-10-05; replace with final pricing",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
     "features": [
       {
         "text": "Customized therapeutic plan for PCOD/PCOS",
@@ -499,15 +500,16 @@
         "text": "Stress and lifestyle correction for hormonal health",
         "included": true
       }
-    ]
+    ],
+    "temporaryPrice": false
   },
   {
     "id": "pcod-pcos-6-month",
     "planName": "PCOD/PCOS - 6 Months",
     "duration": "6 months",
     "durationLabel": "180 days",
-    "price": 14999,
-    "originalPrice": 14999,
+    "price": 21999,
+    "originalPrice": 28000,
     "currency": "₹",
     "badge": "",
     "badgeColor": "slate",
@@ -518,7 +520,7 @@
     "pricePending": false,
     "order": 30,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "Temporary price authorized by user on 2026-10-05; replace with final pricing",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
     "features": [
       {
         "text": "Customized therapeutic plan for PCOD/PCOS",
@@ -552,15 +554,16 @@
         "text": "Hormonal balance and cycle stabilization program",
         "included": true
       }
-    ]
+    ],
+    "temporaryPrice": false
   },
   {
     "id": "therapeutic-1-month",
     "planName": "Therapeutic Nutrition - 1 Month",
     "duration": "1 month",
     "durationLabel": "30 days",
-    "price": 3499,
-    "originalPrice": 4000,
+    "price": 4999,
+    "originalPrice": 6000,
     "currency": "₹",
     "badge": "",
     "badgeColor": "slate",
@@ -571,7 +574,7 @@
     "pricePending": false,
     "order": 10,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "Temporary prices and MRPs authorized by user on 2026-10-05; replace with final pricing",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
     "features": [
       {
         "text": "Customized therapeutic nutrition plan as per condition",
@@ -610,15 +613,15 @@
         "included": true
       }
     ],
-    "temporaryPrice": true
+    "temporaryPrice": false
   },
   {
     "id": "therapeutic-3-month",
     "planName": "Therapeutic Nutrition - 3 Months",
     "duration": "3 months",
     "durationLabel": "90 days",
-    "price": 8999,
-    "originalPrice": 10000,
+    "price": 11999,
+    "originalPrice": 15000,
     "currency": "₹",
     "badge": "",
     "badgeColor": "slate",
@@ -629,7 +632,7 @@
     "pricePending": false,
     "order": 20,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "Temporary prices and MRPs authorized by user on 2026-10-05; replace with final pricing",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
     "features": [
       {
         "text": "Customized therapeutic nutrition plan as per condition",
@@ -668,15 +671,15 @@
         "included": true
       }
     ],
-    "temporaryPrice": true
+    "temporaryPrice": false
   },
   {
     "id": "therapeutic-6-month",
     "planName": "Therapeutic Nutrition - 6 Months",
     "duration": "6 months",
     "durationLabel": "180 days",
-    "price": 16999,
-    "originalPrice": 20000,
+    "price": 21999,
+    "originalPrice": 28000,
     "currency": "₹",
     "badge": "",
     "badgeColor": "slate",
@@ -687,7 +690,7 @@
     "pricePending": false,
     "order": 30,
     "source": "DTPS_Plans_and_Packages.pdf",
-    "sourceNote": "Temporary prices and MRPs authorized by user on 2026-10-05; replace with final pricing",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
     "features": [
       {
         "text": "Customized therapeutic nutrition plan as per condition",
@@ -726,7 +729,7 @@
         "included": true
       }
     ],
-    "temporaryPrice": true
+    "temporaryPrice": false
   },
   {
     "id": "wedding-1-month-4999",
@@ -971,5 +974,77 @@
         "included": true
       }
     ]
+  },
+  {
+    "id": "pcod-pcos-1-year",
+    "planName": "PCOD/PCOS - 1 Year",
+    "duration": "1 year",
+    "durationLabel": "365 days",
+    "price": 39999,
+    "originalPrice": 54000,
+    "currency": "₹",
+    "badge": "",
+    "badgeColor": "slate",
+    "page": "pcod",
+    "category": "pcod",
+    "popular": false,
+    "isActive": true,
+    "pricePending": false,
+    "order": 40,
+    "source": "DTPS_Plans_and_Packages.pdf",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
+    "features": [
+      {
+        "text": "Customized therapeutic plan for PCOD/PCOS",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and health counsellor support",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      }
+    ],
+    "temporaryPrice": false
+  },
+  {
+    "id": "therapeutic-1-year",
+    "planName": "Therapeutic Nutrition - 1 Year",
+    "duration": "1 year",
+    "durationLabel": "365 days",
+    "price": 39999,
+    "originalPrice": 54000,
+    "currency": "₹",
+    "badge": "",
+    "badgeColor": "slate",
+    "page": "therapeutic",
+    "category": "therapeutic-diet-plans",
+    "popular": false,
+    "isActive": true,
+    "pricePending": false,
+    "order": 40,
+    "source": "DTPS_Plans_and_Packages.pdf",
+    "sourceNote": "Prices and MRPs confirmed by user on 2026-10-05",
+    "features": [
+      {
+        "text": "Customized therapeutic nutrition plan as per condition",
+        "included": true
+      },
+      {
+        "text": "Senior dietitian and therapeutic expert",
+        "included": true
+      },
+      {
+        "text": "Clinical dietitian or health counsellor",
+        "included": true
+      },
+      {
+        "text": "8 hours of chat support",
+        "included": true
+      }
+    ],
+    "temporaryPrice": false
   }
 ]
