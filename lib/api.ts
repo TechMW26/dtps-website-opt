@@ -6,6 +6,7 @@ export interface Pricing {
   _id: string;
   planName: string;
   price: number;
+  pricePending?: boolean;
   originalPrice: number;
   duration: string;
   durationLabel: string;

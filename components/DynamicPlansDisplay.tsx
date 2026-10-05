@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { getPricingByCategory, getPricingByPage } from '@/lib/api';
 import type { Pricing } from '@/lib/api';
 
@@ -142,6 +143,7 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
   const [expanded, setExpanded] = useState(false);
   const visibleFeatures = expanded ? plan.features : plan.features.slice(0, 4);
   const hasMoreFeatures = plan.features.length > 4;
+  const enquiryOnly = plan.pricePending === true || !Number.isFinite(plan.price) || plan.price <= 0;
 
   return (
     <div className="bg-white rounded-[12px] shadow-[0_0_4px_rgba(0,0,0,0.25)] overflow-hidden p-6 flex flex-col h-full relative">
@@ -154,7 +156,7 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
             PLAN
           </p>
         </div>
-        {plan.badge && (
+        {plan.badge && !enquiryOnly && (
           <span className="border border-[#FF850B] rounded-full px-4 py-2 text-[10px] font-bold tracking-[1px] text-[#1E1E1E]" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
             {plan.badge}
           </span>
@@ -162,9 +164,9 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
       </div>
       <div className="flex items-end gap-2 mb-3">
         <span className="text-[#014E4E] text-[28px] md:text-[32px] font-semibold capitalize" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
-          ₹{plan.price.toLocaleString()}
+          {enquiryOnly ? 'Contact us for pricing' : `₹${plan.price.toLocaleString()}`}
         </span>
-        {plan.originalPrice > plan.price && (
+        {!enquiryOnly && plan.originalPrice > plan.price && (
           <span className="text-[#6B7280] text-[16px] line-through mb-1" style={{ fontFamily: 'var(--font-poppins), Poppins, sans-serif' }}>
             ₹{plan.originalPrice.toLocaleString()}
           </span>
@@ -198,13 +200,13 @@ function PlanCard({ plan, onSelect }: PlanCardProps) {
         </button>
       )}
       <div className="flex-1" />
-      <button
+      {enquiryOnly ? <Link href="/contact" className="bg-[#FF850B] text-white font-bold text-[12px] px-5 py-3 rounded-full w-fit">Contact us for pricing</Link> : <button
         onClick={() => onSelect?.(plan)}
         className="bg-[#FF850B] text-white font-bold text-[11px] px-5 py-2.5 rounded-full w-fit cursor-pointer"
         style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
       >
         BUY NOW
-      </button>
+      </button>}
     </div>
   );
 }

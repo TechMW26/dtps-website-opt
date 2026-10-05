@@ -34,3 +34,15 @@ test('trial checkout resolves the public slug to the confirmed 299 INR ten-day p
  assert.equal(res.status,200);assert.equal(h.calls.providerOrders[0].amount,29900);
  assert.equal(h.docs.get('websiteOrders/order_created').products[0].duration,'10 days');
 });
+
+test('PCOD checkout uses temporary catalogue rates and rejects unpriced plans',async()=>{
+ for(const [months,price] of [[1,2999],[3,7999],[6,14999]]){
+  const h=harness(),plan=JSON.parse(fs.readFileSync('data/firebase-website-plans.json','utf8')).find(p=>p.id===`pcod-pcos-${months}-month`);
+  h.docs.set('websitePricing/'+plan.id,plan);
+  const res=await h.api.POST(h.request({action:'create',customerName:'Test',customerEmail:'test@example.test',customerPhone:'0000000000',products:[{id:plan.id,price:1,quantity:1}]}));
+  assert.equal(res.status,200);assert.equal(h.calls.providerOrders[0].amount,price*100);
+ }
+ const h=harness();h.docs.set('websitePricing/unpriced',{planName:'Unpriced',price:0,pricePending:true,isActive:true});
+ const res=await h.api.POST(h.request({action:'create',customerName:'Test',customerEmail:'test@example.test',customerPhone:'0000000000',products:[{id:'unpriced',quantity:1}]}));
+ assert.notEqual(res.status,200);assert.equal(h.calls.providerOrders.length,0);
+});
