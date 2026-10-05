@@ -17,7 +17,15 @@
     "source": "User-confirmed 2026-10-05",
     "features": [
       {
-        "text": "10-day weight-loss trial",
+        "text": "Personalised diet plan",
+        "included": true
+      },
+      {
+        "text": "Dietitian consultations",
+        "included": true
+      },
+      {
+        "text": "Progress tracking",
         "included": true
       }
     ]
