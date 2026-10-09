@@ -2,7 +2,7 @@ import { createContent, updateContent, deleteContent, getContent } from '@/lib/w
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -62,8 +62,8 @@ export async function GET(request: NextRequest) {
     const isActive = searchParams.get('active');
     const includeGlobal = searchParams.get('includeGlobal') !== 'false';
 
-    const transformations = (await getWebsiteFirestore().collection('websiteTransformations').get()).docs
-      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+    const transformations = (await getWebsiteDatabase().collection('websiteTransformations').get()).docs
+      .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>))
       .filter((item: any) => (!page || !PAGE_VALUES.includes(page as PageValue) || (Array.isArray(item.targetPages) ? (item.targetPages.includes(page) || (includeGlobal && item.targetPages.includes('all'))) : item.page === page)) && (featured !== 'true' || item.featured === true) && (isActive !== 'true' || item.isActive === true))
       .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 

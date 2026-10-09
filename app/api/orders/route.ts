@@ -2,14 +2,14 @@ import {requireWebsiteAdmin,WebsiteAdminError} from '@/lib/website-admin-reposit
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { resolveCheckoutProducts } from '@/lib/checkout-catalog';
-import { FieldValue } from 'firebase-admin/firestore';
+import { FieldValue } from '@/lib/mongo-website-types.mjs';
 import { NextRequest, NextResponse } from 'next/server';
 import { paymentMatchesOrder } from '@/lib/payment-verification';
 import { v4 as uuidv4 } from 'uuid';
 import Razorpay from 'razorpay';
 import { buildIndiaCreatedAtRange } from '@/lib/admin-date-range';
 import { calculateSubtotal, validateCouponForProducts } from '@/lib/coupons';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 import { sendPostPaymentNotifications } from '@/lib/notifications';
 import { sendCapiEvent, deriveFbcFromUrl, getClientIp } from '@/lib/meta-capi';
 
@@ -21,12 +21,12 @@ function getRazorpayInstance() {
   return razorpay;
 }
 async function parseRequestBody(req: NextRequest) { const rawBody = await req.text(); return rawBody ? JSON.parse(rawBody) : {}; }
-function serializeOrder(id: string, data: Record<string, unknown> | undefined) { return data ? serializeFirestoreDocument(id, data) : null; }
+function serializeOrder(id: string, data: Record<string, unknown> | undefined) { return data ? serializeDatabaseDocument(id, data) : null; }
 async function findOrder(orderId: string) {
-  const ref = getWebsiteFirestore().collection('websiteOrders').doc(orderId);
+  const ref = getWebsiteDatabase().collection('websiteOrders').doc(orderId);
   const direct = await ref.get();
   if (direct.exists) return { ref, data: direct.data() as Record<string, any> };
-  const snapshot = await getWebsiteFirestore().collection('websiteOrders').where('orderId', '==', orderId).limit(1).get();
+  const snapshot = await getWebsiteDatabase().collection('websiteOrders').where('orderId', '==', orderId).limit(1).get();
   if (snapshot.empty) return null;
   return { ref: snapshot.docs[0].ref, data: snapshot.docs[0].data() as Record<string, any> };
 }
@@ -34,7 +34,7 @@ async function findOrder(orderId: string) {
 export async function POST(req: NextRequest) {
   try {
     const { action, ...data } = await parseRequestBody(req);
-    const db = getWebsiteFirestore();
+    const db = getWebsiteDatabase();
     if (action === 'create') {
       let products;
       try { products = await resolveCheckoutProducts(data.products); }
@@ -93,7 +93,8 @@ export async function POST(req: NextRequest) {
       if (!captured) return NextResponse.json({ success: false, message: payment.status === 'authorized' ? 'Payment is awaiting capture. Please check again shortly.' : 'Payment has not completed.' }, { status: 409 });
       const refreshed = await found.ref.get(); const refreshedOrder: any = refreshed.data();
       if (transitioned && refreshedOrder) {
-        const createdAt = refreshedOrder.createdAt?.toDate?.() || new Date();
+        const createdAt = refreshedOrder.createdAt instanceof Date
+          ? refreshedOrder.createdAt : refreshedOrder.createdAt?.toDate?.() || new Date();
         void sendPostPaymentNotifications({ orderId: refreshedOrder.orderId, customerName: refreshedOrder.customerName, customerEmail: refreshedOrder.customerEmail, customerPhone: refreshedOrder.customerPhone, total: refreshedOrder.total, createdAt, products: (refreshedOrder.products || []).map((product: any) => ({ name: product.name, duration: product.duration, quantity: Number(product.quantity || 1), price: Number(product.price || 0) })) }).catch((error) => console.error('Post-payment notification error:', error));
         const products = (refreshedOrder.products || []) as Array<{ id?: string; name?: string; price?: number; quantity?: number }>;
         void sendCapiEvent({ eventName: 'Purchase', eventId: refreshedOrder.orderId, eventSourceUrl: req.headers.get('referer') || undefined, actionSource: 'website', userData: { email: refreshedOrder.customerEmail || null, phone: refreshedOrder.customerPhone || null, firstName: (refreshedOrder.customerName || '').split(' ')[0] || null, lastName: (refreshedOrder.customerName || '').split(' ').slice(1).join(' ') || null, externalId: refreshedOrder.orderId, clientIpAddress: getClientIp(req.headers), clientUserAgent: req.headers.get('user-agent'), fbp: req.cookies.get('_fbp')?.value || null, fbc: deriveFbcFromUrl(req.headers.get('referer'), req.cookies.get('_fbc')?.value || null) }, customData: { value: Number(refreshedOrder.total || 0), currency: 'INR', num_items: products.reduce((sum, product) => sum + Number(product.quantity || 1), 0) } }).catch((error) => console.error('CAPI Purchase send error:', error));
@@ -124,7 +125,7 @@ export async function GET(req: NextRequest) {
     if (orderId) { const found = await findOrder(orderId); return NextResponse.json({ success: true, order: found ? serializeOrder(found.ref.id, found.data) : null }); }
     await requireWebsiteAdmin(await getServerSession(authOptions) as any);
     const range = buildIndiaCreatedAtRange(searchParams.get('from'), searchParams.get('to')) as { $gte?: Date; $lte?: Date } | null;
-    const orders = (await getWebsiteFirestore().collection('websiteOrders').get()).docs.map((doc) => serializeOrder(doc.id, doc.data() as Record<string, unknown>)!).filter((order: any) => { if (!range || !order.createdAt) return true; const created = new Date(String(order.createdAt)); return (!range.$gte || created >= range.$gte) && (!range.$lte || created <= range.$lte); }).sort((a: any, b: any) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
+    const orders = (await getWebsiteDatabase().collection('websiteOrders').get()).docs.map((doc) => serializeOrder(doc.id, doc.data() as Record<string, unknown>)!).filter((order: any) => { if (!range || !order.createdAt) return true; const created = new Date(String(order.createdAt)); return (!range.$gte || created >= range.$gte) && (!range.$lte || created <= range.$lte); }).sort((a: any, b: any) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
     return NextResponse.json({ success: true, orders });
   } catch (error) { if(error instanceof WebsiteAdminError)return NextResponse.json({error:error.message},{status:error.status}); console.error('Error fetching orders:', error); return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 503 }); }
 }
@@ -134,7 +135,7 @@ export async function PATCH(req: NextRequest) {
     const actor=await requireWebsiteAdmin(await getServerSession(authOptions) as any); if(!['admin','superadmin'].includes(actor.role))throw new WebsiteAdminError('Forbidden',403);
     const { action, orderIds } = await req.json();
     if (action !== 'bulkDelete' || !Array.isArray(orderIds) || !orderIds.length) return NextResponse.json({ success: false, message: 'orderIds array is required' }, { status: 400 });
-    const db = getWebsiteFirestore(); const snapshot = await db.collection('websiteOrders').get(); const batch = db.bulkWriter(); let deleted = 0;
+    const db = getWebsiteDatabase(); const snapshot = await db.collection('websiteOrders').get(); const batch = db.bulkWriter(); let deleted = 0;
     for (const doc of snapshot.docs) if (orderIds.includes(doc.data().orderId)) { batch.delete(doc.ref); deleted++; }
     const payments = await db.collection('websitePayments').get(); for (const doc of payments.docs) if (orderIds.includes(doc.data().orderId)) batch.delete(doc.ref);
     await batch.close(); return NextResponse.json({ success: true, message: `Deleted ${deleted} order(s)` });
@@ -142,6 +143,6 @@ export async function PATCH(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  try { const actor=await requireWebsiteAdmin(await getServerSession(authOptions) as any); if(!['admin','superadmin'].includes(actor.role))throw new WebsiteAdminError('Forbidden',403); const { orderId } = await req.json(); if (!orderId) return NextResponse.json({ success: false, message: 'Order ID is required' }, { status: 400 }); const found = await findOrder(orderId); if (found) await found.ref.delete(); const payments = await getWebsiteFirestore().collection('websitePayments').where('orderId', '==', orderId).get(); await Promise.all(payments.docs.map((doc) => doc.ref.delete())); return NextResponse.json({ success: true, message: 'Order deleted successfully' }); }
+  try { const actor=await requireWebsiteAdmin(await getServerSession(authOptions) as any); if(!['admin','superadmin'].includes(actor.role))throw new WebsiteAdminError('Forbidden',403); const { orderId } = await req.json(); if (!orderId) return NextResponse.json({ success: false, message: 'Order ID is required' }, { status: 400 }); const found = await findOrder(orderId); if (found) await found.ref.delete(); const payments = await getWebsiteDatabase().collection('websitePayments').where('orderId', '==', orderId).get(); await Promise.all(payments.docs.map((doc) => doc.ref.delete())); return NextResponse.json({ success: true, message: 'Order deleted successfully' }); }
   catch (error) { if(error instanceof WebsiteAdminError)return NextResponse.json({error:error.message},{status:error.status}); console.error('Error deleting order:', error); return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 503 }); }
 }

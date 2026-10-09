@@ -1,7 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
-import { getWebsiteFirestore } from '@/lib/firebase-admin';
+import { getWebsiteDatabase } from '@/lib/website-database';
 import { logSecurityEvent } from '@/lib/security';
 
 export const authOptions: NextAuthOptions = {
@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
       if (!email || !password) throw new Error('Invalid credentials');
       let admin: any = null;let ambiguous=false;
       try {
-        const snapshot = await getWebsiteFirestore().collection('websiteAdmins').where('email', '==', email).limit(2).get();
+        const snapshot = await getWebsiteDatabase().collection('websiteAdmins').where('email', '==', email).limit(2).get();
         ambiguous=snapshot.size>1;
         if (!snapshot.empty) admin = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
       } catch { /* fall through to the configured bootstrap admin */ }

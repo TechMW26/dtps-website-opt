@@ -1,15 +1,16 @@
 import bcrypt from 'bcryptjs';
-import {FieldValue,type Transaction} from 'firebase-admin/firestore';
-import {getWebsiteFirestore} from './firebase-admin';
+import {FieldValue} from '@/lib/mongo-website-types.mjs';
+import type {WebsiteTransaction as Transaction, WebsiteQueryDocumentSnapshot} from './website-database-types';
+import {getWebsiteDatabase} from './website-database';
 import {getPermanentAdminConfig} from './permanent-admin';
 import {sanitizeText} from './security';
 export const WEBSITE_ADMIN_ROLES=['superadmin','admin','manager','editor','support','viewer'] as const;
 export class WebsiteAdminError extends Error{constructor(message:string,public status=400){super(message);}}
 type SessionActor={user?:{id?:string;email?:string|null;role?:string}}|null;
-const db=()=>getWebsiteFirestore();
+const db=()=>getWebsiteDatabase();
 const iso=(v:any)=>v?.toDate instanceof Function?v.toDate().toISOString():v instanceof Date?v.toISOString():v;
 export function publicWebsiteAdmin(id:string,data:Record<string,any>){return {_id:id,id,...Object.fromEntries(['email','name','role','isPermanent','createdAt','updatedAt'].filter(k=>data[k]!==undefined).map(k=>[k,iso(data[k])]))};}
-function publicEvent(row:FirebaseFirestore.QueryDocumentSnapshot){const data=row.data();return {_id:row.id,...Object.fromEntries(['type','severity','message','email','ip','userAgent','path','createdAt'].filter(k=>data[k]!==undefined).map(k=>[k,iso(data[k])])),...(data.meta?{meta:Object.fromEntries(['actorEmail','targetUserEmail','action'].filter(k=>typeof data.meta[k]==='string').map(k=>[k,data.meta[k]]))}:{})};}
+function publicEvent(row:WebsiteQueryDocumentSnapshot){const data=row.data();return {_id:row.id,...Object.fromEntries(['type','severity','message','email','ip','userAgent','path','createdAt'].filter(k=>data[k]!==undefined).map(k=>[k,iso(data[k])])),...(data.meta?{meta:Object.fromEntries(['actorEmail','targetUserEmail','action'].filter(k=>typeof data.meta[k]==='string').map(k=>[k,data.meta[k]]))}:{})};}
 export async function requireWebsiteAdmin(session:SessionActor,tx?:Transaction,superOnly=false){
  const email=session?.user?.email?.toLowerCase().trim();if(!email)throw new WebsiteAdminError('Unauthorized',401);
  const query=db().collection('websiteAdmins').where('email','==',email).limit(2);const rows=tx?await tx.get(query):await query.get();
@@ -47,7 +48,7 @@ export async function changeWebsiteAdmin(session:SessionActor,id:string,body:any
 }
 export async function listWebsiteAdmins(session:SessionActor){await requireWebsiteAdmin(session);const rows=await db().collection('websiteAdmins').orderBy('createdAt','desc').get();return rows.docs.map(d=>publicWebsiteAdmin(d.id,d.data()));}
 export async function websiteAdminActivities(emails:string[]){
- const found=new Map<string,FirebaseFirestore.QueryDocumentSnapshot>();for(let start=0;start<emails.length;start+=7){const part=emails.slice(start,start+7);await Promise.all(['email','meta.targetUserEmail'].map(async field=>{const rows=await db().collection('websiteSecurityLogs').where(field,'in',part).where('type','in',['login_success','logout','admin_action','password_change']).orderBy('createdAt','desc').limit(500).get();for(const row of rows.docs)if(['login_success','logout','admin_action','password_change'].includes(row.get('type')))found.set(row.id,row);}));}
+ const found=new Map<string,WebsiteQueryDocumentSnapshot>();for(let start=0;start<emails.length;start+=7){const part=emails.slice(start,start+7);await Promise.all(['email','meta.targetUserEmail'].map(async field=>{const rows=await db().collection('websiteSecurityLogs').where(field,'in',part).where('type','in',['login_success','logout','admin_action','password_change']).orderBy('createdAt','desc').limit(500).get();for(const row of rows.docs)if(['login_success','logout','admin_action','password_change'].includes(row.get('type')))found.set(row.id,row);}));}
  return [...found.values()].sort((a,b)=>Number(b.get('createdAt')?.toMillis?.()||new Date(b.get('createdAt')).getTime())-Number(a.get('createdAt')?.toMillis?.()||new Date(a.get('createdAt')).getTime())).slice(0,500).map(publicEvent);
 }
 export async function websiteSecurityDashboard(session:SessionActor){await requireWebsiteAdmin(session);const logs=db().collection('websiteSecurityLogs'),day=new Date(Date.now()-86400000),week=new Date(Date.now()-7*86400000);const [events,total,failed24,failed7,critical,recent,last]=await Promise.all([logs.orderBy('createdAt','desc').limit(100).get(),logs.count().get(),logs.where('type','==','login_failed').where('createdAt','>=',day).count().get(),logs.where('type','==','login_failed').where('createdAt','>=',week).count().get(),logs.where('severity','==','critical').where('createdAt','>=',week).count().get(),logs.where('createdAt','>=',week).select('type').get(),logs.where('type','==','login_success').orderBy('createdAt','desc').limit(5).get()]);const types=new Map<string,number>();for(const row of recent.docs)types.set(row.get('type'),(types.get(row.get('type'))||0)+1);return {events:events.docs.map(publicEvent),stats:{totals:total.data().count,failed24h:failed24.data().count,failed7d:failed7.data().count,criticalOpen:critical.data().count,byType:[...types].map(([_id,count])=>({_id,count})).sort((a,b)=>b.count-a.count),lastLogins:last.docs.map(publicEvent)}};}

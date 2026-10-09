@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 const SITE_URL = 'https://www.dtpoonamsagar.com';
 
@@ -65,8 +65,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
-    const snapshot = await getWebsiteFirestore().collection('websiteBlogs').where('published', '==', true).get();
-    const blogs = snapshot.docs.map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>)) as unknown as { slug: string; updatedAt?: string }[];
+    const snapshot = await getWebsiteDatabase().collection('websiteBlogs').where('published', '==', true).get();
+    const blogs = snapshot.docs.map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>)) as unknown as { slug: string; updatedAt?: string }[];
     blogRoutes = blogs.map((blog) => ({
       url: `${SITE_URL}/blog/${blog.slug}`,
       lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),

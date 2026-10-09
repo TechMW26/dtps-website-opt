@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 import BlogDetailClient from './BlogDetailClient';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -7,7 +7,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   try {
-    const snapshot = await getWebsiteFirestore().collection('websiteBlogs').where('slug', '==', slug).where('published', '==', true).limit(1).get();
+    const snapshot = await getWebsiteDatabase().collection('websiteBlogs').where('slug', '==', slug).where('published', '==', true).limit(1).get();
     if (snapshot.empty) {
       return {
         title: 'Blog Post Not Found',
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         robots: { index: false, follow: false },
       };
     }
-    const b = serializeFirestoreDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>) as unknown as {
+    const b = serializeDatabaseDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>) as unknown as {
       title: string;
       excerpt?: string;
       featuredImage?: string;

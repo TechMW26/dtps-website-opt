@@ -1,6 +1,10 @@
-# Website Firebase migration
+# Historical website Firebase recovery
 
-The website server now uses Firebase Admin Firestore for its commerce and public-content paths. Configure the server with `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY`, and `FIREBASE_DATABASE_ID` (or the accepted `FIRESTORE_NATIVE_*` names). Keep these values server-only.
+This records the previous recovery into Firebase, not the current runtime setup.
+The staged website runtime uses only MongoDB; see `mongodb-website-migration.md`.
+Do not run these historical Firebase write tools during or after MongoDB cutover.
+Retain the source configuration offline only until the migration and rollback
+window are complete.
 
 Collections used by the website are:
 
@@ -14,9 +18,9 @@ Collections used by the website are:
 - `websitePageHeroes`, `websitePlanBanners`, `websiteSiteBanners`, `websitePopups`, `websiteMarquee`, `websitePlan299Settings`, `websiteAdmins`, `websiteSecurityLogs`, `websiteVisitors`
 - `websiteRecognitions`, `websiteTestimonials`, `websiteSuccessStories`, `websiteTransformations`
 
-Run `npm run firebase:seed` to create missing entries in the plan catalog from `data/firebase-website-plans.json`. Plans without prices in the supplied PDF are deliberately inactive and marked `pricePending`.
+The recovered plan catalog is recorded in `data/website-plans.json`. Plans without prices in the supplied PDF are deliberately inactive and marked `pricePending`.
 
-Razorpay recovery stays read-only until `.recovery/transactions/state.json` reports both `complete: true` and `paymentsComplete: true`. Then run `npm run firebase:import-recovery`; it writes idempotent `websiteOrders` and `websitePayments` documents and retains provider evidence plus explicit missing-field markers.
+The completed Razorpay recovery produced idempotent `websiteOrders` and `websitePayments` records, retaining provider evidence and explicit missing-field markers. Those records are included unchanged in the MongoDB transfer.
 
 The old MongoDB collections could not be copied because the paid Atlas service was terminated and no website dump was available. The Firebase paths therefore preserve only verified source records; they do not fabricate missing catalog, address, discount, blog, or page-setting data.
 
@@ -24,8 +28,8 @@ The old MongoDB collections could not be copied because the paid Atlas service w
 
 `data/recovery/content-seed.json` records the original Blob assets and recovery provenance. Fourteen visually audited composite before/after cards are restored into transformations and success stories. Eighteen article-media records remain unpublished drafts: the original article bodies and authors are unavailable. Individual photos are not paired speculatively.
 
-`node scripts/seed-recovered-content.mjs` validates without writing. Execute only with `--execute --project <id> --database <id>` and matching server credentials. Existing records are preserved, including records with matching source assets.
+The retired Firestore seed/import tools and index configuration have been removed from the website setup. Their historical versions remain recoverable through Git.
 
 Legacy database modules, models and retired migration scripts have been removed. Historical recovery evidence stays outside the release in ignored `.recovery/`. Existing public legacy image IDs continue to redirect to verified Blob media through `/api/images/[fileId]`.
 
-Apply `website-firestore.indexes.json` with an operator account that can manage indexes. The application service account only needs data access. Checkout resolves active catalog prices server-side; payment verification updates the payment, order, and coupon use in one transaction and cannot downgrade a completed order.
+Checkout still resolves active catalog prices server-side. MongoDB payment verification updates the payment, order and coupon use in one transaction and cannot downgrade a completed order.

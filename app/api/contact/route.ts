@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { FieldValue } from 'firebase-admin/firestore';
-import { getWebsiteFirestore } from '@/lib/firebase-admin';
+import { FieldValue } from '@/lib/mongo-website-types.mjs';
+import { getWebsiteDatabase } from '@/lib/website-database';
 import { validatePhone, validateEmail, validateName, validateMessage, getCountry } from '@/lib/validation';
 
 export const dynamic = 'force-dynamic';
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     const country = getCountry(countryIso || 'IN');
-    const ref = getWebsiteFirestore().collection('websiteLeads').doc();
+    const ref = getWebsiteDatabase().collection('websiteLeads').doc();
     await ref.set({
       firstName: firstName.trim(),
       lastName: lastName.trim(),

@@ -2,7 +2,7 @@ import {requireWebsiteAdmin,WebsiteAdminError} from '@/lib/website-admin-reposit
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { NextRequest, NextResponse } from 'next/server';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 import { buildIndiaCreatedAtRange } from '@/lib/admin-date-range';
 
 export const dynamic = 'force-dynamic';
@@ -14,8 +14,16 @@ export async function GET(req: NextRequest) {
     const orderId = searchParams.get('orderId');
     const id = searchParams.get('id');
     const range = buildIndiaCreatedAtRange(searchParams.get('from'), searchParams.get('to')) as { $gte?: Date; $lte?: Date } | null;
-    const payments = (await getWebsiteFirestore().collection('websitePayments').get()).docs
-      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+    const collection = getWebsiteDatabase().collection('websitePayments');
+    let documents;
+    if (id) {
+      const direct = await collection.doc(id).get();
+      documents = direct.exists ? [direct] : (await collection.where('razorpayPaymentId', '==', id).get()).docs;
+    } else {
+      documents = (await (orderId ? collection.where('orderId', '==', orderId) : collection).get()).docs;
+    }
+    const payments = documents
+      .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>))
       .filter((payment: any) => {
         if (id && payment._id !== id && payment.razorpayPaymentId !== id) return false;
         if (orderId && payment.orderId !== orderId) return false;

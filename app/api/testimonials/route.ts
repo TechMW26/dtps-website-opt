@@ -2,7 +2,7 @@ import { createContent, updateContent, deleteContent, getContent } from '@/lib/w
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -15,8 +15,8 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get('featured');
     const isActive = searchParams.get('active');
 
-    const testimonials = (await getWebsiteFirestore().collection('websiteTestimonials').get()).docs
-      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+    const testimonials = (await getWebsiteDatabase().collection('websiteTestimonials').get()).docs
+      .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>))
       .filter((item: any) => (page === 'all' || item.page === page) && (featured !== 'true' || item.featured === true) && (isActive !== 'true' || item.isActive === true))
       .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 

@@ -2,7 +2,7 @@ import { createContent, updateContent, deleteContent, getContent } from '@/lib/w
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 // Get all success stories
 export async function GET(request: NextRequest) {
@@ -13,8 +13,8 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get('featured');
     const isActive = searchParams.get('active');
 
-    const successStories = (await getWebsiteFirestore().collection('websiteSuccessStories').get()).docs
-      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+    const successStories = (await getWebsiteDatabase().collection('websiteSuccessStories').get()).docs
+      .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>))
       .filter((item: any) => (!page || item.page === page) && (!type || item.type === type) && (featured !== 'true' || item.featured === true) && (isActive !== 'true' || item.isActive === true))
       .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
 

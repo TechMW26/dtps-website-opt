@@ -7,7 +7,7 @@ import {
   isSafeMarqueeLink,
   type MarqueeSettings as MarqueeSettingsType,
 } from '@/lib/marquee';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -103,8 +103,8 @@ function sanitizeSettings(body: Record<string, unknown>): MarqueeSettingsType {
 
 export async function GET() {
   try {
-    const snapshot = await getWebsiteFirestore().collection('websiteMarquee').where('key', '==', 'global').limit(1).get();
-    const settings = snapshot.empty ? null : serializeFirestoreDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>);
+    const snapshot = await getWebsiteDatabase().collection('websiteMarquee').where('key', '==', 'global').limit(1).get();
+    const settings = snapshot.empty ? null : serializeDatabaseDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>);
 
     return NextResponse.json(
       { settings: settings || DEFAULT_MARQUEE_SETTINGS },

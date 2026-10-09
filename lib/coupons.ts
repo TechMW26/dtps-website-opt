@@ -1,4 +1,4 @@
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export type CouponScope = 'all' | 'specific';
 export type CouponDiscountType = 'percentage' | 'flat';
@@ -51,8 +51,8 @@ export function applyCouponToProducts(coupon: CouponRecord, products: CheckoutPr
 export async function validateCouponForProducts(code: string, products: CheckoutProduct[]): Promise<CouponApplicationResult> {
   const normalizedCode = normalizeCouponCode(code || ''); const subtotal = calculateSubtotal(products);
   if (!normalizedCode) return { valid: false, message: 'Please enter a coupon code.', code: normalizedCode, subtotal, eligibleSubtotal: 0, discount: 0, total: subtotal };
-  const snapshot = await getWebsiteFirestore().collection('websiteCoupons').where('code', '==', normalizedCode).limit(1).get();
+  const snapshot = await getWebsiteDatabase().collection('websiteCoupons').where('code', '==', normalizedCode).limit(1).get();
   if (snapshot.empty) return { valid: false, message: 'Invalid coupon code.', code: normalizedCode, subtotal, eligibleSubtotal: 0, discount: 0, total: subtotal };
-  const coupon = serializeFirestoreDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>) as unknown as CouponRecord;
+  const coupon = serializeDatabaseDocument(snapshot.docs[0].id, snapshot.docs[0].data() as Record<string, unknown>) as unknown as CouponRecord;
   return applyCouponToProducts(coupon, products);
 }

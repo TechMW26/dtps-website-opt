@@ -1,9 +1,9 @@
 import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import { authOptions } from '@/lib/auth';
-import {getWebsiteFirestore,serializeFirestoreValue,serializeFirestoreDocument} from '@/lib/firebase-admin';
+import {getWebsiteDatabase,serializeDatabaseValue,serializeDatabaseDocument} from '@/lib/website-database';
 import {telemetryRows,telemetryMillis} from '@/lib/website-telemetry';
-import type {DocumentData} from 'firebase-admin/firestore';
+import type {WebsiteDocumentData as DocumentData} from '@/lib/website-database-types';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -27,7 +27,7 @@ async function requireAdmin() {
 export async function GET(request: NextRequest) {
   try {
     if (!(await requireAdmin())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const db=getWebsiteFirestore();
+    const db=getWebsiteDatabase();
 
     const { searchParams } = new URL(request.url);
     const page = Math.min(1000000, Math.max(1, Math.floor(Number(searchParams.get('page')) || 1)));
@@ -84,7 +84,7 @@ export async function GET(request: NextRequest) {
       };
     });
 
-    return NextResponse.json(serializeFirestoreValue({
+    return NextResponse.json(serializeDatabaseValue({
       success: true,
       leads,
       pagination: { page, limit, total, pages: Math.max(1, Math.ceil(total / limit)) },
@@ -106,9 +106,9 @@ export async function PATCH(request: NextRequest) {
     if ((!id||id.includes('/')||id==='.'||id==='..')) return NextResponse.json({ error: 'Invalid lead ID' }, { status: 400 });
     if (!STATUSES.has(status)) return NextResponse.json({ error: 'Invalid lead status' }, { status: 400 });
 
-    const db=getWebsiteFirestore();
+    const db=getWebsiteDatabase();
     const ref=db.collection('websiteLeads').doc(id);
-    const lead=await db.runTransaction(async tx=>{const current=await tx.get(ref);if(!current.exists||current.get('source')!=='popup')return null;const patch={leadStatus:status,adminNote,updatedAt:new Date()};tx.update(ref,patch);return serializeFirestoreDocument(ref.id,{...current.data(),...patch});});
+    const lead=await db.runTransaction(async tx=>{const current=await tx.get(ref);if(!current.exists||current.get('source')!=='popup')return null;const patch={leadStatus:status,adminNote,updatedAt:new Date()};tx.update(ref,patch);return serializeDatabaseDocument(ref.id,{...current.data(),...patch});});
     if (!lead) return NextResponse.json({ error: 'Popup lead not found' }, { status: 404 });
     return NextResponse.json({ success: true, lead });
   } catch (error) {

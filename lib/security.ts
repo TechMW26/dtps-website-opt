@@ -1,10 +1,10 @@
 import sanitizeHtmlLib from 'sanitize-html';
-import { FieldValue } from 'firebase-admin/firestore';
-import { getWebsiteFirestore } from '@/lib/firebase-admin';
+import { FieldValue } from '@/lib/mongo-website-types.mjs';
+import { getWebsiteDatabase } from '@/lib/website-database';
 
 type LogInput = { type: string; message: string; severity?: string; email?: string; [key: string]: unknown };
 export async function logSecurityEvent(event: LogInput): Promise<void> {
-  try { await getWebsiteFirestore().collection('websiteSecurityLogs').add({ severity: 'info', ...event, createdAt: FieldValue.serverTimestamp() }); } catch { /* audit logging must never break auth */ }
+  try { await getWebsiteDatabase().collection('websiteSecurityLogs').add({ severity: 'info', ...event, createdAt: FieldValue.serverTimestamp() }); } catch { /* audit logging must never break auth */ }
 }
 export function getClientIp(headers: Headers): string { const xff = headers.get('x-forwarded-for'); return xff ? xff.split(',')[0]!.trim() : headers.get('x-real-ip') || headers.get('cf-connecting-ip') || headers.get('fastly-client-ip') || 'unknown'; }
 export function getUserAgent(headers: Headers): string { return headers.get('user-agent') || 'unknown'; }

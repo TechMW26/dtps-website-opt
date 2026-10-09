@@ -1,8 +1,8 @@
-import { FieldValue } from 'firebase-admin/firestore';
+import { FieldValue } from '@/lib/mongo-website-types.mjs';
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -27,7 +27,7 @@ function normalizeBlogPayload(body: Record<string, any>) {
 }
 
 function serializeBlog(id: string, data: Record<string, unknown>) {
-  return serializeFirestoreDocument(id, data);
+  return serializeDatabaseDocument(id, data);
 }
 
 export async function GET(request: NextRequest) {
@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category');
     const slug = searchParams.get('slug');
     const limit = Number(searchParams.get('limit') || 0);
-    const db = getWebsiteFirestore();
+    const db = getWebsiteDatabase();
     if (slug) {
       const snapshot = await db.collection(collection).where('slug', '==', slug).limit(1).get();
       if (snapshot.empty) return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
   try {
     if (!(await getServerSession(authOptions))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     const payload = normalizeBlogPayload(await request.json());
-    const ref = getWebsiteFirestore().collection(collection).doc();
+    const ref = getWebsiteDatabase().collection(collection).doc();
     const now = FieldValue.serverTimestamp();
     await ref.set({ ...payload, createdAt: now, updatedAt: now });
     return NextResponse.json({ success: true, blog: serializeBlog(ref.id, payload) }, { status: 201 });
@@ -78,7 +78,7 @@ export async function PUT(request: NextRequest) {
     if (!(await getServerSession(authOptions))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     const { id, ...body } = await request.json();
     if (!id) return NextResponse.json({ error: 'Blog id is required' }, { status: 400 });
-    const ref = getWebsiteFirestore().collection(collection).doc(id);
+    const ref = getWebsiteDatabase().collection(collection).doc(id);
     const existing = await ref.get();
     if (!existing.exists) return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
     const updateData = normalizeBlogPayload({ ...existing.data(), ...body });
@@ -95,7 +95,7 @@ export async function DELETE(request: NextRequest) {
     if (!(await getServerSession(authOptions))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     const id = new URL(request.url).searchParams.get('id');
     if (!id) return NextResponse.json({ error: 'Blog id is required' }, { status: 400 });
-    const ref = getWebsiteFirestore().collection(collection).doc(id);
+    const ref = getWebsiteDatabase().collection(collection).doc(id);
     if (!(await ref.get()).exists) return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
     await ref.delete();
     return NextResponse.json({ success: true, message: 'Blog deleted successfully' });

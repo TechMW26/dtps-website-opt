@@ -1,8 +1,8 @@
 import {createHash} from 'node:crypto';
-import type {Firestore,DocumentData,Query} from 'firebase-admin/firestore';
+import type {WebsiteDatabase,WebsiteDocumentData as DocumentData,WebsiteQuery as Query} from './website-database-types';
 export function telemetryMillis(value:any):number {return typeof value?.toMillis==='function'?value.toMillis():new Date(value||0).getTime();}
 export async function telemetryRows(query:Query):Promise<DocumentData[]> {const result:DocumentData[]=[];let cursor;for(;;){const page=await (cursor?query.startAfter(cursor):query).limit(500).get();result.push(...page.docs.map(row=>({...row.data(),_id:row.id})));if(page.size<500)return result;cursor=page.docs.at(-1);}}
-export async function recordWebsiteVisit(db:Firestore,input:DocumentData,seed:DocumentData,now=new Date()) {
+export async function recordWebsiteVisit(db:WebsiteDatabase,input:DocumentData,seed:DocumentData,now=new Date()) {
  const collection=db.collection('websiteVisitors'),canonical=collection.doc(createHash('sha256').update(input.sessionId).digest('hex'));
  await db.runTransaction(async tx=>{
   // Query retains imported IDs; the canonical read prevents two first requests from creating duplicate sessions.

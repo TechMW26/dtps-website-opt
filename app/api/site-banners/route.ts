@@ -2,7 +2,7 @@ import { saveSiteBanner, getContent, deleteContent } from '@/lib/website-content
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -14,8 +14,8 @@ export async function GET(req: NextRequest) {
     const active = searchParams.get('active');
     const page = searchParams.get('page');
 
-    const banners = (await getWebsiteFirestore().collection('websiteSiteBanners').get()).docs
-      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>))
+    const banners = (await getWebsiteDatabase().collection('websiteSiteBanners').get()).docs
+      .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>))
       .filter((item: any) => (!type || item.type === type) && (active !== 'true' || item.isActive === true) && (!page || item.page === page))
       .sort((a: any, b: any) => Number(a.order || 0) - Number(b.order || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
     

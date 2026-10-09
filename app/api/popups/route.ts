@@ -5,7 +5,7 @@ import { authOptions } from '@/lib/auth';
 import { DEFAULT_POPUP_SETTINGS, POPUP_PAGE_OPTIONS, withPopupDefaults, type PopupSettings } from '@/lib/popup-settings';
 import { getCountry, validatePhone } from '@/lib/validation';
 import { parseUserAgent } from '@/lib/geoip';
-import { getWebsiteFirestore, serializeFirestoreDocument } from '@/lib/firebase-admin';
+import { getWebsiteDatabase, serializeDatabaseDocument } from '@/lib/website-database';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -110,8 +110,8 @@ export async function GET(request: NextRequest) {
 
     if (searchParams.get('action') === 'getPopup' && page) {
       const now = new Date();
-      const popup = (await getWebsiteFirestore().collection('websitePopups').get()).docs
-        .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>) as any)
+      const popup = (await getWebsiteDatabase().collection('websitePopups').get()).docs
+        .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>) as any)
         .filter((item: any) => Array.isArray(item.pages) && item.pages.some((target: string) => target === page || target === '*') && item.isActive === true && (!item.startAt || new Date(item.startAt) <= now) && (!item.endAt || new Date(item.endAt) >= now))
         .sort((a: any, b: any) => Number(b.priority || 0) - Number(a.priority || 0) || String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')))[0] || null;
 
@@ -122,8 +122,8 @@ export async function GET(request: NextRequest) {
     }
 
     if (!(await requireAdmin())) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    const popups = (await getWebsiteFirestore().collection('websitePopups').get()).docs
-      .map((doc) => serializeFirestoreDocument(doc.id, doc.data() as Record<string, unknown>) as any)
+    const popups = (await getWebsiteDatabase().collection('websitePopups').get()).docs
+      .map((doc) => serializeDatabaseDocument(doc.id, doc.data() as Record<string, unknown>) as any)
       .sort((a: any, b: any) => Number(b.priority || 0) - Number(a.priority || 0) || String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
     return NextResponse.json({ popups: popups.map((popup) => withPopupDefaults(popup as unknown as Partial<PopupSettings>)), success: true });
   } catch (error) {

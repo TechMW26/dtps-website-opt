@@ -1,10 +1,10 @@
 import 'server-only';
-import { getWebsiteFirestore } from './firebase-admin';
+import { getWebsiteDatabase } from './website-database';
 
 /** Prices and sellability always come from the restored server catalogue. */
 export async function resolveCheckoutProducts(input: unknown) {
   if (!Array.isArray(input) || input.length === 0 || input.length > 20) throw new Error('Select between 1 and 20 plans.');
-  const snapshot = await getWebsiteFirestore().collection('websitePricing').where('isActive', '==', true).get();
+  const snapshot = await getWebsiteDatabase().collection('websitePricing').where('isActive', '==', true).get();
   const plans = snapshot.docs.map(doc => ({ ...doc.data(), _id: doc.id })) as Array<Record<string, any>>;
   return input.map(item => {
     if (!item || typeof item.id !== 'string') throw new Error('Invalid plan. Please select your plan again.');

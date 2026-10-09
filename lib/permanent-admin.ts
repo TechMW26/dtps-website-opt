@@ -1,14 +1,14 @@
 import {createHash} from 'node:crypto';
 import bcrypt from 'bcryptjs';
-import { FieldValue } from 'firebase-admin/firestore';
-import { getWebsiteFirestore } from '@/lib/firebase-admin';
+import { FieldValue } from '@/lib/mongo-website-types.mjs';
+import { getWebsiteDatabase } from '@/lib/website-database';
 
 type PermanentAdminConfig = { email: string; password: string; name: string };
 function pickFirst(...values: Array<string | undefined>) { for (const value of values) if (value?.trim()) return value.trim(); return ''; }
 export function getPermanentAdminConfig(): PermanentAdminConfig | null { const email = pickFirst(process.env.PERMANENT_ADMIN_EMAIL, process.env.ADMIN_EMAIL).toLowerCase(); const password = pickFirst(process.env.PERMANENT_ADMIN_PASSWORD, process.env.ADMIN_PASSWORD); const name = pickFirst(process.env.PERMANENT_ADMIN_NAME, process.env.ADMIN_NAME, 'Permanent Admin'); return email && password ? { email, password, name } : null; }
 export async function ensurePermanentAdminExists() {
   const config = getPermanentAdminConfig(); if (!config) return null;
-  const db = getWebsiteFirestore(),guard=db.collection('_websiteAdminState').doc('bootstrap');
+  const db = getWebsiteDatabase(),guard=db.collection('_websiteAdminState').doc('bootstrap');
   const deterministic=db.collection('websiteAdmins').doc('permanent-'+createHash('sha256').update(config.email).digest('hex'));
   return db.runTransaction(async tx=>{
     await tx.get(guard);
