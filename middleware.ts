@@ -2,10 +2,11 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 
 /**
- * Middleware – scoped intentionally narrow:
+ * Middleware – excludes public pages and static assets:
  *
- *   1. Rate-limit a small set of write/auth endpoints.
- *   2. Gate `/admin/*` and `/api/admin/*` behind a NextAuth JWT.
+ *   1. Temporarily pause submissions during a verified database cutover.
+ *   2. Rate-limit a small set of write/auth endpoints.
+ *   3. Gate `/admin/*` and `/api/admin/*` behind a NextAuth JWT.
  *
  * Security HEADERS (CSP, HSTS, X-Frame-Options, etc.) are configured
  * in `next.config.js` so they apply to every response without the
@@ -68,9 +69,15 @@ function sweep() {
 // ---------- Middleware entry ----------------------------------------------
 
 export async function middleware(req: NextRequest) {
-  sweep();
-
   const { pathname } = req.nextUrl;
+  if (process.env.WEBSITE_MIGRATION_READ_ONLY === 'true' && pathname.startsWith('/api/') &&
+      (!['GET', 'HEAD', 'OPTIONS'].includes(req.method) || pathname.startsWith('/api/auth/') || pathname.startsWith('/api/admin-setup'))) {
+    return NextResponse.json({ error: 'Submissions are temporarily paused for a database upgrade. Please try again shortly.' }, {
+      status: 503,
+      headers: { 'Retry-After': '60', 'Cache-Control': 'no-store', 'x-website-migration': 'read-only' },
+    });
+  }
+  sweep();
   const ip =
     req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     req.headers.get('x-real-ip') ||
@@ -124,15 +131,10 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Only run on admin surface and the rate-limited API prefixes — keeps
-  // middleware off the public hot path so dynamic content always loads.
+  // Public page/static traffic stays outside middleware. API reads stay available
+  // during migration; only the existing endpoint rules are rate-limited.
   matcher: [
     '/admin/:path*',
-    '/api/admin/:path*',
-    '/api/auth/:path*',
-    '/api/admin-setup/:path*',
-    '/api/orders/:path*',
-    '/api/payments/:path*',
-    '/api/upload/:path*',
+    '/api/:path*',
   ],
 };
