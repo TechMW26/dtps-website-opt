@@ -1,13 +1,13 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),ts=require('typescript'),vm=require('node:vm');
 function harness(){
- const docs=new Map(),transactions=[],calls={providerOrders:[],notices:0,capi:0,reads:0};let session=null,proof={id:'pay_1',order_id:'rzp_1',amount:249900,currency:'INR',status:'captured',method:'card',created_at:1700000000},beforeTransaction=null;
+ const docs=new Map(),transactions=[],calls={providerOrders:[],notices:0,capi:0,reads:0,queries:[],serialized:[]};let session=null,proof={id:'pay_1',order_id:'rzp_1',amount:249900,currency:'INR',status:'captured',method:'card',created_at:1700000000},beforeTransaction=null;
  const clone=d=>d===undefined?undefined:structuredClone(d);
  const snapshot=(path)=>({id:path.split('/').at(-1),ref:ref(path),exists:docs.has(path),data:()=>clone(docs.get(path)),get:key=>clone(docs.get(path)?.[key])});
- function query(collection,filters=[]){return {where:(field,op,value)=>query(collection,[...filters,[field,op,value]]),limit:()=>query(collection,filters),get:async()=>{calls.reads++;const found=[...docs].filter(([path,d])=>path.startsWith(collection+'/')&&filters.every(([field,op,value])=>op==='=='?d[field]===value:false)).map(([path])=>snapshot(path));return {docs:found,empty:!found.length,size:found.length};}};}
+ function query(collection,filters=[]){return {where:(field,op,value)=>query(collection,[...filters,[field,op,value]]),limit:()=>query(collection,filters),get:async()=>{calls.reads++;calls.queries.push({collection,filters});const found=[...docs].filter(([path,d])=>path.startsWith(collection+'/')&&filters.every(([field,op,value])=>op==='=='?d[field]===value:false)).map(([path])=>snapshot(path));return {docs:found,empty:!found.length,size:found.length};}};}
  function apply(path,data,merge=false){const next=merge?clone(docs.get(path)||{}):{};for(const [k,v] of Object.entries(data))next[k]=v?.__increment!==undefined?(next[k]||0)+v.__increment:clone(v);docs.set(path,next);}
  function ref(path){return {id:path.split('/').at(-1),path,get:async()=>{calls.reads++;return snapshot(path);},set:async(data,options)=>apply(path,data,options?.merge),delete:async()=>docs.delete(path)};}
  const db={collection:name=>({...query(name),doc:id=>ref(name+'/'+id)}),runTransaction:async fn=>{if(beforeTransaction){const f=beforeTransaction;beforeTransaction=null;f();}const writes=[];const value=await fn({get:async target=>{assert.equal(writes.length,0,'Firestore reads must precede writes');return target.path?snapshot(target.path):target.get();},set:(r,d,o)=>writes.push({r,d,merge:o?.merge}),update:(r,d)=>writes.push({r,d,merge:true})});for(const w of writes)apply(w.r.path,w.d,w.merge);transactions.push(writes.map(w=>w.r.path));return value;}};
- const firebase={getWebsiteDatabase:()=>db,serializeDatabaseDocument:(id,data)=>({_id:id,...data})};
+ const firebase={getWebsiteDatabase:()=>db,serializeDatabaseDocument:(id,data)=>{calls.serialized.push(id);return {_id:id,...data};}};
  const mocks={'server-only':{},'next-auth':{getServerSession:async()=>session},'@/lib/auth':{authOptions:{}},'@/lib/mongo-website-types.mjs':{FieldValue:{serverTimestamp:()=>new Date('2026-01-01'),increment:n=>({__increment:n})}},'next/server':{NextResponse:{json:(body,init)=>new Response(JSON.stringify(body),{status:init?.status||200,headers:{'content-type':'application/json'}})}},uuid:{v4:()=> 'order_created'},razorpay:class{orders={create:async p=>(calls.providerOrders.push(p),{id:'rzp_created',amount:p.amount})};payments={fetch:async()=>clone(proof)};},'@/lib/website-database':firebase,'./website-database':firebase,'@/lib/admin-date-range':{buildIndiaCreatedAtRange:()=>null},'@/lib/coupons':{calculateSubtotal:products=>products.reduce((sum,p)=>sum+p.price*p.quantity,0),validateCouponForProducts:async()=>{throw Error('Unexpected coupon provider');}},'@/lib/notifications':{sendPostPaymentNotifications:async()=>{calls.notices++;}},'@/lib/meta-capi':{sendCapiEvent:async()=>{calls.capi++;},deriveFbcFromUrl:()=>null,getClientIp:()=>null}};
  function load(path){const module={exports:{}};const compiled=ts.transpileModule(fs.readFileSync(path,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020,esModuleInterop:true}}).outputText;vm.runInThisContext('(function(require,module,exports){'+compiled+'\n})')(name=>{if(name in mocks)return mocks[name];if(name==='@/lib/website-admin-repository')return load('lib/website-admin-repository.ts');if(name==='./permanent-admin')return {getPermanentAdminConfig:()=>null};if(name==='./security')return {sanitizeText:s=>s};if(name==='bcryptjs')return require(name);if(name==='@/lib/checkout-catalog')return load('lib/checkout-catalog.ts');if(name==='@/lib/payment-verification')return load('lib/payment-verification.ts');throw Error('Unmocked dependency '+name);},module,module.exports);return module.exports;}
  const api=load('app/api/orders/route.ts'),request=(data={},method='POST',suffix='')=>{const req=new Request('http://localhost/api/orders'+suffix,{method,...(method==='GET'?{}:{body:JSON.stringify(data)})});req.cookies={get:()=>undefined};return req;};
@@ -25,6 +25,27 @@ test('transaction revalidates changed order price before any settlement writes',
 test('existing payment identity cannot be rebound to a different order',async()=>{const h=harness();h.order();h.docs.set('websitePayments/pay_1',{orderId:'other',razorpayOrderId:'other_provider',status:'completed'});const res=await h.api.POST(h.request({action:'verify',orderId:'order_1',razorpayOrderId:'rzp_1',razorpayPaymentId:'pay_1'}));assert.equal(res.status,500);assert.equal(h.docs.get('websitePayments/pay_1').orderId,'other');assert.equal(h.docs.get('websiteCoupons/coupon_1').usedCount,0);});
 
 test('payment listing rejects missing and deleted admin sessions but permits an established viewer',async()=>{const h=harness();assert.equal((await h.paymentApi.GET(h.request({},'GET'))).status,401);h.setSession({user:{email:'viewer@example.test',role:'admin'}});h.docs.set('websiteAdmins/viewer',{email:'viewer@example.test',role:'viewer',isDeleted:true});assert.equal((await h.paymentApi.GET(h.request({},'GET'))).status,401);h.docs.get('websiteAdmins/viewer').isDeleted=false;assert.equal((await h.paymentApi.GET(h.request({},'GET'))).status,200);});
+
+test('payment ID lookup selects newest historical provider duplicate without duplicate candidates or full scan',async()=>{
+ const h=harness();h.setSession({user:{email:'viewer@example.test'}});h.docs.set('websiteAdmins/viewer',{email:'viewer@example.test',role:'viewer'});
+ h.docs.set('websitePayments/pay_match',{razorpayPaymentId:'pay_match',orderId:'order_old',amount:100,createdAt:'2025-01-01T00:00:00.000Z'});
+ h.docs.set('websitePayments/legacy_new',{razorpayPaymentId:'pay_match',orderId:'order_new',amount:200,createdAt:'2026-01-01T00:00:00.000Z'});
+ h.docs.set('websitePayments/unrelated',{razorpayPaymentId:'pay_other',amount:300,createdAt:'2027-01-01T00:00:00.000Z'});
+ const response=await h.paymentApi.GET(h.request({},'GET','?id=pay_match'));assert.equal(response.status,200);const body=await response.json();
+ assert.equal(body.payment._id,'legacy_new');assert.equal(body.payment.amount,200);assert.equal('payments' in body,false);
+ assert.deepEqual(h.calls.serialized.sort(),['legacy_new','pay_match']);
+ assert.deepEqual(h.calls.queries.filter(q=>q.collection==='websitePayments'),[{collection:'websitePayments',filters:[['razorpayPaymentId','==','pay_match']]}]);
+});
+
+test('payment ID union retains order filtering and original ID tie-break without serializing one record twice',async()=>{
+ const h=harness();h.setSession({user:{email:'viewer@example.test'}});h.docs.set('websiteAdmins/viewer',{email:'viewer@example.test',role:'viewer'});
+ const common={razorpayPaymentId:'pay_match',createdAt:'2026-01-01T00:00:00.000Z'};
+ h.docs.set('websitePayments/pay_match',{...common,orderId:'order_direct'});
+ h.docs.set('websitePayments/aaa_legacy',{...common,orderId:'order_legacy'});
+ let body=await (await h.paymentApi.GET(h.request({},'GET','?id=pay_match'))).json();assert.equal(body.payment._id,'aaa_legacy');
+ assert.equal(h.calls.serialized.filter(id=>id==='pay_match').length,1);
+ body=await (await h.paymentApi.GET(h.request({},'GET','?id=pay_match&orderId=order_direct'))).json();assert.equal(body.payment._id,'pay_match');
+});
 
 test('trial checkout resolves the public slug to the confirmed 299 INR ten-day plan',async()=>{
  const h=harness();

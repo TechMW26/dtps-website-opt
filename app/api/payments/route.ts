@@ -17,8 +17,17 @@ export async function GET(req: NextRequest) {
     const collection = getWebsiteDatabase().collection('websitePayments');
     let documents;
     if (id) {
-      const direct = await collection.doc(id).get();
-      documents = direct.exists ? [direct] : (await collection.where('razorpayPaymentId', '==', id).get()).docs;
+      const [direct, matching] = await Promise.all([
+        collection.doc(id).get(),
+        collection.where('razorpayPaymentId', '==', id).get(),
+      ]);
+      // Imported historical documents can share a provider payment ID. Keep
+      // all candidates for the existing newest-payment selection, without
+      // reading the entire history or counting the direct record twice.
+      documents = [...new Map([
+        ...(direct.exists ? [direct] : []), ...matching.docs,
+      ].map(doc => [doc.id, doc] as const)).values()]
+        .sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
     } else {
       documents = (await (orderId ? collection.where('orderId', '==', orderId) : collection).get()).docs;
     }
