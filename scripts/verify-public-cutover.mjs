@@ -10,19 +10,46 @@ export const publicCutoverPaths = [
   '/api/page-heroes?page=home', '/api/marquee', '/api/testimonials',
   '/api/recognitions', '/api/blogs',
 ];
-export function publicHash(value) {
+export function normalizePublicPayload(path, value) {
+  if (path !== '/api/pricing' || !Array.isArray(value?.pricing)) return value;
+  const pricing = [...value.pricing];
+  const key = plan => [Number(plan?.order ?? 0), Number(plan?.price ?? 0)];
+  // The API intentionally sorts only by order and price. The source stores
+  // need not return equal-key records in the same implicit order. Normalize
+  // just each contiguous tie group; cross-group ordering and every value,
+  // including nested feature arrays, remain significant.
+  for (let start = 0; start < pricing.length;) {
+    const [order, price] = key(pricing[start]);
+    let end = start + 1;
+    if (Number.isFinite(order) && Number.isFinite(price)) {
+      while (end < pricing.length) {
+        const [nextOrder, nextPrice] = key(pricing[end]);
+        if (nextOrder !== order || nextPrice !== price) break;
+        end++;
+      }
+    }
+    const group = pricing.slice(start, end);
+    if (group.length > 1 && group.every(plan => typeof plan?._id === 'string' && plan._id.length > 0)) {
+      group.sort((a, b) => a._id < b._id ? -1 : a._id > b._id ? 1 : 0);
+      pricing.splice(start, group.length, ...group);
+    }
+    start = end;
+  }
+  return { ...value, pricing };
+}
+export function publicHash(value, path) {
   function ordered(v) {
     if (Array.isArray(v)) return v.map(ordered);
     if (v && typeof v === 'object') return Object.fromEntries(Object.keys(v).sort().map(k => [k, ordered(v[k])]));
     return v;
   }
-  return createHash('sha256').update(JSON.stringify(ordered(value))).digest('hex');
+  return createHash('sha256').update(JSON.stringify(ordered(normalizePublicPayload(path, value)))).digest('hex');
 }
 export async function publicSnapshot(base, fetcher = fetch) {
   const results = await Promise.all(publicCutoverPaths.map(async path => {
     const response = await fetcher(new URL(path, base), { cache: 'no-store', signal: AbortSignal.timeout(30000) });
     if (response.status !== 200) throw new Error('Public API check failed');
-    return [path, { status: response.status, hash: publicHash(await response.json()) }];
+    return [path, { status: response.status, hash: publicHash(await response.json(), path) }];
   }));
   return Object.fromEntries(results);
 }

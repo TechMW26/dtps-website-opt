@@ -12,10 +12,9 @@ MONGODB_URI=<Atlas connection URI with database credentials>
 MONGODB_DATABASE=dtps_website
 ```
 
-The staged website runtime is MongoDB-only: no Firestore initialization, SDK
+The website runtime is MongoDB-only: no Firestore initialization, SDK
 imports, provider selection, or silent fallback. Do not deploy this version before
-the transfer and connectivity checks succeed. The currently deployed previous
-version uses Firestore with a temporary read-only cutover gate. Firebase Admin is a development-only
+the transfer and connectivity checks succeed. Firebase Admin is a development-only
 dependency for the source-export tools, not a website runtime dependency.
 
 ## Structure and cost
@@ -30,6 +29,10 @@ The server reuses one connection pool (maximum five connections per process,
 zero minimum, idle expiry). Queries execute on MongoDB and retain existing API
 response shapes. Payment lookup uses order/provider indexes instead of loading
 the entire payment history. Blob media stays referenced by its existing URL.
+`vercel.json` places server functions in Mumbai (`bom1`), alongside Atlas;
+static assets remain globally distributed. This follows
+[Vercel's database colocation guidance](https://vercel.com/docs/regions), without
+claiming a measured billing reduction.
 
 No records are discarded to save storage. Payment attempts, historical customer
 snapshots, questionnaire answers and independently edited content remain intact.
@@ -62,6 +65,9 @@ target data stops the operation. `--refresh-source` permits updating a previousl
 imported record only if it has not changed independently in MongoDB. The importer
 does not delete source or destination records. It verifies each record's canonical
 hash, namespace counts, and a second source scan before reporting success.
+Mongo imports use sequential 100-record batches and default to at most 90 writes
+per second. `--mongo-write-rate 400` was used for the dedicated M10 transfer;
+the option is bounded to 1–500 and never changes source read permissions.
 
 Pause production website writes for final reconciliation and cutover. A copying
 pass cannot establish that writes arriving afterward have been included. Confirm
@@ -92,6 +98,24 @@ source scan instead of treating an old snapshot as final.
 records hashes for 11 public APIs. After deployment, use `--verify` with the
 same file to verify unchanged catalog, media references and page settings.
 This public check does not replace the full private-record verification.
+Only the pricing API's contiguous groups tied on numeric order and price are
+canonicalized by original ID: implicit source/destination tie ordering differs.
+All field values, feature-list ordering, cross-group ordering and other API
+array ordering remain significant. The four page-specific catalogs were also
+compared directly and matched unchanged.
+
+For independent, read-only verification of every imported record, run:
+
+```sh
+node --env-file=.env.local scripts/verify-website-mongodb.mjs \
+  --manifest .recovery/<completed-quiesced-snapshot>/manifest.json \
+  --target-database dtps_website
+```
+
+The verifier independently checks protected backup hashes, target IDs and
+namespaces, every reconstructed target hash, and exact per-namespace counts.
+Run it before resuming destination writes: later legitimate writes make the
+snapshot counts historical rather than a live completeness assertion.
 
 After import, create the website query indexes and run compatibility tests against
 MongoDB, then configure hosting MongoDB variables and verify checkout, payment
@@ -108,27 +132,31 @@ indexes are retained on M10; no additional cluster or duplicated media is needed
 
 ## Current status
 
-Implementation is ready locally; production has not switched to MongoDB. Both
-complete exports contain 12,869 records across 13 website namespaces. The second
-export completed all parent/descendant checks under the production write pause;
-all 12,869 canonical hashes match the initial backup. No source data was deleted.
+The final paused recursive snapshot completed on 10 October 2026 and all
+12,910 website records were imported into `dtps_website`. Both the importer and
+the independent read-only verifier checked every canonical hash, document
+identity and all 13 namespace counts. No records were removed. The source scan
+excluded 85 application collections without copying their contents.
 
-The final export is `.recovery/mongo-2026-10-09T20-12-58-536Z/manifest.json`.
-The initial export excluded 85 application collections; the later source root
-inventory contained 84. Unrelated application records were never copied.
+The final protected export is
+`.recovery/mongo-2026-10-10T06-37-14-975Z/manifest.json`.
+It includes 6,372 orders, 5,234 payments and 1,212 visitors. Compared with the
+previous snapshot, 41 visitors were added and four existing visitors changed;
+all other namespaces were unchanged. Original source records and earlier
+protected backups are retained for recovery, not used by the Mongo runtime.
 
-Atlas reports the M10 upgrade complete, but every officially published node under
-`fav0awp.mongodb.net` presents a certificate for `*.suatj13.mongodb.net`.
-Connections fail with `ERR_TLS_CERT_ALTNAME_INVALID`. Certificate verification
-must not be disabled to work around this. No website records have been imported.
-The temporary website write pause was removed using a redeployment of the
-existing Firestore-backed release. Deployment `dpl_2u6qu9FZ4N7LzXamF6Tk9fiBAfqu`
-was verified READY on `dtpoonamsagar.com`; authentication reads return 200 and
-an invalid order action returns 400, with no migration header. All 11 public
-API hashes still match. The export is marked `sourceWritesResumedAt`; a new
-paused reconciliation is required before cutover after Atlas repairs connectivity.
+Atlas connectivity now passes full TLS verification. The expanded live M10
+adapter tests passed concurrent increments, concurrent first-document writes,
+rollback, projections, cursors, timestamps and field transforms. Exact
+synthetic-record cleanup was verified. The 24 query-driven indexes were applied
+and verified twice without TTL, uniqueness enforcement or document changes.
 
-Validation: 73 local tests passed, one explicitly opt-in live test skipped, and
-the production Webpack build/typecheck passed. A live Mongo adapter check passed
-before the M10 upgrade; the expanded post-upgrade first-write test and final
-deployment remain blocked. No paid checkout was performed during testing.
+Validation: 80 local tests passed, one opt-in live test was skipped in the normal
+suite and passed separately, and the production Webpack build/typecheck passed.
+Local Mongo-backed checks confirm unauthenticated protection, invalid-order
+validation, migrated admin login and authorized payment listing (5,234 rows).
+The admin smoke test adds its legitimate security audit event after the snapshot
+verification. No paid checkout or live
+customer notification was performed during testing. Release verification uses
+the exact Git SHA, Vercel READY/alias checks and public API comparisons before
+removing the migration pause and website Firestore hosting variables.
