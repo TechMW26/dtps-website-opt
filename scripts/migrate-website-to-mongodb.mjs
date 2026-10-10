@@ -20,6 +20,8 @@ process.on('unhandledRejection', fatal);
 const args = process.argv.slice(2);
 function option(flag) { const i = args.indexOf(flag); return i < 0 ? undefined : args[i + 1]; }
 const execute = args.includes('--execute');
+const mongoWriteRate = Number(option('--mongo-write-rate') || 90);
+if (!Number.isSafeInteger(mongoWriteRate) || mongoWriteRate < 1 || mongoWriteRate > 500) throw new Error('Mongo write rate must be between 1 and 500 documents per second');
 const reconcileBackup = option('--reconcile-backup');
 const importBackup = option('--import-backup');
 const sourceQuiesced = args.includes('--source-quiesced');
@@ -142,6 +144,7 @@ report.sourceQuiescedAssertion = sourceQuiesced;
 report.reconciliation = Boolean(reconcileBackup);
 report.acceleratedSource = acceleratedSource;
 report.importedFromBackup = Boolean(importBackup);
+report.mongoWriteRate = mongoWriteRate;
 if (importBackup) report.ignoredApplicationCollections = prior.ignoredApplicationCollections;
 let client;
 try {
@@ -189,8 +192,8 @@ try {
           replacement: { ...record.row, migrationSourceHash: record.hash }, upsert: true,
         } })), { ordered: true });
         report.writtenRecords += changed.length;
-        // Free tier friendly: fewer than 100 document mutations per second.
-        await new Promise(done => setTimeout(done, Math.max(0, 1100 - (Date.now() - started))));
+        // Conservative default; a dedicated cluster may explicitly opt into a higher bounded rate.
+        await new Promise(done => setTimeout(done, Math.max(0, Math.ceil(changed.length * 1000 / mongoWriteRate) - (Date.now() - started))));
       }
       let verified = 0;
       failureStage = 'target-verification';

@@ -143,3 +143,12 @@ test('backup import dry-run requires no Firebase connection and rejects non-quie
     if (generatedBackup?.startsWith(`${resolve('.recovery')}/mongo-`)) await rm(generatedBackup, { recursive: true });
   }
 });
+test('import rate remains bounded and independent verifier fails closed without configuration', () => {
+  for (const rate of ['0', '501', 'Infinity']) {
+    const result = spawnSync(process.execPath, ['scripts/migrate-website-to-mongodb.mjs', '--mongo-write-rate', rate], { encoding: 'utf8' });
+    assert.notEqual(result.status, 0); assert.equal(JSON.parse(result.stderr).failureStage, 'configuration');
+  }
+  const result = spawnSync(process.execPath, ['scripts/verify-website-mongodb.mjs'], { encoding: 'utf8' });
+  assert.notEqual(result.status, 0);
+  assert.deepEqual(JSON.parse(result.stderr), { success: false, stage: 'configuration', code: 'VERIFICATION_ERROR' });
+});
