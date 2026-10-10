@@ -2,22 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Epilogue, Inter, Poppins } from "next/font/google";
-
-const epilogue = Epilogue({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
+import { expertEpilogue as epilogue, inter, sectionPoppins as poppins } from "@/lib/fonts";
 
 type CounterState = {
   rating: number;

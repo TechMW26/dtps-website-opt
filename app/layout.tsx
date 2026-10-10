@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins, Epilogue } from 'next/font/google';
+import { poppins, epilogue, latinFontPreloads } from '@/lib/fonts';
 import Script from 'next/script';
 import './globals.css';
+import './fonts.css';
 import { AuthProvider } from './providers';
 import { ThemeProvider } from './providers/ThemeProvider';
 import LayoutWrapper from '@/components/LayoutWrapper';
@@ -9,24 +10,6 @@ import PixelTracker from '@/components/PixelTracker';
 import ClarityTracker from '@/components/ClarityTracker';
 import { Suspense } from 'react';
 import { META_PIXEL_ID, META_PIXEL_BOOTSTRAP } from '@/lib/meta-config';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
-  display: 'swap',
-  preload: true,
-  adjustFontFallback: true,
-});
-
-const epilogue = Epilogue({
-  subsets: ['latin'],
-  weight: ['600', '700'],
-  variable: '--font-epilogue',
-  display: 'swap',
-  preload: true,
-  adjustFontFallback: true,
-});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -126,8 +109,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {latinFontPreloads.map(href => (
+          <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
+        ))}
         {/* DNS prefetch for secondary domains */}
         <link rel="dns-prefetch" href="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com" />
         <link rel="dns-prefetch" href="https://checkout.razorpay.com" />

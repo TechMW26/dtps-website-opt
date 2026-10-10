@@ -2,12 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-});
+import { sectionPoppins as poppins } from '@/lib/fonts';
 
 export default function OurExpertiseSection() {
   const sectionRef = useRef<HTMLDivElement>(null);

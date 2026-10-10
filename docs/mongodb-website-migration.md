@@ -151,7 +151,7 @@ rollback, projections, cursors, timestamps and field transforms. Exact
 synthetic-record cleanup was verified. The 24 query-driven indexes were applied
 and verified twice without TTL, uniqueness enforcement or document changes.
 
-Validation: 80 local tests passed, one opt-in live test was skipped in the normal
+Validation: 84 local tests passed, one opt-in live test was skipped in the normal
 suite and passed separately, and the production Webpack build/typecheck passed.
 Local Mongo-backed checks confirm unauthenticated protection, invalid-order
 validation, migrated admin login and authorized payment listing (5,234 rows).
@@ -160,3 +160,10 @@ verification. No paid checkout or live
 customer notification was performed during testing. Release verification uses
 the exact Git SHA, Vercel READY/alias checks and public API comparisons before
 removing the migration pause and website Firestore hosting variables.
+
+The environment-clean rebuild exposed an unrelated Next.js Google font loader
+failure. To make releases independent of that external response, the exact 22
+font binaries from the successful build are vendored with their official OFL
+licenses. All 51 font-face rules, subsets, weights, fallback metrics and original
+CSS classes/variables were independently compared unchanged. No media store or
+customer-visible typeface was replaced.

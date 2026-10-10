@@ -1,0 +1,6 @@
+Font binaries copied byte-for-byte from the last successful local Next.js build.
+Poppins, Epilogue and Inter are redistributed with their SIL Open Font License.
+License text source: Google Fonts primary repository, commit bd8f81ddb5c74d5c8897b36ad88b440266245103
+https://raw.githubusercontent.com/google/fonts/bd8f81ddb5c74d5c8897b36ad88b440266245103/ofl/poppins/OFL.txt
+https://raw.githubusercontent.com/google/fonts/bd8f81ddb5c74d5c8897b36ad88b440266245103/ofl/epilogue/OFL.txt
+https://raw.githubusercontent.com/google/fonts/bd8f81ddb5c74d5c8897b36ad88b440266245103/ofl/inter/OFL.txt
