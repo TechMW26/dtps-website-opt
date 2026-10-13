@@ -1,5 +1,7 @@
 'use client';
 import { trackEvent } from '@/lib/pixel';
+import { trackSchedule } from '@/lib/tracking';
+import { toE164 } from '@/lib/zappush';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -93,6 +95,17 @@ export default function AppointmentForm() {
       } catch {}
 
       trackEvent('Schedule');
+      // Zappush appointment. Contact fields only: the service the visitor chose
+      // is a health signal and is deliberately not sent.
+      trackSchedule({
+        appointmentId: String(json.appointmentId ?? `appointment:${Date.now()}`),
+        contact: {
+          email: data.email,
+          phone: toE164(data.phoneNumber, data.countryIso),
+          firstName: data.firstName,
+          lastName: data.lastName,
+        },
+      });
       router.push(`/appointment/success?id=${json.appointmentId}`);
     } catch (err) {
       console.error(err);

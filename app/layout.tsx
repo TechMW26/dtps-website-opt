@@ -8,6 +8,7 @@ import { ThemeProvider } from './providers/ThemeProvider';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import PixelTracker from '@/components/PixelTracker';
 import ClarityTracker from '@/components/ClarityTracker';
+import ZappushTracker from '@/components/ZappushTracker';
 import { Suspense } from 'react';
 import { META_PIXEL_ID, META_PIXEL_BOOTSTRAP } from '@/lib/meta-config';
 
@@ -109,6 +110,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.zappush.com" crossOrigin="anonymous" />
         {latinFontPreloads.map(href => (
           <link key={href} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
         ))}
@@ -118,6 +120,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.razorpay.com" />
         <link rel="dns-prefetch" href="https://www.youtube.com" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+        {/*
+          The Zappush tracker is NOT loaded from the document head. It is injected
+          by <ZappushTracker /> only after the visitor grants analytics and
+          advertising consent, so a visitor who has not chosen makes no request to
+          the tracker at all. See docs/zappush-integration.md.
+        */}
 
         {/* Preload critical hero image */}
         <link
@@ -171,6 +179,10 @@ export default function RootLayout({
             {/* PageView on client navigation; Meta conversion events remain disabled. */}
             <Suspense fallback={null}>
               <PixelTracker />
+            </Suspense>
+            {/* Zappush tracker (consent-gated) + the consent prompt itself. */}
+            <Suspense fallback={null}>
+              <ZappushTracker />
             </Suspense>
           </ThemeProvider>
         </AuthProvider>

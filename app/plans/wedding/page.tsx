@@ -980,6 +980,7 @@ export default function WeddingPlanPage() {
                     name: `Wedding Prep Plan - ${plan.planName}`,
                     price: plan.price,
                     quantity: 1,
+                    page: 'wedding',
                   };
                   storeCheckoutProducts([product]);
                   window.location.href = "/checkout";

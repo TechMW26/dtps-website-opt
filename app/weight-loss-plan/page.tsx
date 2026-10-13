@@ -579,6 +579,7 @@ export default function WeightLossPage() {
                                 duration: plan.duration,
                                 price: plan.priceValue,
                                 quantity: 1,
+                                page: 'weight-loss',
                               };
                               storeCheckoutProducts([product]);
                               window.location.href = '/checkout';

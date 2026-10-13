@@ -1,5 +1,7 @@
 'use client';
 import { trackEvent } from '@/lib/pixel';
+import { trackLead } from '@/lib/tracking';
+import { toE164 } from '@/lib/zappush';
 
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
@@ -29,6 +31,23 @@ const INITIAL: FormState = {
   phoneNumber: '',
   message: '',
 };
+
+/**
+ * Non-reversible key for a form submission.
+ *
+ * Used for deduplication instead of the raw email/phone so the key cannot itself
+ * become a record of who submitted. Two submissions of the SAME details in one
+ * browser session count once, which is the behaviour we want: a double-tap or a
+ * re-render must not become two leads.
+ */
+function hashContactKey(input: string): string {
+  let value = 0x811c9dc5;
+  for (let i = 0; i < input.length; i += 1) {
+    value ^= input.charCodeAt(i);
+    value = Math.imul(value, 0x01000193) >>> 0;
+  }
+  return value.toString(36);
+}
 
 export default function ContactForm() {
   const [data, setData] = useState<FormState>(INITIAL);
@@ -74,6 +93,19 @@ export default function ContactForm() {
       }
       setSuccess(true);
       trackEvent('Contact');
+      // Zappush lead. Only the four documented contact fields are sent — never
+      // the message body, and never the subject the visitor chose.
+      // The message is hashed into the dedup key so one submission cannot fire
+      // twice on a double-tap, without the message itself leaving the browser.
+      trackLead({
+        submissionId: `contact:${hashContactKey(`${data.email}|${data.phoneNumber}`)}`,
+        contact: {
+          email: data.email,
+          phone: toE164(data.phoneNumber, data.countryIso),
+          firstName: data.firstName,
+          lastName: data.lastName,
+        },
+      });
       setData(INITIAL);
     } catch (err) {
       console.error(err);

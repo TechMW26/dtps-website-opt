@@ -84,6 +84,9 @@ function PricingCard({
       duration: plan.duration,
       price: plan.price,
       quantity: 1,
+      // Which plan page produced this line. Used only to mint a non-condition
+      // analytics label; never rendered and never sent to Meta as a name.
+      page: 'weight-loss',
     };
 
     storeCheckoutProducts([product]);

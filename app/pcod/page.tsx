@@ -560,7 +560,8 @@ export default function PCODPage() {
                   id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
                   name: `PCOD Management Plan - ${plan.planName}`,
                   price: plan.price,
-                  quantity: 1
+                  quantity: 1,
+                  page: 'pcod',
                 };
                 storeCheckoutProducts([product]);
                 window.location.href = '/checkout';
@@ -600,7 +601,8 @@ export default function PCODPage() {
                     id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
                     name: `PCOD Management Plan - ${plan.planName}`,
                     price: plan.price,
-                    quantity: 1
+                    quantity: 1,
+                    page: 'pcod',
                   };
                   storeCheckoutProducts([product]);
                   window.location.href = '/checkout';

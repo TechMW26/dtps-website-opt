@@ -1,5 +1,7 @@
 'use client';
 import { trackEvent } from '@/lib/pixel';
+import { trackLead } from '@/lib/tracking';
+import { toE164 } from '@/lib/zappush';
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -8,6 +10,16 @@ import Link from 'next/link';
 import { X, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const LOGO_SRC = '/logo%20(2).png';
+
+/** Non-reversible key for a lead submission, so a double-tap counts once. */
+function hashContactKey(input: string): string {
+    let value = 0x811c9dc5;
+    for (let i = 0; i < input.length; i += 1) {
+        value ^= input.charCodeAt(i);
+        value = Math.imul(value, 0x01000193) >>> 0;
+    }
+    return value.toString(36);
+}
 
 interface FormState {
     name: string;
@@ -447,6 +459,18 @@ export default function LeadFormMultiStep({
             }
             setSubmitted(true);
             trackEvent('Lead');
+            // Zappush lead. Deliberately only the four documented contact
+            // fields: this form also collects age, gender, height and weight,
+            // which must never reach an advertising platform. The key hashes the
+            // contact details so a double-tap cannot fire twice.
+            trackLead({
+                submissionId: `lead:${formId}:${hashContactKey(`${data.email}|${data.contactNumber}`)}`,
+                contact: {
+                    email: data.email,
+                    phone: toE164(data.contactNumber),
+                    firstName: data.name,
+                },
+            });
             onSuccess?.();
             router.push(`/wldtps/lead/${formId}/thankyou`);
         } catch (err) {

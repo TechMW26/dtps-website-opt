@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint . --ext .ts,.tsx --ignore-pattern next.config.js --ignore-pattern tailwind.config.ts",
     "test": "node --test tests/*.test.cjs tests/*.test.mjs",
     "mongodb:migrate": "node --env-file=.recovery/firestore-source.env --env-file=.env.local scripts/migrate-website-to-mongodb.mjs",
     "mongodb:indexes": "node --env-file=.env.local scripts/index-website-mongodb.mjs --database dtps_website"

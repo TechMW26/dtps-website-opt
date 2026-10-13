@@ -253,6 +253,7 @@ export default function WeightLossPlan2499Page() {
             duration: '1 Month',
             price: 2499,
             quantity: 1,
+            page: '2499-plan',
         };
 
         storeCheckoutProducts([product]);

@@ -18,6 +18,7 @@ import {
 import { readCheckoutCartParams, gaEvent, toGaEcomParams } from '@/lib/pixel';
 import { sanitizeMetaCustomData } from '@/lib/meta-policy';
 import { trackMetaOnce } from '@/lib/meta-funnel';
+import { trackAddPaymentInfo } from '@/lib/tracking';
 
 declare global {
   interface Window {
@@ -31,6 +32,8 @@ interface Product {
   duration?: string;
   price: number;
   quantity: number;
+  /** Plan page the selection came from, used only to mint a safe item label. */
+  page?: string;
 }
 
 interface AppliedCoupon {
@@ -105,6 +108,7 @@ export default function CheckoutContent() {
   const [couponError, setCouponError] = useState('');
   const [discount, setDiscount] = useState(0);
   const [appliedCoupon, setAppliedCoupon] = useState<AppliedCoupon | null>(null);
+  const [planPage, setPlanPage] = useState('');
   const activeOrderRef = useRef<{ orderId: string; razorpayOrderId: string } | null>(null);
   const resolvedStatusRef = useRef<'success' | CheckoutResolutionStatus | null>(null);
 
@@ -117,6 +121,14 @@ export default function CheckoutContent() {
       const subtotalAmount = items.reduce((sum: number, item: Product) => sum + (item.price * item.quantity), 0);
       setSubtotal(subtotalAmount);
       setTotal(subtotalAmount);
+    }
+    // Analytics-safe plan label. The plan page the visitor came from is the only
+    // non-condition signal available, so it is resolved once on mount.
+    try {
+      const referrer = document.referrer ? new URL(document.referrer).pathname : '';
+      setPlanPage(referrer || window.location.pathname);
+    } catch {
+      setPlanPage('');
     }
   }, []);
 
@@ -402,6 +414,25 @@ export default function CheckoutContent() {
           ...toGaEcomParams(cartParams),
           payment_type: 'razorpay',
           transaction_id: data.order.orderId,
+        });
+        // Mirror to Zappush. Contact fields travel on the SDK path only, never
+        // through the shared data layer, and are limited to what Meta needs.
+        trackAddPaymentInfo({
+          lines: (Array.isArray(products) ? products : []).map((item: Product) => ({
+            id: String(item.id),
+            name: String(item.name ?? ''),
+            price: Number(item.price),
+            quantity: Number(item.quantity ?? 1),
+            page: planPage,
+          })),
+          orderId: data.order.orderId,
+          value: Number(data.order.total),
+          contact: {
+            email: typeof formData.email === 'string' ? formData.email : undefined,
+            phone: typeof phoneFromAPI === 'string' ? phoneFromAPI : undefined,
+            firstName: typeof formData.firstName === 'string' ? formData.firstName : undefined,
+            lastName: typeof formData.lastName === 'string' ? formData.lastName : undefined,
+          },
         });
       } else {
         setOrderStatus('failed');

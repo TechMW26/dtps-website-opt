@@ -240,11 +240,14 @@ export default function PrivacyPolicyPage() {
               <p className="mb-3 text-[13px] leading-[1.7] text-[#2E3A3D] md:text-[15px]">The Website uses cookies and similar technologies for:</p>
               <ul className="space-y-2 text-[13px] leading-[1.7] text-[#2E3A3D] md:text-[14px]">
                 <li><strong>Essential</strong> functionality (session, security, CSRF, login).</li>
-                <li><strong>Analytics</strong> — Google Analytics 4 (<code>G-R647JLBMXD</code>) and Microsoft Clarity, which help us understand how visitors use the site so we can improve it.</li>
+                <li><strong>Analytics</strong> — Google Analytics 4 (<code>G-R647JLBMXD</code>), Microsoft Clarity and Zappush, which help us understand how visitors use the site so we can improve it.</li>
                 <li><strong>Marketing</strong> — Meta (Facebook) Pixel records page views, plan views, cart additions, checkout and payment-stage actions, confirmed purchases, and successful enquiry or appointment submissions. Custom event parameters are limited to INR amounts and item counts; we do not include product names, product identifiers, customer contact details or form answers. The Pixel can still collect page URLs, cookies and browser information, and events use identifiers for deduplication. Automatic event detection and server-side Conversions API sharing remain disabled.</li>
+                <li><strong>Zappush</strong> — a first-party measurement service that records page views, plan views, checkout steps, confirmed purchases and contact-form submissions, so we can see how the site is used. Its script is not loaded at all until you accept optional measurement, and you can withdraw at any time. Programme identifiers sent to it are anonymised codes, not the name of the programme. Advertising forwarding from that service is not enabled.</li>
               </ul>
               <p className="mt-3 text-[12px] leading-[1.6] text-[#2E3A3D] md:text-[14px]">
-                You can disable cookies in your browser, opt out of Google Analytics via
+                Optional analytics and advertising measurement stay off until you accept them in the consent
+                prompt, and you can withdraw at any time by clearing your browser storage for this site or by
+                contacting us. You can also disable cookies in your browser, opt out of Google Analytics via
                 the{' '}
                 <a
                   href="https://tools.google.com/dlpage/gaoptout"

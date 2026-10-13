@@ -1,5 +1,36 @@
 # Health audit remediation — 29 September 2026
 
+## Zappush tracker added, consent-gated and Meta-neutral — 13 October 2026
+
+A Zappush tracker was added for first-party analytics, under the constraints in
+`docs/zappush-integration.md`. Nothing in this section changes Meta behaviour.
+
+- The tracker script is **not** in the document head. It is injected by
+  `components/ZappushTracker.tsx` only after the visitor grants analytics **and**
+  advertising consent, so a visitor who has not chosen makes no request to
+  `api.zappush.com` at all. Consent defaults to denied.
+- A consent prompt was added (`ConsentBanner` in the same component), because no
+  banner existed. It writes a first-party `dtps_consent` cookie carrying the four
+  Google Consent Mode v2 keys Zappush reads. Reopening it cannot upgrade a denial.
+- Meta forwarding is **not** configured or enabled. It lives in the Zappush
+  account, not in this repository, and remains the account owner's decision.
+- `lib/meta-policy.ts` is unchanged: `canSendMetaEvents()` still returns `false`,
+  the browser allowlist is unchanged, and no second pixel or CAPI sender was added.
+  `app/api/orders/route.ts` still contains the single server-side Purchase sender.
+- The one deliberate addition is a `Purchase` call from `lib/meta-funnel.ts`'s
+  existing verified-order path. It emits **no** Meta event; it only reaches
+  Zappush, and only with the stable order id as `transaction_id`.
+- Analytics payloads never carry a condition. Plan names become an opaque
+  `item_id` plus a generic `item_name` (`lib/plan-labels.ts`). Coupon codes,
+  form message bodies, and the lead form's age / gender / height / weight are
+  excluded by construction.
+
+Remaining limitation, unchanged and important: **if Meta forwarding is later
+enabled in the Zappush dashboard, that gateway becomes a second Meta data source
+in the same category**, and the Health and Wellness restriction documented below
+applies to it. A connection created in the vendor dashboard is outside the reach
+of this code and is not covered by the Meta policy enforcement above.
+
 ## Current configuration — 3 October 2026
 
 At the user's request, the replacement pixel `1444341400930947` now receives

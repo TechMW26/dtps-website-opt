@@ -1184,6 +1184,7 @@ export default function TherapeuticPlanPage() {
                               name: `Therapeutic Diet Plan - ${plan.label}`,
                               price: parseInt(price),
                               quantity: 1,
+                              page: 'therapeutic',
                             };
                             storeCheckoutProducts([product]);
                             window.location.href = '/checkout';
