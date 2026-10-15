@@ -21,27 +21,31 @@ blocked Meta work, see
 
 ## Consent posture of the OTHER trackers (important)
 
-Only the Zappush tracker is consent-gated. The others are **not**, and this was
-not changed by this work — changing them would alter live measurement behavior
-and needs an explicit decision (see the plan document, Gate 0 / item D3).
+Zappush, GA4 and the Meta Pixel are all consent-gated. A visitor who denies — or
+has not yet chosen — makes no request to `api.zappush.com`,
+`connect.facebook.net`/`fbevents.js` or `googletagmanager.com`, and sends no event
+to any of them. Microsoft Clarity remains host-gated (not consent-gated), so
+sessions still flow to Clarity regardless of the visitor's choice.
 
 | Tracker | Loaded | Gated on consent? | Where |
 | --- | --- | --- | --- |
 | Zappush | only after a full grant | **Yes** | `components/ZappushTracker.tsx` |
-| GA4 (`G-R647JLBMXD`) | always, `afterInteractive` | **No** | `app/layout.tsx` `ga4-loader` / `ga4-init` |
-| Microsoft Clarity | always, when the host matches | **No** | `components/ClarityTracker.tsx` |
-| Meta Pixel | always, `beforeInteractive` | **No** | `app/layout.tsx` `meta-pixel-base` |
+| GA4 (`G-R647JLBMXD`) | only after a full grant | **Yes** | `components/ConsentGatedTags.tsx` |
+| Microsoft Clarity | when the host matches | **No** | `components/ClarityTracker.tsx` |
+| Meta Pixel | only after a full grant | **Yes** | `components/ConsentGatedTags.tsx` |
 
-The Zappush events this work added are consent-gated, but GA4 receives the same
-page views and funnel events through `gaEvent()` regardless of the visitor's
-choice, because GA4 was already unconditional before this change.
+Meta browser events (`trackEvent`) and GA4 events (`gaEvent`/`gaPageView`) are
+individually gated in `lib/pixel.ts`, and the loader scripts themselves are
+injected by `ConsentGatedTags` only after consent, so both the event *and* the
+script request stop on denial. The Meta bootstrap no longer fires the initial
+PageView; `PixelTracker` owns the initial and SPA page views, all gated by the
+same consent check.
 
 **Consequence for a granted/denied comparison:** a visitor who rejects the prompt
-still sends page views and ecommerce events to GA4 and sessions to Clarity. The
-rejection only stops Zappush. If the requirement is that "reject" stops all
-non-essential measurement, `ga4-loader`/`ga4-init`, `ClarityTracker` and the Meta
-bootstrap must be moved behind the same gate — a separate, larger change that
-this work deliberately did not make.
+sends page views/ecommerce to none of Zappush, GA4 or Meta, and no analytics
+cookie is set. Clarity sessions are the only measurement that still flows.
+Revisiting consent (withdrawal, or a later re-grant) is driven by the same
+`dtps_consent` cookie and is picked up by every tracker without a reload.
 
 ### What a real fix looks like
 
@@ -367,9 +371,10 @@ just the filter.
 - The Zappush-side store settings: consent management on/off, and the "after a
   shopper withdraws" behaviour.
 - Confirmation that the tracker is receiving events, which needs dashboard access.
-- Whether GA4, Clarity and the Meta pixel should also be consent-gated. They are
-  not, and this work deliberately did not change them. See
-  "Consent posture of the OTHER trackers" above.
+- Whether GA4, Clarity and the Meta pixel should also be consent-gated. GA4 and
+  the Meta pixel are now consent-gated (see "Consent posture of the OTHER
+  trackers" above); Clarity remains host-gated only and is left to the account
+  holder to review.
 
 Nothing in this repository can verify any of the above, and no claim is made that
 it has been verified.

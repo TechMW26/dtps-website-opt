@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin, FaApple, FaAndroid } from 'react-icons/fa'; // FontAwesome Icons
+import { openConsentPreferences } from '@/lib/consent-events';
 
 const serviceLinks = [
   { label: 'Home', href: '/' },
@@ -151,6 +152,15 @@ export default function Footer() {
                 {index < legalLinks.length - 1 && <span className="text-white/50">–</span>}
               </span>
             ))}
+            <span className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => openConsentPreferences()}
+                className="text-white/80 no-underline bg-transparent border-none cursor-pointer p-0"
+              >
+                Cookie preferences
+              </button>
+            </span>
           </div>
         </div>
       </div>

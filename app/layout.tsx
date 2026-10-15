@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { poppins, epilogue, latinFontPreloads } from '@/lib/fonts';
-import Script from 'next/script';
 import './globals.css';
 import './fonts.css';
 import { AuthProvider } from './providers';
@@ -9,8 +8,8 @@ import LayoutWrapper from '@/components/LayoutWrapper';
 import PixelTracker from '@/components/PixelTracker';
 import ClarityTracker from '@/components/ClarityTracker';
 import ZappushTracker from '@/components/ZappushTracker';
+import ConsentGatedTags from '@/components/ConsentGatedTags';
 import { Suspense } from 'react';
-import { META_PIXEL_ID, META_PIXEL_BOOTSTRAP } from '@/lib/meta-config';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -21,7 +20,6 @@ export const viewport: Viewport = {
 const SITE_URL = 'https://www.dtpoonamsagar.com';
 const LOGO_URL =
   'https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/gridfs-69b7c675a14dfc9fbf5ad523.jpg';
-const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';
 const CLARITY_PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CLARITY_ALLOWED_HOSTS = ['www.dtpoonamsagar.com', 'dtpoonamsagar.com'];
 
@@ -127,56 +125,33 @@ export default function RootLayout({
           the tracker at all. See docs/zappush-integration.md.
         */}
 
-        {/* Preload critical hero image */}
-        <link
-          rel="preload"
-          href="https://n1ryg7cslgpozeiu.public.blob.vercel-storage.com/DTPS-Ecommerce/static/home/hero/dtps-hero-poonam-sagar-v2.png"
-          as="image"
-          type="image/webp"
-        />
-
-        <Script id="meta-pixel-base" strategy="beforeInteractive">
-          {META_PIXEL_BOOTSTRAP}
-        </Script>
+        {/*
+          The hero image is preloaded by `next/image` itself (Hero.tsx and
+          LeadFormLandingPage.tsx set `priority`), which emits an optimised
+          `/_next/image` preload in the head. A manual <link rel="preload"> here
+          pointed at the raw blob URL with a hardcoded `type="image/webp"`, so the
+          browser never reused it and every route paid for a wasted hero download.
+        */}
 
         {/*
-          Google Analytics 4 (gtag.js).
-          - Auto page_view on initial load is disabled (`send_page_view: false`)
-            because <PixelTracker /> fires page_view on EVERY route change
-            (initial + SPA navigations) so we don't double-count.
-          - Funnel events (begin_checkout, add_payment_info, purchase) are sent
-            by the same code paths as the Meta Pixel — single source of truth.
+          Meta Pixel and Google Analytics 4 are loaded by <ConsentGatedTags />
+          only after the visitor grants analytics and advertising consent, so a
+          visitor who denies (or has not yet chosen) makes no request to
+          connect.facebook.net or googletagmanager.com. See
+          components/ConsentGatedTags.tsx and docs/zappush-integration.md.
         */}
-        <Script
-          id="ga4-loader"
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.__GA4_MEASUREMENT_ID__ = '${GA4_MEASUREMENT_ID}';
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false });
-          `}
-        </Script>
-
-
       </head>
       <body>
-        <noscript>
-          <img height="1" width="1" style={{ display: 'none' }}
-            src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`} alt="" />
-        </noscript>
         <AuthProvider>
           <ThemeProvider>
             <ClarityTracker projectId={CLARITY_PROJECT_ID} enabledHosts={CLARITY_ALLOWED_HOSTS} />
             <LayoutWrapper>
               {children}
             </LayoutWrapper>
-            {/* PageView on client navigation; Meta conversion events remain disabled. */}
+            {/* Meta Pixel + GA4 scripts, consent-gated. */}
+            <ConsentGatedTags />
+            {/* PageView on initial load and client navigation; gated by consent
+                inside lib/pixel.ts. */}
             <Suspense fallback={null}>
               <PixelTracker />
             </Suspense>

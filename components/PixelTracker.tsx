@@ -45,8 +45,10 @@ export default function PixelTracker() {
     if (!pathname) return;
     const key = pathname + '?' + (searchParams?.toString() ?? '');
     if (lastPage.current === key) return;
-    // The bootstrap handles initial PageView before hydration.
-    if (lastPage.current !== null) trackEvent('PageView');
+    // Fire the Meta PageView for BOTH the initial load and SPA navigations;
+    // `trackEvent` itself returns early until consent is granted, and the
+    // bootstrap no longer fires the initial PageView (see lib/meta-config.ts).
+    trackEvent('PageView');
     lastPage.current = key;
     gaPageView(pathname);
   }, [pathname, searchParams]);

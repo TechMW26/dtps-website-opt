@@ -12,6 +12,16 @@
 
 import { canSendMetaEvents, isAllowedMetaBrowserEvent, sanitizeMetaCustomData, sanitizeMetaSourceUrl } from './meta-policy';
 import { META_PIXEL_ID } from './meta-config';
+import { readConsent, isTrackingAllowed } from './tracking-consent';
+
+/**
+ * True only when the visitor has actively granted analytics AND advertising
+ * consent. Browser Meta events and GA4 events are held back until then, so a
+ * visitor who denies (or has not yet chosen) fires neither the pixel nor gtag.
+ */
+function consentAllowsTracking(): boolean {
+  return isTrackingAllowed(readConsent());
+}
 
 export type FbqStandardEvent =
   | 'PageView'
@@ -65,6 +75,7 @@ export function trackEvent(
 ): boolean {
   if (!isAllowedMetaBrowserEvent(event)) return false;
   if (typeof window === 'undefined') return false;
+  if (!consentAllowsTracking()) return false;
   const fbq = window.fbq;
   if (typeof fbq !== 'function') return false;
 
@@ -233,6 +244,7 @@ export function readCheckoutCartParams(): Record<string, unknown> {
  */
 export function gaEvent(event: string, params: Record<string, unknown> = {}): void {
   if (typeof window === 'undefined') return;
+  if (!consentAllowsTracking()) return;
   const gtag = window.gtag;
   if (typeof gtag !== 'function') return;
   try {
@@ -249,6 +261,7 @@ export function gaEvent(event: string, params: Record<string, unknown> = {}): vo
  */
 export function gaPageView(path: string, title?: string): void {
   if (typeof window === 'undefined') return;
+  if (!consentAllowsTracking()) return;
   const gtag = window.gtag;
   const id = window.__GA4_MEASUREMENT_ID__;
   if (typeof gtag !== 'function' || !id) return;

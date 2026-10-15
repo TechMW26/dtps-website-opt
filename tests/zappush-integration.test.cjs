@@ -202,10 +202,10 @@ test('no emitter sends anything while consent is denied', () => {
 /* -------------------------------------------------------------------------- */
 
 test('the GA4 DataLayer still initialises exactly as before and nothing else pushes to it', () => {
-  const layout = read('app/layout.tsx');
-  assert(layout.includes("window.dataLayer = window.dataLayer || [];"));
-  assert(layout.includes("gtag('config', '${GA4_MEASUREMENT_ID}', { send_page_view: false })"));
-  assert(layout.includes("const GA4_MEASUREMENT_ID = 'G-R647JLBMXD';"));
+  const gatedTags = read('components/ConsentGatedTags.tsx');
+  assert(gatedTags.includes("window.dataLayer = window.dataLayer || [];"));
+  assert(gatedTags.includes("send_page_view:false"));
+  assert(gatedTags.includes("'G-R647JLBMXD'"));
   // lib/pixel.ts already declares Window.dataLayer; a second, differently typed
   // declaration breaks `tsc --noEmit`. Pin them to the same type.
   const pixelDecl = read('lib/pixel.ts').match(/dataLayer\?:\s*([^;]+);/);
@@ -475,10 +475,14 @@ test('no second pixel, no second CAPI sender, and the new code sends no Meta eve
     assert(!/fbq|fbevents|fireCapi|meta-capi|facebook\.com/.test(source), `${file} must not touch Meta`);
   }
 
-  // Exactly one Meta bootstrap and one noscript pixel, both unchanged.
+  // Exactly one Meta bootstrap, in the consent-gated component; no noscript
+  // pixel remains (the unreachable noscript PageView was removed when loading
+  // became consent-gated).
   const layout = read('app/layout.tsx');
-  assert.equal((layout.match(/facebook\.com\/tr/g) || []).length, 1);
-  assert.equal((layout.match(/id="meta-pixel-base"/g) || []).length, 1);
+  const gatedTags = read('components/ConsentGatedTags.tsx');
+  assert.equal((layout.match(/facebook\.com\/tr/g) || []).length, 0);
+  assert.equal((gatedTags.match(/id="meta-pixel-base"/g) || []).length, 0);
+  assert(gatedTags.includes("META_BOOTSTRAP_ID") && gatedTags.includes("'meta-pixel-base'"));
   assert.equal(read('lib/meta-config.ts').includes("META_PIXEL_ID = '1444341400930947'"), true);
 });
 

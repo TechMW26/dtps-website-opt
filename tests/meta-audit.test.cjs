@@ -6,15 +6,29 @@ const ts = require('typescript');
 const { PUBLIC_ROUTES, toPublicUrl } = require('../lib/public-routes');
 const config = require('../next.config');
 
+/** A first-party consent cookie granting both analytics and advertising. */
+const GRANTED_CONSENT_COOKIE = JSON.stringify({
+  analytics_storage: 'granted',
+  ad_storage: 'granted',
+  ad_user_data: 'granted',
+  ad_personalization: 'granted',
+  policyVersion: '2026-10-13',
+  decidedAt: '2026-10-13T00:00:00.000Z',
+  source: 'banner',
+});
+
 // Execute the actual TypeScript modules, replacing only browser/network APIs.
 function loadTs(file, globals = {}, imports = {}) {
   const code = ts.transpileModule(fs.readFileSync(file, 'utf8'), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
   }).outputText;
   const exports = {};
+  const defaultDocument = globals.document !== undefined
+    ? globals.document
+    : { cookie: `dtps_consent=${encodeURIComponent(GRANTED_CONSENT_COOKIE)}` };
   vm.runInNewContext(code, {
-    exports, console, URL, process, ...globals,
-    require: (name) => Object.hasOwn(imports, name) ? imports[name] : name === './meta-config' ? loadTs('lib/meta-config.ts') : require(name),
+    exports, console, URL, process, ...globals, document: defaultDocument,
+    require: (name) => Object.hasOwn(imports, name) ? imports[name] : name === './meta-config' ? loadTs('lib/meta-config.ts') : name === './tracking-consent' ? loadTs('lib/tracking-consent.ts', {}, {}) : require(name),
   }, { filename: file });
   return exports;
 }
@@ -154,12 +168,18 @@ test('only the replacement pixel is bootstrapped, automatic events are off, and 
   vm.runInContext(META_PIXEL_BOOTSTRAP, context);
   const queue = window.fbq.queue.map(args => Array.from(args));
   assert.equal(inserted[0].src, 'https://connect.facebook.net/en_US/fbevents.js');
+  // The bootstrap installs the pixel and turns off auto-config, but no longer
+  // fires the initial PageView (PixelTracker owns it, gated by consent).
   assert.equal(JSON.stringify(queue), JSON.stringify([
-    ['set', 'autoConfig', false, META_PIXEL_ID], ['init', META_PIXEL_ID], ['trackSingle', META_PIXEL_ID, 'PageView'],
+    ['set', 'autoConfig', false, META_PIXEL_ID], ['init', META_PIXEL_ID],
   ]));
   const layout = fs.readFileSync('app/layout.tsx', 'utf8');
-  assert(layout.includes('strategy="beforeInteractive"'));
-  assert.equal((layout.match(/facebook.com\/tr/g) || []).length, 1);
+  // Meta/GA4 loaders moved to components/ConsentGatedTags.tsx (consent-gated);
+  // the root layout must no longer load them unconditionally.
+  const gatedTags = fs.readFileSync('components/ConsentGatedTags.tsx', 'utf8');
+  assert(gatedTags.includes('meta-pixel-base'));
+  assert(!layout.includes('strategy="beforeInteractive"'));
+  assert(!/facebook\.com\/tr/.test(layout));
   for (const entry of await config.headers()) {
     const csp = entry.headers.find(h => h.key === 'Content-Security-Policy');
     if (csp) {
