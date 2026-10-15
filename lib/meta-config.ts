@@ -1,5 +1,5 @@
 // Single destination for browser tracking and any future approved CAPI setup.
-export const META_PIXEL_ID = '1444341400930947';
+export const META_PIXEL_ID = '39186114291032857';
 
 /**
  * Inert `fbq` queue stub. Installed unconditionally on the client so that

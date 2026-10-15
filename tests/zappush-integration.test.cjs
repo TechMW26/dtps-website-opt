@@ -5,7 +5,8 @@
  * later change cannot quietly break one:
  *
  *   - the tracker is configured once, with the vendor's exact script;
- *   - nothing is tracked before consent, and the gate defaults to denied;
+ *   - the consent gate defaults to granted (banner removed); a present-but-invalid
+ *     decision still fails closed;
  *   - the GA4 DataLayer contract is intact and page views are not duplicated;
  *   - payloads cannot carry health data, coupon codes or form text;
  *   - a purchase requires a verified, completed order and cannot double-fire;
@@ -143,11 +144,15 @@ test('the CSP allows exactly the Zappush origin, added to script-src and connect
 /* 2. Consent defaults to denied and fails closed                             */
 /* -------------------------------------------------------------------------- */
 
-test('consent denies by default and for every malformed or stale value', () => {
+test('consent defaults to granted when no decision exists, and denies for malformed or stale values', () => {
+  // No cookie / no decision yet → tracking is on (banner removed, auto-grant).
+  for (const raw of [undefined, null, '']) {
+    const state = consent.parseConsent(raw);
+    assert.equal(state.analytics_storage, 'granted', `must grant for ${String(raw).slice(0, 40)}`);
+    assert.equal(consent.isTrackingAllowed(state), true);
+  }
+  // A present-but-invalid prior decision must still fail closed.
   for (const raw of [
-    undefined,
-    null,
-    '',
     'not json',
     '[]',
     '{}',
@@ -192,7 +197,8 @@ test('no emitter sends anything while consent is denied', () => {
   const { pushEvent } = load('lib/dataLayer.ts', { window: { dataLayer } }, {
     './tracking-consent': consent,
   });
-  const pushed = pushEvent({ event: 'generate_lead' }, consent.parseConsent(null));
+  const denied = consent.parseConsent(JSON.stringify({ analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', policyVersion: consent.CONSENT_POLICY_VERSION }));
+  const pushed = pushEvent({ event: 'generate_lead' }, denied);
   assert.equal(pushed, false);
   assert.equal(dataLayer.length, 0);
 });
@@ -483,7 +489,7 @@ test('no second pixel, no second CAPI sender, and the new code sends no Meta eve
   assert.equal((layout.match(/facebook\.com\/tr/g) || []).length, 0);
   assert.equal((gatedTags.match(/id="meta-pixel-base"/g) || []).length, 0);
   assert(gatedTags.includes("META_BOOTSTRAP_ID") && gatedTags.includes("'meta-pixel-base'"));
-  assert.equal(read('lib/meta-config.ts').includes("META_PIXEL_ID = '1444341400930947'"), true);
+  assert.equal(read('lib/meta-config.ts').includes("META_PIXEL_ID = '39186114291032857'"), true);
 });
 
 test('the existing server Purchase sender is still the only server sender', () => {
@@ -504,8 +510,8 @@ test('tracking is gated: no Zappush call happens while consent is denied', () =>
     },
     './tracking-consent': {
       ...consent,
-      readConsent: () => consent.parseConsent(null),
-      isTrackingAllowed: (s) => consent.isTrackingAllowed(s ?? consent.parseConsent(null)),
+      readConsent: () => consent.parseConsent(JSON.stringify({ analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', policyVersion: consent.CONSENT_POLICY_VERSION })),
+      isTrackingAllowed: (s) => consent.isTrackingAllowed(s ?? consent.parseConsent(JSON.stringify({ analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', policyVersion: consent.CONSENT_POLICY_VERSION }))),
     },
     './zappush': { zappushTrack: (e, d) => { calls.push([e, d]); return true; } },
   }));
@@ -537,16 +543,16 @@ test('tracking initialises after a valid consent grant', () => {
 /* 7. Rollout hygiene                                                         */
 /* -------------------------------------------------------------------------- */
 
-test('the consent prompt is reachable, labelled and defaults to off', () => {
+test('the consent prompt is removed and tracking defaults on', () => {
   const tracker = read('components/ZappushTracker.tsx');
-  assert(tracker.includes('role="dialog"'));
-  assert(tracker.includes('aria-labelledby="dtps-consent-title"'));
-  assert(tracker.includes('aria-describedby="dtps-consent-body"'));
-  assert(tracker.includes('aria-live="polite"'));
-  assert(tracker.includes('Reject optional'));
-  assert(tracker.includes('Accept all'));
-  // Default state is denied, not undefined, so the first render cannot leak.
-  assert(tracker.includes('useState<ConsentState>(() => ({ ...DENIED_CONSENT }))'));
+  assert(!tracker.includes('role="dialog"'));
+  assert(!tracker.includes('Reject optional'));
+  assert(!tracker.includes('Accept all'));
+  assert(!tracker.includes('dtps-consent-title'));
+  const consent = read('lib/tracking-consent.ts');
+  // Absence of a decision resolves to granted, so tracking fires for everyone.
+  assert(consent.includes('if (!raw) return { ...GRANTED_CONSENT };'));
+  assert(consent.includes('export const GRANTED_CONSENT: ConsentState'));
 });
 
 test('revocation is gated on the SDK capability, not on our own stub flag', () => {

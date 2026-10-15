@@ -158,7 +158,7 @@ test('old clients and direct CAPI requests are suppressed before reading PII or 
 
 test('only the replacement pixel is bootstrapped, automatic events are off, and CSP permits it', async () => {
   const { META_PIXEL_ID, META_PIXEL_BOOTSTRAP } = loadTs('lib/meta-config.ts');
-  assert.equal(META_PIXEL_ID, '1444341400930947');
+  assert.equal(META_PIXEL_ID, '39186114291032857');
   const inserted = [];
   const window = {};
   const document = { createElement: () => ({}), getElementsByTagName: () => [{ parentNode: { insertBefore: (el) => inserted.push(el) } }] };
@@ -198,7 +198,7 @@ test('SPA PageView targets only the replacement pixel with no custom data; CAPI 
   }, { './meta-policy': policy });
   pixel.trackEvent('PageView', { content_name: 'PCOD', value: 199 }, { eventID: 'page-event' });
   pixel.fireCapi('PageView', 'page-event');
-  assert.equal(JSON.stringify(calls), JSON.stringify([['trackSingle', '1444341400930947', 'PageView', {}, { eventID: 'page-event' }]]));
-  const retired = /1249607162337272|451000204060350|28310721625213137|1499311531960054/;
+  assert.equal(JSON.stringify(calls), JSON.stringify([['trackSingle', '39186114291032857', 'PageView', {}, { eventID: 'page-event' }]]));
+  const retired = /1249607162337272|451000204060350|28310721625213137|1499311531960054|1444341400930947/;
   for (const file of ['app/layout.tsx', 'lib/meta-config.ts', 'lib/meta-capi.ts', 'lib/pixel.ts']) assert(!retired.test(fs.readFileSync(file, 'utf8')));
 });

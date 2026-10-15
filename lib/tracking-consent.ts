@@ -63,6 +63,17 @@ export const DENIED_CONSENT: ConsentState = {
   source: 'default',
 };
 
+/** Everything granted without an explicit banner choice (tracking always on). */
+export const GRANTED_CONSENT: ConsentState = {
+  analytics_storage: 'granted',
+  ad_storage: 'granted',
+  ad_user_data: 'granted',
+  ad_personalization: 'granted',
+  decidedAt: null,
+  policyVersion: CONSENT_POLICY_VERSION,
+  source: 'default',
+};
+
 export const GRANTED_CHOICE: ConsentChoice = {
   analytics_storage: 'granted',
   ad_storage: 'granted',
@@ -139,7 +150,9 @@ export function clearConsent(): void {
  * tracking. Exported so the logic is testable without a DOM.
  */
 export function parseConsent(raw: string | null | undefined): ConsentState {
-  if (!raw) return { ...DENIED_CONSENT };
+  // Tracking is on by default: absence of a decision (no cookie yet, banner
+  // removed) resolves to granted, so ad/analytics events fire for everyone.
+  if (!raw) return { ...GRANTED_CONSENT };
   let parsed: unknown;
   try {
     parsed = JSON.parse(raw);

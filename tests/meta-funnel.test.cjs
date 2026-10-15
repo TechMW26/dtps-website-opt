@@ -21,7 +21,7 @@ function setup(shared = {}) {
   const mod = load('lib/meta-funnel.ts', { ...stores, fetch: async () => {
     state.fetches++; if (state.fail) throw Error('offline');
     return { ok: true, json: async () => state.response };
-  } }, { './meta-config': { META_PIXEL_ID: '1444341400930947' }, './meta-policy': policy,
+  } }, { './meta-config': { META_PIXEL_ID: '39186114291032857' }, './meta-policy': policy,
     './pixel': { generateEventId: () => `selection-${++seq}`,
       trackEvent: (...args) => { if (!state.accepts) return false; calls.push(args); return true; }, gaEvent: (...args) => ga.push(args) } });
   return { ...mod, calls, ga, state, ...stores };
