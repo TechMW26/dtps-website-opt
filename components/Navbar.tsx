@@ -143,13 +143,6 @@ export default function Navbar({ bgColor }: NavbarProps) {
               ))}
             </nav>
 
-            <Link
-              href="/appointment"
-              className="hidden shrink-0 rounded-full bg-[#FF8A1F] px-4 py-2.5 text-[13px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-[#e07a1a] xl:inline-flex xl:px-6 xl:text-sm"
-            >
-              Book Appointment
-            </Link>
-
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FF8A1F] text-white xl:hidden"
@@ -211,12 +204,6 @@ export default function Navbar({ bgColor }: NavbarProps) {
               )}
             </div>
           ))}
-          <Link
-            href="/appointment"
-            className="mt-4 inline-flex w-full justify-center rounded-full bg-[#014E4E] px-6 py-3 text-sm font-semibold text-[#F9D67B]"
-          >
-            Book Appointment
-          </Link>
         </div>
       )}
     </>

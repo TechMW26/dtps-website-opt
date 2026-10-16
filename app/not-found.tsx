@@ -13,7 +13,6 @@ const quickLinks = [
   { label: 'Weight Loss', href: '/wldtps', icon: '⚖️' },
   { label: 'PCOD', href: '/pcdtps', icon: '🌿' },
   { label: 'Blog', href: '/blog', icon: '📖' },
-  { label: 'Book Appointment', href: '/appointment', icon: '📅' },
   { label: 'Contact Us', href: '/contact', icon: '✉️' },
 ];
 
@@ -79,12 +78,6 @@ export default function NotFound() {
                 className="rounded-full bg-[#FF8A0A] px-7 py-3 text-white text-[14px] font-semibold hover:bg-[#e07a00] transition-colors shadow-lg"
               >
                 Back to Home
-              </Link>
-              <Link
-                href="/appointment"
-                className="rounded-full border border-white/30 px-7 py-3 text-white text-[14px] font-semibold hover:bg-white/10 transition-colors"
-              >
-                Book Appointment
               </Link>
             </div>
           </div>
