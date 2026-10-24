@@ -119,11 +119,22 @@ export async function POST(req: NextRequest) {
   } catch (error) { if(error instanceof WebsiteAdminError)return NextResponse.json({error:error.message},{status:error.status}); console.error('Error in orders API:', error); return NextResponse.json({ success: false, error: 'Internal server error' }, { status: 500 }); }
 }
 
+// Google Sheet sync (Apps Script) has no admin session. It sends a secret key instead.
+// Constant-time comparison so the key cannot be guessed from response timing.
+function isOrdersSyncRequest(req: NextRequest) {
+  const expected = process.env.ORDERS_SYNC_KEY || '';
+  const provided = req.headers.get('x-orders-sync-key') || '';
+  if (expected.length < 32 || provided.length !== expected.length) return false;
+  let diff = 0;
+  for (let i = 0; i < expected.length; i++) diff |= expected.charCodeAt(i) ^ provided.charCodeAt(i);
+  return diff === 0;
+}
+
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url); const orderId = searchParams.get('orderId');
     if (orderId) { const found = await findOrder(orderId); return NextResponse.json({ success: true, order: found ? serializeOrder(found.ref.id, found.data) : null }); }
-    await requireWebsiteAdmin(await getServerSession(authOptions) as any);
+    if (!isOrdersSyncRequest(req)) await requireWebsiteAdmin(await getServerSession(authOptions) as any);
     const range = buildIndiaCreatedAtRange(searchParams.get('from'), searchParams.get('to')) as { $gte?: Date; $lte?: Date } | null;
     const orders = (await getWebsiteDatabase().collection('websiteOrders').get()).docs.map((doc) => serializeOrder(doc.id, doc.data() as Record<string, unknown>)!).filter((order: any) => { if (!range || !order.createdAt) return true; const created = new Date(String(order.createdAt)); return (!range.$gte || created >= range.$gte) && (!range.$lte || created <= range.$lte); }).sort((a: any, b: any) => String(b.createdAt || '').localeCompare(String(a.createdAt || '')));
     return NextResponse.json({ success: true, orders });
