@@ -8,6 +8,7 @@ import { getOptimizedUrl } from '@/lib/image-url';
 // Critical above-fold component loaded immediately
 import AboutUsSection from '@/components/AboutUsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import { DiyaDivider } from '@/components/diwali/DiwaliDecor';
 
 // Dynamic imports for below-fold components with loading states
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'), {
@@ -143,6 +144,7 @@ export default function HomePage() {
         <AboutUsSection />
       </div>
       <div className="section-wrapper">
+        <DiyaDivider />
         <ServicesSection />
       </div>
       <div className="section-wrapper">
@@ -157,6 +159,7 @@ export default function HomePage() {
       </div>
       {/* Our Team Section */}
       <div className="section-wrapper  ">
+        <DiyaDivider />
         <OurTeamSection />
       </div>
 
@@ -754,6 +757,7 @@ export default function HomePage() {
 
       {/* FAQ Section */}
       <div className="section-wrapper">
+        <DiyaDivider />
         <FAQSection />
       </div>
 
