@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { usePathname } from 'next/navigation';
 import { DIWALI_BURST_EVENT, fireDiwaliCrackers, isDiwaliSeason } from '@/lib/festive';
 import styles from './Diwali.module.css';
 
@@ -457,7 +458,7 @@ interface Burst {
 
 let burstSeq = 0;
 
-function CrackerLayer() {
+function CrackerLayer({ welcome }: { welcome: boolean }) {
   const [bursts, setBursts] = useState<Burst[]>([]);
 
   const launch = useCallback((x?: number, y?: number) => {
@@ -495,12 +496,12 @@ function CrackerLayer() {
     window.addEventListener(DIWALI_BURST_EVENT, onBurst);
 
     // Crackers after the intro, on every page load / refresh.
-    const timer = window.setTimeout(() => launch(), 3700);
+    const timer = welcome ? window.setTimeout(() => launch(), 3700) : undefined;
     return () => {
       window.removeEventListener(DIWALI_BURST_EVENT, onBurst);
       window.clearTimeout(timer);
     };
-  }, [launch]);
+  }, [launch, welcome]);
 
   if (bursts.length === 0) return null;
 
@@ -731,7 +732,10 @@ function DiwaliIntro({ onDone }: { onDone: () => void }) {
 /** Mount once in the layout: intro, crackers, fuljhadi cursor trail and the floating diya button. */
 export default function DiwaliFestive() {
   const active = useDiwaliSeason();
-  const [showIntro, setShowIntro] = useState(true);
+  const pathname = usePathname();
+  // Intro + opening crackers only when the visitor lands on the home page.
+  const [isHome] = useState(pathname === '/');
+  const [showIntro, setShowIntro] = useState(isHome);
   const hideIntro = useCallback(() => setShowIntro(false), []);
 
   useEffect(() => {
@@ -742,7 +746,7 @@ export default function DiwaliFestive() {
   return (
     <>
       {showIntro && <DiwaliIntro onDone={hideIntro} />}
-      <CrackerLayer />
+      <CrackerLayer welcome={isHome} />
       <FuljhadiCursor />
       <FloatingDiya />
     </>
